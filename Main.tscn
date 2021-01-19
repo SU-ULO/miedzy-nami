@@ -41,13 +41,13 @@ position = Vector2( -9241.21, -960.615 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )
-color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="dummy" parent="." instance=ExtResource( 2 )]
 position = Vector2( -12540.3, -772.364 )
 
 [node name="dummy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -9009.91, -115.031 )
+position = Vector2( -7026.15, 316.481 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -9751.52, 2878.64 )
+position = Vector2( -11124, 373.471 )
