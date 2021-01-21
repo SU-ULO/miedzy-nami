@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="miedzy-nami"
-run/main_scene="res://Temp.tscn"
+run/main_scene="res://start/Start.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Network="*res://network/network.gd"
 
 [rendering]
 

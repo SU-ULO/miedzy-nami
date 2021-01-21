@@ -90,7 +90,7 @@ func scale_sight_range(delta):
 			area.set_radius(sight_range)
 			$Light.set_texture_scale(sight_range/mask_width*2)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	get_input()
 	player_velocity = move_and_slide(player_velocity)
 	in_direct_line()
