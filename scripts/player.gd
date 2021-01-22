@@ -40,6 +40,11 @@ func get_input():
 		player_velocity.y += 1
 		sight_range = 500
 		
+	if Input.is_action_just_pressed("ui_select"):
+		for item in interactable:
+			item.Interact()
+			
+		
 	if player_velocity.y == 0 && player_velocity.x == 0:
 		$Sprite.visible = true
 		if flipped == $Sprite.is_flipped_h():

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class Task : Godot.Node
+public abstract class Task : Godot.Node2D
 {
 	private static int currentTaskID = 0;
 	private static Random r = new Random();
@@ -117,7 +117,10 @@ public abstract class Task : Godot.Node
 	}
 
 	public TaskCategory category;
-	public string test = "";
+	
+	public virtual void TaskInteract(){
+
+	}
 }
 
 public class TaskTest : Task {
