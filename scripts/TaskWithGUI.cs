@@ -23,7 +23,7 @@ public class TaskWithGUI : Task, IInteractable
 			return;
 
 		// Open the specifed GUI by the resource path
-		// To change which GUI is being opened, create a class overloading GetResourceLocation
+		// To change which GUI is being opened, create a class overriding GetResourceLocation
 		Node n = (Node)GetTree().GetRoot().GetNode("/root/Main/CanvasLayer");
 		Resource gui = ResourceLoader.Load(GetResourceLocation());
 		Node guiInstance = ((PackedScene)gui).Instance();
