@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class Task : Godot.Node2D
+public abstract class Task : Godot.Node2D, ICloneable
 {
 	private static int currentTaskID = 0;
 	private static Random r = new Random();
@@ -96,11 +96,13 @@ public abstract class Task : Godot.Node2D
 						}
 					}
 					
+					// If this task should be a duplicate, create a clone
+					Task taskToAdd = (k == 0) ? leftovers[i][j] : (Task)leftovers[i][j].Clone();
 					// Add the task and adjust the difficulty score
-					players[minIndex].Add(leftovers[i][j]);
+					players[minIndex].Add(taskToAdd);
 					// (We don't want anyone to get too many tasks, 
 					// even if they're simple, so the additional tasks add more score)
-					playerDifficulties[minIndex] += ((int) leftovers[i][j].category + 5);
+					playerDifficulties[minIndex] += ((int) taskToAdd.category + 5);
 				}	
 			}
 		}
@@ -114,10 +116,10 @@ public abstract class Task : Godot.Node2D
 			return _state;
 		} 
 		set {
-			Godot.GD.Print("Setting state "+value+" out of "+maxState);
+			Godot.GD.Print("Setting task "+taskID+" state to "+value+" out of "+maxState);
 			_state = value;
 			if(value >= maxState){
-				Godot.GD.Print("Ending task");
+				Godot.GD.Print("Ending task "+taskID);
 				TaskEnd();
 				return;
 			}
@@ -127,9 +129,12 @@ public abstract class Task : Godot.Node2D
 	protected bool started = false;
 	protected int taskID;
 	
-	public virtual void TaskEnd(){
-		Godot.GD.Print("TaskEnd base");
+	public object Clone(){
+		return (object)this.CloneInternal();
 	}
+	
+	protected abstract Task CloneInternal();
+	public abstract void TaskEnd();
 	
 	public void Start(){
 		started = true;
@@ -155,9 +160,4 @@ public abstract class Task : Godot.Node2D
 	public virtual void TaskInteract(){
 
 	}
-}
-
-public class TaskTest : Task {
-	
-
 }

@@ -42,9 +42,15 @@ func get_input():
 		
 	if Input.is_action_just_pressed("ui_select"):
 		print("ui_select clicked")
+		
+		var currentBestItem = interactable[0]
+		var currentBestDistance = compute_distance(currentBestItem)
+		
 		for item in interactable:
-			print(item.name)
-			item.Interact()
+			if(compute_distance(item) < currentBestDistance):
+				currentBestItem = item
+		
+		currentBestItem.Interact()
 			
 		
 	if player_velocity.y == 0 && player_velocity.x == 0:
@@ -127,3 +133,6 @@ func on_interaction_area_exit(body):
 	if body.is_in_group("interactable"):
 		in_interaction_range.erase(body)
 		print(body, "out of interaction range")
+
+func compute_distance(item):
+	return sqrt(pow(item.position.x - self.position.x, 2) + pow(item.position.y - self.position.y, 2))

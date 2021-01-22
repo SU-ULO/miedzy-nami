@@ -48,6 +48,13 @@ public class TaskWithGUI : Task, IInteractable
 		}
 	}
 	
+	protected override Task CloneInternal(){
+		TaskWithGUI clone = new TaskWithGUI();
+		clone.state = this.state;
+		clone.maxState = this.state;
+		return clone;
+	}
+	
 	public void Interact(){
 		TaskInteract();
 	}
