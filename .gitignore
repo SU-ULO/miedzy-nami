@@ -10,3 +10,5 @@ data_*/
 
 # Binary files
 *.exe
+*.64
+*x86_64
