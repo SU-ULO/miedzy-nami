@@ -41,7 +41,9 @@ func get_input():
 		sight_range = 500
 		
 	if Input.is_action_just_pressed("ui_select"):
+		print("ui_select clicked")
 		for item in interactable:
+			print(item.name)
 			item.Interact()
 			
 		

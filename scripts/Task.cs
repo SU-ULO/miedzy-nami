@@ -8,6 +8,22 @@ public abstract class Task : Godot.Node2D
 	private static Random r = new Random();
 	public static List<Task> tasks = new List<Task>();
 
+	public static Task[] GetTasksOfType(Type c){
+		List<Task> result = new List<Task>();
+		
+		Godot.GD.Print("Enumerating total of "+ tasks.Count + " looking for tasks of type " + c.Name);
+		
+		foreach (Task task in tasks){
+			if(task.GetType().IsSubclassOf(c) || task.GetType().Equals(c))
+				result.Add(task);
+			else{
+				Godot.GD.Print("Task "+task.taskID+ " "+task.GetType().Name);
+			}
+		}
+		
+		return result.ToArray();
+	}
+
 	public static List<List<Task>> DivideTasks(int numberOfPlayers){
 		int numberOfTaskCategories = Enum.GetValues(typeof(TaskCategory)).GetLength(0);
 		List<Task>[] sortedIntoCategories = new List<Task>[numberOfTaskCategories];
@@ -92,10 +108,28 @@ public abstract class Task : Godot.Node2D
 		return players;
 	}
 
-	public int state { get; set; }
+	private int _state;
+	public int state { 
+		get {
+			return _state;
+		} 
+		set {
+			Godot.GD.Print("Setting state "+value+" out of "+maxState);
+			_state = value;
+			if(value >= maxState){
+				Godot.GD.Print("Ending task");
+				TaskEnd();
+				return;
+			}
+		} 
+	}
 	public int maxState { get; protected set; }
 	protected bool started = false;
 	protected int taskID;
+	
+	public virtual void TaskEnd(){
+		Godot.GD.Print("TaskEnd base");
+	}
 	
 	public void Start(){
 		started = true;

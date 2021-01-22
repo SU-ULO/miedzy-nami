@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://level/TilemapMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/dummy.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://textures/Mapa-walls.png" type="Texture" id=6]
 [ext_resource path="res://textures/title1.png" type="Texture" id=7]
 [ext_resource path="res://textures/title2.png" type="Texture" id=8]
+[ext_resource path="res://scripts/TaskWithGUI.cs" type="Script" id=9]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -49,5 +50,11 @@ position = Vector2( -12540.3, -772.364 )
 [node name="dummy2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -7026.15, 316.481 )
 
+[node name="dummy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -11056.3, -446.331 )
+script = ExtResource( 9 )
+
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( -11124, 373.471 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
