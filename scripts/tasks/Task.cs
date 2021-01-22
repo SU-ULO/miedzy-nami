@@ -14,7 +14,7 @@ public abstract class Task : Godot.Node2D
 		Godot.GD.Print("Enumerating total of "+ tasks.Count + " looking for tasks of type " + c.Name);
 		
 		foreach (Task task in tasks){
-			if(task.GetType().IsSubclassOf(c) || task.GetType().Equals(c))
+			if(task.GetType().Equals(c))
 				result.Add(task);
 			else{
 				Godot.GD.Print("Task "+task.taskID+ " "+task.GetType().Name);
