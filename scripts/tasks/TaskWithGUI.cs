@@ -8,8 +8,11 @@ public class TaskWithGUI : Task, IInteractable
 		return "res://gui/gui.tscn";
 	}
 	
-	public override void _Ready(){
+	public TaskWithGUI(){
 		maxState = 1;
+	}
+	
+	public override void _Ready(){
 		AddToGroup("interactable");
 		AddToGroup("entities");
 	}
