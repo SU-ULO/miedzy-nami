@@ -43,14 +43,15 @@ func get_input():
 	if Input.is_action_just_pressed("ui_select"):
 		print("ui_select clicked")
 		
-		var currentBestItem = interactable[0]
-		var currentBestDistance = compute_distance(currentBestItem)
-		
-		for item in interactable:
-			if(compute_distance(item) < currentBestDistance):
-				currentBestItem = item
-		
-		currentBestItem.Interact()
+		if(interactable.size() != 0):
+			var currentBestItem = interactable[0]
+			var currentBestDistance = compute_distance(currentBestItem)
+			
+			for item in interactable:
+				if(compute_distance(item) < currentBestDistance):
+					currentBestItem = item
+			
+			currentBestItem.Interact()
 			
 		
 	if player_velocity.y == 0 && player_velocity.x == 0:
