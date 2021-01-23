@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/INF-Update.gd" type="Script" id=1]
+[ext_resource path="res://textures/monitor.svg" type="Texture" id=2]
+[ext_resource path="res://fonts/PottaOne-Regular2.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=4]
+[ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "tux_scale"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Tux-simple:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 5.27803 ),
+"update": 0,
+"values": [ Vector2( 527.419, 224.516 ), Vector2( 527.419, 160.169 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Tux-simple:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 4.92458 ),
+"update": 0,
+"values": [ Vector2( 0.415543, 0.381691 ), Vector2( 0.189269, 0.17385 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/ProgressBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer/ProgressBar:value")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="monitor" type="Sprite" parent="."]
+position = Vector2( 725.766, 771.037 )
+scale = Vector2( 0.804663, 0.739111 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="monitor"]
+margin_left = -416.552
+margin_top = -527.959
+margin_right = -94.5515
+margin_bottom = -417.959
+custom_fonts/font = ExtResource( 4 )
+text = "UPDATE"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="monitor"]
+anims/tux_scale = SubResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar" parent="monitor/AnimationPlayer"]
+visible = false
+modulate = Color( 0.329412, 0.415686, 1, 1 )
+self_modulate = Color( 0.988235, 1, 1, 1 )
+margin_left = 220.617
+margin_top = 281.74
+margin_right = 822.617
+margin_bottom = 321.74
+custom_fonts/font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tux-simple" type="Sprite" parent="monitor/AnimationPlayer"]
+position = Vector2( 527.419, 224.516 )
+scale = Vector2( 0.415543, 0.381691 )
+texture = ExtResource( 5 )
+[connection signal="pressed" from="monitor/Button" to="monitor/Button" method="_on_Button_pressed"]
+[connection signal="animation_finished" from="monitor/AnimationPlayer" to="monitor/Button" method="_on_AnimationPlayer_animation_finished"]

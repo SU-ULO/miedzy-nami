@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://level/TilemapMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/dummy.tscn" type="PackedScene" id=2]
@@ -9,8 +9,12 @@
 [ext_resource path="res://textures/title1.png" type="Texture" id=7]
 [ext_resource path="res://textures/title2.png" type="Texture" id=8]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
+[ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=10]
+[ext_resource path="res://scripts/tasks/taskexamplegui/TaskExampleGUI.cs" type="Script" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CapsuleShape2D" id=2]
 
 [node name="Main" type="Node2D"]
 
@@ -55,6 +59,17 @@ position = Vector2( -11056.3, -446.331 )
 script = ExtResource( 9 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -11124, 373.471 )
+position = Vector2( -11119.2, 373.471 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -12517.5, 12.2217 )
+script = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 0.332536, 0.332536 )
+texture = ExtResource( 10 )
