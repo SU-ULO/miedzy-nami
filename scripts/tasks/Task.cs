@@ -16,9 +16,6 @@ public abstract class Task : Godot.Node2D, ICloneable
 		foreach (Task task in tasks){
 			if(task.GetType().Equals(c))
 				result.Add(task);
-			else{
-				Godot.GD.Print("Task "+task.taskID+ " "+task.GetType().Name);
-			}
 		}
 		
 		return result.ToArray();
@@ -127,7 +124,8 @@ public abstract class Task : Godot.Node2D, ICloneable
 	}
 	public int maxState { get; protected set; }
 	protected bool started = false;
-	protected int taskID;
+	protected int _taskID;
+	public int taskID { get; protected set; }
 	
 	public object Clone(){
 		return (object)this.CloneInternal();
