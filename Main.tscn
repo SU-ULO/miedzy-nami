@@ -53,46 +53,48 @@ position = Vector2( -9241.21, -960.615 )
 material = SubResource( 1 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
-[node name="dummy" parent="." instance=ExtResource( 2 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="dummy" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -12540.3, -772.364 )
 
-[node name="dummy2" parent="." instance=ExtResource( 2 )]
+[node name="dummy2" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -7026.15, 316.481 )
 
-[node name="dummy3" parent="." instance=ExtResource( 2 )]
+[node name="dummy3" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -11004.3, -838.331 )
 script = ExtResource( 9 )
 
-[node name="supertask" parent="." instance=ExtResource( 2 )]
+[node name="supertask" parent="YSort" instance=ExtResource( 2 )]
 modulate = Color( 0.94902, 0.0745098, 0.87451, 1 )
 position = Vector2( -10222.4, -141.539 )
 script = ExtResource( 10 )
 
-[node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -11315.9, 510.531 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
 position = Vector2( -12517.5, 12.2217 )
 script = ExtResource( 11 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D"]
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+[node name="Sprite" type="Sprite" parent="YSort/StaticBody2D"]
 scale = Vector2( 0.332536, 0.332536 )
 texture = ExtResource( 12 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="StaticBody2D2" type="StaticBody2D" parent="YSort"]
 position = Vector2( -10140.5, 512.15 )
 script = ExtResource( 14 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D2"]
 position = Vector2( 0.629883, -1.67374 )
 shape = SubResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+[node name="Sprite" type="Sprite" parent="YSort/StaticBody2D2"]
 position = Vector2( -1.14258, -4.06216 )
 scale = Vector2( 0.332536, 0.332536 )
 texture = ExtResource( 13 )
+
+[node name="player" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -11315.9, 510.531 )
