@@ -67,23 +67,26 @@ func get_input():
 		
 	player_velocity = player_velocity.normalized() * default_speed
 
-func in_direct_line():
+func check_line_of_sight():
 	for item in in_sight_range:	
 		var space_state = get_world_2d().direct_space_state
 		var sight_check = space_state.intersect_ray(position, item.position, [self, item], 1)
 			
 		if !sight_check.empty():
 			if in_sight.has(item):
-				in_sight.erase(item); print(item, "out of sight")
-				
-				if in_interaction_range.has(item) and interactable.has(item):
-					interactable.erase(item); print(item, "uninteractable")
+				in_sight.erase(item); print(item.get_name(), " removed from: sight")
 		else:
 			if !in_sight.has(item):
-				in_sight.push_back(item); print(item, "in sight")
-		
-			if in_interaction_range.has(item) and !interactable.has(item):
-				interactable.push_back(item); print(item, "interactable")
+				in_sight.push_back(item); print(item.get_name(), " added to: sight")
+				
+func check_interaction():
+	for item in in_interaction_range:
+		if !in_sight.has(item):
+			if interactable.has(item):
+				interactable.erase(item); print(item.get_name(), " removed from: interactable")
+		else:
+			if !interactable.has(item):
+				interactable.push_back(item); print(item.get_name(), " added to: interactable")
 
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
@@ -112,7 +115,8 @@ func scale_sight_range(delta):
 func _physics_process(delta):
 	get_input()
 	player_velocity = move_and_slide(player_velocity)
-	in_direct_line()
+	check_line_of_sight()
+	check_interaction()
 	scale_sight_range(delta)
 
 func _ready():
@@ -123,22 +127,24 @@ func _ready():
 func on_sight_area_enter(body):
 		if body.is_in_group("entities") and body != self:
 			in_sight_range.push_back(body)
-			print(body, "in sight range")
+			print(body.get_name(), " added to: sight range")
 
 func on_sight_area_exit(body):
 	if body.is_in_group("entities"):
 		in_sight_range.erase(body)
-		print(body, "out of sight range")
+		if in_sight.has(body): in_sight.erase(body); print(body.get_name(), " removed from: sight")
+		print(body.get_name(), " removed from: sight range")
 
 func _on_interaction_area_enter(body):
 	if body.is_in_group("interactable") and body != self:
 			in_interaction_range.push_back(body)
-			print(body, "in interaction range")
+			print(body.get_name(), " added to: interaction range")
 
 func on_interaction_area_exit(body):
 	if body.is_in_group("interactable"):
 		in_interaction_range.erase(body)
-		print(body, "out of interaction range")
+		if interactable.has(body): interactable.erase(body); print(body.get_name(), " removed from: interaction")
+		print(body.get_name(), " removed from: interaction range")
 
 func compute_distance(item):
 	return sqrt(pow(item.position.x - self.position.x, 2) + pow(item.position.y - self.position.y, 2))
