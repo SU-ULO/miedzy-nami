@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://level/TilemapMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/dummy.tscn" type="PackedScene" id=2]
@@ -12,10 +12,14 @@
 [ext_resource path="res://scripts/supertaskobject.cs" type="Script" id=10]
 [ext_resource path="res://scripts/tasks/taskexamplegui/TaskExampleGUI.cs" type="Script" id=11]
 [ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=12]
+[ext_resource path="res://textures/doniczka.svg" type="Texture" id=13]
+[ext_resource path="res://scripts/tasks/BIOFlower.cs" type="Script" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 61.6562
+height = 58.8484
 
 [node name="Main" type="Node2D"]
 
@@ -65,7 +69,7 @@ position = Vector2( -10222.4, -141.539 )
 script = ExtResource( 10 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -11319.5, 510.531 )
+position = Vector2( -11315.9, 510.531 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -79,3 +83,16 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 scale = Vector2( 0.332536, 0.332536 )
 texture = ExtResource( 12 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( -10140.5, 512.15 )
+script = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2( 0.629883, -1.67374 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+position = Vector2( -1.14258, -4.06216 )
+scale = Vector2( 0.332536, 0.332536 )
+texture = ExtResource( 13 )
