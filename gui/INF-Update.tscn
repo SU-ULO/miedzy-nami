@@ -98,6 +98,7 @@ __meta__ = {
 anims/tux_scale = SubResource( 1 )
 
 [node name="ProgressBar" type="ProgressBar" parent="monitor/AnimationPlayer"]
+visible = false
 modulate = Color( 0.329412, 0.415686, 1, 1 )
 self_modulate = Color( 0.988235, 1, 1, 1 )
 margin_left = 220.617
@@ -105,14 +106,13 @@ margin_top = 281.74
 margin_right = 822.617
 margin_bottom = 321.74
 custom_fonts/font = ExtResource( 3 )
-value = 100.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Tux-simple" type="Sprite" parent="monitor/AnimationPlayer"]
-position = Vector2( 527.419, 160.169 )
-scale = Vector2( 0.189269, 0.17385 )
+position = Vector2( 527.419, 224.516 )
+scale = Vector2( 0.415543, 0.381691 )
 texture = ExtResource( 5 )
 [connection signal="pressed" from="monitor/Button" to="monitor/Button" method="_on_Button_pressed"]
 [connection signal="animation_finished" from="monitor/AnimationPlayer" to="monitor/Button" method="_on_AnimationPlayer_animation_finished"]
