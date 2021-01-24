@@ -6,6 +6,7 @@ export var default_scaling_speed = 2000.0
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
 var in_sight = []; var interactable = []
+var fov_toggle = true #temporarly
 
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
@@ -32,13 +33,11 @@ func get_input():
 		$AnimatedSprite.visible = true
 		$Sprite.visible = false
 		player_velocity.y -= 1
-		sight_range = 2000
 		
 	if Input.is_action_pressed("move_down"):
 		$AnimatedSprite.visible = true
 		$Sprite.visible = false
 		player_velocity.y += 1
-		sight_range = 500
 		
 	if Input.is_action_just_pressed("ui_select"):
 		print("ui_select clicked")
@@ -53,7 +52,13 @@ func get_input():
 			
 			currentBestItem.Interact()
 			
-		
+	if Input.is_action_just_pressed("set_fov"):
+		if(fov_toggle):
+			sight_range = 500
+		else:
+			sight_range = 2000
+		fov_toggle = !fov_toggle
+	
 	if player_velocity.y == 0 && player_velocity.x == 0:
 		$Sprite.visible = true
 		if flipped == $Sprite.is_flipped_h():
