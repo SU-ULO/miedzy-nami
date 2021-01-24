@@ -76,5 +76,7 @@ func _on_button_clicked(button):
 	toggle = !toggle
 	set_lamps()
 	if check_win(): 
+		# replace this with function to end task
 		print("you won lol")
-		# end task
+		get_parent().remove_child(self)
+		# # # # # # # # # # # # # # # # # # # # 

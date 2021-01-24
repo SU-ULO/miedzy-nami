@@ -3,17 +3,18 @@ extends "dummy.gd"
 export var default_speed = 900.0
 export var default_sight_range = 2000.0
 export var default_scaling_speed = 2000.0
+
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
 var in_sight = []; var interactable = []
-var fov_toggle = true #temporarly
+var fov_toggle = true #temporarily
+var flipped = false
 
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
 func get_input():	
 	player_velocity = Vector2()
-	var flipped = false
 	
 	if Input.is_action_pressed("move_left"):
 		player_velocity.x -= 1
@@ -61,8 +62,7 @@ func get_input():
 	
 	if player_velocity.y == 0 && player_velocity.x == 0:
 		$Sprite.visible = true
-		if flipped == $Sprite.is_flipped_h():
-			$Sprite.flip_h = flipped
+		$Sprite.flip_h = flipped
 		$AnimatedSprite.visible = false
 		
 	player_velocity = player_velocity.normalized() * default_speed

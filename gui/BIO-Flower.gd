@@ -6,8 +6,10 @@ func _ready():
 	pass # Replace with function body.
 
 func task_end():
+	# replace this with function to end task
 	print("Task ended!")
-	#end task
+	get_parent().remove_child(self)
+	# # # # # # # # # # # # # # # # # # # # #
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	count+=1

@@ -10,6 +10,7 @@ func _on_Button_pressed():
 	self.disabled = true
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
-	#end task here
-	pass
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	# replace this with function to end task
+	get_owner().get_parent().remove_child(get_owner())
+	# # # # # # # # # # # # # # # # # # # # #
