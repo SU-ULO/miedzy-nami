@@ -3,13 +3,23 @@ extends Node
 var wsc = WebSocketClient.new()
 
 var signalling_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signalling'
-
+var key: String =""
 
 func parse_args():
 	var args = Array(OS.get_cmdline_args())
 	var idx=args.find('--signalling')
 	if(idx>-1&&args.size()>idx):
 		signalling_url=args[idx+1]
+
+func parse_signalling(msg:  String):
+	if key=="":
+		if msg.find("K:")==0:
+			var res = msg.split(":", false, 1)
+			if res.size()<2: return
+			key = res[1]
+			print("KEY: "+key)
+			return
+
 
 func _ready():
 	print("Running as server")
@@ -36,7 +46,7 @@ func _connected_ws(_proto = ""):
 	wsc.get_peer(1).put_packet("S".to_utf8())
 
 func _data_ws():
-	print(wsc.get_peer(1).get_packet().get_string_from_utf8())
+	parse_signalling(wsc.get_peer(1).get_packet().get_string_from_utf8())
 
 func _process(_delta):
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
