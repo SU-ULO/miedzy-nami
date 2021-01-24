@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://level/TilemapMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/dummy.tscn" type="PackedScene" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://textures/title1.png" type="Texture" id=7]
 [ext_resource path="res://textures/title2.png" type="Texture" id=8]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
-[ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=10]
+[ext_resource path="res://scripts/supertaskobject.cs" type="Script" id=10]
 [ext_resource path="res://scripts/tasks/taskexamplegui/TaskExampleGUI.cs" type="Script" id=11]
+[ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -55,11 +56,16 @@ position = Vector2( -12540.3, -772.364 )
 position = Vector2( -7026.15, 316.481 )
 
 [node name="dummy3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -11056.3, -446.331 )
+position = Vector2( -11004.3, -838.331 )
 script = ExtResource( 9 )
 
+[node name="supertask" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.94902, 0.0745098, 0.87451, 1 )
+position = Vector2( -10222.4, -141.539 )
+script = ExtResource( 10 )
+
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( -11119.2, 373.471 )
+position = Vector2( -11319.5, 510.531 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -72,4 +78,4 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 scale = Vector2( 0.332536, 0.332536 )
-texture = ExtResource( 10 )
+texture = ExtResource( 12 )
