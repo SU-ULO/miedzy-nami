@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="69.35218mm"
+   height="69.352501mm"
+   viewBox="0 0 69.35218 69.352501"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="flatbutton.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="-74.255493"
+     inkscape:cy="185.42474"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1432"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-70.401288,-71.157083)">
+    <path
+       id="path1095"
+       style="fill:#434343;fill-opacity:1;stroke:#1a1a1a;stroke-width:1.90917;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 80.923453,72.111668 -9.56758,9.25803 v 48.617652 l 9.25802,9.56765 h 48.617587 l 9.5674,-9.25829 V 81.679058 l -9.25806,-9.56739 z m 4.17218,10.09747 h 39.963417 a 3.6427775,3.6427775 0 0 1 3.64237,3.64235 v 39.963682 a 3.6427775,3.6427775 0 0 1 -3.64237,3.64236 H 85.095633 a 3.6427775,3.6427775 0 0 1 -3.64237,-3.64236 V 85.851488 a 3.6427775,3.6427775 0 0 1 3.64237,-3.64235 z" />
+  </g>
+</svg>
