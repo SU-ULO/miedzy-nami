@@ -10,7 +10,7 @@
 resource_name = "Blueflower_grow"
 length = 2.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("AnimationPlayer/doniczka3/blueflower:rect_position:x")
+tracks/0/path = NodePath("AnimationPlayer3/doniczka3/blueflower:rect_position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("AnimationPlayer/doniczka3/blueflower:rect_position:y")
+tracks/1/path = NodePath("AnimationPlayer3/doniczka3/blueflower:rect_position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,7 +30,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("AnimationPlayer/doniczka3/blueflower:rect_size:x")
+tracks/2/path = NodePath("AnimationPlayer3/doniczka3/blueflower:rect_size:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("AnimationPlayer/doniczka3/blueflower:rect_size:y")
+tracks/3/path = NodePath("AnimationPlayer3/doniczka3/blueflower:rect_size:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -50,7 +50,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("AnimationPlayer/doniczka3/blueflower:self_modulate:r")
+tracks/4/path = NodePath("AnimationPlayer3/doniczka3/blueflower:self_modulate:r")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -60,7 +60,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("AnimationPlayer/doniczka3/blueflower:self_modulate:g")
+tracks/5/path = NodePath("AnimationPlayer3/doniczka3/blueflower:self_modulate:g")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -70,7 +70,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("AnimationPlayer/doniczka3/blueflower:self_modulate:b")
+tracks/6/path = NodePath("AnimationPlayer3/doniczka3/blueflower:self_modulate:b")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -80,7 +80,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("AnimationPlayer/doniczka3/blueflower:self_modulate:a")
+tracks/7/path = NodePath("AnimationPlayer3/doniczka3/blueflower:self_modulate:a")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -175,9 +175,10 @@ tracks/7/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "Sunflower_grow"
 length = 2.0
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("AnimationPlayer/doniczka2/sunflower:self_modulate:r")
+tracks/0/path = NodePath("AnimationPlayer2/doniczka2/sunflower:self_modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -187,7 +188,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("AnimationPlayer/doniczka2/sunflower:self_modulate:g")
+tracks/1/path = NodePath("AnimationPlayer2/doniczka2/sunflower:self_modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -197,7 +198,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("AnimationPlayer/doniczka2/sunflower:self_modulate:b")
+tracks/2/path = NodePath("AnimationPlayer2/doniczka2/sunflower:self_modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -207,7 +208,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("AnimationPlayer/doniczka2/sunflower:self_modulate:a")
+tracks/3/path = NodePath("AnimationPlayer2/doniczka2/sunflower:self_modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -217,7 +218,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.2, 1.8 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("AnimationPlayer/doniczka2/sunflower:rect_position:x")
+tracks/4/path = NodePath("AnimationPlayer2/doniczka2/sunflower:rect_position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -227,7 +228,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("AnimationPlayer/doniczka2/sunflower:rect_position:y")
+tracks/5/path = NodePath("AnimationPlayer2/doniczka2/sunflower:rect_position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -237,7 +238,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("AnimationPlayer/doniczka2/sunflower:rect_size:x")
+tracks/6/path = NodePath("AnimationPlayer2/doniczka2/sunflower:rect_size:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -247,7 +248,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.2, 1.4, 1.8 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("AnimationPlayer/doniczka2/sunflower:rect_size:y")
+tracks/7/path = NodePath("AnimationPlayer2/doniczka2/sunflower:rect_size:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -274,29 +275,6 @@ anims/Blueflower_grow = SubResource( 1 )
 anims/Lilly_grow = SubResource( 2 )
 anims/Sunflower_grow = SubResource( 3 )
 
-[node name="doniczka3" type="TextureRect" parent="AnimationPlayer"]
-margin_left = 1220.59
-margin_top = 582.92
-margin_right = 1490.59
-margin_bottom = 905.92
-texture = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="blueflower" type="TextureButton" parent="AnimationPlayer/doniczka3"]
-self_modulate = Color( 0.309804, 0.309804, 0.309804, 1 )
-margin_left = 41.5942
-margin_top = -201.298
-margin_right = 252.594
-margin_bottom = 197.702
-texture_normal = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="doniczka1" type="TextureRect" parent="AnimationPlayer"]
 margin_left = 513.79
 margin_top = 586.775
@@ -320,7 +298,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="doniczka2" type="TextureRect" parent="AnimationPlayer"]
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+anims/Blueflower_grow = SubResource( 1 )
+
+[node name="doniczka3" type="TextureRect" parent="AnimationPlayer3"]
+margin_left = 1220.59
+margin_top = 582.92
+margin_right = 1490.59
+margin_bottom = 905.92
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="blueflower" type="TextureButton" parent="AnimationPlayer3/doniczka3"]
+self_modulate = Color( 0.309804, 0.309804, 0.309804, 1 )
+margin_left = 41.5942
+margin_top = -201.298
+margin_right = 252.594
+margin_bottom = 197.702
+texture_normal = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Sunflower_grow = SubResource( 3 )
+
+[node name="doniczka2" type="TextureRect" parent="AnimationPlayer2"]
 margin_left = 898.543
 margin_top = 581.804
 margin_right = 1173.54
@@ -331,15 +338,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="sunflower" type="TextureButton" parent="AnimationPlayer/doniczka2"]
+[node name="sunflower" type="TextureButton" parent="AnimationPlayer2/doniczka2"]
 self_modulate = Color( 0.309804, 0.309804, 0.309804, 1 )
 anchor_left = 0.5
 anchor_top = 0.193
 anchor_right = 0.5
 anchor_bottom = 0.193
-margin_left = -184.771
+margin_left = -184.769
 margin_top = -308.382
-margin_right = 114.229
+margin_right = 114.231
 margin_bottom = 148.618
 texture_normal = ExtResource( 3 )
 expand = true
@@ -347,6 +354,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="pressed" from="AnimationPlayer/doniczka3/blueflower" to="." method="_on_blueflower_pressed"]
 [connection signal="pressed" from="AnimationPlayer/doniczka1/lilly" to="." method="_on_lilly_pressed"]
-[connection signal="pressed" from="AnimationPlayer/doniczka2/sunflower" to="." method="_on_sunflower_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer3" to="." method="_on_AnimationPlayer3_animation_finished"]
+[connection signal="pressed" from="AnimationPlayer3/doniczka3/blueflower" to="." method="_on_blueflower_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
+[connection signal="pressed" from="AnimationPlayer2/doniczka2/sunflower" to="." method="_on_sunflower_pressed"]
