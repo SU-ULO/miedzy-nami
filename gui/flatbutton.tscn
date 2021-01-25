@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/flatbutton.svg" type="Texture" id=1]
+[ext_resource path="res://scripts/flatbutton.gd" type="Script" id=2]
+
+[node name="TextureRect" type="TextureRect"]
+margin_left = 835.112
+margin_top = 532.047
+margin_right = 1097.11
+margin_bottom = 794.047
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color( 0.752941, 0.254902, 0.172549, 1 )
+polygon = PoolVector2Array( 32.5922, 30.7092, 229.862, 29.7653, 230.806, 233.642, 30.7044, 230.811 )

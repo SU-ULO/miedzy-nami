@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gui/superbutton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/panel2.svg" type="Texture" id=2]
+[ext_resource path="res://textures/lampgray.svg" type="Texture" id=3]
+[ext_resource path="res://scripts/supertask.gd" type="Script" id=4]
+[ext_resource path="res://gui/flatbutton.tscn" type="PackedScene" id=5]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.2943
+margin_top = -15.6131
+margin_right = -20.2942
+margin_bottom = -15.613
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -317.5
+margin_right = 500.0
+margin_bottom = 317.5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button1" parent="." instance=ExtResource( 1 )]
+margin_left = 600.0
+margin_top = 690.0
+margin_right = 1068.0
+margin_bottom = 1150.0
+
+[node name="button2" parent="." instance=ExtResource( 1 )]
+margin_left = 800.0
+margin_top = 690.0
+margin_right = 1268.0
+margin_bottom = 1150.0
+
+[node name="button3" parent="." instance=ExtResource( 1 )]
+margin_left = 1000.0
+margin_top = 690.0
+margin_right = 1468.0
+margin_bottom = 1150.0
+
+[node name="button4" parent="." instance=ExtResource( 1 )]
+margin_left = 1200.0
+margin_top = 690.0
+margin_right = 1668.0
+margin_bottom = 1150.0
+
+[node name="flatbutton1" parent="." instance=ExtResource( 5 )]
+margin_left = 610.0
+margin_top = 299.0
+margin_right = 872.0
+margin_bottom = 561.0
+
+[node name="flatbutton2" parent="." instance=ExtResource( 5 )]
+margin_left = 810.0
+margin_top = 297.881
+margin_right = 1072.0
+margin_bottom = 559.881
+
+[node name="flatbutton3" parent="." instance=ExtResource( 5 )]
+margin_left = 1010.0
+margin_top = 300.0
+margin_right = 1272.0
+margin_bottom = 562.0
+
+[node name="flatbutton4" parent="." instance=ExtResource( 5 )]
+margin_left = 1210.0
+margin_top = 300.0
+margin_right = 1472.0
+margin_bottom = 562.0
+
+[node name="lamp1" type="TextureRect" parent="."]
+margin_left = 625.0
+margin_top = 450.0
+margin_right = 814.0
+margin_bottom = 639.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lamp2" type="TextureRect" parent="."]
+margin_left = 825.0
+margin_top = 450.0
+margin_right = 1014.0
+margin_bottom = 639.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="lamp3" type="TextureRect" parent="."]
+margin_left = 1025.0
+margin_top = 450.0
+margin_right = 1214.0
+margin_bottom = 639.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="lamp4" type="TextureRect" parent="."]
+margin_left = 1225.0
+margin_top = 450.0
+margin_right = 1414.0
+margin_bottom = 639.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+[connection signal="clicked" from="button1" to="." method="_on_button_clicked"]
+[connection signal="clicked" from="button2" to="." method="_on_button_clicked"]
+[connection signal="clicked" from="button3" to="." method="_on_button_clicked"]
+[connection signal="clicked" from="button4" to="." method="_on_button_clicked"]
