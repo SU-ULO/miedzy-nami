@@ -133,7 +133,9 @@ func on_sight_area_enter(body):
 func on_sight_area_exit(body):
 	if body.is_in_group("entities"):
 		in_sight_range.erase(body)
-		if in_sight.has(body): in_sight.erase(body); print(body.get_name(), " removed from: sight")
+		if in_sight.has(body):
+			in_sight.erase(body)
+			print(body.get_name(), " removed from: sight")
 		print(body.get_name(), " removed from: sight range")
 
 func _on_interaction_area_enter(body):
@@ -144,7 +146,9 @@ func _on_interaction_area_enter(body):
 func on_interaction_area_exit(body):
 	if body.is_in_group("interactable"):
 		in_interaction_range.erase(body)
-		if interactable.has(body): interactable.erase(body); print(body.get_name(), " removed from: interaction")
+		if interactable.has(body):
+			interactable.erase(body)
+			print(body.get_name(), " removed from: interaction")
 		print(body.get_name(), " removed from: interaction range")
 
 func compute_distance(item):
