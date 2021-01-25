@@ -8,15 +8,21 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Client",
+"language": "GDScript",
+"path": "res://client/scripts/client.gd"
+} ]
 _global_script_class_icons={
-
+"Client": ""
 }
 
 [application]
 
 config/name="miedzy-nami"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://start/Start.tscn"
+
 config/icon="res://icon.png"
 
 [display]

@@ -12,6 +12,5 @@ data_*/
 *.exe
 *.64
 *x86_64
-
 *.sln
 *.csproj

@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://client/menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://client/menu/options.gd" type="Script" id=2]
+[ext_resource path="res://client/menu/join.gd" type="Script" id=3]
+
+[node name="Menu" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="VBoxContainer" parent="."]
+margin_left = 487.0
+margin_top = 278.0
+margin_right = 537.0
+margin_bottom = 322.0
+alignment = 1
+
+[node name="StartButton" type="Button" parent="Main"]
+margin_right = 50.0
+margin_bottom = 20.0
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="Main"]
+margin_top = 24.0
+margin_right = 50.0
+margin_bottom = 44.0
+text = "Opcje"
+
+[node name="Options" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 376.0
+margin_top = 276.0
+margin_right = 648.0
+margin_bottom = 324.0
+alignment = 1
+script = ExtResource( 2 )
+
+[node name="OptionsContainer" type="HBoxContainer" parent="Options"]
+margin_right = 272.0
+margin_bottom = 24.0
+
+[node name="MatchmakingURLLabel" type="Label" parent="Options/OptionsContainer"]
+margin_top = 5.0
+margin_right = 210.0
+margin_bottom = 19.0
+text = "URL serwera matchmakingowego"
+
+[node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
+margin_left = 214.0
+margin_right = 272.0
+margin_bottom = 24.0
+align = 2
+expand_to_text_length = true
+placeholder_text = "url"
+
+[node name="OptionsAcceptButton" type="Button" parent="Options"]
+margin_top = 28.0
+margin_right = 272.0
+margin_bottom = 48.0
+text = "zatwierdź"
+
+[node name="Join" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 479.0
+margin_top = 276.0
+margin_right = 544.0
+margin_bottom = 324.0
+script = ExtResource( 3 )
+
+[node name="Exit" type="Button" parent="Join"]
+margin_right = 65.0
+margin_bottom = 20.0
+text = "wyjdź"
+
+[node name="Refresh" type="Button" parent="Join"]
+margin_top = 24.0
+margin_right = 65.0
+margin_bottom = 44.0
+text = "Odświerz"
+
+[node name="ServersList" type="VBoxContainer" parent="Join"]
+margin_top = 48.0
+margin_right = 65.0
+margin_bottom = 48.0
+[connection signal="pressed" from="Main/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
+[connection signal="pressed" from="Join/Exit" to="Join" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Join/Refresh" to="Join" method="_on_Refresh_pressed"]

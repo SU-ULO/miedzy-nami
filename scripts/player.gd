@@ -15,14 +15,14 @@ onready var sight_range :float = default_sight_range
 
 func get_input():	
 	player_velocity = Vector2()
-	
+  
 	if Input.is_action_pressed("move_left"):
 		player_velocity.x -= 1
 		$AnimatedSprite.visible = true
 		$Sprite.visible = false
 		$AnimatedSprite.flip_h = true
 		flipped = true
-		
+
 	if Input.is_action_pressed("move_right"):
 		player_velocity.x += 1
 		$AnimatedSprite.visible = true
@@ -30,6 +30,7 @@ func get_input():
 		$AnimatedSprite.flip_h = false
 		flipped = false
 		
+
 	if Input.is_action_pressed("move_up"):
 		$AnimatedSprite.visible = true
 		$Sprite.visible = false
