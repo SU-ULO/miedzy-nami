@@ -14,6 +14,7 @@ func _ready():
 	wsc.connect("connection_error", self, "_closed_ws")
 	wsc.connect("connection_established", self, "_connected_ws")
 	wsc.connect("data_received", self, "_data_ws")
+	wsc.connect("server_close_request", self, "_closed_request_ws")
 	
 	
 	menu.connect("start", self, 'start')
@@ -43,6 +44,9 @@ func end():
 func refresh_servers():
 	wsc.get_peer(1).put_packet("L".to_utf8())
 
+func _closed_request_ws(code: int, reason: String):
+	print("closed with ", code, " ", reason)
+
 func _closed_ws(_was_clean = false):
 	print("Disconnected from matchmaking server at "+menu.usersettings.signalling_url)
 	menu.end()
@@ -51,7 +55,7 @@ func _connected_ws(_proto = ""):
 	print("Connected to matchmaking server at "+menu.usersettings.signalling_url)
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	wsc.get_peer(1).put_packet("C".to_utf8())
-	wsc.get_peer(1).put_packet("L".to_utf8())
+	refresh_servers()
 
 func _data_ws():
 	parse_signalling(wsc.get_peer(1).get_packet().get_string_from_utf8())
