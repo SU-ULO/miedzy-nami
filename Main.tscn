@@ -1,100 +1,39 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://level/TilemapMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/dummy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://level/Map.tscn" type="PackedScene" id=4]
-[ext_resource path="res://textures/Map-floor.png" type="Texture" id=5]
-[ext_resource path="res://textures/Mapa-walls.png" type="Texture" id=6]
-[ext_resource path="res://textures/title1.png" type="Texture" id=7]
-[ext_resource path="res://textures/title2.png" type="Texture" id=8]
+[ext_resource path="res://objects/BIO-Flower-taskpoint.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
-[ext_resource path="res://scripts/supertaskobject.cs" type="Script" id=10]
-[ext_resource path="res://scripts/tasks/taskexamplegui/TaskExampleGUI.cs" type="Script" id=11]
-[ext_resource path="res://textures/Tux-simple.svg" type="Texture" id=12]
-[ext_resource path="res://textures/doniczka.svg" type="Texture" id=13]
-[ext_resource path="res://scripts/tasks/BIOFlower.cs" type="Script" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 61.6562
-height = 58.8484
-
 [node name="Main" type="Node2D"]
 
-[node name="Mapa1" type="StaticBody2D" parent="."]
-collision_layer = 2
+[node name="Mapa" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1, 1 )
 
-[node name="walls" type="Sprite" parent="Mapa1"]
-texture = ExtResource( 6 )
+[node name="YSort" type="YSort" parent="Mapa"]
 
-[node name="floor" type="Sprite" parent="Mapa1"]
-texture = ExtResource( 5 )
+[node name="dummy" parent="Mapa/YSort" instance=ExtResource( 2 )]
+position = Vector2( -859.285, -301.08 )
 
-[node name="hitbox" type="CollisionPolygon2D" parent="Mapa1"]
-polygon = PoolVector2Array( 3649.5, -1677, 3206.5, -1319, 3213.5, 497, 3902.24, 498.596, 3902.75, 1984.19, 3170.62, 1984.34, 1922, 2547, 687.5, 2546, 682.344, 3136, 632.318, 3136.24, 633.687, 1929.34, 1916.5, 1928, 3163.54, 1369.53, 3208.85, 1368.59, 3208.08, 1925.18, 3852.33, 1923.1, 3851.5, 970, 3209.63, 966.62, 3209.19, 1058.09, 2583.85, 1251.6, 2583.57, 1196.82, 3151.5, 1018.5, 3147.5, 480.1, 2296.53, 746.91, 2299.26, 1347.74, 1671, 1536.84, 1671.33, 1480.53, 2231.5, 1307, 2228.5, 767, 2227.8, 767, 1372.34, 1029.02, 1375.17, 1621.22, 1325.67, 1619.46, 1322.84, 1026.9, 681.785, 1026.7, 681.224, 1568.57, 1107.48, 1568, 1108.55, 1622.71, 632, 1623, 633.105, 560.725, 1370.5, 560.2, 3147.5, 8.5, 3146.5, -269, 3145.8, -269, 2579.71, -98.4454, 2581.28, -153.471, 3150.24, -329.029, 3143.7, -867, 2296.5, -604.5, 2297.94, -4.43004, 1666.83, 187.674, 1667.95, 131.831, 2227.5, -41, 2224.5, -581, 1375.33, -317.02, 1372.89, 282.846, 1325.07, 284.235, 1323.19, -311.134, 683.49, -310.962, 684.5, 229, 1108.75, 228.246, 1110.42, 285.811, 631.153, 286.714, 634.493, -779.242, 1356.5, -780, 3143.5, -1338.5, 3496.1, -1626.5, 2875.98, -1463.25, 2876.44, -1517.84, 3576.5, -1707.5, 3572.5, -2246, 2524.5, -1965.5, 2528.18, -1365.44, 1750.14, -1160.51, 1751.83, -1214.54, 2441.5, -1401.5, 2435.6, -1940, 1386.5, -1657.5, 1382.85, -1060.78, 1319.08, -1059.65, 1311.91, -1656.66, 687.5, -1654, 685.5, -1115, 1113.67, -1115.2, 1114.56, -1058.19, -862.798, -1060.14, -860.593, -1115.58, -382.5, -1116, -383.5, -1654, -1096.78, -1653.93, -1099.46, -1058.42, -1162.7, -1061.25, -1160.5, -1654, -2305.5, -1882.5, -2307.5, -1343, -1558.14, -1195.38, -1558.14, -1137.98, -2400.05, -1303.88, -2397.33, -1902.7, -3538.5, -2130.5, -3541.5, -1591, -2783.25, -1439.62, -2784.57, -1382.68, -3498.5, -1522.6, -3131.66, -1268.46, -1132.56, -773.455, -321.019, -774.577, -324.059, 281.135, -368.162, 282.782, -372.5, -310, -1092.61, -311.027, -1092.61, 231.998, -615.101, 233.258, -612.581, 284.915, -1148.05, 287.435, -1146.79, -314.807, -2114.41, -551.672, -2115.67, -8.64645, -1480.67, 146.324, -1480.67, 203.02, -2179.92, 35.4507, -2182.5, -567, -3137.28, -802.639, -3137.86, -259.194, -2501.95, -103.802, -2504.48, -47.4616, -3136.5, -199.5, -3135.5, 79, -1146.31, 569.447, -1142.74, 563.097, -322.674, 562.831, -321.41, 1622.75, -367.858, 1624.24, -371.603, 1024.92, -1094.54, 1027.92, -1096.78, 1572.55, -619.573, 1571.8, -617.325, 1622.75, -1148.48, 1626.49, -1146.98, 1031.66, -2113.83, 797.431, -2115.33, 1340.57, -1483.04, 1494.89, -1482.29, 1549.58, -2182, 1379.52, -2180.5, 779.452, -3139.42, 547.214, -3140.17, 1088.1, -2507.88, 1246.17, -2504.14, 1298.62, -3185.12, 1134.55, -3922.29, 1137.55, -3924.83, 1924.79, -3199.65, 1928.53, -3198.8, 1371.16, -3152.71, 1371.16, -1752.75, 1935.1, -322.561, 1933.37, -319.144, 3136.94, -377.203, 3136.57, -376.792, 2545.12, -1762.5, 2547, -1762.5, 2545.8, -1770.5, 2544.8, -1770.5, 2543.4, -3159, 1986, -3979.39, 1984.62, -3972.64, 670.959, -3201.53, 670.118, -3199.01, -1246.01, -3619.5, -1551.2, -3618.1, -2617.72, -1151.77, -2125.01, -327.587, -2124.02, -325.5, -1625, 633.5, -1628, 636.392, -2122.51, 1370.5, -2123, 3643.05, -2736.23 )
+[node name="BBB" parent="Mapa/YSort" instance=ExtResource( 2 )]
+position = Vector2( 1038.48, 31.9814 )
+script = ExtResource( 9 )
 
-[node name="Sprite" type="Sprite" parent="Mapa1"]
-position = Vector2( -11394, 1569.59 )
-texture = ExtResource( 7 )
+[node name="player" parent="Mapa/YSort" instance=ExtResource( 3 )]
+position = Vector2( 26.0045, 1253.02 )
 
-[node name="Mapa2" parent="." instance=ExtResource( 4 )]
-position = Vector2( -4133.77, -912.28 )
+[node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
+position = Vector2( 1216.69, 1161.44 )
 
-[node name="Sprite" type="Sprite" parent="Mapa2"]
-position = Vector2( -3843.99, 2447.96 )
-texture = ExtResource( 8 )
-
-[node name="TilemapMap" parent="." instance=ExtResource( 1 )]
-position = Vector2( -9241.21, -960.615 )
+[node name="INF-Update" parent="Mapa/YSort" instance=ExtResource( 1 )]
+position = Vector2( -1248.44, 632.465 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="YSort" type="YSort" parent="."]
-
-[node name="dummy" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -12540.3, -772.364 )
-
-[node name="dummy2" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -7026.15, 316.481 )
-
-[node name="dummy3" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -11004.3, -838.331 )
-script = ExtResource( 9 )
-
-[node name="supertask" parent="YSort" instance=ExtResource( 2 )]
-modulate = Color( 0.94902, 0.0745098, 0.87451, 1 )
-position = Vector2( -10222.4, -141.539 )
-script = ExtResource( 10 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
-position = Vector2( -12517.5, 12.2217 )
-script = ExtResource( 11 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="YSort/StaticBody2D"]
-scale = Vector2( 0.332536, 0.332536 )
-texture = ExtResource( 12 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="YSort"]
-position = Vector2( -10140.5, 512.15 )
-script = ExtResource( 14 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/StaticBody2D2"]
-position = Vector2( 0.629883, -1.67374 )
-shape = SubResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="YSort/StaticBody2D2"]
-position = Vector2( -1.14258, -4.06216 )
-scale = Vector2( 0.332536, 0.332536 )
-texture = ExtResource( 13 )
-
-[node name="player" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -11315.9, 510.531 )

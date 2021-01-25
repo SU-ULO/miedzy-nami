@@ -4,59 +4,55 @@
 [ext_resource path="res://textures/walls.png" type="Texture" id=2]
 
 [sub_resource type="OccluderPolygon2D" id=1]
-polygon = PoolVector2Array( -7138.53, -626.016, -6831.59, -626.165, -6829.34, -1609.8, -8206.29, -1606.06, -8206.29, -1616.55, -6820.35, -1617.29, -6818.85, -626.165, -5834.47, -624.667, -5835.21, 1588.33, -6288.45, 1592.08, -6288.45, 1582.34, -5845.7, 1581.59, -5842.7, -618.674, -7137.24, -614.928 )
+polygon = PoolVector2Array( 362.5, 1356.5, -362.5, 1356.5, -362.5, 1331.5, 362.5, 1331.5 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
-polygon = PoolVector2Array( -7951.5, -627.357, -8691.67, -624.36, -8689, 1591.5, -8236.13, 1592.13, -8236.13, 1581.47, -8680.07, 1582.03, -8682.32, -617.434, -7951.6, -617.434 )
+polygon = PoolVector2Array( -680.5, -854.5, -1410.5, -854.5, -1410.5, 1331.5, -962.5, 1331.5, -962.5, 1356.5, -1435.5, 1356.5, -1435.5, -879.5, -680.5, -879.5 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -7621.16, 1580.18, -6903.69, 1580.18, -6905.02, 1592.86, -7620.49, 1592.86 )
+polygon = PoolVector2Array( 449.5, -879.5, 1435.5, -879.5, 1435.5, 1356.5, 962.5, 1356.5, 962.5, 1331.5, 1410.5, 1331.5, 1410.5, -854.5, 119.5, -854.5, 119.5, -879.5, 424.5, -879.5, 424.5, -1843.5, -950.5, -1843.5, -950.5, -1868.5, 449.5, -1868.5 )
 
-[node name="Mapa2" type="Node2D"]
-
-[node name="floor" type="Sprite" parent="."]
-position = Vector2( -7263.2, 510.589 )
-texture = ExtResource( 1 )
+[node name="Mapa-sprite" type="Node2D"]
 
 [node name="walls" type="Sprite" parent="."]
-position = Vector2( -7262.63, 243.736 )
 texture = ExtResource( 2 )
+
+[node name="floor" type="Sprite" parent="walls"]
+position = Vector2( -0.570313, 266.853 )
+texture = ExtResource( 1 )
 
 [node name="Hitboxes" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 2
 
 [node name="hitbox1" type="CollisionPolygon2D" parent="Hitboxes"]
-position = Vector2( -7259.3, 240.155 )
-polygon = PoolVector2Array( 446.688, -874.844, 1432.26, -874.818, 1430.53, 1869.14, 962.748, 1869.55, 962.139, 1336.88, 1409.64, 1336.84, 1407.41, -337.89, 1407.8, -339.547, 118.655, -340.758, 118.105, -875.931, 423.563, -875.265, 423.487, -1329.42, -951.366, -1329.28, -951.88, -1863.99, 446.76, -1864.22 )
+polygon = PoolVector2Array( 449.5, -879.5, 1435.5, -879.5, 1435.5, 1868.5, 962.5, 1868.5, 962.5, 1331.5, 1410.5, 1331.5, 1410.5, -342.5, 119.5, -342.5, 119.5, -879.5, 424.5, -879.5, 424.5, -1331.5, -950.5, -1331.5, -950.5, -1868.5, 449.5, -1868.5 )
 
 [node name="hitbox2" type="CollisionPolygon2D" parent="Hitboxes"]
-position = Vector2( -7262.63, 247.736 )
-polygon = PoolVector2Array( -681.745, -347.346, -1411.87, -347.736, -1411.95, 1328.86, -964.366, 1329.76, -963.366, 1864.51, -1434.3, 1864.32, -1434.62, -882.486, -681.743, -881.919 )
+polygon = PoolVector2Array( -680.5, -342.5, -1410.5, -342.5, -1410.5, 1331.5, -962.5, 1331.5, -962.5, 1868.5, -1435.5, 1868.5, -1435.5, -879.5, -680.5, -879.5 )
 
 [node name="hitbox3" type="CollisionPolygon2D" parent="Hitboxes"]
-position = Vector2( -7261.97, 246.946 )
-polygon = PoolVector2Array( 361.148, 1865.17, -361.774, 1864.32, -361.986, 1329.79, 360.833, 1330.45 )
+polygon = PoolVector2Array( 362.5, 1868.5, -362.5, 1868.5, -362.5, 1331.5, 362.5, 1331.5 )
 
 [node name="SightOccluders" type="StaticBody2D" parent="."]
 collision_mask = 2147483649
 
-[node name="sightOccluder" type="CollisionPolygon2D" parent="SightOccluders"]
-polygon = PoolVector2Array( -7138.53, -626.016, -6831.59, -626.165, -6829.34, -1609.8, -8206.29, -1606.06, -8206.29, -1616.55, -6820.35, -1617.29, -6818.85, -626.165, -5834.47, -624.667, -5835.21, 1588.33, -6288.45, 1592.08, -6288.45, 1582.34, -5845.7, 1581.59, -5842.7, -618.674, -7137.24, -614.928 )
+[node name="sightoccluder1" type="CollisionPolygon2D" parent="SightOccluders"]
+polygon = PoolVector2Array( 449.5, -879.5, 1435.5, -879.5, 1435.5, 1356.5, 962.5, 1356.5, 962.5, 1331.5, 1410.5, 1331.5, 1410.5, -854.5, 119.5, -854.5, 119.5, -879.5, 424.5, -879.5, 424.5, -1843.5, -950.5, -1843.5, -950.5, -1868.5, 449.5, -1868.5 )
 
-[node name="sightOccluder2" type="CollisionPolygon2D" parent="SightOccluders"]
-polygon = PoolVector2Array( -7951.5, -627.357, -8691.67, -624.36, -8689, 1591.5, -8236.13, 1592.13, -8236.13, 1581.47, -8680.07, 1582.03, -8682.32, -617.434, -7951.6, -617.434 )
+[node name="sightoccluder2" type="CollisionPolygon2D" parent="SightOccluders"]
+polygon = PoolVector2Array( -680.5, -854.5, -1410.5, -854.5, -1410.5, 1331.5, -962.5, 1331.5, -962.5, 1356.5, -1435.5, 1356.5, -1435.5, -879.5, -680.5, -879.5 )
 
-[node name="sightOccluder3" type="CollisionPolygon2D" parent="SightOccluders"]
-polygon = PoolVector2Array( -7621.16, 1580.18, -6903.69, 1580.18, -6905.02, 1592.86, -7620.49, 1592.86 )
+[node name="sightoccluder3" type="CollisionPolygon2D" parent="SightOccluders"]
+polygon = PoolVector2Array( 362.5, 1356.5, -362.5, 1356.5, -362.5, 1331.5, 362.5, 1331.5 )
 
 [node name="LightOccluders" type="Node2D" parent="."]
 
-[node name="LightOccluder" type="LightOccluder2D" parent="LightOccluders"]
+[node name="lightoccluder1" type="LightOccluder2D" parent="LightOccluders"]
 occluder = SubResource( 1 )
 
-[node name="LightOccluder2" type="LightOccluder2D" parent="LightOccluders"]
+[node name="lightoccluder2" type="LightOccluder2D" parent="LightOccluders"]
 occluder = SubResource( 2 )
 
-[node name="LightOccluder3" type="LightOccluder2D" parent="LightOccluders"]
+[node name="lightoccluder3" type="LightOccluder2D" parent="LightOccluders"]
 occluder = SubResource( 3 )
