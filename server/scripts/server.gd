@@ -7,7 +7,7 @@ var key: String =""
 
 func parse_args():
 	var args = Array(OS.get_cmdline_args())
-	var idx=args.find('--signalling')
+	var idx=args.find('--matchmaking')
 	if(idx>-1&&args.size()>idx):
 		signalling_url=args[idx+1]
 
@@ -29,6 +29,7 @@ func _ready():
 	wsc.connect("connection_error", self, "_closed_ws")
 	wsc.connect("connection_established", self, "_connected_ws")
 	wsc.connect("data_received", self, "_data_ws")
+	wsc.connect("server_close_request", self, "_closed_request_ws")
 	
 	var err = wsc.connect_to_url(signalling_url)
 	if err != OK:
@@ -39,6 +40,9 @@ func _ready():
 func _closed_ws(_was_clean = false):
 	print("Disconnected from matchmaking server at "+signalling_url)
 	get_tree().quit()
+
+func _closed_request_ws(code: int, reason: String):
+	print("closed with ", code, " ", reason)
 
 func _connected_ws(_proto = ""):
 	print("Connected to matchmaking server at "+signalling_url)
