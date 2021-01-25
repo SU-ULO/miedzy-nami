@@ -11,15 +11,10 @@ func task_end():
 	get_parent().remove_child(self)
 	# # # # # # # # # # # # # # # # # # # # #
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
-	count+=1
-	if count == 3:
-		task_end()
-
 
 func _on_sunflower_pressed():
-	get_node("AnimationPlayer/doniczka2/sunflower").disabled = true
-	get_node("AnimationPlayer").play("Sunflower_grow")
+	get_node("AnimationPlayer2/doniczka2/sunflower").disabled = true
+	get_node("AnimationPlayer2").play("Sunflower_grow")
 
 
 func _on_lilly_pressed():
@@ -28,5 +23,21 @@ func _on_lilly_pressed():
 
 
 func _on_blueflower_pressed():
-	get_node("AnimationPlayer/doniczka3/blueflower").disabled = true
-	get_node("AnimationPlayer").play("Blueflower_grow")
+	get_node("AnimationPlayer3/doniczka3/blueflower").disabled = true
+	get_node("AnimationPlayer3").play("Blueflower_grow")
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	count+=1
+	if count == 3:
+		task_end()
+
+func _on_AnimationPlayer3_animation_finished(_anim_name):
+	count+=1
+	if count == 3:
+		task_end()
+
+
+func _on_AnimationPlayer2_animation_finished(_anim_name):
+	count+=1
+	if count == 3:
+		task_end()
