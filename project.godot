@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="miedzy-nami"
 run/main_scene="res://start/Start.tscn"
-
 config/icon="res://icon.png"
 
 [display]

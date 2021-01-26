@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/tasks/PHY-Sto.gd" type="Script" id=1]
+[ext_resource path="res://textures/wskazowka.svg" type="Texture" id=3]
+[ext_resource path="res://textures/stopwatch.svg" type="Texture" id=4]
+[ext_resource path="res://textures/wahadlo.svg" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "wahadlo"
+length = 3.99
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimationPlayer/wahadlo:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 642.982, -0.25, 0, 0.25, 0, 642.982, -0.25, 0, 0.25, 0, 642.982, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimationPlayer/wahadlo:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -0.8573, -0.25, 0, 0.25, 0, -0.8573, -0.25, 0, 0.25, 0, -0.8573, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimationPlayer/wahadlo:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 37.3329, -0.25, 0, 0.851021, 1.61488, -37.3, -0.676794, 0.304802, 0.85335, -0.255981, 37.3329, -0.25, 0, 0.851021, 1.61488 ),
+"times": PoolRealArray( 0, 2, 4 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "clock-tick"
+length = 0.999
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimationPlayer2/TextureButton/wskazowka:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.000600311, 0.184509, 180, -0.00941798, -4.43706, 0.0140542, 4.27029, 359, -0.0125885, -11.5619, 0.0121878, 14.2371 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.91345
+margin_top = -2.24493
+margin_right = 1.91345
+margin_bottom = -2.24487
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/wahadlo = SubResource( 1 )
+
+[node name="wahadlo" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 642.982, -0.8573 )
+rotation = 0.401359
+texture = ExtResource( 5 )
+offset = Vector2( -1.34827, 319.657 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/clock-tick = SubResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="AnimationPlayer2"]
+margin_left = 977.775
+margin_top = 480.205
+margin_right = 1657.77
+margin_bottom = 1160.2
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wskazowka" type="Sprite" parent="AnimationPlayer2/TextureButton"]
+position = Vector2( 317.285, 322.484 )
+scale = Vector2( 0.281384, 0.281384 )
+texture = ExtResource( 3 )
+offset = Vector2( 1.12451, -105.814 )
+[connection signal="pressed" from="AnimationPlayer2/TextureButton" to="." method="_on_TextureButton_pressed"]
