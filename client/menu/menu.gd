@@ -37,8 +37,12 @@ func open_join():
 	close_everything()
 	$'Join'.visible=true
 
+func open_joining():
+	close_everything()
+	$'Joining'.visible=true
+
 func join_server(key: String):
-	print(key)
+	open_joining()
 	emit_signal("join_server", key)
 
 func refresh_servers():

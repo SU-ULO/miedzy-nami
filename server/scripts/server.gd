@@ -13,7 +13,7 @@ func parse_args():
 
 func parse_signalling(msg:  String):
 	if key=="":
-		if msg.find("K:")==0:
+		if msg.begins_with("KEY:"):
 			var res = msg.split(":", false, 1)
 			if res.size()<2: return
 			key = res[1]
@@ -47,7 +47,7 @@ func _closed_request_ws(code: int, reason: String):
 func _connected_ws(_proto = ""):
 	print("Connected to matchmaking server at "+signalling_url)
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
-	wsc.get_peer(1).put_packet("S".to_utf8())
+	wsc.get_peer(1).put_packet("SERVER".to_utf8())
 
 func _data_ws():
 	parse_signalling(wsc.get_peer(1).get_packet().get_string_from_utf8())

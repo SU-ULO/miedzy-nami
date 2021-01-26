@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Client",
 "language": "GDScript",
 "path": "res://client/scripts/client.gd"
+}, {
+"base": "Reference",
+"class": "JoinedServer",
+"language": "GDScript",
+"path": "res://client/scripts/joined_server.gd"
 } ]
 _global_script_class_icons={
-"Client": ""
+"Client": "",
+"JoinedServer": ""
 }
 
 [application]

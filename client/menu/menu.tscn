@@ -15,10 +15,10 @@ __meta__ = {
 }
 
 [node name="Main" type="VBoxContainer" parent="."]
-margin_left = 487.0
-margin_top = 278.0
-margin_right = 537.0
-margin_bottom = 322.0
+margin_left = 935.0
+margin_top = 518.0
+margin_right = 985.0
+margin_bottom = 562.0
 alignment = 1
 
 [node name="StartButton" type="Button" parent="Main"]
@@ -34,10 +34,10 @@ text = "Opcje"
 
 [node name="Options" type="VBoxContainer" parent="."]
 visible = false
-margin_left = 376.0
-margin_top = 276.0
-margin_right = 648.0
-margin_bottom = 324.0
+margin_left = 824.0
+margin_top = 516.0
+margin_right = 1096.0
+margin_bottom = 564.0
 alignment = 1
 script = ExtResource( 2 )
 
@@ -67,10 +67,10 @@ text = "zatwierdź"
 
 [node name="Join" type="VBoxContainer" parent="."]
 visible = false
-margin_left = 479.0
-margin_top = 276.0
-margin_right = 544.0
-margin_bottom = 324.0
+margin_left = 927.0
+margin_top = 516.0
+margin_right = 992.0
+margin_bottom = 564.0
 script = ExtResource( 3 )
 
 [node name="Exit" type="Button" parent="Join"]
@@ -88,6 +88,18 @@ text = "Odświerz"
 margin_top = 48.0
 margin_right = 65.0
 margin_bottom = 48.0
+
+[node name="Joining" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 939.0
+margin_top = 533.0
+margin_right = 981.0
+margin_bottom = 547.0
+
+[node name="Label" type="Label" parent="Joining"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Łączenie"
 [connection signal="pressed" from="Main/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
