@@ -14,20 +14,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://client/scripts/client.gd"
 }, {
-"base": "Reference",
+"base": "Node",
+"class": "Game_Connection",
+"language": "GDScript",
+"path": "res://network/game_connection.gd"
+}, {
+"base": "Game_Connection",
+"class": "JoinedClient",
+"language": "GDScript",
+"path": "res://server/scripts/joined_client.gd"
+}, {
+"base": "Game_Connection",
 "class": "JoinedServer",
 "language": "GDScript",
 "path": "res://client/scripts/joined_server.gd"
 } ]
 _global_script_class_icons={
 "Client": "",
+"Game_Connection": "",
+"JoinedClient": "",
 "JoinedServer": ""
 }
 
 [application]
 
 config/name="miedzy-nami"
-run/main_scene="res://start/Start.tscn"
+run/main_scene="res://start/start.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -36,6 +48,10 @@ window/size/width=1920
 window/size/height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[gdnative]
+
+singletons=[ "res://webrtc/webrtc.tres" ]
 
 [input]
 

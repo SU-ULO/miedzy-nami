@@ -42,8 +42,37 @@ func parse_signalling(msg:  String):
 			var conf: Dictionary = pars.result
 			if !conf.has('key') || !conf.has('webrtc'):
 				wsc.get_peer(1).put_packet("LEAVE".to_utf8())
-				return;
+				return
 			joined_server = JoinedServer.new(conf)
+			joined_server.connect("fail", self, "leave_server")
+			joined_server.connect("send_session", self, "send_session")
+			joined_server.connect("send_candidate", self, "send_candidate")
+			joined_server.connect("success", self, "join_server")
+			add_child(joined_server)
+	elif msg.begins_with("CONNECTION:"):
+		if !joined_server:
+			leave_server()
+			return
+		var arr = msg.split(":", false, 3)
+		if arr.size()<3:
+			leave_server()
+			return
+		if arr[1]=="SESSION":
+			joined_server.set_session(arr[3])
+		elif arr[1]=="CANDIDATE":
+			joined_server.set_canfidate(arr[3])
+		else:
+			leave_server()
+			return
+
+func send_candidate(cand: String):
+	wsc.get_peer(1).put_packet(("CONNECTION:CANDIDATE:"+cand).to_utf8())
+
+func send_session(sess: String):
+	wsc.get_peer(1).put_packet(("CONNECTION:SESSION:"+sess).to_utf8())
+
+func join_server():
+	print("success")
 
 func request_join_server(key: String):
 	wsc.get_peer(1).put_packet(("JOIN:"+key).to_utf8())
@@ -51,6 +80,7 @@ func request_join_server(key: String):
 func leave_server():
 	if joined_server:
 		joined_server.leave()
+		joined_server.queue_free()
 	joined_server=null
 	menu.open_join()
 

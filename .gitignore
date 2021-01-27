@@ -14,3 +14,5 @@ data_*/
 *x86_64
 *.sln
 *.csproj
+
+.vs

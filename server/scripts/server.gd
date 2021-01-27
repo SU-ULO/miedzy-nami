@@ -2,8 +2,10 @@ extends Node
 
 var wsc = WebSocketClient.new()
 
-var signalling_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signalling'
+var signalling_url: String = 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signalling'
 var key: String =""
+
+var joined_clients: Dictionary = {}
 
 func parse_args():
 	var args = Array(OS.get_cmdline_args())
@@ -19,7 +21,56 @@ func parse_signalling(msg:  String):
 			key = res[1]
 			print("KEY: "+key)
 			return
+	elif msg.begins_with("JOIN:"):
+		var arr = msg.split(":", false, 1)
+		if arr.size()<2: return
+		var pars = JSON.parse(arr[1])
+		if pars.error!=OK: return
+		if pars.result is Dictionary:
+			var conf: Dictionary = pars.result
+			if !conf.has('id'):
+				return
+			if joined_clients.has(conf.id) or !conf.has('webrtc'):
+				leave(conf.id)
+				return
+			var client = JoinedClient.new(conf)
+			client.connect("fail", self, "leave", [conf.id])
+			client.connect("send_session", self, "send_session", [conf.id])
+			client.connect("send_candidate", self, "send_candidate", [conf.id])
+			client.connect("success", self, "join", [conf.id])
+			joined_clients[conf.id]=client;
+			add_child(client)
+	elif msg.begins_with("CONNECTION:"):
+		var arr = msg.split(":", false, 4)
+		if arr.size()<4:
+			return
+		var id = int(arr[1])
+		if !joined_clients.has(id):
+			leave(id)
+			return
+		if arr[2]=="SESSION":
+			joined_clients[id].set_session(arr[3])
+		elif arr[2]=="CANDIDATE":
+			joined_clients[id].set_candidate(arr[3])
+		else:
+			leave(id)
+			return
 
+func leave(id: int):
+	if joined_clients.has(id):
+		joined_clients[id].queue_free()
+# warning-ignore:return_value_discarded
+		joined_clients.erase(id)
+	wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
+
+func join(id: int):
+	print("success")
+
+func send_candidate(cand: String, id: int):
+	wsc.get_peer(1).put_packet(("CONNECTION:"+str(id)+":CANDIDATE:"+cand).to_utf8())
+
+func send_session(sess: String, id: int):
+	wsc.get_peer(1).put_packet(("CONNECTION:"+str(id)+":SESSION:"+sess).to_utf8())
 
 func _ready():
 	print("Running as server")

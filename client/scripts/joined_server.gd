@@ -1,11 +1,11 @@
-extends Reference
+extends Game_Connection
 
 class_name JoinedServer
 
-var key: String = ""
+signal password
 
-func _init(conf: Dictionary):
-	key = conf.key
-
-func leave():
+func _init(conf: Dictionary).(conf):
 	pass
+
+func _ready():
+	peer.create_offer()
