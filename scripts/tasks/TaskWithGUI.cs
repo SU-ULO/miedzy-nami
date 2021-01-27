@@ -18,7 +18,6 @@ public class TaskWithGUI : Task, IInteractable
 	}
 	
 	public static void TaskWithGUICompleteTask(Control gui){
-		
 		TaskWithGUIEnumerate(gui);
 		// try enumerating the parent groups too
 		Control parent = (Control)gui.GetParent();
@@ -27,6 +26,8 @@ public class TaskWithGUI : Task, IInteractable
 	}
 	
 	private static void TaskWithGUIEnumerate(Control c){
+		if(c == null)
+			return;
 		// Finish all tasks with the appropriate ID
 		foreach(string gr in c.GetGroups()){
 			if(gr.StartsWith("gui_task_"))
