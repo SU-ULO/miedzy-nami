@@ -17,6 +17,33 @@ public class TaskWithGUI : Task, IInteractable
 		AddToGroup("entities");
 	}
 	
+	public static void TaskWithGUICompleteTask(Control gui){
+		
+		TaskWithGUIEnumerate(gui);
+		// try enumerating the parent groups too
+		Control parent = (Control)gui.GetParent();
+		TaskWithGUIEnumerate(parent);
+		
+	}
+	
+	private static void TaskWithGUIEnumerate(Control c){
+		// Finish all tasks with the appropriate ID
+		foreach(string gr in c.GetGroups()){
+			if(gr.StartsWith("gui_task_"))
+			{
+				string taskIDString = gr.Substring("gui_task_".Length);
+				int taskID;
+				Int32.TryParse(taskIDString, out taskID);
+				foreach(Task task in Task.tasks){
+					if(task.taskID == taskID)
+					{
+						task.state = task.maxState;
+					}
+				}
+			}
+		}
+	}
+	
 	public override void TaskInteract(){
 
 		// If this task is complete, do not open the window
