@@ -1,6 +1,6 @@
 extends Node
 
-var run_as_server: bool = true #for debugginig purposes
+var run_as_server: bool = false #for debugginig purposes
 
 func _ready():
 	if(OS.has_feature("Server") || "--server" in OS.get_cmdline_args()) || run_as_server:

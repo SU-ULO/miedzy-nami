@@ -53,14 +53,14 @@ func parse_signalling(msg:  String):
 		if !joined_server:
 			leave_server()
 			return
-		var arr = msg.split(":", false, 3)
+		var arr = msg.split(":", false, 2)
 		if arr.size()<3:
 			leave_server()
 			return
 		if arr[1]=="SESSION":
-			joined_server.set_session(arr[3])
+			joined_server.set_session(arr[2])
 		elif arr[1]=="CANDIDATE":
-			joined_server.set_canfidate(arr[3])
+			joined_server.set_canfidate(arr[2])
 		else:
 			leave_server()
 			return

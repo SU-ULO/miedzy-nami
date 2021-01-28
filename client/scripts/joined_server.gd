@@ -2,7 +2,6 @@ extends Game_Connection
 
 class_name JoinedServer
 
-signal password
 
 func _init(conf: Dictionary).(conf):
 	pass

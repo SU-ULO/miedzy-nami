@@ -30,6 +30,7 @@ func parse_signalling(msg:  String):
 			var conf: Dictionary = pars.result
 			if !conf.has('id'):
 				return
+			conf.id=int(conf.id)
 			if joined_clients.has(conf.id) or !conf.has('webrtc'):
 				leave(conf.id)
 				return
@@ -41,7 +42,7 @@ func parse_signalling(msg:  String):
 			joined_clients[conf.id]=client;
 			add_child(client)
 	elif msg.begins_with("CONNECTION:"):
-		var arr = msg.split(":", false, 4)
+		var arr = msg.split(":", false, 3)
 		if arr.size()<4:
 			return
 		var id = int(arr[1])

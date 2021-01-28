@@ -2,7 +2,7 @@ extends Container
 
 
 var usersettings: Dictionary = {
-	"signalling_url": 'wss://gaming.rakbook.pl/miedzy-nami/signalling',
+	"signalling_url": 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signalling'
 }
 
 signal start()
