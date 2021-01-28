@@ -35,7 +35,7 @@ func _on_session(type, sdp):
 	emit_signal("send_session", JSON.print({"type": type, "sdp": sdp}))
 
 func _on_candidate(media, index, sdp):
-	emit_signal("send_candidate", JSON.print({"media": media, "index": index, "sdp":sdp}))
+	emit_signal("send_candidate", JSON.print({"media": media, "index": index, "name":sdp}))
 
 func set_session(sess: String):
 	var pars = JSON.parse(sess)
