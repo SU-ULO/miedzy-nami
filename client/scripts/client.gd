@@ -60,7 +60,7 @@ func parse_signalling(msg:  String):
 		if arr[1]=="SESSION":
 			joined_server.set_session(arr[2])
 		elif arr[1]=="CANDIDATE":
-			joined_server.set_canfidate(arr[2])
+			joined_server.set_candidate(arr[2])
 		else:
 			leave_server()
 			return

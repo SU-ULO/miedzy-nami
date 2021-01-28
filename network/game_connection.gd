@@ -24,9 +24,9 @@ func _init(conf: Dictionary):
 func _ready():
 	peer.connect("ice_candidate_created", self, "_on_candidate")
 	peer.connect("session_description_created", self, "_on_session")
-	if peer.initialize(config["webrtc"])!=OK:
-		emit_signal("fail")
-		return
+#	if peer.initialize(config["webrtc"])!=OK:
+#		emit_signal("fail")
+#		return
 
 func _on_session(type, sdp):
 	if peer.set_local_description(type, sdp)!=OK:
@@ -34,8 +34,8 @@ func _on_session(type, sdp):
 		return
 	emit_signal("send_session", JSON.print({"type": type, "sdp": sdp}))
 
-func _on_candidate(mid, index, sdp):
-	emit_signal("send_candidate", JSON.print({"mid": mid, "index": index, "sdp":sdp}))
+func _on_candidate(media, index, sdp):
+	emit_signal("send_candidate", JSON.print({"media": media, "index": index, "sdp":sdp}))
 
 func set_session(sess: String):
 	var pars = JSON.parse(sess)
