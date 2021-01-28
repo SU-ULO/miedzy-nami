@@ -1,0 +1,169 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://textures/probowka-bottom.svg" type="Texture" id=1]
+[ext_resource path="res://textures/probowka-top.svg" type="Texture" id=2]
+[ext_resource path="res://gui/probowki.gd" type="Script" id=3]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "napelnij"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AP/Polygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 488.369, -129.71, 491.672, -136.363, 496.387, -141.291, 511.978, -149.532, 530.018, -155.768, 553.181, -161.782, 584.363, -166.904, 617.326, -169.968, 646.057, -172.25, 699.511, -172.695, 737.374, -170.468, 773.233, -166.904, 808.646, -160.445, 837.378, -151.982, 851.218, -144.4, 859.164, -136.983, 861.877, -131.268, 861.956, -113.614, 846.496, -97.843, 781.906, -79.342, 704.418, -72.1937, 639.299, -72.1258, 572.288, -78.7476, 512.164, -93.3152, 489.915, -107.883 ), PoolVector2Array( 488.369, -279.71, 491.672, -286.363, 496.387, -291.291, 511.978, -299.532, 530.018, -305.768, 553.181, -311.782, 584.363, -316.904, 617.326, -320.468, 646.057, -322.25, 699.511, -322.695, 737.374, -320.468, 773.233, -316.904, 808.646, -310.445, 837.378, -301.982, 851.218, -294.4, 859.164, -286.983, 861.877, -281.268, 861.956, -113.614, 846.496, -98.243, 781.906, -79.342, 704.418, -72.1937, 639.299, -72.1258, 572.288, -78.7476, 512.164, -93.3152, 489.915, -107.883 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AP/Polygon2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AP/Polygon2D:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0666667, 0.0901961, 0.631373, 1 ), Color( 0.952941, 0.168627, 0.0392157, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "napelnij2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AP/Polygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 488.369, -279.71, 491.672, -286.363, 496.387, -291.291, 511.978, -299.532, 530.018, -305.768, 553.181, -311.782, 584.363, -316.904, 617.326, -320.468, 646.057, -322.25, 699.511, -322.695, 737.374, -320.468, 773.233, -316.904, 808.646, -310.445, 837.378, -301.982, 851.218, -294.4, 859.164, -286.983, 861.877, -281.268, 861.956, -113.614, 846.496, -98.043, 781.906, -79.342, 704.418, -72.1937, 639.299, -72.1258, 572.288, -78.7476, 512.164, -93.3152, 489.915, -107.883 ), PoolVector2Array( 488.369, -429.71, 491.672, -436.363, 496.387, -441.291, 511.978, -449.532, 530.018, -455.768, 553.181, -461.782, 584.363, -466.904, 617.326, -470.468, 646.057, -472.25, 699.511, -472.695, 737.374, -470.468, 773.233, -466.904, 808.646, -460.445, 837.378, -451.982, 851.218, -444.4, 859.164, -436.983, 861.877, -431.268, 861.956, -113.614, 846.496, -98.043, 781.906, -79.342, 704.418, -72.1937, 639.299, -72.1258, 572.288, -78.7476, 512.164, -93.3152, 489.915, -107.883 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AP/Polygon2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.952941, 0.168627, 0.0392157, 1 ), Color( 0.917647, 0.945098, 0.054902, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.71313
+margin_top = 0.883911
+margin_right = -1.71313
+margin_bottom = 0.883911
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AP" type="AnimationPlayer" parent="."]
+anims/napelnij = SubResource( 1 )
+anims/napelnij2 = SubResource( 2 )
+
+[node name="bottom" type="TextureRect" parent="AP"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -201.0
+margin_top = -315.0
+margin_right = 201.0
+margin_bottom = 315.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="AP"]
+visible = false
+show_behind_parent = true
+position = Vector2( 283.786, 925.823 )
+color = Color( 0.952941, 0.168627, 0.0392157, 1 )
+antialiased = true
+polygon = PoolVector2Array( 488.369, -279.71, 491.672, -286.363, 496.387, -291.291, 511.978, -299.532, 530.018, -305.768, 553.181, -311.782, 584.363, -316.904, 617.326, -320.468, 646.057, -322.25, 699.511, -322.695, 737.374, -320.468, 773.233, -316.904, 808.646, -310.445, 837.378, -301.982, 851.218, -294.4, 859.164, -286.983, 861.877, -281.268, 861.956, -113.614, 846.496, -98.043, 781.906, -79.342, 704.418, -72.1937, 639.299, -72.1258, 572.288, -78.7476, 512.164, -93.3152, 489.915, -107.883 )
+
+[node name="top" type="TextureRect" parent="AP"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -201.0
+margin_top = -315.0
+margin_right = 201.0
+margin_bottom = 315.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+margin_left = -210.0
+margin_top = -81.0
+margin_right = 210.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button-red" type="Button" parent="HBoxContainer"]
+margin_right = 105.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 4 )
+text = "red"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button-blue" type="Button" parent="HBoxContainer"]
+margin_left = 109.0
+margin_right = 234.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 4 )
+text = "blue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="button-yellow" type="Button" parent="HBoxContainer"]
+margin_left = 238.0
+margin_right = 420.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 4 )
+text = "yellow"
+[connection signal="animation_finished" from="AP" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_down" from="HBoxContainer/button-red" to="." method="_on_button_down" binds= [ Color( 1, 0, 0, 1 ) ]]
+[connection signal="button_down" from="HBoxContainer/button-blue" to="." method="_on_button_down" binds= [ Color( 0, 0, 1, 1 ) ]]
+[connection signal="button_down" from="HBoxContainer/button-yellow" to="." method="_on_button_down" binds= [ Color( 1, 1, 0, 1 ) ]]

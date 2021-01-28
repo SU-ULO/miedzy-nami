@@ -9,10 +9,10 @@
 [ext_resource path="res://scripts/tasks/PHYSto.cs" type="Script" id=7]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 370.8, 381.737 )
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="CanvasItemMaterial" id=2]
 
 [node name="Main" type="Node2D"]
 
@@ -29,7 +29,7 @@ position = Vector2( 1038.48, 31.9814 )
 script = ExtResource( 9 )
 
 [node name="player" parent="Mapa/YSort" instance=ExtResource( 3 )]
-position = Vector2( 26.0045, 1253.02 )
+position = Vector2( 6.2141, 1157.43 )
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
 position = Vector2( 1216.69, 1161.44 )
@@ -47,10 +47,10 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mapa/YSort/PHY-Sto"]
 position = Vector2( -62.4658, -58.9961 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-material = SubResource( 1 )
+material = SubResource( 2 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
