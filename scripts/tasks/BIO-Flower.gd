@@ -6,11 +6,9 @@ func _ready():
 	pass # Replace with function body.
 
 func task_end():
-	# replace this with function to end task
 	print("Task ended!")
 	var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
 	TaskWithGUI.TaskWithGUICompleteTask(self)
-	# # # # # # # # # # # # # # # # # # # # #
 
 
 func _on_sunflower_pressed():

@@ -17,4 +17,4 @@ func _on_AnimationPlayer_animation_finished(_anim_name):
 	# or the node highest in the hierarchy itself 
 	
 	# in this case, we get the highest node
-	TaskWithGUI.TaskWithGUICompleteTask(self.get_parent().get_parent())
+	TaskWithGUI.TaskWithGUICompleteTask(self.get_owner())
