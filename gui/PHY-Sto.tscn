@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/tasks/PHY-Sto.gd" type="Script" id=1]
 [ext_resource path="res://textures/wskazowka.svg" type="Texture" id=3]
@@ -55,6 +55,9 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "wait"
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -72,12 +75,13 @@ anims/wahadlo = SubResource( 1 )
 
 [node name="wahadlo" type="Sprite" parent="AnimationPlayer"]
 position = Vector2( 642.982, -0.8573 )
-rotation = 0.401359
+rotation = 0.651582
 texture = ExtResource( 5 )
 offset = Vector2( -1.34827, 319.657 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/clock-tick = SubResource( 2 )
+anims/wait = SubResource( 3 )
 
 [node name="TextureButton" type="TextureButton" parent="AnimationPlayer2"]
 margin_left = 977.775
@@ -95,4 +99,5 @@ position = Vector2( 317.285, 322.484 )
 scale = Vector2( 0.281384, 0.281384 )
 texture = ExtResource( 3 )
 offset = Vector2( 1.12451, -105.814 )
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
 [connection signal="pressed" from="AnimationPlayer2/TextureButton" to="." method="_on_TextureButton_pressed"]

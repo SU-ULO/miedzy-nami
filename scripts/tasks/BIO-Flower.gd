@@ -8,7 +8,8 @@ func _ready():
 func task_end():
 	# replace this with function to end task
 	print("Task ended!")
-	get_parent().remove_child(self)
+	var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
+	TaskWithGUI.TaskWithGUICompleteTask(self)
 	# # # # # # # # # # # # # # # # # # # # #
 
 
