@@ -22,11 +22,11 @@ func _init(conf: Dictionary):
 	config=conf
 
 func _ready():
-	peer.connect("ice_candidate_created", self, "_on_candidate")
-	peer.connect("session_description_created", self, "_on_session")
 #	if peer.initialize(config["webrtc"])!=OK:
 #		emit_signal("fail")
 #		return
+	peer.connect("ice_candidate_created", self, "_on_candidate")
+	peer.connect("session_description_created", self, "_on_session")
 
 func _on_session(type, sdp):
 	if peer.set_local_description(type, sdp)!=OK:
