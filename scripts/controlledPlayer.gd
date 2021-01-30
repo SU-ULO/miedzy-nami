@@ -1,6 +1,6 @@
 extends "dummyplayer.gd"
 
-var fov_toggle = true #temporarily
+var fov_toggle = false #temporarily
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
