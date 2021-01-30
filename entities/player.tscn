@@ -9,10 +9,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50.0021, 25.8382 )
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 500.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 1750.0
 
 [sub_resource type="SpriteFrames" id=4]
@@ -38,13 +38,13 @@ shape = SubResource( 1 )
 visible = false
 
 [node name="AreaShape" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="SightArea" type="Area2D" parent="."]
 visible = false
 
 [node name="AreaShape" type="CollisionShape2D" parent="SightArea"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
