@@ -8,9 +8,10 @@ var established: bool = false
 var config: Dictionary
 
 var peer = WebRTCPeerConnection.new()
-var game_updates = peer.create_data_channel("updates", {"negotiated": true, "id":1, "maxRetransmits": 0})
-var game_events = peer.create_data_channel("events", {"negotiated": true, "id":2})
-var game_init = peer.create_data_channel("init", {"negotiated": true, "id":3})
+
+var game_updates: WebRTCDataChannel
+var game_events: WebRTCDataChannel
+var game_init: WebRTCDataChannel
 
 signal send_session
 signal send_candidate
@@ -22,9 +23,20 @@ func _init(conf: Dictionary):
 	config=conf
 
 func _ready():
-#	if peer.initialize(config["webrtc"])!=OK:
-#		emit_signal("fail")
-#		return
+	if peer.initialize(config["webrtc"])!=OK:
+		emit_signal("fail")
+		return
+	
+	game_updates = peer.create_data_channel("updates",
+		{"negotiated": true, "id":1, "maxRetransmits": 0})
+	game_events = peer.create_data_channel("events",
+		{"negotiated": true, "id":2})
+	game_init = peer.create_data_channel("init",
+		{"negotiated": true, "id":3})
+	if game_updates==null || game_events==null || game_init==null:
+		emit_signal("fail")
+		return
+	
 	peer.connect("ice_candidate_created", self, "_on_candidate")
 	peer.connect("session_description_created", self, "_on_session")
 
