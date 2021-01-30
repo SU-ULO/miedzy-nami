@@ -23,7 +23,7 @@ func _ready():
 	menu.connect("join_server", self, 'request_join_server')
 	add_child(menu)
 
-func parse_signalling(msg:  String):
+func parse_signaling(msg:  String):
 	if msg.begins_with("LIST:"):
 		var arr = msg.split(":", false, 1)
 		if arr.size()<2: return
@@ -85,9 +85,9 @@ func leave_server():
 	menu.open_join()
 
 func start():
-	var err = wsc.connect_to_url(menu.usersettings.signalling_url)
+	var err = wsc.connect_to_url(menu.usersettings.signaling_url)
 	if err != OK:
-		print("Unable to connect to matchmaking server at "+menu.usersettings.signalling_url)
+		print("Unable to connect to matchmaking server at "+menu.usersettings.signaling_url)
 		menu.end()
 		return
 
@@ -101,17 +101,17 @@ func _closed_request_ws(code: int, reason: String):
 	print("closed with ", code, " ", reason)
 
 func _closed_ws(_was_clean = false):
-	print("Disconnected from matchmaking server at "+menu.usersettings.signalling_url)
+	print("Disconnected from matchmaking server at "+menu.usersettings.signaling_url)
 	menu.end()
 
 func _connected_ws(_proto = ""):
-	print("Connected to matchmaking server at "+menu.usersettings.signalling_url)
+	print("Connected to matchmaking server at "+menu.usersettings.signaling_url)
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	wsc.get_peer(1).put_packet("CLIENT".to_utf8())
 	refresh_servers()
 
 func _data_ws():
-	parse_signalling(wsc.get_peer(1).get_packet().get_string_from_utf8())
+	parse_signaling(wsc.get_peer(1).get_packet().get_string_from_utf8())
 
 func _process(_delta):
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:

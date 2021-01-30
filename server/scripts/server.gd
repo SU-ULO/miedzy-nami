@@ -2,7 +2,7 @@ extends Node
 
 var wsc = WebSocketClient.new()
 
-var signalling_url: String = 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signalling'
+var signaling_url: String = 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signaling'
 var key: String =""
 
 var joined_clients: Dictionary = {}
@@ -11,9 +11,9 @@ func parse_args():
 	var args = Array(OS.get_cmdline_args())
 	var idx=args.find('--matchmaking')
 	if(idx>-1&&args.size()>idx):
-		signalling_url=args[idx+1]
+		signaling_url=args[idx+1]
 
-func parse_signalling(msg:  String):
+func parse_signaling(msg:  String):
 	if key=="":
 		if msg.begins_with("KEY:"):
 			var res = msg.split(":", false, 1)
@@ -83,26 +83,26 @@ func _ready():
 	wsc.connect("data_received", self, "_data_ws")
 	wsc.connect("server_close_request", self, "_closed_request_ws")
 	
-	var err = wsc.connect_to_url(signalling_url)
+	var err = wsc.connect_to_url(signaling_url)
 	if err != OK:
-		print("Unable to connect to matchmaking server at "+signalling_url)
+		print("Unable to connect to matchmaking server at "+signaling_url)
 		get_tree().quit()
 		return
 
 func _closed_ws(_was_clean = false):
-	print("Disconnected from matchmaking server at "+signalling_url)
+	print("Disconnected from matchmaking server at "+signaling_url)
 	get_tree().quit()
 
 func _closed_request_ws(code: int, reason: String):
 	print("closed with ", code, " ", reason)
 
 func _connected_ws(_proto = ""):
-	print("Connected to matchmaking server at "+signalling_url)
+	print("Connected to matchmaking server at "+signaling_url)
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	wsc.get_peer(1).put_packet("SERVER".to_utf8())
 
 func _data_ws():
-	parse_signalling(wsc.get_peer(1).get_packet().get_string_from_utf8())
+	parse_signaling(wsc.get_peer(1).get_packet().get_string_from_utf8())
 
 func _process(_delta):
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
