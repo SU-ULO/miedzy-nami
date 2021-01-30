@@ -1,18 +1,25 @@
 extends "dummyplayer.gd"
 
 var fov_toggle = true #temporarily
+onready var mask_width = $Light.get_texture().get_width()
+onready var sight_range :float = default_sight_range
+
+func _on_ready():
+	$SightArea/AreaShape.shape.set_radius(default_sight_range)
+	$Light.set_texture_scale(default_sight_range/mask_width*2)
 
 func get_input():
+	moveX = 0; moveY = 0
 	if Input.is_action_pressed("move_right"):
 		moveX = 1;
 	
 	if Input.is_action_pressed("move_left"):
 		moveX = -1;
 	
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("move_down"):
 		moveY = 1;
 	
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("move_up"):
 		moveY = -1;
 	
 	if Input.is_action_just_pressed("set_fov"):
@@ -21,7 +28,7 @@ func get_input():
 		else:
 			sight_range = 500
 		fov_toggle = !fov_toggle
-
+	
 	if Input.is_action_just_pressed("ui_select"):
 		ui_selected()
 

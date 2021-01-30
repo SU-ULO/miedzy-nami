@@ -11,14 +11,8 @@ var flipped = false
 var moveX :int
 var moveY :int
 
-
-onready var mask_width = $Light.get_texture().get_width()
-onready var sight_range :float = default_sight_range
-
 func _ready():
 	add_to_group("entities")
-	$SightArea/AreaShape.shape.set_radius(default_sight_range)
-	$Light.set_texture_scale(default_sight_range/mask_width*2)
 	pass
 	
 func _physics_process(_delta):
@@ -49,30 +43,24 @@ func check_interaction():
 				interactable.push_back(item); print(item.get_name(), " added to: interactable")
 
 func set_player_velocity():
-	player_velocity = Vector2()
-	 
-	player_velocity.x += moveX
-	player_velocity.y += moveY
+	player_velocity.x = moveX
+	player_velocity.y = moveY
 	
-	if player_velocity.y == 0 && player_velocity.x == 0:
+	if player_velocity.x == 0 && player_velocity.y == 0:
 		$Sprite.visible = true
 		$Sprite.flip_h = flipped
 		$AnimatedSprite.visible = false
 	else:
 		$AnimatedSprite.visible = true
 		$Sprite.visible = false
-		if player_velocity.x == 1:
-			$Sprite.flip_h = flipped
-			flipped = true
-		else:
-			$Sprite.flip_h = flipped
-			flipped = false
-
-	if player_velocity.y == 0 && player_velocity.x == 0:
-		$Sprite.visible = true
-		$Sprite.flip_h = flipped
-		$AnimatedSprite.visible = false
 		
+		if player_velocity.x == 1:
+			$AnimatedSprite.flip_h = flipped
+			flipped = false
+		else: if player_velocity.x == -1:
+			$AnimatedSprite.flip_h = flipped
+			flipped = true
+	
 	player_velocity = player_velocity.normalized() * default_speed
 	
 func ui_selected():
