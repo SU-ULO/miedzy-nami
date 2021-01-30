@@ -18,7 +18,7 @@ position = Vector2( 1, 1 )
 [node name="YSort" type="YSort" parent="Mapa"]
 
 [node name="player" parent="Mapa/YSort" instance=ExtResource( 3 )]
-position = Vector2( -401.786, 1601.43 )
+position = Vector2( -1.25966, 1240.39 )
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
 position = Vector2( 1109.78, 1022.46 )
