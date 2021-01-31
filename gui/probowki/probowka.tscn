@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/probowka2-top.svg" type="Texture" id=1]
+[ext_resource path="res://scripts/probowka.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "mniej"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Polygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 475.353, 587.894, 471.414, 585.133, 465.653, 582.624, 458.22, 580.618, 449.607, 579.202, 438.163, 578.022, 424.831, 577.315, 411.421, 577.232, 399.371, 577.535, 385.142, 579.08, 373.993, 581.012, 363.141, 584.134, 356.452, 586.661, 352.29, 588.742, 349.259, 592.142, 349.271, 889.527, 358.498, 901.002, 372.893, 908.553, 400.737, 913.98, 429.053, 913.036, 452.65, 907.373, 462.753, 902.646, 473.61, 892.345, 475.127, 868.175 ), PoolVector2Array( 475.353, 787.894, 471.414, 785.133, 465.653, 782.624, 458.22, 780.618, 449.607, 779.202, 438.163, 778.022, 424.831, 777.315, 411.421, 777.232, 399.371, 777.535, 385.142, 779.08, 373.993, 781.012, 363.141, 784.134, 356.452, 786.661, 352.29, 788.742, 349.259, 792.142, 349.271, 889.527, 358.498, 901.002, 372.893, 908.553, 400.737, 913.98, 429.053, 913.036, 452.65, 907.373, 462.753, 902.646, 473.61, 892.345, 475.127, 868.175 ) ]
+}
+
+[node name="Control" type="Control"]
+margin_top = -0.280624
+margin_right = 1909.0
+margin_bottom = 1085.72
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/mniej = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 792.742, 187.099 )
+offset = Vector2( -317.405, -561.925 )
+antialiased = true
+polygon = PoolVector2Array( 475.353, 587.894, 471.414, 585.133, 465.653, 582.624, 458.22, 580.618, 449.607, 579.202, 438.163, 578.022, 424.831, 577.315, 411.421, 577.232, 399.371, 577.535, 385.142, 579.08, 373.993, 581.012, 363.141, 584.134, 356.452, 586.661, 352.29, 588.742, 349.259, 592.142, 349.271, 889.527, 358.498, 901.002, 372.893, 908.553, 400.737, 913.98, 429.053, 913.036, 452.65, 907.373, 462.753, 902.646, 473.61, 892.345, 475.127, 868.175 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 815.0
+margin_top = 80.999
+margin_right = 1105.0
+margin_bottom = 998.999
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
