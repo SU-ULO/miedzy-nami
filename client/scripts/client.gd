@@ -11,7 +11,7 @@ var menu = preload('res://client/menu/menu.tscn').instance()
 func _ready():
 	menu.name='menu'
 	wsc.connect("connection_closed", self, "_closed_ws")
-	wsc.connect("connection_error", self, "_closed_ws")
+	wsc.connect("connection_error", self, "_connection_error")
 	wsc.connect("connection_established", self, "_connected_ws")
 	wsc.connect("data_received", self, "_data_ws")
 	wsc.connect("server_close_request", self, "_closed_request_ws")
@@ -103,6 +103,9 @@ func _closed_request_ws(code: int, reason: String):
 func _closed_ws(_was_clean = false):
 	print("Disconnected from matchmaking server at "+menu.usersettings.signaling_url)
 	menu.end()
+
+func _connection_error():
+	print("Error connecting to matchmaking")
 
 func _connected_ws(_proto = ""):
 	print("Connected to matchmaking server at "+menu.usersettings.signaling_url)

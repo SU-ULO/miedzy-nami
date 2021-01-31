@@ -14,13 +14,17 @@ func parse_args():
 		signaling_url=args[idx+1]
 
 func parse_signaling(msg:  String):
-	if key=="":
-		if msg.begins_with("KEY:"):
-			var res = msg.split(":", false, 1)
-			if res.size()<2: return
-			key = res[1]
-			print("KEY: "+key)
-			return
+	if msg.begins_with("HELLO:"):
+		var arr = msg.split(":", false, 1)
+		if arr.size()==2:
+			var pars=JSON.parse(arr[1])
+			if pars.error==OK && pars.result is Dictionary:
+				var conf=pars.result
+				if conf.has("key"):
+					key=conf.key
+					print("KEY: "+key)
+					return
+		wsc.disconnect_from_host(4000, "WRONG_HELLO")
 	elif msg.begins_with("JOIN:"):
 		var arr = msg.split(":", false, 1)
 		if arr.size()<2: return
@@ -34,10 +38,14 @@ func parse_signaling(msg:  String):
 			if joined_clients.has(conf.id) or !conf.has('webrtc'):
 				leave(conf.id)
 				return
-			var client = JoinedClient.new(conf)
+			var client := JoinedClient.new(conf)
+# warning-ignore:return_value_discarded
 			client.connect("fail", self, "leave", [conf.id])
+# warning-ignore:return_value_discarded
 			client.connect("send_session", self, "send_session", [conf.id])
+# warning-ignore:return_value_discarded
 			client.connect("send_candidate", self, "send_candidate", [conf.id])
+# warning-ignore:return_value_discarded
 			client.connect("success", self, "join", [conf.id])
 			joined_clients[conf.id]=client;
 			add_child(client)
@@ -78,7 +86,7 @@ func _ready():
 	parse_args()
 	
 	wsc.connect("connection_closed", self, "_closed_ws")
-	wsc.connect("connection_error", self, "_closed_ws")
+	wsc.connect("connection_error", self, "_connection_error")
 	wsc.connect("connection_established", self, "_connected_ws")
 	wsc.connect("data_received", self, "_data_ws")
 	wsc.connect("server_close_request", self, "_closed_request_ws")
@@ -90,14 +98,18 @@ func _ready():
 		return
 
 func _closed_ws(_was_clean = false):
-	print("Disconnected from matchmaking server at "+signaling_url)
+	print("Disconnected from matchmaking")
+	get_tree().quit()
+
+func _connection_error():
+	print("Error connecting to matchmaking")
 	get_tree().quit()
 
 func _closed_request_ws(code: int, reason: String):
 	print("closed with ", code, " ", reason)
 
 func _connected_ws(_proto = ""):
-	print("Connected to matchmaking server at "+signaling_url)
+	print("Connected to matchmaking")
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	wsc.get_peer(1).put_packet("SERVER".to_utf8())
 
