@@ -2,7 +2,8 @@ extends Container
 
 
 var usersettings: Dictionary = {
-	"signaling_url": 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signaling'
+	"signaling_url": 'ws://localhost:8080',#'wss://gaming.rakbook.pl/miedzy-nami/signaling'
+	"username": ""
 }
 
 signal start()
@@ -22,6 +23,10 @@ func _ready():
 func close_everything():
 	for n in get_children():
 		n.visible=false
+
+func open_logging_in():
+	close_everything()
+	$'LoggingIn'.visible=true
 
 func open_options():
 	var optionsnode=$"Options"
@@ -52,11 +57,14 @@ func update_servers(list: Array):
 	$'Join'.update_servers(list)
 
 func _on_StartButton_pressed():
-	emit_signal("start")
-	open_join()
+	usersettings.username = $'Main/Username'.text
+	if usersettings.username.length()>0:
+		emit_signal("start")
+
+func request_end():
+	emit_signal("end")
 
 func end():
-	emit_signal("end")
 	open_main()
 
 func _on_OptionsButton_pressed():

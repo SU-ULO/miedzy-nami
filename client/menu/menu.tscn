@@ -15,21 +15,28 @@ __meta__ = {
 }
 
 [node name="Main" type="VBoxContainer" parent="."]
-margin_left = 935.0
-margin_top = 518.0
-margin_right = 985.0
-margin_bottom = 562.0
+margin_left = 921.0
+margin_top = 504.0
+margin_right = 999.0
+margin_bottom = 576.0
 alignment = 1
 
+[node name="Username" type="LineEdit" parent="Main"]
+margin_right = 78.0
+margin_bottom = 24.0
+text = "username"
+expand_to_text_length = true
+
 [node name="StartButton" type="Button" parent="Main"]
-margin_right = 50.0
-margin_bottom = 20.0
+margin_top = 28.0
+margin_right = 78.0
+margin_bottom = 48.0
 text = "Start"
 
 [node name="OptionsButton" type="Button" parent="Main"]
-margin_top = 24.0
-margin_right = 50.0
-margin_bottom = 44.0
+margin_top = 52.0
+margin_right = 78.0
+margin_bottom = 72.0
 text = "Opcje"
 
 [node name="Options" type="VBoxContainer" parent="."]
@@ -100,6 +107,18 @@ margin_bottom = 547.0
 margin_right = 42.0
 margin_bottom = 14.0
 text = "Łączenie"
+
+[node name="LoggingIn" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 835.0
+margin_top = 533.0
+margin_right = 1084.0
+margin_bottom = 547.0
+
+[node name="Label" type="Label" parent="LoggingIn"]
+margin_right = 249.0
+margin_bottom = 14.0
+text = "Łączenie z serwerem matchmakingowym"
 [connection signal="pressed" from="Main/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]

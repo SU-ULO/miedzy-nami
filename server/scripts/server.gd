@@ -93,7 +93,7 @@ func _ready():
 	
 	var err = wsc.connect_to_url(signaling_url)
 	if err != OK:
-		print("Unable to connect to matchmaking server at "+signaling_url)
+		print("Can't connect to matchmaking")
 		get_tree().quit()
 		return
 

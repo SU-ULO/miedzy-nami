@@ -32,4 +32,4 @@ func _on_Refresh_pressed():
 
 
 func _on_Exit_pressed():
-	get_parent().end()
+	get_parent().request_end()

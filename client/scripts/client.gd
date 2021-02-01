@@ -24,7 +24,19 @@ func _ready():
 	add_child(menu)
 
 func parse_signaling(msg:  String):
-	if msg.begins_with("LIST:"):
+	if msg.begins_with("HELLO"):
+		if msg.begins_with("HELLO:"):
+			var arr = msg.split(":", false, 1)
+			if arr.size()==2:
+				var pars=JSON.parse(arr[1])
+				if pars.error==OK && pars.result is Dictionary:
+					var conf=pars.result
+		else:
+			menu.open_join()
+			refresh_servers()
+			return
+		wsc.disconnect_from_host(4000, "WRONG_HELLO")
+	elif msg.begins_with("LIST:"):
 		var arr = msg.split(":", false, 1)
 		if arr.size()<2: return
 		var list = JSON.parse(arr[1])
@@ -81,37 +93,44 @@ func leave_server():
 	if joined_server:
 		joined_server.leave()
 		joined_server.queue_free()
+		menu.open_join()
 	joined_server=null
-	menu.open_join()
 
 func start():
-	var err = wsc.connect_to_url(menu.usersettings.signaling_url)
-	if err != OK:
-		print("Unable to connect to matchmaking server at "+menu.usersettings.signaling_url)
-		menu.end()
+	if wsc.connect_to_url(menu.usersettings.signaling_url) != OK:
+		print("Unable to connect to matchmaking server")
+		end()
 		return
+	menu.open_logging_in()
 
 func end():
-	wsc.get_peer(1).close()
+	leave_server()
+	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
+		wsc.disconnect_from_host()
+	menu.end()
 
 func refresh_servers():
 	wsc.get_peer(1).put_packet("LIST".to_utf8())
 
 func _closed_request_ws(code: int, reason: String):
 	print("closed with ", code, " ", reason)
+	end()
 
 func _closed_ws(_was_clean = false):
-	print("Disconnected from matchmaking server at "+menu.usersettings.signaling_url)
-	menu.end()
+	print("Disconnected from matchmaking server")
+	end()
 
 func _connection_error():
 	print("Error connecting to matchmaking")
+	end()
 
 func _connected_ws(_proto = ""):
-	print("Connected to matchmaking server at "+menu.usersettings.signaling_url)
+	print("Connected to matchmaking server")
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
-	wsc.get_peer(1).put_packet("CLIENT".to_utf8())
-	refresh_servers()
+	if menu.usersettings.username.length()>0:
+		wsc.get_peer(1).put_packet(("CLIENT:"+JSON.print({"username": menu.usersettings.username})).to_utf8())
+	else:
+		end()
 
 func _data_ws():
 	parse_signaling(wsc.get_peer(1).get_packet().get_string_from_utf8())
