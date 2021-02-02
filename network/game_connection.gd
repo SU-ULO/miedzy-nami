@@ -18,6 +18,7 @@ signal send_candidate
 
 signal fail
 signal success
+signal join
 
 func _init(conf: Dictionary):
 	config=conf

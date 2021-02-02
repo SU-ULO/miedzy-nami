@@ -46,7 +46,9 @@ func parse_signaling(msg:  String):
 # warning-ignore:return_value_discarded
 			client.connect("send_candidate", self, "send_candidate", [conf.id])
 # warning-ignore:return_value_discarded
-			client.connect("success", self, "join", [conf.id])
+			client.connect("success", self, "_on_connected_client", [conf.id])
+# warning-ignore:return_value_discarded
+			client.connect("join", self, "join", [conf.id])
 			joined_clients[conf.id]=client;
 			add_child(client)
 	elif msg.begins_with("CONNECTION:"):
@@ -72,8 +74,11 @@ func leave(id: int):
 		joined_clients.erase(id)
 	wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
 
+func _on_connected_client(id: int):
+	print("connected")
+
 func join(id: int):
-	print("success")
+	print("joined")
 
 func send_candidate(cand: String, id: int):
 	wsc.get_peer(1).put_packet(("CONNECTION:"+str(id)+":CANDIDATE:"+cand).to_utf8())

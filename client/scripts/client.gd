@@ -59,7 +59,8 @@ func parse_signaling(msg:  String):
 			joined_server.connect("fail", self, "leave_server")
 			joined_server.connect("send_session", self, "send_session")
 			joined_server.connect("send_candidate", self, "send_candidate")
-			joined_server.connect("success", self, "join_server")
+			joined_server.connect("success", self, "_on_connected_server")
+			joined_server.connect("join", self, "join_server")
 			add_child(joined_server)
 	elif msg.begins_with("CONNECTION:"):
 		if !joined_server:
@@ -83,8 +84,11 @@ func send_candidate(cand: String):
 func send_session(sess: String):
 	wsc.get_peer(1).put_packet(("CONNECTION:SESSION:"+sess).to_utf8())
 
+func _on_connected_server():
+	print("connected")
+
 func join_server():
-	print("success")
+	print("joined")
 
 func request_join_server(key: String):
 	wsc.get_peer(1).put_packet(("JOIN:"+key).to_utf8())
