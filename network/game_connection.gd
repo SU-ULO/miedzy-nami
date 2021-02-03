@@ -18,6 +18,7 @@ signal send_candidate
 
 signal fail
 signal success
+# warning-ignore:unused_signal
 signal join
 
 func _init(conf: Dictionary):
@@ -71,11 +72,47 @@ func set_candidate(cand: String):
 func leave():
 	pass
 
+
+func send_updates(input):
+# warning-ignore:return_value_discarded
+	game_updates.put_var(input)
+
+func send_events(input):
+# warning-ignore:return_value_discarded
+	game_events.put_var(input)
+
+func send_init(input):
+# warning-ignore:return_value_discarded
+	game_init.put_var(input)
+
+func handle_updates(_input):
+	pass
+
+func handle_events(_input):
+	pass
+
+func handle_init(_input):
+	pass
+
 func _process(_delta):
 	peer.poll()
 	if !established and peer.get_connection_state()==WebRTCPeerConnection.STATE_CONNECTED:
 		established=true
 		emit_signal("success")
+	elif established:
+		if peer.get_connection_state()!=WebRTCPeerConnection.STATE_CONNECTED:
+			established=false
+			emit_signal("fail")
+		else:
+			if game_init.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
+				while game_init.get_available_packet_count()>0:
+					handle_init(game_init.get_var())
+			if game_events.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
+				while game_events.get_available_packet_count()>0:
+					handle_events(game_events.get_var())
+			if game_updates.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
+				while game_updates.get_available_packet_count()>0:
+					handle_updates(game_updates.get_var())
 
 func _exit_tree():
 	peer.close()

@@ -3,7 +3,7 @@ extends Node
 var wsc = WebSocketClient.new()
 
 var signaling_url: String = 'ws://localhost:8080'#'wss://gaming.rakbook.pl/miedzy-nami/signaling'
-var key: String =""
+var server_name: String = ""
 
 var joined_clients: Dictionary = {}
 
@@ -12,6 +12,9 @@ func parse_args():
 	var idx=args.find('--matchmaking')
 	if(idx>-1&&args.size()>idx):
 		signaling_url=args[idx+1]
+	idx=args.find('--name')
+	if(idx>-1&&args.size()>idx):
+		server_name=args[idx+1]
 
 func parse_signaling(msg:  String):
 	if msg.begins_with("HELLO:"):
@@ -21,8 +24,7 @@ func parse_signaling(msg:  String):
 			if pars.error==OK && pars.result is Dictionary:
 				var conf=pars.result
 				if conf.has("key"):
-					key=conf.key
-					print("KEY: "+key)
+					print("KEY: "+conf.key)
 					return
 		wsc.disconnect_from_host(4000, "WRONG_HELLO")
 	elif msg.begins_with("JOIN:"):
@@ -66,6 +68,11 @@ func parse_signaling(msg:  String):
 		else:
 			leave(id)
 			return
+	elif msg.begins_with("KEY:"):
+		var arr = msg.split(":", false, 1)
+		if arr.size()<2: return
+		print("KEY: "+arr[1])
+		return
 
 func leave(id: int):
 	if joined_clients.has(id):
