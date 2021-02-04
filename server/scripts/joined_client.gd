@@ -6,8 +6,10 @@ func _init(conf: Dictionary).(conf):
 	pass
 
 func _ready():
+# warning-ignore:return_value_discarded
 	connect("success", self, "spawn_player")
 
 func spawn_player():
 	emit_signal("join")
-	send_init([0, {"username": config.username}])
+	while send_init([0, {"username": config.username}])!=OK:
+		pass

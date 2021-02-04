@@ -95,14 +95,15 @@ func leave(id: int):
 		joined_clients[id].queue_free()
 # warning-ignore:return_value_discarded
 		joined_clients.erase(id)
+	if wsc.get_connection_status()==WebSocketClient.CONNECTION_CONNECTED:
 # warning-ignore:return_value_discarded
-	wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
+		wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
 
 func _on_connected_client(id: int):
 	print("connected")
 
 func join(id: int):
-	print("joined")
+	print("joined"+String(id))
 
 func send_candidate(cand: String, id: int):
 # warning-ignore:return_value_discarded
