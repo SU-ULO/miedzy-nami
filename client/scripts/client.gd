@@ -2,24 +2,32 @@ extends Node
 
 class_name Client
 
-var wsc = WebSocketClient.new()
-
+var wsc := WebSocketClient.new()
 
 var joined_server = null
 
-var menu = preload('res://client/menu/menu.tscn').instance()
+var menu := preload('res://client/menu/menu.tscn').instance()
 func _ready():
 	menu.name='menu'
+# warning-ignore:return_value_discarded
 	wsc.connect("connection_closed", self, "_closed_ws")
+# warning-ignore:return_value_discarded
 	wsc.connect("connection_error", self, "_connection_error")
+# warning-ignore:return_value_discarded
 	wsc.connect("connection_established", self, "_connected_ws")
+# warning-ignore:return_value_discarded
 	wsc.connect("data_received", self, "_data_ws")
+# warning-ignore:return_value_discarded
 	wsc.connect("server_close_request", self, "_closed_request_ws")
 	
 	
+# warning-ignore:return_value_discarded
 	menu.connect("start", self, 'start')
+# warning-ignore:return_value_discarded
 	menu.connect("end", self, 'end')
+# warning-ignore:return_value_discarded
 	menu.connect("refresh_servers", self, 'refresh_servers')
+# warning-ignore:return_value_discarded
 	menu.connect("join_server", self, 'request_join_server')
 	add_child(menu)
 
@@ -30,7 +38,7 @@ func parse_signaling(msg:  String):
 			if arr.size()==2:
 				var pars=JSON.parse(arr[1])
 				if pars.error==OK && pars.result is Dictionary:
-					var conf=pars.result
+					var _conf=pars.result
 		else:
 			menu.open_join()
 			refresh_servers()
@@ -53,6 +61,7 @@ func parse_signaling(msg:  String):
 		if pars.result is Dictionary:
 			var conf: Dictionary = pars.result
 			if !conf.has('key') || !conf.has('webrtc'):
+# warning-ignore:return_value_discarded
 				wsc.get_peer(1).put_packet("LEAVE".to_utf8())
 				return
 			joined_server = JoinedServer.new(conf)
@@ -79,18 +88,21 @@ func parse_signaling(msg:  String):
 			return
 
 func send_candidate(cand: String):
+# warning-ignore:return_value_discarded
 	wsc.get_peer(1).put_packet(("CONNECTION:CANDIDATE:"+cand).to_utf8())
 
 func send_session(sess: String):
+# warning-ignore:return_value_discarded
 	wsc.get_peer(1).put_packet(("CONNECTION:SESSION:"+sess).to_utf8())
 
 func _on_connected_server():
 	print("connected")
 
 func join_server():
-	print("joined")
+	menu.close_everything()
 
 func request_join_server(key: String):
+# warning-ignore:return_value_discarded
 	wsc.get_peer(1).put_packet(("JOIN:"+key).to_utf8())
 
 func leave_server():
@@ -114,6 +126,7 @@ func end():
 	menu.end()
 
 func refresh_servers():
+# warning-ignore:return_value_discarded
 	wsc.get_peer(1).put_packet("LIST".to_utf8())
 
 func _closed_request_ws(code: int, reason: String):
@@ -132,6 +145,7 @@ func _connected_ws(_proto = ""):
 	print("Connected to matchmaking server")
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	if menu.usersettings.username.length()>0:
+# warning-ignore:return_value_discarded
 		wsc.get_peer(1).put_packet(("CLIENT:"+JSON.print({"username": menu.usersettings.username})).to_utf8())
 	else:
 		end()

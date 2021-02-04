@@ -1,8 +1,8 @@
-extends Container
+extends CanvasLayer
 
 
 var usersettings: Dictionary = {
-	"signaling_url": 'ws://localhost:8080',#'wss://gaming.rakbook.pl/miedzy-nami/signaling'
+	"signaling_url": 'wss://gaming.rakbook.pl/miedzy-nami/signaling',
 	"username": ""
 }
 

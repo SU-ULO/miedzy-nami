@@ -72,7 +72,6 @@ func set_candidate(cand: String):
 func leave():
 	pass
 
-
 func send_updates(input):
 # warning-ignore:return_value_discarded
 	game_updates.put_var(input)
