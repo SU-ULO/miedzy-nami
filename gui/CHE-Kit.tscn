@@ -1,8 +1,137 @@
-[gd_scene format=2]
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://textures/szmatka.png" type="Texture" id=1]
+[ext_resource path="res://scripts/tasks/CHE-Item.gd" type="Script" id=2]
+[ext_resource path="res://textures/hcl.png" type="Texture" id=3]
+[ext_resource path="res://textures/hno3.png" type="Texture" id=4]
+[ext_resource path="res://textures/zlewka1.png" type="Texture" id=5]
+[ext_resource path="res://textures/koszyk.png" type="Texture" id=6]
+[ext_resource path="res://textures/slomka.png" type="Texture" id=7]
+[ext_resource path="res://textures/naoh.png" type="Texture" id=8]
+[ext_resource path="res://textures/caoh.png" type="Texture" id=9]
+[ext_resource path="res://textures/probowka.png" type="Texture" id=10]
+[ext_resource path="res://textures/szkieko.png" type="Texture" id=11]
+[ext_resource path="res://gui/CHE-Kit.gd" type="Script" id=12]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="koszyk" type="TextureRect" parent="."]
+margin_left = 790.011
+margin_top = 520.176
+margin_right = 2648.01
+margin_bottom = 1423.18
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="szmatka" type="TextureButton" parent="."]
+margin_left = 641.164
+margin_top = 37.2048
+margin_right = 1141.16
+margin_bottom = 437.205
+texture_normal = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="szkielko" type="TextureButton" parent="."]
+margin_left = 39.8053
+margin_top = 891.405
+margin_right = 566.805
+margin_bottom = 1061.41
+texture_normal = ExtResource( 11 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="zlewka" type="TextureButton" parent="."]
+margin_left = 91.384
+margin_top = 25.1672
+margin_right = 402.384
+margin_bottom = 415.167
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HNO3" type="TextureButton" parent="."]
+margin_left = 35.9753
+margin_top = 468.252
+margin_right = 166.975
+margin_bottom = 862.252
+texture_normal = ExtResource( 4 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HCl" type="TextureButton" parent="."]
+margin_left = 191.036
+margin_top = 462.817
+margin_right = 335.036
+margin_bottom = 876.817
+texture_normal = ExtResource( 3 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ca(OH)2" type="TextureButton" parent="."]
+margin_left = 341.947
+margin_top = 433.233
+margin_right = 490.947
+margin_bottom = 862.233
+texture_normal = ExtResource( 9 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NaOH" type="TextureButton" parent="."]
+margin_left = 511.564
+margin_top = 434.69
+margin_right = 655.564
+margin_bottom = 848.69
+texture_normal = ExtResource( 8 )
+expand = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="probowka" type="TextureButton" parent="."]
+margin_left = 479.491
+margin_top = 28.4399
+margin_right = 568.491
+margin_bottom = 398.44
+texture_normal = ExtResource( 10 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton9" type="TextureButton" parent="."]
+margin_left = 1231.22
+margin_top = 44.5449
+margin_right = 1374.22
+margin_bottom = 477.545
+texture_normal = ExtResource( 7 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -17,3 +17,11 @@ func pickUp():
 
 func drop():
 	pickedUp = false
+	#if dropped in box:
+	get_owner().userKit.append(self.name)
+	get_owner().userKit.sort()
+	if(get_owner().userKit == get_owner().taskKit):
+		print("Brawo")
+		#finish task
+	#else:
+	#get_owner().userKit.erase(self.name)
