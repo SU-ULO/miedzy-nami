@@ -73,15 +73,12 @@ func leave():
 	pass
 
 func send_updates(input):
-# warning-ignore:return_value_discarded
 	return game_updates.put_var(input)
 
 func send_events(input):
-# warning-ignore:return_value_discarded
 	return game_events.put_var(input)
 
 func send_init(input):
-# warning-ignore:return_value_discarded
 	return game_init.put_var(input)
 
 func handle_updates(_input):
