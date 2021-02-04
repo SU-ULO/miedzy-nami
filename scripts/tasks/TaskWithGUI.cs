@@ -55,7 +55,7 @@ public class TaskWithGUI : Task, IInteractable
 
 		// Open the specifed GUI by the resource path
 		// To change which GUI is being opened, create a class overriding GetResourceLocation
-		Node n = (Node)GetTree().GetRoot().GetNode("/root/Main/CanvasLayer");
+		Node n = (Node)GetOwner().GetNode("CanvasLayer");
 		Resource gui = ResourceLoader.Load(GetResourceLocation());
 		Node guiInstance = ((PackedScene)gui).Instance();
 		guiInstance.AddToGroup("gui_task_"+taskID);
@@ -67,7 +67,7 @@ public class TaskWithGUI : Task, IInteractable
 		
 		GD.Print("TaskEnd extended");
 		// Kill the GUI
-		Node n = (Node)GetTree().GetRoot().GetNode("/root/Main/CanvasLayer");
+		Node n = (Node)GetOwner().GetNode("CanvasLayer");
 		Godot.Collections.Array children = n.GetChildren();
 		
 		// Kill all children 
@@ -75,7 +75,7 @@ public class TaskWithGUI : Task, IInteractable
 			if(child.IsInGroup("gui_task_"+taskID))
 				n.RemoveChild(child);
 			else
-				GD.Print(child.GetName() + " is staying attached to " + "/root/Main/CanvasLayer");
+				GD.Print(child.GetName() + " is staying attached to " + "CanvasLayer");
 		}
 	}
 	
