@@ -9,5 +9,5 @@ func _ready():
 	connect("success", self, "spawn_player")
 
 func spawn_player():
-	send_init([0, {"username": config.username}])
 	emit_signal("join")
+	send_init([0, {"username": config.username}])
