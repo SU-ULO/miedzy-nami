@@ -1,137 +1,193 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://textures/szmatka.png" type="Texture" id=1]
 [ext_resource path="res://scripts/tasks/CHE-Item.gd" type="Script" id=2]
 [ext_resource path="res://textures/hcl.png" type="Texture" id=3]
 [ext_resource path="res://textures/hno3.png" type="Texture" id=4]
-[ext_resource path="res://textures/zlewka1.png" type="Texture" id=5]
+[ext_resource path="res://textures/zlewka2.png" type="Texture" id=5]
 [ext_resource path="res://textures/koszyk.png" type="Texture" id=6]
 [ext_resource path="res://textures/slomka.png" type="Texture" id=7]
 [ext_resource path="res://textures/naoh.png" type="Texture" id=8]
 [ext_resource path="res://textures/caoh.png" type="Texture" id=9]
 [ext_resource path="res://textures/probowka.png" type="Texture" id=10]
 [ext_resource path="res://textures/szkieko.png" type="Texture" id=11]
-[ext_resource path="res://gui/CHE-Kit.gd" type="Script" id=12]
+[ext_resource path="res://scripts/tasks/CHE-Kit.gd" type="Script" id=12]
+[ext_resource path="res://textures/koszyk-front.png" type="Texture" id=13]
+[ext_resource path="res://textures/papierki.png" type="Texture" id=15]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="CHE-Kit" type="Node2D"]
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="koszyk" type="TextureRect" parent="."]
-margin_left = 790.011
-margin_top = 520.176
-margin_right = 2648.01
-margin_bottom = 1423.18
-rect_scale = Vector2( 0.6, 0.6 )
+[node name="koszyk" type="Sprite" parent="."]
+position = Vector2( 1356.82, 802.014 )
+scale = Vector2( 0.59974, 0.59974 )
+z_index = -3
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="szmatka" type="TextureButton" parent="."]
-margin_left = 641.164
-margin_top = 37.2048
-margin_right = 1141.16
-margin_bottom = 437.205
-texture_normal = ExtResource( 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="koszyk-front" type="Sprite" parent="koszyk"]
+position = Vector2( -4.15527, 92.7255 )
+z_as_relative = false
+texture = ExtResource( 13 )
 
-[node name="szkielko" type="TextureButton" parent="."]
-margin_left = 39.8053
-margin_top = 891.405
-margin_right = 566.805
-margin_bottom = 1061.41
-texture_normal = ExtResource( 11 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="koszyk-bottom" type="Area2D" parent="koszyk/koszyk-front"]
+position = Vector2( 0, -8.83264 )
+collision_layer = 8
+collision_mask = 8
 
-[node name="zlewka" type="TextureButton" parent="."]
-margin_left = 91.384
-margin_top = 25.1672
-margin_right = 402.384
-margin_bottom = 415.167
-texture_normal = ExtResource( 5 )
-expand = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="koszyk/koszyk-front/koszyk-bottom"]
+visible = false
+polygon = PoolVector2Array( -891.499, -305.982, -902.716, -298.271, -905.169, -281.796, -898.159, -268.126, -896.056, -251.3, -894.303, -221.856, -891.148, -184, -882.736, -87.9553, -873.973, 4.93396, -868.715, 28.7698, -818.59, 79.9457, -751.289, 135.679, -671.719, 201.578, -588.294, 255.91, -490.498, 318.303, -424.248, 351.954, -343.978, 325.664, -243.728, 295.519, -148.035, 273.786, -44.6296, 248.549, 28.6301, 232.074, 140.448, 203.681, 232.986, 181.247, 364.433, 144.442, 499.386, 119.205, 627.328, 98.1732, 728.63, 82.0491, 825.725, 69.0796, 833.786, 20.0063, 840.797, -42.7378, 852.363, -110.038, 866.033, -185.752, 878.3, -248.846, 900.033, -267.775, 907.043, -286.703, 902.136, -304.58, 886.713, -320.704, 898.981, -304.93, 904.59, -286.352, 898.981, -269.878, 877.249, -250.949, 863.928, -187.154, 837.29, -42.7373, 822.569, 66.276, 726.526, 80.2969, 602.44, 99.9263, 376.351, 134.979, 231.583, 177.743, -10.9797, 237.683, -301.564, 306.386, -422.846, 347.397, -536.066, 285.354, -692.049, 179.496, -786.691, 101.328, -866.961, 27.7181, -882.385, -132.121, -892.551, -267.775, -901.314, -284.6, -898.86, -300.023 )
 
-[node name="HNO3" type="TextureButton" parent="."]
-margin_left = 35.9753
-margin_top = 468.252
-margin_right = 166.975
-margin_bottom = 862.252
-texture_normal = ExtResource( 4 )
-expand = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="koszyk" type="Area2D" parent="koszyk"]
+collision_layer = 8
+collision_mask = 8
 
-[node name="HCl" type="TextureButton" parent="."]
-margin_left = 191.036
-margin_top = 462.817
-margin_right = 335.036
-margin_bottom = 876.817
-texture_normal = ExtResource( 3 )
-expand = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="koszyk/koszyk"]
+visible = false
+polygon = PoolVector2Array( -885.354, -205.765, -813.928, -154.296, -696.284, -86.0208, -563.935, -3.03992, -518.768, 29.5222, -473.601, 37.9253, -361.21, 17.9679, -105.965, -33.5013, 93.6099, -60.8119, 275.327, -89.1725, 409.777, -107.029, 536.875, -134.339, 687.08, -151.145, 825.732, -182.657, 874.05, -209.968, 881.403, -227.824, 878.252, -208.917, 829.934, -179.506, 689.181, -145.894, 539.587, -130.171, 410.594, -104.232, 273.889, -86.7058, 94.4194, -57.2617, -106.782, -29.2196, -359.161, 21.2561, -472.731, 40.8855, -521.104, 33.1735, -565.971, -0.477051, -697.769, -83.2012, -816.246, -151.904 )
 
-[node name="Ca(OH)2" type="TextureButton" parent="."]
-margin_left = 341.947
-margin_top = 433.233
-margin_right = 490.947
-margin_bottom = 862.233
-texture_normal = ExtResource( 9 )
-expand = true
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="papierki" type="Sprite" parent="."]
+position = Vector2( 260.734, 503.841 )
+scale = Vector2( 0.71414, 0.71414 )
+texture = ExtResource( 15 )
 
-[node name="NaOH" type="TextureButton" parent="."]
-margin_left = 511.564
-margin_top = 434.69
-margin_right = 655.564
-margin_bottom = 848.69
-texture_normal = ExtResource( 8 )
-expand = true
+[node name="Area2D" type="Area2D" parent="papierki"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="probowka" type="TextureButton" parent="."]
-margin_left = 479.491
-margin_top = 28.4399
-margin_right = 568.491
-margin_bottom = 398.44
-texture_normal = ExtResource( 10 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="papierki/Area2D"]
+visible = false
+polygon = PoolVector2Array( 253, -130.9, 253, -128.6, 275, -118.6, 275, -116.6, 294, -97.7, 294, -92.8, 311, -51.8, 311, 9, 308.6, 9, 294.6, 41, 292.8, 41, 280.8, 55, 276.7, 55, 239.7, 68, 236.9, 68, 210, 66.3, -277, 131.6, -277, 127.9, -289, 117.9, -289, 113.4, -304, 60.6, -304, 53, -311.4, -29, -309.6, -29, -305.6, -65, -302.8, -65, -287.8, -82, -274.4, -82, 184, -123.7, 184, -124.3, 213, -130.2, 213, -132.1 )
 
-[node name="TextureButton9" type="TextureButton" parent="."]
-margin_left = 1231.22
-margin_top = 44.5449
-margin_right = 1374.22
-margin_bottom = 477.545
-texture_normal = ExtResource( 7 )
+[node name="CaOH" type="Sprite" parent="."]
+position = Vector2( 83.3044, 192.576 )
+scale = Vector2( 0.607118, 0.607118 )
+texture = ExtResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="CaOH"]
+position = Vector2( 4.00354, 6.66791 )
+collision_layer = 8
+collision_mask = 8
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CaOH/Area2D"]
+visible = false
+position = Vector2( -4.00354, -6.66791 )
+polygon = PoolVector2Array( 17.5, -283.4, 17.5, -278, 19.7, -268.5, 44.5, -245.2, 44.5, -242.3, 54.5, -220.4, 54.5, -215.5, 53.5, -166.5, 50.3, -166.5, 27.6, -141.2, 28.1, -138.2, 57.5, -127.3, 57.5, -119, 65, -59.5, 61.6, -59.5, 47.5, -38.3, 47.5, -26.4, 79.5, 32.5, 79.5, 35.9, 94.6, 96.5, 92.5, 96.5, 91.5, 256.5, 88.7, 256.5, 76.7, 275.5, 73.5, 275.5, 33.4, 295.5, 25.6, 295.5, -17.5, 296.6, -17.5, 294.7, -60.5, 284.7, -60.5, 282.2, -89.5, 255.2, -89.5, 248.5, -85.5, 60.5, -83.6, 60.5, -73.6, 21.5, -71.8, 21.5, -47.5, -22.5, -47.5, -26.7, -46.7, -37.1, -63.5, -66.4, -63.5, -73.7, -59.1, -117.5, -56.6, -117.5, -45.6, -133.5, -41, -133.5, -27.5, -136.7, -27.5, -148.4, -20.5, -162.5, -20.5, -168.7, -15.5, -226.8, -15.5, -230.5, -16.3, -244.5, -18, -244.5, -28, -264.5, -23.7, -264.5, -18.7, -285.5, -15.8, -285.5, -11.5, -288.6, -11.5, -293 )
+
+[node name="HCl" type="Sprite" parent="."]
+position = Vector2( 221.629, 191.827 )
+scale = Vector2( 0.607118, 0.607118 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="HCl"]
+position = Vector2( 4.00354, 6.66791 )
+collision_layer = 8
+collision_mask = 2147483656
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HCl/Area2D"]
+visible = false
+position = Vector2( -4.00354, -6.66791 )
+polygon = PoolVector2Array( 17.5, -283.4, 17.5, -278, 19.7, -268.5, 44.5, -245.2, 44.5, -242.3, 54.5, -220.4, 54.5, -215.5, 53.5, -166.5, 50.3, -166.5, 27.6, -141.2, 28.1, -138.2, 57.5, -127.3, 57.5, -119, 65, -59.5, 61.6, -59.5, 47.5, -38.3, 47.5, -26.4, 79.5, 32.5, 79.5, 35.9, 94.6, 96.5, 92.5, 96.5, 91.5, 256.5, 88.7, 256.5, 76.7, 275.5, 73.5, 275.5, 33.4, 295.5, 25.6, 295.5, -17.5, 296.6, -17.5, 294.7, -60.5, 284.7, -60.5, 282.2, -89.5, 255.2, -89.5, 248.5, -85.5, 60.5, -83.6, 60.5, -73.6, 21.5, -71.8, 21.5, -47.5, -22.5, -47.5, -26.7, -46.7, -37.1, -63.5, -66.4, -63.5, -73.7, -59.1, -117.5, -56.6, -117.5, -45.6, -133.5, -41, -133.5, -27.5, -136.7, -27.5, -148.4, -20.5, -162.5, -20.5, -168.7, -15.5, -226.8, -15.5, -230.5, -16.3, -244.5, -18, -244.5, -28, -264.5, -23.7, -264.5, -18.7, -285.5, -15.8, -285.5, -11.5, -288.6, -11.5, -293 )
+
+[node name="HNO" type="Sprite" parent="."]
+position = Vector2( 345.989, 196.322 )
+scale = Vector2( 0.607118, 0.607118 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="HNO"]
+position = Vector2( 4.00354, 6.66791 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HNO/Area2D"]
+visible = false
+position = Vector2( -4.00354, -6.66791 )
+polygon = PoolVector2Array( 17.5, -283.4, 17.5, -278, 19.7, -268.5, 44.5, -245.2, 44.5, -242.3, 54.5, -220.4, 54.5, -215.5, 53.5, -166.5, 50.3, -166.5, 27.6, -141.2, 28.1, -138.2, 57.5, -127.3, 57.5, -119, 65, -59.5, 61.6, -59.5, 47.5, -38.3, 47.5, -26.4, 79.5, 32.5, 79.5, 35.9, 94.6, 96.5, 92.5, 96.5, 91.5, 256.5, 88.7, 256.5, 76.7, 275.5, 73.5, 275.5, 33.4, 295.5, 25.6, 295.5, -17.5, 296.6, -17.5, 294.7, -60.5, 284.7, -60.5, 282.2, -89.5, 255.2, -89.5, 248.5, -85.5, 60.5, -83.6, 60.5, -73.6, 21.5, -71.8, 21.5, -47.5, -22.5, -47.5, -26.7, -46.7, -37.1, -63.5, -66.4, -63.5, -73.7, -59.1, -117.5, -56.6, -117.5, -45.6, -133.5, -41, -133.5, -27.5, -136.7, -27.5, -148.4, -20.5, -162.5, -20.5, -168.7, -15.5, -226.8, -15.5, -230.5, -16.3, -244.5, -18, -244.5, -28, -264.5, -23.7, -264.5, -18.7, -285.5, -15.8, -285.5, -11.5, -288.6, -11.5, -293 )
+
+[node name="NaOH" type="Sprite" parent="."]
+position = Vector2( 489.826, 193.325 )
+scale = Vector2( 0.607118, 0.607118 )
+texture = ExtResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="NaOH"]
+position = Vector2( 4.00354, 6.66791 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NaOH/Area2D"]
+visible = false
+position = Vector2( -4.00354, -6.66791 )
+polygon = PoolVector2Array( 17.5, -283.4, 17.5, -278, 19.7, -268.5, 44.5, -245.2, 44.5, -242.3, 54.5, -220.4, 54.5, -215.5, 53.5, -166.5, 50.3, -166.5, 27.6, -141.2, 28.1, -138.2, 57.5, -127.3, 57.5, -119, 65, -59.5, 61.6, -59.5, 47.5, -38.3, 47.5, -26.4, 79.5, 32.5, 79.5, 35.9, 94.6, 96.5, 92.5, 96.5, 91.5, 256.5, 88.7, 256.5, 76.7, 275.5, 73.5, 275.5, 33.4, 295.5, 25.6, 295.5, -17.5, 296.6, -17.5, 294.7, -60.5, 284.7, -60.5, 282.2, -89.5, 255.2, -89.5, 248.5, -85.5, 60.5, -83.6, 60.5, -73.6, 21.5, -71.8, 21.5, -47.5, -22.5, -47.5, -26.7, -46.7, -37.1, -63.5, -66.4, -63.5, -73.7, -59.1, -117.5, -56.6, -117.5, -45.6, -133.5, -41, -133.5, -27.5, -136.7, -27.5, -148.4, -20.5, -162.5, -20.5, -168.7, -15.5, -226.8, -15.5, -230.5, -16.3, -244.5, -18, -244.5, -28, -264.5, -23.7, -264.5, -18.7, -285.5, -15.8, -285.5, -11.5, -288.6, -11.5, -293 )
+
+[node name="probowka" type="Sprite" parent="."]
+position = Vector2( 1830.32, 203.431 )
+texture = ExtResource( 10 )
+
+[node name="Area2D" type="Area2D" parent="probowka"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="probowka/Area2D"]
+visible = false
+polygon = PoolVector2Array( 28.5, -169.9, 28.5, -166.6, 39.2, -154.8, 37.5, -150.9, 37.5, 67, 36.3, 67, 31.3, 156, 28.5, 156, 13.5, 176, 9.1, 176, -9.5, 178.6, -9.5, 175.1, -22.5, 166.1, -22.5, 162.8, -30.5, 142.8, -30.5, 138, -33.5, 83.1, -33.5, 81, -30.5, -162, -26.6, -162, -15.5, -168.4, -15.5, -171.1 )
+
+[node name="slomka" type="Sprite" parent="."]
+position = Vector2( 697.597, 246.881 )
+texture = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="slomka"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="slomka/Area2D"]
+visible = false
+polygon = PoolVector2Array( 57.5, -197.8, 57.5, -193.5, 59.2, -183.5, 54.8, -183.5, -35.5, -115.5, -35.5, -107.5, -39.5, 210.5, -46.8, 210.5, -63.5, 207.9, -63.5, -56.5, -64.5, -119.5, -61.9, -119.5, -50.9, -140.5, -46.7, -140.5, 39.5, -202.5, 39.5, -203.8, 43.6, -206.1 )
+
+[node name="szmatka" type="Sprite" parent="."]
+position = Vector2( 216.641, 888.157 )
+scale = Vector2( 0.788475, 0.788475 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="szmatka"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szmatka/Area2D"]
+visible = false
+polygon = PoolVector2Array( 45, -133.9, 45, -132.7, 98, -127.6, 98, -125.7, 118.8, -117, 125.2, -117, 197, -110.7, 197, -107.3, 208.2, -90, 209.1, -90, 236, -73.2, 236, -67.6, 242.8, -50, 237.1, -50, 188.1, -20, 176.7, -20, 150.8, 3.2, 172, 24.3, 172, 29.9, 170.1, 33.8, 177, 43.7, 177, 51.6, 166, 56.6, 166, 63.6, 174, 76.9, 174, 80.4, 169.2, 102, 147.7, 102, 125.5, 108, 119.8, 108, 99, 105.5, 25, 112.4, 25, 108.9, 12.7, 98.7, -9.5, 145, -12, 145, -23, 151, -33.2, 151, -69, 146.5, -69, 144.4, -87.1, 134, -90.4, 134, -122, 138.6, -122, 134.9, -137, 122.9, -137, 120, -145, 103.9, -145, 100.7, -215.9, -106, -227, -120.7, -227, -131.7, -212, -137.7, -212, -140.1 )
+
+[node name="szkielko" type="Sprite" parent="."]
+position = Vector2( 249.304, 664.909 )
+scale = Vector2( 0.788475, 0.788475 )
+texture = ExtResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="szkielko"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szkielko/Area2D"]
+visible = false
+polygon = PoolVector2Array( 166.5, -61.8, 166.5, -59.7, 245.5, -29.8, 245.5, -28, 257.5, -19, 257.5, -15.6, 260.2, 2, 256.2, 2, 244.3, 15, 241.5, 15, 191.5, 42, 188.2, 42, 91.2, 75, 83.5, 75, -32.5, 77, -32.5, 75.6, -134.5, 63.6, -134.5, 62.1, -175.5, 52.1, -175.5, 50.5, -214.5, 32.6, -214.5, 31, -255.5, 1, -255.5, -2.4, -258.1, -21, -253.8, -21, -232.8, -36, -229.1, -36, -193.3, -50, -187.7, -50, -107.9, -65, -96.8, -65, -37.5, -69.7, -37.5, -71.2 )
+
+[node name="zlewka" type="Sprite" parent="."]
+position = Vector2( 1554.49, 240.261 )
+scale = Vector2( 0.580474, 0.580474 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="zlewka"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="zlewka/Area2D"]
+visible = false
+polygon = PoolVector2Array( 175, -359.9, 175, -358.6, 256, -349.6, 256, -347.9, 286, -337.9, 286, -331.5, 268, -260.4, 268, -248, 256, 282, 253.7, 282, 246.7, 300, 244.5, 300, 213.5, 327, 210.8, 327, 149.7, 349, 141.5, 349, 39.3, 362, 31.9, 362, -82, 356.8, -82, 355, -162, 332, -162, 329.9, -193, 304.9, -193, 302, -200, 287.9, -200, 281, -203, 250.2, -203, 217, -212.9, -238, -222.9, -267.1, -276.5, -287.4, -275.3, -294, -273, -294, -242, -334, -238.9, -334, -200.9, -352, -194.4, -352, -118.2, -360, -85, -360, 32, -362.9, 32, -364.1 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zlewka1.png-4e60ceee62ff44326858eabe374a4cec.stex"
+path="res://.import/zlewka2.png-8e64482453344fbc87d83cdf08751673.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/zlewka1.png"
-dest_files=[ "res://.import/zlewka1.png-4e60ceee62ff44326858eabe374a4cec.stex" ]
+source_file="res://textures/zlewka2.png"
+dest_files=[ "res://.import/zlewka2.png-8e64482453344fbc87d83cdf08751673.stex" ]
 
 [params]
 
