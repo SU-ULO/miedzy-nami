@@ -43,5 +43,7 @@ func checkForEnd():
 		iter += 1
 	
 	if counter == taskKit.size():
+		$Timer.start()
+		yield($Timer, "timeout")
 		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
 		TaskWithGUI.TaskWithGUICompleteTask(self)
