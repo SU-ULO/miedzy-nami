@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/tasks/apple.gd" type="Script" id=1]
+[ext_resource path="res://textures/dzdzownica.png" type="Texture" id=2]
+[ext_resource path="res://textures/jablko.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "grow"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/dzdzownica:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 528.955, 560.451 ), Vector2( 494.249, 531.35 ), Vector2( 524.955, 523.251 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/dzdzownica:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 1, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.866666, 0.866666 ), Vector2( 0.866666, 1.57757 ), Vector2( 1.52433, 1.57757 ) ]
+}
+
+[node name="BIO-Bug" type="Node2D"]
+
+[node name="jablko" type="Sprite" parent="."]
+position = Vector2( 1366.2, 553.609 )
+scale = Vector2( 0.784, 0.784 )
+z_index = 1
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="jablko"]
+position = Vector2( -1742.6, -706.134 )
+scale = Vector2( 1.27551, 1.27551 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="jablko/Area2D"]
+visible = false
+position = Vector2( 1366.2, 553.609 )
+scale = Vector2( 0.784, 0.784 )
+polygon = PoolVector2Array( 64, -234.4, 64, -232.6, 68.3, -226.1, 67.2, -224, 65.7, -224, 50, -211.1, 50, -209.2, 40, -198.2, 40, -196.6, 32.1, -179, 45, -179, 97, -177, 97, -175.5, 121, -169.6, 121, -168.3, 141, -159.3, 141, -157.9, 164, -136.9, 164, -134.7, 173, -123.7, 173, -121.5, 187, -95.5, 187, -92, 197, -55.3, 197, -25.9, 194.9, 15, 193.7, 15, 186.7, 54, 185.5, 54, 177.5, 79, 176.2, 79, 155.2, 120, 154.1, 120, 139.1, 142, 137.9, 142, 118.9, 163, 116.8, 163, 99.8, 180, 97.7, 180, 80.7, 193, 78.5, 193, 44.4, 209, 40.4, 209, 23.3, 215, -43.2, 215, -60, 211.6, -60, 210.2, -90, 195.2, -90, 193.9, -119, 168.9, -119, 166.7, -137, 144.7, -137, 142.6, -168, 93.6, -168, 91.4, -188, 46.4, -188, 42.3, -194, 24.3, -194, 18, -199.3, -15, -197.9, -15, -194.9, -72, -193.5, -72, -183.5, -110, -182.2, -110, -169.2, -135, -167.8, -135, -145.9, -158, -143.7, -158, -129.7, -170, -126.6, -170, -99.4, -181, 14, -181, 14, -182.5, 34.8, -223, 36.1, -223, 48, -236.7, 48, -239.8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/grow = SubResource( 1 )
+
+[node name="dzdzownica" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 528.955, 560.451 )
+scale = Vector2( 0.866666, 0.866666 )
+texture = ExtResource( 2 )
+
+[node name="dzdzownica" type="Area2D" parent="AnimationPlayer/dzdzownica"]
+collision_layer = 8
+collision_mask = 2147483656
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="AnimationPlayer/dzdzownica/dzdzownica"]
+visible = false
+polygon = PoolVector2Array( 64, -234.4, 64, -232.9, 74, -228.9, 74, -227.5, 120, -190.5, 120, -188.3, 140, -166.3, 140, -164.1, 159, -137.1, 159, -135, 190, -71, 190, -67.5, 207, -7.8, 207, -1.5, 210, 26.2, 210, 77.3, 209.9, 81.5, 208.7, 81.5, 204.7, 106.5, 203.5, 106.5, 199.5, 119.5, 198.2, 119.5, 180.2, 154.5, 179, 154.5, 145, 197.5, 142.8, 197.5, 120.8, 218.5, 118.6, 218.5, 91.6, 236.5, 88.6, 236.5, 79.6, 242.5, 76.4, 242.5, 42.4, 255.5, 37.4, 255.5, 4.2, 262.5, -34, 262.5, -87, 257.3, -87, 256, -115, 248, -115, 246.8, -149, 232.8, -149, 231.5, -180, 208.5, -180, 207.2, -195, 190.3, -195, 188, -206, 167, -206, 162.8, -209.4, 142.5, -207.5, 142.5, -199.6, 109.5, -198.1, 109.5, -186.2, 88.5, -184.9, 88.5, -168, 69.8, -168, 69.1, -181, 51.1, -181, 45.4, -177.8, 18.5, -176.1, 18.5, -163.1, -0.5, -161.9, -0.5, -133, -27.4, -133, -29.3, -128, -34.3, -128, -35.9, -122, -49.8, -122, -63.1, -133.3, -88.5, -133.9, -88.5, -173, -130.7, -173, -134.1, -178.1, -145.5, -174.8, -145.5, -170.8, -149.5, -160.5, -149.5, -134, -135.7, -134, -134.5, -115, -119.5, -115, -117.2, -93, -91.2, -93, -88, -84, -68.9, -84, -38.5, -85.9, -38.5, -103, -10.9, -103, -8.10001, -107, 0.899994, -107, 12.2, -103.7, 19.5, -103, 19.5, -99, 24.5, -98.4, 24.5, -66.2, 18.5, -63.9, 18.5, -45, 20.7, -45, 22.1, -21, 30.1, -21, 31.4, -2, 44.4, -2, 46.8, 7, 57.8, 7, 61.5, 10.3, 82.5, 8.3, 82.5, -0.699997, 103.5, -2.2, 103.5, -18.1, 119.4, -4, 113.2, 11, 95.8, 11, 94.1, 17, 81.1, 17, 77.3, 19, 67.1, 19, 50.5, 17.2, 34.5, 16.5, 34.5, 9.5, 9.5, 8.7, 9.5, -24, -60.1, -24, -63.1, -42, -109.1, -42, -114.5, -49, -140.2, -49, -180.5, -47.4, -180.5, -43.4, -191.5, -41.8, -191.5, -10.8, -221.5, -8.60001, -221.5, 23.6, -234.5, 42, -234.5, 42, -235.6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimationPlayer/dzdzownica/dzdzownica"]
+visible = false
+polygon = PoolVector2Array( 29, -250.5, 25.5, -250.5, 12, -242.4, 12, -241.7, 3.8, -233.5, 0.600006, -233.5, -2.8, -243.5, -0.199997, -243.5, 5.8, -255.5, 8.60001, -255.5, 15, -257.9, 15, -259.5, 29, -259.5 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="AnimationPlayer/dzdzownica/dzdzownica"]
+visible = false
+polygon = PoolVector2Array( -44, -233.3, -41.6, -231, -42.7, -228.5, -44.2, -228.5, -55, -217.7, -55, -216, -60.8, -205.5, -69, -205.5, -69, -218.5, -67.4, -218.5, -64.4, -227.5, -62.5, -227.5, -54, -233.5, -54, -235.5, -44, -235.5 )
+[connection signal="animation_finished" from="AnimationPlayer" to="jablko/Area2D" method="_on_AnimationPlayer_animation_finished"]
