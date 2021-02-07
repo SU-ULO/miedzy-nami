@@ -20,8 +20,10 @@ func _input(event):
 		if event.is_pressed():
 			if event.get_button_index() == BUTTON_LEFT:
 				if mouseIn:
-					pickedUp = true
-					clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
+					if get_parent().get_parent().toDrag.max() == get_parent().get_index():
+						if active:
+							pickedUp = true
+							clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
 		else:
 			pickedUp = false
 			if isOnDesk:
@@ -43,9 +45,11 @@ func _input(event):
 func isAbleToBePicked():
 	if active:
 		mouseIn = true
+		get_parent().get_parent().toDrag.append(get_parent().get_index())
 
 func notAbleToBePicked():
 	mouseIn = false
+	get_parent().get_parent().toDrag.erase(get_parent().get_index())
 
 func onDesk(area):
 	if area.name == "lawka":
