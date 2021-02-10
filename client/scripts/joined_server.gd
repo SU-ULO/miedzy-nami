@@ -23,7 +23,7 @@ func leave():
 func spawn_player():
 	pass
 
-func handle_init(input):
+func handle_events(input):
 	if input is Array:
 		if input.size()==2:
 			if input[0]==0 and input[1] is Dictionary:

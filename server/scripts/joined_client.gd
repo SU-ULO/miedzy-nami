@@ -11,5 +11,5 @@ func _ready():
 
 func spawn_player():
 	emit_signal("join")
-	while send_init([0, {"username": config.username}])!=OK:
+	while send_events([0, {"username": config.username}])!=OK:
 		pass

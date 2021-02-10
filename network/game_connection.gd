@@ -11,7 +11,6 @@ var peer = WebRTCPeerConnection.new()
 
 var game_updates: WebRTCDataChannel
 var game_events: WebRTCDataChannel
-var game_init: WebRTCDataChannel
 
 signal send_session
 signal send_candidate
@@ -33,9 +32,7 @@ func _ready():
 		{"negotiated": true, "id":1, "maxRetransmits": 0})
 	game_events = peer.create_data_channel("events",
 		{"negotiated": true, "id":2})
-	game_init = peer.create_data_channel("init",
-		{"negotiated": true, "id":3})
-	if game_updates==null || game_events==null || game_init==null:
+	if game_updates==null || game_events==null:
 		emit_signal("fail")
 		return
 	
@@ -78,16 +75,10 @@ func send_updates(input):
 func send_events(input):
 	return game_events.put_var(input)
 
-func send_init(input):
-	return game_init.put_var(input)
-
 func handle_updates(_input):
 	pass
 
 func handle_events(_input):
-	pass
-
-func handle_init(_input):
 	pass
 
 func _process(_delta):
@@ -100,9 +91,6 @@ func _process(_delta):
 			established=false
 			emit_signal("fail")
 		else:
-			if game_init.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
-				while game_init.get_available_packet_count()>0:
-					handle_init(game_init.get_var())
 			if game_events.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
 				while game_events.get_available_packet_count()>0:
 					handle_events(game_events.get_var())
