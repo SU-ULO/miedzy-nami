@@ -132,7 +132,6 @@ public abstract class Task : Godot.Node2D, ICloneable
 	}
 	
 	protected abstract Task CloneInternal();
-	public abstract void TaskEndInteraction();
 	
 	public void Start(){
 		started = true;
@@ -155,7 +154,6 @@ public abstract class Task : Godot.Node2D, ICloneable
 
 	public TaskCategory category;
 	
-	public virtual void TaskInteract(){
-
-	}
+	public virtual void TaskInteract(){}
+	public virtual void TaskEndInteraction(){}
 }

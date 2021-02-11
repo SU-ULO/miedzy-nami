@@ -10,17 +10,24 @@ func _on_ready():
 
 func get_input():
 	moveX = 0; moveY = 0
-	if Input.is_action_pressed("move_right"):
-		moveX = 1;
+	if currentInteraction == null:
+		if Input.is_action_pressed("move_right"):
+			moveX = 1;
+		
+		if Input.is_action_pressed("move_left"):
+			moveX = -1;
+		
+		if Input.is_action_pressed("move_down"):
+			moveY = 1;
+		
+		if Input.is_action_pressed("move_up"):
+			moveY = -1;
+		
+		if Input.is_action_just_pressed("ui_select"):
+			ui_selected()
 	
-	if Input.is_action_pressed("move_left"):
-		moveX = -1;
-	
-	if Input.is_action_pressed("move_down"):
-		moveY = 1;
-	
-	if Input.is_action_pressed("move_up"):
-		moveY = -1;
+	if Input.is_action_pressed("ui_cancel"):
+		ui_canceled()
 	
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
@@ -28,9 +35,6 @@ func get_input():
 		else:
 			sight_range = 500
 		fov_toggle = !fov_toggle
-	
-	if Input.is_action_just_pressed("ui_select"):
-		ui_selected()
 
 func _physics_process(delta):
 	scale_sight_range(delta)

@@ -87,4 +87,8 @@ public class TaskWithGUI : Task, IInteractable
 	public void Interact(){
 		TaskInteract();
 	}
+	
+	public void EndInteraction(){
+		TaskEndInteraction();
+	}
 }

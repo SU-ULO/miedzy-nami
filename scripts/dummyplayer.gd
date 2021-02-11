@@ -10,6 +10,7 @@ var in_sight = []; var interactable = []
 var flipped = false
 var moveX :int
 var moveY :int
+var currentInteraction = null
 
 func _ready():
 	add_to_group("entities")
@@ -73,6 +74,12 @@ func ui_selected():
 				currentBestItem = item
 			
 		currentBestItem.Interact()
+		currentInteraction = currentBestItem
+		
+func ui_canceled():
+	if(currentInteraction != null):
+		currentInteraction.EndInteraction()
+		currentInteraction = null
 
 func on_sight_area_enter(body):
 		if body.is_in_group("entities") and body != self:
