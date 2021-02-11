@@ -117,7 +117,7 @@ public abstract class Task : Godot.Node2D, ICloneable
 			_state = value;
 			if(value >= maxState){
 				Godot.GD.Print("Ending task "+taskID);
-				TaskEnd();
+				TaskEndInteraction();
 				return;
 			}
 		} 
@@ -132,7 +132,7 @@ public abstract class Task : Godot.Node2D, ICloneable
 	}
 	
 	protected abstract Task CloneInternal();
-	public abstract void TaskEnd();
+	public abstract void TaskEndInteraction();
 	
 	public void Start(){
 		started = true;

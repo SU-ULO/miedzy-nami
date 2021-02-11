@@ -63,9 +63,7 @@ public class TaskWithGUI : Task, IInteractable
 		
 	}
 	
-	public override void TaskEnd(){
-		
-		GD.Print("TaskEnd extended");
+	public override void TaskEndInteraction(){
 		// Kill the GUI
 		Node n = (Node)GetOwner().GetNode("CanvasLayer");
 		Godot.Collections.Array children = n.GetChildren();
