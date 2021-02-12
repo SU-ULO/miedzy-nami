@@ -29,12 +29,11 @@ func _ready():
 
 func checkForEnd():
 	userKit.sort()
-	var iter = 0; var counter = 0
+	var iter = 0;
 	
 	for item in taskKit:
 		if userKit.has(item):
 			print("item it")
-			counter += 1
 			labels[iter].text = "0x " + str(item)
 			labels[iter].set("custom_colors/font_color", Color(0.19,0.19,0.19,0.5)) #dim gray
 		else:
@@ -42,7 +41,7 @@ func checkForEnd():
 			labels[iter].set("custom_colors/font_color", Color(0.19,0.19,0.19,1)) #dim gray
 		iter += 1
 	
-	if counter == taskKit.size():
+	if userKit == taskKit:
 		$Timer.start()
 		yield($Timer, "timeout")
 		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")

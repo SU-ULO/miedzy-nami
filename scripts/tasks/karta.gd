@@ -11,9 +11,13 @@ var active = true
 var areaCount = 0
 
 func _ready():
+	# warning-ignore:return_value_discarded
 	connect("mouse_entered", self, "isAbleToBePicked")
+	# warning-ignore:return_value_discarded
 	connect("mouse_exited", self, "notAbleToBePicked")
+	# warning-ignore:return_value_discarded
 	connect("area_entered", self, "onDesk")
+	# warning-ignore:return_value_discarded
 	connect("area_exited", self, "offDesk")
 func _input(event):
 	if event is InputEventMouseButton:
