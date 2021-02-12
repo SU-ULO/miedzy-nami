@@ -10,6 +10,11 @@ func _on_ready():
 
 func get_input():
 	moveX = 0; moveY = 0
+	
+	if currentInteraction != null:
+		if currentInteraction.IsDone():
+			currentInteraction = null
+	
 	if currentInteraction == null:
 		if Input.is_action_pressed("move_right"):
 			moveX = 1;

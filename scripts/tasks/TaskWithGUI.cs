@@ -91,4 +91,8 @@ public class TaskWithGUI : Task, IInteractable
 	public void EndInteraction(){
 		TaskEndInteraction();
 	}
+	
+	public bool IsDone(){
+		return this.state >= this.maxState;
+	}
 }
