@@ -10,7 +10,8 @@ func _ready():
 	$"body-parts-control/skin-control".connect("changeSkin", self, "_skin_Change")
 	$"body-parts-control/nose-control".connect("changeNose", self, "_nose_Change")
 	$"body-parts-control/mouth-control".connect("changeMouth", self, "_mouth_Change")
-	$"body-parts-control/eye-control".connect("changeEye", self, "_eye_Change")	
+	$"body-parts-control/eye-control".connect("changeEye", self, "_eye_Change")
+	$"eye-color".connect("changeEyeColor", self, "_eye_color_Change")	
 func _skin_Change(number):
 	$"body-parts/skin".texture = load("res://textures/character/face_front/skin" + number + ".png")
 	currLook.skin = number
@@ -27,6 +28,8 @@ func hideAll():
 func _show_Menu(menu):
 	hideAll()
 	get_node("body-parts-control/" + menu + "-control").visible = true
+	if menu == "eye":
+		$"eye-color".visible = currLook.hasColoredEyes()
 	
 func _mouth_Change(name):
 	currLook.mouth = name
@@ -41,3 +44,8 @@ func _eye_Change(name):
 		$"body-parts/bonus".texture = load("res://textures/character/face parts/oczy/" + currLook.getEyePath(name))
 	else:
 		$"body-parts/bonus".visible = false
+	$"eye-color".visible = currLook.hasColoredEyes()
+
+func _eye_color_Change(color):
+	currLook.eye_color = color
+	_eye_Change(currLook.eye)

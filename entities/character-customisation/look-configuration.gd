@@ -32,4 +32,7 @@ func getEyeBonusPath(name):
 		return name + "/bonus/skin" + skin + name + ".png"
 	else:
 		return "przykromi"
+		
+func hasColoredEyes():
+	return not eye in noColorEyes 
 
