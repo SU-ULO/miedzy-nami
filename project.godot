@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "JoinedServer",
 "language": "GDScript",
 "path": "res://client/scripts/joined_server.gd"
+}, {
+"base": "Reference",
+"class": "LookConfiguration",
+"language": "GDScript",
+"path": "res://entities/character-customisation/look-configuration.gd"
 } ]
 _global_script_class_icons={
 "Client": "",
 "Game_Connection": "",
 "JoinedClient": "",
-"JoinedServer": ""
+"JoinedServer": "",
+"LookConfiguration": ""
 }
 
 [application]
