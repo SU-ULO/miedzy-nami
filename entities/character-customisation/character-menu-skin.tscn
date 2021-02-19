@@ -1,0 +1,119 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=1]
+[ext_resource path="res://entities/character-customisation/skin-control.gd" type="Script" id=2]
+[ext_resource path="res://textures/character/face_front/skin5.png" type="Texture" id=3]
+[ext_resource path="res://textures/character/face_front/skin9.png" type="Texture" id=4]
+[ext_resource path="res://textures/character/face_front/skin8.png" type="Texture" id=5]
+[ext_resource path="res://textures/character/face_front/skin10.png" type="Texture" id=6]
+[ext_resource path="res://textures/character/face_front/skin2.png" type="Texture" id=7]
+[ext_resource path="res://textures/character/face_front/skin12.png" type="Texture" id=8]
+[ext_resource path="res://textures/character/face_front/skin7.png" type="Texture" id=9]
+[ext_resource path="res://textures/character/face_front/skin3.png" type="Texture" id=10]
+[ext_resource path="res://textures/character/face_front/skin6.png" type="Texture" id=11]
+[ext_resource path="res://textures/character/face_front/skin11.png" type="Texture" id=12]
+[ext_resource path="res://textures/character/face_front/skin4.png" type="Texture" id=13]
+
+[node name="skin-control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="skin1" type="TextureButton" parent="."]
+margin_left = 900.0
+margin_top = 100.0
+margin_right = 1015.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="skin2" type="TextureButton" parent="."]
+margin_left = 1050.0
+margin_top = 100.0
+margin_right = 1165.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 7 )
+expand = true
+
+[node name="skin3" type="TextureButton" parent="."]
+margin_left = 1200.0
+margin_top = 100.0
+margin_right = 1315.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 10 )
+expand = true
+
+[node name="skin4" type="TextureButton" parent="."]
+margin_left = 1350.0
+margin_top = 100.0
+margin_right = 1465.0
+margin_bottom = 215.0
+texture_normal = ExtResource( 13 )
+expand = true
+
+[node name="skin5" type="TextureButton" parent="."]
+margin_left = 900.0
+margin_top = 250.0
+margin_right = 1015.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 3 )
+expand = true
+
+[node name="skin6" type="TextureButton" parent="."]
+margin_left = 1050.0
+margin_top = 250.0
+margin_right = 1165.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 11 )
+expand = true
+
+[node name="skin7" type="TextureButton" parent="."]
+margin_left = 1200.0
+margin_top = 250.0
+margin_right = 1315.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 9 )
+expand = true
+
+[node name="skin8" type="TextureButton" parent="."]
+margin_left = 1350.0
+margin_top = 250.0
+margin_right = 1465.0
+margin_bottom = 365.0
+texture_normal = ExtResource( 5 )
+expand = true
+
+[node name="skin9" type="TextureButton" parent="."]
+margin_left = 900.0
+margin_top = 400.0
+margin_right = 1015.0
+margin_bottom = 515.0
+texture_normal = ExtResource( 4 )
+expand = true
+
+[node name="skin10" type="TextureButton" parent="."]
+margin_left = 1050.0
+margin_top = 400.0
+margin_right = 1165.0
+margin_bottom = 515.0
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="skin11" type="TextureButton" parent="."]
+margin_left = 1200.0
+margin_top = 400.0
+margin_right = 1315.0
+margin_bottom = 515.0
+texture_normal = ExtResource( 12 )
+expand = true
+
+[node name="skin12" type="TextureButton" parent="."]
+margin_left = 1350.0
+margin_top = 400.0
+margin_right = 1465.0
+margin_bottom = 515.0
+texture_normal = ExtResource( 8 )
+expand = true
