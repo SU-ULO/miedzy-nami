@@ -2,6 +2,8 @@ extends Node2D
 
 var inbox = Dictionary()
 
+var toDrag = []
+
 var kits = [["CaOH", "HCl", "NaOH", "slomka", "zlewka", "probowka"],["HCl", "HNO", "szkielko", "szmatka"],["CaOH", "HCl", "HNO", "NaOH", "papierki", "probowka"]] #has to be sorted
 var kitsCount
 var taskKit
