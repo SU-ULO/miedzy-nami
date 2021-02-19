@@ -17,7 +17,7 @@ func _skin_Change(number):
 	currLook.skin = number
 	_mouth_Change(currLook.mouth)
 	_eye_Change(currLook.eye)
-
+	$"eye-color".visible = false
 func _nose_Change(name):
 	$"body-parts/nose".texture = load("res://textures/character/face parts/noses/" + name + ".png")
 	currLook.nose = name
@@ -30,6 +30,8 @@ func _show_Menu(menu):
 	get_node("body-parts-control/" + menu + "-control").visible = true
 	if menu == "eye":
 		$"eye-color".visible = currLook.hasColoredEyes()
+	else:
+		$"eye-color".visible = false
 	
 func _mouth_Change(name):
 	currLook.mouth = name
