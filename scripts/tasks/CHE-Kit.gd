@@ -4,7 +4,7 @@ var inbox = Dictionary()
 
 var toDrag = []
 
-var kits = [["CaOH", "HCl", "NaOH", "slomka", "zlewka", "probowka"],["HCl", "HNO", "szkielko", "szmatka"],["CaOH", "HCl", "HNO", "NaOH", "papierki", "probowka"]] #has to be sorted
+var kits = [["CaOH", "HCl", "NaOH","probowka", "slomka", "zlewka"],["HCl", "HNO", "szkielko", "szmatka"],["CaOH", "HCl", "HNO", "NaOH", "papierki", "probowka"]] #has to be sorted
 var kitsCount
 var taskKit
 var userKit = []
