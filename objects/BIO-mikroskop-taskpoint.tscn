@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/mikroskop.png" type="Texture" id=1]
+[ext_resource path="res://scripts/tasks/BIOmikroskop.cs" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 61.6562
+height = 58.8484
+
+[node name="BIO-mikroskop" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="mikroskop" type="Sprite" parent="."]
+scale = Vector2( 0.18222, 0.18222 )
+texture = ExtResource( 1 )
