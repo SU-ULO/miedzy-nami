@@ -9,7 +9,7 @@
 [ext_resource path="res://objects/BIO-Bug-taskpoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/MAT-Karta-taskpoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
-[ext_resource path="res://objects/vent.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/vents/vent.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -20,11 +20,15 @@ position = Vector2( 1, 1 )
 
 [node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -345.451, 1077.4 )
-link = [ NodePath("../vent2") ]
+link = [ NodePath("../vent2"), NodePath("../vent3") ]
 
 [node name="vent2" parent="Mapa" instance=ExtResource( 10 )]
-position = Vector2( 1363.63, 566.95 )
-link = [ NodePath("../vent1") ]
+position = Vector2( 1541.08, 717.97 )
+link = [ NodePath("../vent1"), NodePath("../vent3") ]
+
+[node name="vent3" parent="Mapa" instance=ExtResource( 10 )]
+position = Vector2( -1518.45, 42.2506 )
+link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="YSort" type="YSort" parent="Mapa"]
 

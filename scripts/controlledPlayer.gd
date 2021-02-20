@@ -12,7 +12,7 @@ func get_input():
 	moveX = 0; moveY = 0
 	
 	if currentInteraction != null:
-		if currentInteraction.IsDone():
+		if !currentInteraction.is_in_group("vents") and currentInteraction.IsDone():
 			currentInteraction = null
 	
 	if currentInteraction == null:

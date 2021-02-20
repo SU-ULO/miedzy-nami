@@ -1,16 +1,62 @@
 extends StaticBody2D
 
 export var link = [] # array of nodepaths the vent is supposed to link to
-onready var pos = self.position
+var pos = [] # positions of nodes from array above
 
-func teleport(body):
-	if link.empty():
-		body.position = pos
-	else:
-		body.position = get_node(link[0]).position
+# variables for arrows instancing
+onready var arrow = preload("res://objects/vents/arrow.tscn")
+const radius = 150
+
+func enter(body):
+	# center player on vent and make him invisible (but not the light)
+	body.position = self.position
+	body.get_node("Sprite").visible = false
+	# also hitbox to prevent player being detected
+	body.get_node("PlayerHitbox").visible = false
+
+	# also here probably should be animation of entering in some if
+	
+	var instance; var iter = 0; var angle
+	# for every connected vent instance an arrow pointing to it
+	# put arrows on circle perimeter of const radius specified above
+	# and centered on vent
+	for item in pos:
+		$arrows.add_child(arrow.instance())
+		instance = $arrows.get_child(iter)
+		angle = item.angle_to_point(self.position)
+		
+		instance.set_position(Vector2(radius * cos(angle), radius * sin(angle)))
+		instance.set_rotation(angle)
+		
+		instance.link = link[iter]
+		instance.body = body
+		iter += 1
+
+func teleport(body, vent): # called by arrow instance after click on it
+	
+	# remove all arrows first
+	for child in $arrows.get_children():
+		child.queue_free()
+		
+	# then call enter function on new vent
+	body.currentInteraction = get_node(vent)
+	get_node(vent).enter(body)
+
+func exit(body):
+	
+	# remove all arrows first
+	for child in $arrows.get_children():
+		child.queue_free()
+		
+	# then make player visible
+	body.get_node("Sprite").visible = true
+	body.get_node("PlayerHitbox").visible = true
 
 func _ready():
 	self.add_to_group("entities")
 	self.add_to_group("interactable")
 	self.add_to_group("vents")
-	pass
+	
+	# get all linked vents positions
+	for item in link:
+		pos.append(get_node(item).position)

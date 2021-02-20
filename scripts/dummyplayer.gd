@@ -47,22 +47,24 @@ func set_player_velocity():
 	player_velocity.x = moveX
 	player_velocity.y = moveY
 	
-	if player_velocity.x == 0 && player_velocity.y == 0:
-		$Sprite.visible = true
-		$Sprite.flip_h = flipped
-		$AnimatedSprite.visible = false
-	else:
-		$AnimatedSprite.visible = true
-		$Sprite.visible = false
-		
-		if player_velocity.x == 1:
-			$AnimatedSprite.flip_h = flipped
-			flipped = false
-		else: if player_velocity.x == -1:
-			$AnimatedSprite.flip_h = flipped
-			flipped = true
+	if(currentInteraction == null):
 	
-	player_velocity = player_velocity.normalized() * default_speed
+		if player_velocity.x == 0 && player_velocity.y == 0:
+			$Sprite.visible = true
+			$Sprite.flip_h = flipped
+			$AnimatedSprite.visible = false
+		else:
+			$AnimatedSprite.visible = true
+			$Sprite.visible = false
+		
+			if player_velocity.x == 1:
+				$AnimatedSprite.flip_h = flipped
+				flipped = false
+			else: if player_velocity.x == -1:
+				$AnimatedSprite.flip_h = flipped
+				flipped = true
+		
+		player_velocity = player_velocity.normalized() * default_speed
 	
 func ui_selected():
 	if(interactable.size() != 0):
@@ -74,14 +76,17 @@ func ui_selected():
 				currentBestItem = item
 			
 		if currentBestItem.is_in_group("vents"):
-			currentBestItem.teleport(self)
+			currentBestItem.enter(self)
 		else:
 			currentBestItem.Interact()
-			currentInteraction = currentBestItem
-		
+		currentInteraction = currentBestItem
+
 func ui_canceled():
 	if(currentInteraction != null):
-		currentInteraction.EndInteraction()
+		if currentInteraction.is_in_group("vents"):
+			currentInteraction.exit(self)
+		else:
+			currentInteraction.EndInteraction()
 		currentInteraction = null
 
 func on_sight_area_enter(body):
