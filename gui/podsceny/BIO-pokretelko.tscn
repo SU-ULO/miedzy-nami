@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui/podsceny/BIO-obracanie.gd" type="Script" id=1]
+[ext_resource path="res://textures/guzik_pokreta.png" type="Texture" id=2]
+[ext_resource path="res://textures/pokreto.png" type="Texture" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pokreto" type="TextureRect" parent="."]
+margin_left = 77.4131
+margin_top = 317.966
+margin_right = 432.413
+margin_bottom = 711.966
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="guzik" type="TextureButton" parent="pokreto"]
+margin_left = 68.9219
+margin_top = 116.868
+margin_right = 108.922
+margin_bottom = 156.868
+rect_pivot_offset = Vector2( 116.535, 17.9116 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="pokreto/guzik" to="pokreto/guzik" method="_on_guzik_button_down"]
+[connection signal="button_up" from="pokreto/guzik" to="pokreto/guzik" method="_on_guzik_button_up"]

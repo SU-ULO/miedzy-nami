@@ -1,3 +1,29 @@
-[gd_scene format=2]
+[gd_scene load_steps=5 format=2]
 
-[node name="Control" type="Node2D"]
+[ext_resource path="res://textures/dzdzownica.png" type="Texture" id=1]
+[ext_resource path="res://gui/podsceny/BIO-pokretelko.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/BIO-mikroskop.gd" type="Script" id=3]
+[ext_resource path="res://shaders/BIO-mikroskop.tres" type="Material" id=4]
+
+[node name="BIO-mikroskop" type="Control"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dzdzownica" type="TextureRect" parent="."]
+material = ExtResource( 4 )
+margin_left = 808.93
+margin_top = 240.416
+margin_right = 1228.93
+margin_bottom = 765.416
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pokretlo" parent="." instance=ExtResource( 2 )]
+margin_left = -21.9204
+margin_top = 38.0164
+margin_right = -21.9204
+margin_bottom = 38.0164
