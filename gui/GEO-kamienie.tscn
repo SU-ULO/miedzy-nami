@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/kamien_2.png" type="Texture" id=1]
+[ext_resource path="res://textures/kamien_6.png" type="Texture" id=2]
+[ext_resource path="res://textures/kamien_1.png" type="Texture" id=3]
+[ext_resource path="res://textures/kamien_5.png" type="Texture" id=4]
+[ext_resource path="res://textures/szafkatask.png" type="Texture" id=5]
+[ext_resource path="res://textures/kamien_3.png" type="Texture" id=6]
+[ext_resource path="res://textures/kamien_4.png" type="Texture" id=7]
+[ext_resource path="res://scripts/tasks/kamien.gd" type="Script" id=8]
+[ext_resource path="res://scripts/tasks/GEO-kamienie.gd" type="Script" id=9]
+
+[node name="GEO-kamienie" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="szafkatask" type="Sprite" parent="."]
+position = Vector2( 1326.5, 547 )
+texture = ExtResource( 5 )
+
+[node name="szafka-bok" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/szafka-bok"]
+polygon = PoolVector2Array( -324.921, -126.919, -327.04, -113.146, 192.097, -54.8751, 192.097, 154.899, -321.742, 81.7957, -322.802, 95.5687, 191.038, 172.909, 186.8, 390.267, -338.694, 301.272, -339.753, 312.926, 205.87, 410.397, 212.227, -71.6591, 216.465, -320.089, -360.942, -363.527, -349.288, 41.1879, -339.753, 297.951, -328.099, 300.07, -337.634, 37.3232, -348.229, -348.927, 198.454, -306.549, 196.335, -74.5262 )
+
+[node name="szafka-polka" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/szafka-polka"]
+polygon = PoolVector2Array( -161.5, -193, -324.5, -134, 189.5, -80, 190.5, -156 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="szafkatask/szafka-polka"]
+polygon = PoolVector2Array( -318.5, 78.5167, -159.5, 2.51672, 188.5, 47.5167, 187.5, 148.517 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="szafkatask/szafka-polka"]
+polygon = PoolVector2Array( -155.5, 199.517, -322.5, 298.517, 182.5, 385.517, 184.5, 252.517 )
+
+[node name="kamien_1" type="Sprite" parent="."]
+position = Vector2( 210.5, 739 )
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="kamien_1"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_1/Area2D"]
+visible = false
+polygon = PoolVector2Array( 43.5, -55.2, 43.5, -46.9, 54.5, -16.9, 54.5, 54.5, 51.9, 54.5, 38.9, 60.5, 28.8, 60.5, -1.4, 64.5, -53.5, 64.5, -53.5, 61.9, -55.9, 48.5, -54.5, 48.5, -54.5, 22.5, -53, 22.5, -47, 0.5, -45, 0.5, -27.5, -8.7, -27.5, -9.3, -21.3, -15.5, -18.9, -15.5, -5.5, -20.9, -5.5, -23, 10.2, -55.5, 13.2, -55.5, 33.5, -62, 33.5, -62.9, 36.1, -63.9 )
+
+[node name="kamien_2" type="Sprite" parent="."]
+position = Vector2( 391.174, 957 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="kamien_2"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_2/Area2D"]
+visible = false
+polygon = PoolVector2Array( 47.5, -45.6, 47.5, -42.9, 53.9, -25.5, 54.6, -25.5, 70.5, -2.1, 70.5, 10.9, 66.5, 20.9, 66.5, 23, 69.5, 27.9, 69.5, 41.5, 67.7, 41.5, 63.7, 49.5, 60.9, 49.5, 41.7, 53.5, 13.5, 53.5, 13.5, 52.3, -28.5, 46.8, -46.2, 52.5, -66.5, 52.5, -66.5, 51.3, -75.5, 50.3, -75.5, 48.5, -79.5, 45.5, -79.5, 33.5, -77.6, 33.5, -44.6, -22.5, -40.8, -22.5, -25.5, -28.8, -25.5, -29.4, -11.2, -41.5, -7.9, -41.5, 34.5, -51.1, 34.5, -51.7, 36.6, -52.8 )
+
+[node name="kamien_3" type="Sprite" parent="."]
+position = Vector2( 556.5, 889 )
+texture = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="kamien_3"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_3/Area2D"]
+visible = false
+polygon = PoolVector2Array( 38, -67.4, 38, -63.5, 43, -54.5, 43, -49, 45.8, -28, 46.4, -28, 53, -11.4, 53, -10, 52, 36, 50.8, 36, 49.8, 44, 47.9, 44, 40.9, 52, 38.7, 52, 13.6, 69, 10.3, 69, -1.7, 60, -7.9, 60, -22, 63.6, -22, 60.9, -43, 42.9, -43, 40.5, -53, 21.5, -53, 7, -51.3, 7, -42.3, -12, -40.9, -12, -28.9, -25, -26.1, -25, -24, -25.5, 4.2, -54, 6.4, -54, 29, -68.1, 29, -71 )
+
+[node name="kamien_4" type="Sprite" parent="."]
+position = Vector2( 366.5, 817 )
+texture = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="kamien_4"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_4/Area2D"]
+visible = false
+polygon = PoolVector2Array( 40, -67.2, 40, -63.5, 45, -54.5, 45, -49, 47.8, -28, 48.4, -28, 55, -11.4, 55, -10, 54, 36, 52.8, 36, 51.8, 45, 49.9, 45, 44.9, 51, 42.5, 51, 13.6, 71, 10.3, 71, -1.7, 62, -7.9, 62, -22, 65.6, -22, 62.9, -45, 42.9, -45, 40.5, -55, 21.5, -55, 7, -53.3, 7, -44.3, -12, -42.9, -12, -30.9, -26, -28.3, -26, -24, -27.4, 4.2, -56, 6.4, -56, 29, -70.1, 29, -72, 31.5, -72 )
+
+[node name="kamien_5" type="Sprite" parent="."]
+position = Vector2( 448.5, 661 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="kamien_5"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_5/Area2D"]
+visible = false
+polygon = PoolVector2Array( 47.5, -45.6, 47.5, -42.9, 53.9, -25.5, 54.6, -25.5, 70.5, -2.1, 70.5, 10.9, 66.5, 20.9, 66.5, 23, 69.5, 27.9, 69.5, 41.5, 67.7, 41.5, 63.7, 49.5, 60.9, 49.5, 41.7, 53.5, 13.5, 53.5, 13.5, 52.3, -28.5, 46.8, -46.2, 52.5, -66.5, 52.5, -66.5, 51.3, -75.5, 50.3, -75.5, 48.5, -79.5, 45.5, -79.5, 33.5, -77.6, 33.5, -44.6, -22.5, -40.8, -22.5, -25.5, -28.8, -25.5, -29.4, -11.2, -41.5, -7.9, -41.5, 34.5, -51.1, 34.5, -51.7, 36.6, -52.8 )
+
+[node name="kamien_6" type="Sprite" parent="."]
+position = Vector2( 568.5, 733 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="kamien_6"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kamien_6/Area2D"]
+visible = false
+polygon = PoolVector2Array( 43.5, -55.2, 43.5, -46.9, 54.5, -16.9, 54.5, 54.5, 51.9, 54.5, 38.9, 60.5, 28.8, 60.5, -1.4, 64.5, -53.5, 64.5, -53.5, 61.9, -55.9, 48.5, -54.5, 48.5, -54.5, 22.5, -53, 22.5, -47, 0.5, -45, 0.5, -27.5, -8.7, -27.5, -9.3, -21.3, -15.5, -18.9, -15.5, -5.5, -20.9, -5.5, -23, 10.2, -55.5, 13.2, -55.5, 33.5, -62, 33.5, -62.9, 36.1, -63.9 )
