@@ -11,6 +11,7 @@ func enter(body):
 	# center player on vent and make him invisible (but not the light)
 	body.position = self.position
 	body.get_node("Sprite").visible = false
+	body.get_node("AnimatedSprite").visible = false
 	# also hitbox to prevent player being detected
 	body.get_node("PlayerHitbox").visible = false
 
@@ -30,6 +31,7 @@ func enter(body):
 		
 		instance.link = link[iter]
 		instance.body = body
+		instance.child_number = iter
 		iter += 1
 
 func teleport(body, vent): # called by arrow instance after click on it
@@ -50,7 +52,15 @@ func exit(body):
 		
 	# then make player visible
 	body.get_node("Sprite").visible = true
+	body.get_node("AnimatedSprite").visible = true
 	body.get_node("PlayerHitbox").visible = true
+
+func arrowHighlight(arrow_number = -1):
+	for child in $arrows.get_children():
+		child.modulate = Color("#FF0000")
+	
+	if arrow_number >= 0:
+		$arrows.get_child(arrow_number).modulate = Color("#00FF00")
 
 func _ready():
 	self.add_to_group("entities")

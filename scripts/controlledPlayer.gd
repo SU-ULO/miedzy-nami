@@ -1,6 +1,8 @@
 extends "dummyplayer.gd"
 
 var fov_toggle = false #temporarily
+var selected_vent = 0
+
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
@@ -10,10 +12,6 @@ func _on_ready():
 
 func get_input():
 	moveX = 0; moveY = 0
-	
-	if currentInteraction != null:
-		if !currentInteraction.is_in_group("vents") and currentInteraction.IsDone():
-			currentInteraction = null
 	
 	if currentInteraction == null:
 		if Input.is_action_pressed("move_right"):
@@ -40,6 +38,31 @@ func get_input():
 		else:
 			sight_range = 500
 		fov_toggle = !fov_toggle
+	
+	if currentInteraction != null:
+		if currentInteraction.is_in_group("vents"):
+			
+			var arrows_count = currentInteraction.get_node("arrows").get_child_count()
+			var arrow = currentInteraction.get_node("arrows").get_child(selected_vent)
+			
+			if Input.is_action_just_pressed("next_vent"):
+				selected_vent += 1
+				if selected_vent > arrows_count-1:
+					selected_vent = 0
+				currentInteraction.arrowHighlight(selected_vent)
+				
+			else: if Input.is_action_just_pressed("prev_vent"):
+				selected_vent -= 1
+				if selected_vent < 0:
+					selected_vent = arrows_count-1
+				currentInteraction.arrowHighlight(selected_vent)
+			
+			if Input.is_action_just_pressed("use_vent"):
+				arrow.call_teleport()
+				selected_vent = 0
+				
+		else: if currentInteraction.IsDone():
+			currentInteraction = null
 
 func _physics_process(delta):
 	scale_sight_range(delta)
