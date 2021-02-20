@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://objects/BIO-Bug-taskpoint.tscn" type="PackedScene" id=7]
 [ext_resource path="res://objects/MAT-Karta-taskpoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
+[ext_resource path="res://objects/vent.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -16,6 +17,14 @@
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1, 1 )
+
+[node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
+position = Vector2( -345.451, 1077.4 )
+link = [ NodePath("../vent2") ]
+
+[node name="vent2" parent="Mapa" instance=ExtResource( 10 )]
+position = Vector2( 1363.63, 566.95 )
+link = [ NodePath("../vent1") ]
 
 [node name="YSort" type="YSort" parent="Mapa"]
 

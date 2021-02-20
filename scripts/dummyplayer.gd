@@ -73,8 +73,11 @@ func ui_selected():
 			if(compute_distance(item) < currentBestDistance):
 				currentBestItem = item
 			
-		currentBestItem.Interact()
-		currentInteraction = currentBestItem
+		if currentBestItem.is_in_group("vents"):
+			currentBestItem.teleport(self)
+		else:
+			currentBestItem.Interact()
+			currentInteraction = currentBestItem
 		
 func ui_canceled():
 	if(currentInteraction != null):
