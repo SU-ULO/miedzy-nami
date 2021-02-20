@@ -5,6 +5,7 @@ extends Node2D
 
 var link = null
 var body = null
+var child_number = 0
 
 func call_teleport():
 	if link == null:
@@ -16,3 +17,9 @@ func call_teleport():
 
 func _on_arrow_button_down():
 	call_teleport()
+
+func _on_arrow_mouse_entered():
+	get_parent().get_parent().arrowHighlight(child_number)
+
+func _on_arrow_mouse_exited():
+	get_parent().get_parent().arrowHighlight()

@@ -4,10 +4,10 @@
 [ext_resource path="res://scripts/arrow.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
+modulate = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 
 [node name="arrow" type="TextureButton" parent="."]
-self_modulate = Color( 1, 0, 0, 1 )
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
@@ -17,3 +17,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="button_down" from="arrow" to="." method="_on_arrow_button_down"]
+[connection signal="mouse_entered" from="arrow" to="." method="_on_arrow_mouse_entered"]
+[connection signal="mouse_exited" from="arrow" to="." method="_on_arrow_mouse_exited"]
