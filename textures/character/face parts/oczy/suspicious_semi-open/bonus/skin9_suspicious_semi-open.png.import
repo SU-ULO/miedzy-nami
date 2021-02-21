@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skin7_winking.png-e8ce79bb9962830abc7cfbbe10f653c9.stex"
+path="res://.import/skin9_suspicious_semi-open.png-3c63fb72706bdc06d4812a8a13990b3f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/character/face parts/oczy/suspicious_semi-open/bonus/skin7_winking.png"
-dest_files=[ "res://.import/skin7_winking.png-e8ce79bb9962830abc7cfbbe10f653c9.stex" ]
+source_file="res://textures/character/face parts/oczy/suspicious_semi-open/bonus/skin9_suspicious_semi-open.png"
+dest_files=[ "res://.import/skin9_suspicious_semi-open.png-3c63fb72706bdc06d4812a8a13990b3f.stex" ]
 
 [params]
 

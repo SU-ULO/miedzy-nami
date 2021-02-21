@@ -7,10 +7,15 @@ var currLook = LookConfiguration.new()
 #get previous config and load it
 
 func _ready():
+	# warning-ignore:return_value_discarded
 	$"body-parts-control/skin-control".connect("changeSkin", self, "_skin_Change")
+	# warning-ignore:return_value_discarded
 	$"body-parts-control/nose-control".connect("changeNose", self, "_nose_Change")
+	# warning-ignore:return_value_discarded
 	$"body-parts-control/mouth-control".connect("changeMouth", self, "_mouth_Change")
+	# warning-ignore:return_value_discarded
 	$"body-parts-control/eye-control".connect("changeEye", self, "_eye_Change")
+	# warning-ignore:return_value_discarded
 	$"eye-color".connect("changeEyeColor", self, "_eye_color_Change")	
 func _skin_Change(number):
 	$"body-parts/skin".texture = load("res://textures/character/face_front/skin" + number + ".png")
@@ -43,7 +48,7 @@ func _eye_Change(name):
 	var bonuspath = currLook.getEyeBonusPath(name)
 	if bonuspath!="przykromi":
 		$"body-parts/bonus".visible = true
-		$"body-parts/bonus".texture = load("res://textures/character/face parts/oczy/" + currLook.getEyePath(name))
+		$"body-parts/bonus".texture = load("res://textures/character/face parts/oczy/" + currLook.getEyeBonusPath(name))
 	else:
 		$"body-parts/bonus".visible = false
 	$"eye-color".visible = currLook.hasColoredEyes()

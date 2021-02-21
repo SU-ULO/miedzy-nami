@@ -29,7 +29,7 @@ func getEyePath(name):
 
 func getEyeBonusPath(name):
 	if name in hasBonusEyes:
-		return name + "/bonus/skin" + skin + name + ".png"
+		return name + "/bonus/skin" + skin + "_" + name + ".png"
 	else:
 		return "przykromi"
 		
