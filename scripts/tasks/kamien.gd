@@ -27,13 +27,13 @@ func _input(event):
 						pickedUp = true
 						if inBox && !inFront:
 							main.toSort+=1
-							print(main.toSort)
+
 						clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
 		else:
 			if pickedUp:
 				pickedUp = false
 				if inBox && !inFront:
-						print(main.toSort)
+
 						main.toSort-=1
 						main.checkForEnd()
 
@@ -54,22 +54,22 @@ func isInBox(area):
 		inFront = true
 	if area.name == "polka-blue" && self.name == "blue":
 		inBox = true
-		print("yay")
+
 	if area.name == "polka-orange" && self.name == "orange":
 		inBox = true
-		print("yay")
+
 	if area.name == "polka-green" && self.name == "green":
 		inBox = true
-		print("yay")
+
 func notInBox(area):
 	if area.name == "szafka-bok":
 		inFront = false
 	if area.name == "polka-blue" && self.name == "blue":
 		inBox = false
-		print("smutne")
+
 	if area.name == "polka-orange" && self.name == "orange":
 		inBox = false
-		print("smutne")
+
 	if area.name == "polka-green" && self.name == "green":
 		inBox = false
-		print("smutne")
+
