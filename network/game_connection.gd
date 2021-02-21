@@ -70,10 +70,12 @@ func leave():
 	pass
 
 func send_updates(input):
-	return game_updates.put_var(input)
+	while game_updates.get_ready_state()==WebRTCDataChannel.STATE_OPEN and game_updates.put_var(input)!=OK:
+		peer.poll()
 
 func send_events(input):
-	return game_events.put_var(input)
+	while game_events.get_ready_state()==WebRTCDataChannel.STATE_OPEN and game_events.put_var(input)!=OK:
+		peer.poll()
 
 func handle_updates(_input):
 	pass
@@ -83,7 +85,9 @@ func handle_events(_input):
 
 func _process(_delta):
 	peer.poll()
-	if !established and peer.get_connection_state()==WebRTCPeerConnection.STATE_CONNECTED:
+	if !established and peer.get_connection_state()==WebRTCPeerConnection.STATE_CONNECTED and \
+	game_events.get_ready_state()==WebRTCDataChannel.STATE_OPEN and \
+	game_updates.get_ready_state()==WebRTCDataChannel.STATE_OPEN:
 		established=true
 		emit_signal("success")
 	elif established:

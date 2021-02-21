@@ -6,9 +6,13 @@ var pickedUp = false
 var ableToBeFed = false
 
 func _ready():
+# warning-ignore:return_value_discarded
 	connect("mouse_entered", self, "isAbleToBePicked")
+# warning-ignore:return_value_discarded
 	connect("mouse_exited", self, "notAbleToBePicked")
+# warning-ignore:return_value_discarded
 	connect("area_entered", self, "isAbleToBeFed")
+# warning-ignore:return_value_discarded
 	connect("area_exited", self, "notAbleToBeFed")
 
 func _input(event):

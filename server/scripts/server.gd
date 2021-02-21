@@ -100,10 +100,10 @@ func leave(id: int):
 		wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
 
 func _on_connected_client(id: int):
-	print("connected")
+	print("connected "+String(id))
 
 func join(id: int):
-	print("joined"+String(id))
+	print("joined "+String(id))
 
 func send_candidate(cand: String, id: int):
 # warning-ignore:return_value_discarded
