@@ -25,19 +25,18 @@ func _input(event):
 				if mouseIn:
 					if get_parent().get_parent().toDrag.max() == get_parent().get_index():
 						pickedUp = true
+						if inBox && !inFront:
+							main.toSort+=1
+							print(main.toSort)
 						clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
 		else:
-			pickedUp = false
-			if inBox && !inFront:
-				#	if !main.userKit.has(get_parent().name):
-				#		main.userKit.append(get_parent().name)
-				#		main.checkForEnd()
-				pass
-			else:
-				#if main.userKit.has(get_parent().name):
-				#	main.userKit.erase(get_parent().name)
-				#	main.checkForEnd()
-				pass
+			if pickedUp:
+				pickedUp = false
+				if inBox && !inFront:
+						print(main.toSort)
+						main.toSort-=1
+						main.checkForEnd()
+
 	elif event is InputEventMouseMotion:
 		if pickedUp:
 			get_parent().position = get_viewport().get_mouse_position() - clickDelta
@@ -53,11 +52,24 @@ func notAbleToBePicked():
 func isInBox(area):
 	if area.name == "szafka-bok":
 		inFront = true
-	if area.name == "szafka-polka":
+	if area.name == "polka-blue" && self.name == "blue":
 		inBox = true
-
+		print("yay")
+	if area.name == "polka-orange" && self.name == "orange":
+		inBox = true
+		print("yay")
+	if area.name == "polka-green" && self.name == "green":
+		inBox = true
+		print("yay")
 func notInBox(area):
 	if area.name == "szafka-bok":
 		inFront = false
-	if area.name == "szafka-polka":
+	if area.name == "polka-blue" && self.name == "blue":
 		inBox = false
+		print("smutne")
+	if area.name == "polka-orange" && self.name == "orange":
+		inBox = false
+		print("smutne")
+	if area.name == "polka-green" && self.name == "green":
+		inBox = false
+		print("smutne")
