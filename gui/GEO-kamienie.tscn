@@ -45,6 +45,21 @@ collision_mask = 8
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/polka-green"]
 polygon = PoolVector2Array( -155.5, 199.517, -322.5, 298.517, 182.5, 385.517, 184.5, 252.517 )
 
+[node name="Polygon2D" type="Polygon2D" parent="szafkatask"]
+position = Vector2( -33.9412, 2.82837 )
+color = Color( 0.94902, 0.596078, 0.0431373, 1 )
+polygon = PoolVector2Array( -138.115, 28.6776, -197.559, 59.6716, -117.559, 72.1716, -64.0588, 39.6716 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="szafkatask"]
+position = Vector2( -29.0774, -204.15 )
+color = Color( 0.137255, 0.415686, 0.807843, 1 )
+polygon = PoolVector2Array( -130.463, 31.7006, -197.559, 59.6716, -104.844, 68.6612, -48.6841, 40.8169 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="szafkatask"]
+position = Vector2( -28.9412, 206.828 )
+color = Color( 0.054902, 0.584314, 0.0627451, 1 )
+polygon = PoolVector2Array( -140.559, 25.1716, -197.559, 59.6716, -117.559, 72.1716, -63.0588, 37.6716 )
+
 [node name="kamien_1" type="Sprite" parent="."]
 position = Vector2( 210.5, 739 )
 texture = ExtResource( 3 )

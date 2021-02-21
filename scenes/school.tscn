@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
 [ext_resource path="res://objects/vents/vent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -52,6 +53,9 @@ position = Vector2( -753.957, 103.297 )
 
 [node name="BIO-mikroskop" parent="Mapa/YSort" instance=ExtResource( 11 )]
 position = Vector2( -1560.85, 513.158 )
+
+[node name="GEO-kamienie" parent="Mapa/YSort" instance=ExtResource( 12 )]
+position = Vector2( -1920.12, -148.671 )
 
 [node name="MAT-Karta" parent="Mapa/YSort" instance=ExtResource( 8 )]
 position = Vector2( 1010.69, 451.171 )

@@ -2,7 +2,6 @@
 
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=1]
 
-
 [node name="Temp" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]
