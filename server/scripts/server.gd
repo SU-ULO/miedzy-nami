@@ -6,10 +6,10 @@ var world := preload('res://scenes/school.tscn').instance()
 var signaling_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signaling'
 var server_name: String = ""
 
-var joined_clients: Dictionary = {}
+var connected_clients: Dictionary = {}
 
 func is_username_taken(requested_name: String)->bool:
-	for c in joined_clients.values():
+	for c in connected_clients.values():
 		if c.config.username==requested_name:
 			return true
 	return false
@@ -52,7 +52,7 @@ func parse_signaling(msg:  String):
 			if !conf.has('id'):
 				return
 			conf.id=int(conf.id)
-			if joined_clients.has(conf.id) or !conf.has('webrtc') or !conf.has('username'):
+			if connected_clients.has(conf.id) or !conf.has('webrtc') or !conf.has('username'):
 				leave(conf.id)
 				return
 			conf.username=get_non_taken_username(conf.username)
@@ -66,21 +66,21 @@ func parse_signaling(msg:  String):
 # warning-ignore:return_value_discarded
 			client.connect("success", self, "_on_connected_client", [conf.id])
 # warning-ignore:return_value_discarded
-			client.connect("join", self, "join", [conf.id])
-			joined_clients[conf.id]=client;
+			client.connect("join", self, "spawn_player_and_join", [conf.id])
+			connected_clients[conf.id]=client;
 			add_child(client)
 	elif msg.begins_with("CONNECTION:"):
 		var arr = msg.split(":", false, 3)
 		if arr.size()<4:
 			return
 		var id = int(arr[1])
-		if !joined_clients.has(id):
+		if !connected_clients.has(id):
 			leave(id)
 			return
 		if arr[2]=="SESSION":
-			joined_clients[id].set_session(arr[3])
+			connected_clients[id].set_session(arr[3])
 		elif arr[2]=="CANDIDATE":
-			joined_clients[id].set_candidate(arr[3])
+			connected_clients[id].set_candidate(arr[3])
 		else:
 			leave(id)
 			return
@@ -91,10 +91,16 @@ func parse_signaling(msg:  String):
 		return
 
 func leave(id: int):
-	if joined_clients.has(id):
-		joined_clients[id].queue_free()
+	if connected_clients.has(id):
+		var c = connected_clients[id]
+		if c.joined:
+			for cid in connected_clients:
+				var cc = connected_clients[cid]
+				if cc.joined:
+					cc.send_events([2, id])
+		c.queue_free()
 # warning-ignore:return_value_discarded
-		joined_clients.erase(id)
+		connected_clients.erase(id)
 	if wsc.get_connection_status()==WebSocketClient.CONNECTION_CONNECTED:
 # warning-ignore:return_value_discarded
 		wsc.get_peer(1).put_packet(("LEAVE:"+str(id)).to_utf8())
@@ -102,8 +108,22 @@ func leave(id: int):
 func _on_connected_client(id: int):
 	print("connected "+String(id))
 
-func join(id: int):
-	print("joined "+String(id))
+func spawn_player_and_join(id: int):
+	if connected_clients.has(id):
+		var joining_client = connected_clients[id]
+		joining_client.player = preload('res://server/server_player.tscn').instance()
+		world.get_node("Mapa/YSort").add_child(joining_client.player)
+		for cid in connected_clients:
+			var c = connected_clients[cid]
+			if cid == id:
+				var init_dict = Dictionary()
+				for c_id in connected_clients:
+					init_dict[c_id]=connected_clients[c_id].get_init_data()
+				c.send_events([0, id, init_dict])
+			elif c.joined:
+				c.send_events([1, id, joining_client.get_init_data()])
+		joining_client.joined = true
+		print("joined "+String(id))
 
 func send_candidate(cand: String, id: int):
 # warning-ignore:return_value_discarded
