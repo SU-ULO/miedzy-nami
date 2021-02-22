@@ -184,9 +184,7 @@ func _process(_delta):
 			var update_dict = Dictionary()
 			for cid in connected_clients:
 				var cl = connected_clients[cid]
-				if cl.joined:
+				if cl.joined and cid !=c:
 					var update_data = cl.get_update_data()
-					if cid==c:
-						update_data.erase("mov")
 					update_dict[cid]=update_data
 			client.send_updates(update_dict)

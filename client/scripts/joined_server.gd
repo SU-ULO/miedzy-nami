@@ -81,4 +81,4 @@ func handle_updates(input):
 func _process(_delta):
 	if established:
 		if own_player and is_instance_valid(own_player) and own_player.is_inside_tree():
-			send_updates({"mov": Vector2(own_player.moveX, own_player.moveY)})
+			send_updates({"mov": Vector2(own_player.moveX, own_player.moveY), "pos": own_player.position})

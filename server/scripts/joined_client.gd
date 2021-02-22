@@ -27,3 +27,6 @@ func handle_updates(input):
 			if player:
 				player.moveX=input["mov"].x
 				player.moveY=input["mov"].y
+		if input.has("pos") and input["pos"] is Vector2:
+			if player:
+				player.position=input["pos"]
