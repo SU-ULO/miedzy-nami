@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://textures/ksiazka_3.png" type="Texture" id=1]
+[ext_resource path="res://textures/kartka_czerw.png" type="Texture" id=2]
+[ext_resource path="res://textures/kartka_ziel2.png" type="Texture" id=3]
+[ext_resource path="res://textures/ksiazka_2.png" type="Texture" id=4]
+[ext_resource path="res://textures/szafkatask.png" type="Texture" id=5]
+[ext_resource path="res://textures/ksiazka_1.png" type="Texture" id=6]
+[ext_resource path="res://scripts/tasks/LIB-Books.gd" type="Script" id=7]
+[ext_resource path="res://scripts/tasks/ksiazka.gd" type="Script" id=8]
+[ext_resource path="res://textures/kartka_nieb.png" type="Texture" id=10]
+
+[node name="LIB-Books" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="szafkatask" type="Sprite" parent="."]
+position = Vector2( 1326.5, 547 )
+texture = ExtResource( 5 )
+
+[node name="szafka-bok" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/szafka-bok"]
+polygon = PoolVector2Array( -324.921, -126.919, -327.04, -113.146, 192.097, -54.8751, 192.097, 154.899, -321.742, 81.7957, -322.802, 95.5687, 191.038, 172.909, 186.8, 390.267, -338.694, 301.272, -339.753, 312.926, 205.87, 410.397, 212.227, -71.6591, 216.465, -320.089, -360.942, -363.527, -349.288, 41.1879, -339.753, 297.951, -328.099, 300.07, -337.634, 37.3232, -348.229, -348.927, 198.454, -306.549, 196.335, -74.5262 )
+
+[node name="polka-blue" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/polka-blue"]
+polygon = PoolVector2Array( -161.5, -193, -324.5, -134, 189.5, -80, 190.5, -156 )
+
+[node name="polka-orange" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 2147483656
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/polka-orange"]
+polygon = PoolVector2Array( -318.5, 78.5167, -159.5, 2.51672, 188.5, 47.5167, 187.5, 148.517 )
+
+[node name="polka-green" type="Area2D" parent="szafkatask"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="szafkatask/polka-green"]
+polygon = PoolVector2Array( -155.5, 199.517, -322.5, 298.517, 182.5, 385.517, 184.5, 252.517 )
+
+[node name="kartka_nieb" type="Sprite" parent="."]
+position = Vector2( 1084.82, 285.451 )
+texture = ExtResource( 10 )
+
+[node name="kartka_czerw" type="Sprite" parent="."]
+position = Vector2( 1085.63, 725.544 )
+texture = ExtResource( 2 )
+
+[node name="kartka_ziel2" type="Sprite" parent="."]
+position = Vector2( 1085.63, 530.658 )
+texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="ksiazka_1" type="Sprite" parent="."]
+position = Vector2( 244.104, 382.245 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+
+[node name="red" type="Area2D" parent="ksiazka_1"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_1/red"]
+polygon = PoolVector2Array( 39, -90.7, 46.9, -82, 49.4, -82, 60, -77.8, 60, 84, 58.1, 84, 56.1, 87, 50.4, 87, -28.8, 105, -39.3, 105, -54, 100.5, -54, 99, -59, 95, -59, -71, -56.8, -71, -50.8, -77, -45.4, -77, 29, -91.7, 29, -93, 39, -93 )
+
+[node name="ksiazka_2" type="Sprite" parent="."]
+position = Vector2( 449.592, 495.859 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+
+[node name="green" type="Area2D" parent="ksiazka_2"]
+position = Vector2( -205.489, -113.614 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_2/green"]
+position = Vector2( 205.489, 113.614 )
+polygon = PoolVector2Array( 38.5, -97.2, 46.4, -88.5, 48.9, -88.5, 60.5, -83.9, 60.5, 15.5, 59.5, 77.5, 57.6, 77.5, 55.6, 80.5, 49.9, 80.5, -29.3, 98.5, -39.8, 98.5, -54.5, 94, -54.5, 92.5, -59.5, 88.5, -59.5, -77.5, -57.3, -77.5, -51.3, -83.5, -45.9, -83.5, 28.5, -98.2, 28.5, -99.5, 38.5, -99.5 )
+
+[node name="ksiazka_3" type="Sprite" parent="."]
+position = Vector2( 252.04, 608.695 )
+texture = ExtResource( 1 )
+
+[node name="blue" type="Area2D" parent="ksiazka_3"]
+position = Vector2( -7.93594, -226.45 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_3/blue"]
+position = Vector2( 7.93594, 226.45 )
+polygon = PoolVector2Array( 40, -95.7, 47.9, -87, 50.4, -87, 62, -82.4, 62, 17, 61, 79, 59.1, 79, 57.1, 82, 51.4, 82, -27.8, 100, -38.3, 100, -53, 95.5, -53, 94, -58, 90, -58, -76, -55.8, -76, -49.8, -82, -44.4, -82, 30, -96.7, 30, -98, 40, -98 )
+
+[node name="ksiazka_4" type="Sprite" parent="."]
+position = Vector2( 393.775, 280.683 )
+texture = ExtResource( 1 )
+
+[node name="blue" type="Area2D" parent="ksiazka_4"]
+position = Vector2( -149.671, 101.562 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_4/blue"]
+position = Vector2( 149.671, -101.562 )
+polygon = PoolVector2Array( 40, -95.7, 47.9, -87, 50.4, -87, 62, -82.4, 62, 17, 61, 79, 59.1, 79, 57.1, 82, 51.4, 82, -27.8, 100, -38.3, 100, -53, 95.5, -53, 94, -58, 90, -58, -76, -55.8, -76, -49.8, -82, -44.4, -82, 30, -96.7, 30, -98, 40, -98 )
+
+[node name="ksiazka_5" type="Sprite" parent="."]
+position = Vector2( 110.469, 343.046 )
+texture = ExtResource( 1 )
+
+[node name="blue" type="Area2D" parent="ksiazka_5"]
+position = Vector2( 133.635, 39.1995 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_5/blue"]
+position = Vector2( -133.635, -39.1995 )
+polygon = PoolVector2Array( 40, -95.7, 47.9, -87, 50.4, -87, 62, -82.4, 62, 17, 61, 79, 59.1, 79, 57.1, 82, 51.4, 82, -27.8, 100, -38.3, 100, -53, 95.5, -53, 94, -58, 90, -58, -76, -55.8, -76, -49.8, -82, -44.4, -82, 30, -96.7, 30, -98, 40, -98 )
+
+[node name="ksiazka_6" type="Sprite" parent="."]
+position = Vector2( 265.485, 161.302 )
+texture = ExtResource( 4 )
+
+[node name="green" type="Area2D" parent="ksiazka_6"]
+position = Vector2( -21.3816, 220.943 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_6/green"]
+position = Vector2( 21.3816, -220.943 )
+polygon = PoolVector2Array( 38.5, -97.2, 46.4, -88.5, 48.9, -88.5, 60.5, -83.9, 60.5, 15.5, 59.5, 77.5, 57.6, 77.5, 55.6, 80.5, 49.9, 80.5, -29.3, 98.5, -39.8, 98.5, -54.5, 94, -54.5, 92.5, -59.5, 88.5, -59.5, -77.5, -57.3, -77.5, -51.3, -83.5, -45.9, -83.5, 28.5, -98.2, 28.5, -99.5, 38.5, -99.5 )
+
+[node name="ksiazka_7" type="Sprite" parent="."]
+position = Vector2( 374.984, 701.932 )
+texture = ExtResource( 4 )
+
+[node name="green" type="Area2D" parent="ksiazka_7"]
+position = Vector2( -130.88, -319.687 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_7/green"]
+position = Vector2( 130.88, 319.687 )
+polygon = PoolVector2Array( 38.5, -97.2, 46.4, -88.5, 48.9, -88.5, 60.5, -83.9, 60.5, 15.5, 59.5, 77.5, 57.6, 77.5, 55.6, 80.5, 49.9, 80.5, -29.3, 98.5, -39.8, 98.5, -54.5, 94, -54.5, 92.5, -59.5, 88.5, -59.5, -77.5, -57.3, -77.5, -51.3, -83.5, -45.9, -83.5, 28.5, -98.2, 28.5, -99.5, 38.5, -99.5 )
+
+[node name="ksiazka_8" type="Sprite" parent="."]
+position = Vector2( 568.487, 258.429 )
+texture = ExtResource( 6 )
+
+[node name="red" type="Area2D" parent="ksiazka_8"]
+position = Vector2( -324.384, 123.816 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_8/red"]
+position = Vector2( 324.384, -123.816 )
+polygon = PoolVector2Array( 39, -90.7, 46.9, -82, 49.4, -82, 60, -77.8, 60, 84, 58.1, 84, 56.1, 87, 50.4, 87, -28.8, 105, -39.3, 105, -54, 100.5, -54, 99, -59, 95, -59, -71, -56.8, -71, -50.8, -77, -45.4, -77, 29, -91.7, 29, -93, 39, -93 )
+
+[node name="ksiazka_9" type="Sprite" parent="."]
+position = Vector2( 82.8988, 558.837 )
+texture = ExtResource( 6 )
+
+[node name="red" type="Area2D" parent="ksiazka_9"]
+position = Vector2( 161.205, -176.592 )
+script = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ksiazka_9/red"]
+position = Vector2( -161.205, 176.592 )
+polygon = PoolVector2Array( 39, -90.7, 46.9, -82, 49.4, -82, 60, -77.8, 60, 84, 58.1, 84, 56.1, 87, 50.4, 87, -28.8, 105, -39.3, 105, -54, 100.5, -54, 99, -59, 95, -59, -71, -56.8, -71, -50.8, -77, -45.4, -77, 29, -91.7, 29, -93, 39, -93 )
