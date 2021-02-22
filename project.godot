@@ -48,6 +48,10 @@ config/name="miedzy-nami"
 run/main_scene="res://start/start.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://scripts/globals.gd"
+
 [display]
 
 window/size/width=1920
