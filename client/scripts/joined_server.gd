@@ -59,3 +59,26 @@ func handle_events(input):
 						remote_players[input[1]].queue_free()
 # warning-ignore:return_value_discarded
 						remote_players.erase(input[1])
+
+func handle_updates(input):
+	if input is Dictionary:
+		for p in input:
+			var player = input[p]
+			if player is Dictionary:
+				var synced_player
+				if remote_players.has(p):
+					synced_player=remote_players[p]
+				elif p==own_id:
+					synced_player=own_player
+				else:
+					return
+				if player.has("pos") and player["pos"] is Vector2:
+					synced_player.position=player["pos"]
+				if player.has("mov") and player["mov"] is Vector2:
+					synced_player.moveX=player["mov"].x
+					synced_player.moveY=player["mov"].y
+
+func _process(_delta):
+	if established:
+		if own_player and is_instance_valid(own_player) and own_player.is_inside_tree():
+			send_updates({"mov": Vector2(own_player.moveX, own_player.moveY)})

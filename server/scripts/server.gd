@@ -178,3 +178,15 @@ func _data_ws():
 func _process(_delta):
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
 		wsc.poll()
+	for c in connected_clients:
+		var client = connected_clients[c]
+		if client.joined:
+			var update_dict = Dictionary()
+			for cid in connected_clients:
+				var cl = connected_clients[cid]
+				if cl.joined:
+					var update_data = cl.get_update_data()
+					if cid==c:
+						update_data.erase("mov")
+					update_dict[cid]=update_data
+			client.send_updates(update_dict)
