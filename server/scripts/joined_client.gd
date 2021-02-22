@@ -13,7 +13,7 @@ func _ready():
 	connect("success", self, "request_join")
 
 func get_init_data() -> Dictionary:
-	return {"username": config.username}
+	return {"username": config.username, "pos": player.position}
 
 func request_join():
 	emit_signal("join")

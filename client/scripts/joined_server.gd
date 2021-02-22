@@ -38,10 +38,14 @@ func handle_events(input):
 					for p in players:
 						if p == own_id:
 							own_player=local_player_preload.instance()
+							if players[p].has("pos"):
+								own_player.position=players[p]["pos"]
 							players_holder.add_child(own_player)
 						else:
 							var instance = remote_player_preload.instance()
 							remote_players[p]=instance
+							if players[p].has("pos"):
+								instance.position=players[p]["pos"]
 							players_holder.add_child(instance)
 					emit_signal("join")
 				elif input[0]==1:
