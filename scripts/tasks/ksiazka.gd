@@ -67,7 +67,7 @@ func notInBox(area):
 	if area.name == "polka-blue" && self.name == "blue":
 		inBox = false
 
-	if area.name == "red" && self.name == "red":
+	if area.name == "polka-red" && self.name == "red":
 		inBox = false
 
 	if area.name == "polka-green" && self.name == "green":

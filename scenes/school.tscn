@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://objects/vents/vent.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -36,6 +37,9 @@ link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
 position = Vector2( 1109.78, 1022.46 )
+
+[node name="LIB-Books" parent="Mapa/YSort" instance=ExtResource( 13 )]
+position = Vector2( -2381.55, -373.572 )
 
 [node name="CHE-Kit" parent="Mapa/YSort" instance=ExtResource( 3 )]
 position = Vector2( -323.757, 4.38361 )
