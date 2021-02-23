@@ -1,0 +1,724 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://textures/klawisz_1.png" type="Texture" id=1]
+[ext_resource path="res://textures/klawisz_4.png" type="Texture" id=2]
+[ext_resource path="res://textures/klawisz_3.png" type="Texture" id=3]
+[ext_resource path="res://textures/klawisz_2.png" type="Texture" id=4]
+[ext_resource path="res://textures/klawisz_4.bmp" type="BitMap" id=5]
+[ext_resource path="res://textures/klawisz_5.png" type="Texture" id=6]
+[ext_resource path="res://textures/klawisz_5.bmp" type="BitMap" id=7]
+[ext_resource path="res://textures/klawisz_1.bmp" type="BitMap" id=8]
+[ext_resource path="res://textures/klawisz_2.bmp" type="BitMap" id=9]
+[ext_resource path="res://textures/klawisz_6.png" type="Texture" id=10]
+[ext_resource path="res://textures/klawisz_3.bmp" type="BitMap" id=11]
+[ext_resource path="res://textures/klawisz_6.bmp" type="BitMap" id=12]
+[ext_resource path="res://gui/AULA-pianino.gd" type="Script" id=13]
+
+[sub_resource type="Animation" id=1]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("c/c:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("c/c:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("c/c:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("c/c:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("cis/cis:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("cis/cis:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("cis/cis:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("cis/cis:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("d/d:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("d/d:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("d/d:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("d/d:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("dis/dis:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("dis/dis:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("dis/dis:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("dis/dis:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("e/e:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("e/e:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("e/e:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("e/e:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("f/f:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("f/f:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("f/f:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("f/f:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("fis/fis:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("fis/fis:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("fis/fis:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("fis/fis:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("g/g:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("g/g:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("g/g:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("g/g:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("gis/gis:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("gis/gis:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("gis/gis:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("gis/gis:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("a/a:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("a/a:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("a/a:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("a/a:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ais/ais:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ais/ais:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ais/ais:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ais/ais:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "go"
+length = 1.8
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("h/h:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.889834, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("h/h:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.784314, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("h/h:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.0156863, -0.3, 0, 0.3, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("h/h:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.6, 1.2 )
+}
+
+[node name="pianinko" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.813293
+margin_top = 0.106201
+margin_right = 0.813232
+margin_bottom = 0.106201
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 1 )
+
+[node name="c" type="TextureButton" parent="c"]
+margin_left = 569.281
+margin_top = 327.995
+margin_right = 673.281
+margin_bottom = 713.995
+texture_normal = ExtResource( 2 )
+texture_click_mask = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cis" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 2 )
+
+[node name="cis" type="TextureButton" parent="cis"]
+margin_left = 608.033
+margin_top = 328.102
+margin_right = 712.033
+margin_bottom = 714.102
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="d" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 3 )
+
+[node name="d" type="TextureButton" parent="d"]
+margin_left = 634.335
+margin_top = 328.932
+margin_right = 738.334
+margin_bottom = 718.932
+texture_normal = ExtResource( 4 )
+texture_click_mask = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dis" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 4 )
+
+[node name="dis" type="TextureButton" parent="dis"]
+margin_left = 681.531
+margin_top = 328.183
+margin_right = 785.531
+margin_bottom = 718.183
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="e" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 5 )
+
+[node name="e" type="TextureButton" parent="e"]
+margin_left = 697.263
+margin_top = 330.349
+margin_right = 801.263
+margin_bottom = 720.349
+texture_normal = ExtResource( 1 )
+texture_click_mask = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="f" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 6 )
+
+[node name="f" type="TextureButton" parent="f"]
+margin_left = 750.281
+margin_top = 328.995
+margin_right = 854.281
+margin_bottom = 712.995
+texture_normal = ExtResource( 2 )
+texture_click_mask = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fis" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 7 )
+
+[node name="fis" type="TextureButton" parent="fis"]
+margin_left = 788.236
+margin_top = 329.436
+margin_right = 892.236
+margin_bottom = 715.437
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="g" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 8 )
+
+[node name="g" type="TextureButton" parent="g"]
+margin_left = 824.235
+margin_top = 325.993
+margin_right = 928.235
+margin_bottom = 711.993
+texture_normal = ExtResource( 6 )
+texture_click_mask = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gis" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 9 )
+
+[node name="gis" type="TextureButton" parent="gis"]
+margin_left = 856.312
+margin_top = 328.769
+margin_right = 960.312
+margin_bottom = 714.769
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="a" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 10 )
+
+[node name="a" type="TextureButton" parent="a"]
+margin_left = 878.787
+margin_top = 326.521
+margin_right = 982.787
+margin_bottom = 712.522
+texture_normal = ExtResource( 10 )
+texture_click_mask = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ais" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 11 )
+
+[node name="ais" type="TextureButton" parent="ais"]
+margin_left = 924.485
+margin_top = 329.518
+margin_right = 1028.49
+margin_bottom = 715.518
+texture_normal = ExtResource( 3 )
+texture_click_mask = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="h" type="AnimationPlayer" parent="."]
+anims/go = SubResource( 12 )
+
+[node name="h" type="TextureButton" parent="h"]
+margin_left = 939.158
+margin_top = 330.706
+margin_right = 1043.16
+margin_bottom = 716.706
+texture_normal = ExtResource( 1 )
+texture_click_mask = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

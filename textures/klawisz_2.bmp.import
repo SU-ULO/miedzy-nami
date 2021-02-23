@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/klawisz_2.bmp-e9ed6eb9204878aa91310fe566929761.res"
+
+[deps]
+
+source_file="res://textures/klawisz_2.bmp"
+dest_files=[ "res://.import/klawisz_2.bmp-e9ed6eb9204878aa91310fe566929761.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
