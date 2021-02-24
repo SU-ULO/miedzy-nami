@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://objects/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://textures/walls-top.svg" type="Texture" id=14]
+[ext_resource path="res://objects/windows/window1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://objects/windows/window2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/windows/window4.tscn" type="PackedScene" id=17]
+[ext_resource path="res://objects/windows/window3.tscn" type="PackedScene" id=18]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -35,6 +39,15 @@ link = [ NodePath("../vent1"), NodePath("../vent3") ]
 position = Vector2( -759.225, 21.1253 )
 scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
+
+[node name="window1" parent="Mapa" instance=ExtResource( 15 )]
+position = Vector2( 2204.43, -2539.82 )
+
+[node name="window2" parent="Mapa" instance=ExtResource( 16 )]
+position = Vector2( 1523.79, -2526.12 )
+
+[node name="window3" parent="Mapa" instance=ExtResource( 18 )]
+position = Vector2( 2591, -2430.08 )
 
 [node name="YSort" type="YSort" parent="Mapa"]
 scale = Vector2( 0.5, 0.5 )
@@ -79,3 +92,6 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
+
+[node name="Node2D" parent="." instance=ExtResource( 17 )]
+position = Vector2( 1226.43, -2432.58 )
