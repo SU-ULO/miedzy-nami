@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/dekoracje/biorko_nauczyciela.png" type="Texture" id=1]
+
+[node name="biorko-nauczyciela" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 327.82, 237.209 )
+scale = Vector2( 0.455897, 0.455897 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
+polygon = PoolVector2Array( -831.945, 154.296, 56.2714, 613.913, 772.484, 622.372, 780.943, -138.956, -270.818, -623.951, -829.125, -632.41 )
