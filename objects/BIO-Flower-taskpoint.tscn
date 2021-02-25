@@ -4,8 +4,8 @@
 [ext_resource path="res://textures/doniczka.svg" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 61.6562
-height = 58.8484
+radius = 10.5677
+height = 0.0
 
 [node name="StaticBody2D2" type="StaticBody2D"]
 collision_layer = 4
