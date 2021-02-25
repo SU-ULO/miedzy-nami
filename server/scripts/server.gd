@@ -212,4 +212,4 @@ func assign_tasks():
 				tasksOfCurrentPlayer.append(t.taskID)
 		
 		# other players don't need (and shouldn't) know about other players' tasks
-		connected_clients[cid].send_updates(connected_clients[cid].get_update_task_data(tasksOfCurrentPlayer))
+		connected_clients[cid].send_events(connected_clients[cid].get_event_task_data(tasksOfCurrentPlayer))

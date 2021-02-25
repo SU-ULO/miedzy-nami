@@ -18,7 +18,7 @@ func get_init_data() -> Dictionary:
 func get_update_data() -> Dictionary:
 	return {"pos": player.position, "mov": Vector2(player.moveX, player.moveY)}
 
-func get_update_task_data(tasks) -> Dictionary:
+func get_event_task_data(tasks) -> Dictionary:
 	return {"add_tasks": tasks}
 
 func request_join():

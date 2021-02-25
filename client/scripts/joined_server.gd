@@ -26,6 +26,7 @@ func spawn_player():
 	pass
 
 func handle_events(input):
+	print (input)
 	if input is Array:
 		if input.size()==3:
 			if input[0] is int and input[1] is int and input[2] is Dictionary:
@@ -59,6 +60,24 @@ func handle_events(input):
 						remote_players[input[1]].queue_free()
 # warning-ignore:return_value_discarded
 						remote_players.erase(input[1])
+	elif input is Dictionary:
+		for p in input:
+			print("p",p)
+			if p is String:
+				if p == "add_tasks":
+					print("Adding tasks to player task list")
+					var Task = load("res://scripts/tasks/Task.cs") 
+					
+					var taskIDs = input[p]
+					for t in taskIDs:
+						print("Received task ID", t)
+						var task = Task.GetTaskByID(t)
+						task.playerID = own_id
+						own_player.localTaskList.append(task)
+				else:
+					print("?????")
+			else:
+				print("???")
 
 func handle_updates(input):
 	if input is Dictionary:
@@ -78,21 +97,6 @@ func handle_updates(input):
 					if player.has("mov") and player["mov"] is Vector2:
 						synced_player.moveX=player["mov"].x
 						synced_player.moveY=player["mov"].y
-			elif p is String:
-				if p == "add_tasks":
-					print("Adding tasks to player task list")
-					var Task = load("res://scripts/tasks/Task.cs") 
-					
-					var taskIDs = input[p]
-					for t in taskIDs:
-						print("Received task ID", t)
-						var task = Task.GetTaskByID(t)
-						task.playerID = own_id
-						own_player.localTaskList.append(task)
-				else:
-					print("?????")
-			else:
-				print("???")
 			
 
 func _process(_delta):
