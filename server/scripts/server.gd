@@ -52,6 +52,7 @@ func parse_signaling(msg:  String):
 			if !conf.has('id'):
 				return
 			conf.id=int(conf.id)
+			print("id:", conf.id)
 			if connected_clients.has(conf.id) or !conf.has('webrtc') or !conf.has('username'):
 				leave(conf.id)
 				return
@@ -124,6 +125,8 @@ func spawn_player_and_join(id: int):
 				c.send_events([1, id, joining_client.get_init_data()])
 		joining_client.joined = true
 		print("joined "+String(id))
+		if(connected_clients.size() == 2):
+			assign_tasks()
 
 func send_candidate(cand: String, id: int):
 # warning-ignore:return_value_discarded
@@ -188,3 +191,25 @@ func _process(_delta):
 					var update_data = cl.get_update_data()
 					update_dict[cid]=update_data
 			client.send_updates(update_dict)
+						
+func assign_tasks():
+	var Task = load("res://scripts/tasks/Task.cs")
+	var connected_client_ids = []
+	connected_client_ids.resize(connected_clients.size())
+	
+	for cid in connected_clients:
+		connected_client_ids[cid - 1] = cid
+		
+	Task.DivideTasks(connected_client_ids)
+	
+	var tasks = Task.GetAllTasks()
+	
+	for cid in connected_clients:
+		var tasksOfCurrentPlayer = []
+		
+		for t in tasks:
+			if t.playerID == cid:
+				tasksOfCurrentPlayer.append(t.taskID)
+		
+		# other players don't need (and shouldn't) know about other players' tasks
+		connected_clients[cid].send_updates(connected_clients[cid].get_update_task_data(tasksOfCurrentPlayer))

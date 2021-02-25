@@ -11,6 +11,7 @@ var flipped = false
 var moveX :int
 var moveY :int
 var currentInteraction = null
+var localTaskList = []
 
 func _ready():
 	add_to_group("entities")

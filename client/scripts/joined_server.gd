@@ -63,20 +63,37 @@ func handle_events(input):
 func handle_updates(input):
 	if input is Dictionary:
 		for p in input:
-			var player = input[p]
-			if player is Dictionary:
-				var synced_player
-				if remote_players.has(p):
-					synced_player=remote_players[p]
-				elif p==own_id:
-					synced_player=own_player
+			if p is int:
+				var player = input[p]
+				if player is Dictionary:
+					var synced_player
+					if remote_players.has(p):
+						synced_player=remote_players[p]
+					elif p==own_id:
+						synced_player=own_player
+					else:
+						return
+					if player.has("pos") and player["pos"] is Vector2:
+						synced_player.position=player["pos"]
+					if player.has("mov") and player["mov"] is Vector2:
+						synced_player.moveX=player["mov"].x
+						synced_player.moveY=player["mov"].y
+			elif p is String:
+				if p == "add_tasks":
+					print("Adding tasks to player task list")
+					var Task = load("res://scripts/tasks/Task.cs") 
+					
+					var taskIDs = input[p]
+					for t in taskIDs:
+						print("Received task ID", t)
+						var task = Task.GetTaskByID(t)
+						task.playerID = own_id
+						own_player.localTaskList.append(task)
 				else:
-					return
-				if player.has("pos") and player["pos"] is Vector2:
-					synced_player.position=player["pos"]
-				if player.has("mov") and player["mov"] is Vector2:
-					synced_player.moveX=player["mov"].x
-					synced_player.moveY=player["mov"].y
+					print("?????")
+			else:
+				print("???")
+			
 
 func _process(_delta):
 	if established:
