@@ -25,15 +25,16 @@ func _ready():
 	emit_signal("start1")
 
 func Record(note):
-	if stage > 0:
+	if stage > 0 && x < 4 :
 		if note == sequence[x]:
-			get_node(note).play("good")
+			get_node(note).queue("good")
 			x+=1
 			if x == stage:
 				if stage == 4:
 					pass
 					#jej wygrana
 				else:
+					yield(get_node(note), "animation_finished")
 					emit_signal(("start" + str(stage + 1)))
 		else:
 			get_node(note).play("bad")
