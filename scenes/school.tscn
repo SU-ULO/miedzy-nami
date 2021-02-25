@@ -44,17 +44,14 @@
 
 [node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -188.744, 259.719 )
-scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent2"), NodePath("../vent3") ]
 
 [node name="vent2" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( 550.778, 51.859 )
-scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent1"), NodePath("../vent3") ]
 
 [node name="vent3" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -1258, -92.0149 )
-scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="window1" parent="Mapa" instance=ExtResource( 15 )]
@@ -184,7 +181,6 @@ scale = Vector2( 0.338277, 0.338277 )
 texture = ExtResource( 35 )
 
 [node name="YSort" type="YSort" parent="Mapa"]
-scale = Vector2( 0.5, 0.5 )
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
 position = Vector2( 2588.02, 732.941 )
