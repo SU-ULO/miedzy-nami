@@ -45,6 +45,31 @@ public class TaskWithGUI : Task, IInteractable
 		}
 	}
 	
+	public static Task GetTaskFromControl(Control c)
+	{
+		if(c == null)
+			return;
+			
+		foreach(string gr in c.GetGroups())
+		{
+			if(gr.StartsWith("gui_task_"))
+			{
+				string taskIDString = gr.Substring("gui_task_".Length);
+				int taskID;
+				Int32.TryParse(taskIDString, out taskID);
+				foreach(Task task in Task.tasks)
+				{
+					if(task.taskID == taskID)
+					{
+						return task;
+					}
+				}
+			}
+		}
+		
+		return null;
+	}
+	
 	public override void TaskInteract(){
 
 		// If this task is complete, do not open the window
