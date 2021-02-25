@@ -20,7 +20,8 @@ func spawn_map():
 
 func leave():
 	.leave()
-	remove_child(world)
+	if world.get_parent()==self:
+		remove_child(world)
 
 func spawn_player():
 	pass
