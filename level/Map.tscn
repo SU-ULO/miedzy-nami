@@ -59,6 +59,9 @@ polygon = PoolVector2Array( 226.5, 570.5, 228.5, 570.5, 228.5, 572, 231.5, 574, 
 [node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="scale/hitbox"]
 polygon = PoolVector2Array( -1420.73, 1534.43, -1420.57, 1518.58, -1266.4, 1518.58, -1266.33, 1534.57 )
 
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="scale/hitbox"]
+polygon = PoolVector2Array( 551.538, 691.708, 1357.17, 691.586, 1353.45, 577.432, 549.697, 578.605 )
+
 [node name="sightoccluders" type="StaticBody2D" parent="scale"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="scale/sightoccluders"]
