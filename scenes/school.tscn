@@ -53,7 +53,7 @@ scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent1"), NodePath("../vent3") ]
 
 [node name="vent3" parent="Mapa" instance=ExtResource( 10 )]
-position = Vector2( -1228.74, -89.1833 )
+position = Vector2( -1258, -92.0149 )
 scale = Vector2( 0.5, 0.5 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
@@ -196,7 +196,7 @@ position = Vector2( 8236.92, 8014.26 )
 position = Vector2( 2451.96, 2529.64 )
 
 [node name="INF-Update" parent="Mapa/YSort" instance=ExtResource( 1 )]
-position = Vector2( -2680.84, -4559.85 )
+position = Vector2( -2685.88, -4551.03 )
 
 [node name="PHY-Sto" parent="Mapa/YSort" instance=ExtResource( 6 )]
 position = Vector2( 2785.64, -3036.26 )

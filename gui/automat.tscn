@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://textures/przycisk_2.png" type="Texture" id=1]
 [ext_resource path="res://textures/drzwiczki_do_automatu.png" type="Texture" id=2]
@@ -9,99 +9,161 @@
 [ext_resource path="res://textures/przycisk_3.png" type="Texture" id=7]
 [ext_resource path="res://textures/przycisk_5.png" type="Texture" id=8]
 [ext_resource path="res://textures/przycisk_6.png" type="Texture" id=9]
+[ext_resource path="res://textures/przycisk_1_wcisniety.png" type="Texture" id=10]
+[ext_resource path="res://textures/przycisk_6_wcisniety.png" type="Texture" id=11]
+[ext_resource path="res://textures/przycisk_2_wcisniety.png" type="Texture" id=12]
+[ext_resource path="res://textures/przycisk_3_wcisniety.png" type="Texture" id=13]
+[ext_resource path="res://textures/przycisk_7_wcisniety.png" type="Texture" id=14]
+[ext_resource path="res://textures/przycisk_4_wcisniety.png" type="Texture" id=15]
+[ext_resource path="res://textures/przycisk_9.png" type="Texture" id=16]
+[ext_resource path="res://textures/przycisk_5_wcisniety.png" type="Texture" id=17]
+[ext_resource path="res://textures/przycisk_9_wcisniety.png" type="Texture" id=18]
+[ext_resource path="res://gui/podsceny/kawa.tres" type="ButtonGroup" id=19]
+[ext_resource path="res://gui/podsceny/cukier.tres" type="ButtonGroup" id=20]
+[ext_resource path="res://gui/podsceny/rozmiar.tres" type="ButtonGroup" id=21]
+[ext_resource path="res://gui/automat.gd" type="Script" id=22]
 
 [node name="automat" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="main" type="TextureRect" parent="."]
+margin_left = 496.725
+margin_top = 113.471
+margin_right = 1024.73
+margin_bottom = 560.471
+rect_scale = Vector2( 1.83097, 1.83097 )
+texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="drzwiczki" type="TextureRect" parent="."]
-margin_left = 708.008
-margin_top = 432.753
-margin_right = 895.008
-margin_bottom = 727.753
+[node name="drzwiczki" type="TextureRect" parent="main"]
+margin_left = 70.172
+margin_top = 130.294
+margin_right = 257.172
+margin_bottom = 425.294
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="main" type="TextureRect" parent="."]
-margin_left = 637.836
-margin_top = 302.459
-margin_right = 1165.84
-margin_bottom = 749.459
-texture = ExtResource( 4 )
-
-[node name="kawa" type="TextureButton" parent="."]
-margin_left = 982.395
-margin_top = 385.0
-margin_right = 1050.4
-margin_bottom = 429.0
+[node name="kawa" type="TextureButton" parent="main"]
+margin_left = 344.559
+margin_top = 82.541
+margin_right = 412.564
+margin_bottom = 126.541
 toggle_mode = true
 pressed = true
+group = ExtResource( 19 )
 texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 10 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="herbata" type="TextureButton" parent="."]
-margin_left = 1055.07
-margin_top = 385.0
-margin_right = 1123.07
-margin_bottom = 429.0
+[node name="herbata" type="TextureButton" parent="main"]
+margin_left = 417.234
+margin_top = 82.541
+margin_right = 485.234
+margin_bottom = 126.541
 toggle_mode = true
+group = ExtResource( 19 )
 texture_normal = ExtResource( 1 )
-expand = true
-
-[node name="mala" type="TextureButton" parent="."]
-margin_left = 1055.07
-margin_top = 432.194
-margin_right = 1123.07
-margin_bottom = 476.194
-toggle_mode = true
-texture_normal = ExtResource( 6 )
-expand = true
-
-[node name="duza" type="TextureButton" parent="."]
-margin_left = 982.395
-margin_top = 432.194
-margin_right = 1050.4
-margin_bottom = 476.194
-toggle_mode = true
-pressed = true
-texture_normal = ExtResource( 7 )
-expand = true
-
-[node name="1" type="TextureButton" parent="."]
-margin_left = 983.0
-margin_top = 477.75
-margin_right = 1026.0
-margin_bottom = 519.75
-toggle_mode = true
-pressed = true
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="2" type="TextureButton" parent="."]
-margin_left = 1031.0
-margin_top = 477.75
-margin_right = 1074.0
-margin_bottom = 519.75
-toggle_mode = true
-texture_normal = ExtResource( 9 )
-expand = true
-
-[node name="3" type="TextureButton" parent="."]
-margin_left = 1079.34
-margin_top = 477.75
-margin_right = 1122.34
-margin_bottom = 519.75
-toggle_mode = true
-texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="mala" type="TextureButton" parent="main"]
+margin_left = 417.234
+margin_top = 129.735
+margin_right = 485.234
+margin_bottom = 173.735
+toggle_mode = true
+group = ExtResource( 21 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="duza" type="TextureButton" parent="main"]
+margin_left = 344.559
+margin_top = 129.735
+margin_right = 412.564
+margin_bottom = 173.735
+toggle_mode = true
+pressed = true
+group = ExtResource( 21 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="TextureButton" parent="main"]
+margin_left = 345.164
+margin_top = 175.291
+margin_right = 388.164
+margin_bottom = 217.291
+toggle_mode = true
+pressed = true
+group = ExtResource( 20 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="TextureButton" parent="main"]
+margin_left = 393.164
+margin_top = 175.291
+margin_right = 436.164
+margin_bottom = 217.291
+toggle_mode = true
+group = ExtResource( 20 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="TextureButton" parent="main"]
+margin_left = 441.504
+margin_top = 175.291
+margin_right = 484.504
+margin_bottom = 217.291
+toggle_mode = true
+group = ExtResource( 20 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ready" type="TextureButton" parent="main"]
+margin_left = 365.909
+margin_top = 220.23
+margin_right = 465.909
+margin_bottom = 284.23
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="main/ready" to="." method="_on_ready_pressed"]
