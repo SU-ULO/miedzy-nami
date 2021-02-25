@@ -75,11 +75,10 @@ margin_right = 875.645
 margin_bottom = 98.1108
 
 [node name="hair-control" parent="body-parts-control" instance=ExtResource( 11 )]
-visible = false
-margin_left = 878.3
-margin_top = 60.2666
-margin_right = 878.3
-margin_bottom = 60.2666
+margin_left = 833.803
+margin_top = 24.2449
+margin_right = 833.803
+margin_bottom = 24.2449
 
 [node name="body-parts" type="Control" parent="."]
 margin_left = 83.6775
