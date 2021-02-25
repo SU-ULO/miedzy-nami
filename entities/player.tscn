@@ -5,11 +5,8 @@
 [ext_resource path="res://textures/lightmask.svg" type="Texture" id=5]
 
 [node name="player" instance=ExtResource( 2 )]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.7, 0.7 )
 script = ExtResource( 1 )
-
-[node name="AnimatedSprite" parent="." index="2"]
-frame = 1
 
 [node name="Light" type="Light2D" parent="." index="5"]
 texture = ExtResource( 5 )
