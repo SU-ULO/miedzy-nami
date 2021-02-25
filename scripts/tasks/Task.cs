@@ -1,6 +1,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 public abstract class Task : Godot.Node2D, ICloneable
 {
@@ -20,8 +23,31 @@ public abstract class Task : Godot.Node2D, ICloneable
 		
 		return result.ToArray();
 	}
+	
+	public static Task GetTaskByID(int id){
+		Godot.GD.Print("ID " + id);
+		
+		foreach (Task task in tasks){
+			if(task.taskID == id)
+				return task;
+		}
+		
+		Godot.GD.Print("Task with ID "+ id + " not found in " + tasks.Count + " tasks.");
+		
+		return null;
+	}
+	
+	public static Task[] GetAllTasks(){
+		return tasks.ToArray();
+	}
 
-	public static List<List<Task>> DivideTasks(int numberOfPlayers){
+	public static void Cleanup(){
+		tasks.Clear();
+		currentTaskID = 0;
+	}
+
+	public static void DivideTasks(int[] playerIDs){
+		int numberOfPlayers = playerIDs.Length;
 		int numberOfTaskCategories = Enum.GetValues(typeof(TaskCategory)).GetLength(0);
 		List<Task>[] sortedIntoCategories = new List<Task>[numberOfTaskCategories];
 		List<Task>[] leftovers = new List<Task>[numberOfTaskCategories];
@@ -31,9 +57,9 @@ public abstract class Task : Godot.Node2D, ICloneable
 			leftovers[i] = new List<Task>();
 		}
 		
-		List<List<Task>> players = new List<List<Task>>();
+		List<Task>[] players = new List<Task>[numberOfPlayers];
 		for(int i = 0; i < numberOfPlayers; i++){
-			players.Add(new List<Task>());
+			players[i] = (new List<Task>());
 		}
 		
 		Godot.GD.Print(tasks.Count);
@@ -104,9 +130,15 @@ public abstract class Task : Godot.Node2D, ICloneable
 			}
 		}
 		
-		return players;
+		for(int i = 0; i < numberOfPlayers; i++){
+			for(int j = 0; j < players[i].Count; j++){
+				players[i][j].playerID = playerIDs[i];
+			}
+		}
+
 	}
 
+	public int playerID = 0;
 	private int _state;
 	public int state { 
 		get {
@@ -122,10 +154,9 @@ public abstract class Task : Godot.Node2D, ICloneable
 			}
 		} 
 	}
-	public int maxState { get; protected set; }
+	public int maxState { get; set; }
 	protected bool started = false;
-	protected int _taskID;
-	public int taskID { get; protected set; }
+	public int taskID { get; set; }
 	
 	public object Clone(){
 		return (object)this.CloneInternal();
@@ -156,4 +187,9 @@ public abstract class Task : Godot.Node2D, ICloneable
 	
 	public virtual void TaskInteract(){}
 	public virtual void TaskEndInteraction(){}
+	
+	public virtual string ToString(){
+		return "Task-"+taskID+" started status: "+started+" of category"+category+", player ID: "+playerID;
+	}
+
 }

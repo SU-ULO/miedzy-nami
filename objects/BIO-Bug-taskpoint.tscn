@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/dzdzownica.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 370.8, 381.737 )
+extents = Vector2( 74.0726, 72.5996 )
 
 [node name="BIO-Bug" type="StaticBody2D"]
 position = Vector2( 284.153, 7.17773 )
@@ -19,5 +19,5 @@ scale = Vector2( 1.48494, 1.48494 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -62.4658, -58.9961 )
+position = Vector2( -96.8204, 191.301 )
 shape = SubResource( 1 )

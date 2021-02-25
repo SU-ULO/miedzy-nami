@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/dekoracje/toaleta.png" type="Texture" id=1]
+
+[node name="toaleta" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 786.477, 498.313 )
+scale = Vector2( 0.709287, 0.709287 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
+position = Vector2( -28.2292, -287.938 )
+polygon = PoolVector2Array( -558.84, 1182.28, -530.354, 777.158, -783.558, 675.877, -846.859, 220.111, -808.878, -539.499, 86.829, -650.276, 210.266, -495.189, 181.78, 49.1986, 514.11, 378.363, 466.634, 783.489, 48.8485, 954.401, 295.722, 1207.6, -90.4135, 1334.21 )

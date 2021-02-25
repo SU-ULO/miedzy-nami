@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://textures/dekoracje/krzeso1.png" type="Texture" id=1]
+
+[node name="krzeslo1" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 707.905, 617.294 )
+scale = Vector2( 0.709287, 0.709287 )
+texture = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
+polygon = PoolVector2Array( -390.883, -91.3795, -391.548, 138.838, -449.435, 249.289, -454.758, 558.02, -12.288, 546.709, -12.9534, 247.958, -72.171, 136.842, -72.8364, -92.0448 )
