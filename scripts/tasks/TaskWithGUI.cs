@@ -48,7 +48,7 @@ public class TaskWithGUI : Task, IInteractable
 	public static Task GetTaskFromControl(Control c)
 	{
 		if(c == null)
-			return;
+			return null;
 			
 		foreach(string gr in c.GetGroups())
 		{
