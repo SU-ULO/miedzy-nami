@@ -5,7 +5,9 @@ var mouth = "neutral closed"
 var nose = "long nose"
 var eye = "neutral_open"
 var eye_color = "darkblue"
-
+var hair = "short hair"
+var hairColor = 1
+var hairPos = {"Velma long hair": 384, "Velma short hair":266, "afro":195, "bob cut":239, "curly afroish":282, "fade":248, "fade2":195, "kok":179, "koki":242, "long hair":379, "ponytail":192, "ponytails":230, "puffy hair":240, "short hair":240, "very short":283}
 
 var hasSkinColorMouth = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed", "wide smile closed"]
 var hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_open", "suspicious_open", "suspicious_semi-open", "winking"]
@@ -36,3 +38,8 @@ func getEyeBonusPath(name):
 func hasColoredEyes():
 	return not eye in noColorEyes 
 
+func getHairPath():
+	return ("res://textures/character/hair/" + hair + "/hair" + str(hairColor) + ".png")
+
+func getHairPos():
+	return hairPos[hair]

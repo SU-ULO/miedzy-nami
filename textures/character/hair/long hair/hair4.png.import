@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/hair4.png-70295a6664f975ffe843b1ca33aa5a2b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/character/hair/long hair/hair4.png"
+dest_files=[ "res://.import/hair4.png-70295a6664f975ffe843b1ca33aa5a2b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
