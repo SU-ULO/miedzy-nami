@@ -41,17 +41,18 @@
 [node name="Main" type="Node2D"]
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 1 )
 
 [node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
-position = Vector2( -188.744, 259.719 )
+position = Vector2( -1107.13, 536.564 )
 link = [ NodePath("../vent2"), NodePath("../vent3") ]
 
 [node name="vent2" parent="Mapa" instance=ExtResource( 10 )]
-position = Vector2( 550.778, 51.859 )
+position = Vector2( 1630.52, 502.469 )
 link = [ NodePath("../vent1"), NodePath("../vent3") ]
 
 [node name="vent3" parent="Mapa" instance=ExtResource( 10 )]
-position = Vector2( -1258, -92.0149 )
+position = Vector2( -1275.7, -439.668 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="window1" parent="Mapa" instance=ExtResource( 15 )]
@@ -66,7 +67,7 @@ position = Vector2( 2591, -2430.08 )
 [node name="dekoracje" type="YSort" parent="Mapa"]
 
 [node name="biorko-nauczyciela" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
-position = Vector2( 2071.87, 1516.05 )
+position = Vector2( 2275.52, 1516.05 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="stolik3" parent="Mapa/dekoracje" instance=ExtResource( 22 )]
@@ -168,7 +169,7 @@ position = Vector2( -24.693, -419.584 )
 scale = Vector2( 0.546295, 0.546295 )
 
 [node name="stolik7" parent="Mapa/dekoracje" instance=ExtResource( 34 )]
-position = Vector2( -412.749, 21.3881 )
+position = Vector2( -393.271, 6.40503 )
 scale = Vector2( 0.347618, 0.347618 )
 
 [node name="stolik6" parent="Mapa/dekoracje" instance=ExtResource( 21 )]
@@ -183,39 +184,41 @@ texture = ExtResource( 35 )
 [node name="YSort" type="YSort" parent="Mapa"]
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
-position = Vector2( 2588.02, 732.941 )
+position = Vector2( 1296.35, 358.187 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="LIB-Books" parent="Mapa/YSort" instance=ExtResource( 13 )]
-position = Vector2( 8236.92, 8014.26 )
+position = Vector2( 3893.07, 3498.91 )
 
 [node name="CHE-Kit" parent="Mapa/YSort" instance=ExtResource( 3 )]
-position = Vector2( 2451.96, 2529.64 )
+position = Vector2( 1202.77, 2368.68 )
 
 [node name="INF-Update" parent="Mapa/YSort" instance=ExtResource( 1 )]
-position = Vector2( -2685.88, -4551.03 )
+position = Vector2( -1011.79, -1441.09 )
 
 [node name="PHY-Sto" parent="Mapa/YSort" instance=ExtResource( 6 )]
-position = Vector2( 2785.64, -3036.26 )
+position = Vector2( 2405.99, -2323.06 )
 
 [node name="BBB" parent="Mapa/YSort" instance=ExtResource( 2 )]
-position = Vector2( 337.919, 379.094 )
+position = Vector2( 333.162, 469.474 )
 script = ExtResource( 9 )
 
 [node name="BIO-Bug" parent="Mapa/YSort" instance=ExtResource( 7 )]
-position = Vector2( 2603.49, -78.9091 )
-scale = Vector2( 0.262509, 0.262509 )
+position = Vector2( 1306.94, -44.9294 )
 
 [node name="BIO-mikroskop" parent="Mapa/YSort" instance=ExtResource( 11 )]
-position = Vector2( 2591.5, -945.076 )
+position = Vector2( 1297.95, -465.55 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="GEO-kamienie" parent="Mapa/YSort" instance=ExtResource( 12 )]
-position = Vector2( -2097.09, -289.478 )
+position = Vector2( -1425.05, 416.54 )
 
 [node name="MAT-Karta" parent="Mapa/YSort" instance=ExtResource( 8 )]
-position = Vector2( -2791.45, -746.772 )
+position = Vector2( -2615.45, -347.198 )
 
 [node name="pianino" parent="Mapa/YSort" instance=ExtResource( 20 )]
-position = Vector2( -7833.82, 3934.9 )
+position = Vector2( -3923.48, 1957.1 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )
