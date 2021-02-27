@@ -28,7 +28,7 @@ func get_input():
 		
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
-	
+		
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 	
@@ -61,7 +61,7 @@ func get_input():
 				arrow.call_teleport()
 				selected_vent = 0
 				
-		else: if currentInteraction.IsDone():
+		else: if !currentInteraction.is_in_group("cameras") and currentInteraction.IsDone():
 			currentInteraction = null
 
 func _physics_process(delta):

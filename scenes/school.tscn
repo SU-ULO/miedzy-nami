@@ -1,25 +1,25 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://objects/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/CHE-Kit-taskpoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/taskpoints/CHE-Kit-taskpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://level/Map.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/BIO-Flower-taskpoint.tscn" type="PackedScene" id=5]
-[ext_resource path="res://objects/PHY-Sto-taskpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/BIO-Bug-taskpoint.tscn" type="PackedScene" id=7]
-[ext_resource path="res://objects/MAT-Karta-taskpoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/taskpoints/BIO-Flower-taskpoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/taskpoints/PHY-Sto-taskpoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/taskpoints/BIO-Bug-taskpoint.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/taskpoints/MAT-Karta-taskpoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/tasks/TaskWithGUI.cs" type="Script" id=9]
 [ext_resource path="res://objects/vents/vent.tscn" type="PackedScene" id=10]
-[ext_resource path="res://objects/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://objects/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
-[ext_resource path="res://objects/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/taskpoints/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/taskpoints/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/taskpoints/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://textures/walls-top.svg" type="Texture" id=14]
 [ext_resource path="res://objects/windows/window1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/windows/window2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/windows/window4.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/windows/window3.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/dekoracje/biorko-nauczyciela.tscn" type="PackedScene" id=19]
-[ext_resource path="res://objects/AULA-pianino-taskpoint.tscn" type="PackedScene" id=20]
+[ext_resource path="res://objects/taskpoints/AULA-pianino-taskpoint.tscn" type="PackedScene" id=20]
 [ext_resource path="res://objects/dekoracje/stolik.tscn" type="PackedScene" id=21]
 [ext_resource path="res://objects/dekoracje/stolik1.tscn" type="PackedScene" id=22]
 [ext_resource path="res://textures/dekoracje/zegar.png" type="Texture" id=23]
@@ -35,8 +35,10 @@
 [ext_resource path="res://textures/dekoracje/plakat3.png" type="Texture" id=33]
 [ext_resource path="res://objects/dekoracje/stolik2.tscn" type="PackedScene" id=34]
 [ext_resource path="res://textures/dekoracje/plakat2.png" type="Texture" id=35]
-[ext_resource path="res://objects/automat-taskpoint.tscn" type="PackedScene" id=36]
-[ext_resource path="res://objects/tablica-taskpoint.tscn" type="PackedScene" id=37]
+[ext_resource path="res://objects/taskpoints/automat-taskpoint.tscn" type="PackedScene" id=36]
+[ext_resource path="res://objects/taskpoints/tablica-taskpoint.tscn" type="PackedScene" id=37]
+[ext_resource path="res://objects/cameras/camera.tscn" type="PackedScene" id=38]
+[ext_resource path="res://objects/cameras/cameras_console.tscn" type="PackedScene" id=39]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -57,16 +59,26 @@ link = [ NodePath("../vent1"), NodePath("../vent3") ]
 position = Vector2( -1275.7, -439.668 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
-[node name="window1" parent="Mapa" instance=ExtResource( 15 )]
-position = Vector2( 2204.43, -2539.82 )
+[node name="cameras_console" parent="Mapa" instance=ExtResource( 39 )]
+position = Vector2( -1108.42, 5.79897 )
+linkedcameras = [ NodePath("../camera1") ]
 
-[node name="window2" parent="Mapa" instance=ExtResource( 16 )]
-position = Vector2( 1523.79, -2526.12 )
-
-[node name="window3" parent="Mapa" instance=ExtResource( 18 )]
-position = Vector2( 2591, -2430.08 )
+[node name="camera1" parent="Mapa" instance=ExtResource( 38 )]
+position = Vector2( 1097.73, 625.808 )
 
 [node name="dekoracje" type="YSort" parent="Mapa"]
+
+[node name="window1" parent="Mapa/dekoracje" instance=ExtResource( 15 )]
+position = Vector2( 2204.43, -2539.82 )
+
+[node name="window2" parent="Mapa/dekoracje" instance=ExtResource( 16 )]
+position = Vector2( 1523.79, -2526.12 )
+
+[node name="window3" parent="Mapa/dekoracje" instance=ExtResource( 18 )]
+position = Vector2( 2591, -2430.08 )
+
+[node name="window4" parent="Mapa/dekoracje" instance=ExtResource( 17 )]
+position = Vector2( 1226.43, -2433.58 )
 
 [node name="biorko-nauczyciela" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
 position = Vector2( 2275.52, 1516.05 )
@@ -240,6 +252,3 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
-
-[node name="Node2D" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1226.43, -2432.58 )

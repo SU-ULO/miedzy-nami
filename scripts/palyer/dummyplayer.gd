@@ -78,6 +78,8 @@ func ui_selected():
 			
 		if currentBestItem.is_in_group("vents"):
 			currentBestItem.enter(self)
+		else: if currentBestItem.is_in_group("cameras"):
+			currentBestItem.open(self)
 		else:
 			currentBestItem.Interact()
 		currentInteraction = currentBestItem
@@ -86,6 +88,8 @@ func ui_canceled():
 	if(currentInteraction != null):
 		if currentInteraction.is_in_group("vents"):
 			currentInteraction.exit(self)
+		else: if currentInteraction.is_in_group("cameras"):
+			currentInteraction.close(self)
 		else:
 			currentInteraction.EndInteraction()
 		currentInteraction = null
