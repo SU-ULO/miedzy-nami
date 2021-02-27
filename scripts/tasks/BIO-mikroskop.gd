@@ -14,7 +14,7 @@ onready var correct_offset = $worm.rect_position
 var rng = RandomNumberGenerator.new()
 
 const knob_sensitivity:float = 10.0 # how much rotaton changes value
-const accepted_increctness = 5 # how precise you need to be
+const accepted_incorectness = 5 # how precise you need to be
 
 func _ready():
 	# randomize offset and blur
@@ -33,10 +33,10 @@ func _process(_delta):
 	$worm.material.set_shader_param("radius", new_blur * knob_sensitivity * 0.1)
 	
 	# check win
-	if abs(new_blur) < 0.6 * accepted_increctness: blur_set = true
+	if abs(new_blur) < 0.6 * accepted_incorectness: blur_set = true
 	else: blur_set = false
 	
-	if abs(correct_offset.x - $worm.rect_position.x) < 10 * accepted_increctness: offset_set = true
+	if abs(correct_offset.x - $worm.rect_position.x) < 10 * accepted_incorectness: offset_set = true
 	else: offset_set = false
 	
 	if offset_set and blur_set and !checking: checkWin()
