@@ -1,0 +1,1567 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://textures/tablica_czysta.png" type="Texture" id=1]
+[ext_resource path="res://textures/cos.png" type="Texture" id=2]
+[ext_resource path="res://scripts/tasks/brud.gd" type="Script" id=3]
+[ext_resource path="res://scripts/tasks/tablica.gd" type="Script" id=4]
+[ext_resource path="res://scripts/tasks/gabka.gd" type="Script" id=5]
+[ext_resource path="res://textures/gabka.png" type="Texture" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.5274
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 56.5247
+height = 107.081
+
+[node name="tablica" type="Node2D"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="tablica_czysta" type="Sprite" parent="."]
+position = Vector2( 947.187, 513.674 )
+texture = ExtResource( 1 )
+
+[node name="cos" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -250.014, -164.175 )
+scale = Vector2( 0.626366, 0.696856 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="tablica_czysta/cos"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos/Area2D2"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos2" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -216.214, -176.069 )
+rotation = -1.06801
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos2"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos2/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos3" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -129.231, -183.508 )
+rotation = -1.86398
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos3"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos3/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos4" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -125.809, -174.415 )
+rotation = 0.48541
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos4"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos4/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos12" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -284.003, -198.613 )
+rotation = 0.48541
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos12"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos12/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos13" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -305.409, -170.073 )
+rotation = 0.48541
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos13"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos13/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos25" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -329.795, -175.118 )
+rotation = 0.48541
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos25"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos25/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos7" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -171.397, -159.725 )
+rotation = 0.48541
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos7"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos7/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos5" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -110.403, -211.626 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos5"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos5/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos9" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -9.36584, -206.476 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos9"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos9/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos10" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 47.3367, -137.846 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos10"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos10/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos11" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 20.375, -160.081 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos11"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos11/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos14" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 91.0777, -144.883 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos14"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos14/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos15" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 112.377, -168.137 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos15"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos15/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos16" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 168.013, -168.684 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos16"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos16/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos17" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 190.608, -192.468 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos17"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos17/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos18" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 225.095, -179.386 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos18"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos18/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos19" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 242.933, -203.171 )
+rotation = 0.951107
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos19"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos19/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos26" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 264.146, -180.543 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos26"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos26/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos27" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 286.774, -204.585 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos27"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos27/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos28" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 310.815, -173.472 )
+rotation = -0.91916
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos28"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos28/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos22" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -152.212, -173.055 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos22"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos22/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos23" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 193.66, -214.934 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos23"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos23/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos20" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 164.445, -168.684 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos20"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos20/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos21" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 164.445, -168.684 )
+rotation = -1.18152
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos21"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos21/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos6" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -52.1388, -205.981 )
+rotation = -1.37857
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos6"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos6/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos8" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -87.9117, -213.536 )
+rotation = -1.37857
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos8"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos8/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos24" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 74.0798, -141.452 )
+rotation = -1.97776
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos24"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos24/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos72" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -94.0864, 263.646 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos72"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos72/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos73" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 18.6315, 252.396 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos73"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos73/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos74" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 22.199, 254.775 )
+rotation = 0.951107
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos74"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos74/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos75" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -16.0155, 260.496 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos75"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos75/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos76" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 66.2975, 258.31 )
+rotation = -0.91916
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos76"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos76/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos77" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -41.3447, 264.416 )
+rotation = -0.166477
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos77"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos77/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos78" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -42.0179, 263.099 )
+rotation = -1.18152
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos78"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos78/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos79" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -121.68, 238.005 )
+rotation = -1.97776
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos79"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos79/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos29" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -196.01, 74.2403 )
+rotation = -1.55676
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos29"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos29/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos30" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -109.027, 66.801 )
+rotation = -2.35273
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos30"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos30/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos31" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -74.1757, 62.4245 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos31"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos31/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos32" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -263.799, 51.6955 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos32"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos32/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos33" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -285.204, 80.2365 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos33"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos33/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos34" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -300.611, 134.682 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos34"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos34/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos35" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -174.764, 115.278 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos35"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos35/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos36" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -298.976, 98.174 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos36"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos36/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos37" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 10.8384, 43.8331 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos37"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos37/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos38" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 22.6426, 101.238 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos38"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos38/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos39" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -60.4423, 25.1253 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos39"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos39/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos40" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 78.7305, 148.079 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos40"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos40/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos41" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 49.5189, 120.336 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos41"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos41/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos42" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 188.217, 81.6254 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos42"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos42/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos43" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 137.852, 118.454 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos43"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos43/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos44" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 245.299, 70.9225 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos44"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos44/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos45" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 248.545, 126.833 )
+rotation = 0.462357
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos45"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos45/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos46" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 215.88, 112.419 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos46"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos46/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos47" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 268.814, 80.5204 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos47"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos47/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos48" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 277.141, 118.368 )
+rotation = -1.40791
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos48"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos48/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos49" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -233.029, 85.1116 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos49"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos49/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos50" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 177.945, 95.9875 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos50"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos50/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos51" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 66.7911, 173.667 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos51"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos51/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos52" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 122.914, 152.341 )
+rotation = -1.67027
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos52"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos52/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos53" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -31.9344, 44.3284 )
+rotation = -1.86732
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos53"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos53/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos54" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -140.667, 77.1821 )
+rotation = -1.86732
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos54"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos54/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos80" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -347.371, -285.663 )
+rotation = -1.55676
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos80"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos80/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos81" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -239.007, -294.112 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos81"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos81/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos82" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -255.411, -256.972 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos82"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos82/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos83" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -384.391, -274.792 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos83"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos83/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos84" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -292.029, -282.722 )
+rotation = -1.86732
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos84"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos84/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos55" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -17.9626, 81.918 )
+rotation = -2.46651
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos55"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos55/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos56" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 365.346, 236.543 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos56"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos56/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos57" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 407.347, 256.431 )
+rotation = -1.40791
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos57"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos57/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos58" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -282.418, -58.5636 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos58"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos58/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos59" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 414.784, 177.927 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos59"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos59/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos60" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 72.4034, 22.1348 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos60"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos60/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos65" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 265.049, -46.6001 )
+rotation = -2.35273
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos65"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos65/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos66" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 228.482, -30.4706 )
+rotation = -0.00334001
+scale = Vector2( 0.690806, 0.690806 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos66"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos66/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos67" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 333.079, 36.6272 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos67"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos67/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos68" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 295.956, -34.5356 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos68"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos68/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos69" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 313.286, 59.2606 )
+rotation = -0.655227
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos69"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos69/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos70" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 322.88, 1.75092 )
+rotation = -2.46651
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos70"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos70/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos71" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 385.646, -74.7319 )
+rotation = -0.655227
+scale = Vector2( 0.488746, 0.48848 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos71"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos71/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos61" type="Sprite" parent="tablica_czysta"]
+position = Vector2( 406.897, 211.831 )
+rotation = -1.67027
+scale = Vector2( 0.690806, 0.69043 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos61"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos61/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos62" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -237.345, -56.6931 )
+rotation = -1.86732
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos62"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos62/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos63" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -309.037, -30.5742 )
+rotation = -1.86732
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos63"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos63/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="cos64" type="Sprite" parent="tablica_czysta"]
+position = Vector2( -356.946, -20.226 )
+rotation = -2.46651
+scale = Vector2( 0.690806, 0.913352 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="tablica_czysta/cos64"]
+visible = false
+position = Vector2( 4.09753, -2.88544 )
+scale = Vector2( 1.44758, 1.44758 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos64/Area2D"]
+position = Vector2( -2.77795, 0.396851 )
+shape = SubResource( 1 )
+
+[node name="gabka" type="Sprite" parent="."]
+position = Vector2( 580.565, 840.835 )
+scale = Vector2( 0.298382, 0.298382 )
+texture = ExtResource( 6 )
+script = ExtResource( 5 )
+
+[node name="gabka" type="Area2D" parent="gabka"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gabka/gabka"]
+position = Vector2( 13.3, -10.0894 )
+rotation = 1.57079
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+[connection signal="mouse_entered" from="gabka/gabka" to="gabka" method="_on_gabka_mouse_entered"]
+[connection signal="mouse_exited" from="gabka/gabka" to="gabka" method="_on_gabka_mouse_exited"]
