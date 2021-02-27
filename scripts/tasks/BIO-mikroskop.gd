@@ -1,50 +1,49 @@
 extends Control
 
-var focus = false
-var good_position = false
-
+# vars for win checking
+var offset_set = false
+var blur_set = false
 var checking = false
 
-var cel
-var pos_offset = Vector2(0, 0)
-var x
-var org_pos = Vector2()
-var gooood_pos = Vector2()
+var offset; var blur
+
+onready var offset_knob = get_node("Knob1/Knob")
+onready var blur_knob = get_node("Knob2/Knob")
+onready var correct_offset = $worm.rect_position
+
 var rng = RandomNumberGenerator.new()
-var y
+
+const knob_sensitivity:float = 10.0 # how much rotaton changes value
+const accepted_increctness = 5 # how precise you need to be
 
 func _ready():
+	# randomize offset and blur
 	rng.randomize()
-	cel = rng.randf_range(10, 30)
-	cel *= ((rng.randi_range(0, 1) * 2) - 1)
-	pos_offset.x = rng.randf_range(100, 250)  
-	pos_offset.x *= ((rng.randi_range(0, 1) * 2) - 1)
-	gooood_pos = $dzdzownica.rect_position
-	$dzdzownica.rect_position += pos_offset
-	org_pos = $dzdzownica.rect_position
-	
-func _process(_delta):
-	x = $pokretlo/pokreto/guzik.halohalo
-	y = $pokretlo2/pokreto/guzik.halohalo
-	$dzdzownica.rect_position.x = org_pos.x + y * 5
-	x -= cel
-	$dzdzownica.material.set_shader_param("radius", x) 
-	if abs (x) < 0.6 && !focus:
-		focus = true
-		#print("hej")
-		checkWin()
-	if abs(gooood_pos.x - $dzdzownica.rect_position.x) < 10 && !good_position:
-		good_position = true
-		#print("hehe")
-		checkWin()
+	var random_offset = Vector2(rng.randf_range(100, 250) * ((rng.randi_range(0, 1) * 2) - 1), 0)
+	$worm.rect_position += random_offset; offset = $worm.rect_position
+	blur = rng.randf_range(10, 30) *((rng.randi_range(0, 1) * 2) - 1)
 
+func _process(_delta):
+	# get new values from knobs
+	var new_offset = offset_knob.prevangle + 2*PI*offset_knob.full_rotations
+	var new_blur = blur - (blur_knob.prevangle + 2*PI*blur_knob.full_rotations)
+	
+	# set new values to image
+	$worm.rect_position.x = offset.x + new_offset * knob_sensitivity
+	$worm.material.set_shader_param("radius", new_blur * knob_sensitivity * 0.1)
+	
+	# check win
+	if abs(new_blur) < 0.6 * accepted_increctness: blur_set = true
+	else: blur_set = false
+	
+	if abs(correct_offset.x - $worm.rect_position.x) < 10 * accepted_increctness: offset_set = true
+	else: offset_set = false
+	
+	if offset_set and blur_set and !checking: checkWin()
 
 func checkWin():
-	if !checking:
-		checking = true
-		if good_position && focus:
-			$Timer.start()
-			yield($Timer, "timeout")
-			var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-			TaskWithGUI.TaskWithGUICompleteTask(self)
-	checking = false
+	checking = true
+	$Timer.start()
+	yield($Timer, "timeout")
+	var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
+	TaskWithGUI.TaskWithGUICompleteTask(self)

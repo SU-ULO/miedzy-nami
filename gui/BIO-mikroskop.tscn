@@ -7,45 +7,52 @@
 [ext_resource path="res://textures/rect833.png" type="Texture" id=5]
 
 [node name="BIO-mikroskop" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="dzdzownica" type="TextureRect" parent="."]
+[node name="worm" type="TextureRect" parent="."]
 material = ExtResource( 4 )
-margin_left = 1069.66
-margin_top = 334.654
-margin_right = 1363.66
-margin_bottom = 702.654
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -147.0
+margin_top = -184.0
+margin_right = 147.0
+margin_bottom = 184.0
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="pokretlo" parent="." instance=ExtResource( 2 )]
-margin_left = 59.3912
-margin_top = -206.574
-margin_right = 59.3912
-margin_bottom = -206.574
-
-[node name="pokretlo2" parent="." instance=ExtResource( 2 )]
-margin_left = 52.2023
-margin_top = 318.971
-margin_right = 52.2023
-margin_bottom = 318.971
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
-
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 637.717
-margin_top = -40.0189
-margin_right = 1790.72
-margin_bottom = 1112.98
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -885.0
+margin_top = -448.5
+margin_right = 885.0
+margin_bottom = 448.5
 texture = ExtResource( 5 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Knob1" parent="." instance=ExtResource( 2 )]
+position = Vector2( -428.856, -270.915 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Knob2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -491.141, 77.795 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
