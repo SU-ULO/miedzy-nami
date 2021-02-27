@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://textures/przycisk_2.png" type="Texture" id=1]
 [ext_resource path="res://textures/drzwiczki_do_automatu.png" type="Texture" id=2]
@@ -21,18 +21,52 @@
 [ext_resource path="res://gui/podsceny/kawa.tres" type="ButtonGroup" id=19]
 [ext_resource path="res://gui/podsceny/cukier.tres" type="ButtonGroup" id=20]
 [ext_resource path="res://gui/podsceny/rozmiar.tres" type="ButtonGroup" id=21]
-[ext_resource path="res://gui/automat.gd" type="Script" id=22]
+[ext_resource path="res://scripts/tasks/automat.gd" type="Script" id=22]
+[ext_resource path="res://textures/kawa.png" type="Texture" id=23]
+[ext_resource path="res://fonts/PottaOne-Regular2.tres" type="DynamicFont" id=24]
+[ext_resource path="res://textures/sticky.svg" type="Texture" id=25]
+
+[sub_resource type="Animation" id=1]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimationPlayer/main/drzwiczki:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 70.5451, -0.25, 0, 0.25, 0, 71.6374, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimationPlayer/main/drzwiczki:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 131.077, -0.25, 0, 0.25, 0, -44.2401, -0.55, 8.68926, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.3 )
+}
 
 [node name="automat" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.1189
+margin_top = -2.6875
+margin_right = -2.1189
+margin_bottom = -2.6875
 script = ExtResource( 22 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="main" type="TextureRect" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/open = SubResource( 1 )
+
+[node name="main" type="TextureRect" parent="AnimationPlayer"]
 margin_left = 496.725
 margin_top = 113.471
 margin_right = 1024.73
@@ -44,17 +78,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="drzwiczki" type="TextureRect" parent="main"]
-margin_left = 70.172
-margin_top = 130.294
-margin_right = 257.172
-margin_bottom = 425.294
+[node name="Label" type="Label" parent="AnimationPlayer/main"]
+margin_left = 133.76
+margin_top = 89.5833
+margin_right = 213.76
+margin_bottom = 103.583
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="herbatakubek" type="TextureButton" parent="AnimationPlayer/main"]
+visible = false
+show_behind_parent = true
+margin_left = 106.019
+margin_top = 229.955
+margin_right = 240.019
+margin_bottom = 409.955
+texture_normal = ExtResource( 23 )
+expand = true
+
+[node name="kawakubek" type="TextureButton" parent="AnimationPlayer/main"]
+visible = false
+show_behind_parent = true
+margin_left = 106.019
+margin_top = 229.955
+margin_right = 240.019
+margin_bottom = 409.955
+texture_normal = ExtResource( 23 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="drzwiczki" type="TextureRect" parent="AnimationPlayer/main"]
+show_behind_parent = true
+margin_left = 70.5451
+margin_top = 131.077
+margin_right = 257.545
+margin_bottom = 426.077
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="kawa" type="TextureButton" parent="main"]
+[node name="kawa" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 344.559
 margin_top = 82.541
 margin_right = 412.564
@@ -69,7 +137,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="herbata" type="TextureButton" parent="main"]
+[node name="herbata" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 417.234
 margin_top = 82.541
 margin_right = 485.234
@@ -83,7 +151,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mala" type="TextureButton" parent="main"]
+[node name="mala" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 417.234
 margin_top = 129.735
 margin_right = 485.234
@@ -97,7 +165,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="duza" type="TextureButton" parent="main"]
+[node name="duza" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 344.559
 margin_top = 129.735
 margin_right = 412.564
@@ -112,7 +180,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="TextureButton" parent="main"]
+[node name="1" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 345.164
 margin_top = 175.291
 margin_right = 388.164
@@ -127,7 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="2" type="TextureButton" parent="main"]
+[node name="2" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 393.164
 margin_top = 175.291
 margin_right = 436.164
@@ -141,7 +209,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="3" type="TextureButton" parent="main"]
+[node name="3" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 441.504
 margin_top = 175.291
 margin_right = 484.504
@@ -155,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ready" type="TextureButton" parent="main"]
+[node name="ready" type="TextureButton" parent="AnimationPlayer/main"]
 margin_left = 365.909
 margin_top = 220.23
 margin_right = 465.909
@@ -166,4 +234,28 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="main/ready" to="." method="_on_ready_pressed"]
+
+[node name="notka" type="TextureRect" parent="AnimationPlayer/main"]
+visible = false
+margin_left = 371.868
+margin_top = 325.929
+margin_right = 470.868
+margin_bottom = 424.929
+texture = ExtResource( 25 )
+expand = true
+
+[node name="Label" type="Label" parent="AnimationPlayer/main/notka"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 98.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="pressed" from="AnimationPlayer/main/herbatakubek" to="." method="_on_kubek_pressed"]
+[connection signal="pressed" from="AnimationPlayer/main/kawakubek" to="." method="_on_kubek_pressed"]
+[connection signal="pressed" from="AnimationPlayer/main/ready" to="." method="_on_ready_pressed"]
