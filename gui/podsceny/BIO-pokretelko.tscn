@@ -4,34 +4,35 @@
 [ext_resource path="res://textures/guzik_pokreta.png" type="Texture" id=2]
 [ext_resource path="res://textures/pokreto.png" type="Texture" id=3]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Scene" type="Node2D"]
 
-[node name="pokreto" type="TextureRect" parent="."]
-margin_left = 77.4131
-margin_top = 317.966
-margin_right = 432.413
-margin_bottom = 711.966
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="guzik" type="TextureButton" parent="pokreto"]
-margin_left = 68.9219
-margin_top = 116.868
-margin_right = 108.922
-margin_bottom = 156.868
-rect_pivot_offset = Vector2( 116.535, 17.9116 )
-texture_normal = ExtResource( 2 )
+[node name="Knob" type="TextureButton" parent="."]
+margin_left = -161.665
+margin_top = -101.026
+margin_right = 193.335
+margin_bottom = 268.974
+rect_pivot_offset = Vector2( 177, 185 )
+texture_normal = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="pokreto/guzik" to="pokreto/guzik" method="_on_guzik_button_down"]
-[connection signal="button_up" from="pokreto/guzik" to="pokreto/guzik" method="_on_guzik_button_up"]
+
+[node name="Dot" type="TextureRect" parent="Knob"]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.519
+anchor_bottom = 0.337
+margin_left = 86.0338
+margin_top = -14.1395
+margin_right = 119.289
+margin_bottom = 12.1705
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Middle" type="Position2D" parent="Knob"]
+position = Vector2( 160, 108 )
+[connection signal="mouse_entered" from="Knob" to="Knob" method="_on_Control_mouse_entered"]
+[connection signal="mouse_exited" from="Knob" to="Knob" method="_on_Control_mouse_exited"]

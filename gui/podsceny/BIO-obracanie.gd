@@ -1,29 +1,51 @@
 extends TextureButton
 
-var rotating = false
-var lastx = 0;
-var obroty = 0
+onready var rotation = self.rotation
+onready var posmarker = get_node("Middle").position
+onready var dot = get_node("Dot")
 
-var niewiem = 80.0
-var halohalo = 0
-func _ready():
-	pass
+# some magic values
+const radius:float = 85.0
+const elipsefy:float = 1.2
+
+var clockwise:bool = true
+var prevangle:float = 0.0
+var hovered = false
+var full_rotations = 0
+
+func move_dot(angle):
+	
+	if angle <= -0.75*PI and prevangle >= 0.75*PI:
+		full_rotations += 1
+		clockwise = true
+	else: if prevangle <= -0.75*PI and angle >= 0.75*PI:
+		full_rotations -= 1
+		clockwise = false
+	else: if prevangle > angle: clockwise = true
+	else: clockwise = false
+	
+	prevangle = angle
+	
+	dot.set_position(Vector2(posmarker.x + radius * cos(angle) * elipsefy, posmarker.y + radius * sin(angle)))
 
 func _process(_delta):
-	if rotating:
-		var x = (((get_parent().get_parent().rect_position + get_parent().rect_position + rect_position + rect_pivot_offset).angle_to_point(get_viewport().get_mouse_position()) * 180 )/ PI)
-		rect_rotation = x
-		if lastx > 170 && x < -170:
-			obroty+=1
-		if lastx < -170 && x > 170:
-			obroty-=1
-		lastx = x
+	if self.pressed and hovered:
+		var mausepos = get_local_mouse_position()
+		var angle = mausepos.angle_to_point(posmarker)
+		move_dot(angle)
 		
-		halohalo = float(x + obroty * 360) / niewiem
-		
-func _on_guzik_button_down():
-	rotating = true
+# scroll support :D
+func _input(event):
+	if hovered and event is InputEventMouseButton and event.is_pressed() and !self.pressed:
+		if event.button_index == BUTTON_WHEEL_UP:
+			clockwise = true
+			move_dot(prevangle + 1)
+		if event.button_index == BUTTON_WHEEL_DOWN:
+			clockwise = false
+			move_dot(prevangle - 1)
 
+func _on_Control_mouse_entered():
+	hovered = true
 
-func _on_guzik_button_up():
-	rotating = false
+func _on_Control_mouse_exited():
+	hovered = false
