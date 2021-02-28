@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/tasks/PHYsuwmiarka.cs" type="Script" id=1]
+[ext_resource path="res://textures/suwmiarka_cz_ruchoma_2.png" type="Texture" id=2]
+[ext_resource path="res://textures/suwmiarka_stae.png" type="Texture" id=3]
+[ext_resource path="res://textures/suwmiarka_cz_ruchoma_1.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 121.443, 33.7513 )
+
+[node name="PHY-Sto" type="StaticBody2D"]
+position = Vector2( -5.62885, -0.381779 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.49091, 17.3696 )
+shape = SubResource( 1 )
+
+[node name="suwmiarka_cz_ruchoma_2" type="Sprite" parent="."]
+position = Vector2( -222.364, -71.6936 )
+texture = ExtResource( 2 )
+
+[node name="suwmiarka_stae" type="Sprite" parent="."]
+position = Vector2( 155.846, 43.258 )
+texture = ExtResource( 3 )
+
+[node name="suwmiarka_cz_ruchoma_1" type="Sprite" parent="."]
+position = Vector2( -133.289, 149.691 )
+texture = ExtResource( 4 )
