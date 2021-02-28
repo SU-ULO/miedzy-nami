@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	check_interaction()
 
 func check_line_of_sight():
-	for item in in_sight_range:	
+	for item in in_sight_range:
 		var space_state = get_world_2d().direct_space_state
 		var sight_check = space_state.intersect_ray(position, item.position, [self, item], 1)
 			

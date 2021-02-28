@@ -61,10 +61,19 @@ link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="cameras_console" parent="Mapa" instance=ExtResource( 39 )]
 position = Vector2( -1108.42, 5.79897 )
-linkedcameras = [ NodePath("../camera1") ]
+linkedcameras = [ NodePath("../camera1"), NodePath("../camera2"), NodePath("../camera3"), NodePath("../camera4") ]
 
 [node name="camera1" parent="Mapa" instance=ExtResource( 38 )]
 position = Vector2( 1097.73, 625.808 )
+
+[node name="camera2" parent="Mapa" instance=ExtResource( 38 )]
+position = Vector2( -1154.7, 1168.79 )
+
+[node name="camera3" parent="Mapa" instance=ExtResource( 38 )]
+position = Vector2( -1150.55, -730.251 )
+
+[node name="camera4" parent="Mapa" instance=ExtResource( 38 )]
+position = Vector2( -1141.54, -2626.78 )
 
 [node name="dekoracje" type="YSort" parent="Mapa"]
 
