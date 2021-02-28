@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://czyscik.gd" type="Script" id=1]
+[ext_resource path="res://textures/czyscik.png" type="Texture" id=2]
+[ext_resource path="res://textures/probowa_1.png" type="Texture" id=3]
+[ext_resource path="res://textures/probowa_2.png" type="Texture" id=4]
+
+[node name="CHE-czyszczenie" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="probowa1" type="TextureRect" parent="."]
+margin_left = 733.581
+margin_top = 146.111
+margin_right = 773.581
+margin_bottom = 186.111
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="probowa2" type="TextureRect" parent="."]
+margin_left = 734.374
+margin_top = 527.881
+margin_right = 774.374
+margin_bottom = 567.881
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="czyscik" type="TextureButton" parent="."]
+margin_left = 886.803
+margin_top = 167.055
+margin_right = 1691.8
+margin_bottom = 248.055
+rect_scale = Vector2( 1.16825, 1.16825 )
+rect_pivot_offset = Vector2( 13.1647, 39.4743 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="czubek" type="Position2D" parent="czyscik"]
+position = Vector2( 17.8679, 39.6933 )
+scale = Vector2( 0.855982, 0.855982 )
+
+[node name="probowka1" type="TextureRect" parent="."]
+margin_left = 732.0
+margin_top = 146.0
+margin_right = 772.0
+margin_bottom = 374.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.06847, 3.06847 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="probowka2" type="TextureRect" parent="."]
+margin_left = 734.0
+margin_top = 528.0
+margin_right = 774.0
+margin_bottom = 756.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.06847, 3.06847 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="p1" type="Position2D" parent="."]
+position = Vector2( 704, 200 )
+
+[node name="k" type="Position2D" parent="p1"]
+position = Vector2( -620.938, 2.04315 )
+
+[node name="p2" type="Position2D" parent="."]
+position = Vector2( 704, 582 )
+
+[node name="k" type="Position2D" parent="p2"]
+position = Vector2( -609.713, 6.16998 )
+[connection signal="button_down" from="czyscik" to="czyscik" method="_on_czyscik_button_down"]
+[connection signal="button_up" from="czyscik" to="czyscik" method="_on_czyscik_button_up"]
