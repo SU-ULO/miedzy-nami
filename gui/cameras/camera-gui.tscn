@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/vents and cameras/camera_gui.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 150.0
+margin_top = 50.0
+margin_right = -150.0
+margin_bottom = -50.0
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = 100.0
+margin_right = -200.0
+margin_bottom = -100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1520.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer1" type="ViewportContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 755.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport1" type="Viewport" parent="VBoxContainer/HBoxContainer/ViewportContainer1"]
+size = Vector2( 755, 435 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="ViewportContainer2" type="ViewportContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 765.0
+margin_right = 1520.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport2" type="Viewport" parent="VBoxContainer/HBoxContainer/ViewportContainer2"]
+size = Vector2( 755, 435 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 445.0
+margin_right = 1520.0
+margin_bottom = 880.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="ViewportContainer3" type="ViewportContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 755.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport3" type="Viewport" parent="VBoxContainer/HBoxContainer2/ViewportContainer3"]
+size = Vector2( 755, 435 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="ViewportContainer4" type="ViewportContainer" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 765.0
+margin_right = 1520.0
+margin_bottom = 435.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport4" type="Viewport" parent="VBoxContainer/HBoxContainer2/ViewportContainer4"]
+size = Vector2( 755, 435 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
