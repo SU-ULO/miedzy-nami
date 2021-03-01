@@ -1,25 +1,23 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/tasks/Automat.cs" type="Script" id=1]
-[ext_resource path="res://textures/kawa.png" type="Texture" id=2]
+[ext_resource path="res://textures/automat-taskpoint.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 4.21535
-height = 83.721
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 201.882, 367.037 )
 
 [node name="automat" type="StaticBody2D"]
 script = ExtResource( 1 )
 
-[node name="kawa" type="Sprite" parent="."]
-position = Vector2( 3.19641, 3.203 )
-scale = Vector2( 0.964301, 0.964301 )
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+
+[node name="automat-taskpoint" type="Sprite" parent="."]
+position = Vector2( 42.2159, 41.7184 )
+scale = Vector2( 0.303292, 0.303292 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 2.67651, 0.703857 )
-scale = Vector2( 20.3636, 3.35012 )
+position = Vector2( 2, 32 )
 shape = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 60.0
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

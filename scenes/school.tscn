@@ -370,7 +370,7 @@ position = Vector2( -5140.51, 1844.3 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="zegar4" type="Sprite" parent="Mapa/dekoracje"]
-position = Vector2( -5073.47, 1603.7 )
+position = Vector2( -3806.33, 1609.36 )
 scale = Vector2( 0.0919397, 0.0919397 )
 texture = ExtResource( 23 )
 
@@ -385,7 +385,7 @@ position = Vector2( 1746.91, 1277.11 )
 scale = Vector2( 0.0539215, 0.053861 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]
-position = Vector2( 560.607, 1269.52 )
+position = Vector2( -5106.93, 1698.9 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
