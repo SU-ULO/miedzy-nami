@@ -15,6 +15,7 @@ func _ready():
 	scalee *= rng.randf_range(0.6, 1.2)
 	$bloczek.rect_scale *= Vector2(scalee, scalee)  
 	$bloczek.rect_position.x -=  ($koniec.position.x - $poczatek.position.x) * scalee - $koniec.position.x + $poczatek.position.x
+	$wynik.text = str(floor(rng.randf_range($bloczek.rect_size.x * scalee/3, $bloczek.rect_size.x * scalee/3 * 2)))
 
 func _process(_delta):
 	$Label.text = str(floor( ($mainpart/ruchome1/pozycja.global_position.x - $"mainpart/0".global_position.x) * 150 / ($"mainpart/150".global_position.x - $"mainpart/0".global_position.x)) )
