@@ -50,6 +50,16 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -7048.02
+margin_top = -5272.49
+margin_right = 6963.98
+margin_bottom = 5538.51
+color = Color( 0.188235, 0.188235, 0.188235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 1 )
 

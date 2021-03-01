@@ -3,9 +3,9 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://scripts/vents and cameras/arrow.gd" type="Script" id=2]
 
-
 [node name="Node2D" type="Node2D"]
 modulate = Color( 1, 0, 0, 1 )
+z_index = 1
 script = ExtResource( 2 )
 
 [node name="arrow" type="TextureButton" parent="."]
