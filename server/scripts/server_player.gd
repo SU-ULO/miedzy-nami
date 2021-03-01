@@ -1,3 +1,3 @@
-extends "res://scripts/dummyplayer.gd"
+extends "res://scripts/player/dummyplayer.gd"
 
 
