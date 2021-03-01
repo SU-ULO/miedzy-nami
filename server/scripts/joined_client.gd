@@ -12,6 +12,10 @@ func _ready():
 # warning-ignore:return_value_discarded
 	connect("success", self, "request_join")
 
+func _exit_tree():
+	if player:
+		player.queue_free()
+
 func get_init_data() -> Dictionary:
 	return {"username": config.username, "pos": player.position}
 
