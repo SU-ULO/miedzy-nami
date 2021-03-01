@@ -51,10 +51,10 @@
 [node name="Main" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -7048.02
-margin_top = -5272.49
-margin_right = 6963.98
-margin_bottom = 5538.51
+margin_left = -8828.0
+margin_top = -6826.0
+margin_right = 9672.0
+margin_bottom = 7838.0
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
