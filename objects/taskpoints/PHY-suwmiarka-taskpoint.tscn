@@ -6,7 +6,7 @@
 [ext_resource path="res://textures/suwmiarka_cz_ruchoma_1.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 121.443, 33.7513 )
+extents = Vector2( 507.749, 94.606 )
 
 [node name="PHY-Sto" type="StaticBody2D"]
 position = Vector2( -5.62885, -0.381779 )
@@ -16,7 +16,7 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4.49091, 17.3696 )
+position = Vector2( 150.509, 96.3696 )
 shape = SubResource( 1 )
 
 [node name="suwmiarka_cz_ruchoma_2" type="Sprite" parent="."]

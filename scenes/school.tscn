@@ -51,6 +51,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = -8828.0
 margin_top = -6826.0
 margin_right = 9672.0
@@ -427,7 +428,7 @@ position = Vector2( -1756.08, -632.099 )
 scale = Vector2( 0.0629629, 0.0629629 )
 
 [node name="PHY-suwmiarka" parent="Mapa/YSort" instance=ExtResource( 40 )]
-position = Vector2( 2001.67, -1784.13 )
+position = Vector2( 1994.11, -1774.05 )
 scale = Vector2( 0.229254, 0.229254 )
 
 [node name="pianino" parent="Mapa/YSort" instance=ExtResource( 20 )]
