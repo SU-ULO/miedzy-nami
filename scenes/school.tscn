@@ -173,8 +173,12 @@ position = Vector2( 336.76, -677.203 )
 scale = Vector2( 0.0499927, 0.0499927 )
 texture = ExtResource( 23 )
 
+[node name="plecaki3" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
+position = Vector2( -2417.8, 162.617 )
+scale = Vector2( 0.221875, 0.221876 )
+
 [node name="plakat3" type="Sprite" parent="Mapa/dekoracje"]
-position = Vector2( -619.849, -630.664 )
+position = Vector2( -564.728, -626.472 )
 scale = Vector2( 0.128963, 0.128964 )
 texture = ExtResource( 33 )
 
@@ -225,8 +229,8 @@ position = Vector2( -514.148, -19.6675 )
 scale = Vector2( 0.451636, 0.451636 )
 
 [node name="plakaty3" type="Sprite" parent="Mapa/dekoracje"]
-position = Vector2( 15.9714, -636.253 )
-scale = Vector2( 0.338277, 0.338277 )
+position = Vector2( -131.079, -612.548 )
+scale = Vector2( 0.505136, 0.505136 )
 texture = ExtResource( 35 )
 
 [node name="stolik10" parent="Mapa/dekoracje" instance=ExtResource( 22 )]
@@ -280,6 +284,100 @@ z_index = 1
 position = Vector2( 2532.54, -2264.13 )
 scale = Vector2( 0.45967, 0.45967 )
 
+[node name="stolik17" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
+position = Vector2( -1800.89, -105.294 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="stolik18" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
+position = Vector2( -2047.84, -102.771 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="stolik19" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
+position = Vector2( -2272.1, -97.7263 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="stolik20" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
+position = Vector2( -1657.26, 93.9971 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="krzeslo4" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
+position = Vector2( -1574.41, -699.083 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="stolik22" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
+position = Vector2( -2160.89, 107.701 )
+scale = Vector2( 0.508934, 0.508934 )
+
+[node name="biorko-nauczyciela5" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
+position = Vector2( -1612.89, -188.984 )
+scale = Vector2( 0.614562, 0.614562 )
+
+[node name="stolik23" parent="Mapa/dekoracje" instance=ExtResource( 21 )]
+position = Vector2( -1908.27, 99.8986 )
+scale = Vector2( 0.528032, 0.528032 )
+
+[node name="zegar3" type="Sprite" parent="Mapa/dekoracje"]
+position = Vector2( -2689.64, -658.244 )
+scale = Vector2( 0.0569661, 0.0569661 )
+texture = ExtResource( 23 )
+
+[node name="lawka2" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -5400.4, 3000.73 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="lawka3" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -4161.14, 3304.1 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="lawka6" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -4155.8, 3662.24 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="lawka4" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -5392.36, 3333.2 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="lawka7" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -5408.38, 3675.3 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="lawka5" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
+position = Vector2( -4151.78, 2967.07 )
+scale = Vector2( 0.41956, 0.41956 )
+
+[node name="krzeslo6" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -5313.65, 2177.07 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo7" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -5118.04, 2299.81 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo8" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -4911.88, 2332.94 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo9" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -4706.84, 2326.37 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo10" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -4475.47, 2288.55 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo5" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
+position = Vector2( -5140.51, 1844.3 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="zegar4" type="Sprite" parent="Mapa/dekoracje"]
+position = Vector2( -5073.47, 1603.7 )
+scale = Vector2( 0.0919397, 0.0919397 )
+texture = ExtResource( 23 )
+
+[node name="plecaki4" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
+position = Vector2( -5031.39, 3907.29 )
+scale = Vector2( 0.250547, 0.250547 )
+
 [node name="YSort" type="YSort" parent="Mapa"]
 
 [node name="tablica2" parent="Mapa/YSort" instance=ExtResource( 37 )]
@@ -321,11 +419,12 @@ scale = Vector2( 0.5, 0.5 )
 position = Vector2( -1047.25, -202.546 )
 
 [node name="MAT-Karta" parent="Mapa/YSort" instance=ExtResource( 8 )]
-position = Vector2( -2615.45, -347.198 )
+position = Vector2( -2071.12, -185.945 )
+scale = Vector2( 0.0745097, 0.0745097 )
 
 [node name="tablica" parent="Mapa/YSort" instance=ExtResource( 37 )]
-position = Vector2( -339.944, -631.623 )
-scale = Vector2( 0.0444835, 0.0444835 )
+position = Vector2( -1756.08, -632.099 )
+scale = Vector2( 0.0629629, 0.0629629 )
 
 [node name="PHY-suwmiarka" parent="Mapa/YSort" instance=ExtResource( 40 )]
 position = Vector2( 2001.67, -1784.13 )
