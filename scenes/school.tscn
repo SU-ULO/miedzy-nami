@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://objects/cameras/camera.tscn" type="PackedScene" id=38]
 [ext_resource path="res://objects/cameras/cameras_console.tscn" type="PackedScene" id=39]
 [ext_resource path="res://objects/taskpoints/PHY-suwmiarka-taskpoint.tscn" type="PackedScene" id=40]
+[ext_resource path="res://objects/taskpoints/CHE-czyszczenie-taskpoint.tscn" type="PackedScene" id=41]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -255,6 +256,9 @@ scale = Vector2( 0.229254, 0.229254 )
 [node name="pianino" parent="Mapa/YSort" instance=ExtResource( 20 )]
 position = Vector2( -3923.48, 1957.1 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="CHE-czyszczenie" parent="Mapa/YSort" instance=ExtResource( 41 )]
+position = Vector2( 1327.14, 1461.97 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://czyscik.gd" type="Script" id=1]
 [ext_resource path="res://textures/czyscik.png" type="Texture" id=2]
 [ext_resource path="res://textures/probowa_1.png" type="Texture" id=3]
 [ext_resource path="res://textures/probowa_2.png" type="Texture" id=4]
+[ext_resource path="res://textures/brud_probowkowy.png" type="Texture" id=5]
 
 [node name="CHE-czyszczenie" type="Control"]
 anchor_right = 1.0
@@ -90,5 +91,45 @@ position = Vector2( 704, 582 )
 
 [node name="k" type="Position2D" parent="p2"]
 position = Vector2( -609.713, 6.16998 )
+
+[node name="brud" type="TextureRect" parent="."]
+margin_left = 853.921
+margin_top = 130.024
+margin_right = 907.921
+margin_bottom = 401.024
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 5 )
+
+[node name="brud2" type="TextureRect" parent="."]
+margin_left = 846.579
+margin_top = 116.675
+margin_right = 900.579
+margin_bottom = 387.675
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 5 )
+
+[node name="brud3" type="TextureRect" parent="."]
+margin_left = 858.352
+margin_top = 525.351
+margin_right = 912.352
+margin_bottom = 796.351
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="brud4" type="TextureRect" parent="."]
+margin_left = 839.852
+margin_top = 495.079
+margin_right = 893.852
+margin_bottom = 766.079
+rect_rotation = 89.9999
+rect_scale = Vector2( 3.068, 3.068 )
+texture = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
 [connection signal="button_down" from="czyscik" to="czyscik" method="_on_czyscik_button_down"]
 [connection signal="button_up" from="czyscik" to="czyscik" method="_on_czyscik_button_up"]
