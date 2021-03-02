@@ -14,24 +14,24 @@ var hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_o
 var noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
 var hasSkinColorEyes = ["bored_closed", "scared_closed"]
 
-func getMouthPath(name):
-	if name in hasSkinColorMouth:
-		return name + "/skin" + skin + " " + name + ".png"
+func getMouthPath():
+	if mouth in hasSkinColorMouth:
+		return "res://textures/character/face parts/mouths/" + mouth + "/skin" + skin + " " + mouth + ".png"
 	else:
-		return name + ".png"
+		return "res://textures/character/face parts/mouths/" + mouth + ".png"
 
-func getEyePath(name):
-	if name in noColorEyes:
-		if name in hasSkinColorEyes:
-			return name + "/skin" + skin + "_" + name + ".png"
+func getEyePath():
+	if eye in noColorEyes:
+		if eye in hasSkinColorEyes:
+			return "res://textures/character/face parts/oczy/" + eye + "/skin" + skin + "_" + eye + ".png"
 		else:
-			return name + "/" + name + ".png"
+			return "res://textures/character/face parts/oczy/" + eye + "/" + eye + ".png"
 	else:
-		return name + "/" + eye_color + "_" + name + ".png"
+		return "res://textures/character/face parts/oczy/" + eye + "/" + eye_color + "_" + eye + ".png"
 
-func getEyeBonusPath(name):
-	if name in hasBonusEyes:
-		return name + "/bonus/skin" + skin + "_" + name + ".png"
+func getEyeBonusPath():
+	if eye in hasBonusEyes:
+		return "res://textures/character/face parts/oczy/" + eye + "/bonus/skin" + skin + "_" + eye + ".png"
 	else:
 		return "przykromi"
 		
@@ -43,3 +43,9 @@ func getHairPath():
 
 func getHairPos():
 	return hairPos[hair]
+
+func getNosePath():
+	return "res://textures/character/face parts/noses/" + nose + ".png"
+
+func getSkinPath():
+	return "res://textures/character/face_front/skin" + skin + ".png"

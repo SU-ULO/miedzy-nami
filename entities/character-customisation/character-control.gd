@@ -22,14 +22,14 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$"hair-color".connect("changeHairColor", self, "_hair_color_Change")	
 func _skin_Change(number):
-	$"body-parts/skin".texture = load("res://textures/character/face_front/skin" + number + ".png")
 	currLook.skin = number
+	$"body-parts/skin".texture = load(currLook.getSkinPath())
 	_mouth_Change(currLook.mouth)
 	_eye_Change(currLook.eye)
 	$"eye-color".visible = false
 func _nose_Change(name):
-	$"body-parts/nose".texture = load("res://textures/character/face parts/noses/" + name + ".png")
 	currLook.nose = name
+	$"body-parts/nose".texture = load(currLook.getNosePath())
 func _hair_Change(name):
 	currLook.hair = name
 	$"body-parts/hair".texture = load(currLook.getHairPath())
@@ -53,15 +53,15 @@ func _show_Menu(menu):
 		$"hair-color".visible = false
 func _mouth_Change(name):
 	currLook.mouth = name
-	$"body-parts/mouth".texture = load("res://textures/character/face parts/mouths/" + currLook.getMouthPath(name))
+	$"body-parts/mouth".texture = load(currLook.getMouthPath())
 
 func _eye_Change(name):
 	currLook.eye = name
-	$"body-parts/eye".texture = load("res://textures/character/face parts/oczy/" + currLook.getEyePath(name))
-	var bonuspath = currLook.getEyeBonusPath(name)
+	$"body-parts/eye".texture = load(currLook.getEyePath())
+	var bonuspath = currLook.getEyeBonusPath()
 	if bonuspath!="przykromi":
 		$"body-parts/bonus".visible = true
-		$"body-parts/bonus".texture = load("res://textures/character/face parts/oczy/" + currLook.getEyeBonusPath(name))
+		$"body-parts/bonus".texture = load(currLook.getEyeBonusPath())
 	else:
 		$"body-parts/bonus".visible = false
 	$"eye-color".visible = currLook.hasColoredEyes()
