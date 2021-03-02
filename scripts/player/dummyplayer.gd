@@ -8,6 +8,12 @@ var debug_mode = false # debug mode for visibility checking
 var debug_pos_collided = []
 var debug_pos_ok = []
 
+
+const LookConfiguration = preload("res://entities/character-customisation/look-configuration.gd")		
+
+var color = 1
+var currLook = LookConfiguration.new()
+
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
 var in_sight = []; var interactable = []
@@ -145,3 +151,28 @@ func _draw():
 			draw_line(Vector2(), item-position, Color("#00FF00"))
 		debug_pos_collided.clear()
 		debug_pos_ok.clear()
+
+func loadLook():
+	if currLook.hasBottom:
+		$spodnie.visible = true
+	else:
+		$spodnie.visible = false
+	
+	$body.frames.add_frame("walk side", load(currLook.getBodyPath(2)))
+	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
+	$body.frames.add_frame("walk side", load(currLook.getBodyPath(3)))
+	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
+	$body.frames.add_frame("walk front", load(currLook.getBodyPath(4)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(2, color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(3, color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
+	$face.texture = load(currLook.getSkinPath())
+	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
+	if currLook.getEyeBonusPath() != "przykromi":
+		$"face/eyes/eye-bonus".visible = true
+		$"face/eyes/eye-bonus".frames.add_frame("front", load(currLook.getEyeBonusPath(1)))
+	else:
+		$"face/eyes/eye-bonus".visible = false
+	$spodnie.playing = 1
+	$"clothes-top".playing = 1

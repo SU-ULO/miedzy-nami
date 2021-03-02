@@ -8,7 +8,7 @@
 [ext_resource path="res://entities/character-customisation/character-menu-mouth.tscn" type="PackedScene" id=6]
 [ext_resource path="res://textures/character/face parts/mouths/neutral closed.png" type="Texture" id=7]
 [ext_resource path="res://entities/character-customisation/character-menu-eye.tscn" type="PackedScene" id=8]
-[ext_resource path="res://textures/character/face parts/oczy/neutral_open/darkblue_neutral_open.png" type="Texture" id=9]
+[ext_resource path="res://textures/character/face parts/oczy/frame1/neutral_open/darkblue_neutral_open.png" type="Texture" id=9]
 [ext_resource path="res://entities/character-customisation/eye-color-picker.tscn" type="PackedScene" id=10]
 [ext_resource path="res://entities/character-customisation/character-menu-hair.tscn" type="PackedScene" id=11]
 [ext_resource path="res://textures/character/hair/short hair/hair1.png" type="Texture" id=12]

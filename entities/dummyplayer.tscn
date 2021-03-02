@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
 [ext_resource path="res://textures/player-move1.png" type="Texture" id=3]
 [ext_resource path="res://textures/player-move2.png" type="Texture" id=4]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=5]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=6]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=7]
+[ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 500.0
@@ -21,6 +25,96 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 70, 40 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+} ]
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 155.885, 95.4774 )
@@ -44,7 +138,6 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -54,6 +147,31 @@ texture = ExtResource( 2 )
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 104 )
 shape = SubResource( 4 )
+
+[node name="body" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "walk front"
+playing = true
+
+[node name="spodnie" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+animation = "walk front"
+
+[node name="clothes-top" type="AnimatedSprite" parent="."]
+frames = SubResource( 7 )
+animation = "walk front"
+
+[node name="face" type="Sprite" parent="."]
+position = Vector2( 7.89366, -423.508 )
+texture = ExtResource( 8 )
+
+[node name="eyes" type="AnimatedSprite" parent="face"]
+frames = SubResource( 8 )
+animation = "front"
+
+[node name="eye-bonus" type="AnimatedSprite" parent="face/eyes"]
+frames = SubResource( 9 )
+animation = "front"
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]
 [connection signal="body_entered" from="SightArea" to="." method="on_sight_area_enter"]
