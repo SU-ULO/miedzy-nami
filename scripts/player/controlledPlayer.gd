@@ -6,9 +6,6 @@ var selected_vent = 0
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
-func _ready():
-	loadLook()
-
 func _on_ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)

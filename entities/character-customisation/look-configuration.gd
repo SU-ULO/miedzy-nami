@@ -5,10 +5,10 @@ var mouth = "neutral closed"
 var nose = "long nose"
 var eye = "neutral_open"
 var eye_color = "darkblue"
-var hair = "short hair"
+var hair = "afro"
 var hairColor = 1
 var hasBottom = 1
-var topClothes = "shirt"
+var topClothes = "tshirt"
 
 var hairPos = {"Velma long hair": 384, "Velma short hair":266, "afro":195, "bob cut":239, "curly afroish":225, "fade":248, "fade2":195, "kok":179, "koki":242, "long hair":379, "ponytail":192, "ponytails":230, "puffy hair":240, "short hair":240, "very short":283, "jheri curl":248, "short hair 2": 212, "wavy long hair":378, "wavy short hair":280, "bald":0}
 
@@ -19,11 +19,11 @@ var hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_o
 var noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
 var hasSkinColorEyes = ["bored_closed", "scared_closed"]
 
-func getMouthPath():
+func getMouthPath(frame=1):
 	if mouth in hasSkinColorMouth:
-		return "res://textures/character/face parts/mouths/" + mouth + "/skin" + skin + " " + mouth + ".png"
+		return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
 	else:
-		return "res://textures/character/face parts/mouths/" + mouth + ".png"
+		return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
 
 func getEyePath(frame=1):
 	if eye in noColorEyes:
@@ -43,14 +43,14 @@ func getEyeBonusPath(frame=1):
 func hasColoredEyes():
 	return not eye in noColorEyes 
 
-func getHairPath():
-	return ("res://textures/character/hair/" + hair + "/hair" + str(hairColor) + ".png")
+func getHairPath(frame=1):
+	return ("res://textures/character/hair/frame"+ str(frame) + "/" + hair + "/hair" + str(hairColor) + ".png")
 
 func getHairPos():
 	return hairPos[hair]
 
-func getNosePath():
-	return "res://textures/character/face parts/noses/" + nose + ".png"
+func getNosePath(frame=1):
+	return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose + ".png"
 
 func getSkinPath():
 	return "res://textures/character/face_front/skin" + skin + ".png"
@@ -61,4 +61,4 @@ func getBodyPath(frame):
 
 func getTopClotes(frame, color):
 	#frame 4 means front
-	return "res://textures/character/clothes/shirt/frame" + str(frame) + "/" + topClothes + str(color) + ".png"
+	return "res://textures/character/clothes/"+ topClothes + "/frame" + str(frame) + "/" + topClothes + str(color) + ".png"

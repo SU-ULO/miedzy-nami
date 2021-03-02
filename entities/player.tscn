@@ -18,4 +18,4 @@ zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 
 [node name="spodnie" parent="." index="8"]
-frame = 3
+frame = 2

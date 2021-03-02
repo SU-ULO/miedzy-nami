@@ -24,7 +24,8 @@ var currentInteraction = null
 var localTaskList = []
 
 func _ready():
-	add_to_group("entities")
+	add_to_group("entities")	
+	loadLook()
 	pass
 	
 func _physics_process(_delta):
@@ -68,20 +69,26 @@ func set_player_velocity():
 	if(currentInteraction == null):
 	
 		if player_velocity.x == 0 && player_velocity.y == 0:
-			$Sprite.visible = true
+			#$Sprite.visible = true
+			stopWalk()
 			$Sprite.flip_h = flipped
 			$AnimatedSprite.visible = false
 		else:
-			$AnimatedSprite.visible = true
-			$Sprite.visible = false
-		
-			if player_velocity.x == 1:
+			startWalk()
+			#$AnimatedSprite.visible = true
+			#$Sprite.visible = false
+			if player_velocity.y == 1:
+				lookFront()
+			elif player_velocity.y == -1:
+				lookBack() 
+			elif player_velocity.x == 1:
 				$AnimatedSprite.flip_h = flipped
 				flipped = false
+				lookRight()
 			else: if player_velocity.x == -1:
 				$AnimatedSprite.flip_h = flipped
 				flipped = true
-		
+				lookLeft()
 		player_velocity = player_velocity.normalized() * default_speed
 
 func ui_selected():
@@ -152,6 +159,31 @@ func _draw():
 		debug_pos_collided.clear()
 		debug_pos_ok.clear()
 
+func stopWalk():
+	$body.playing = false
+	$spodnie.playing = false
+	$"clothes-top".playing = false
+	$face/eyes.playing = false
+	$"face/eyes/eye-bonus".playing = false
+	$face/nose.playing = false
+	$face/mouth.playing = false
+	$body.frame = 1
+	$spodnie.frame = 1
+	$"clothes-top".frame = 1
+	$face/eyes.frame = 1
+	$"face/eyes/eye-bonus".frame = 1
+	$face/nose.frame = 1
+	$face/mouth.frame = 1
+
+func startWalk():
+	$body.playing = true
+	$spodnie.playing = true
+	$"clothes-top".playing = true
+	$face/eyes.playing = true
+	$"face/eyes/eye-bonus".playing = true
+	$face/nose.playing = true
+	$face/mouth.playing = true
+
 func loadLook():
 	if currLook.hasBottom:
 		$spodnie.visible = true
@@ -167,6 +199,10 @@ func loadLook():
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(3, color)))
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(5, color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
 	if currLook.getEyeBonusPath() != "przykromi":
@@ -174,5 +210,70 @@ func loadLook():
 		$"face/eyes/eye-bonus".frames.add_frame("front", load(currLook.getEyeBonusPath(1)))
 	else:
 		$"face/eyes/eye-bonus".visible = false
+	$spodnie.frame = 0
+	$body.frame = 0
+	$"clothes-top".frame = 0
+	$body.playing = 1
 	$spodnie.playing = 1
 	$"clothes-top".playing = 1
+	$face/nose.frames.add_frame("front", load(currLook.getNosePath()))
+	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
+	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
+	$wlosy/hair.position.y = currLook.getHairPos()
+
+func lookRight():
+	$body.flip_h = false
+	$body.animation = "walk side"
+	$spodnie.flip_h = false
+	$spodnie.animation = "walk side"
+	$"clothes-top".flip_h = false
+	$"clothes-top".animation = "walk side"
+	$face/eyes.animation = "right"
+	$"face/eyes/eye-bonus".animation = "right"
+	$face/nose.flip_h = false
+	$face/nose.animation = "side"
+	$face/mouth.animation = "right"
+	$wlosy/hair.flip_h = false
+	$wlosy/hair.animation  = "side"
+func lookLeft():
+	$body.flip_h = true
+	$body.animation = "walk side"
+	$spodnie.flip_h = true
+	$spodnie.animation = "walk side"
+	$"clothes-top".flip_h = true
+	$"clothes-top".animation = "walk side"
+	$face/eyes.animation = "left"
+	$"face/eyes/eye-bonus".animation = "left"
+	$face/nose.flip_h = true
+	$face/nose.animation = "side"
+	$face/mouth.animation = "left"
+	$wlosy/hair.flip_h = true
+	$wlosy/hair.animation  = "side"
+func lookFront():
+	$body.flip_h = false
+	$body.animation = "walk front"
+	$spodnie.flip_h = false
+	$spodnie.animation = "walk front"
+	$"clothes-top".flip_h = false
+	$"clothes-top".animation = "walk front"
+	$face/eyes.animation = "front"
+	$"face/eyes/eye-bonus".animation = "front"
+	$face/nose.flip_h = false
+	$face/nose.animation = "front"
+	$face/mouth.animation = "front"
+	$wlosy/hair.flip_h = false
+	$wlosy/hair.animation  = "front"
+func lookBack():
+	$body.flip_h = false
+	$body.animation = "walk back"
+	$spodnie.flip_h = false
+	$spodnie.animation = "walk back"
+	$"clothes-top".flip_h = false
+	$"clothes-top".animation = "walk back"
+	$face/eyes.animation = "back"
+	$"face/eyes/eye-bonus".animation = "back"
+	$face/nose.flip_h = false
+	$face/nose.animation = "back"
+	$face/mouth.animation = "back"
+	$wlosy/hair.flip_h = false
+	$wlosy/hair.animation  = "back"
