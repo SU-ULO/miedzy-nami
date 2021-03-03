@@ -9,22 +9,15 @@ func _ready():
 	
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if event.get_button_index() == BUTTON_LEFT:
-				if mouseIn:
-					pressed = true
-					clickDelta = (get_viewport().get_mouse_position() - position)
-		else:
-			pressed = false
-	elif event is InputEventMouseMotion:
+	if event is InputEventMouseMotion:
 		if pressed:
 			position = get_viewport().get_mouse_position() - clickDelta
 
 
-func _on_gabka_mouse_entered():
-	mouseIn = true
-
-
-func _on_gabka_mouse_exited():
-	mouseIn = false
+func _on_gabka_input_event(_viewport, event, _shape_idx):
+	if event is InputEventScreenTouch || event is InputEventMouseButton:
+		if event.is_pressed():
+			pressed = true
+			clickDelta = (get_viewport().get_mouse_position() - position)
+		else:
+			pressed = false

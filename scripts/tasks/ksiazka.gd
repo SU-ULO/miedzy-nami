@@ -1,6 +1,5 @@
 extends Area2D
 
-var mouseIn = false
 var clickDelta = Vector2()
 var pickedUp = false
 var inFront = false
@@ -9,9 +8,7 @@ var main
 
 func _ready():
 	# warning-ignore:return_value_discarded
-	connect("mouse_entered", self, "isAbleToBePicked")
-	# warning-ignore:return_value_discarded
-	connect("mouse_exited", self, "notAbleToBePicked")
+	connect("input_event", self, "inputEvent")
 	# warning-ignore:return_value_discarded
 	connect("area_entered", self, "isInBox")
 	# warning-ignore:return_value_discarded
@@ -19,36 +16,28 @@ func _ready():
 	main = get_parent().get_parent()
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if event.get_button_index() == BUTTON_LEFT:
-				if mouseIn:
-					if get_parent().get_parent().toDrag.max() == get_parent().get_index():
-						pickedUp = true
-						if inBox && !inFront:
-							main.toSort+=1
-
-						clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
-		else:
-			if pickedUp:
-				pickedUp = false
-				if inBox && !inFront:
-
-						main.toSort-=1
-						main.checkForEnd()
-
-	elif event is InputEventMouseMotion:
+	if event is InputEventMouseMotion:
 		if pickedUp:
 			get_parent().position = get_viewport().get_mouse_position() - clickDelta
 
-func isAbleToBePicked():
-	mouseIn = true
-	get_parent().get_parent().toDrag.append(get_parent().get_index())
-	
-func notAbleToBePicked():
-	mouseIn = false
-	get_parent().get_parent().toDrag.erase(get_parent().get_index())
-	
+
+func inputEvent(_viewport, event, _shape):
+	if event is InputEventScreenTouch || event is InputEventMouseButton:
+		if event.is_pressed():
+					get_parent().get_parent().toDrag.append(get_parent().get_index())
+					if get_parent().get_parent().toDrag.min() == get_parent().get_index():
+						pickedUp = true
+						if inBox && !inFront:
+							main.toSort+=1
+						clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
+		else:
+			if pickedUp:
+				get_parent().get_parent().toDrag.clear()
+				pickedUp = false
+				if inBox && !inFront:
+					main.toSort-=1
+					main.checkForEnd()
+						
 func isInBox(area):
 	if area.name == "szafka-bok":
 		inFront = true
