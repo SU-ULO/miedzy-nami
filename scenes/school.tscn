@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -45,6 +45,8 @@
 [ext_resource path="res://textures/dekoracje/plakaty.png" type="Texture" id=43]
 [ext_resource path="res://objects/dekoracje/plecaki.tscn" type="PackedScene" id=44]
 [ext_resource path="res://objects/taskpoints/CHE-Color-taskpoint.tscn" type="PackedScene" id=45]
+[ext_resource path="res://objects/dekoracje/meetingtable.tscn" type="PackedScene" id=46]
+[ext_resource path="res://objects/dekoracje/komputer.tscn" type="PackedScene" id=47]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -342,27 +344,27 @@ position = Vector2( -4151.78, 2967.07 )
 scale = Vector2( 0.41956, 0.41956 )
 
 [node name="krzeslo6" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -5313.65, 2177.07 )
+position = Vector2( -5286.86, 2139.46 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo7" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -5118.04, 2299.81 )
+position = Vector2( -5184.49, 2265.13 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo8" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4911.88, 2332.94 )
+position = Vector2( -4991.85, 2270.46 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo9" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4706.84, 2326.37 )
+position = Vector2( -4470.21, 2263.99 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo10" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4475.47, 2288.55 )
+position = Vector2( -4286.84, 2183.79 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo5" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
-position = Vector2( -5140.51, 1844.3 )
+position = Vector2( -4412.09, 1789.04 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="zegar4" type="Sprite" parent="Mapa/dekoracje"]
@@ -373,6 +375,73 @@ texture = ExtResource( 23 )
 [node name="plecaki4" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
 position = Vector2( -5031.39, 3907.29 )
 scale = Vector2( 0.250547, 0.250547 )
+
+[node name="meeting-table" parent="Mapa/dekoracje" instance=ExtResource( 46 )]
+position = Vector2( -4983.5, 2080.66 )
+scale = Vector2( 0.634633, 0.634633 )
+
+[node name="komputer" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
+position = Vector2( -1415.5, -2256.08 )
+scale = Vector2( 0.50016, 0.50016 )
+
+[node name="komputer3" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
+position = Vector2( -1443.31, -2023.51 )
+scale = Vector2( 0.50016, 0.50016 )
+
+[node name="komputer2" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
+position = Vector2( -1760.47, -2213.52 )
+scale = Vector2( 0.50016, 0.50016 )
+
+[node name="komputer4" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
+position = Vector2( -1941.95, -1529.47 )
+scale = Vector2( -0.5, 0.5 )
+
+[node name="zegar5" type="Sprite" parent="Mapa/dekoracje"]
+position = Vector2( -1384.74, -2549.65 )
+scale = Vector2( 0.0725471, 0.0725471 )
+texture = ExtResource( 23 )
+
+[node name="szafka2" parent="Mapa/dekoracje" instance=ExtResource( 32 )]
+position = Vector2( -2749.11, -2657.96 )
+scale = Vector2( 0.379188, 0.379188 )
+
+[node name="krzeslo11" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
+position = Vector2( -2037.57, -2821.06 )
+scale = Vector2( 0.518651, 0.518651 )
+
+[node name="biorko-nauczyciela6" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
+position = Vector2( -2258.61, -2131.49 )
+scale = Vector2( -0.69, 0.69 )
+
+[node name="plecaki5" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
+position = Vector2( -1594.38, -2172.47 )
+rotation = 3.14159
+scale = Vector2( 0.218171, -0.218171 )
+
+[node name="zegar6" type="Sprite" parent="Mapa/dekoracje"]
+position = Vector2( 1726.45, -2555.55 )
+scale = Vector2( -0.0726774, 0.0726774 )
+texture = ExtResource( 23 )
+
+[node name="krzeslo13" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -3058.15, -3613.81 )
+scale = Vector2( 0.526047, 0.526047 )
+
+[node name="Sprite" parent="Mapa/dekoracje/krzeslo13" index="0"]
+position = Vector2( 474.791, 67.457 )
+
+[node name="biorko-nauczyciela7" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
+position = Vector2( -3053.43, -3910.61 )
+scale = Vector2( 0.746045, 0.746045 )
+
+[node name="polka4" parent="Mapa/dekoracje" instance=ExtResource( 28 )]
+position = Vector2( -2894.06, -4362.37 )
+scale = Vector2( 0.310652, 0.310652 )
+
+[node name="zegar7" type="Sprite" parent="Mapa/dekoracje"]
+position = Vector2( -3095.52, -4419.58 )
+scale = Vector2( 0.065672, 0.065672 )
+texture = ExtResource( 23 )
 
 [node name="YSort" type="YSort" parent="Mapa"]
 
@@ -395,7 +464,8 @@ position = Vector2( 3893.07, 3498.91 )
 position = Vector2( 1321.75, 2189.09 )
 
 [node name="INF-Update" parent="Mapa/YSort" instance=ExtResource( 1 )]
-position = Vector2( -2523.7, -1587.24 )
+position = Vector2( -2420.19, -1549.29 )
+scale = Vector2( -0.694196, 0.694196 )
 
 [node name="PHY-Sto" parent="Mapa/YSort" instance=ExtResource( 6 )]
 position = Vector2( 2507.54, -2327.52 )
@@ -448,3 +518,5 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
+
+[editable path="Mapa/dekoracje/krzeslo13"]
