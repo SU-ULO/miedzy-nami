@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/tasks/Haslo.cs" type="Script" id=1]
+[ext_resource path="res://textures/dekoracje/biorko_nauczyciela.png" type="Texture" id=2]
+
+[node name="biorko-taskpoint" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="pianino" type="Sprite" parent="."]
+position = Vector2( 1.21887, 4.59433 )
+scale = Vector2( 0.621356, 0.621356 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 699.43, 457.083 )
+scale = Vector2( 0.621356, 0.621356 )
+polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
