@@ -1,12 +1,20 @@
 extends Control
 
+var colors = [Color(0, 0, 0), Color(0, 1, 0), Color(0.5, 0, 1), Color(1, 0.5, 0)]
+var cel
+
 func _ready():
+	randomize()
+	colors.shuffle()
+	cel = colors.front()
+	$cel.color = cel
 	# warning-ignore:return_value_discarded
 	$r.connect("pressed", self, "changeColor")
 	# warning-ignore:return_value_discarded
 	$y.connect("pressed", self, "changeColor")
 	# warning-ignore:return_value_discarded
 	$b.connect("pressed", self, "changeColor")
+	
 func colorMafs(x):
 	match x:
 		[0, 0, 0]:
@@ -47,5 +55,13 @@ func changeColor():
 		$b.modulate = Color(0.1, 0.1, 0.1, 1)
 	else:
 		$b.modulate = Color(1, 1, 1, 1)
-	print([$r.pressed, $y.pressed, $b.pressed])
-	$wynik.color = colorMafs([int($r.pressed), int($y.pressed), int($b.pressed)])
+	$wynik.stop()
+	$wynik.get_animation("change color").track_set_key_value(0, 0, $wynik/wynik.color)
+	$wynik.get_animation("change color").track_set_key_value(0, 1, colorMafs([int($r.pressed), int($y.pressed), int($b.pressed)]))
+	$wynik.play("change color")
+
+
+func _on_wynik_animation_finished(_anim_name):
+	if cel == $wynik/wynik.color:
+		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
+		TaskWithGUI.TaskWithGUICompleteTask(self)

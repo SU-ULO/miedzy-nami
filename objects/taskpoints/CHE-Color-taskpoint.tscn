@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/dekoracje/probowki.png" type="Texture" id=1]
+[ext_resource path="res://scripts/tasks/CHEcolor.cs" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 34.2508
+height = 0.0
+
+[node name="CHE-Color" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.49493, 72.6679 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.275117, 18.8805 )
+scale = Vector2( 0.123627, 0.123627 )
+texture = ExtResource( 1 )

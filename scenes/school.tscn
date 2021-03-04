@@ -44,7 +44,7 @@
 [ext_resource path="res://objects/dekoracje/stolik3.tscn" type="PackedScene" id=42]
 [ext_resource path="res://textures/dekoracje/plakaty.png" type="Texture" id=43]
 [ext_resource path="res://objects/dekoracje/plecaki.tscn" type="PackedScene" id=44]
-[ext_resource path="res://textures/dekoracje/probowki.png" type="Texture" id=45]
+[ext_resource path="res://objects/taskpoints/CHE-Color-taskpoint.tscn" type="PackedScene" id=45]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -250,11 +250,6 @@ scale = Vector2( 0.483065, 0.483065 )
 position = Vector2( 1088.45, 1308.13 )
 scale = Vector2( 0.329143, 0.329143 )
 
-[node name="probowki" type="Sprite" parent="Mapa/dekoracje/stolik12"]
-position = Vector2( 703.793, 16.5127 )
-scale = Vector2( 0.316934, 0.316934 )
-texture = ExtResource( 45 )
-
 [node name="plecaki" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
 position = Vector2( 4507.64, 4002.6 )
 scale = Vector2( 0.255421, 0.255421 )
@@ -382,7 +377,7 @@ scale = Vector2( 0.250547, 0.250547 )
 [node name="YSort" type="YSort" parent="Mapa"]
 
 [node name="tablica2" parent="Mapa/YSort" instance=ExtResource( 37 )]
-position = Vector2( 1746.91, 1277.11 )
+position = Vector2( 1811.99, 1275.52 )
 scale = Vector2( 0.0539215, 0.053861 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]
@@ -438,6 +433,10 @@ scale = Vector2( 0.5, 0.5 )
 [node name="CHE-czyszczenie" parent="Mapa/YSort" instance=ExtResource( 41 )]
 position = Vector2( 1938.85, 2266.77 )
 scale = Vector2( 0.879252, 0.879252 )
+
+[node name="CHE-Color" parent="Mapa/YSort" instance=ExtResource( 45 )]
+position = Vector2( 1332.39, 1295.03 )
+scale = Vector2( 0.873863, 0.873863 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )
