@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/sticky.svg" type="Texture" id=2]
@@ -6,11 +6,23 @@
 [ext_resource path="res://haslo.gd" type="Script" id=4]
 [ext_resource path="res://textures/przycisk-blank.png" type="Texture" id=5]
 [ext_resource path="res://textures/przycisk_8.png" type="Texture" id=6]
+[ext_resource path="res://textures/komputer.png" type="Texture" id=7]
 
 [node name="haslo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 3.8147e-06
+margin_top = 25.4272
+margin_right = 991.0
+margin_bottom = 746.427
+rect_scale = Vector2( 1.10417, 1.10417 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
