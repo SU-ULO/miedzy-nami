@@ -524,4 +524,136 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 
+[node name="spawnPositionsGame" type="Node2D" parent="."]
+position = Vector2( -5193.65, 2644.51 )
+
+[node name="1" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 30.9731, -176.004 )
+
+[node name="2" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 211.602, 109.371 )
+
+[node name="3" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 513.349, 122.366 )
+
+[node name="4" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 1013.03, 115.67 )
+
+[node name="5" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 1294.79, 8.00903 )
+
+[node name="6" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 1309.48, -303.009 )
+
+[node name="7" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 1161.31, -584.66 )
+
+[node name="8" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 815.586, -615.361 )
+
+[node name="9" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 516.583, -614.026 )
+
+[node name="10" type="Position2D" parent="spawnPositionsGame"]
+position = Vector2( 301.674, -519.252 )
+
+[node name="spawnPositionsLobby" type="Node2D" parent="."]
+position = Vector2( -2096.48, 14441.6 )
+
+[node name="1" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( -294.157, -274.92 )
+
+[node name="2" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 19.9189, -277.39 )
+
+[node name="3" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 331.477, -268.364 )
+
+[node name="4" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( -313.503, 12.7751 )
+
+[node name="5" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 3.73877, -0.0310059 )
+
+[node name="6" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 322.479, 24.6055 )
+
+[node name="7" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( -333.589, 287.854 )
+
+[node name="8" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 3.49487, 280.698 )
+
+[node name="9" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 323.391, 271.943 )
+
+[node name="10" type="Position2D" parent="spawnPositionsLobby"]
+position = Vector2( 616.384, 6.81396 )
+
+[node name="lobby" type="Node2D" parent="."]
+
+[node name="lawka" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3190.79, 14983.4 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka10" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3786.15, 14636.9 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka12" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3971.14, 14280.4 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka13" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3903.87, 13907 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka14" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3759.24, 13553.9 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka2" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -2363.35, 14976.6 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka3" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -1532.55, 14963.2 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka7" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -856.465, 14613.4 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka8" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -735.376, 14226.6 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka9" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -688.285, 13853.2 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka11" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -883.374, 13506.8 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka4" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -3073.07, 13204 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka5" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -2245.62, 13197.3 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="lawka6" parent="lobby" instance=ExtResource( 25 )]
+position = Vector2( -1414.82, 13183.9 )
+scale = Vector2( 0.567539, 0.567539 )
+
+[node name="game customisation station" parent="lobby" instance=ExtResource( 30 )]
+position = Vector2( -1275.48, 13821.1 )
+scale = Vector2( 0.269861, 0.269861 )
+
+[node name="start button" parent="lobby" instance=ExtResource( 44 )]
+position = Vector2( -2959.95, 13604.4 )
+scale = Vector2( 0.421428, 0.421428 )
+
 [editable path="Mapa/dekoracje/krzeslo13"]
