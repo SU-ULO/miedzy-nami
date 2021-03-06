@@ -3,6 +3,7 @@ extends Game_Connection
 class_name JoinedServer
 
 var world := preload('res://scenes/school.tscn').instance()
+var Task = load("res://scripts/tasks/Task.cs") 
 var own_player = null
 var own_id := 0
 var remote_players := Dictionary()
@@ -63,17 +64,15 @@ func handle_events(input):
 						remote_players.erase(input[1])
 	elif input is Dictionary:
 		for p in input:
-			print("p",p)
 			if p is String:
 				if p == "add_tasks":
 					print("Adding tasks to player task list")
-					var Task = load("res://scripts/tasks/Task.cs") 
 					
 					var taskIDs = input[p]
 					for t in taskIDs:
 						print("Received task ID", t)
 						var task = Task.GetTaskByID(t)
-						task.playerID = own_id
+						task.local = true
 						own_player.localTaskList.append(task)
 				else:
 					print("?????")
@@ -104,3 +103,14 @@ func _process(_delta):
 	if established:
 		if own_player and is_instance_valid(own_player) and own_player.is_inside_tree():
 			send_updates({"mov": Vector2(own_player.moveX, own_player.moveY), "pos": own_player.position})
+			if Task.CheckAndClearAnyDirty():
+				var state_changes : Dictionary = {}
+				var started_changes : Dictionary = {}
+				
+				for t in Task.GetAllTasks():
+					if t.dirty:
+						t.dirty = false
+						state_changes[t.taskID] = t.state
+						started_changes[t.taskID] = t.started
+				
+				send_events({"update_tasks": own_id, "state": state_changes, "started": started_changes})

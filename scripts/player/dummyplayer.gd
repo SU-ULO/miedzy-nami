@@ -94,7 +94,9 @@ func ui_selected():
 		else: if currentBestItem.is_in_group("cameras"):
 			currentBestItem.open(self)
 		else:
-			currentBestItem.Interact()
+			var result = currentBestItem.Interact()
+			if result == false:
+				return
 		currentInteraction = currentBestItem
 
 func ui_canceled():
