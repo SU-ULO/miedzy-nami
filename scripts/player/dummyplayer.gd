@@ -107,7 +107,9 @@ func ui_selected():
 		currentInteraction = currentBestItem
 
 func ui_canceled():
-	if debug_mode: print("sight_range: ", in_sight_range); print("sight: ", in_sight)
+	if debug_mode:
+		print("sight_range: ", in_sight_range); 
+		print("sight: ", in_sight)
 	
 	if(currentInteraction != null):
 		if currentInteraction.is_in_group("vents"):
