@@ -189,7 +189,7 @@ func loadLook():
 		$spodnie.visible = true
 	else:
 		$spodnie.visible = false
-	
+		
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(2)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(3)))
@@ -203,6 +203,15 @@ func loadLook():
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
+	print(currLook.getTopClotes(2, color))
+	print(currLook.getTopClotes(1, color))
+	print(currLook.getTopClotes(3, color))
+	print(currLook.getTopClotes(1, color))
+	print(currLook.getTopClotes(5, color))
+	print(currLook.getTopClotes(4, color))
+	print(currLook.getTopClotes(6, color))
+	print(currLook.getTopClotes(4, color))
+	
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
 	if currLook.getEyeBonusPath() != "przykromi":
