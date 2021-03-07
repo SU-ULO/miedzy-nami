@@ -3,7 +3,7 @@ using System;
 
 public interface IInteractable
 {
-	void Interact();
+	bool Interact();
 	void EndInteraction();
 	bool IsDone();
 }
