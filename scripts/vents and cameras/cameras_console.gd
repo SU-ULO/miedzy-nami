@@ -14,7 +14,7 @@ func delete_gui(body):
 	for lc in linkedcameras:
 		get_node(lc).get_node("Camera2D").current = 0
 		get_node(lc).get_node("Light2D").visible = 0
-		#warning-ignore:return_value_discarded
+		# warning-ignore:return_value_discarded
 		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 		get_node(lc).get_node("Area2D").monitoring = 0
 	canvas.remove_child(camera_gui)
@@ -30,14 +30,14 @@ func instance_gui(body):
 		get_node(linkedcameras[iter]).get_node("Camera2D").set_custom_viewport(camera_gui.get_node(vp))
 		get_node(linkedcameras[iter]).get_node("Camera2D").current = 1
 		get_node(linkedcameras[iter]).get_node("Light2D").visible = 1
-		#warning-ignore:return_value_discarded
+		# warning-ignore:return_value_discarded
 		get_node(linkedcameras[iter]).connect("camera_detection", body, "camera_visibility")
 		get_node(linkedcameras[iter]).get_node("Area2D").monitoring = 1
 		get_node(linkedcameras[iter]).detect()
 		iter += 1
 
-func open(body):
+func Interact(body):
 	instance_gui(body)
 
-func close(body):
+func EndInteraction(body):
 	delete_gui(body)

@@ -70,3 +70,9 @@ func _ready():
 	# get all linked vents positions
 	for item in link:
 		pos.append(get_node(item).position)
+
+func Interact(body):
+	enter(body)
+
+func EndInteraction(body):
+	exit(body)
