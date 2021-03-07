@@ -102,18 +102,15 @@ public class TaskWithGUI : Task, IInteractable
 		}
 	}
 	
-	public bool Interact(){
+	public virtual bool Interact(){
 		if(this.Local)
 			TaskInteract();
 		
 		return this.Local;
 	}
 	
-	public void EndInteraction(){
+	public virtual void EndInteraction(){
 		TaskEndInteraction();
 	}
-	
-	public bool IsDone(){
-		return this.state >= this.maxState;
-	}
+
 }
