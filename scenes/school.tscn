@@ -83,7 +83,7 @@ scale = Vector2( 0.743799, 0.743799 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
 [node name="cameras_console" parent="Mapa" instance=ExtResource( 39 )]
-position = Vector2( -1108.42, 5.79897 )
+position = Vector2( 1191.56, 3324.14 )
 linkedcameras = [ NodePath("../camera1"), NodePath("../camera2"), NodePath("../camera3"), NodePath("../camera4") ]
 
 [node name="camera1" parent="Mapa" instance=ExtResource( 38 )]

@@ -11,10 +11,10 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 2
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -22,10 +22,10 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=5]
 light_mode = 2
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 70, 40 )
 
 [node name="player" type="KinematicBody2D"]
@@ -48,20 +48,19 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 5 )
+material = SubResource( 3 )
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 3 )
-frame = 1
+frames = SubResource( 4 )
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 6 )
+material = SubResource( 5 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 104 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]
 [connection signal="body_entered" from="SightArea" to="." method="on_sight_area_enter"]

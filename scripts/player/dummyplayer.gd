@@ -19,6 +19,7 @@ var localTaskList = []
 
 func _ready():
 	add_to_group("entities")
+	add_to_group("players")
 	pass
 	
 func _physics_process(_delta):
@@ -55,6 +56,14 @@ func check_interaction():
 				interactable.push_back(item);
 				if debug_mode: print(item.get_name(), " added to: interactable")
 
+func camera_visibility(body, status):
+	if status == 1 and !in_sight.has(body):
+		in_sight.push_back(body)
+		if debug_mode: print(body.get_name(), " entered camera")
+	if status == 0 and in_sight.has(body):
+		in_sight.erase(body)
+		if debug_mode: print(body.get_name(), " exited camera")
+
 func set_player_velocity():
 	player_velocity.x = moveX
 	player_velocity.y = moveY
@@ -79,8 +88,6 @@ func set_player_velocity():
 		player_velocity = player_velocity.normalized() * default_speed
 
 func ui_selected():
-	print(in_sight_range)
-	print(in_sight)
 	if(interactable.size() != 0):
 		var currentBestItem = interactable[0]
 		var currentBestDistance = compute_distance(currentBestItem)
@@ -98,6 +105,8 @@ func ui_selected():
 		currentInteraction = currentBestItem
 
 func ui_canceled():
+	if debug_mode: print("sight_range: ", in_sight_range); print("sight: ", in_sight)
+	
 	if(currentInteraction != null):
 		if currentInteraction.is_in_group("vents"):
 			currentInteraction.exit(self)
