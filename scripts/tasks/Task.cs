@@ -62,7 +62,6 @@ public abstract class Task : Godot.Node2D
 	}
 	
 	public static Task GetTaskByID(int id){
-		Godot.GD.Print("ID " + id);
 		
 		foreach (Task task in tasks){
 			if(task.taskID == id)
@@ -103,7 +102,7 @@ public abstract class Task : Godot.Node2D
 			tasksForPlayers[i] = (new List<int>());
 		}
 		
-		Godot.GD.Print("TT"+tasks.Count);
+		Godot.GD.Print("Total tasks: "+tasks.Count);
 		
 		for(int i = 0; i < tasks.Count; i++){
 			// Don't add any tasks, that require another one to be done first
@@ -124,7 +123,6 @@ public abstract class Task : Godot.Node2D
 					int index = r.Next(0, category.Count);
 					
 					tasksForPlayers[j].Add(category[index]);
-					Godot.GD.Print("C3"+tasksForPlayers[i].Count);
 					category.Remove(category[index]);
 				}
 			}
@@ -166,7 +164,6 @@ public abstract class Task : Godot.Node2D
 					Task taskToAdd = tasks[leftovers[i][j]];
 					// Add the task and adjust the difficulty score
 					tasksForPlayers[minIndex].Add(taskToAdd.taskID);
-					Godot.GD.Print("C2"+tasksForPlayers[i].Count);
 					// (We don't want anyone to get too many tasks, 
 					// even if they're simple, so the additional tasks add more score)
 					playerDifficulties[minIndex] += ((int) taskToAdd.category + 5);
@@ -175,7 +172,6 @@ public abstract class Task : Godot.Node2D
 		}
 		
 		for(int i = 0; i < numberOfPlayers; i++){
-			Godot.GD.Print("C1"+tasksForPlayers[i].Count);
 			for(int j = 0; j < tasksForPlayers[i].Count; j++){
 				tasks[tasksForPlayers[i][j]].playerIDs.Add(playerIDs[i]);
 			}
@@ -192,8 +188,10 @@ public abstract class Task : Godot.Node2D
 		set {
 			Godot.GD.Print("Setting task "+taskID+" state to "+value+" out of "+maxState);
 			_state = value;
+			TaskOnProgress(value - _state);
 			if(value >= maxState){
 				if (this.local){
+					TaskOnCompleted();
 					Task.anyDirty = true;
 					this.dirty = true;
 					
@@ -235,9 +233,16 @@ public abstract class Task : Godot.Node2D
 	
 	public virtual void TaskInteract(){}
 	public virtual void TaskEndInteraction(){}
+	public virtual void TaskOnProgress(int progress){}
+	public virtual void TaskOnCompleted(){}
 	
 	public virtual string ToString(){
 		return "Task-"+taskID+" started status: "+started+" of category"+category;
+	}
+	
+		
+	public bool IsDone(){
+		return this.state >= this.maxState;
 	}
 
 }
