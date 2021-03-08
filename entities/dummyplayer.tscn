@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
@@ -26,16 +26,11 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 137.353, 113.112 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk back",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -45,15 +40,15 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -63,15 +58,15 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -81,28 +76,10 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "left",
-"speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "right",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
+"name": "walk back",
 "speed": 5.0
 } ]
 
@@ -133,6 +110,29 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [  ],
+"loop": true,
 "name": "front",
 "speed": 5.0
 }, {
@@ -147,7 +147,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -170,7 +170,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -208,33 +208,33 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 3 )
 visible = false
+material = SubResource( 3 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 4 )
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
 visible = false
+material = SubResource( 3 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( -2.85715, 86.8572 )
-shape = SubResource( 13 )
+shape = SubResource( 5 )
 
 [node name="body" type="AnimatedSprite" parent="."]
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "walk front"
 
 [node name="spodnie" type="AnimatedSprite" parent="."]
 visible = false
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "walk front"
 
 [node name="clothes-top" type="AnimatedSprite" parent="."]
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 animation = "walk front"
 
 [node name="face" type="Sprite" parent="."]
@@ -242,19 +242,19 @@ position = Vector2( 7.89365, -423.508 )
 texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="face"]
-frames = SubResource( 8 )
-animation = "front"
-
-[node name="eye-bonus" type="AnimatedSprite" parent="face/eyes"]
 frames = SubResource( 9 )
 animation = "front"
 
-[node name="nose" type="AnimatedSprite" parent="face"]
+[node name="eye-bonus" type="AnimatedSprite" parent="face/eyes"]
 frames = SubResource( 10 )
 animation = "front"
 
-[node name="mouth" type="AnimatedSprite" parent="face"]
+[node name="nose" type="AnimatedSprite" parent="face"]
 frames = SubResource( 11 )
+animation = "front"
+
+[node name="mouth" type="AnimatedSprite" parent="face"]
+frames = SubResource( 12 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="."]
@@ -263,7 +263,7 @@ scale = Vector2( 0.999999, 0.999999 )
 
 [node name="hair" type="AnimatedSprite" parent="wlosy"]
 position = Vector2( 0, 240 )
-frames = SubResource( 12 )
+frames = SubResource( 13 )
 animation = "front"
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]

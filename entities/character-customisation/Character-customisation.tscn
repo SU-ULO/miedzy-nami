@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://entities/character-customisation/character-menu-skin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/character-customisation/character-control.gd" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://entities/character-customisation/character-menu-hair.tscn" type="PackedScene" id=11]
 [ext_resource path="res://textures/character/hair/frame1/short hair/hair1.png" type="Texture" id=12]
 [ext_resource path="res://entities/character-customisation/hair-color-picker.tscn" type="PackedScene" id=13]
+[ext_resource path="res://entities/character-customisation/character-menu-clothes.tscn" type="PackedScene" id=14]
+[ext_resource path="res://textures/character/clothes/tshirt/frame1/tshirt5.png" type="Texture" id=15]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=16]
+[ext_resource path="res://textures/character/body/frame4/skin1.png" type="Texture" id=17]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -24,10 +28,10 @@ __meta__ = {
 
 [node name="eye-color" parent="." instance=ExtResource( 10 )]
 visible = false
-margin_left = 766.248
-margin_top = 538.893
-margin_right = 918.248
-margin_bottom = 1890.89
+margin_left = 691.412
+margin_top = 542.457
+margin_right = 843.413
+margin_bottom = 1894.45
 rect_scale = Vector2( 0.35, 0.35 )
 
 [node name="hair-color" parent="." instance=ExtResource( 13 )]
@@ -81,11 +85,19 @@ margin_top = 24.2449
 margin_right = 833.803
 margin_bottom = 24.2449
 
+[node name="clothes-control" parent="body-parts-control" instance=ExtResource( 14 )]
+visible = false
+margin_left = 818.517
+margin_top = 37.6129
+margin_right = 818.517
+margin_bottom = 37.6129
+rect_scale = Vector2( 0.666571, 0.666571 )
+
 [node name="body-parts" type="Control" parent="."]
-margin_left = 83.6775
-margin_top = 266.65
-margin_right = 123.677
-margin_bottom = 306.65
+margin_left = 48.7547
+margin_top = 107.91
+margin_right = 88.7542
+margin_bottom = 147.91
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,6 +146,18 @@ __meta__ = {
 [node name="hair" type="Sprite" parent="body-parts"]
 position = Vector2( 289.152, 241.063 )
 texture = ExtResource( 12 )
+
+[node name="body" type="Sprite" parent="body-parts"]
+position = Vector2( 289.455, 698.653 )
+texture = ExtResource( 17 )
+
+[node name="clothes" type="Sprite" parent="body-parts"]
+position = Vector2( 288.192, 712.856 )
+texture = ExtResource( 15 )
+
+[node name="jeans" type="Sprite" parent="body-parts"]
+position = Vector2( 290.605, 713.028 )
+texture = ExtResource( 16 )
 
 [node name="skin_button" type="Button" parent="."]
 margin_left = 784.681
@@ -184,8 +208,19 @@ text = "wlosy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="clothes_button" type="Button" parent="."]
+margin_left = 789.726
+margin_top = 548.712
+margin_right = 923.726
+margin_bottom = 614.712
+text = "ubranie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="skin_button" to="." method="_show_Menu" binds= [ "skin" ]]
 [connection signal="pressed" from="nose_button" to="." method="_show_Menu" binds= [ "nose" ]]
 [connection signal="pressed" from="mouth_button" to="." method="_show_Menu" binds= [ "mouth" ]]
 [connection signal="pressed" from="eye_button" to="." method="_show_Menu" binds= [ "eye" ]]
 [connection signal="pressed" from="hair_button" to="." method="_show_Menu" binds= [ "hair" ]]
+[connection signal="pressed" from="clothes_button" to="." method="_show_Menu" binds= [ "clothes" ]]
