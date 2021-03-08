@@ -101,7 +101,7 @@ func ui_selected():
 				currentBestItem = item
 
 		var result
-		if currentInteraction.is_in_group("tasks"): result = currentBestItem.Interact()
+		if currentBestItem.is_in_group("tasks"): result = currentBestItem.Interact()
 		else: result = currentBestItem.Interact(self)
 		
 		if result == false:
@@ -173,7 +173,7 @@ func Interact(body):
 	interacted = false
 	
 func EndInteraction(body):
-	body.currentInteraction = null
+	currentInteraction = null
 
 # helper functions
 

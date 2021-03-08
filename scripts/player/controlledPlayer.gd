@@ -46,7 +46,7 @@ func get_input():
 			self.add_to_group("impostors")
 			self.modulate = Color("#00FF00")
 		else:
-			self.remove_from_group("Impostors")
+			self.remove_from_group("impostors")
 			self.modulate = Color("#FFFFFF")
 		impostor_toggle = !impostor_toggle
 	
