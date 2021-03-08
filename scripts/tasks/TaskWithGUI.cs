@@ -15,6 +15,7 @@ public class TaskWithGUI : Task, IInteractable
 	public override void _Ready(){
 		AddToGroup("interactable");
 		AddToGroup("entities");
+		AddToGroup("tasks");
 	}
 	
 	public static void TaskWithGUICompleteTask(Control gui){
@@ -102,22 +103,15 @@ public class TaskWithGUI : Task, IInteractable
 		}
 	}
 	
-	protected override Task CloneInternal(){
-		TaskWithGUI clone = new TaskWithGUI();
-		clone.state = this.state;
-		clone.maxState = this.state;
-		return clone;
+	public virtual bool Interact(){
+		if(this.Local)
+			TaskInteract();
+		
+		return this.Local;
 	}
 	
-	public void Interact(){
-		TaskInteract();
-	}
-	
-	public void EndInteraction(){
+	public virtual void EndInteraction(){
 		TaskEndInteraction();
 	}
-	
-	public bool IsDone(){
-		return this.state >= this.maxState;
-	}
+
 }

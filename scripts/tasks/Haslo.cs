@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public class Tablica : TaskWithGUI
+public class Haslo : TaskWithGUI
 {
 	public override string GetResourceLocation(){
-		return "res://gui/tablica.tscn";
+		return "res://gui/haslo.tscn";
 	}
 }

@@ -5,11 +5,48 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-public abstract class Task : Godot.Node2D, ICloneable
+public abstract class Task : Godot.Node2D
 {
+	public static bool anyDirty = false;
+	
+	public static bool CheckAndClearAnyDirty(){
+		bool tmp = anyDirty;
+		anyDirty = false;
+		return tmp;
+	}
+	
+	public bool dirty = false;
+	
+	public bool Dirty{
+		get{
+			return dirty;
+		}
+		set {
+			dirty = value;
+		}
+	}
+	
+	public bool local = false;
+	
+	public bool Local{
+		get{
+			return local;
+		}
+		set {
+			local = value;
+		}
+	}
+	
 	private static int currentTaskID = 0;
 	private static Random r = new Random();
 	public static List<Task> tasks = new List<Task>();
+	public static List<int>[] tasksForPlayers = null;
+	
+	public static int[] GetTaskIDsForPlayerID(int playerID){
+		Godot.GD.Print("GetTaskIDsForPlayerID: " + playerID + " " + tasksForPlayers.Length);
+		Godot.GD.Print("N"+tasksForPlayers[playerID].Count);
+		return tasksForPlayers[playerID].ToArray();
+	}
 
 	public static Task[] GetTasksOfType(Type c){
 		List<Task> result = new List<Task>();
@@ -25,7 +62,6 @@ public abstract class Task : Godot.Node2D, ICloneable
 	}
 	
 	public static Task GetTaskByID(int id){
-		Godot.GD.Print("ID " + id);
 		
 		foreach (Task task in tasks){
 			if(task.taskID == id)
@@ -45,33 +81,39 @@ public abstract class Task : Godot.Node2D, ICloneable
 		tasks.Clear();
 		currentTaskID = 0;
 	}
+	
+	public virtual int GetNextTaskID(){
+		return this.taskID;
+	}
 
 	public static void DivideTasks(int[] playerIDs){
 		int numberOfPlayers = playerIDs.Length;
 		int numberOfTaskCategories = Enum.GetValues(typeof(TaskCategory)).GetLength(0);
-		List<Task>[] sortedIntoCategories = new List<Task>[numberOfTaskCategories];
-		List<Task>[] leftovers = new List<Task>[numberOfTaskCategories];
+		List<int>[] sortedIntoCategories = new List<int>[numberOfTaskCategories];
+		List<int>[] leftovers = new List<int>[numberOfTaskCategories];
+		tasksForPlayers = new List<int>[numberOfPlayers];
 		
 		for(int i = 0; i < numberOfTaskCategories; i++){
-			sortedIntoCategories[i] = new List<Task>();
-			leftovers[i] = new List<Task>();
+			sortedIntoCategories[i] = new List<int>();
+			leftovers[i] = new List<int>();
 		}
 		
-		List<Task>[] players = new List<Task>[numberOfPlayers];
 		for(int i = 0; i < numberOfPlayers; i++){
-			players[i] = (new List<Task>());
+			tasksForPlayers[i] = (new List<int>());
 		}
 		
-		Godot.GD.Print(tasks.Count);
+		Godot.GD.Print("Total tasks: "+tasks.Count);
 		
 		for(int i = 0; i < tasks.Count; i++){
-			sortedIntoCategories[(int)tasks[i].category].Add(tasks[i]);
+			// Don't add any tasks, that require another one to be done first
+			if(tasks[i].started)
+				sortedIntoCategories[(int)tasks[i].category].Add(tasks[i].taskID);
 		}
 		
 		// Try to evenly divide the tasks
 		
 		for(int i = 0; i < numberOfTaskCategories; i++){
-			List<Task> category = sortedIntoCategories[i];
+			List<int> category = sortedIntoCategories[i];
 			
 			int numberOfTasksPerPlayer = category.Count / numberOfPlayers;
 			
@@ -80,7 +122,7 @@ public abstract class Task : Godot.Node2D, ICloneable
 				for(int k = 0; k < numberOfTasksPerPlayer; k++){
 					int index = r.Next(0, category.Count);
 					
-					players[j].Add(category[index]);
+					tasksForPlayers[j].Add(category[index]);
 					category.Remove(category[index]);
 				}
 			}
@@ -94,8 +136,8 @@ public abstract class Task : Godot.Node2D, ICloneable
 		for(int i = 0; i < numberOfPlayers; i++){
 			if(i == 0)
 			{
-				foreach (Task t in players[i])
-					playerDifficulties[i] += ((int) t.category + 1);
+				foreach (int t in tasksForPlayers[i])
+					playerDifficulties[i] += ((int) tasks[t].category + 1);
 			}
 			else
 			{
@@ -106,23 +148,22 @@ public abstract class Task : Godot.Node2D, ICloneable
 		// Distribute the remaining tasks
 		for(int i = 0; i < numberOfTaskCategories; i++){
 			for(int j = 0; j < leftovers[i].Count; j++){
-				// Roll how many players should get the task
+				// Roll how many tasksForPlayers should get the task
 				int howManyTimes = r.Next(1,3);
 				for(int k = 0; k < howManyTimes; k++){
 					// Search for the player with the lowest difficulty score
 					int minIndex = -1;
 					for(int l = 0; l < numberOfPlayers; l++){
 						// Reject any player, that already has this task on the list
-						if(!players[l].Contains(leftovers[i][j])){
+						if(!tasksForPlayers[l].Contains(leftovers[i][j])){
 							if(minIndex == -1 || playerDifficulties[minIndex] > playerDifficulties[l])
 								minIndex = l;
 						}
 					}
 					
-					// If this task should be a duplicate, create a clone
-					Task taskToAdd = (k == 0) ? leftovers[i][j] : (Task)leftovers[i][j].Clone();
+					Task taskToAdd = tasks[leftovers[i][j]];
 					// Add the task and adjust the difficulty score
-					players[minIndex].Add(taskToAdd);
+					tasksForPlayers[minIndex].Add(taskToAdd.taskID);
 					// (We don't want anyone to get too many tasks, 
 					// even if they're simple, so the additional tasks add more score)
 					playerDifficulties[minIndex] += ((int) taskToAdd.category + 5);
@@ -131,14 +172,14 @@ public abstract class Task : Godot.Node2D, ICloneable
 		}
 		
 		for(int i = 0; i < numberOfPlayers; i++){
-			for(int j = 0; j < players[i].Count; j++){
-				players[i][j].playerID = playerIDs[i];
+			for(int j = 0; j < tasksForPlayers[i].Count; j++){
+				tasks[tasksForPlayers[i][j]].playerIDs.Add(playerIDs[i]);
 			}
 		}
 
 	}
 
-	public int playerID = 0;
+	public List<int> playerIDs = new List<int>();
 	private int _state;
 	public int state { 
 		get {
@@ -147,33 +188,38 @@ public abstract class Task : Godot.Node2D, ICloneable
 		set {
 			Godot.GD.Print("Setting task "+taskID+" state to "+value+" out of "+maxState);
 			_state = value;
+			TaskOnProgress(value - _state);
 			if(value >= maxState){
-				Godot.GD.Print("Ending task "+taskID);
-				TaskEndInteraction();
-				return;
+				if (this.local){
+					TaskOnCompleted();
+					Task.anyDirty = true;
+					this.dirty = true;
+					
+					if(this.GetNextTaskID() != this.taskID){
+						Task nextTask = tasks[this.GetNextTaskID()];
+						nextTask.dirty = true;
+						nextTask.started = true;
+					}
+					
+					Godot.GD.Print("Ending task "+taskID);
+					TaskEndInteraction();
+					return;
+				}
 			}
 		} 
 	}
 	public int maxState { get; set; }
-	protected bool started = false;
+	protected bool started = true;
 	public int taskID { get; set; }
 	
-	public object Clone(){
-		return (object)this.CloneInternal();
-	}
-	
-	protected abstract Task CloneInternal();
-	
-	public void Start(){
-		started = true;
-		state = 0;
-	}
-	
 	public Task(){
-		started = false;
-		taskID = currentTaskID;
-		currentTaskID++;
-		tasks.Add(this);
+		if(this.GetType() != typeof(Task)){
+			taskID = currentTaskID;
+			currentTaskID++;
+			tasks.Add(this);
+		}else{
+			Godot.GD.Print("Creating implementationless instance of Task (probably for using static members in GDScript)");
+		}
 	}
 	
 	public enum TaskCategory{
@@ -187,9 +233,16 @@ public abstract class Task : Godot.Node2D, ICloneable
 	
 	public virtual void TaskInteract(){}
 	public virtual void TaskEndInteraction(){}
+	public virtual void TaskOnProgress(int progress){}
+	public virtual void TaskOnCompleted(){}
 	
 	public virtual string ToString(){
-		return "Task-"+taskID+" started status: "+started+" of category"+category+", player ID: "+playerID;
+		return "Task-"+taskID+" started status: "+started+" of category"+category;
+	}
+	
+		
+	public bool IsDone(){
+		return this.state >= this.maxState;
 	}
 
 }

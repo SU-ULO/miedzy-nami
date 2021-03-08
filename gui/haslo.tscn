@@ -1,0 +1,264 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/sticky.svg" type="Texture" id=2]
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=3]
+[ext_resource path="res://haslo.gd" type="Script" id=4]
+[ext_resource path="res://textures/przycisk-blank.png" type="Texture" id=5]
+[ext_resource path="res://textures/przycisk_8.png" type="Texture" id=6]
+[ext_resource path="res://textures/komputer.png" type="Texture" id=7]
+
+[node name="haslo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 3.8147e-06
+margin_top = 25.4272
+margin_right = 991.0
+margin_bottom = 746.427
+rect_scale = Vector2( 1.10417, 1.10417 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="przyciski" type="GridContainer" parent="."]
+margin_left = 1140.51
+margin_top = 521.348
+margin_right = 1402.51
+margin_bottom = 783.348
+rect_scale = Vector2( 0.578024, 0.578024 )
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="u" type="TextureButton" parent="przyciski"]
+margin_right = 262.0
+margin_bottom = 262.0
+texture_normal = ExtResource( 5 )
+
+[node name="O" type="TextureButton" parent="przyciski"]
+margin_left = 274.0
+margin_right = 536.0
+margin_bottom = 262.0
+texture_normal = ExtResource( 5 )
+
+[node name="2" type="TextureButton" parent="przyciski"]
+margin_left = 548.0
+margin_right = 810.0
+margin_bottom = 262.0
+texture_normal = ExtResource( 5 )
+
+[node name="1" type="TextureButton" parent="przyciski"]
+margin_top = 274.0
+margin_right = 262.0
+margin_bottom = 536.0
+texture_normal = ExtResource( 5 )
+
+[node name="L" type="TextureButton" parent="przyciski"]
+margin_left = 274.0
+margin_top = 274.0
+margin_right = 536.0
+margin_bottom = 536.0
+texture_normal = ExtResource( 5 )
+
+[node name="0" type="TextureButton" parent="przyciski"]
+margin_left = 548.0
+margin_top = 274.0
+margin_right = 810.0
+margin_bottom = 536.0
+texture_normal = ExtResource( 5 )
+
+[node name="o" type="TextureButton" parent="przyciski"]
+margin_top = 548.0
+margin_right = 262.0
+margin_bottom = 810.0
+texture_normal = ExtResource( 5 )
+
+[node name="U" type="TextureButton" parent="przyciski"]
+margin_left = 274.0
+margin_top = 548.0
+margin_right = 536.0
+margin_bottom = 810.0
+texture_normal = ExtResource( 5 )
+
+[node name="l" type="TextureButton" parent="przyciski"]
+margin_left = 548.0
+margin_top = 548.0
+margin_right = 810.0
+margin_bottom = 810.0
+texture_normal = ExtResource( 5 )
+
+[node name="GridContainer2" type="GridContainer" parent="."]
+margin_left = 1184.16
+margin_top = 514.104
+margin_right = 1259.16
+margin_bottom = 689.104
+rect_scale = Vector2( 0.817775, 0.817775 )
+mouse_filter = 2
+custom_constants/vseparation = 19
+custom_constants/hseparation = 108
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="u" type="Label" parent="GridContainer2"]
+margin_right = 76.0
+margin_bottom = 175.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "u"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="O" type="Label" parent="GridContainer2"]
+margin_left = 184.0
+margin_right = 287.0
+margin_bottom = 175.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "O"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="GridContainer2"]
+margin_left = 395.0
+margin_right = 473.0
+margin_bottom = 175.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Label" parent="GridContainer2"]
+margin_top = 194.0
+margin_right = 76.0
+margin_bottom = 369.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L" type="Label" parent="GridContainer2"]
+margin_left = 184.0
+margin_top = 194.0
+margin_right = 287.0
+margin_bottom = 369.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "L"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="Label" parent="GridContainer2"]
+margin_left = 395.0
+margin_top = 194.0
+margin_right = 473.0
+margin_bottom = 369.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="o" type="Label" parent="GridContainer2"]
+margin_top = 388.0
+margin_right = 76.0
+margin_bottom = 563.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "o"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="U" type="Label" parent="GridContainer2"]
+margin_left = 184.0
+margin_top = 388.0
+margin_right = 287.0
+margin_bottom = 563.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "U"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="l" type="Label" parent="GridContainer2"]
+margin_left = 395.0
+margin_top = 388.0
+margin_right = 473.0
+margin_bottom = 563.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "l"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="nie" type="TextureButton" parent="."]
+margin_left = 1134.61
+margin_top = 361.927
+margin_right = 1361.61
+margin_bottom = 508.927
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pass" type="TextureRect" parent="."]
+margin_left = 1528.79
+margin_top = 56.1231
+margin_right = 1820.79
+margin_bottom = 347.123
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="pass"]
+margin_left = 21.3816
+margin_top = 18.7089
+margin_right = 61.3816
+margin_bottom = 93.7089
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.556863, 0.333333, 0.694118, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="input" type="ColorRect" parent="."]
+margin_left = 234.0
+margin_top = 360.0
+margin_right = 834.0
+margin_bottom = 436.0
+
+[node name="Label" type="Label" parent="input"]
+margin_left = 10.7094
+margin_top = -6.29959
+margin_right = 76.7094
+margin_bottom = 168.7
+rect_scale = Vector2( 0.690387, 0.690387 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.146
+[connection signal="pressed" from="nie" to="." method="_on_nie_pressed"]

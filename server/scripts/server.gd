@@ -201,15 +201,6 @@ func assign_tasks():
 		connected_client_ids[cid - 1] = cid
 		
 	Task.DivideTasks(connected_client_ids)
-	
-	var tasks = Task.GetAllTasks()
-	
+
 	for cid in connected_clients:
-		var tasksOfCurrentPlayer = []
-		
-		for t in tasks:
-			if t.playerID == cid:
-				tasksOfCurrentPlayer.append(t.taskID)
-		
-		# other players don't need (and shouldn't) know about other players' tasks
-		connected_clients[cid].send_events(connected_clients[cid].get_event_task_data(tasksOfCurrentPlayer))
+		connected_clients[cid].send_events(connected_clients[cid].get_event_task_data(Task.GetTaskIDsForPlayerID(cid - 1)))

@@ -34,31 +34,13 @@ tracks/1/keys = {
 
 [node name="BIO-Bug" type="Node2D"]
 
-[node name="jablko" type="Sprite" parent="."]
-position = Vector2( 1366.2, 553.609 )
-scale = Vector2( 0.784, 0.784 )
-z_index = 1
-texture = ExtResource( 3 )
-
-[node name="Area2D" type="Area2D" parent="jablko"]
-position = Vector2( -1742.6, -706.134 )
-scale = Vector2( 1.27551, 1.27551 )
-collision_layer = 8
-collision_mask = 8
-script = ExtResource( 1 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="jablko/Area2D"]
-visible = false
-position = Vector2( 1366.2, 553.609 )
-scale = Vector2( 0.784, 0.784 )
-polygon = PoolVector2Array( 64, -234.4, 64, -232.6, 68.3, -226.1, 67.2, -224, 65.7, -224, 50, -211.1, 50, -209.2, 40, -198.2, 40, -196.6, 32.1, -179, 45, -179, 97, -177, 97, -175.5, 121, -169.6, 121, -168.3, 141, -159.3, 141, -157.9, 164, -136.9, 164, -134.7, 173, -123.7, 173, -121.5, 187, -95.5, 187, -92, 197, -55.3, 197, -25.9, 194.9, 15, 193.7, 15, 186.7, 54, 185.5, 54, 177.5, 79, 176.2, 79, 155.2, 120, 154.1, 120, 139.1, 142, 137.9, 142, 118.9, 163, 116.8, 163, 99.8, 180, 97.7, 180, 80.7, 193, 78.5, 193, 44.4, 209, 40.4, 209, 23.3, 215, -43.2, 215, -60, 211.6, -60, 210.2, -90, 195.2, -90, 193.9, -119, 168.9, -119, 166.7, -137, 144.7, -137, 142.6, -168, 93.6, -168, 91.4, -188, 46.4, -188, 42.3, -194, 24.3, -194, 18, -199.3, -15, -197.9, -15, -194.9, -72, -193.5, -72, -183.5, -110, -182.2, -110, -169.2, -135, -167.8, -135, -145.9, -158, -143.7, -158, -129.7, -170, -126.6, -170, -99.4, -181, 14, -181, 14, -182.5, 34.8, -223, 36.1, -223, 48, -236.7, 48, -239.8 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/grow = SubResource( 1 )
 
 [node name="dzdzownica" type="Sprite" parent="AnimationPlayer"]
 position = Vector2( 528.955, 560.451 )
 scale = Vector2( 0.866666, 0.866666 )
+z_index = -2
 texture = ExtResource( 2 )
 
 [node name="dzdzownica" type="Area2D" parent="AnimationPlayer/dzdzownica"]
@@ -76,4 +58,29 @@ polygon = PoolVector2Array( 29, -250.5, 25.5, -250.5, 12, -242.4, 12, -241.7, 3.
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="AnimationPlayer/dzdzownica/dzdzownica"]
 visible = false
 polygon = PoolVector2Array( -44, -233.3, -41.6, -231, -42.7, -228.5, -44.2, -228.5, -55, -217.7, -55, -216, -60.8, -205.5, -69, -205.5, -69, -218.5, -67.4, -218.5, -64.4, -227.5, -62.5, -227.5, -54, -233.5, -54, -235.5, -44, -235.5 )
+
+[node name="jablko" type="TextureButton" parent="."]
+margin_left = 1264.79
+margin_top = 315.254
+margin_right = 1764.79
+margin_bottom = 815.254
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="jablko"]
+position = Vector2( -1742.6, -706.134 )
+scale = Vector2( 1.27551, 1.27551 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="jablko/Area2D"]
+visible = false
+position = Vector2( 1366.2, 553.609 )
+scale = Vector2( 0.784, 0.784 )
+polygon = PoolVector2Array( 64, -234.4, 64, -232.6, 68.3, -226.1, 67.2, -224, 65.7, -224, 50, -211.1, 50, -209.2, 40, -198.2, 40, -196.6, 32.1, -179, 45, -179, 97, -177, 97, -175.5, 121, -169.6, 121, -168.3, 141, -159.3, 141, -157.9, 164, -136.9, 164, -134.7, 173, -123.7, 173, -121.5, 187, -95.5, 187, -92, 197, -55.3, 197, -25.9, 194.9, 15, 193.7, 15, 186.7, 54, 185.5, 54, 177.5, 79, 176.2, 79, 155.2, 120, 154.1, 120, 139.1, 142, 137.9, 142, 118.9, 163, 116.8, 163, 99.8, 180, 97.7, 180, 80.7, 193, 78.5, 193, 44.4, 209, 40.4, 209, 23.3, 215, -43.2, 215, -60, 211.6, -60, 210.2, -90, 195.2, -90, 193.9, -119, 168.9, -119, 166.7, -137, 144.7, -137, 142.6, -168, 93.6, -168, 91.4, -188, 46.4, -188, 42.3, -194, 24.3, -194, 18, -199.3, -15, -197.9, -15, -194.9, -72, -193.5, -72, -183.5, -110, -182.2, -110, -169.2, -135, -167.8, -135, -145.9, -158, -143.7, -158, -129.7, -170, -126.6, -170, -99.4, -181, 14, -181, 14, -182.5, 34.8, -223, 36.1, -223, 48, -236.7, 48, -239.8 )
 [connection signal="animation_finished" from="AnimationPlayer" to="jablko/Area2D" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_down" from="jablko" to="jablko/Area2D" method="_on_jablko_button_down"]
+[connection signal="button_up" from="jablko" to="jablko/Area2D" method="_on_jablko_button_up"]

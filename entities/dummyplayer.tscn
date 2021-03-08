@@ -15,7 +15,10 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -205,13 +208,14 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 3 )
 visible = false
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 3 )
-frame = 1
+frames = SubResource( 4 )
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
 visible = false
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )

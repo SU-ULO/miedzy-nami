@@ -181,7 +181,6 @@ anims/napelnij = SubResource( 1 )
 anims/napelnij2 = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="AP"]
-visible = false
 position = Vector2( 639.997, 1001.05 )
 color = Color( 0.0666667, 0.0901961, 0.631373, 1 )
 antialiased = true
