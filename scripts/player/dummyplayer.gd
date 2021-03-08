@@ -172,8 +172,10 @@ func Interact(body):
 	self.visible = 0 # <- tutaj sygnał do serwera i jakieś bezpieczne usunięcie
 	interacted = false
 	
+# warning-ignore:unused_argument
 func EndInteraction(body):
-	currentInteraction = null
+	print("you cant be unkilled, how unfortunate")
+	# body.currentInteraction = null
 
 # helper functions
 
