@@ -26,7 +26,7 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 137.353, 113.112 )
 
 [sub_resource type="SpriteFrames" id=5]
@@ -222,7 +222,7 @@ texture = ExtResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( -2.85715, 86.8572 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="body" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
