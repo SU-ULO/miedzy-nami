@@ -1,6 +1,8 @@
 extends "dummyplayer.gd"
 
-var fov_toggle = false #temporarily
+var fov_toggle :bool = false #temporarily
+var impostor_toggle :bool = false  #temporarily
+
 var selected_vent = 0
 
 onready var mask_width = $Light.get_texture().get_width()
@@ -38,6 +40,15 @@ func get_input():
 		else:
 			sight_range = 500
 		fov_toggle = !fov_toggle
+
+	if Input.is_action_just_pressed("GetImpostored"):
+		if !impostor_toggle:
+			self.add_to_group("impostors")
+			self.modulate = Color("#00FF00")
+		else:
+			self.remove_from_group("impostors")
+			self.modulate = Color("#FFFFFF")
+		impostor_toggle = !impostor_toggle
 	
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
@@ -61,8 +72,11 @@ func get_input():
 				arrow.call_teleport()
 				selected_vent = 0
 				
-		else: if !currentInteraction.is_in_group("cameras") and currentInteraction.IsDone():
+		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
+		else: if currentInteraction.is_in_group("players") and interacted == false:
+			currentInteraction = null
+			
 
 func _physics_process(delta):
 	scale_sight_range(delta)

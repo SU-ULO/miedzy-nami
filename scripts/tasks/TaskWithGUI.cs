@@ -15,6 +15,7 @@ public class TaskWithGUI : Task, IInteractable
 	public override void _Ready(){
 		AddToGroup("interactable");
 		AddToGroup("entities");
+		AddToGroup("tasks");
 	}
 	
 	public static void TaskWithGUICompleteTask(Control gui){
