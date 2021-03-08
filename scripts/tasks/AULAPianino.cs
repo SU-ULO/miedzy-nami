@@ -8,6 +8,6 @@ public class AULAPianino : TaskWithGUI
 	}
 	public override string ToString()
 	{
-		return "AULA: zagraj na pianinie"
+		return "AULA: zagraj na pianinie";
 	}
 }

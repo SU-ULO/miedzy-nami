@@ -11,6 +11,7 @@ onready var sight_range :float = default_sight_range
 func _on_ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
+	$playerGUI.updateGUI()
 
 func get_input():
 	moveX = 0; moveY = 0
@@ -30,9 +31,11 @@ func get_input():
 		
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
+			$playerGUI.updateGUI()
 		
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
+		$playerGUI.updateGUI()
 	
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
