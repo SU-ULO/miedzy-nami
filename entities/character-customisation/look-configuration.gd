@@ -7,8 +7,8 @@ var eye = "neutral_open"
 var eye_color = "darkblue"
 var hair = "afro"
 var hairColor = 1
-var hasBottom = 1
-var topClothes = "tshirt"
+var hasBottom = 0
+var topClothes = "dress"
 
 var hairPos = {"Velma long hair": 384, "Velma short hair":266, "afro":195, "bob cut":239, "curly afroish":225, "fade":248, "fade2":195, "kok":179, "koki":242, "long hair":379, "ponytail":192, "ponytails":230, "puffy hair":240, "short hair":240, "very short":283, "jheri curl":248, "short hair 2": 212, "wavy long hair":378, "wavy short hair":280, "bald":0}
 

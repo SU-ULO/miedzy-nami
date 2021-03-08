@@ -78,5 +78,30 @@ func _hair_color_Change(color):
 	_hair_Change(currLook.hair)
 	
 func _clothes_Change(name):
+	if name == "dress":
+		currLook.hasBottom = false
+		$"body-parts/jeans".visible = false
+	else:
+		currLook.hasBottom = true
+		$"body-parts/jeans".visible = true
+		
 	currLook.topClothes = name
 	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, 5))
+
+func refresh():
+	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, 5))
+	$"body-parts/jeans".visible = currLook.hasBottom
+	$"body-parts/eye".texture = load(currLook.getEyePath())
+	var bonuspath = currLook.getEyeBonusPath()
+	if bonuspath!="przykromi":
+		$"body-parts/bonus".visible = true
+		$"body-parts/bonus".texture = load(currLook.getEyeBonusPath())
+	else:
+		$"body-parts/bonus".visible = false
+	$"eye-color".visible = currLook.hasColoredEyes()
+	$"body-parts/mouth".texture = load(currLook.getMouthPath())
+	$"body-parts/hair".texture = load(currLook.getHairPath())
+	$"body-parts/hair".position.y = currLook.getHairPos()
+	$"body-parts/nose".texture = load(currLook.getNosePath())
+	$"body-parts/skin".texture = load(currLook.getSkinPath())
+	$"body-parts/body".texture = load(currLook.getBodyPath(4))

@@ -238,7 +238,27 @@ func loadLook():
 		$spodnie.visible = true
 	else:
 		$spodnie.visible = false
+	for i in $"clothes-top".frames.get_animation_names():
+		$"clothes-top".frames.clear(i)
+
+	for i in $body.frames.get_animation_names():
+		$body.frames.clear(i)
 		
+	for i in $face/eyes.frames.get_animation_names():
+		$face/eyes.frames.clear(i)
+	
+	for i in $"face/eyes/eye-bonus".frames.get_animation_names():
+		$"face/eyes/eye-bonus".frames.clear(i)
+		
+	for i in $face/nose.frames.get_animation_names():
+		$face/nose.frames.clear(i)
+		
+	for i in $face/mouth.frames.get_animation_names():
+		$face/mouth.frames.clear(i)	
+		
+	for i in $wlosy/hair.frames.get_animation_names():
+		$wlosy/hair.frames.clear(i)	
+				
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(2)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(3)))

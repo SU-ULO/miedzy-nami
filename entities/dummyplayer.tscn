@@ -8,15 +8,13 @@
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=6]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=7]
 [ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=8]
+[ext_resource path="res://shaders/dummyplayer.tres" type="Material" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 500.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
-
-[sub_resource type="CanvasItemMaterial" id=3]
-light_mode = 2
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -27,15 +25,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 137.353, 113.112 )
+extents = Vector2( 132.728, 112.541 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
@@ -45,15 +38,15 @@ animations = [ {
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk front",
@@ -63,15 +56,15 @@ animations = [ {
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=8]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
@@ -80,6 +73,11 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
 "speed": 5.0
 } ]
 
@@ -209,14 +207,15 @@ shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-material = SubResource( 3 )
+material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-material = SubResource( 3 )
+material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
 
@@ -225,35 +224,43 @@ position = Vector2( -2.85715, 86.8572 )
 shape = SubResource( 5 )
 
 [node name="body" type="AnimatedSprite" parent="."]
+material = ExtResource( 9 )
 frames = SubResource( 6 )
 animation = "walk front"
 
 [node name="spodnie" type="AnimatedSprite" parent="."]
 visible = false
+material = ExtResource( 9 )
 frames = SubResource( 7 )
 animation = "walk front"
 
 [node name="clothes-top" type="AnimatedSprite" parent="."]
+material = ExtResource( 9 )
 frames = SubResource( 8 )
 animation = "walk front"
 
 [node name="face" type="Sprite" parent="."]
+material = ExtResource( 9 )
 position = Vector2( 7.89365, -423.508 )
 texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="face"]
+material = ExtResource( 9 )
 frames = SubResource( 9 )
 animation = "front"
 
 [node name="eye-bonus" type="AnimatedSprite" parent="face/eyes"]
+material = ExtResource( 9 )
 frames = SubResource( 10 )
 animation = "front"
 
 [node name="nose" type="AnimatedSprite" parent="face"]
+material = ExtResource( 9 )
 frames = SubResource( 11 )
 animation = "front"
 
 [node name="mouth" type="AnimatedSprite" parent="face"]
+material = ExtResource( 9 )
 frames = SubResource( 12 )
 animation = "front"
 
@@ -262,6 +269,7 @@ position = Vector2( 0, -714.33 )
 scale = Vector2( 0.999999, 0.999999 )
 
 [node name="hair" type="AnimatedSprite" parent="wlosy"]
+material = ExtResource( 9 )
 position = Vector2( 0, 240 )
 frames = SubResource( 13 )
 animation = "front"
