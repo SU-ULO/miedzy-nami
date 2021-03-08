@@ -61,6 +61,11 @@ public abstract class Task : Godot.Node2D
 		return result.ToArray();
 	}
 	
+	private static Task TaskNotFound(Object criteria){
+		Godot.GD.Print("Task "+ criteria + " not found in " + tasks.Count + " tasks.");
+		return null;
+	}
+	
 	public static Task GetTaskByID(int id){
 		
 		foreach (Task task in tasks){
@@ -68,9 +73,16 @@ public abstract class Task : Godot.Node2D
 				return task;
 		}
 		
-		Godot.GD.Print("Task with ID "+ id + " not found in " + tasks.Count + " tasks.");
+		return TaskNotFound(id);
+	}
+	
+	public static Task GetTaskByTypeName(string typeName){
+		foreach (Task task in tasks){
+			if(task.GetType().Name == typeName)
+				return task;
+		}
 		
-		return null;
+		return TaskNotFound(typeName);
 	}
 	
 	public static Task[] GetAllTasks(){
@@ -237,7 +249,7 @@ public abstract class Task : Godot.Node2D
 	public virtual void TaskOnCompleted(){}
 	
 	public virtual string ToString(){
-		return "Task-"+taskID+" started status: "+started+" of category"+category;
+		return this.GetType().Name + " ["+state+"/"+maxState+"]";
 	}
 	
 		
