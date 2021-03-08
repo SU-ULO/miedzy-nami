@@ -169,6 +169,7 @@ func Interact(body):
 	var instance = dead_body.instance()
 	get_parent().add_child(instance)
 	instance.position = self.position
+	body.positon = self.position
 	self.visible = 0 # <- tutaj sygnał do serwera i jakieś bezpieczne usunięcie
 	interacted = false
 	
