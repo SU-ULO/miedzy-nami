@@ -1,86 +1,201 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://client/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://client/menu/options.gd" type="Script" id=2]
 [ext_resource path="res://client/menu/join.gd" type="Script" id=3]
+[ext_resource path="res://textures/button-menu.png" type="Texture" id=4]
+[ext_resource path="res://textures/bez_napis_1980x1080.png" type="Texture" id=5]
+[ext_resource path="res://textures/sam_napis_1980x1080.png" type="Texture" id=6]
+[ext_resource path="res://textures/przycisk_na_username.png" type="Texture" id=7]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=9]
+[ext_resource path="res://shaders/idk.tres" type="Theme" id=10]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Main" type="VBoxContainer" parent="."]
+[node name="bez_napis_1980x1080" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sam_napis_1980x1080" type="TextureRect" parent="bez_napis_1980x1080"]
+margin_top = -40.0
+margin_right = 1920.0
+margin_bottom = 1040.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = -200.0
+margin_top = -84.3259
 margin_right = 200.0
-margin_bottom = 200.0
-alignment = 1
+margin_bottom = 315.674
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Username" type="LineEdit" parent="Main"]
-margin_top = 164.0
-margin_right = 400.0
-margin_bottom = 188.0
+margin_left = -55.1389
+margin_top = 138.0
+margin_right = 544.861
+margin_bottom = 213.0
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
 text = "username"
+align = 1
 expand_to_text_length = true
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="StartButton" type="Button" parent="Main"]
-margin_top = 192.0
-margin_right = 400.0
-margin_bottom = 212.0
-text = "Start"
+[node name="TextureRect" type="TextureRect" parent="Main/Username"]
+show_behind_parent = true
+margin_left = -140.156
+margin_top = -14.2855
+margin_right = 695.844
+margin_bottom = 135.714
+rect_scale = Vector2( 1.03458, 0.803268 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="OptionsButton" type="Button" parent="Main"]
-margin_top = 216.0
-margin_right = 400.0
-margin_bottom = 236.0
-text = "Opcje"
+[node name="StartButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 229.143
+margin_right = 780.076
+margin_bottom = 337.143
+rect_scale = Vector2( 0.772785, 0.772785 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Label" type="Label" parent="Main/StartButton"]
+margin_left = 338.935
+margin_top = 13.8341
+margin_right = 529.935
+margin_bottom = 88.8341
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "START"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 322.95
+margin_right = 774.076
+margin_bottom = 430.95
+rect_scale = Vector2( 0.773, 0.773 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Main/OptionsButton"]
+margin_left = 336.536
+margin_top = 16.9486
+margin_right = 527.536
+margin_bottom = 91.9486
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "OPCJE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -200.0
-margin_top = -200.0
+margin_top = 13.0465
 margin_right = 200.0
-margin_bottom = 200.0
-alignment = 1
+margin_bottom = 413.047
 script = ExtResource( 2 )
 
-[node name="OptionsContainer" type="HBoxContainer" parent="Options"]
-margin_top = 176.0
-margin_right = 400.0
-margin_bottom = 200.0
-
-[node name="MatchmakingURLLabel" type="Label" parent="Options/OptionsContainer"]
-margin_top = 5.0
-margin_right = 210.0
-margin_bottom = 19.0
+[node name="MatchmakingURLLabel" type="Label" parent="Options"]
+margin_left = -17.8197
+margin_top = 60.8095
+margin_right = 888.18
+margin_bottom = 135.81
+rect_scale = Vector2( 0.532555, 0.532555 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "URL serwera matchmakingowego"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsContainer" type="Control" parent="Options"]
+margin_right = 500.0
+margin_bottom = 24.0
 
 [node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
-margin_left = 214.0
-margin_right = 272.0
-margin_bottom = 24.0
-align = 2
-expand_to_text_length = true
+margin_left = 99.9603
+margin_top = 106.057
+margin_right = 399.96
+margin_bottom = 181.057
+rect_scale = Vector2( 0.720081, 0.720081 )
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
+align = 1
 placeholder_text = "url"
 caret_blink = true
 caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="OptionsAcceptButton" type="Button" parent="Options"]
-margin_top = 204.0
-margin_right = 400.0
-margin_bottom = 224.0
-text = "zatwierdź"
+[node name="TextureRect" type="TextureRect" parent="Options/OptionsContainer/MatchmakingURL"]
+show_behind_parent = true
+margin_left = -239.009
+margin_top = -29.7268
+margin_right = 596.991
+margin_bottom = 120.273
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsAcceptButton" type="TextureButton" parent="Options"]
+margin_left = -22.6681
+margin_top = 168.98
+margin_right = 841.332
+margin_bottom = 276.98
+rect_scale = Vector2( 0.565934, 0.565934 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
+margin_left = 262.385
+margin_right = 912.385
+margin_bottom = 175.0
+rect_scale = Vector2( 0.5857, 0.5857 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Zatwierdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Join" type="VBoxContainer" parent="."]
 visible = false
