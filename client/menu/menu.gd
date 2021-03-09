@@ -23,7 +23,6 @@ func _ready():
 func close_everything():
 	for n in get_children():
 		n.visible=false
-
 func open_logging_in():
 	close_everything()
 	$'LoggingIn'.visible=true
@@ -33,19 +32,19 @@ func open_options():
 	optionsnode.get_settings()
 	close_everything()
 	optionsnode.visible=true
-
+	$background.visible = true
 func open_main():
 	close_everything()
 	$'Main'.visible=true
-
+	$background.visible = true
 func open_join():
 	close_everything()
 	$'Join'.visible=true
-
+	$background.visible = true
 func open_joining():
 	close_everything()
 	$'Joining'.visible=true
-
+	$background.visible = true
 func join_server(key: String):
 	open_joining()
 	emit_signal("join_server", key)

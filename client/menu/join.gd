@@ -21,11 +21,13 @@ func update_servers(list: Array):
 		if !(s.key is String):
 			clean_list()
 			return
-		var b = Button.new()
+		var bbb = load("res://gui/podsceny/MenuButton.tscn").instance()
+		var b = bbb.get_node("TextureButton")
+		var l = b.get_node("Label")
 		b.name=s.key
-		b.text=s.key
+		l.text=s.key
 		b.connect("pressed", get_parent(), 'join_server', [s.key])
-		serverlist.add_child(b)
+		serverlist.add_child(bbb)
 
 func _on_Refresh_pressed():
 	get_parent().refresh_servers()

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/button-menu.png" type="Texture" id=2]
+
+[node name="MenuButton" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="TextureButton"]
+margin_left = 33.2978
+margin_top = 16.6489
+margin_right = 833.298
+margin_bottom = 91.6489
+mouse_filter = 1
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
