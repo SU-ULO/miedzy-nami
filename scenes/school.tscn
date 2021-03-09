@@ -408,10 +408,6 @@ scale = Vector2( 0.379188, 0.379188 )
 position = Vector2( -2037.57, -2821.06 )
 scale = Vector2( 0.518651, 0.518651 )
 
-[node name="biorko-nauczyciela6" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
-position = Vector2( -2258.61, -2131.49 )
-scale = Vector2( -0.69, 0.69 )
-
 [node name="plecaki5" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
 position = Vector2( -1594.38, -2172.47 )
 rotation = 3.14159
@@ -449,11 +445,15 @@ position = Vector2( 153.863, -284.264 )
 scale = Vector2( 0.406592, 0.406135 )
 
 [node name="biorko-taskpoint2" parent="Mapa/YSort" instance=ExtResource( 48 )]
-position = Vector2( -1464.73, 1622.22 )
+position = Vector2( -1430.83, 1605.27 )
 scale = Vector2( 0.406592, 0.406135 )
 
+[node name="biorko-taskpoint3" parent="Mapa/YSort" instance=ExtResource( 48 )]
+position = Vector2( -2506.1, -1947.15 )
+scale = Vector2( -0.5, 0.5 )
+
 [node name="tablica2" parent="Mapa/YSort" instance=ExtResource( 37 )]
-position = Vector2( 1811.99, 1275.52 )
+position = Vector2( -2605.34, 1283.07 )
 scale = Vector2( 0.0539215, 0.053861 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]

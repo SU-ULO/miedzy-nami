@@ -10,4 +10,8 @@ public class GEOkamienie : TaskWithGUI
 	public override string ToString(){
 		return "SALA GEOGRAFICZNA: uporządkuj kamienie";
 	}
+	public GEOkamienie()
+	{
+		started = false;
+	}
 }

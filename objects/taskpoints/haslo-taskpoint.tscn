@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scripts/tasks/Haslo.cs" type="Script" id=1]
+[ext_resource path="res://scripts/tasks/HasloGEO.cs" type="Script" id=1]
 [ext_resource path="res://textures/dekoracje/biorko_nauczyciela.png" type="Texture" id=2]
+
 
 [node name="biorko-taskpoint" type="StaticBody2D"]
 script = ExtResource( 1 )

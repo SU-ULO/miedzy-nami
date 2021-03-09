@@ -14,6 +14,11 @@ public class TablicaMainTask : Task
 		this.maxState = 1;
 	}
 	
+	public override string ToString()
+	{
+		return "Wyczyść tablice (2)";
+	}
+	
 	public override void _Ready(){
 		int numberOfBoards = 0;
 		

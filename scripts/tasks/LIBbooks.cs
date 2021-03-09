@@ -9,5 +9,8 @@ public class LIBbooks : TaskWithGUI
 	public override string ToString(){
 		return "BIBLIOTEKA: wypożycz książkę";
 	}
-
+	public override int GetNextTaskID()
+	{
+		return GetTaskByTypeName("GEOkamienie").taskID;
+	}
 }
