@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/dekoracje/electrical.png" type="Texture" id=1]
+[ext_resource path="res://scripts/electrical.gd" type="Script" id=2]
+
+[node name="electrical" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="electrical" type="Sprite" parent="."]
+position = Vector2( 65, 32 )
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -790.135, 654.288, 771.513, 658.525, 763.038, 236.859, 805.416, 238.978, 805.416, -242.018, 722.778, -415.77, 76.5056, -422.127, -152.338, -712.419, -737.162, -716.657, -811.324, -597.997 )
