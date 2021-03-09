@@ -4,6 +4,6 @@
 font_path = "res://fonts/PottaOne-Regular.ttf"
 
 [resource]
-size = 120
+size = 60
 use_filter = true
 font_data = SubResource( 1 )

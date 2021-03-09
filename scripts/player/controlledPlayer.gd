@@ -31,7 +31,7 @@ func get_input():
 		
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
-			$playerGUI.updateGUI()
+			$CanvasLayer/playerGUI.updateGUI()
 		
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
@@ -48,6 +48,10 @@ func get_input():
 		if !impostor_toggle:
 			self.add_to_group("impostors")
 			self.modulate = Color("#00FF00")
+			if debug_mode:
+				# most likely broken
+				var temp = get_parent().get_parent().get_node("dekoracje/meeting-table/game-spawner")
+				temp.teleport_players()
 		else:
 			self.remove_from_group("impostors")
 			self.modulate = Color("#FFFFFF")

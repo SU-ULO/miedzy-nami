@@ -8,9 +8,9 @@ func _ready():
 	
 func updateGUI():
 	var content = ""
-	for i in get_parent().localTaskList:
+	for i in get_owner().localTaskList:
 		content += Task.ToString()
 		content += str(i)
 		content += "\n"
-	$tasklist.text = content
+	$VBoxContainer/tasklist.text = content
 

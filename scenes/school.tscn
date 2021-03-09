@@ -49,7 +49,7 @@
 [ext_resource path="res://objects/dekoracje/komputer.tscn" type="PackedScene" id=47]
 [ext_resource path="res://objects/taskpoints/haslo-taskpoint.tscn" type="PackedScene" id=48]
 [ext_resource path="res://objects/taskpoints/tablica-main-taskpoint.tscn" type="PackedScene" id=49]
-[ext_resource path="res://textures/dekoracje/warning sign.png" type="Texture" id=50]
+[ext_resource path="res://scripts/meeting.gd" type="Script" id=50]
 [ext_resource path="res://objects/dekoracje/electrical.tscn" type="PackedScene" id=51]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -68,7 +68,6 @@ __meta__ = {
 }
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
-position = Vector2( 0, 1 )
 
 [node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -3307.27, -111.095 )
@@ -169,11 +168,11 @@ position = Vector2( 4230.88, 3296.21 )
 scale = Vector2( 0.263746, 0.263746 )
 
 [node name="krzeslo2" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( 3406.45, 3979.29 )
+position = Vector2( 3548.26, 4045.21 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="krzeslo3" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( 3589.97, 3936.52 )
+position = Vector2( 3717.69, 4008.6 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="zegar2" type="Sprite" parent="Mapa/dekoracje"]
@@ -204,7 +203,7 @@ position = Vector2( 4231.65, 4172.62 )
 scale = Vector2( 0.305559, 0.305559 )
 
 [node name="krzeslo1" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
-position = Vector2( 3455.9, 3727.87 )
+position = Vector2( 3597.52, 3878.24 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="stolik8" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
@@ -345,27 +344,31 @@ position = Vector2( -4151.78, 2967.07 )
 scale = Vector2( 0.41956, 0.41956 )
 
 [node name="krzeslo6" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -5286.86, 2139.46 )
+position = Vector2( -4991.61, 2437.9 )
+scale = Vector2( 0.537289, 0.537289 )
+
+[node name="krzeslo12" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
+position = Vector2( -2964.48, -3648.43 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo7" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -5184.49, 2265.13 )
+position = Vector2( -4302.72, 2471.87 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo8" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4991.85, 2270.46 )
+position = Vector2( -4728.57, 2491.3 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo9" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4470.21, 2263.99 )
+position = Vector2( -4934.25, 2203.34 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo10" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -4286.84, 2183.79 )
+position = Vector2( -4029.29, 2399.34 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="krzeslo5" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
-position = Vector2( -4412.09, 1789.04 )
+position = Vector2( -4226.5, 2146.57 )
 scale = Vector2( 0.537289, 0.537289 )
 
 [node name="zegar4" type="Sprite" parent="Mapa/dekoracje"]
@@ -378,8 +381,10 @@ position = Vector2( -5031.39, 3907.29 )
 scale = Vector2( 0.250547, 0.250547 )
 
 [node name="meeting-table" parent="Mapa/dekoracje" instance=ExtResource( 46 )]
-position = Vector2( -4983.5, 2080.66 )
-scale = Vector2( 0.634633, 0.634633 )
+position = Vector2( -4540.59, 2348.91 )
+
+[node name="game-spawner" type="Node2D" parent="Mapa/dekoracje/meeting-table"]
+script = ExtResource( 50 )
 
 [node name="komputer" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
 position = Vector2( -1415.5, -2256.08 )
@@ -407,7 +412,7 @@ position = Vector2( -2749.11, -2657.96 )
 scale = Vector2( 0.379188, 0.379188 )
 
 [node name="krzeslo11" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
-position = Vector2( -2037.57, -2821.06 )
+position = Vector2( -1339.2, -2313.48 )
 scale = Vector2( 0.518651, 0.518651 )
 
 [node name="plecaki5" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
@@ -418,19 +423,11 @@ scale = Vector2( 0.218171, -0.218171 )
 [node name="warning sign" type="Sprite" parent="Mapa/dekoracje"]
 position = Vector2( 4742.92, 436.552 )
 scale = Vector2( 0.410224, 0.410685 )
-texture = ExtResource( 50 )
 
 [node name="zegar6" type="Sprite" parent="Mapa/dekoracje"]
 position = Vector2( 1726.45, -2555.55 )
 scale = Vector2( -0.0726774, 0.0726774 )
 texture = ExtResource( 23 )
-
-[node name="krzeslo13" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -3058.15, -3613.81 )
-scale = Vector2( 0.526047, 0.526047 )
-
-[node name="Sprite" parent="Mapa/dekoracje/krzeslo13" index="0"]
-position = Vector2( 474.791, 67.457 )
 
 [node name="biorko-nauczyciela7" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
 position = Vector2( -3053.43, -3910.61 )
@@ -523,7 +520,7 @@ position = Vector2( 1332.39, 1295.03 )
 scale = Vector2( 0.873863, 0.873863 )
 
 [node name="krzeslo2" parent="Mapa/YSort" instance=ExtResource( 29 )]
-position = Vector2( 4189.76, 1011.5 )
+position = Vector2( 4520.17, 1331.08 )
 scale = Vector2( 0.557367, 0.557367 )
 
 [node name="komputer" parent="Mapa/YSort" instance=ExtResource( 47 )]
@@ -544,39 +541,6 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
-
-[node name="spawnPositionsGame" type="Node2D" parent="."]
-position = Vector2( -5193.65, 2644.51 )
-
-[node name="1" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 30.9731, -176.004 )
-
-[node name="2" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 211.602, 109.371 )
-
-[node name="3" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 513.349, 122.366 )
-
-[node name="4" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 1013.03, 115.67 )
-
-[node name="5" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 1294.79, 8.00903 )
-
-[node name="6" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 1309.48, -303.009 )
-
-[node name="7" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 1161.31, -584.66 )
-
-[node name="8" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 815.586, -615.361 )
-
-[node name="9" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 516.583, -614.026 )
-
-[node name="10" type="Position2D" parent="spawnPositionsGame"]
-position = Vector2( 301.674, -519.252 )
 
 [node name="spawnPositionsLobby" type="Node2D" parent="."]
 position = Vector2( -2096.48, 14441.6 )
@@ -679,5 +643,3 @@ scale = Vector2( 0.421428, 0.421428 )
 
 [node name="tablica-main-taskpoint" parent="." instance=ExtResource( 49 )]
 position = Vector2( -4721.38, 719.065 )
-
-[editable path="Mapa/dekoracje/krzeslo13"]
