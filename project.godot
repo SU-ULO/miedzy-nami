@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "LookConfiguration",
 "language": "GDScript",
 "path": "res://entities/character-customisation/look-configuration.gd"
+}, {
+"base": "Node",
+"class": "Matchmaking_Connection",
+"language": "GDScript",
+"path": "res://network/matchmaking_connection.gd"
 } ]
 _global_script_class_icons={
 "Client": "",
 "Game_Connection": "",
 "JoinedClient": "",
 "JoinedServer": "",
-"LookConfiguration": ""
+"LookConfiguration": "",
+"Matchmaking_Connection": ""
 }
 
 [application]

@@ -17,8 +17,6 @@ signal send_candidate
 
 signal fail
 signal success
-# warning-ignore:unused_signal
-signal join
 
 func _init(conf: Dictionary):
 	config=conf
