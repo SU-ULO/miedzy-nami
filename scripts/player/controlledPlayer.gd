@@ -12,11 +12,12 @@ func _on_ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
 	$playerGUI.updateGUI()
-
+	
 func get_input():
 	moveX = 0; moveY = 0
 	
 	if currentInteraction == null:
+		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX = 1;
 		
@@ -35,7 +36,7 @@ func get_input():
 		
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
-		$playerGUI.updateGUI()
+		$CanvasLayer/playerGUI.updateGUI()
 	
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
@@ -56,7 +57,7 @@ func get_input():
 			self.remove_from_group("impostors")
 			self.modulate = Color("#FFFFFF")
 		impostor_toggle = !impostor_toggle
-	
+		$CanvasLayer/playerGUI.interactionGUIupdate()
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -83,7 +84,8 @@ func get_input():
 			currentInteraction = null
 		else: if currentInteraction.is_in_group("players") and interacted == false:
 			currentInteraction = null
-			
+		else:
+			$CanvasLayer/playerGUI.visible = false
 
 func _physics_process(delta):
 	scale_sight_range(delta)

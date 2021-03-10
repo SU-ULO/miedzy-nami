@@ -1,10 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/playerGUI.gd" type="Script" id=3]
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=4]
 [ext_resource path="res://textures/lightmask.svg" type="Texture" id=5]
+[ext_resource path="res://textures/zglos.png" type="Texture" id=6]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=7]
+[ext_resource path="res://textures/uzyj.png" type="Texture" id=8]
+[ext_resource path="res://textures/zglos_wyaczone.png" type="Texture" id=9]
+[ext_resource path="res://textures/zebatka.png" type="Texture" id=10]
+[ext_resource path="res://textures/uzyj_wyaczone.png" type="Texture" id=11]
+[ext_resource path="res://textures/uspij_v2_wyaczone.png" type="Texture" id=12]
+[ext_resource path="res://textures/uspij_v2.png" type="Texture" id=13]
+[ext_resource path="res://textures/map.png" type="Texture" id=14]
+[ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
@@ -32,6 +42,7 @@ margin_left = -960.0
 margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
+mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,3 +73,100 @@ text = "fajne zadanie 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="impostor" type="Control" parent="CanvasLayer/playerGUI" index="1"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="sabotage" type="TextureButton" parent="CanvasLayer/playerGUI/impostor" index="0"]
+margin_left = 1551.2
+margin_top = 798.271
+margin_right = 4031.2
+margin_bottom = 2552.27
+rect_scale = Vector2( 0.15403, 0.15403 )
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kill" type="TextureButton" parent="CanvasLayer/playerGUI/impostor" index="1"]
+margin_left = 1214.44
+margin_top = 798.271
+margin_right = 3694.44
+margin_bottom = 2552.27
+rect_scale = Vector2( 0.15403, 0.15403 )
+texture_normal = ExtResource( 13 )
+texture_disabled = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cooldown" type="Label" parent="CanvasLayer/playerGUI/impostor/kill" index="0"]
+margin_left = -445.439
+margin_top = 1093.9
+margin_right = -335.439
+margin_bottom = 1181.9
+rect_scale = Vector2( 9.74788, 9.74788 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 0.560784 )
+text = "20s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="all" type="Control" parent="CanvasLayer/playerGUI" index="2"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="use" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="0"]
+margin_left = 1533.28
+margin_top = 805.928
+margin_right = 4013.28
+margin_bottom = 2559.93
+rect_scale = Vector2( 0.15403, 0.15403 )
+disabled = true
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="report" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="1"]
+margin_left = 1551.24
+margin_top = 507.353
+margin_right = 3191.24
+margin_bottom = 1916.35
+rect_scale = Vector2( 0.197831, 0.197831 )
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="map" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="2"]
+margin_left = 1744.31
+margin_top = 163.879
+margin_right = 3384.31
+margin_bottom = 1748.88
+rect_scale = Vector2( 0.103651, 0.103651 )
+texture_normal = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="settings" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="3"]
+margin_left = 1733.08
+margin_top = 13.4695
+margin_right = 3373.08
+margin_bottom = 1635.47
+rect_scale = Vector2( 0.099003, 0.099003 )
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/all/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/all/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]

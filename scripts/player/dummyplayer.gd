@@ -150,7 +150,6 @@ func on_interaction_area_exit(body):
 		if interactable.has(body):
 			interactable.erase(body)
 			if debug_mode: print(body.get_name(), " removed from: interaction")
-
 # decection via camera
 
 func camera_visibility(body, status):
@@ -169,7 +168,7 @@ func Interact(body):
 	var instance = dead_body.instance()
 	get_parent().add_child(instance)
 	instance.position = self.position
-	body.positon = self.position
+	body.position = self.position
 	self.visible = 0 # <- tutaj sygnał do serwera i jakieś bezpieczne usunięcie
 	interacted = false
 	
