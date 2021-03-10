@@ -1,14 +1,8 @@
 extends VBoxContainer
 
 
-
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func clean_list():
 	for c in $'ServersList'.get_children():
@@ -26,11 +20,11 @@ func update_servers(list: Array):
 		var l = b.get_node("Label")
 		b.name=s.key
 		l.text=s.key
-		b.connect("pressed", get_parent(), 'join_server', [s.key])
+		b.connect("pressed", get_parent(), 'request_join_server', [s.key])
 		serverlist.add_child(bbb)
 
 func _on_Refresh_pressed():
-	get_parent().refresh_servers()
+	get_parent().request_refresh_servers()
 
 
 func _on_Exit_pressed():
