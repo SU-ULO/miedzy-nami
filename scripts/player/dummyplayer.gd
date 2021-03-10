@@ -165,6 +165,7 @@ func camera_visibility(body, status):
 func Interact(body):
 	interacted = true
 	print(body.get_name(), " killed ", self.get_name())
+	body.get_node("KillCooldown").start()
 	var instance = dead_body.instance()
 	get_parent().add_child(instance)
 	instance.position = self.position

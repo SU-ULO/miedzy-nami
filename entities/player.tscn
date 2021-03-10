@@ -31,7 +31,10 @@ current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="KillCooldown" type="Timer" parent="." index="7"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
 
 [node name="playerGUI" type="Control" parent="CanvasLayer" index="0"]
 anchor_left = 0.5
@@ -48,16 +51,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/playerGUI" index="0"]
-margin_right = 774.0
-margin_bottom = 354.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="Control" parent="CanvasLayer/playerGUI" index="0"]
+margin_left = -18.4998
+margin_top = -6.7272
+margin_right = 755.5
+margin_bottom = 347.273
 
 [node name="Label" type="Label" parent="CanvasLayer/playerGUI/VBoxContainer" index="0"]
-margin_right = 774.0
-margin_bottom = 88.0
+margin_left = 30.2723
+margin_top = 1.68179
+margin_right = 804.272
+margin_bottom = 89.6818
 custom_fonts/font = ExtResource( 4 )
 text = "Lista zadań"
 __meta__ = {
@@ -65,9 +69,11 @@ __meta__ = {
 }
 
 [node name="tasklist" type="Label" parent="CanvasLayer/playerGUI/VBoxContainer" index="1"]
-margin_top = 92.0
-margin_right = 774.0
-margin_bottom = 180.0
+margin_left = 25.2269
+margin_top = 90.3182
+margin_right = 799.227
+margin_bottom = 178.318
+rect_scale = Vector2( 0.326752, 0.326752 )
 custom_fonts/font = ExtResource( 4 )
 text = "fajne zadanie 1"
 __meta__ = {

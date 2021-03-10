@@ -5,14 +5,16 @@ var impostor_toggle :bool = false  #temporarily
 
 var selected_vent = 0
 
+export var killCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
-func _on_ready():
+func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
-	$playerGUI.updateGUI()
-	
+	$CanvasLayer/playerGUI.updateGUI()
+	$KillCooldown.wait_time = killCooldown
+
 func get_input():
 	moveX = 0; moveY = 0
 	

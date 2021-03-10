@@ -20,6 +20,12 @@ func _process(_delta):
 	if player.is_in_group("impostors"):
 		$all/use.visible = usage
 	$impostor/sabotage.visible = !usage
+	if int(player.get_node("KillCooldown").time_left) > 0:
+		$impostor/kill/cooldown.text = str(int(player.get_node("KillCooldown").time_left))
+		$impostor/kill/cooldown.visible = true
+	else:
+		$impostor/kill/cooldown.visible = false
+	$impostor/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
 func _on_use_pressed():
 	player.ui_selected()
 
@@ -59,3 +65,10 @@ func _on_report_pressed():
 	for i in player.interactable:
 		if 	i.is_in_group("deadbody"):
 			i.Interact(player)
+			break
+		
+func checkKillability():
+	for i in player.interactable:
+		if 	i.is_in_group("players"):
+			return true
+	return false
