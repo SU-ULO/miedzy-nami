@@ -5,13 +5,13 @@ export var default_sight_range = 2000.0
 export var default_scaling_speed = 2000.0
 
 # debug mode for visibility checking
-var debug_mode = false
+var debug_mode = true
 var debug_pos_collided = []
 var debug_pos_ok = []
 
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
-var in_sight = []; var interactable = []
+var in_sight = []; var interactable = []; var players_interactable = []
 var flipped = false
 var moveX :int
 var moveY :int
@@ -32,35 +32,7 @@ func _physics_process(_delta):
 	if debug_mode: update()
 	set_player_velocity()
 	player_velocity = move_and_slide(player_velocity)
-	check_line_of_sight()
-	check_interaction()
 
-func check_line_of_sight():
-	for item in in_sight_range:
-		var space_state = get_world_2d().direct_space_state
-		var sight_check = space_state.intersect_ray(self.position, item.position, [self, item], 1)
-			
-		if !sight_check.empty():
-			if debug_mode: debug_pos_collided.append(sight_check.position)
-			if in_sight.has(item):
-				in_sight.erase(item);
-				if debug_mode: print(item.get_name(), " removed from: sight")
-		else:
-			if debug_mode: debug_pos_ok.append(item.position)
-			if !in_sight.has(item):
-				in_sight.push_back(item);
-				if debug_mode: print(item.get_name(), " added to: sight")
-
-func check_interaction():
-	for item in in_interaction_range:
-		if !in_sight.has(item):
-			if interactable.has(item):
-				interactable.erase(item);
-				if debug_mode: print(item.get_name(), " removed from: interactable")
-		else:
-			if !interactable.has(item):
-				interactable.push_back(item);
-				if debug_mode: print(item.get_name(), " added to: interactable")
 
 func set_player_velocity():
 	player_velocity.x = moveX
@@ -94,11 +66,12 @@ func ui_selected():
 	
 	if(interactable.size() != 0):
 		var currentBestItem = interactable[0]
-		var currentBestDistance = compute_distance(currentBestItem)
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
 		for item in interactable:
-			if(compute_distance(item) < currentBestDistance):
+			if(position.distance_squared_to(item.position) < currentBestDistance):
 				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
 
 		var result
 		if currentBestItem.is_in_group("tasks"): result = currentBestItem.Interact()
@@ -107,6 +80,18 @@ func ui_selected():
 		if result == false:
 			return
 		currentInteraction = currentBestItem
+
+
+func ui_kill():
+	if(players_interactable.size() != 0):
+		var currentBestItem = players_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in players_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
 
 func ui_canceled():
 	if(currentInteraction != null):
@@ -138,7 +123,7 @@ func _on_interaction_area_enter(body):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 		
-	else: if body.is_in_group("players") and self.is_in_group("impostors") and body != self:
+	else: if body.is_in_group("players") and self.is_in_group("impostors") and body != self and !body.is_in_group("impostors"):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 
@@ -149,7 +134,10 @@ func on_interaction_area_exit(body):
 		
 		if interactable.has(body):
 			interactable.erase(body)
-			if debug_mode: print(body.get_name(), " removed from: interaction")
+			if debug_mode: print(body.get_name(), " removed from: players_interaction")
+		if players_interactable.has(body):
+			players_interactable.erase(body)
+			if debug_mode: print(body.get_name(), " removed from: players_interaction")
 # decection via camera
 
 func camera_visibility(body, status):
@@ -177,11 +165,6 @@ func Interact(body):
 func EndInteraction(body):
 	print("you cant be unkilled, how unfortunate")
 	# body.currentInteraction = null
-
-# helper functions
-
-func compute_distance(item):
-	return sqrt(pow(item.position.x - self.position.x, 2) + pow(item.position.y - self.position.y, 2))
 
 # draw for debug
 

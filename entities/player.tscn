@@ -20,6 +20,9 @@
 position = Vector2( 0, 0 )
 script = ExtResource( 1 )
 
+[node name="AnimatedSprite" parent="." index="2"]
+frame = 1
+
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
 texture = ExtResource( 5 )
@@ -174,5 +177,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/all/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/all/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]

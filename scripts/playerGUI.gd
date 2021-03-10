@@ -51,7 +51,6 @@ func checkUsage():
 			if 	player.is_in_group("impostors"):
 				return true
 		else:
-			if !i.is_in_group("players"):
 				return true
 	return false
 
@@ -68,7 +67,11 @@ func _on_report_pressed():
 			break
 		
 func checkKillability():
-	for i in player.interactable:
-		if 	i.is_in_group("players"):
-			return true
-	return false
+	if player.players_interactable.size() > 0:
+		return true
+	else: 
+		return false
+
+
+func _on_kill_pressed():
+	player.ui_kill()

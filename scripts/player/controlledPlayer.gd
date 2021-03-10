@@ -35,7 +35,8 @@ func get_input():
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
 			$CanvasLayer/playerGUI.updateGUI()
-		
+		if Input.is_action_just_pressed("ui_kill"):
+			ui_kill()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 		$CanvasLayer/playerGUI.updateGUI()
@@ -92,7 +93,9 @@ func get_input():
 func _physics_process(delta):
 	scale_sight_range(delta)
 	get_input()
-
+	check_line_of_sight()
+	check_interaction()
+	
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -114,3 +117,47 @@ func scale_sight_range(delta):
 		if radius > sight_range:
 			area.set_radius(sight_range)
 			$Light.set_texture_scale(sight_range/mask_width*2)
+
+func check_line_of_sight():
+	for item in in_sight_range:
+		var space_state = get_world_2d().direct_space_state
+		var sight_check = space_state.intersect_ray(self.position, item.position, [self, item], 1)
+			
+		if !sight_check.empty():
+			if debug_mode: debug_pos_collided.append(sight_check.position)
+			if in_sight.has(item):
+				in_sight.erase(item);
+				if debug_mode: print(item.get_name(), " removed from: sight")
+		else:
+			if debug_mode: debug_pos_ok.append(item.position)
+			if !in_sight.has(item):
+				in_sight.push_back(item);
+				if debug_mode: print(item.get_name(), " added to: sight")
+
+func check_interaction():
+	for item in in_interaction_range:
+		if !item.is_in_group("players"):
+			if !in_sight.has(item):
+				print("fajny ")
+				print(item)
+				if interactable.has(item):
+					interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: interactable")
+			else:
+				if !interactable.has(item):
+					if item.is_in_group("tasks"):
+						if item in localTaskList:
+							interactable.push_back(item);
+							if debug_mode: print(item.get_name(), " added to: interactable")
+					else:
+						interactable.push_back(item);
+						if debug_mode: print(item.get_name(), " added to: interactable")
+		else:
+			if !in_sight.has(item):
+				if players_interactable.has(item):
+					players_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: players_interactable")
+			else:
+				if !players_interactable.has(item):
+					players_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: players_interactable")

@@ -6,8 +6,8 @@ func _ready():
 	add_to_group("interactable")
 	add_to_group("entities")
 
-func Interact(body):
+func Interact(_body):
 	pass
 
-func EndInteraction(body):
+func EndInteraction(_body):
 	pass
