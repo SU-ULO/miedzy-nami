@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -52,6 +52,50 @@
 [ext_resource path="res://scripts/meeting.gd" type="Script" id=50]
 [ext_resource path="res://objects/dekoracje/electrical.tscn" type="PackedScene" id=51]
 [ext_resource path="res://textures/dekoracje/plakaty1.png" type="Texture" id=52]
+[ext_resource path="res://objects/taskpoints/LIB-print-taskpoint.tscn" type="PackedScene" id=53]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+// This shader only works properly with premultiplied alpha blend mode.
+uniform float aura_width = 2.0;
+uniform vec4 aura_color: hint_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+	float maxa = col.a;
+	float mina = col.a;
+
+	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	col.rgb *= col.a;
+
+	COLOR = col;
+	COLOR.rgb += aura_color.rgb * (maxa - mina);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/aura_width = 0.0
+shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -157,11 +201,11 @@ position = Vector2( 4230.88, 3296.21 )
 scale = Vector2( 0.263746, 0.263746 )
 
 [node name="krzeslo2" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( 3548.26, 4045.21 )
+position = Vector2( 3504.26, 3973.13 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="krzeslo3" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( 3717.69, 4008.6 )
+position = Vector2( 3673.69, 3936.52 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="zegar2" type="Sprite" parent="Mapa/dekoracje"]
@@ -188,11 +232,11 @@ position = Vector2( -845.848, 3146.08 )
 scale = Vector2( 0.170273, 0.170273 )
 
 [node name="lawka" parent="Mapa/dekoracje" instance=ExtResource( 25 )]
-position = Vector2( 4231.65, 4172.62 )
+position = Vector2( 4249.65, 4146.59 )
 scale = Vector2( 0.305559, 0.305559 )
 
 [node name="krzeslo1" parent="Mapa/dekoracje" instance=ExtResource( 27 )]
-position = Vector2( 3597.52, 3878.24 )
+position = Vector2( 3553.52, 3806.16 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="stolik8" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
@@ -230,7 +274,7 @@ position = Vector2( 1957.51, 1778.71 )
 scale = Vector2( 0.483065, 0.483065 )
 
 [node name="plecaki" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
-position = Vector2( 4507.64, 4002.6 )
+position = Vector2( 4533.64, 4062.67 )
 scale = Vector2( 0.255421, 0.255421 )
 
 [node name="biorko-nauczyciela4" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
@@ -567,6 +611,12 @@ scale = Vector2( 0.374722, 0.374722 )
 [node name="PHY-suwmiarka2" parent="Mapa/YSort" instance=ExtResource( 40 )]
 position = Vector2( 2052.44, -1754.53 )
 scale = Vector2( 0.859052, 0.859052 )
+
+[node name="LIB-print" parent="Mapa/YSort" instance=ExtResource( 53 )]
+material = SubResource( 3 )
+position = Vector2( 3743.16, 4288.72 )
+scale = Vector2( 0.676, 0.667403 )
+collision_layer = 2147483653
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 1 )

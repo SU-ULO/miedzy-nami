@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/dok.png" type="Texture" id=2]
+[ext_resource path="res://textures/komputer.png" type="Texture" id=3]
+[ext_resource path="res://scripts/tasks/drukowanko.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "print"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.466667, 0.960784, 1 )
+
+[node name="drukowanko" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 370.413
+margin_top = 78.5724
+margin_right = 1361.41
+margin_bottom = 799.572
+rect_scale = Vector2( 1.31384, 1.31384 )
+texture = ExtResource( 3 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 594.905
+margin_top = 150.41
+margin_right = 2348.91
+margin_bottom = 2630.41
+rect_scale = Vector2( 0.230487, 0.230487 )
+texture = ExtResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 1085.06
+margin_top = 357.643
+margin_right = 1468.06
+margin_bottom = 498.643
+rect_scale = Vector2( 1.09415, 1.09415 )
+color = Color( 0.00392157, 0.686275, 0.819608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 1102.0
+margin_top = 371.449
+margin_right = 1485.0
+margin_bottom = 500.449
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+margin_left = 74.0825
+margin_top = 15.7145
+margin_right = 315.083
+margin_bottom = 103.714
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DRUKUJ"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 1102.0
+margin_top = 371.0
+margin_right = 1484.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/print = SubResource( 1 )
+
+[node name="ProgressBar" type="ProgressBar" parent="AnimationPlayer"]
+visible = false
+margin_left = 1019.51
+margin_top = 384.878
+margin_right = 1552.51
+margin_bottom = 499.878
+custom_styles/fg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="drukowanie" type="Label" parent="AnimationPlayer/ProgressBar"]
+margin_left = 37.4176
+margin_top = 14.3953
+margin_right = 481.418
+margin_bottom = 102.395
+custom_fonts/font = ExtResource( 1 )
+text = "Drukowanie..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
