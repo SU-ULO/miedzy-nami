@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "Game_Connection",
 "class": "JoinedClient",
 "language": "GDScript",
-"path": "res://server/scripts/joined_client.gd"
+"path": "res://network/server/joined_client.gd"
 }, {
 "base": "Game_Connection",
 "class": "JoinedServer",
 "language": "GDScript",
-"path": "res://client/scripts/joined_server.gd"
+"path": "res://network/client/joined_server.gd"
 }, {
 "base": "Reference",
 "class": "LookConfiguration",
@@ -38,6 +38,11 @@ _global_script_classes=[ {
 "class": "Matchmaking_Connection",
 "language": "GDScript",
 "path": "res://network/matchmaking_connection.gd"
+}, {
+"base": "Node",
+"class": "NetworkManager",
+"language": "GDScript",
+"path": "res://network/network_manager.gd"
 } ]
 _global_script_class_icons={
 "Client": "",
@@ -45,7 +50,8 @@ _global_script_class_icons={
 "JoinedClient": "",
 "JoinedServer": "",
 "LookConfiguration": "",
-"Matchmaking_Connection": ""
+"Matchmaking_Connection": "",
+"NetworkManager": ""
 }
 
 [application]
