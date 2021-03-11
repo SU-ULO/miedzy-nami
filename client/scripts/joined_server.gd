@@ -112,5 +112,7 @@ func _process(_delta):
 						t.dirty = false
 						state_changes[t.taskID] = t.state
 						started_changes[t.taskID] = t.started
+						if t.started and t.state < t.maxState:
+							own_player.localTaskList.add(t)
 				
 				send_events({"update_tasks": own_id, "state": state_changes, "started": started_changes})
