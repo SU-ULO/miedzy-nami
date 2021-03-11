@@ -37,6 +37,8 @@ func get_input():
 			$CanvasLayer/playerGUI.updateGUI()
 		if Input.is_action_just_pressed("ui_kill"):
 			ui_kill()
+		if Input.is_action_just_pressed("ui_kill"):
+			ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 		$CanvasLayer/playerGUI.updateGUI()
@@ -136,10 +138,27 @@ func check_line_of_sight():
 
 func check_interaction():
 	for item in in_interaction_range:
-		if !item.is_in_group("players"):
+		if item.is_in_group("players"):
 			if !in_sight.has(item):
-				print("fajny ")
-				print(item)
+				if players_interactable.has(item):
+					players_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: players_interactable")
+			else:
+				if !players_interactable.has(item):
+					players_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: players_interactable")
+
+		elif item.is_in_group("deadbody"):
+			if !in_sight.has(item):
+				if deadbody_interactable.has(item):
+					deadbody_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: deadbody_interactable")
+			else:
+				if !deadbody_interactable.has(item):
+					deadbody_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: deadbody_interactable")
+		else:
+			if !in_sight.has(item):
 				if interactable.has(item):
 					interactable.erase(item);
 					if debug_mode: print(item.get_name(), " removed from: interactable")
@@ -152,12 +171,3 @@ func check_interaction():
 					else:
 						interactable.push_back(item);
 						if debug_mode: print(item.get_name(), " added to: interactable")
-		else:
-			if !in_sight.has(item):
-				if players_interactable.has(item):
-					players_interactable.erase(item);
-					if debug_mode: print(item.get_name(), " removed from: players_interactable")
-			else:
-				if !players_interactable.has(item):
-					players_interactable.push_back(item);
-					if debug_mode: print(item.get_name(), " added to: players_interactable")

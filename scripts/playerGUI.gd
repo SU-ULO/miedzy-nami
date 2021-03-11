@@ -55,10 +55,7 @@ func checkUsage():
 	return false
 
 func checkReportability():
-	for i in player.interactable:
-		if 	i.is_in_group("deadbody"):
-			return true
-	return false
+	return player.deadbody_interactable.size() > 0
 
 func _on_report_pressed():
 	for i in player.interactable:
@@ -67,10 +64,7 @@ func _on_report_pressed():
 			break
 		
 func checkKillability():
-	if player.players_interactable.size() > 0:
-		return true
-	else: 
-		return false
+	return player.players_interactable.size() > 0
 
 
 func _on_kill_pressed():

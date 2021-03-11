@@ -11,7 +11,7 @@ var debug_pos_ok = []
 
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
-var in_sight = []; var interactable = []; var players_interactable = []
+var in_sight = []; var interactable = []; var players_interactable = []; var deadbody_interactable = []
 var flipped = false
 var moveX :int
 var moveY :int
@@ -93,6 +93,17 @@ func ui_kill():
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
 		currentBestItem.Interact(self)
 
+func ui_report():
+	if(deadbody_interactable.size() != 0):
+		var currentBestItem = deadbody_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in deadbody_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
+
 func ui_canceled():
 	if(currentInteraction != null):
 		if currentInteraction.is_in_group("tasks"):
@@ -134,10 +145,13 @@ func on_interaction_area_exit(body):
 		
 		if interactable.has(body):
 			interactable.erase(body)
-			if debug_mode: print(body.get_name(), " removed from: players_interaction")
+			if debug_mode: print(body.get_name(), " removed from: interaction")
 		if players_interactable.has(body):
 			players_interactable.erase(body)
 			if debug_mode: print(body.get_name(), " removed from: players_interaction")
+		if deadbody_interactable.has(body):
+			deadbody_interactable.erase(body)
+			if debug_mode: print(body.get_name(), " removed from: deadbody_interaction")
 # decection via camera
 
 func camera_visibility(body, status):
