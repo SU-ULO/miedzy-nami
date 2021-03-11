@@ -5,8 +5,12 @@ var usersettings: Dictionary = {
 	"username": ""
 }
 
+var serversettings: Dictionary = {
+	"hidden": false
+}
+
 signal request_start_client()
-signal request_start_server()
+signal request_start_server(options)
 signal request_end()
 signal request_refresh_servers()
 signal request_join_server(key)
@@ -44,6 +48,15 @@ func open_joining():
 	$'Joining'.visible=true
 	$background.visible = true
 
+func open_create_room():
+	close_everything()
+	$Create.visible=true
+	$background.visible=true
+
+func request_start_server():
+	open_joining()
+	emit_signal("request_start_server", serversettings)
+
 func request_join_server(key: String):
 	open_joining()
 	emit_signal("request_join_server", key)
@@ -64,7 +77,7 @@ func _on_OptionsButton_pressed():
 	open_options()
 
 func _on_StartServerButton_pressed():
-	pass
+	open_create_room()
 
 func _on_StartClientButton_pressed():
 	usersettings.username = $'Main/Username'.text

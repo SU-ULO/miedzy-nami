@@ -6,11 +6,11 @@ func _ready():
 
 func get_settings():
 	var settings = get_parent().usersettings
-	$'OptionsContainer/MatchmakingURL'.text=settings["signaling_url"]
+	$OptionsContainer/MatchmakingURL.text=settings["signaling_url"]
 
 func set_settings():
 	var settings = get_parent().usersettings
-	settings["signaling_url"]=$'OptionsContainer/MatchmakingURL'.text
+	settings["signaling_url"]=$OptionsContainer/MatchmakingURL.text
 
 func _on_OptionsAcceptButton_pressed():
 	set_settings()
