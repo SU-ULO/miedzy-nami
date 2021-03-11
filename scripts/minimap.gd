@@ -11,6 +11,6 @@ func _ready():
 	map_center = get_parent().get_node("Position2D").position
 
 
-func _physics_process(_delta):
+func _process(_delta):
 	if player != null:
 		icon.position = map_center + player.position/2

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
 
@@ -39,6 +39,6 @@ void fragment() {
 "
 
 [resource]
-shader = SubResource( 2 )
+shader = SubResource( 1 )
 shader_param/aura_width = 0.0
 shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )

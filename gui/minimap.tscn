@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://textures/map/map-mini.svg" type="Texture" id=1]
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scripts/minimap.gd" type="Script" id=3]
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=4]
 
 [node name="map" type="TextureRect"]
 anchor_left = 0.5
@@ -39,177 +40,166 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Labels"]
-margin_left = 4765.0
-margin_top = 4150.0
-margin_right = 4914.0
-margin_bottom = 4225.0
+margin_left = 4480.32
+margin_top = 4108.8
+margin_right = 4812.32
+margin_bottom = 4183.8
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Labels"]
-margin_left = 2095.0
-margin_top = 3890.0
-margin_right = 2244.0
-margin_bottom = 3965.0
-custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "BIBLIOTEKA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label4" type="Label" parent="Labels"]
-margin_left = 3235.0
-margin_top = 4110.0
-margin_right = 3384.0
-margin_bottom = 4185.0
+margin_left = 2999.02
+margin_top = 4046.32
+margin_right = 3341.02
+margin_bottom = 4121.32
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "PORTIERNIA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="Labels"]
-margin_left = 3655.0
-margin_top = 3140.0
-margin_right = 3804.0
-margin_bottom = 3215.0
+margin_left = 3370.32
+margin_top = 3008.9
+margin_right = 3694.32
+margin_bottom = 3161.9
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA
+CHEMICZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label6" type="Label" parent="Labels"]
-margin_left = 2535.0
-margin_top = 3180.0
-margin_right = 2684.0
-margin_bottom = 3255.0
+margin_left = 2225.26
+margin_top = 3008.78
+margin_right = 2571.26
+margin_bottom = 3161.78
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "GABINET
+DYREKTORA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label7" type="Label" parent="Labels"]
-margin_left = 1745.0
-margin_top = 3160.0
-margin_right = 1894.0
-margin_bottom = 3235.0
+margin_left = 1463.24
+margin_top = 3013.17
+margin_right = 1932.24
+margin_bottom = 3166.17
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA 
+JĘZYKOWA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label8" type="Label" parent="Labels"]
-margin_left = 455.0
-margin_top = 3730.0
-margin_right = 604.0
-margin_bottom = 3805.0
-custom_fonts/font = ExtResource( 2 )
-text = "room"
+margin_left = 309.186
+margin_top = 3646.7
+margin_right = 482.186
+margin_bottom = 3734.7
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 4 )
+text = "AULA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label9" type="Label" parent="Labels"]
-margin_left = 3689.52
-margin_top = 2190.89
-margin_right = 3838.52
-margin_bottom = 2265.89
+margin_left = 3315.32
+margin_top = 2068.96
+margin_right = 3697.32
+margin_bottom = 2221.96
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA
+BIOLOGICZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label10" type="Label" parent="Labels"]
-margin_left = 2526.89
-margin_top = 2271.07
-margin_right = 2675.89
-margin_bottom = 2346.07
+margin_left = 2198.94
+margin_top = 1938.92
+margin_right = 2632.94
+margin_bottom = 2169.92
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA 
+GEOGRAFICZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label11" type="Label" parent="Labels"]
-margin_left = 1662.72
-margin_top = 2226.52
-margin_right = 1811.72
-margin_bottom = 2301.52
+margin_left = 1456.7
+margin_top = 2163.45
+margin_right = 1928.7
+margin_bottom = 2316.45
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA 
+MATEMATYCZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label12" type="Label" parent="Labels"]
-margin_left = 3640.52
-margin_top = 1264.35
-margin_right = 3789.52
-margin_bottom = 1339.35
+margin_left = 3430.29
+margin_top = 1146.62
+margin_right = 3701.29
+margin_bottom = 1299.62
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA 
+FIZYCZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label13" type="Label" parent="Labels"]
-margin_left = 2482.35
-margin_top = 1255.44
-margin_right = 2631.35
-margin_bottom = 1330.44
+margin_left = 2185.7
+margin_top = 1101.82
+margin_right = 2560.7
+margin_bottom = 1176.82
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "RADIOWĘZĘŁ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label14" type="Label" parent="Labels"]
-margin_left = 1702.81
-margin_top = 1259.9
-margin_right = 1851.81
-margin_bottom = 1334.9
+margin_left = 1416.76
+margin_top = 1175.14
+margin_right = 1901.76
+margin_bottom = 1328.14
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label15" type="Label" parent="Labels"]
-margin_left = 4272.81
-margin_top = 2179.9
-margin_right = 4421.81
-margin_bottom = 2254.9
-custom_fonts/font = ExtResource( 2 )
-text = "room"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label16" type="Label" parent="Labels"]
-margin_left = 1016.31
-margin_top = 2184.22
-margin_right = 1165.31
-margin_bottom = 2259.22
-custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SALA 
+INFORMATYCZNA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label17" type="Label" parent="Labels"]
-margin_left = 1222.81
-margin_top = 329.897
-margin_right = 1371.81
-margin_bottom = 404.897
+margin_left = 992.553
+margin_top = 183.977
+margin_right = 1303.55
+margin_bottom = 336.977
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "GABINET
+PEDAGOGA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -224,4 +214,3 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 2740, 2268 )
-scale = Vector2( 1, 1 )
