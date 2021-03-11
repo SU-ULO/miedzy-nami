@@ -12,7 +12,8 @@ func updateGUI():
 		content += i.ToString() 
 		content += "\n"
 	$VBoxContainer/tasklist.text = content
-
+	player.showMyTasks()
+		
 func _process(_delta):
 	usage = checkUsage()
 	$all/use.disabled = !usage

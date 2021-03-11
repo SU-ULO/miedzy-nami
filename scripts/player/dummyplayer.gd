@@ -134,7 +134,7 @@ func _on_interaction_area_enter(body):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 		
-	else: if body.is_in_group("players") and self.is_in_group("impostors") and body != self and !body.is_in_group("impostors"):
+	else: if body.is_in_group("players") and self.is_in_group("impostors") and body != self and !body.is_in_group("impostors") and !body.is_in_group("rip"):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 
@@ -167,6 +167,7 @@ func camera_visibility(body, status):
 func Interact(body):
 	interacted = true
 	print(body.get_name(), " killed ", self.get_name())
+	add_to_group("rip")
 	body.get_node("KillCooldown").start()
 	var instance = dead_body.instance()
 	get_parent().add_child(instance)

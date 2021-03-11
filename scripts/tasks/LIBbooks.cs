@@ -7,7 +7,7 @@ public class LIBbooks : TaskWithGUI
 		return "res://gui/LIB-books.tscn";
 	}
 	public override string ToString(){
-		return "BIBLIOTEKA: wypożycz książkę";
+		return "BIBLIOTEKA: uporządkuj książki (1/2)";
 	}
 	public override int GetNextTaskID()
 	{

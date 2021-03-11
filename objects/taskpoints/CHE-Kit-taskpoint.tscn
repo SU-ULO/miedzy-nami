@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/tasks/CHEKit.cs" type="Script" id=1]
 [ext_resource path="res://textures/caoh.png" type="Texture" id=2]
+[ext_resource path="res://shaders/glow.tres" type="Material" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.2508
 height = 0.0
 
 [node name="CHE-Kit" type="StaticBody2D"]
+material = ExtResource( 3 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
@@ -17,6 +19,7 @@ position = Vector2( 4.49493, 72.6679 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 5.24408, 11.2373 )
 scale = Vector2( 0.332536, 0.332536 )
 texture = ExtResource( 2 )

@@ -171,3 +171,10 @@ func check_interaction():
 					else:
 						interactable.push_back(item);
 						if debug_mode: print(item.get_name(), " added to: interactable")
+
+func showMyTasks():
+	for i in localTaskList:
+		if i.material != null:
+				print(i.name)
+				print(i.material)
+				i.material.set_shader_param("aura_width", 18)
