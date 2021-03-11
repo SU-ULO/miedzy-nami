@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -15,6 +15,12 @@
 [ext_resource path="res://textures/uspij_v2.png" type="Texture" id=13]
 [ext_resource path="res://textures/map.png" type="Texture" id=14]
 [ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
+
+[sub_resource type="InputEventKey" id=3]
+scancode = 77
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 3 )
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
@@ -158,6 +164,7 @@ margin_top = 163.879
 margin_right = 3384.31
 margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
+shortcut = SubResource( 2 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
