@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/tasks/CHEKit.cs" type="Script" id=1]
 [ext_resource path="res://textures/caoh.png" type="Texture" id=2]
 [ext_resource path="res://shaders/glow.tres" type="Material" id=3]
+[ext_resource path="res://textures/dekoracje/sto1.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 34.2508
@@ -10,9 +11,23 @@ height = 0.0
 
 [node name="CHE-Kit" type="StaticBody2D"]
 material = ExtResource( 3 )
-collision_layer = 4
+collision_layer = 5
 collision_mask = 3
 script = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 68.9838, 207.456 )
+scale = Vector2( 0.328048, 0.328048 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 59.7233, 112.998 )
+scale = Vector2( 0.328048, 0.328048 )
+polygon = PoolVector2Array( -869.066, 724.122, -872.231, 87.9488, -593.707, -260.206, 511.2, -263.302, 521.26, 330.222, 340.184, 749.378 )
+
+[node name="stolik" type="Node2D" parent="."]
+position = Vector2( -294.764, -23.0156 )
+scale = Vector2( 0.462503, 0.462503 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.49493, 72.6679 )
@@ -20,6 +35,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true
-position = Vector2( 5.24408, 11.2373 )
-scale = Vector2( 0.332536, 0.332536 )
+position = Vector2( 5.24408, -1.37613 )
+scale = Vector2( 0.401989, 0.401989 )
 texture = ExtResource( 2 )

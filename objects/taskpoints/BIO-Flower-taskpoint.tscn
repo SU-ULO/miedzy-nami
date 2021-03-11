@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/tasks/BIOFlower.cs" type="Script" id=1]
 [ext_resource path="res://textures/doniczka.svg" type="Texture" id=2]
+[ext_resource path="res://textures/dekoracje/sto1.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -52,12 +53,22 @@ height = 0.0
 
 [node name="StaticBody2D2" type="StaticBody2D"]
 material = SubResource( 2 )
-collision_layer = 4
+collision_layer = 5
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 86.146, 105.779 )
+scale = Vector2( 0.475036, 0.475036 )
+polygon = PoolVector2Array( -869.066, 724.122, -872.231, 87.9488, -593.707, -260.206, 511.2, -263.302, 521.26, 330.222, 340.184, 749.378 )
+
+[node name="Sprite2" type="Sprite" parent="CollisionPolygon2D"]
+position = Vector2( 28.2291, 287.938 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/tasks/MATKarta.cs" type="Script" id=1]
 [ext_resource path="res://textures/karta_pracy.png" type="Texture" id=2]
+[ext_resource path="res://textures/dekoracje/stolik2-pusty.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -52,17 +53,24 @@ extents = Vector2( 701.084, 846.776 )
 [node name="MAT-Karta" type="StaticBody2D"]
 material = SubResource( 2 )
 position = Vector2( 284.153, 7.17773 )
-scale = Vector2( 0.135992, 0.135992 )
-collision_layer = 4
+collision_layer = 5
 collision_mask = 3
 script = ExtResource( 1 )
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -454.743, 126.765 )
+scale = Vector2( 3.26337, 3.26337 )
+polygon = PoolVector2Array( -360.36, 948.429, 463.834, 941.913, 486.637, 65.5969, -171.414, -631.547, -865.3, -628.289, -881.589, 267.573 )
+
+[node name="stolik2" type="Sprite" parent="CollisionPolygon2D"]
+texture = ExtResource( 3 )
+
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true
-position = Vector2( -66.1799, -100.006 )
+position = Vector2( -1154.75, -1198.66 )
 scale = Vector2( 2.9707, 2.9707 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -47.759, -110.47 )
+position = Vector2( -1136.33, -1209.12 )
 shape = SubResource( 3 )
