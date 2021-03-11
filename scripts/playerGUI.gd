@@ -81,7 +81,8 @@ func show_map():
 		var instance = minimap.instance()
 		canvas.add_child(instance)
 		instance.get_node("player").player = self.get_parent().get_parent()
-		
+		instance.get_node("player").taskList = player.localTaskList
+		instance.get_node("player").addTasks()
 	else:
 		canvas.get_child(0).queue_free()
 	minimap_opened = !minimap_opened

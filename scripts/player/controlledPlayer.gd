@@ -37,12 +37,12 @@ func get_input():
 			$CanvasLayer/playerGUI.updateGUI()
 		if Input.is_action_just_pressed("ui_kill"):
 			ui_kill()
-		if Input.is_action_just_pressed("ui_kill"):
+		if Input.is_action_just_pressed("ui_report"):
 			ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 		$CanvasLayer/playerGUI.updateGUI()
-	
+		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
 			sight_range = 2000;

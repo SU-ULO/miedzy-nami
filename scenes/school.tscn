@@ -69,7 +69,6 @@ __meta__ = {
 }
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
-position = Vector2( 17.6389, 16.379 )
 
 [node name="vent1" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -3307.27, -111.095 )
@@ -680,4 +679,4 @@ position = Vector2( -2959.95, 13604.4 )
 scale = Vector2( 0.421428, 0.421428 )
 
 [node name="tablica-main-taskpoint" parent="." instance=ExtResource( 49 )]
-position = Vector2( -4721.38, 719.065 )
+position = Vector2( -23038, 754.149 )

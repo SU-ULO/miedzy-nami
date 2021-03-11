@@ -74,13 +74,15 @@ func ui_selected():
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
 
 		var result
-		if currentBestItem.is_in_group("tasks"): result = currentBestItem.Interact()
+		if currentBestItem.is_in_group("tasks"): 
+			result = currentBestItem.Interact(); 
+			if "material" in currentBestItem:
+				currentBestItem.material.set_shader_param("aura_width", 0);
 		else: result = currentBestItem.Interact(self)
 		
 		if result == false:
 			return
 		currentInteraction = currentBestItem
-
 
 func ui_kill():
 	if(players_interactable.size() != 0):
