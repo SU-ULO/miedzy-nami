@@ -3,6 +3,9 @@ extends Control
 var player
 var usage
 
+var minimap = preload("res://gui/minimap.tscn")
+var minimap_opened = false
+
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
@@ -27,6 +30,7 @@ func _process(_delta):
 	else:
 		$impostor/kill/cooldown.visible = false
 	$impostor/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
+	
 func _on_use_pressed():
 	player.ui_selected()
 
@@ -70,3 +74,17 @@ func checkKillability():
 
 func _on_kill_pressed():
 	player.ui_kill()
+
+func show_map():
+	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
+	if(!minimap_opened):
+		var instance = minimap.instance()
+		canvas.add_child(instance)
+		instance.get_node("player").player = self.get_parent().get_parent()
+		
+	else:
+		canvas.get_child(0).queue_free()
+	minimap_opened = !minimap_opened
+
+func _on_map_pressed():
+	show_map()

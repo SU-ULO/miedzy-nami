@@ -177,3 +177,4 @@ __meta__ = {
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/all/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/all/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/all/map" to="CanvasLayer/playerGUI" method="_on_map_pressed"]
