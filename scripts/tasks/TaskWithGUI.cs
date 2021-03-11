@@ -104,6 +104,7 @@ public class TaskWithGUI : Task, IInteractable
 	}
 	
 	public virtual bool Interact(){
+		GD.Print("Trying to open task "+ taskID+ " " + ToString() + " "+this.Local);
 		if(this.Local)
 			TaskInteract();
 		
