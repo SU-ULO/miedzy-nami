@@ -1,0 +1,227 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/map/map-mini.svg" type="Texture" id=1]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/minimap.gd" type="Script" id=3]
+
+[node name="map" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -548.5
+margin_top = -454.491
+margin_right = 4931.5
+margin_bottom = 4081.51
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Labels"]
+margin_left = 5145.0
+margin_top = 2750.0
+margin_right = 5294.0
+margin_bottom = 2825.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Labels"]
+margin_left = 4765.0
+margin_top = 4150.0
+margin_right = 4914.0
+margin_bottom = 4225.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Labels"]
+margin_left = 2095.0
+margin_top = 3890.0
+margin_right = 2244.0
+margin_bottom = 3965.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Labels"]
+margin_left = 3235.0
+margin_top = 4110.0
+margin_right = 3384.0
+margin_bottom = 4185.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Labels"]
+margin_left = 3655.0
+margin_top = 3140.0
+margin_right = 3804.0
+margin_bottom = 3215.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Labels"]
+margin_left = 2535.0
+margin_top = 3180.0
+margin_right = 2684.0
+margin_bottom = 3255.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Labels"]
+margin_left = 1745.0
+margin_top = 3160.0
+margin_right = 1894.0
+margin_bottom = 3235.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Labels"]
+margin_left = 455.0
+margin_top = 3730.0
+margin_right = 604.0
+margin_bottom = 3805.0
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="Labels"]
+margin_left = 3689.52
+margin_top = 2190.89
+margin_right = 3838.52
+margin_bottom = 2265.89
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label10" type="Label" parent="Labels"]
+margin_left = 2526.89
+margin_top = 2271.07
+margin_right = 2675.89
+margin_bottom = 2346.07
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label11" type="Label" parent="Labels"]
+margin_left = 1662.72
+margin_top = 2226.52
+margin_right = 1811.72
+margin_bottom = 2301.52
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label12" type="Label" parent="Labels"]
+margin_left = 3640.52
+margin_top = 1264.35
+margin_right = 3789.52
+margin_bottom = 1339.35
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label13" type="Label" parent="Labels"]
+margin_left = 2482.35
+margin_top = 1255.44
+margin_right = 2631.35
+margin_bottom = 1330.44
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label14" type="Label" parent="Labels"]
+margin_left = 1702.81
+margin_top = 1259.9
+margin_right = 1851.81
+margin_bottom = 1334.9
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label15" type="Label" parent="Labels"]
+margin_left = 4272.81
+margin_top = 2179.9
+margin_right = 4421.81
+margin_bottom = 2254.9
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label16" type="Label" parent="Labels"]
+margin_left = 1016.31
+margin_top = 2184.22
+margin_right = 1165.31
+margin_bottom = 2259.22
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label17" type="Label" parent="Labels"]
+margin_left = 1222.81
+margin_top = 329.897
+margin_right = 1371.81
+margin_bottom = 404.897
+custom_fonts/font = ExtResource( 2 )
+text = "room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 2740, 2268 )
+scale = Vector2( 1, 1 )
