@@ -131,12 +131,19 @@ public abstract class Task : Godot.Node2D
 				if(sortedIntoCategories[tc].Count > 0){
 					for(int j = 0; j < tc.perPlayer; j++){
 						int taskIDforK = 0, k = 0;
+						int initialK = 0;
 						try {
-							do {
-								k = r.Next(0, sortedIntoCategories[tc].Count - 1);
+							k = r.Next(0, sortedIntoCategories[tc].Count - 1);
+							initialK = k;
+							while(tasksForPlayers[i].Contains(taskIDforK)) {
+								k = (k + 1) % sortedIntoCategories[tc].Count;
 								taskIDforK = sortedIntoCategories[tc][k];
+								if(k == initialK){
+									Godot.GD.Print("One of the tasks couldn't be assigned");
+									break;
+								}
 							}
-							while(tasksForPlayers[i].Contains(taskIDforK));
+							
 							tasksForPlayers[i].Add(taskIDforK);
 							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
 						}catch(Exception e){
