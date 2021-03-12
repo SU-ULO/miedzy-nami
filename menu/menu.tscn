@@ -280,7 +280,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Join" type="VBoxContainer" parent="."]
+[node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -296,12 +296,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="TextureButton" parent="Join"]
+[node name="Exit" type="TextureButton" parent="RoomList"]
 margin_right = 864.0
 margin_bottom = 108.0
 texture_normal = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="Join/Exit"]
+[node name="Label" type="Label" parent="RoomList/Exit"]
 margin_left = 343.778
 margin_top = 12.1557
 margin_right = 510.778
@@ -314,13 +314,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Refresh" type="TextureButton" parent="Join"]
+[node name="Refresh" type="TextureButton" parent="RoomList"]
 margin_top = 112.0
 margin_right = 864.0
 margin_bottom = 220.0
 texture_normal = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="Join/Refresh"]
+[node name="Label" type="Label" parent="RoomList/Refresh"]
 margin_left = 314.124
 margin_top = 9.75531
 margin_right = 544.124
@@ -333,7 +333,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ServersList" type="VBoxContainer" parent="Join"]
+[node name="ServersList" type="VBoxContainer" parent="RoomList"]
 margin_top = 224.0
 margin_right = 864.0
 margin_bottom = 224.0
@@ -394,5 +394,5 @@ valign = 1
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
-[connection signal="pressed" from="Join/Exit" to="Join" method="_on_Exit_pressed"]
-[connection signal="pressed" from="Join/Refresh" to="Join" method="_on_Refresh_pressed"]
+[connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
+[connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]

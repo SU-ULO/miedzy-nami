@@ -38,9 +38,9 @@ func open_main():
 	$'Main'.visible=true
 	$background.visible = true
 
-func open_join():
+func open_roomlist():
 	close_everything()
-	$'Join'.visible=true
+	$RoomList.visible=true
 	$background.visible = true
 
 func open_joining():

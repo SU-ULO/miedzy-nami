@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://client/scripts/client.gd"
 }, {
+"base": "Matchmaking_Connection",
+"class": "Client_Matchmaking",
+"language": "GDScript",
+"path": "res://network/client/client_matchmaking.gd"
+}, {
 "base": "Node",
 "class": "Game_Connection",
 "language": "GDScript",
@@ -46,6 +51,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Client": "",
+"Client_Matchmaking": "",
 "Game_Connection": "",
 "JoinedClient": "",
 "JoinedServer": "",

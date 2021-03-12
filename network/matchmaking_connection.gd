@@ -5,11 +5,14 @@ class_name Matchmaking_Connection
 var wsc := WebSocketClient.new()
 var world := preload('res://scenes/school.tscn').instance()
 
-var signaling_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signaling'
+var matchmaking_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signaling'
 
 signal matchmaking_connected()
 signal matchmaking_disconnected()
-signal matchmaking_receved_message(message)
+signal matchmaking_received_message(message)
+
+func _init(url):
+	matchmaking_url = url
 
 func _ready():
 # warning-ignore:return_value_discarded
@@ -22,6 +25,10 @@ func _ready():
 	wsc.connect("data_received", self, "_data_ws")
 # warning-ignore:return_value_discarded
 	wsc.connect("server_close_request", self, "_closed_request_ws")
+
+func send_message(msg: String):
+# warning-ignore:return_value_discarded
+	wsc.get_peer(1).put_packet(msg.to_utf8())
 
 func end():
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
@@ -46,8 +53,14 @@ func _connected_ws(_proto = ""):
 	emit_signal("matchmaking_connected")
 
 func _data_ws():
-	emit_signal("matchmaking_receved_message", wsc.get_peer(1).get_packet().get_string_from_utf8())
+	emit_signal("matchmaking_received_message", wsc.get_peer(1).get_packet().get_string_from_utf8())
 
 func _process(_delta):
 	if wsc.get_connection_status()!=WebSocketClient.CONNECTION_DISCONNECTED:
 		wsc.poll()
+
+func start():
+	if wsc.connect_to_url(matchmaking_url) != OK:
+		print("Unable to connect to matchmaking server")
+		end()
+		return
