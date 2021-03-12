@@ -5,7 +5,7 @@ export var default_sight_range = 2000.0
 export var default_scaling_speed = 2000.0
 
 # debug mode for visibility checking
-var debug_mode = true
+var debug_mode = false
 var debug_pos_collided = []
 var debug_pos_ok = []
 

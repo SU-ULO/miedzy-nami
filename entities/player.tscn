@@ -16,11 +16,11 @@
 [ext_resource path="res://textures/map.png" type="Texture" id=14]
 [ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
 
-[sub_resource type="InputEventKey" id=3]
+[sub_resource type="InputEventKey" id=1]
 scancode = 77
 
 [sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 3 )
+shortcut = SubResource( 1 )
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )

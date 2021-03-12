@@ -51,6 +51,7 @@ shape = SubResource( 2 )
 material = SubResource( 3 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
