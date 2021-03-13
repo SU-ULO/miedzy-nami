@@ -10,11 +10,14 @@ var network = null
 
 func _ready():
 # warning-ignore:return_value_discarded
+	menu.connect("request_start_client", self, "start_client")
+# warning-ignore:return_value_discarded
 	menu.connect("request_start_server", self, "start_server")
 # warning-ignore:return_value_discarded
 	menu.connect("request_end", self, "leave_room")
 
 func leave_matchmaking():
+	leave_room()
 	if matchmaking:
 		matchmaking.queue_free()
 	matchmaking=null
@@ -45,4 +48,14 @@ func start_server(options):
 	network.connect("joined_room", menu, "close_everything")
 	add_child(matchmaking)
 	add_child(network)
+	matchmaking.start()
+
+func start_client():
+	if network_side != NONE:
+		leave_room()
+	matchmaking = Client_Matchmaking.new(menu.usersettings["signaling_url"], menu.usersettings)
+	matchmaking.connect("matchmaking_disconnected", self, "leave_matchmaking")
+	matchmaking.connect("room_list_updated", menu, "update_servers")
+	matchmaking.connect("matchmaking_hello", menu, "open_roomlist")
+	add_child(matchmaking)
 	matchmaking.start()

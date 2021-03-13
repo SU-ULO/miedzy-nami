@@ -2,6 +2,7 @@ extends Matchmaking_Connection
 
 class_name Client_Matchmaking
 
+signal matchmaking_hello()
 signal room_list_updated(list)
 signal received_session(sess)
 signal received_candidate(cand)
@@ -13,12 +14,14 @@ func _init(url, settings).(url):
 
 func _ready():
 # warning-ignore:return_value_discarded
+	self.connect("matchmaking_connected", self, "client_hello")
+# warning-ignore:return_value_discarded
 	self.connect("matchmaking_received_message", self, "parse_matchmaking")
 
 func parse_matchmaking(msg:  String):
 	if msg.begins_with("HELLO"):
-		emit_signal("matchmaking_connected")
 		refresh_servers()
+		emit_signal("matchmaking_hello")
 		return
 	elif msg.begins_with("LIST:"):
 		var arr = msg.split(":", false, 1)
@@ -52,8 +55,8 @@ func parse_matchmaking(msg:  String):
 		else:
 			return
 
-func client_hello(settings):
-	send_message("CLIENT:"+JSON.print({"username": settings.username}))
+func client_hello():
+	send_message("CLIENT:"+JSON.print({"username": clientsettings.username}))
 
 func refresh_servers():
 	send_message("LIST")

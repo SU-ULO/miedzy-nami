@@ -25,6 +25,7 @@ func close_everything():
 func open_logging_in():
 	close_everything()
 	$'LoggingIn'.visible=true
+	$background.visible = true
 
 func open_options():
 	var optionsnode=$"Options"
@@ -65,7 +66,7 @@ func request_refresh_servers():
 	emit_signal("request_refresh_servers")
 
 func update_servers(list: Array):
-	$'Join'.update_servers(list)
+	$'RoomList'.update_servers(list)
 
 func end():
 	open_main()
@@ -80,6 +81,7 @@ func _on_StartServerButton_pressed():
 	open_create_room()
 
 func _on_StartClientButton_pressed():
+	open_logging_in()
 	usersettings.username = $'Main/Username'.text
 	if usersettings.username.length()>0:
 		emit_signal("request_start_client")
