@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://textures/dekoracje/plakaty1.png" type="Texture" id=52]
 [ext_resource path="res://objects/taskpoints/LIB-print-taskpoint.tscn" type="PackedScene" id=53]
 [ext_resource path="res://objects/taskpoints/iNF-debug-taskpoint.tscn" type="PackedScene" id=54]
+[ext_resource path="res://objects/taskpoints/JEZ-zwierzaki-taskpoint.tscn" type="PackedScene" id=55]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -443,6 +444,10 @@ texture = ExtResource( 23 )
 position = Vector2( -3053.43, -3910.61 )
 scale = Vector2( 0.746045, 0.746045 )
 
+[node name="JEZ-zwiezaki" parent="Mapa/dekoracje" instance=ExtResource( 55 )]
+position = Vector2( -2166.68, 1693.02 )
+scale = Vector2( 0.762177, 0.763033 )
+
 [node name="polka4" parent="Mapa/dekoracje" instance=ExtResource( 28 )]
 position = Vector2( -2894.06, -4362.37 )
 scale = Vector2( 0.310652, 0.310652 )
@@ -451,10 +456,6 @@ scale = Vector2( 0.310652, 0.310652 )
 position = Vector2( -3095.52, -4419.58 )
 scale = Vector2( 0.065672, 0.065672 )
 texture = ExtResource( 23 )
-
-[node name="stolik5" parent="Mapa/dekoracje" instance=ExtResource( 22 )]
-position = Vector2( -2402.37, 1669.28 )
-scale = Vector2( 0.364389, 0.364799 )
 
 [node name="stolik10" parent="Mapa/dekoracje" instance=ExtResource( 22 )]
 position = Vector2( -1639.56, 1983.24 )
@@ -501,7 +502,7 @@ position = Vector2( -2553.69, 2069.58 )
 scale = Vector2( 0.533261, 0.533261 )
 
 [node name="krzeslo17" parent="Mapa/dekoracje" instance=ExtResource( 29 )]
-position = Vector2( -2171.44, 1824.15 )
+position = Vector2( -2212.45, 1832.65 )
 scale = Vector2( 0.533261, 0.533261 )
 
 [node name="krzeslo18" parent="Mapa/dekoracje" instance=ExtResource( 29 )]

@@ -4,7 +4,7 @@ using System;
 public class LIBPrint : TaskWithGUI
 {
 	public override string GetResourceLocation(){
-		return "res://gui/MAT-Karta.tscn";
+		return "res://gui/drukowanko.tscn";
 	}
 	
 	public override string ToString(){

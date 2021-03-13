@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public class AULAPianino : TaskWithGUI
+public class JEZzwierzaki : TaskWithGUI
 {
 	public override string GetResourceLocation(){
-		return "res://gui/AULA-pianino.tscn";
+		return "res://gui/JEZ-zwierzaki.tscn";
 	}
 	public override string ToString()
 	{
-		return "AULA: zagraj na pianinie";
+		return "SALA JĘZYKOWA: naucz się nowych słówek";
 	}
 }
