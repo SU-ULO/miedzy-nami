@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -60,6 +60,12 @@ border_width_top = 10
 border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
+
+[sub_resource type="InputEventKey" id=11]
+scancode = 84
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
 
 [sub_resource type="InputEventKey" id=7]
 scancode = 77
@@ -167,6 +173,7 @@ theme = SubResource( 6 )
 custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/normal = ExtResource( 16 )
+shortcut = SubResource( 12 )
 text = "ukryj"
 __meta__ = {
 "_edit_lock_": true,
