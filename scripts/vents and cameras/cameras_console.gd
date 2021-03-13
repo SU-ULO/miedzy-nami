@@ -20,6 +20,7 @@ func delete_gui(body):
 		# warning-ignore:return_value_discarded
 		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 		get_node(lc).get_node("Area2D").monitoring = 0
+		get_node(lc).get_node("camera-sprite").texture = load(texture_inactive)
 	canvas.remove_child(camera_gui)
 	
 	# tutaj sygnał do serwera - ktoś przestał używać kamery
