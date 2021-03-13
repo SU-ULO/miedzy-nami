@@ -3,8 +3,6 @@ extends Matchmaking_Connection
 class_name Client_Matchmaking
 
 signal room_list_updated(list)
-signal join_room(conf)
-signal leave_room()
 signal received_session(sess)
 signal received_candidate(cand)
 

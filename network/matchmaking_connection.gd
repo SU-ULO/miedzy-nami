@@ -10,6 +10,10 @@ var matchmaking_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signaling'
 signal matchmaking_connected()
 signal matchmaking_disconnected()
 signal matchmaking_received_message(message)
+# warning-ignore:unused_signal
+signal join_room(conf)
+# warning-ignore:unused_signal
+signal leave_room()
 
 func _init(url):
 	matchmaking_url = url
