@@ -17,7 +17,7 @@ func updateGUI():
 	for i in player.localTaskList:
 		content += i.ToString() 
 		content += "\n"
-	$VBoxContainer/tasklist.text = content
+	$TaskPanel/VBoxContainer/tasklist.text = content
 		
 func _process(_delta):
 	usage = checkUsage()
@@ -32,6 +32,8 @@ func _process(_delta):
 	else:
 		$impostor/kill/cooldown.visible = false
 	$impostor/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
+	
+	processGui()
 	
 func _on_use_pressed():
 	player.ui_selected()
@@ -100,3 +102,35 @@ func show_map():
 
 func _on_map_pressed():
 	show_map()
+
+# # # GUI VISUAL FUNCTIONS AND VARIABLES # # #
+
+var task_panel_opened = true
+const task_panel_slide_speed:float = 25.0
+
+onready var task_container = get_node("TaskPanel/TaskContainer")
+onready var task_panel_position = task_container.rect_position
+onready var task_container_size = task_container.rect_size
+
+func processGui():
+	var task_panel = get_node("TaskPanel")
+	
+	if(task_panel.rect_position.x != task_panel_position.x):
+		if(task_panel.rect_position.x > task_panel_position.x):
+			task_panel.rect_position.x -= task_panel_slide_speed
+			if(task_panel.rect_position.x < task_panel_position.x):
+				task_panel.rect_position.x = task_panel_position.x
+		elif(task_panel.rect_position.x< task_panel_position.x):
+			task_panel.rect_position.x += task_panel_slide_speed
+			if(task_panel.rect_position.x > task_panel_position.x):
+				task_panel.rect_position.x = task_panel_position.x
+
+func toggleTaskContainer():
+	if(task_panel_opened):
+		task_panel_position.x -= task_container_size.x
+	else:
+		task_panel_position.x += task_container_size.x
+	task_panel_opened = !task_panel_opened
+
+func _onTaskContainerButtonPressed():
+	toggleTaskContainer()

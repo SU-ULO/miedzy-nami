@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/playerGUI.gd" type="Script" id=3]
-[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://textures/lightmask.svg" type="Texture" id=5]
 [ext_resource path="res://textures/zglos.png" type="Texture" id=6]
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=7]
@@ -15,12 +15,48 @@
 [ext_resource path="res://textures/uspij_v2.png" type="Texture" id=13]
 [ext_resource path="res://textures/map.png" type="Texture" id=14]
 [ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
+[ext_resource path="res://gui/butonstyle_white.tres" type="StyleBox" id=16]
 
-[sub_resource type="InputEventKey" id=1]
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.196078 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_bottom_right = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[sub_resource type="InputEventKey" id=7]
 scancode = 77
 
-[sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
@@ -50,41 +86,79 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
+margin_left = -960.794
+margin_top = -541.589
+margin_right = 959.206
+margin_bottom = 538.411
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="Control" parent="CanvasLayer/playerGUI" index="0"]
-margin_left = -18.4998
-margin_top = -6.7272
-margin_right = 755.5
-margin_bottom = 347.273
-
-[node name="Label" type="Label" parent="CanvasLayer/playerGUI/VBoxContainer" index="0"]
-margin_left = 30.2723
-margin_top = 1.68179
-margin_right = 804.272
-margin_bottom = 89.6818
-custom_fonts/font = ExtResource( 4 )
-text = "Lista zadań"
+[node name="TaskPanel" type="Control" parent="CanvasLayer/playerGUI" index="0"]
+margin_right = 774.0
+margin_bottom = 354.0
+theme = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tasklist" type="Label" parent="CanvasLayer/playerGUI/VBoxContainer" index="1"]
-margin_left = 25.2269
-margin_top = 90.3182
-margin_right = 799.227
-margin_bottom = 178.318
-rect_scale = Vector2( 0.326752, 0.326752 )
-custom_fonts/font = ExtResource( 4 )
-text = "fajne zadanie 1"
+[node name="TaskContainer" type="Panel" parent="CanvasLayer/playerGUI/TaskPanel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/playerGUI/TaskPanel" index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/playerGUI/TaskPanel/VBoxContainer" index="0"]
+margin_right = 764.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Lista zadań:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tasklist" type="Label" parent="CanvasLayer/playerGUI/TaskPanel/VBoxContainer" index="1"]
+margin_top = 59.0
+margin_right = 764.0
+margin_bottom = 335.0
+custom_fonts/font = SubResource( 4 )
+text = "- fajne zadanie 1
+- fajne zadanie 2
+- fajne zadanie 3
+- fajne zadanie 4
+- fajne zadanie 5
+- fajne zadanie 6
+- fajne zadanie 7
+- fajne zadanie 8
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/playerGUI/TaskPanel" index="2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 48.6466
+margin_right = 172.646
+margin_bottom = 50.0
+rect_rotation = 90.0
+theme = SubResource( 6 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/normal = ExtResource( 16 )
+text = "ukryj"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -167,7 +241,7 @@ margin_top = 163.879
 margin_right = 3384.31
 margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
-shortcut = SubResource( 2 )
+shortcut = SubResource( 8 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,6 +257,7 @@ texture_normal = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="CanvasLayer/playerGUI/TaskPanel/Button" to="CanvasLayer/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/all/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
