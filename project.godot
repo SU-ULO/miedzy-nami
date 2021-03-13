@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/network_manager.gd"
 }, {
+"base": "NetworkManager",
+"class": "ServerNetworkManager",
+"language": "GDScript",
+"path": "res://network/server/server_network_manager.gd"
+}, {
 "base": "Matchmaking_Connection",
 "class": "Server_Matchmaking",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "LookConfiguration": "",
 "Matchmaking_Connection": "",
 "NetworkManager": "",
+"ServerNetworkManager": "",
 "Server_Matchmaking": ""
 }
 

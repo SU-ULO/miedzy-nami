@@ -44,13 +44,11 @@ func handle_events(input):
 			var Task = load("res://scripts/tasks/Task.cs")
 			var tasks = Task.GetAllTasks()
 			var player_id = input["update_tasks"]
-			
 			if input.has("state") and input["state"] is Dictionary:
 				for i in input["state"]:
 					if tasks[i].IsDone() == false:
 						tasks[i].state = input["state"][i]
 					tasks[i].local = true
-
 			if input.has("started") and input["started"] is Dictionary:
 				for i in input["started"]:
 					tasks[i].started = input["started"][i]

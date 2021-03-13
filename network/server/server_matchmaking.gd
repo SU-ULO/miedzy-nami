@@ -8,14 +8,16 @@ signal received_session(id, sess)
 signal received_candidate(id, cand)
 signal key_changed(key)
 
-var clientsettings
+var serversettings
 
 func _init(url, settings).(url):
-	clientsettings = settings
+	serversettings = settings
 
 func _ready():
 # warning-ignore:return_value_discarded
-	self.connect("matchmaking_received_message", self, "parse_matchmaking")
+	self.connect("matchmaking_connected", self, "server_hello")
+# warning-ignore:return_value_discarded
+	self.connect("matchmaking_received_message", self, "parse_signaling")
 
 func parse_signaling(msg:  String):
 	if msg.begins_with("HELLO:"):
@@ -61,11 +63,11 @@ func parse_signaling(msg:  String):
 		return
 
 func kick(id):
-	send_message("LEAVE:"+str(id))
+	send_message("LEAVE:" + str(id))
 	emit_signal("client_left", id)
 
-func server_hello(settings):
-	send_message("CLIENT:"+JSON.print({"username": settings.username}))
+func server_hello():
+	send_message("SERVER:"+JSON.print({"hidden": serversettings.hidden}))
 
 func refresh_servers():
 	send_message("LIST")

@@ -6,7 +6,7 @@ var wsc := WebSocketClient.new()
 
 var joined_server = null
 
-var menu := preload('res://client/menu/menu.tscn').instance()
+var menu
 func _ready():
 	menu.name='menu'
 # warning-ignore:return_value_discarded
