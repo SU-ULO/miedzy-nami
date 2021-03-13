@@ -64,6 +64,7 @@ func parse_signaling(msg:  String):
 # warning-ignore:return_value_discarded
 				wsc.get_peer(1).put_packet("LEAVE".to_utf8())
 				return
+			load("res://scripts/tasks/Task.cs").ClientCleanup()
 			joined_server = JoinedServer.new(conf)
 			joined_server.connect("fail", self, "leave_server")
 			joined_server.connect("send_session", self, "send_session")
