@@ -445,7 +445,7 @@ position = Vector2( -3053.43, -3910.61 )
 scale = Vector2( 0.746045, 0.746045 )
 
 [node name="JEZ-zwiezaki" parent="Mapa/dekoracje" instance=ExtResource( 55 )]
-position = Vector2( -2166.68, 1693.02 )
+position = Vector2( -2070.93, 1720.77 )
 scale = Vector2( 0.762177, 0.763033 )
 
 [node name="polka4" parent="Mapa/dekoracje" instance=ExtResource( 28 )]

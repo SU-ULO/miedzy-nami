@@ -4,7 +4,7 @@
 [ext_resource path="res://textures/jezyki_slimak.png" type="Texture" id=3]
 [ext_resource path="res://scripts/tasks/JEZzwierzaki.cs" type="Script" id=4]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
 
@@ -42,33 +42,33 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/aura_width = 0.0
 shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
 
 [node name="CHE-Kit" type="StaticBody2D"]
-material = SubResource( 6 )
+material = SubResource( 2 )
 collision_layer = 5
 collision_mask = 3
 script = ExtResource( 4 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 68.9838, 207.456 )
+position = Vector2( -69.8059, 168.256 )
 scale = Vector2( 0.328048, 0.328048 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 59.7233, 112.998 )
+position = Vector2( -79.0664, 73.7979 )
 scale = Vector2( 0.328048, 0.328048 )
 polygon = PoolVector2Array( -869.066, 724.122, -872.231, 87.9488, -593.707, -260.206, 511.2, -263.302, 521.26, 330.222, 340.184, 749.378 )
 
 [node name="stolik" type="Node2D" parent="."]
-position = Vector2( -294.764, -23.0156 )
+position = Vector2( -433.554, -62.2157 )
 scale = Vector2( 0.462503, 0.462503 )
 
 [node name="jezyki_slimak" type="Sprite" parent="."]
 use_parent_material = true
-position = Vector2( 129.551, 34.3522 )
+position = Vector2( -9.23871, -4.84793 )
 scale = Vector2( 0.32445, 0.32445 )
 texture = ExtResource( 3 )
