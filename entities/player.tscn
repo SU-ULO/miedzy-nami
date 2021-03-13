@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -52,6 +52,15 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 0.392157 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
 [sub_resource type="InputEventKey" id=7]
 scancode = 77
 
@@ -61,9 +70,6 @@ shortcut = SubResource( 7 )
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
 script = ExtResource( 1 )
-
-[node name="AnimatedSprite" parent="." index="2"]
-frame = 0
 
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
@@ -93,6 +99,7 @@ margin_bottom = 538.411
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -105,8 +112,9 @@ __meta__ = {
 }
 
 [node name="TaskContainer" type="Panel" parent="CanvasLayer/playerGUI/TaskPanel" index="0"]
+anchor_top = -0.000166645
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.999833
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -151,15 +159,17 @@ __meta__ = {
 [node name="Button" type="Button" parent="CanvasLayer/playerGUI/TaskPanel" index="2"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = 48.6466
-margin_right = 172.646
+margin_left = 49.0001
+margin_right = 173.0
 margin_bottom = 50.0
 rect_rotation = 90.0
 theme = SubResource( 6 )
 custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
 custom_styles/normal = ExtResource( 16 )
 text = "ukryj"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -203,39 +213,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="all" type="Control" parent="CanvasLayer/playerGUI" index="2"]
+[node name="TopButtons" type="Control" parent="CanvasLayer/playerGUI" index="2"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="use" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="0"]
-margin_left = 1533.28
-margin_top = 805.928
-margin_right = 4013.28
-margin_bottom = 2559.93
-rect_scale = Vector2( 0.15403, 0.15403 )
-disabled = true
-texture_normal = ExtResource( 8 )
-texture_disabled = ExtResource( 11 )
+[node name="settings" type="TextureButton" parent="CanvasLayer/playerGUI/TopButtons" index="0"]
+margin_left = 1733.08
+margin_top = 13.4695
+margin_right = 3373.08
+margin_bottom = 1635.47
+rect_scale = Vector2( 0.099003, 0.099003 )
+texture_normal = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="report" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="1"]
-margin_left = 1551.24
-margin_top = 507.353
-margin_right = 3191.24
-margin_bottom = 1916.35
-rect_scale = Vector2( 0.197831, 0.197831 )
-texture_normal = ExtResource( 6 )
-texture_disabled = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="map" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="2"]
+[node name="map" type="TextureButton" parent="CanvasLayer/playerGUI/TopButtons" index="1"]
 margin_left = 1744.31
 margin_top = 163.879
 margin_right = 3384.31
@@ -247,19 +243,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="settings" type="TextureButton" parent="CanvasLayer/playerGUI/all" index="3"]
-margin_left = 1733.08
-margin_top = 13.4695
-margin_right = 3373.08
-margin_bottom = 1635.47
-rect_scale = Vector2( 0.099003, 0.099003 )
-texture_normal = ExtResource( 10 )
+[node name="ActionButtons" type="Control" parent="CanvasLayer/playerGUI" index="3"]
+margin_left = 0.794006
+margin_top = 1.58899
+margin_right = 40.794
+margin_bottom = 41.589
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="use" type="TextureButton" parent="CanvasLayer/playerGUI/ActionButtons" index="0"]
+margin_left = 1532.49
+margin_top = 804.339
+margin_right = 4012.49
+margin_bottom = 2558.34
+rect_scale = Vector2( 0.15403, 0.15403 )
+disabled = true
+texture_normal = ExtResource( 8 )
+texture_disabled = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="report" type="TextureButton" parent="CanvasLayer/playerGUI/ActionButtons" index="1"]
+margin_left = 1550.45
+margin_top = 505.764
+margin_right = 3190.45
+margin_bottom = 1914.76
+rect_scale = Vector2( 0.197831, 0.197831 )
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="CanvasLayer/playerGUI/TaskPanel/Button" to="CanvasLayer/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/all/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/all/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/all/map" to="CanvasLayer/playerGUI" method="_on_map_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/TopButtons/map" to="CanvasLayer/playerGUI" method="_on_map_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/ActionButtons/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
+[connection signal="pressed" from="CanvasLayer/playerGUI/ActionButtons/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]
