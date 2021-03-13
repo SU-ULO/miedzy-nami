@@ -1,0 +1,164 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://textures/okno1.svg" type="Texture" id=1]
+[ext_resource path="res://scripts/sabotagemap.gd" type="Script" id=2]
+[ext_resource path="res://textures/map/map-mini-red.svg" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.752941 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 0 )
+
+[node name="map" type="TextureRect"]
+margin_left = 476.731
+margin_top = 134.255
+margin_right = 5956.73
+margin_bottom = 4670.26
+rect_scale = Vector2( 0.159036, 0.159036 )
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="door_b" type="TextureButton" parent="."]
+margin_left = 3548.35
+margin_top = 2117.04
+margin_right = 3643.35
+margin_bottom = 2198.04
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="door_b"]
+margin_left = 7.0
+margin_top = 72.0
+margin_right = 80.0
+margin_bottom = 153.0
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+
+[node name="door_f" type="TextureButton" parent="."]
+margin_left = 3560.69
+margin_top = 1156.38
+margin_right = 3655.69
+margin_bottom = 1237.38
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="door_f"]
+margin_left = 7.00024
+margin_top = 365.22
+margin_right = 80.0002
+margin_bottom = 446.22
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="door_c" type="TextureButton" parent="."]
+margin_left = 3548.35
+margin_top = 3105.32
+margin_right = 3643.35
+margin_bottom = 3186.32
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="door_c"]
+margin_left = 7.00024
+margin_top = -216.439
+margin_right = 80.0002
+margin_bottom = -135.439
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="electrical" type="TextureButton" parent="."]
+margin_left = 5016.57
+margin_top = 2630.31
+margin_right = 5111.57
+margin_bottom = 2711.31
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="electrical"]
+margin_left = 7.00024
+margin_top = -216.439
+margin_right = 80.0002
+margin_bottom = -135.439
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="comms" type="TextureButton" parent="."]
+margin_left = 2400.93
+margin_top = 1149.76
+margin_right = 2495.93
+margin_bottom = 1230.76
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="comms"]
+margin_left = 7.00024
+margin_top = -216.439
+margin_right = 80.0002
+margin_bottom = -135.439
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dyrektor" type="TextureButton" parent="."]
+margin_left = 2419.44
+margin_top = 3062.13
+margin_right = 2514.44
+margin_bottom = 3143.13
+rect_scale = Vector2( 3.2552, 3.2552 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="dyrektor"]
+margin_left = 7.00024
+margin_top = -216.439
+margin_right = 80.0002
+margin_bottom = -135.439
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

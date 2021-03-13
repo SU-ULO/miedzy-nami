@@ -174,7 +174,9 @@ func check_interaction():
 
 func showMyTasks():
 	for i in localTaskList:
-		if i.material != null:
-				print(i.name)
-				print(i.material)
+		if i.IsDone():
+			localTaskList.erase(i)
+			if i.material != null:
+				i.material.set_shader_param("aura_width", 0)
+		elif i.material != null:
 				i.material.set_shader_param("aura_width", 18)
