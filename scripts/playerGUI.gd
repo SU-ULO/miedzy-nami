@@ -4,18 +4,20 @@ var player
 var usage
 
 var minimap = preload("res://gui/minimap.tscn")
+var sabotagemap = preload("res://gui/sabotagemap.tscn")
 var minimap_opened = false
+var sabotagemap_opened = false
 
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
 func updateGUI():
+	player.showMyTasks()
 	var content = ""
 	for i in player.localTaskList:
 		content += i.ToString() 
 		content += "\n"
 	$VBoxContainer/tasklist.text = content
-	player.showMyTasks()
 		
 func _process(_delta):
 	usage = checkUsage()
@@ -42,7 +44,15 @@ func interactionGUIupdate():
 		$all/use.visible = true
 
 func _on_sabotage_pressed():
-	pass # open sabotage gui
+	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
+	if(!sabotagemap_opened):
+		var instance = sabotagemap.instance()
+		instance.name = "fajnamapasabotazu"
+		canvas.add_child(instance)
+	else:
+		canvas.get_node("fajnamapasabotazu").queue_free()
+		
+	sabotagemap_opened = !sabotagemap_opened
 
 func checkUsage():
 	if player.interactable.size() == 0:
@@ -79,12 +89,13 @@ func show_map():
 	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
 	if(!minimap_opened):
 		var instance = minimap.instance()
+		instance.name = "fajnamapa"
 		canvas.add_child(instance)
 		instance.get_node("player").player = self.get_parent().get_parent()
 		instance.get_node("player").taskList = player.localTaskList
 		instance.get_node("player").addTasks()
 	else:
-		canvas.get_child(0).queue_free()
+		canvas.get_node("fajnamapa").queue_free()
 	minimap_opened = !minimap_opened
 
 func _on_map_pressed():
