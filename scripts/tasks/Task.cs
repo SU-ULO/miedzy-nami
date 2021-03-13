@@ -89,7 +89,7 @@ public abstract class Task : Godot.Node2D
 		return tasks.ToArray();
 	}
 
-	public static void Cleanup(){
+	public static void ClientCleanup(){
 		tasks.Clear();
 		currentTaskID = 0;
 	}
@@ -115,9 +115,11 @@ public abstract class Task : Godot.Node2D
 		Godot.GD.Print("Total tasks: "+tasks.Count);
 		
 		for(int i = 0; i < tasks.Count; i++){
+			Godot.GD.Print(tasks[i].ToString()+": "+tasks[i].started);
 			// Don't add any tasks, that require another one to be done first
-			if(tasks[i].started)
+			if(tasks[i].started){
 				sortedIntoCategories[tasks[i].category].Add(tasks[i].taskID);
+			}
 		}
 		
 		foreach(TaskCategory tc in TaskCategory.categories){
@@ -140,19 +142,21 @@ public abstract class Task : Godot.Node2D
 								taskIDforK = sortedIntoCategories[tc][k];
 								if(k == initialK){
 									Godot.GD.Print("One of the tasks couldn't be assigned");
-									break;
+									throw new Exception("");
 								}
 							}
 							
 							tasksForPlayers[i].Add(taskIDforK);
 							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
 						}catch(Exception e){
-							Godot.GD.Print("Skopiuj ten błąd dla Marcina: "+e
-							+"\ntaskIDforK: "+taskIDforK
-							+"\nk: "+k
-							+"\nsortedIntoCategories[tc].Count: "+sortedIntoCategories[tc].Count
-							+"\ni: "+i
-							+"\nplayerIDs.Length"+playerIDs.Length);
+							if(e.Message.Equals("") == false){
+								Godot.GD.Print("Skopiuj ten błąd dla Marcina: "+e
+								+"\ntaskIDforK: "+taskIDforK
+								+"\nk: "+k
+								+"\nsortedIntoCategories[tc].Count: "+sortedIntoCategories[tc].Count
+								+"\ni: "+i
+								+"\nplayerIDs.Length"+playerIDs.Length);
+							}
 						}
 					}
 				}
@@ -210,10 +214,10 @@ public abstract class Task : Godot.Node2D
 		// The number of tasks of given category per player is specified in perPlayer and can be changed
 		// ADD THEM TO THE CATEGORIES ARRAY THOUGH (or declare them just there, but for ease of use's sake
 		// it is generally a good idea to have them named here)
-		public static TaskCategory VeryHard = new TaskCategory(2);
-		public static TaskCategory Hard = new TaskCategory(4);
-		public static TaskCategory Normal = new TaskCategory(3);
-		public static TaskCategory Easy = new TaskCategory(3);
+		public static TaskCategory VeryHard = new TaskCategory(20);
+		public static TaskCategory Hard = new TaskCategory(20);
+		public static TaskCategory Normal = new TaskCategory(20);
+		public static TaskCategory Easy = new TaskCategory(20);
 		
 		public static readonly TaskCategory[] categories = new TaskCategory[]{
 			VeryHard,
