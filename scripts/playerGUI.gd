@@ -150,7 +150,6 @@ func toggleTaskContainer():
 	task_panel_opened = !task_panel_opened
 
 func toggleVisibility(node_name):
-	pass
 	var node = get_node(node_name)
 	node.visible = !node.visible
 
