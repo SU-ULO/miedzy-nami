@@ -52,7 +52,7 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=8]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -61,17 +61,17 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="InputEventKey" id=11]
+[sub_resource type="InputEventKey" id=9]
 scancode = 84
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[sub_resource type="InputEventKey" id=11]
+scancode = 77
 
 [sub_resource type="ShortCut" id=12]
 shortcut = SubResource( 11 )
-
-[sub_resource type="InputEventKey" id=8]
-scancode = 77
-
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
@@ -169,11 +169,13 @@ margin_left = 49.0001
 margin_right = 173.0
 margin_bottom = 50.0
 rect_rotation = 90.0
+focus_mode = 0
 theme = SubResource( 6 )
 custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 10 )
+custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 16 )
-shortcut = SubResource( 12 )
+enabled_focus_mode = 0
+shortcut = SubResource( 10 )
 text = "ukryj"
 __meta__ = {
 "_edit_lock_": true,
@@ -190,6 +192,8 @@ margin_top = 798.271
 margin_right = 4031.2
 margin_bottom = 2552.27
 rect_scale = Vector2( 0.15403, 0.15403 )
+focus_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -201,6 +205,8 @@ margin_top = 798.271
 margin_right = 3694.44
 margin_bottom = 2552.27
 rect_scale = Vector2( 0.15403, 0.15403 )
+focus_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 13 )
 texture_disabled = ExtResource( 12 )
 __meta__ = {
@@ -233,6 +239,8 @@ margin_top = 13.4695
 margin_right = 3373.08
 margin_bottom = 1635.47
 rect_scale = Vector2( 0.099003, 0.099003 )
+focus_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -244,7 +252,9 @@ margin_top = 163.879
 margin_right = 3384.31
 margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
-shortcut = SubResource( 9 )
+focus_mode = 0
+enabled_focus_mode = 0
+shortcut = SubResource( 12 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -266,6 +276,7 @@ margin_right = 4012.49
 margin_bottom = 2558.34
 rect_scale = Vector2( 0.15403, 0.15403 )
 disabled = true
+enabled_focus_mode = 0
 texture_normal = ExtResource( 8 )
 texture_disabled = ExtResource( 11 )
 __meta__ = {
@@ -278,6 +289,8 @@ margin_top = 505.764
 margin_right = 3190.45
 margin_bottom = 1914.76
 rect_scale = Vector2( 0.197831, 0.197831 )
+focus_mode = 0
+enabled_focus_mode = 0
 texture_normal = ExtResource( 6 )
 texture_disabled = ExtResource( 9 )
 __meta__ = {

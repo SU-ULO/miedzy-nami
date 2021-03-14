@@ -124,9 +124,13 @@ const task_panel_slide_speed:float = 25.0
 onready var task_container = get_node("TaskPanel/TaskContainer")
 onready var task_panel_position = task_container.rect_position
 onready var task_container_size = task_container.rect_size
+onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_size
 
 func processGui():
 	var task_panel = get_node("TaskPanel")
+	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
+	if list_size.y > task_container_size.y:
+		task_container.rect_size.y = list_size.y + task_label_size.y
 	
 	if(task_panel.rect_position.x != task_panel_position.x):
 		if(task_panel.rect_position.x > task_panel_position.x):
@@ -146,6 +150,7 @@ func toggleTaskContainer():
 	task_panel_opened = !task_panel_opened
 
 func toggleVisibility(node_name):
+	pass
 	var node = get_node(node_name)
 	node.visible = !node.visible
 
