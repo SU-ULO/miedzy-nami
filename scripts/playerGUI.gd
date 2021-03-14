@@ -120,6 +120,7 @@ func _on_map_pressed():
 
 var task_panel_opened = true
 const task_panel_slide_speed:float = 25.0
+const task_list_min_size:float = 150.0 # button size + margin
 
 onready var task_container = get_node("TaskPanel/TaskContainer")
 onready var task_panel_position = task_container.rect_position
@@ -129,8 +130,7 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 func processGui():
 	var task_panel = get_node("TaskPanel")
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
-	if list_size.y > task_container_size.y:
-		task_container.rect_size.y = list_size.y + task_label_size.y
+	task_container.rect_size.y = max(list_size.y + task_label_size.y, task_list_min_size)
 	
 	if(task_panel.rect_position.x != task_panel_position.x):
 		if(task_panel.rect_position.x > task_panel_position.x):
