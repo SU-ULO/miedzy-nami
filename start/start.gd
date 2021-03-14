@@ -19,12 +19,12 @@ func _ready():
 	menu.connect("request_end", self, "leave_room")
 
 func leave_matchmaking():
-	leave_room()
 	if matchmaking:
 		matchmaking.queue_free()
 	matchmaking=null
 	network_side = NONE
 	menu.open_main()
+	leave_room()
 
 func leave_room():
 	if network:
@@ -33,7 +33,7 @@ func leave_room():
 	if network_side==CLIENT:
 		menu.open_roomlist()
 	elif network_side==SERVER:
-		leave_matchmaking()
+		if matchmaking: leave_matchmaking()
 		menu.open_create_room()
 	else:
 		menu.open_main()
