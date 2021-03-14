@@ -9,4 +9,8 @@ public class CHEczyszczenie : TaskWithGUI
 	public override string ToString(){
 		return "SALA CHEMICZNA: wyczyść probówki";
 	}
+	public CHEczyszczenie()
+	{
+		this.category = TaskCategory.Easy;
+	}
 }

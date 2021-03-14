@@ -9,4 +9,7 @@ public class PHYSto : TaskWithGUI
 	public override string ToString(){
 		return "SALA FIZYCZNA: zmierz pełen okres wahadła";
 	}
+	public PHYSto(){
+		this.category = TaskCategory.Easy;
+	}
 }

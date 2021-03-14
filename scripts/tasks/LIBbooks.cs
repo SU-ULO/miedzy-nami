@@ -13,4 +13,7 @@ public class LIBbooks : TaskWithGUI
 	{
 		return GetTaskByTypeName("GEOkamienie").taskID;
 	}
+	public LIBbooks(){
+		this.category = TaskCategory.VeryHard;
+	}
 }

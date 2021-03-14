@@ -298,7 +298,7 @@ scale = Vector2( 0.177704, 0.177704 )
 z_index = 1
 
 [node name="stolik17" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
-position = Vector2( -1808.75, -110.913 )
+position = Vector2( -2049.23, -105.663 )
 scale = Vector2( 0.508934, 0.508934 )
 
 [node name="stolik19" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
@@ -419,7 +419,7 @@ position = Vector2( -2749.11, -2657.96 )
 scale = Vector2( 0.379188, 0.379188 )
 
 [node name="MAT-Karta" parent="Mapa/dekoracje" instance=ExtResource( 8 )]
-position = Vector2( -2002.92, -108.736 )
+position = Vector2( -1922.01, -229.485 )
 scale = Vector2( 0.0745097, 0.0745934 )
 
 [node name="krzeslo11" parent="Mapa/dekoracje" instance=ExtResource( 27 )]

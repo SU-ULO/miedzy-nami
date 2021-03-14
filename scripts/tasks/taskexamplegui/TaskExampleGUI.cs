@@ -10,4 +10,7 @@ public class TaskExampleGUI : TaskWithGUI
 	{
 		return "SALA INFORMATYCZNA: zaktualizuj komputer";
 	}
+	public TaskExampleGUI(){
+		this.category = TaskCategory.Easy;
+	}
 }

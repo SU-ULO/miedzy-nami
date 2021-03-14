@@ -57,20 +57,23 @@ collision_layer = 5
 collision_mask = 3
 script = ExtResource( 1 )
 
+[node name="stolik2" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 1460.34, 1759.62 )
+scale = Vector2( 3.26337, 3.26337 )
+texture = ExtResource( 3 )
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -454.743, 126.765 )
+position = Vector2( 1460.34, 1759.62 )
 scale = Vector2( 3.26337, 3.26337 )
 polygon = PoolVector2Array( -360.36, 948.429, 463.834, 941.913, 486.637, 65.5969, -171.414, -631.547, -865.3, -628.289, -881.589, 267.573 )
 
-[node name="stolik2" type="Sprite" parent="CollisionPolygon2D"]
-texture = ExtResource( 3 )
-
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true
-position = Vector2( -1154.75, -1198.66 )
+position = Vector2( 760.329, 434.197 )
 scale = Vector2( 2.9707, 2.9707 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1136.33, -1209.12 )
+position = Vector2( 778.749, 423.737 )
 shape = SubResource( 3 )

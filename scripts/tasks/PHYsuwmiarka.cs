@@ -9,4 +9,7 @@ public class PHYsuwmiarka : TaskWithGUI
 	public override string ToString(){
 		return "SALA FIZYCZNA: zmierz długość bloczka";
 	}
+	public PHYsuwmiarka(){
+		this.category = TaskCategory.Easy;
+	}
 }

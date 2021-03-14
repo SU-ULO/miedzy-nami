@@ -10,4 +10,7 @@ public class INFdebug : TaskWithGUI
 	public override string ToString(){
 		return "SALA INFORMATYCZNA: zdebugguj kod twojego programu";
 	}
+	public INFdebug(){
+		this.category = TaskCategory.Easy;
+	}
 }

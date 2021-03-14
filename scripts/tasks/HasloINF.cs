@@ -9,6 +9,9 @@ public class HasloINF : TaskWithGUI
 	public override string ToString(){
 		return "SALA INFORMATYCZNA: odblokuj komputer";
 	}
+	public HasloINF(){
+		this.category = TaskCategory.VeryHard;
+	}
 	public override int GetNextTaskID()
 	{
 		return GetTaskByTypeName("HasloPOL").taskID;

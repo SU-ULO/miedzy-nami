@@ -9,4 +9,8 @@ public class CHEcolor : TaskWithGUI
 	public override string ToString(){
 		return "SALA CHEMICZNA: zmieszaj kolory";
 	}
+	public CHEcolor()
+	{
+		this.category = TaskCategory.Easy;
+	}
 }

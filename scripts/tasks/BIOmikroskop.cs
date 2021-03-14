@@ -9,4 +9,8 @@ public class BIOmikroskop : TaskWithGUI
 	public override string ToString(){
 		return "SALA BIOLOGICZNA: ustaw mikroskop";
 	}
+	public BIOmikroskop()
+	{
+		this.category = TaskCategory.Easy;
+	}
 }

@@ -10,4 +10,7 @@ public class LIBPrint : TaskWithGUI
 	public override string ToString(){
 		return "BIBLIOTEKA: wydrukuj dokument";
 	}
+	public LIBPrint(){
+		this.category = TaskCategory.VeryHard;
+	}
 }
