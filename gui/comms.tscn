@@ -37,3 +37,6 @@ position = Vector2( 113, 423 )
 
 [node name="wave2" type="Position2D" parent="Texture"]
 position = Vector2( 113, 628 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
