@@ -41,7 +41,7 @@ func parse_matchmaking(msg:  String):
 			var conf: Dictionary = pars.result
 			if !conf.has('key') || !conf.has('webrtc'):
 # warning-ignore:return_value_discarded
-				wsc.get_peer(1).put_packet("LEAVE".to_utf8())
+				send_message("LEAVE")
 				return
 			emit_signal("join_room", conf)
 	elif msg.begins_with("CONNECTION:"):
@@ -54,12 +54,20 @@ func parse_matchmaking(msg:  String):
 			emit_signal("received_candidate", arr[2])
 		else:
 			return
+	elif msg.begins_with("KEY:"):
+		var arr = msg.split(":", false, 1)
+		if arr.size()<2: return
+		emit_signal("key_changed", arr[1])
+		return
 
 func client_hello():
 	send_message("CLIENT:"+JSON.print({"username": clientsettings.username}))
 
 func refresh_servers():
 	send_message("LIST")
+
+func join_server(key):
+	send_message("JOIN:"+key)
 
 func send_candidate(cand: String):
 	send_message("CONNECTION:CANDIDATE:"+cand)

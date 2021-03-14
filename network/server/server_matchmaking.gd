@@ -6,7 +6,6 @@ signal client_connecting(conf)
 signal client_left(id)
 signal received_session(id, sess)
 signal received_candidate(id, cand)
-signal key_changed(key)
 
 var serversettings
 
@@ -40,7 +39,6 @@ func parse_signaling(msg:  String):
 			if !conf.has('id'):
 				return
 			conf.id=int(conf.id)
-			print("id:", conf.id)
 			if !conf.has('webrtc') or !conf.has('username'):
 				kick(conf.id)
 				return
@@ -72,8 +70,10 @@ func server_hello():
 func refresh_servers():
 	send_message("LIST")
 
-func send_candidate(cand: String):
-	send_message("CONNECTION:CANDIDATE:"+cand)
+func send_candidate(id: int, cand: String):
+# warning-ignore:return_value_discarded
+	send_message("CONNECTION:"+str(id)+":CANDIDATE:"+cand)
 
-func send_session(sess: String):
-	send_message("CONNECTION:SESSION:"+sess)
+func send_session(id: int, sess: String):
+# warning-ignore:return_value_discarded
+	send_message("CONNECTION:"+str(id)+":SESSION:"+sess)

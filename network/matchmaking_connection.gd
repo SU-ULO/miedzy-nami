@@ -14,6 +14,8 @@ signal matchmaking_received_message(message)
 signal join_room(conf)
 # warning-ignore:unused_signal
 signal leave_room()
+# warning-ignore:unused_signal
+signal key_changed(key)
 
 func _init(url):
 	matchmaking_url = url

@@ -1,6 +1,5 @@
 extends Node
 
-
 class_name Game_Connection
 
 var established: bool = false
@@ -12,8 +11,8 @@ var peer = WebRTCPeerConnection.new()
 var game_updates: WebRTCDataChannel
 var game_events: WebRTCDataChannel
 
-signal send_session
-signal send_candidate
+signal send_session(sess)
+signal send_candidate(cand)
 
 signal fail
 signal success

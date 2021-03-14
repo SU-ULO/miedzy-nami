@@ -12,6 +12,8 @@ func _ready():
 # warning-ignore:return_value_discarded
 	menu.connect("request_start_client", self, "start_client")
 # warning-ignore:return_value_discarded
+	menu.connect("request_join_server", self, "join_server")
+# warning-ignore:return_value_discarded
 	menu.connect("request_start_server", self, "start_server")
 # warning-ignore:return_value_discarded
 	menu.connect("request_end", self, "leave_room")
@@ -44,18 +46,39 @@ func start_server(options):
 	network = ServerNetworkManager.new()
 	matchmaking.connect("matchmaking_disconnected", self, "leave_matchmaking")
 	matchmaking.connect("join_room", network, "create_world")
+	matchmaking.connect("client_connecting", network, "create_client")
+	matchmaking.connect("received_session", network, "set_session")
+	matchmaking.connect("received_candidate", network, "set_candidate")
 	matchmaking.connect("key_changed", network, "display_key")
 	network.connect("joined_room", menu, "close_everything")
+	network.connect("send_session", matchmaking, "send_session")
+	network.connect("send_candidate", matchmaking, "send_candidate")
 	add_child(matchmaking)
 	add_child(network)
 	matchmaking.start()
+	network_side = SERVER
 
 func start_client():
 	if network_side != NONE:
 		leave_room()
 	matchmaking = Client_Matchmaking.new(menu.usersettings["signaling_url"], menu.usersettings)
 	matchmaking.connect("matchmaking_disconnected", self, "leave_matchmaking")
+	matchmaking.connect("leave_room", self, "leave_room")
 	matchmaking.connect("room_list_updated", menu, "update_servers")
 	matchmaking.connect("matchmaking_hello", menu, "open_roomlist")
 	add_child(matchmaking)
 	matchmaking.start()
+	network_side = CLIENT
+
+func join_server(key):
+	if network_side != CLIENT or !matchmaking:
+		leave_matchmaking()
+		return
+	network = ClientNetworkManager.new()
+	matchmaking.connect("join_room", network, "create_world")
+	matchmaking.connect("received_session", network, "set_session")
+	matchmaking.connect("received_candidate", network, "set_candidate")
+	network.connect("send_session", matchmaking, "send_session")
+	network.connect("send_candidate", matchmaking, "send_candidate")
+	add_child(network)
+	matchmaking.join_server(key)

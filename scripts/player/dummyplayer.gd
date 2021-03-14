@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var owner_id := 0
+var username := ""
 
 export var default_speed = 900.0
 export var default_sight_range = 2000.0

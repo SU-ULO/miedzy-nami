@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "Client",
+"base": "NetworkManager",
+"class": "ClientNetworkManager",
 "language": "GDScript",
-"path": "res://client/scripts/client.gd"
+"path": "res://network/client/client_network_manager.gd"
 }, {
 "base": "Matchmaking_Connection",
 "class": "Client_Matchmaking",
@@ -60,7 +60,7 @@ _global_script_classes=[ {
 "path": "res://network/server/server_matchmaking.gd"
 } ]
 _global_script_class_icons={
-"Client": "",
+"ClientNetworkManager": "",
 "Client_Matchmaking": "",
 "Game_Connection": "",
 "JoinedClient": "",

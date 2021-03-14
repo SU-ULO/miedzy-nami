@@ -3,6 +3,7 @@ extends Node
 class_name NetworkManager
 
 var world := preload('res://scenes/school.tscn').instance()
+var player_characters := Dictionary()
 var own_player = null
 var own_id := 0
 var server_key := ""
@@ -19,5 +20,3 @@ func create_world(config):
 func display_key(key):
 	server_key = key
 
-func get_player_characters():
-	pass
