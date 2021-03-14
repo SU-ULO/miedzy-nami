@@ -76,8 +76,6 @@ func ui_selected():
 		var result
 		if currentBestItem.is_in_group("tasks"): 
 			result = currentBestItem.Interact(); 
-			if "material" in currentBestItem:
-				currentBestItem.material.set_shader_param("aura_width", 0);
 		else: result = currentBestItem.Interact(self)
 		
 		if result == false:

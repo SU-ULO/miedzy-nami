@@ -43,7 +43,7 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=6]
 default_font = SubResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=7]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -52,11 +52,11 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="InputEventKey" id=7]
+[sub_resource type="InputEventKey" id=8]
 scancode = 77
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [node name="player" instance=ExtResource( 2 )]
 position = Vector2( 0, 0 )
@@ -156,7 +156,7 @@ margin_right = 172.646
 margin_bottom = 50.0
 rect_rotation = 90.0
 theme = SubResource( 6 )
-custom_styles/hover = SubResource( 9 )
+custom_styles/hover = SubResource( 7 )
 custom_styles/normal = ExtResource( 16 )
 text = "ukryj"
 __meta__ = {
@@ -241,7 +241,7 @@ margin_top = 163.879
 margin_right = 3384.31
 margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
-shortcut = SubResource( 8 )
+shortcut = SubResource( 9 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

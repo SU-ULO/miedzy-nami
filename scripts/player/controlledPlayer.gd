@@ -84,7 +84,6 @@ func get_input():
 			if Input.is_action_just_pressed("use_vent"):
 				arrow.call_teleport()
 				selected_vent = 0
-				
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
 		else: if currentInteraction.is_in_group("players") and interacted == false:
@@ -177,6 +176,8 @@ func showMyTasks():
 		if i.IsDone():
 			localTaskList.erase(i)
 			if i.material != null:
-				i.material.set_shader_param("aura_width", 0)
+				if i.material is ShaderMaterial:
+					i.material.set_shader_param("aura_width", 0)
 		elif i.material != null:
-				i.material.set_shader_param("aura_width", 18)
+				if i.material is ShaderMaterial:
+					i.material.set_shader_param("aura_width", 18)
