@@ -86,6 +86,7 @@ func get_input():
 				selected_vent = 0
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
+			$CanvasLayer2/exit_button.visible = false
 		else: if currentInteraction.is_in_group("players") and interacted == false:
 			currentInteraction = null
 		else:
@@ -181,3 +182,63 @@ func showMyTasks():
 		elif i.material != null:
 				if i.material is ShaderMaterial:
 					i.material.set_shader_param("aura_width", 18)
+# interactions
+
+func ui_kill():
+	if(players_interactable.size() != 0):
+		var currentBestItem = players_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in players_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
+
+func ui_report():
+	if(deadbody_interactable.size() != 0):
+		var currentBestItem = deadbody_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in deadbody_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
+
+func ui_canceled():
+	if(currentInteraction != null):
+		$CanvasLayer2/exit_button.visible = false
+		if currentInteraction.is_in_group("tasks"):
+			currentInteraction.EndInteraction()
+		else:
+			currentInteraction.EndInteraction(self)
+		print(currentInteraction.get_name())
+		currentInteraction = null
+		
+func ui_selected():
+	if debug_mode:
+		print("sight_range: ", in_sight_range)
+		print("sight: ", in_sight)
+	
+	if(interactable.size() != 0):
+		var currentBestItem = interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+
+		var result
+		if currentBestItem.is_in_group("tasks"): 
+			result = currentBestItem.Interact(); 
+		else: result = currentBestItem.Interact(self)
+		
+		if result == false:
+			return
+		currentInteraction = currentBestItem
+		$CanvasLayer2/exit_button.visible = true
+
+func _on_exit_button_pressed():
+	ui_canceled()

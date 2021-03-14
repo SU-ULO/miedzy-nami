@@ -4,6 +4,8 @@ var inbox = Dictionary()
 
 var toDrag = []
 
+var trueNames = {"CaOH": "Ca(OH)2", "HCl": "HCl", "NaOH": "NaOH", "probowka": "probówka", "slomka": "słomka", "zlewka": "zlewka", "HNO": "HNO3", "szkielko": "szkiełko"}
+
 var kits = [["CaOH", "HCl", "NaOH","probowka", "slomka", "zlewka"],["HCl", "HNO", "szkielko", "szmatka"],["CaOH", "HCl", "HNO", "NaOH", "papierki", "probowka"]] #has to be sorted
 var kitsCount
 var taskKit
@@ -26,7 +28,10 @@ func _ready():
 	var iter = 0
 	
 	for item in taskKit:
-		labels[iter].text = "1x " + str(item)
+		if item in trueNames:	
+			labels[iter].text = "1x " + str(trueNames[item])
+		else:
+			labels[iter].text = "1x " + str(item)
 		iter += 1
 
 func checkForEnd():
@@ -36,10 +41,16 @@ func checkForEnd():
 	for item in taskKit:
 		if userKit.has(item):
 			print("item it")
-			labels[iter].text = "0x " + str(item)
+			if item in trueNames:	
+				labels[iter].text = "0x " + str(trueNames[item])
+			else:
+				labels[iter].text = "0x " + str(item)
 			labels[iter].set("custom_colors/font_color", Color(0.19,0.19,0.19,0.5)) #dim gray
 		else:
-			labels[iter].text = "1x " + str(item)
+			if item in trueNames:	
+				labels[iter].text = "1x " + str(trueNames[item])
+			else:
+				labels[iter].text = "1x " + str(item)
 			labels[iter].set("custom_colors/font_color", Color(0.19,0.19,0.19,1)) #dim gray
 		iter += 1
 	
