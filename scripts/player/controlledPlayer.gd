@@ -21,16 +21,16 @@ func get_input():
 	if currentInteraction == null:
 		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
-			moveX = 1;
+			moveX += 1;
 		
 		if Input.is_action_pressed("move_left"):
-			moveX = -1;
+			moveX += -1;
 		
 		if Input.is_action_pressed("move_down"):
-			moveY = 1;
+			moveY += 1;
 		
 		if Input.is_action_pressed("move_up"):
-			moveY = -1;
+			moveY += -1;
 		
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()

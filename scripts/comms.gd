@@ -2,14 +2,22 @@ extends Control
 
 var rng = RandomNumberGenerator.new()
 
+onready var knob = get_node("Texture/Knob/Knob")
+onready var wave1_pos = get_node("Texture/wave1").global_position
+onready var wave2_pos = get_node("Texture/wave2").global_position
+
 func _ready():
 	rng.randomize()
+	knob.full_rotations = randi() % 2 + 1
 
 func _process(_delta):
 	update()
 
 func _draw():
-	draw_sin(get_parent().get_node("HSlider").value, 100, get_parent().get_node("HSlider2").value, get_parent().get_node("HSlider3").value, Vector2(200, 200), get_parent().get_node("HSlider4").value)
+	var noise = knob.prevangle + 2*PI*knob.full_rotations
+	# some magic values
+	draw_sin(20.0, 21.0, 50.0, 15.0, wave1_pos, noise)
+	draw_sin(20.0, 21.0, 50.0, 15.0, wave2_pos, noise)
 	
 func draw_sin(scale = 1, length = 500, resolution = 4, speed = 1, offset = Vector2(0, 0), noise_amount = 0, color = Color(1, 1, 1, 1)):
 	var points = PoolVector2Array()

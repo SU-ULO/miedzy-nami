@@ -3,10 +3,9 @@ extends Control
 var player
 var usage
 
-var minimap = preload("res://gui/minimap.tscn")
-var sabotagemap = preload("res://gui/sabotagemap.tscn")
-var minimap_opened = false
-var sabotagemap_opened = false
+var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
+var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
+var map_opened = false
 
 func _ready():
 	player = get_parent().get_parent()
@@ -21,10 +20,10 @@ func updateGUI():
 		
 func _process(_delta):
 	usage = checkUsage()
-	$all/use.disabled = !usage
-	$all/report.disabled = !checkReportability()
+	$ActionButtons/use.disabled = !usage
+	$ActionButtons/report.disabled = !checkReportability()
 	if player.is_in_group("impostors"):
-		$all/use.visible = usage
+		$ActionButtons/use.visible = usage
 	$impostor/sabotage.visible = !usage
 	if int(player.get_node("KillCooldown").time_left) > 0:
 		$impostor/kill/cooldown.text = str(int(player.get_node("KillCooldown").time_left))
@@ -34,7 +33,7 @@ func _process(_delta):
 	$impostor/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
 	
 	processGui()
-	
+
 func _on_use_pressed():
 	player.ui_selected()
 
@@ -43,18 +42,7 @@ func interactionGUIupdate():
 		$impostor.visible = true
 	else:
 		$impostor.visible = false
-		$all/use.visible = true
-
-func _on_sabotage_pressed():
-	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
-	if(!sabotagemap_opened):
-		var instance = sabotagemap.instance()
-		instance.name = "fajnamapasabotazu"
-		canvas.add_child(instance)
-	else:
-		canvas.get_node("fajnamapasabotazu").queue_free()
-		
-	sabotagemap_opened = !sabotagemap_opened
+		$ActionButtons/use.visible = true
 
 func checkUsage():
 	if player.interactable.size() == 0:
@@ -87,21 +75,46 @@ func checkKillability():
 func _on_kill_pressed():
 	player.ui_kill()
 
-func show_map():
+func show_map(map_object):
 	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
-	if(!minimap_opened):
-		var instance = minimap.instance()
-		instance.name = "fajnamapa"
+	if(!map_opened):
+		var instance = map_object.res.instance()
 		canvas.add_child(instance)
-		instance.get_node("player").player = self.get_parent().get_parent()
-		instance.get_node("player").taskList = player.localTaskList
-		instance.get_node("player").addTasks()
+		instance.name = map_object.map_name
+		if map_object.map_name == "MiniMap":
+			instance.get_node("player").player = self.get_parent().get_parent()
+			instance.get_node("player").taskList = player.localTaskList
+			instance.get_node("player").addTasks()
+		#elif map_object.map_name == "SabotageMap":
+			# nothing here right now
+		map_opened = !map_opened
+		toggleVisibility("ActionButtons")
+		toggleVisibility("TaskPanel")
+		if player.is_in_group("impostors"):
+			toggleVisibility("impostor")
 	else:
-		canvas.get_node("fajnamapa").queue_free()
-	minimap_opened = !minimap_opened
+		var current_map_name = canvas.get_child(0).name
+		canvas.get_child(0).queue_free()
+		map_opened = !map_opened
+		toggleVisibility("ActionButtons")
+		toggleVisibility("TaskPanel")
+		if player.is_in_group("impostors"):
+			toggleVisibility("impostor")
+		
+		if map_object.map_name != current_map_name:
+			if current_map_name == "SabotageMap":
+				show_map(minimap)
+			elif current_map_name == "MiniMap":
+				print("You shouldn't be able to do that")
+				show_map(sabotagemap)
+
+
+func _on_sabotage_pressed():
+	show_map(sabotagemap)
 
 func _on_map_pressed():
-	show_map()
+	show_map(minimap)
+
 
 # # # GUI VISUAL FUNCTIONS AND VARIABLES # # #
 
@@ -131,6 +144,10 @@ func toggleTaskContainer():
 	else:
 		task_panel_position.x += task_container_size.x
 	task_panel_opened = !task_panel_opened
+
+func toggleVisibility(node_name):
+	var node = get_node(node_name)
+	node.visible = !node.visible
 
 func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
