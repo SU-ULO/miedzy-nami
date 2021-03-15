@@ -20,19 +20,13 @@ func spawn_player():
 	pass
 
 func handle_events(input):
-	if input is Array:
-		if input.size()==3:
-			if input[0] is int and input[1] is int and input[2] is Dictionary:
-				if input[0]==0:
-					#initial players spawn
-					emit_signal("initial_sync", input[1], input[2])
-				elif input[0]==1:
-					#remote player joined
-					emit_signal("remote_player_joined", input[1], input[2])
-		elif input.size()==2:
-			if input[0] is int and input[1] is int:
-				if input[0]==2:
-					emit_signal("remote_player_left", input[1])
+	if !(input is Array): return
+	if input[0]==0:
+		emit_signal("initial_sync", input[1], input[2])
+	elif input[0]==1:
+		emit_signal("remote_player_joined", input[1], input[2])
+	elif input[0]==2:
+		emit_signal("remote_player_left", input[1])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):

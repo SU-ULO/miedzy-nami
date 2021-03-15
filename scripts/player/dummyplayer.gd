@@ -24,6 +24,13 @@ var localTaskList = []
 var dead_body = preload("res://entities/deadbody.tscn")
 var interacted = false # temporary fix
 
+func generate_init_data() -> Dictionary:
+	return {"username": username, "pos": position}
+
+func set_init_data(data: Dictionary):
+	username=data["username"]
+	position=data["pos"]
+
 func _ready():
 	add_to_group("entities")
 	add_to_group("players")

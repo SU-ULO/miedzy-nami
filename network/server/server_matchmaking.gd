@@ -3,6 +3,7 @@ extends Matchmaking_Connection
 class_name Server_Matchmaking
 
 signal client_connecting(conf)
+# warning-ignore:unused_signal
 signal client_left(id)
 signal received_session(id, sess)
 signal received_candidate(id, cand)
@@ -62,7 +63,6 @@ func parse_signaling(msg:  String):
 
 func kick(id):
 	send_message("LEAVE:" + str(id))
-	emit_signal("client_left", id)
 
 func server_hello():
 	send_message("SERVER:"+JSON.print({"hidden": serversettings.hidden}))

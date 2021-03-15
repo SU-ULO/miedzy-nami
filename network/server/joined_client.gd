@@ -32,3 +32,12 @@ func handle_events(input):
 				for i in input["started"]:
 					tasks[i].started = input["started"][i]
 					tasks[i].local = true
+
+func send_initial_sync(data: Dictionary, id: int):
+	send_events([0, id, data])
+
+func send_spawning_player_sync(data: Dictionary, id: int):
+	send_events([1, id, data])
+
+func send_player_removal_notification(id: int):
+	send_events([2, id])
