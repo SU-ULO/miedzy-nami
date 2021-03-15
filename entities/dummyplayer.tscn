@@ -16,7 +16,7 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -24,11 +24,16 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 132.728, 112.541 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
@@ -36,7 +41,20 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
+"name": "walk side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [  ],
+"loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -47,14 +65,14 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [  ],
 "loop": true,
-"name": "walk front",
+"name": "walk back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk back",
+"name": "walk front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -67,17 +85,22 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk front",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk back",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
 "speed": 5.0
 } ]
 
@@ -108,29 +131,6 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "left",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "right",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [  ],
-"loop": true,
 "name": "front",
 "speed": 5.0
 }, {
@@ -145,7 +145,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -168,7 +168,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -209,8 +209,7 @@ shape = SubResource( 2 )
 visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 4 )
-frame = 1
+frames = SubResource( 3 )
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -221,22 +220,22 @@ texture = ExtResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( -2.85715, 86.8572 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="body" type="AnimatedSprite" parent="."]
 material = ExtResource( 9 )
-frames = SubResource( 6 )
+frames = SubResource( 5 )
 animation = "walk front"
 
 [node name="spodnie" type="AnimatedSprite" parent="."]
 visible = false
 material = ExtResource( 9 )
-frames = SubResource( 7 )
+frames = SubResource( 6 )
 animation = "walk front"
 
 [node name="clothes-top" type="AnimatedSprite" parent="."]
 material = ExtResource( 9 )
-frames = SubResource( 8 )
+frames = SubResource( 7 )
 animation = "walk front"
 
 [node name="face" type="Sprite" parent="."]
@@ -246,32 +245,32 @@ texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="face"]
 material = ExtResource( 9 )
-frames = SubResource( 9 )
+frames = SubResource( 8 )
 animation = "front"
 
 [node name="eye-bonus" type="AnimatedSprite" parent="face/eyes"]
 material = ExtResource( 9 )
-frames = SubResource( 10 )
+frames = SubResource( 9 )
 animation = "front"
 
 [node name="nose" type="AnimatedSprite" parent="face"]
 material = ExtResource( 9 )
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 animation = "front"
 
 [node name="mouth" type="AnimatedSprite" parent="face"]
 material = ExtResource( 9 )
-frames = SubResource( 12 )
+frames = SubResource( 11 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="."]
-position = Vector2( 0, -714.33 )
+position = Vector2( 7.894, -714.33 )
 scale = Vector2( 0.999999, 0.999999 )
 
 [node name="hair" type="AnimatedSprite" parent="wlosy"]
 material = ExtResource( 9 )
 position = Vector2( 0, 240 )
-frames = SubResource( 13 )
+frames = SubResource( 12 )
 animation = "front"
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]

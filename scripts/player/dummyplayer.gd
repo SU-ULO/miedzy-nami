@@ -12,7 +12,7 @@ var debug_pos_ok = []
 
 const LookConfiguration = preload("res://entities/character-customisation/look-configuration.gd")		
 
-var color = 1
+var color = 12
 var currLook = LookConfiguration.new()
 
 var player_velocity = Vector2()
@@ -85,11 +85,7 @@ func set_player_velocity():
 			startWalk()
 			#$AnimatedSprite.visible = true
 			#$Sprite.visible = false
-			if player_velocity.y == 1:
-				lookFront()
-			elif player_velocity.y == -1:
-				lookBack() 
-			elif player_velocity.x == 1:
+			if player_velocity.x == 1:
 				$AnimatedSprite.flip_h = flipped
 				flipped = false
 				lookRight()
@@ -97,6 +93,12 @@ func set_player_velocity():
 				$AnimatedSprite.flip_h = flipped
 				flipped = true
 				lookLeft()
+			elif player_velocity.y == 1:
+				lookFront()
+			elif player_velocity.y == -1:
+				#lookBack()
+				lookLeft() 
+
 		player_velocity = player_velocity.normalized() * default_speed
 
 # interactions
@@ -272,15 +274,6 @@ func loadLook():
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
-	print(currLook.getTopClotes(2, color))
-	print(currLook.getTopClotes(1, color))
-	print(currLook.getTopClotes(3, color))
-	print(currLook.getTopClotes(1, color))
-	print(currLook.getTopClotes(5, color))
-	print(currLook.getTopClotes(4, color))
-	print(currLook.getTopClotes(6, color))
-	print(currLook.getTopClotes(4, color))
-	
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
 	if currLook.getEyeBonusPath() != "przykromi":
@@ -297,9 +290,20 @@ func loadLook():
 	$face/nose.frames.add_frame("front", load(currLook.getNosePath()))
 	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
-	$wlosy/hair.position.y = currLook.getHairPos()
+	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
+	if $wlosy/hair.animation == "side":
+		$wlosy/hair.position.y = 340
+		if $wlosy/hair.flip_h == false:
+			$wlosy/hair.position.x = -80
+		else:
+			$wlosy/hair.position.x = 80
+	else:
+		$wlosy/hair.position.x = 0
+		$wlosy/hair.position.y = currLook.getHairPos()
 
 func lookRight():
+	$wlosy/hair.position.y = 340
+	$wlosy/hair.position.x = -80
 	$body.flip_h = false
 	$body.animation = "walk side"
 	$spodnie.flip_h = false
@@ -314,6 +318,8 @@ func lookRight():
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "side"
 func lookLeft():
+	$wlosy/hair.position.y = 340
+	$wlosy/hair.position.x = 80
 	$body.flip_h = true
 	$body.animation = "walk side"
 	$spodnie.flip_h = true
@@ -328,6 +334,8 @@ func lookLeft():
 	$wlosy/hair.flip_h = true
 	$wlosy/hair.animation  = "side"
 func lookFront():
+	$wlosy/hair.position.y = currLook.getHairPos()
+	$wlosy/hair.position.x = 0
 	$body.flip_h = false
 	$body.animation = "walk front"
 	$spodnie.flip_h = false
