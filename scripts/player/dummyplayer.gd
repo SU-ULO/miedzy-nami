@@ -12,7 +12,7 @@ var debug_pos_ok = []
 
 const LookConfiguration = preload("res://entities/character-customisation/look-configuration.gd")		
 
-var color = 12
+var color = 3
 var currLook = LookConfiguration.new()
 
 var player_velocity = Vector2()

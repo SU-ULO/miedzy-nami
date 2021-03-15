@@ -3,7 +3,7 @@ extends Control
 
 func _ready():
 	#if player is room admin
-	#$game.visible = true
+	#$buttons/game.visible = true
 	
 	for i in $buttons.get_children():
 		# warning-ignore:return_value_discarded
