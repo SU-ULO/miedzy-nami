@@ -62,6 +62,7 @@ func spawn_player(id: int):
 	new_character.owner_id = id
 	new_character.username = connected_clients[id].config.username
 	player_characters[id]=new_character
+	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
 	var joining_player_init_data = new_character.generate_init_data()
 	for cid in connected_clients:
@@ -86,3 +87,11 @@ func kick(id):
 					cc.send_player_removal_notification(id)
 		c.queue_free()
 	emit_signal("kick", id)
+
+func _process(_delta):
+	var sync_data := Dictionary()
+	for pc in player_characters.values():
+		sync_data[pc.owner_id]=pc.generate_sync_data()
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_player_character_sync_data(sync_data)

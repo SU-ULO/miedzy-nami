@@ -4,7 +4,7 @@ class_name JoinedClient
 
 var joined := false
 
-signal player_movement_update(mov, pos)
+signal player_character_sync(data)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -13,9 +13,10 @@ func get_event_task_data(tasks) -> Dictionary:
 	return {"add_tasks": tasks}
 
 func handle_updates(input):
-	if input is Dictionary:
-		if input.has("mov") and input["mov"] is Vector2 and input.has("pos") and input["pos"] is Vector2:
-			emit_signal("player_movement_update", input["mov"], input["pos"])
+	if !(input is Array): return
+	if input[0]==0:
+		var data = input[1]
+		emit_signal("player_character_sync", data)
 
 func handle_events(input):
 	#this entire thing will have to be changed to signal handled by ServerNetworkManager
@@ -41,3 +42,6 @@ func send_spawning_player_sync(data: Dictionary, id: int):
 
 func send_player_removal_notification(id: int):
 	send_events([2, id])
+
+func send_player_character_sync_data(data):
+	send_updates([0, data])

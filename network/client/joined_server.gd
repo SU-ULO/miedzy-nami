@@ -30,10 +30,11 @@ func handle_events(input):
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
-	if input is Dictionary:
-		emit_signal("players_sync", input)
-			
+	if !(input is Array): return
+	if input[0]==0:
+		emit_signal("players_sync", input[1])
+	
 
-func send_player_update(mov, pos):
-	send_updates({"mov": mov, "pos": pos})
+func send_player_character_sync(data):
+	send_updates([0, data])
 

@@ -31,6 +31,14 @@ func set_init_data(data: Dictionary):
 	username=data["username"]
 	position=data["pos"]
 
+func generate_sync_data():
+	return {"mov": Vector2(moveX, moveY), "pos": position}
+
+func set_sync_data(data: Dictionary):
+	moveX=data["mov"].x
+	moveY=data["mov"].y
+	position=data["pos"]
+
 func _ready():
 	add_to_group("entities")
 	add_to_group("players")

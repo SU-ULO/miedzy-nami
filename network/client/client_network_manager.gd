@@ -15,6 +15,7 @@ func create_world(config):
 	joined_server.connect("initial_sync", self, "handle_initial_sync")
 	joined_server.connect("remote_player_joined", self, "handle_remote_player_joining")
 	joined_server.connect("remote_player_left", self, "handle_remote_player_leaving")
+	joined_server.connect("players_sync", self, "handle_players_sync")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -60,3 +61,12 @@ func handle_remote_player_leaving(id: int):
 # warning-ignore:return_value_discarded
 		player_characters.erase(id)
 		c.queue_free()
+
+func handle_players_sync(data):
+	for c in data:
+		if c!=own_id and player_characters.has(c):
+			player_characters[c].set_sync_data(data[c])
+
+func _process(_delta):
+	if joined_server and joined_server.established and own_player:
+		joined_server.send_player_character_sync(own_player.generate_sync_data())
