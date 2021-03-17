@@ -10,6 +10,7 @@ var map_opened = false
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
+
 func updateGUI():
 	player.showMyTasks()
 	var content = ""

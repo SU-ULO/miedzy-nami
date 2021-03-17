@@ -3,55 +3,45 @@ extends Game_Connection
 class_name JoinedClient
 
 var joined := false
-var player = null
+
+signal player_character_sync(data)
 
 func _init(conf: Dictionary).(conf):
 	pass
 
-func _ready():
-# warning-ignore:return_value_discarded
-	connect("success", self, "request_join")
-
-func _exit_tree():
-	if player:
-		player.queue_free()
-
-func get_init_data() -> Dictionary:
-	return {"username": config.username, "pos": player.position}
-
-func get_update_data() -> Dictionary:
-	return {"pos": player.position, "mov": Vector2(player.moveX, player.moveY)}
-
 func get_event_task_data(tasks) -> Dictionary:
 	return {"add_tasks": tasks}
 
-func request_join():
-	emit_signal("join")
-
 func handle_updates(input):
-	if input is Dictionary:
-		if input.has("mov") and input["mov"] is Vector2:
-			if player:
-				player.moveX=input["mov"].x
-				player.moveY=input["mov"].y
-		if input.has("pos") and input["pos"] is Vector2:
-			if player:
-				player.position=input["pos"]
-				
+	if !(input is Array): return
+	if input[0]==0:
+		var data = input[1]
+		emit_signal("player_character_sync", data)
+
 func handle_events(input):
+	#this entire thing will have to be changed to signal handled by ServerNetworkManager
 	if input is Dictionary:
 		if input.has("update_tasks"):
 			var Task = load("res://scripts/tasks/Task.cs")
 			var tasks = Task.GetAllTasks()
-			var player_id = input["update_tasks"]
-			
 			if input.has("state") and input["state"] is Dictionary:
 				for i in input["state"]:
 					if tasks[i].IsDone() == false:
 						tasks[i].state = input["state"][i]
 					tasks[i].local = true
-
 			if input.has("started") and input["started"] is Dictionary:
 				for i in input["started"]:
 					tasks[i].started = input["started"][i]
 					tasks[i].local = true
+
+func send_initial_sync(data: Dictionary, id: int):
+	send_events([0, id, data])
+
+func send_spawning_player_sync(data: Dictionary, id: int):
+	send_events([1, id, data])
+
+func send_player_removal_notification(id: int):
+	send_events([2, id])
+
+func send_player_character_sync_data(data):
+	send_updates([0, data])

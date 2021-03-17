@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+var owner_id := 0
+var username := ""
+
 export var default_speed = 900.0
 export var default_sight_range = 2000.0
 export var default_scaling_speed = 2000.0
@@ -20,6 +23,21 @@ var localTaskList = []
 
 var dead_body = preload("res://entities/deadbody.tscn")
 var interacted = false # temporary fix
+
+func generate_init_data() -> Dictionary:
+	return {"username": username, "pos": position}
+
+func set_init_data(data: Dictionary):
+	username=data["username"]
+	position=data["pos"]
+
+func generate_sync_data():
+	return {"mov": Vector2(moveX, moveY), "pos": position}
+
+func set_sync_data(data: Dictionary):
+	moveX=data["mov"].x
+	moveY=data["mov"].y
+	position=data["pos"]
 
 func _ready():
 	add_to_group("entities")

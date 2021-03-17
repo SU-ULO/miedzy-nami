@@ -5,7 +5,7 @@ var bees = []
 var bees_momentum = []
 var bees_angle = []
 
-onready var resource = preload("res://client/menu/bee.tscn")
+onready var resource = preload("res://menu/bee.tscn")
 var sprites = ["res://textures/pszczola_1.png", "res://textures/pszczola_2.png", "res://textures/pszczola_1.png"]
 
 func space_evenly(bee_number):

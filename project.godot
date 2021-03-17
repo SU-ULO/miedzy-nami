@@ -9,10 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "Client",
+"base": "NetworkManager",
+"class": "ClientNetworkManager",
 "language": "GDScript",
-"path": "res://client/scripts/client.gd"
+"path": "res://network/client/client_network_manager.gd"
+}, {
+"base": "Matchmaking_Connection",
+"class": "Client_Matchmaking",
+"language": "GDScript",
+"path": "res://network/client/client_matchmaking.gd"
 }, {
 "base": "Node",
 "class": "Game_Connection",
@@ -22,24 +27,49 @@ _global_script_classes=[ {
 "base": "Game_Connection",
 "class": "JoinedClient",
 "language": "GDScript",
-"path": "res://server/scripts/joined_client.gd"
+"path": "res://network/server/joined_client.gd"
 }, {
 "base": "Game_Connection",
 "class": "JoinedServer",
 "language": "GDScript",
-"path": "res://client/scripts/joined_server.gd"
+"path": "res://network/client/joined_server.gd"
 }, {
 "base": "Reference",
 "class": "LookConfiguration",
 "language": "GDScript",
 "path": "res://entities/character-customisation/look-configuration.gd"
+}, {
+"base": "Node",
+"class": "Matchmaking_Connection",
+"language": "GDScript",
+"path": "res://network/matchmaking_connection.gd"
+}, {
+"base": "Node",
+"class": "NetworkManager",
+"language": "GDScript",
+"path": "res://network/network_manager.gd"
+}, {
+"base": "NetworkManager",
+"class": "ServerNetworkManager",
+"language": "GDScript",
+"path": "res://network/server/server_network_manager.gd"
+}, {
+"base": "Matchmaking_Connection",
+"class": "Server_Matchmaking",
+"language": "GDScript",
+"path": "res://network/server/server_matchmaking.gd"
 } ]
 _global_script_class_icons={
-"Client": "",
+"ClientNetworkManager": "",
+"Client_Matchmaking": "",
 "Game_Connection": "",
 "JoinedClient": "",
 "JoinedServer": "",
-"LookConfiguration": ""
+"LookConfiguration": "",
+"Matchmaking_Connection": "",
+"NetworkManager": "",
+"ServerNetworkManager": "",
+"Server_Matchmaking": ""
 }
 
 [application]
@@ -50,10 +80,6 @@ boot_splash/image="res://textures/dzdzownica.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.784314, 0.784314, 0, 1 )
 config/icon="res://icon.png"
-
-[autoload]
-
-Globals="*res://scripts/globals.gd"
 
 [display]
 
