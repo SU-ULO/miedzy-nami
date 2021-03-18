@@ -74,6 +74,9 @@ align = 1
 expand_to_text_length = true
 caret_blink = true
 caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="Main/Username"]
 show_behind_parent = true
@@ -99,9 +102,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Main/StartClientButton"]
-margin_left = 338.935
+margin_left = 315.643
 margin_top = 13.8341
-margin_right = 529.935
+margin_right = 545.643
 margin_bottom = 88.8341
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
@@ -123,9 +126,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Main/StartServerButton"]
-margin_left = 338.935
+margin_left = 210.827
 margin_top = 13.8341
-margin_right = 529.935
+margin_right = 659.827
 margin_bottom = 88.8341
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
@@ -147,9 +150,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Main/OptionsButton"]
-margin_left = 336.536
+margin_left = 348.025
 margin_top = 16.9486
-margin_right = 527.536
+margin_right = 539.025
 margin_bottom = 91.9486
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
@@ -173,9 +176,9 @@ script = ExtResource( 2 )
 
 [node name="MatchmakingURLLabel" type="Label" parent="Options"]
 margin_left = -17.8197
-margin_top = 60.8095
+margin_top = 51.5596
 margin_right = 888.18
-margin_bottom = 135.81
+margin_bottom = 126.56
 rect_scale = Vector2( 0.532555, 0.532555 )
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -206,9 +209,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Options/OptionsContainer/MatchmakingURL"]
 show_behind_parent = true
-margin_left = -239.009
+margin_left = -260.042
 margin_top = -29.7268
-margin_right = 596.991
+margin_right = 575.958
 margin_bottom = 120.273
 texture = ExtResource( 7 )
 __meta__ = {
@@ -227,9 +230,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
-margin_left = 262.385
-margin_right = 912.385
-margin_bottom = 175.0
+margin_left = 328.0
+margin_top = 31.203
+margin_right = 655.0
+margin_bottom = 119.203
 rect_scale = Vector2( 0.5857, 0.5857 )
 mouse_filter = 1
 custom_fonts/font = ExtResource( 9 )
@@ -245,9 +249,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
+margin_left = -399.835
 margin_top = -117.766
-margin_right = 200.0
+margin_right = 464.165
 margin_bottom = 282.234
 script = ExtResource( 11 )
 __meta__ = {
@@ -260,6 +264,7 @@ margin_bottom = 75.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "UTWÓRZ POKÓJ"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -268,20 +273,23 @@ __meta__ = {
 margin_top = 79.0
 margin_right = 864.0
 margin_bottom = 154.0
+alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
 margin_right = 864.0
 margin_bottom = 75.0
+alignment = 1
 
 [node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_right = 504.0
+margin_left = 166.0
+margin_right = 670.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 8 )
 text = "pokój niepubliczny"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 508.0
-margin_right = 532.0
+margin_left = 674.0
+margin_right = 698.0
 margin_bottom = 75.0
 
 [node name="ServerAcceptButton" type="TextureButton" parent="Create"]
@@ -294,9 +302,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Create/ServerAcceptButton"]
-margin_left = 262.385
-margin_right = 912.385
-margin_bottom = 175.0
+margin_left = 323.992
+margin_top = 24.3612
+margin_right = 973.992
+margin_bottom = 199.361
 rect_scale = Vector2( 0.5857, 0.5857 )
 mouse_filter = 1
 custom_fonts/font = ExtResource( 9 )
