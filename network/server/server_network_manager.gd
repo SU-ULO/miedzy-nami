@@ -31,6 +31,7 @@ func create_client(config):
 		client.connect("send_candidate", self, "send_candidate", [config.id])
 		client.connect("success", self, "spawn_player", [config.id])
 		client.connect("fail", self, "kick", [config.id])
+		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -99,3 +100,12 @@ func _process(_delta):
 	for c in connected_clients.values():
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
+
+func request_meeting(dead: int):
+	handle_meeting_request(dead, own_id)
+
+func handle_meeting_request(dead: int, caller: int):
+	#here we should check if meeting is in progress and return in case it is
+	for c in connected_clients.values():
+		c.send_meeting_start(caller, dead)
+	start_meeting(caller, dead)

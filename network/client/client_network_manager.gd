@@ -16,6 +16,7 @@ func create_world(config):
 	joined_server.connect("remote_player_joined", self, "handle_remote_player_joining")
 	joined_server.connect("remote_player_left", self, "handle_remote_player_leaving")
 	joined_server.connect("players_sync", self, "handle_players_sync")
+	joined_server.connect("meeting_start", self, "start_meeting")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -70,3 +71,7 @@ func handle_players_sync(data):
 func _process(_delta):
 	if joined_server and joined_server.established and own_player:
 		joined_server.send_player_character_sync(own_player.generate_sync_data())
+
+func request_meeting(dead: int):
+	if joined_server:
+		joined_server.send_meeting_request(dead)
