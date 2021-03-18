@@ -21,5 +21,5 @@ func Interact(body):
 func EndInteraction(body):
 	body.color = colorMenu.color
 	body.currLook = lookMenu.currLook
-	body.loadLook()
+	body.get_node("sprites").loadLook()
 	get_owner().get_node("CanvasLayer").remove_child(menu)
