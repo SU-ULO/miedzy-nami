@@ -7,7 +7,7 @@ func _ready():
 	add_to_group("entities")
 
 func Interact(_body):
-	pass
+	print("heh")
 
 func EndInteraction(_body):
 	pass

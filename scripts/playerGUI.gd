@@ -64,10 +64,7 @@ func checkReportability():
 	return player.deadbody_interactable.size() > 0
 
 func _on_report_pressed():
-	for i in player.interactable:
-		if 	i.is_in_group("deadbody"):
-			i.Interact(player)
-			break
+	player.ui_report()
 		
 func checkKillability():
 	return player.players_interactable.size() > 0
