@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="117.79871mm"
+   height="117.79877mm"
+   viewBox="0 0 117.79871 117.79877"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="joystick.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3158">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop3154" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop3156" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3128"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop3126" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3158"
+       id="radialGradient3160"
+       cx="114.57001"
+       cy="186.00652"
+       fx="114.57001"
+       fy="186.00652"
+       r="57.546875"
+       gradientTransform="translate(-150.48185,-51.306738)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#262626"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35370861"
+     inkscape:cx="128.84739"
+     inkscape:cy="347.23362"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     showborder="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1432"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(94.811201,-75.800487)">
+    <g
+       id="g3164">
+      <circle
+         style="opacity:0.997;fill:#ffffff;fill-opacity:0.2;stroke:none;stroke-width:2.70497;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:0.233796;paint-order:markers stroke fill"
+         id="circle3134"
+         cx="-35.911842"
+         cy="134.69987"
+         r="57.546875" />
+      <path
+         id="circle3136"
+         style="opacity:0.997;fill:#ffffff;fill-opacity:0.398148;stroke:url(#radialGradient3160);stroke-width:2.70497;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:0.233796;paint-order:markers stroke fill"
+         d="m -36.073069,77.153028 a 57.546874,57.546874 0 0 0 -57.385647,57.546872 57.546874,57.546874 0 0 0 57.546877,57.54688 57.546874,57.546874 0 0 0 57.54687,-57.54688 57.546874,57.546874 0 0 0 -57.54687,-57.546872 57.546874,57.546874 0 0 0 -0.16123,0 z m 0.062,1.32292 a 56.223955,56.223955 0 0 1 0.0992,0 56.223955,56.223955 0 0 1 56.22395,56.223952 56.223955,56.223955 0 0 1 -56.22395,56.22396 56.223955,56.223955 0 0 1 -56.22396,-56.22396 56.223955,56.223955 0 0 1 56.12474,-56.223952 z" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,433 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://menu/menu.gd" type="Script" id=1]
+[ext_resource path="res://menu/options.gd" type="Script" id=2]
+[ext_resource path="res://menu/join.gd" type="Script" id=3]
+[ext_resource path="res://textures/button-menu.png" type="Texture" id=4]
+[ext_resource path="res://textures/bez_napis_1980x1080.png" type="Texture" id=5]
+[ext_resource path="res://textures/sam_napis_1980x1080.png" type="Texture" id=6]
+[ext_resource path="res://textures/przycisk_na_username.png" type="Texture" id=7]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=8]
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=9]
+[ext_resource path="res://shaders/idk.tres" type="Theme" id=10]
+[ext_resource path="res://menu/create_room.gd" type="Script" id=11]
+[ext_resource path="res://menu/bees.gd" type="Script" id=14]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="background" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bees" type="Control" parent="background"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sam_napis_1980x1080" type="TextureRect" parent="background"]
+margin_left = 299.68
+margin_top = -6.70221
+margin_right = 2219.68
+margin_bottom = 1073.3
+rect_scale = Vector2( 0.721868, 0.721868 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -179.462
+margin_right = 200.0
+margin_bottom = 220.537
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="LineEdit" parent="Main"]
+margin_left = -59.1389
+margin_top = 44.0
+margin_right = 540.861
+margin_bottom = 119.0
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
+text = "username"
+align = 1
+expand_to_text_length = true
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Main/Username"]
+show_behind_parent = true
+margin_left = -140.156
+margin_top = -14.2855
+margin_right = 695.844
+margin_bottom = 135.714
+rect_scale = Vector2( 1.03458, 0.803268 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartClientButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 137.143
+margin_right = 780.076
+margin_bottom = 245.143
+rect_scale = Vector2( 0.772785, 0.772785 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/StartClientButton"]
+margin_left = 315.643
+margin_top = 13.8341
+margin_right = 545.643
+margin_bottom = 88.8341
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "DoŁĄCZ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartServerButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 229.143
+margin_right = 780.076
+margin_bottom = 337.143
+rect_scale = Vector2( 0.772785, 0.772785 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/StartServerButton"]
+margin_left = 210.827
+margin_top = 13.8341
+margin_right = 659.827
+margin_bottom = 88.8341
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "UTWÓRZ POKÓJ"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 322.95
+margin_right = 774.076
+margin_bottom = 430.95
+rect_scale = Vector2( 0.773, 0.773 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Main/OptionsButton"]
+margin_left = 348.025
+margin_top = 16.9486
+margin_right = 539.025
+margin_bottom = 91.9486
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "OPCJE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Control" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -117.766
+margin_right = 200.0
+margin_bottom = 282.234
+script = ExtResource( 2 )
+
+[node name="MatchmakingURLLabel" type="Label" parent="Options"]
+margin_left = -17.8197
+margin_top = 51.5596
+margin_right = 888.18
+margin_bottom = 126.56
+rect_scale = Vector2( 0.532555, 0.532555 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "URL serwera matchmakingowego"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsContainer" type="Control" parent="Options"]
+margin_right = 500.0
+margin_bottom = 24.0
+
+[node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
+margin_left = 99.9603
+margin_top = 106.057
+margin_right = 399.96
+margin_bottom = 181.057
+rect_scale = Vector2( 0.720081, 0.720081 )
+theme = ExtResource( 10 )
+custom_fonts/font = ExtResource( 8 )
+align = 1
+placeholder_text = "url"
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Options/OptionsContainer/MatchmakingURL"]
+show_behind_parent = true
+margin_left = -260.042
+margin_top = -29.7268
+margin_right = 575.958
+margin_bottom = 120.273
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsAcceptButton" type="TextureButton" parent="Options"]
+margin_left = -22.6681
+margin_top = 168.98
+margin_right = 841.332
+margin_bottom = 276.98
+rect_scale = Vector2( 0.565934, 0.565934 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
+margin_left = 328.0
+margin_top = 31.203
+margin_right = 655.0
+margin_bottom = 119.203
+rect_scale = Vector2( 0.5857, 0.5857 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Zatwierdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Create" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -399.835
+margin_top = -117.766
+margin_right = 464.165
+margin_bottom = 282.234
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateRoomlabel" type="Label" parent="Create"]
+margin_right = 864.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "UTWÓRZ POKÓJ"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
+margin_top = 79.0
+margin_right = 864.0
+margin_bottom = 154.0
+alignment = 1
+
+[node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
+margin_right = 864.0
+margin_bottom = 75.0
+alignment = 1
+
+[node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
+margin_left = 166.0
+margin_right = 670.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 8 )
+text = "pokój niepubliczny"
+
+[node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
+margin_left = 674.0
+margin_right = 698.0
+margin_bottom = 75.0
+
+[node name="ServerAcceptButton" type="TextureButton" parent="Create"]
+margin_top = 158.0
+margin_right = 864.0
+margin_bottom = 266.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Create/ServerAcceptButton"]
+margin_left = 323.992
+margin_top = 24.3612
+margin_right = 973.992
+margin_bottom = 199.361
+rect_scale = Vector2( 0.5857, 0.5857 )
+mouse_filter = 1
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Zatwierdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoomList" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -215.41
+margin_top = -128.637
+margin_right = 648.59
+margin_bottom = 271.363
+rect_scale = Vector2( 0.480756, 0.480756 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="RoomList"]
+margin_right = 864.0
+margin_bottom = 108.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="RoomList/Exit"]
+margin_left = 343.778
+margin_top = 12.1557
+margin_right = 510.778
+margin_bottom = 87.1557
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Wyjdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Refresh" type="TextureButton" parent="RoomList"]
+margin_top = 112.0
+margin_right = 864.0
+margin_bottom = 220.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="RoomList/Refresh"]
+margin_left = 314.124
+margin_top = 9.75531
+margin_right = 544.124
+margin_bottom = 84.7553
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Odśwież"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServersList" type="VBoxContainer" parent="RoomList"]
+margin_top = 224.0
+margin_right = 864.0
+margin_bottom = 224.0
+
+[node name="Joining" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -156.5
+margin_top = -33.4106
+margin_right = 156.5
+margin_bottom = 41.5894
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Joining"]
+margin_right = 313.0
+margin_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Łączenie..."
+align = 1
+valign = 1
+
+[node name="LoggingIn" type="VBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -599.123
+margin_top = -48.6359
+margin_right = 575.877
+margin_bottom = 351.364
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LoggingIn"]
+margin_right = 1175.0
+margin_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Łączenie z serwerem matchmakingowym..."
+align = 1
+valign = 1
+[connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
+[connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
+[connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
+[connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
+[connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
+[connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]

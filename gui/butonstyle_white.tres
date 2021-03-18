@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxFlat" format=2]
+
+[resource]
+content_margin_bottom = 10.0
+bg_color = Color( 1, 1, 1, 0.196078 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true

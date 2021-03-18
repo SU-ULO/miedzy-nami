@@ -15,7 +15,7 @@ light_mask = -2147483647
 anchor_mode = 0
 zoom = Vector2( 2, 2 )
 
-[node name="kamera" type="Sprite" parent="."]
+[node name="camera-sprite" type="Sprite" parent="."]
 position = Vector2( 43.5332, 37.4518 )
 scale = Vector2( 0.0448635, 0.0448635 )
 texture = ExtResource( 1 )

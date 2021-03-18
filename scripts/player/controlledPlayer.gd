@@ -5,35 +5,44 @@ var impostor_toggle :bool = false  #temporarily
 
 var selected_vent = 0
 
+export var killCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
-func _on_ready():
+func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
+	$CanvasLayer/playerGUI.updateGUI()
+	$KillCooldown.wait_time = killCooldown
 
 func get_input():
 	moveX = 0; moveY = 0
 	
 	if currentInteraction == null:
+		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
-			moveX = 1;
+			moveX += 1;
 		
 		if Input.is_action_pressed("move_left"):
-			moveX = -1;
+			moveX += -1;
 		
 		if Input.is_action_pressed("move_down"):
-			moveY = 1;
+			moveY += 1;
 		
 		if Input.is_action_pressed("move_up"):
-			moveY = -1;
+			moveY += -1;
 		
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
-		
+			$CanvasLayer/playerGUI.updateGUI()
+		if Input.is_action_just_pressed("ui_kill"):
+			ui_kill()
+		if Input.is_action_just_pressed("ui_report"):
+			ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
-	
+		$CanvasLayer/playerGUI.updateGUI()
+		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
 			sight_range = 2000;
@@ -45,11 +54,15 @@ func get_input():
 		if !impostor_toggle:
 			self.add_to_group("impostors")
 			self.modulate = Color("#00FF00")
+			if debug_mode:
+				# most likely broken
+				var temp = get_parent().get_parent().get_node("dekoracje/meeting-table/game-spawner")
+				temp.teleport_players()
 		else:
 			self.remove_from_group("impostors")
 			self.modulate = Color("#FFFFFF")
 		impostor_toggle = !impostor_toggle
-	
+		$CanvasLayer/playerGUI.interactionGUIupdate()
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -71,17 +84,20 @@ func get_input():
 			if Input.is_action_just_pressed("use_vent"):
 				arrow.call_teleport()
 				selected_vent = 0
-				
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
+			$CanvasLayer2/exit_button.visible = false
 		else: if currentInteraction.is_in_group("players") and interacted == false:
 			currentInteraction = null
-			
+		else:
+			$CanvasLayer/playerGUI.visible = false
 
 func _physics_process(delta):
 	scale_sight_range(delta)
 	get_input()
-
+	check_line_of_sight()
+	check_interaction()
+	
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -103,3 +119,126 @@ func scale_sight_range(delta):
 		if radius > sight_range:
 			area.set_radius(sight_range)
 			$Light.set_texture_scale(sight_range/mask_width*2)
+
+func check_line_of_sight():
+	for item in in_sight_range:
+		var space_state = get_world_2d().direct_space_state
+		var sight_check = space_state.intersect_ray(self.position, item.position, [self, item], 1)
+			
+		if !sight_check.empty():
+			if debug_mode: debug_pos_collided.append(sight_check.position)
+			if in_sight.has(item):
+				in_sight.erase(item);
+				if debug_mode: print(item.get_name(), " removed from: sight")
+		else:
+			if debug_mode: debug_pos_ok.append(item.position)
+			if !in_sight.has(item):
+				in_sight.push_back(item);
+				if debug_mode: print(item.get_name(), " added to: sight")
+
+func check_interaction():
+	for item in in_interaction_range:
+		if item.is_in_group("players"):
+			if !in_sight.has(item):
+				if players_interactable.has(item):
+					players_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: players_interactable")
+			else:
+				if !players_interactable.has(item):
+					players_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: players_interactable")
+
+		elif item.is_in_group("deadbody"):
+			if !in_sight.has(item):
+				if deadbody_interactable.has(item):
+					deadbody_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: deadbody_interactable")
+			else:
+				if !deadbody_interactable.has(item):
+					deadbody_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: deadbody_interactable")
+		else:
+			if !in_sight.has(item):
+				if interactable.has(item):
+					interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: interactable")
+			else:
+				if !interactable.has(item):
+					if item.is_in_group("tasks"):
+						if item in localTaskList:
+							interactable.push_back(item);
+							if debug_mode: print(item.get_name(), " added to: interactable")
+					else:
+						interactable.push_back(item);
+						if debug_mode: print(item.get_name(), " added to: interactable")
+
+func showMyTasks():
+	for i in localTaskList:
+		if i.IsDone():
+			localTaskList.erase(i)
+			if i.material != null:
+				if i.material is ShaderMaterial:
+					i.material.set_shader_param("aura_width", 0)
+		elif i.material != null:
+				if i.material is ShaderMaterial:
+					i.material.set_shader_param("aura_width", 18)
+# interactions
+
+func ui_kill():
+	if(players_interactable.size() != 0):
+		var currentBestItem = players_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in players_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
+
+func ui_report():
+	if(deadbody_interactable.size() != 0):
+		var currentBestItem = deadbody_interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in deadbody_interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		currentBestItem.Interact(self)
+
+func ui_canceled():
+	if(currentInteraction != null):
+		$CanvasLayer2/exit_button.visible = false
+		if currentInteraction.is_in_group("tasks"):
+			currentInteraction.EndInteraction()
+		else:
+			currentInteraction.EndInteraction(self)
+		print(currentInteraction.get_name())
+		currentInteraction = null
+		
+func ui_selected():
+	if debug_mode:
+		print("sight_range: ", in_sight_range)
+		print("sight: ", in_sight)
+	
+	if(interactable.size() != 0):
+		var currentBestItem = interactable[0]
+		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
+			
+		for item in interactable:
+			if(position.distance_squared_to(item.position) < currentBestDistance):
+				currentBestItem = item
+				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+
+		var result
+		if currentBestItem.is_in_group("tasks"): 
+			result = currentBestItem.Interact(); 
+		else: result = currentBestItem.Interact(self)
+		
+		if result == false:
+			return
+		currentInteraction = currentBestItem
+		$CanvasLayer2/exit_button.visible = true
+
+func _on_exit_button_pressed():
+	ui_canceled()

@@ -3,7 +3,7 @@ using System;
 
 public class TablicaMainTask : Task
 {
-	protected static bool debug = true;
+	protected static bool debug = false;
 	
 	public TablicaMainTask(){
 		
@@ -11,6 +11,15 @@ public class TablicaMainTask : Task
 			this.local = true;
 		}
 		
+		this.maxState = 1;
+	}
+	
+	public override string ToString()
+	{
+		return "Wyczyść tablice (2)";
+	}
+	
+	public override void _Ready(){
 		int numberOfBoards = 0;
 		
 		foreach(Task t in Task.tasks){

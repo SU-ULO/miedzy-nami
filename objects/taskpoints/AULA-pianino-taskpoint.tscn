@@ -1,17 +1,62 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scripts/tasks/AULAPianino.cs" type="Script" id=1]
 [ext_resource path="res://textures/dekoracje/pianino.png" type="Texture" id=2]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+// This shader only works properly with premultiplied alpha blend mode.
+uniform float aura_width = 2.0;
+uniform vec4 aura_color: hint_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+	float maxa = col.a;
+	float mina = col.a;
+
+	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	col.rgb *= col.a;
+
+	COLOR = col;
+	COLOR.rgb += aura_color.rgb * (maxa - mina);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/aura_width = 0.0
+shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
+
 [node name="pianino" type="StaticBody2D"]
+material = SubResource( 2 )
 script = ExtResource( 1 )
 
 [node name="pianino" type="Sprite" parent="."]
-position = Vector2( 699.43, 457.083 )
+use_parent_material = true
+position = Vector2( 48.891, -63.3481 )
 scale = Vector2( 0.621356, 0.621356 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 699.43, 457.083 )
+position = Vector2( 48.891, -63.3481 )
 scale = Vector2( 0.621356, 0.621356 )
 polygon = PoolVector2Array( -506.352, 796.984, 291.627, 805.509, 294.573, -314.264, 337.587, -351.542, 334.719, -646.905, -184.316, -649.772, -190.051, -377.351, -158.507, -274.117, -494.016, -245.441, -537.03, 184.698, -496.883, 230.579 )

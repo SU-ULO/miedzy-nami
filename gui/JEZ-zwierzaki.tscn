@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/tasks/JEZ-tem.gd" type="Script" id=1]
+[ext_resource path="res://textures/jezyki_motyl.png" type="Texture" id=2]
+[ext_resource path="res://textures/jezyki_tkot.png" type="Texture" id=3]
+[ext_resource path="res://textures/jezyki_to.png" type="Texture" id=4]
+[ext_resource path="res://textures/jezyki_slimak.png" type="Texture" id=5]
+[ext_resource path="res://textures/jezyki_kaczka.png" type="Texture" id=6]
+[ext_resource path="res://scripts/tasks/JEZ-zwierzaki.gd" type="Script" id=7]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=8]
+
+[node name="JEZ-zwierzaki" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 148.671
+margin_top = 108.353
+margin_right = 2128.67
+margin_bottom = 1188.35
+rect_scale = Vector2( 0.798944, 0.798944 )
+texture = ExtResource( 4 )
+
+[node name="Labelw2" type="Label" parent="."]
+margin_left = 610.403
+margin_top = 746.259
+margin_right = 1140.4
+margin_bottom = 899.259
+rect_scale = Vector2( 0.657848, 0.657848 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "el pato
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 443.283
+margin_top = 316.718
+margin_right = 973.283
+margin_bottom = 469.718
+rect_scale = Vector2( 0.657848, 0.657848 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "die
+Katze"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1240.31
+margin_top = 676.27
+margin_right = 1770.31
+margin_bottom = 829.27
+rect_scale = Vector2( 0.657848, 0.657848 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "der
+Schmetterling"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 1023.61
+margin_top = 332.841
+margin_right = 1553.61
+margin_bottom = 485.841
+rect_scale = Vector2( 0.657848, 0.657848 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "el caracol"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kaczka" type="Sprite" parent="."]
+position = Vector2( 1681.64, 158.806 )
+scale = Vector2( 0.773, 0.773 )
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
+
+[node name="TextureButton" type="TextureButton" parent="kaczka"]
+margin_left = -288.0
+margin_top = -177.0
+margin_right = 290.0
+margin_bottom = 268.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="motyl" type="Sprite" parent="."]
+position = Vector2( 259.324, 589.546 )
+scale = Vector2( 0.773, 0.773 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="TextureButton" type="TextureButton" parent="motyl"]
+margin_left = -305.0
+margin_top = -195.0
+margin_right = 258.0
+margin_bottom = 234.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="kot" type="Sprite" parent="."]
+position = Vector2( 1686.66, 453.025 )
+scale = Vector2( 0.773, 0.773 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="TextureButton" type="TextureButton" parent="kot"]
+margin_left = -197.0
+margin_top = -197.0
+margin_right = 302.0
+margin_bottom = 235.0
+
+[node name="slimak" type="Sprite" parent="."]
+position = Vector2( 309.885, 904.411 )
+scale = Vector2( 0.772833, 0.772833 )
+texture = ExtResource( 5 )
+script = ExtResource( 1 )
+
+[node name="TextureButton" type="TextureButton" parent="slimak"]
+margin_left = -262.0
+margin_top = -218.0
+margin_right = 250.0
+margin_bottom = 227.0
+
+[node name="kot-pos" type="Position2D" parent="."]
+position = Vector2( 446.287, 350.506 )
+
+[node name="slimak-pos" type="Position2D" parent="."]
+position = Vector2( 1124.12, 344.206 )
+
+[node name="motyl-pos" type="Position2D" parent="."]
+position = Vector2( 1386.19, 715.883 )
+
+[node name="kaczka-pos" type="Position2D" parent="."]
+position = Vector2( 691.972, 736.042 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4

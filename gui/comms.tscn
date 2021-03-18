@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/comms.gd" type="Script" id=1]
+[ext_resource path="res://textures/commsy_tlo.png" type="Texture" id=2]
+[ext_resource path="res://gui/podsceny/BIO-pokretelko.tscn" type="PackedScene" id=3]
+
+[node name="comms" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -475.0
+margin_top = -425.0
+margin_right = 475.0
+margin_bottom = 425.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Knob" parent="Texture" instance=ExtResource( 3 )]
+position = Vector2( 679.737, 424.84 )
+scale = Vector2( 0.65, 0.65 )
+
+[node name="wave1" type="Position2D" parent="Texture"]
+position = Vector2( 113, 423 )
+
+[node name="wave2" type="Position2D" parent="Texture"]
+position = Vector2( 113, 628 )
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

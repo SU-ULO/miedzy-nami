@@ -5,6 +5,9 @@ onready var camera_gui = preload("res://gui/cameras/camera-gui.tscn").instance()
 onready var canvas = get_owner().get_node("CanvasLayer")
 onready var world = get_world_2d()
 
+var texture_inactive = "res://textures/dekoracje/kamera.png"
+var texture_active = "res://textures/dekoracje/kamera-active.png"
+
 func _ready():
 	self.add_to_group("entities")
 	self.add_to_group("interactable")
@@ -17,7 +20,15 @@ func delete_gui(body):
 		# warning-ignore:return_value_discarded
 		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 		get_node(lc).get_node("Area2D").monitoring = 0
+		get_node(lc).get_node("camera-sprite").texture = load(texture_inactive)
 	canvas.remove_child(camera_gui)
+	
+	# tutaj sygnał do serwera - ktoś przestał używać kamery
+	# po stronie serwera można zliczać ile osób używa
+	# i jeśli stanie się 0 to wtedy ustawić teksture na nieaktywną
+	# for lc in linkedcameras:
+	# 	get_node(lc).get_node("camera-sprite").texture = load(texture_inactive)
+	# nwm czy to jest odopwiednie miejsce ale tutaj jest lista kamer wszystkich
 
 func instance_gui(body):
 	for vp in camera_gui.viewports:
@@ -27,14 +38,23 @@ func instance_gui(body):
 	var iter = 0
 	
 	for vp in camera_gui.viewports:
-		get_node(linkedcameras[iter]).get_node("Camera2D").set_custom_viewport(camera_gui.get_node(vp))
-		get_node(linkedcameras[iter]).get_node("Camera2D").current = 1
-		get_node(linkedcameras[iter]).get_node("Light2D").visible = 1
+		var camera = get_node(linkedcameras[iter])
+		camera.get_node("Camera2D").set_custom_viewport(camera_gui.get_node(vp))
+		camera.get_node("Camera2D").current = 1
+		camera.get_node("Light2D").visible = 1
 		# warning-ignore:return_value_discarded
-		get_node(linkedcameras[iter]).connect("camera_detection", body, "camera_visibility")
-		get_node(linkedcameras[iter]).get_node("Area2D").monitoring = 1
-		get_node(linkedcameras[iter]).detect()
+		camera.connect("camera_detection", body, "camera_visibility")
+		camera.get_node("Area2D").monitoring = 1
+		camera.get_node("camera-sprite").texture = load(texture_active)
+		camera.detect()
 		iter += 1
+		
+	# tutaj sygnał do serwera - ktoś zaczął używać kamery
+	# po stronie serwera można zliczać ile osób używa
+	# i jeśli więcej niż 0 to wtedy ustawić teksture na aktywną
+	# for lc in linkedcameras:
+	# 	get_node(lc).get_node("camera-sprite").texture = load(texture_active)
+	# nwm czy to jest odopwiednie miejsce ale tutaj jest lista kamer wszystkich
 
 func Interact(body):
 	instance_gui(body)

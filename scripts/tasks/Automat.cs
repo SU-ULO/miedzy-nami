@@ -6,6 +6,13 @@ public class Automat : TaskWithGUI
 	public override string GetResourceLocation(){
 		return "res://gui/automat.tscn";
 	}
+	public override string ToString(){
+		return "AULA: zrób sobie kawusię";
+	}
+	public Automat()
+	{
+		this.category = TaskCategory.VeryHard;
+	}
 	public int done = 3;
 	public bool kawa;
 	

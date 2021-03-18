@@ -61,6 +61,11 @@ public abstract class Task : Godot.Node2D
 		return result.ToArray();
 	}
 	
+	private static Task TaskNotFound(Object criteria){
+		Godot.GD.Print("Task "+ criteria + " not found in " + tasks.Count + " tasks.");
+		return null;
+	}
+	
 	public static Task GetTaskByID(int id){
 		
 		foreach (Task task in tasks){
@@ -68,16 +73,23 @@ public abstract class Task : Godot.Node2D
 				return task;
 		}
 		
-		Godot.GD.Print("Task with ID "+ id + " not found in " + tasks.Count + " tasks.");
+		return TaskNotFound(id);
+	}
+	
+	public static Task GetTaskByTypeName(string typeName){
+		foreach (Task task in tasks){
+			if(task.GetType().Name == typeName)
+				return task;
+		}
 		
-		return null;
+		return TaskNotFound(typeName);
 	}
 	
 	public static Task[] GetAllTasks(){
 		return tasks.ToArray();
 	}
 
-	public static void Cleanup(){
+	public static void ClientCleanup(){
 		tasks.Clear();
 		currentTaskID = 0;
 	}
@@ -88,14 +100,12 @@ public abstract class Task : Godot.Node2D
 
 	public static void DivideTasks(int[] playerIDs){
 		int numberOfPlayers = playerIDs.Length;
-		int numberOfTaskCategories = Enum.GetValues(typeof(TaskCategory)).GetLength(0);
-		List<int>[] sortedIntoCategories = new List<int>[numberOfTaskCategories];
-		List<int>[] leftovers = new List<int>[numberOfTaskCategories];
+		
+		Dictionary<TaskCategory, List<int>> sortedIntoCategories = new Dictionary<TaskCategory, List<int>>();
 		tasksForPlayers = new List<int>[numberOfPlayers];
 		
-		for(int i = 0; i < numberOfTaskCategories; i++){
-			sortedIntoCategories[i] = new List<int>();
-			leftovers[i] = new List<int>();
+		foreach(TaskCategory tc in TaskCategory.categories){
+			sortedIntoCategories.Add(tc, new List<int>());
 		}
 		
 		for(int i = 0; i < numberOfPlayers; i++){
@@ -105,76 +115,52 @@ public abstract class Task : Godot.Node2D
 		Godot.GD.Print("Total tasks: "+tasks.Count);
 		
 		for(int i = 0; i < tasks.Count; i++){
+			Godot.GD.Print(tasks[i].ToString()+": "+tasks[i].started);
 			// Don't add any tasks, that require another one to be done first
-			if(tasks[i].started)
-				sortedIntoCategories[(int)tasks[i].category].Add(tasks[i].taskID);
-		}
-		
-		// Try to evenly divide the tasks
-		
-		for(int i = 0; i < numberOfTaskCategories; i++){
-			List<int> category = sortedIntoCategories[i];
-			
-			int numberOfTasksPerPlayer = category.Count / numberOfPlayers;
-			
-			for(int j = 0; j < numberOfPlayers; j++){
-				Godot.GD.Print(i + " " + j +  " " + category.Count + " " + numberOfTasksPerPlayer);
-				for(int k = 0; k < numberOfTasksPerPlayer; k++){
-					int index = r.Next(0, category.Count);
-					
-					tasksForPlayers[j].Add(category[index]);
-					category.Remove(category[index]);
-				}
-			}
-			
-			leftovers[i] = category;
-		}
-		
-		// Calculate how difficult the tasks are for the given user.
-		int[] playerDifficulties = new int[numberOfPlayers];
-		
-		for(int i = 0; i < numberOfPlayers; i++){
-			if(i == 0)
-			{
-				foreach (int t in tasksForPlayers[i])
-					playerDifficulties[i] += ((int) tasks[t].category + 1);
-			}
-			else
-			{
-				playerDifficulties[i] = playerDifficulties[0];
+			if(tasks[i].started){
+				sortedIntoCategories[tasks[i].category].Add(tasks[i].taskID);
 			}
 		}
 		
-		// Distribute the remaining tasks
-		for(int i = 0; i < numberOfTaskCategories; i++){
-			for(int j = 0; j < leftovers[i].Count; j++){
-				// Roll how many tasksForPlayers should get the task
-				int howManyTimes = r.Next(1,3);
-				for(int k = 0; k < howManyTimes; k++){
-					// Search for the player with the lowest difficulty score
-					int minIndex = -1;
-					for(int l = 0; l < numberOfPlayers; l++){
-						// Reject any player, that already has this task on the list
-						if(!tasksForPlayers[l].Contains(leftovers[i][j])){
-							if(minIndex == -1 || playerDifficulties[minIndex] > playerDifficulties[l])
-								minIndex = l;
+		foreach(TaskCategory tc in TaskCategory.categories){
+			if(sortedIntoCategories[tc].Count > tc.perPlayer){
+				tc.perPlayer = sortedIntoCategories[tc].Count;
+			}
+		}
+		
+		for (int i = 0; i < numberOfPlayers; i++){
+			foreach (TaskCategory tc in TaskCategory.categories){
+				if(sortedIntoCategories[tc].Count > 0){
+					for(int j = 0; j < tc.perPlayer; j++){
+						int taskIDforK = 0, k = 0;
+						int initialK = 0;
+						try {
+							k = r.Next(0, sortedIntoCategories[tc].Count - 1);
+							initialK = k;
+							while(tasksForPlayers[i].Contains(taskIDforK)) {
+								k = (k + 1) % sortedIntoCategories[tc].Count;
+								taskIDforK = sortedIntoCategories[tc][k];
+								if(k == initialK){
+									Godot.GD.Print("One of the tasks couldn't be assigned");
+									throw new Exception("");
+								}
+							}
+							
+							tasksForPlayers[i].Add(taskIDforK);
+							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
+						}catch(Exception e){
+							if(e.Message.Equals("") == false){
+								Godot.GD.Print("Skopiuj ten błąd dla Marcina: "+e
+								+"\ntaskIDforK: "+taskIDforK
+								+"\nk: "+k
+								+"\nsortedIntoCategories[tc].Count: "+sortedIntoCategories[tc].Count
+								+"\ni: "+i
+								+"\nplayerIDs.Length"+playerIDs.Length);
+							}
 						}
 					}
-					
-					Task taskToAdd = tasks[leftovers[i][j]];
-					// Add the task and adjust the difficulty score
-					tasksForPlayers[minIndex].Add(taskToAdd.taskID);
-					// (We don't want anyone to get too many tasks, 
-					// even if they're simple, so the additional tasks add more score)
-					playerDifficulties[minIndex] += ((int) taskToAdd.category + 5);
-				}	
-			}
-		}
-		
-		for(int i = 0; i < numberOfPlayers; i++){
-			for(int j = 0; j < tasksForPlayers[i].Count; j++){
-				tasks[tasksForPlayers[i][j]].playerIDs.Add(playerIDs[i]);
-			}
+				}
+			}	
 		}
 
 	}
@@ -199,6 +185,7 @@ public abstract class Task : Godot.Node2D
 						Task nextTask = tasks[this.GetNextTaskID()];
 						nextTask.dirty = true;
 						nextTask.started = true;
+						nextTask.local = true;
 					}
 					
 					Godot.GD.Print("Ending task "+taskID);
@@ -222,14 +209,31 @@ public abstract class Task : Godot.Node2D
 		}
 	}
 	
-	public enum TaskCategory{
-		VeryHard = 3,
-		Hard = 2,
-		Medium = 1,
-		Easy = 0
+	public class TaskCategory{
+		// You can (un)define categories here
+		// The number of tasks of given category per player is specified in perPlayer and can be changed
+		// ADD THEM TO THE CATEGORIES ARRAY THOUGH (or declare them just there, but for ease of use's sake
+		// it is generally a good idea to have them named here)
+		public static TaskCategory VeryHard = new TaskCategory(20);
+		public static TaskCategory Hard = new TaskCategory(20);
+		public static TaskCategory Normal = new TaskCategory(20);
+		public static TaskCategory Easy = new TaskCategory(20);
+		
+		public static readonly TaskCategory[] categories = new TaskCategory[]{
+			VeryHard,
+			Hard,
+			Normal,
+			Easy
+		};
+		
+		public int perPlayer = 0;
+		
+		private TaskCategory(int perPlayer){
+			this.perPlayer = perPlayer;
+		}
 	}
 
-	public TaskCategory category;
+	public TaskCategory category = TaskCategory.Normal;
 	
 	public virtual void TaskInteract(){}
 	public virtual void TaskEndInteraction(){}
@@ -237,7 +241,7 @@ public abstract class Task : Godot.Node2D
 	public virtual void TaskOnCompleted(){}
 	
 	public virtual string ToString(){
-		return "Task-"+taskID+" started status: "+started+" of category"+category;
+		return this.GetType().Name + " ["+state+"/"+maxState+"]";
 	}
 	
 		
