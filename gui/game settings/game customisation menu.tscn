@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game customisation menu.gd" type="Script" id=1]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://entities/character-customisation/Character-customisation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/game settings/color settings.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/game settings/game settings.tscn" type="PackedScene" id=5]
+
+[node name="game customisation menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menus" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color-menu" parent="menus" instance=ExtResource( 4 )]
+visible = false
+margin_left = 3.069
+margin_top = 3.19786
+margin_right = 3.06897
+margin_bottom = 3.19788
+
+[node name="game-menu" parent="menus" instance=ExtResource( 5 )]
+visible = false
+margin_left = 1.53406
+margin_top = 3.54167
+margin_right = 1.53406
+margin_bottom = 3.54163
+
+[node name="look-menu" parent="menus" instance=ExtResource( 3 )]
+margin_left = 0.492493
+margin_top = -0.951569
+margin_right = 0.492432
+margin_bottom = -0.951538
+
+[node name="buttons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="color" type="Button" parent="buttons"]
+margin_left = 1050.15
+margin_top = 959.117
+margin_right = 1323.15
+margin_bottom = 1062.12
+custom_fonts/font = ExtResource( 2 )
+text = "color"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="look" type="Button" parent="buttons"]
+margin_left = 1343.28
+margin_top = 953.778
+margin_right = 1616.28
+margin_bottom = 1056.78
+custom_fonts/font = ExtResource( 2 )
+text = "look"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="game" type="Button" parent="buttons"]
+margin_left = 1640.69
+margin_top = 948.439
+margin_right = 1913.69
+margin_bottom = 1051.44
+custom_fonts/font = ExtResource( 2 )
+text = "game"
+__meta__ = {
+"_edit_use_anchors_": false
+}

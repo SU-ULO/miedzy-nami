@@ -136,7 +136,7 @@ scale = Vector2( 0.393559, 0.393559 )
 linkedcameras = [ NodePath("../camera1"), NodePath("../camera2"), NodePath("../camera3"), NodePath("../camera4") ]
 
 [node name="camera1" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( 1097.73, 625.808 )
+position = Vector2( 1092.07, 620.151 )
 
 [node name="camera2" parent="Mapa" instance=ExtResource( 38 )]
 position = Vector2( -1154.7, 1168.79 )
@@ -747,10 +747,6 @@ scale = Vector2( 0.567539, 0.567539 )
 [node name="lawka6" parent="lobby" instance=ExtResource( 25 )]
 position = Vector2( -1414.82, 13183.9 )
 scale = Vector2( 0.567539, 0.567539 )
-
-[node name="game customisation station" parent="lobby" instance=ExtResource( 30 )]
-position = Vector2( -1275.48, 13821.1 )
-scale = Vector2( 0.269861, 0.269861 )
 
 [node name="start button" parent="lobby" instance=ExtResource( 44 )]
 position = Vector2( -2959.95, 13604.4 )

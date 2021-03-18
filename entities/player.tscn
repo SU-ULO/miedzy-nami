@@ -107,10 +107,12 @@ current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 
-[node name="KillCooldown" type="Timer" parent="." index="8"]
+[node name="spodnie" parent="." index="8"]
+visible = true
+[node name="KillCooldown" type="Timer" parent="." index="9"]
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="9"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
 
 [node name="playerGUI" type="Control" parent="CanvasLayer" index="0"]
 anchor_left = 0.5
