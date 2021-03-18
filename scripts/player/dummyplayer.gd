@@ -276,9 +276,11 @@ func loadLook():
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
+	$face/eyes.frames.add_frame("side", load(currLook.getEyePath(2)))
 	if currLook.getEyeBonusPath() != "przykromi":
 		$"face/eyes/eye-bonus".visible = true
 		$"face/eyes/eye-bonus".frames.add_frame("front", load(currLook.getEyeBonusPath(1)))
+		$"face/eyes/eye-bonus".frames.add_frame("side", load(currLook.getEyeBonusPath(2)))
 	else:
 		$"face/eyes/eye-bonus".visible = false
 	$spodnie.frame = 0
@@ -310,8 +312,10 @@ func lookRight():
 	$spodnie.animation = "walk side"
 	$"clothes-top".flip_h = false
 	$"clothes-top".animation = "walk side"
-	$face/eyes.animation = "right"
-	$"face/eyes/eye-bonus".animation = "right"
+	$face/eyes.animation = "side"
+	$face/eyes.flip_h = false
+	$"face/eyes/eye-bonus".animation = "side"
+	$"face/eyes/eye-bonus".flip_h = false
 	$face/nose.flip_h = false
 	$face/nose.animation = "side"
 	$face/mouth.animation = "right"
@@ -326,8 +330,10 @@ func lookLeft():
 	$spodnie.animation = "walk side"
 	$"clothes-top".flip_h = true
 	$"clothes-top".animation = "walk side"
-	$face/eyes.animation = "left"
-	$"face/eyes/eye-bonus".animation = "left"
+	$face/eyes.animation = "side"
+	$face/eyes.flip_h = true
+	$"face/eyes/eye-bonus".animation = "side"
+	$"face/eyes/eye-bonus".flip_h = true
 	$face/nose.flip_h = true
 	$face/nose.animation = "side"
 	$face/mouth.animation = "left"
