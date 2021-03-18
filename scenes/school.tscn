@@ -651,10 +651,6 @@ scale = Vector2( 0.567539, 0.567539 )
 position = Vector2( -1414.82, 13183.9 )
 scale = Vector2( 0.567539, 0.567539 )
 
-[node name="game customisation station" parent="lobby" instance=ExtResource( 30 )]
-position = Vector2( -1275.48, 13821.1 )
-scale = Vector2( 0.269861, 0.269861 )
-
 [node name="start button" parent="lobby" instance=ExtResource( 44 )]
 position = Vector2( -2959.95, 13604.4 )
 scale = Vector2( 0.421428, 0.421428 )
@@ -663,7 +659,7 @@ scale = Vector2( 0.421428, 0.421428 )
 position = Vector2( -4721.38, 719.065 )
 
 [node name="game-settings-station" parent="." instance=ExtResource( 50 )]
-position = Vector2( -940.465, 327.369 )
+position = Vector2( -1153.43, 13954.6 )
 scale = Vector2( 0.62081, 0.62081 )
 
 [editable path="Mapa/dekoracje/krzeslo13"]
