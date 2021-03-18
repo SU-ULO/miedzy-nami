@@ -29,7 +29,6 @@ light_mode = 2
 extents = Vector2( 70, 40 )
 
 [node name="player" type="KinematicBody2D"]
-position = Vector2( 155.885, 95.4774 )
 scale = Vector2( 0.7, 0.7 )
 collision_layer = 2
 collision_mask = 5
