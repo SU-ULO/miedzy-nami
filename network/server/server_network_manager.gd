@@ -9,6 +9,7 @@ signal send_session(id, sess)
 signal send_candidate(id, cand)
 
 func is_username_taken(requested_name: String)->bool:
+	if own_player.username==requested_name: return true
 	for c in connected_clients.values():
 		if c.config.username==requested_name:
 			return true
@@ -32,6 +33,7 @@ func create_client(config):
 		client.connect("success", self, "spawn_player", [config.id])
 		client.connect("fail", self, "kick", [config.id])
 		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
+		client.connect("kill_requested", self, "handle_kill_request")
 		add_child(client)
 	else:
 		kick(config.id)
@@ -53,6 +55,7 @@ func send_candidate(cand: String, id: int):
 func create_world(config):
 	.create_world(config)
 	own_player = preload("res://entities/player.tscn").instance()
+	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
@@ -109,3 +112,14 @@ func handle_meeting_request(dead: int, caller: int):
 	for c in connected_clients.values():
 		c.send_meeting_start(caller, dead)
 	start_meeting(caller, dead)
+
+func request_kill(dead: int):
+	handle_kill_request(dead)
+
+func handle_kill_request(dead: int):
+	if !(player_characters.has(dead)): return
+	var pos: Vector2 = player_characters[dead].position
+	for c in connected_clients.values():
+		c.send_kill(dead, pos)
+	kill(dead, pos)
+

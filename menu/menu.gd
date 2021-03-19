@@ -78,7 +78,9 @@ func _on_OptionsButton_pressed():
 	open_options()
 
 func _on_StartServerButton_pressed():
-	open_create_room()
+	usersettings.username = $'Main/Username'.text
+	if usersettings.username.length()>0:
+		open_create_room()
 
 func _on_StartClientButton_pressed():
 	open_logging_in()

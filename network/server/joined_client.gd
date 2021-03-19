@@ -6,6 +6,7 @@ var joined := false
 
 signal player_character_sync(data)
 signal meeting_requested(dead)
+signal kill_requested(dead)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -38,6 +39,8 @@ func handle_events(input):
 	if !(input is Array): return
 	if input[0]==0:
 		emit_signal("meeting_requested", input[1])
+	elif input[0]==1:
+		emit_signal("kill_requested", input[1])
 
 func send_initial_sync(data: Dictionary, id: int):
 	send_events([0, id, data])
@@ -50,6 +53,9 @@ func send_player_removal_notification(id: int):
 
 func send_meeting_start(caller: int, dead: int):
 	send_events([3, caller, dead])
+
+func send_kill(dead: int, pos: Vector2):
+	send_events([4, dead, pos])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])

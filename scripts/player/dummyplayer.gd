@@ -144,16 +144,19 @@ func camera_visibility(body, status):
 
 func Interact(body):
 	interacted = true
-	print(body.get_name(), " killed ", self.get_name())
-	add_to_group("rip")
+	print(body.username, " wants to kill", self.username)
 	body.get_node("KillCooldown").start()
-	var instance = dead_body.instance()
-	get_parent().add_child(instance)
-	instance.position = self.position
 	body.position = self.position
-	self.visible = 0 # <- tutaj sygnał do serwera i jakieś bezpieczne usunięcie
+	get_tree().get_root().get_node("Start").network.request_kill(owner_id)
 	interacted = false
-	
+
+func turn_into_corpse(pos: Vector2):
+	add_to_group("rip")
+	var instance = dead_body.instance()
+	instance.position = pos
+	get_parent().add_child(instance)
+	self.visible = 0
+
 # warning-ignore:unused_argument
 func EndInteraction(body):
 	print("you cant be unkilled, how unfortunate")

@@ -48,3 +48,12 @@ func start_meeting(caller: int, dead: int):
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
+
+func request_kill(_dead: int):
+	pass
+
+func kill(dead: int, pos: Vector2):
+	if player_characters.has(dead):
+		player_characters[dead].turn_into_corpse(pos)
+
+
