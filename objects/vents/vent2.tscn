@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/vents and cameras/vent.gd" type="Script" id=1]
+[ext_resource path="res://textures/vent.png" type="Texture" id=2]
+
+[node name="vent" type="StaticBody2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="arrows" type="Node2D" parent="."]
+
+[node name="vent" type="Sprite" parent="."]
+scale = Vector2( 0.294259, 0.294259 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -173.539, 62.3648, -128.103, -53.8975, 117.34, -53.0066, 174.803, 65.9284 )

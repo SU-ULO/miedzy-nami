@@ -10,8 +10,7 @@ const radius = 150
 func enter(body):
 	# center player on vent and make him invisible (but not the light)
 	body.position = self.position
-	body.get_node("Sprite").visible = false
-	body.get_node("AnimatedSprite").visible = false
+	body.get_node("sprites").visible = false
 	# also hitbox to prevent player being detected
 	body.get_node("PlayerHitbox").visible = false
 
@@ -51,8 +50,7 @@ func exit(body):
 		child.queue_free()
 		
 	# then make player visible
-	body.get_node("Sprite").visible = true
-	body.get_node("AnimatedSprite").visible = true
+	body.get_node("sprites").visible = true
 	body.get_node("PlayerHitbox").visible = true
 
 func arrowHighlight(arrow_number = -1):

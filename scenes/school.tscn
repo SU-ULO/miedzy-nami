@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://objects/taskpoints/LIB-print-taskpoint.tscn" type="PackedScene" id=53]
 [ext_resource path="res://objects/taskpoints/iNF-debug-taskpoint.tscn" type="PackedScene" id=54]
 [ext_resource path="res://objects/taskpoints/JEZ-zwierzaki-taskpoint.tscn" type="PackedScene" id=55]
+[ext_resource path="res://objects/vents/vent2.tscn" type="PackedScene" id=56]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -131,6 +132,21 @@ position = Vector2( 3238.42, -297.501 )
 scale = Vector2( 0.743799, 0.743799 )
 link = [ NodePath("../vent1"), NodePath("../vent2") ]
 
+[node name="vent4" parent="Mapa" instance=ExtResource( 56 )]
+position = Vector2( 2568.48, -467.414 )
+scale = Vector2( 0.443591, 0.443591 )
+link = [ NodePath("../vent6"), NodePath("../vent5") ]
+
+[node name="vent6" parent="Mapa" instance=ExtResource( 56 )]
+position = Vector2( 1353.77, -2354.88 )
+scale = Vector2( 0.443591, 0.443591 )
+link = [ NodePath("../vent5"), NodePath("../vent4") ]
+
+[node name="vent5" parent="Mapa" instance=ExtResource( 56 )]
+position = Vector2( 2568.48, 1443.86 )
+scale = Vector2( 0.443591, 0.443591 )
+link = [ NodePath("../vent4"), NodePath("../vent6") ]
+
 [node name="cameras_console" parent="Mapa" instance=ExtResource( 39 )]
 position = Vector2( 1705.48, 3264.93 )
 scale = Vector2( 0.393559, 0.393559 )
@@ -169,7 +185,7 @@ scale = Vector2( 0.269034, 0.269034 )
 texture = ExtResource( 43 )
 
 [node name="biorko-nauczyciela" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
-position = Vector2( 2307.75, 1571.06 )
+position = Vector2( 2307.75, 1597.36 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="stolik" parent="Mapa/dekoracje" instance=ExtResource( 21 )]
@@ -191,7 +207,7 @@ position = Vector2( 2131.47, 137.303 )
 scale = Vector2( 0.413844, 0.413844 )
 
 [node name="biorko-nauczyciela2" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
-position = Vector2( 2303.16, -355.228 )
+position = Vector2( 2340.96, -317.388 )
 scale = Vector2( 0.413844, 0.413844 )
 
 [node name="polka" parent="Mapa/dekoracje" instance=ExtResource( 28 )]
@@ -242,7 +258,7 @@ position = Vector2( 3553.52, 3806.16 )
 scale = Vector2( 0.392281, 0.392281 )
 
 [node name="stolik8" parent="Mapa/dekoracje" instance=ExtResource( 42 )]
-position = Vector2( 2222.69, 1770.39 )
+position = Vector2( 2222.69, 1796.69 )
 scale = Vector2( 0.451258, 0.451258 )
 
 [node name="polka3" parent="Mapa/dekoracje" instance=ExtResource( 28 )]
@@ -272,7 +288,7 @@ scale = Vector2( 0.505136, 0.505136 )
 texture = ExtResource( 35 )
 
 [node name="stolik9" parent="Mapa/dekoracje" instance=ExtResource( 21 )]
-position = Vector2( 1957.51, 1778.71 )
+position = Vector2( 1957.51, 1805.01 )
 scale = Vector2( 0.483065, 0.483065 )
 
 [node name="plecaki" parent="Mapa/dekoracje" instance=ExtResource( 44 )]
@@ -280,7 +296,7 @@ position = Vector2( 4533.64, 4062.67 )
 scale = Vector2( 0.255421, 0.255421 )
 
 [node name="biorko-nauczyciela4" parent="Mapa/dekoracje" instance=ExtResource( 19 )]
-position = Vector2( 1590.94, -2288.62 )
+position = Vector2( 1574.92, -2211.11 )
 rotation = 3.14159
 scale = Vector2( 0.495517, -0.496074 )
 
