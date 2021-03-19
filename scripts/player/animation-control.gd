@@ -1,11 +1,9 @@
 extends Node2D
 
 var currLook
-var color
 
 func _ready():
 	currLook = get_parent().currLook
-	color = get_parent().color
 func stopWalk():
 	$body.playing = false
 	$spodnie.playing = false
@@ -62,14 +60,14 @@ func loadLook():
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(3)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("walk front", load(currLook.getBodyPath(4)))
-	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(2, color)))
-	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
-	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(3, color)))
-	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, color)))
-	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(5, color)))
-	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
-	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, color)))
-	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(2, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(3, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(5, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, get_parent().color)))
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
 	$face/eyes.frames.add_frame("side", load(currLook.getEyePath(2)))
@@ -86,6 +84,7 @@ func loadLook():
 	$spodnie.playing = 1
 	$"clothes-top".playing = 1
 	$face/nose.frames.add_frame("front", load(currLook.getNosePath()))
+	$face/nose.frames.add_frame("side", load(currLook.getNosePath(2)))
 	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
 	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
@@ -101,6 +100,7 @@ func loadLook():
 		$wlosy/hair.position.y = currLook.getHairPos()
 
 func lookRight():
+	$face.flip_h = false
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = -80
 	$body.flip_h = false
@@ -120,6 +120,7 @@ func lookRight():
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "side"
 func lookLeft():
+	$face.flip_h = true
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = 80
 	$body.flip_h = true
@@ -139,6 +140,7 @@ func lookLeft():
 	$wlosy/hair.flip_h = true
 	$wlosy/hair.animation  = "side"
 func lookFront():
+	$face.flip_h = false
 	$wlosy/hair.position.y = currLook.getHairPos()
 	$wlosy/hair.position.x = 0
 	$body.flip_h = false
@@ -155,6 +157,7 @@ func lookFront():
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "front"
 func lookBack():
+	$face.flip_h = true
 	$body.flip_h = false
 	$body.animation = "walk back"
 	$spodnie.flip_h = false

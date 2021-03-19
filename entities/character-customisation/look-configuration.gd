@@ -57,8 +57,13 @@ func getHairPos():
 	return hairPos[hair]
 
 func getNosePath(frame=1):
-	return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose + ".png"
-
+	if frame == 1:
+		return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose + ".png"
+	else:
+		if nose != "nostril nose":
+			return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose +"/skin" + skin + ".png"
+		else:
+			return "res://textures/character/face parts/noses/frame2/nostril nose.png"
 func getSkinPath():
 	return "res://textures/character/face_front/skin" + skin + ".png"
 
