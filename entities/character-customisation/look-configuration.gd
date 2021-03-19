@@ -15,16 +15,23 @@ var hairPos = {"Velma long hair": 384, "Velma short hair":266, "afro":195, "bob 
 
 var clothes
 var hasSkinColorMouth = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed", "wide smile closed"]
+var hasSkinColorMouthSide = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed","Doraemon lips closed", "duck lips closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed","UwU smile closed", "whistling lips semi-closed", "wide smile closed"]
 var hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_open", "suspicious_open", "suspicious_semi-open", "winking"]
 var noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
 var hasSkinColorEyes = ["bored_closed", "scared_closed"]
 
 func getMouthPath(frame=1):
-	if mouth in hasSkinColorMouth:
-		return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
+	if frame == 1:
+		if mouth in hasSkinColorMouth:
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
+		else:
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
 	else:
-		return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
-
+		if mouth in hasSkinColorMouthSide:
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
+		else:
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
+	
 func getEyePath(frame=1):
 	if eye in noColorEyes:
 		if eye in hasSkinColorEyes:

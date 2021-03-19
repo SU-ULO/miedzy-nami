@@ -23,11 +23,6 @@ extents = Vector2( 107.518, 51.087 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk back",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "walk front",
@@ -37,15 +32,15 @@ animations = [ {
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk front",
@@ -55,15 +50,15 @@ animations = [ {
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
@@ -72,6 +67,11 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
 "speed": 5.0
 } ]
 
@@ -133,22 +133,17 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "left",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "right",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
 "speed": 5.0
 } ]
 
@@ -198,7 +193,6 @@ shape = SubResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 12.4865 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="sprites" type="Node2D" parent="."]
@@ -207,28 +201,24 @@ script = ExtResource( 10 )
 
 [node name="body" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 4 )
 animation = "walk front"
 
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
 visible = false
 material = ExtResource( 9 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 5 )
 animation = "walk front"
 frame = 3
 
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 6 )
 animation = "walk front"
 
 [node name="face" type="Sprite" parent="sprites"]
 material = ExtResource( 9 )
 position = Vector2( 7.89365, -423.508 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="sprites/face"]
@@ -266,6 +256,7 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

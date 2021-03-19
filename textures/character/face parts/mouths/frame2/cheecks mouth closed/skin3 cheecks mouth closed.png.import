@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/skin3 cheecks mouth closed.png-08365947b5ee7768fc1fd0738a0bf81e.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/character/face parts/mouths/frame2/cheecks mouth closed/skin3 cheecks mouth closed.png"
+dest_files=[ "res://.import/skin3 cheecks mouth closed.png-08365947b5ee7768fc1fd0738a0bf81e.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

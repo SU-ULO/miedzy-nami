@@ -87,6 +87,7 @@ func loadLook():
 	$"clothes-top".playing = 1
 	$face/nose.frames.add_frame("front", load(currLook.getNosePath()))
 	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
+	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
 	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
 	if $wlosy/hair.animation == "side":
@@ -114,7 +115,8 @@ func lookRight():
 	$"face/eyes/eye-bonus".flip_h = false
 	$face/nose.flip_h = false
 	$face/nose.animation = "side"
-	$face/mouth.animation = "right"
+	$face/mouth.animation = "side"
+	$face/mouth.flip_h = false
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "side"
 func lookLeft():
@@ -132,7 +134,8 @@ func lookLeft():
 	$"face/eyes/eye-bonus".flip_h = true
 	$face/nose.flip_h = true
 	$face/nose.animation = "side"
-	$face/mouth.animation = "left"
+	$face/mouth.animation = "side"
+	$face/mouth.flip_h = true
 	$wlosy/hair.flip_h = true
 	$wlosy/hair.animation  = "side"
 func lookFront():
