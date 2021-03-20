@@ -12,7 +12,7 @@ func _ready():
 func Interact(body):
 	menu = load("res://gui/game settings/game customisation menu.tscn").instance()
 	get_owner().get_node("CanvasLayer").add_child(menu)
-	if body.own_id == 0:
+	if body.owner_id == 0:
 		menu.get_node("buttons/game").visible = true
 	lookMenu = menu.get_node("menus/look-menu")
 	lookMenu.currLook = body.currLook
