@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/meetingButton.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_bottom = 10.0
@@ -19,11 +20,12 @@ font_data = ExtResource( 1 )
 margin_right = 500.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 500, 120 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/normal = SubResource( 1 )
@@ -31,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 1.52588e-05
@@ -43,3 +45,4 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Button" to="." method="_on_Control_pressed"]
