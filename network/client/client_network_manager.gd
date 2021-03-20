@@ -77,6 +77,6 @@ func request_meeting(dead: int):
 	if joined_server:
 		joined_server.send_meeting_request(dead)
 
-func send_kill_request(dead: int):
+func request_kill(dead: int):
 	if joined_server:
 		joined_server.send_kill_request(dead)
