@@ -1,25 +1,45 @@
 extends Node
+
 class_name LookConfiguration
 
-var skin = "1"
-var mouth = "neutral closed"
-var nose = "long nose"
-var eye = "neutral_open"
-var eye_color = "darkblue"
-var hair = "afro"
-var hairColor = 1
-var hasBottom = 0
-var topClothes = "dress"
+var skin := "1"
+var mouth := "neutral closed"
+var nose := "long nose"
+var eye := "neutral_open"
+var eye_color := "darkblue"
+var hair := "afro"
+var hairColor := 1
+var hasBottom := 0
+var topClothes := "dress"
 
-var hairPos = {"Velma long hair": 384, "Velma short hair":266, "afro":195, "bob cut":239, "curly afroish":225, "fade":248, "fade2":195, "kok":179, "koki":242, "long hair":379, "ponytail":192, "ponytails":230, "puffy hair":240, "short hair":240, "very short":283, "jheri curl":248, "short hair 2": 212, "wavy long hair":378, "wavy short hair":280, "bald":0}
+const hairPos := {"Velma long hair": 384,
+	"Velma short hair":266,
+	"afro":195,
+	"bob cut":239,
+	"curly afroish":225,
+	"fade":248,
+	"fade2":195,
+	"kok":179,
+	"koki":242,
+	"long hair":379,
+	"ponytail":192,
+	"ponytails":230,
+	"puffy hair":240,
+	"short hair":240,
+	"very short":283,
+	"jheri curl":248,
+	"short hair 2": 212,
+	"wavy long hair":378,
+	"wavy short hair":280,
+	"bald":0}
 
 
 var clothes
-var hasSkinColorMouth = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed", "wide smile closed"]
-var hasSkinColorMouthSide = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed","Doraemon lips closed", "duck lips closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed","UwU smile closed", "whistling lips semi-closed", "wide smile closed"]
-var hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_open", "suspicious_open", "suspicious_semi-open", "winking"]
-var noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
-var hasSkinColorEyes = ["bored_closed", "scared_closed"]
+const hasSkinColorMouth = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed", "wide smile closed"]
+const hasSkinColorMouthSide = ["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed","Doraemon lips closed", "duck lips closed", "miserable closed", "old smile", "sad closed", "smile closed", "smug smile closed","UwU smile closed", "whistling lips semi-closed", "wide smile closed"]
+const hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_open", "suspicious_open", "suspicious_semi-open", "winking"]
+const noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
+const hasSkinColorEyes = ["bored_closed", "scared_closed"]
 
 func getMouthPath(frame=1):
 	if frame == 1:

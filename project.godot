@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/client/client_matchmaking.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Dummyplayer",
+"language": "GDScript",
+"path": "res://scripts/player/dummyplayer.gd"
+}, {
 "base": "Node",
 "class": "Game_Connection",
 "language": "GDScript",
@@ -58,10 +63,16 @@ _global_script_classes=[ {
 "class": "Server_Matchmaking",
 "language": "GDScript",
 "path": "res://network/server/server_matchmaking.gd"
+}, {
+"base": "Node",
+"class": "Start",
+"language": "GDScript",
+"path": "res://start/start.gd"
 } ]
 _global_script_class_icons={
 "ClientNetworkManager": "",
 "Client_Matchmaking": "",
+"Dummyplayer": "",
 "Game_Connection": "",
 "JoinedClient": "",
 "JoinedServer": "",
@@ -69,7 +80,8 @@ _global_script_class_icons={
 "Matchmaking_Connection": "",
 "NetworkManager": "",
 "ServerNetworkManager": "",
-"Server_Matchmaking": ""
+"Server_Matchmaking": "",
+"Start": ""
 }
 
 [application]

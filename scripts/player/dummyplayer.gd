@@ -1,34 +1,40 @@
 extends KinematicBody2D
 
+class_name Dummyplayer
+
 var owner_id := 0
 var username := ""
 
-export var default_speed = 900.0
-export var default_sight_range = 2000.0
-export var default_scaling_speed = 2000.0
+var dead := false
+
+export var default_speed := 900.0
+export var default_sight_range := 2000.0
+export var default_scaling_speed := 2000.0
 
 # debug mode for visibility checking
-var debug_mode = false
-var debug_pos_collided = []
-var debug_pos_ok = []
+var debug_mode := false
+var debug_pos_collided := []
+var debug_pos_ok := []
 
-
-const LookConfiguration = preload("res://entities/character-customisation/look-configuration.gd")		
-
-var color = 3
-var currLook = LookConfiguration.new()
+var color := 3
+var currLook := LookConfiguration.new()
 
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
-var in_sight = []; var interactable = []; var players_interactable = []; var deadbody_interactable = []
-var flipped = false
+
+var in_sight := []
+var interactable := []
+var players_interactable := []
+var deadbody_interactable := []
+
+var flipped := false
 var moveX :int
 var moveY :int
 var currentInteraction = null
-var localTaskList = []
+var localTaskList := []
 
-var dead_body = preload("res://entities/deadbody.tscn")
-var interacted = false # temporary fix
+var dead_body := preload("res://entities/deadbody.tscn")
+var interacted := false # temporary fix
 
 func generate_init_data() -> Dictionary:
 	return {"username": username, "pos": position}
@@ -46,6 +52,7 @@ func set_sync_data(data: Dictionary):
 	position=data["pos"]
 
 func _ready():
+	
 	add_to_group("players")
 	add_to_group("entities")	
 	$sprites.loadLook()
@@ -112,7 +119,10 @@ func _on_interaction_area_enter(body):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 		
-	else: if body.is_in_group("players") and self.is_in_group("impostors") and body != self and !body.is_in_group("impostors") and !body.is_in_group("rip"):
+	else: if body.is_in_group("players") \
+		and self.is_in_group("impostors") \
+		and body != self and !body.is_in_group("impostors") \
+		and !body.is_in_group("rip"):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 
@@ -164,8 +174,7 @@ func turn_into_corpse(pos: Vector2):
 	get_parent().add_child(instance)
 	self.visible = 0
 
-# warning-ignore:unused_argument
-func EndInteraction(body):
+func EndInteraction(_body):
 	print("you cant be unkilled, how unfortunate")
 	# body.currentInteraction = null
 

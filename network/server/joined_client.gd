@@ -57,5 +57,8 @@ func send_meeting_start(caller: int, dead: int):
 func send_kill(dead: int, pos: Vector2):
 	send_events([4, dead, pos])
 
+func send_gamestate(state, params):
+	send_events([5, state, params])
+
 func send_player_character_sync_data(data):
 	send_updates([0, data])

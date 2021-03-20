@@ -57,6 +57,7 @@ func create_world(config):
 	own_player = preload("res://entities/player.tscn").instance()
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
+	own_player.global_position = get_spawn_position(own_id)
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
 
@@ -65,6 +66,7 @@ func spawn_player(id: int):
 	var new_character = preload("res://entities/dummyplayer.tscn").instance()
 	new_character.owner_id = id
 	new_character.username = connected_clients[id].config.username
+	new_character.global_position = get_spawn_position(id)
 	player_characters[id]=new_character
 	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
@@ -75,7 +77,12 @@ func spawn_player(id: int):
 			var all_players_init_data := Dictionary()
 			for ch in player_characters.values():
 				all_players_init_data[ch.owner_id]=ch.generate_init_data()
-			c.send_initial_sync(all_players_init_data, id)
+			#more initialization data for joining player here
+			var all_init_data = {
+				"players": all_players_init_data,
+				"gamestate": [gamestate, gamestate_params]
+				}
+			c.send_initial_sync(all_init_data, id)
 		elif c.joined:
 			c.send_spawning_player_sync(joining_player_init_data, id)
 	connected_clients[id].joined=true
@@ -123,3 +130,14 @@ func handle_kill_request(dead: int):
 		c.send_kill(dead, pos)
 	kill(dead, pos)
 
+func sync_gamestate():
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_gamestate(gamestate, gamestate_params)
+
+func request_game_start():
+	gamestate = STARTED
+	#here pick impostors and assign tasks then put it into gamestate_params
+	gamestate_params = {"imp": [0]}
+	sync_gamestate()
+	game_start(gamestate_params)

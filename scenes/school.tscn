@@ -823,9 +823,9 @@ scale = Vector2( 0.567539, 0.567539 )
 position = Vector2( -23038, 754.149 )
 
 [node name="game-settings-station" parent="." instance=ExtResource( 50 )]
-position = Vector2( -1027.13, 99.1052 )
+position = Vector2( -1385.61, 13955.7 )
 scale = Vector2( 0.342406, 0.342406 )
 
 [node name="start" parent="." instance=ExtResource( 57 )]
-position = Vector2( -342.822, -428.982 )
+position = Vector2( -2524.03, 13976.6 )
 scale = Vector2( 0.130487, 0.130487 )

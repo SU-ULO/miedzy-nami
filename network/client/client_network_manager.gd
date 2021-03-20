@@ -18,6 +18,7 @@ func create_world(config):
 	joined_server.connect("players_sync", self, "handle_players_sync")
 	joined_server.connect("meeting_start", self, "start_meeting")
 	joined_server.connect("kill", self, "kill")
+	joined_server.connect("state_sync", self, "handle_state_sync")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -35,10 +36,11 @@ func set_candidate(cand: String):
 		joined_server.set_candidate(cand)
 
 func handle_initial_sync(id: int, data: Dictionary):
+	var players_data = data["players"]
 	var preloaded_dummy = preload("res://entities/dummyplayer.tscn")
 	own_id = id
-	for c in data:
-		var init_data = data[c]
+	for c in players_data:
+		var init_data = players_data[c]
 		var added_player
 		if c==own_id:
 			added_player = preload("res://entities/player.tscn").instance()
@@ -80,3 +82,9 @@ func request_meeting(dead: int):
 func request_kill(dead: int):
 	if joined_server:
 		joined_server.send_kill_request(dead)
+
+func handle_state_sync(state, params):
+	gamestate = state
+	gamestate_params = params
+	if state==STARTED:
+		game_start(gamestate_params)

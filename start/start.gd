@@ -1,5 +1,7 @@
 extends Node
 
+class_name Start
+
 enum {NONE, SERVER, CLIENT}
 
 var network_side := NONE

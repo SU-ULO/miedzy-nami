@@ -2,6 +2,10 @@ extends Node
 
 class_name NetworkManager
 
+enum {LOBBY, STARTED, MEETING}
+var gamestate := LOBBY
+var gamestate_params = null
+
 var world := preload('res://scenes/school.tscn').instance()
 var player_characters := Dictionary()
 var own_player = null
@@ -63,4 +67,16 @@ func set_chosen(id):
 	#powiedz serwerowi że wybrałeś gracza
 	world.get_node("CanvasLayer").get_child(0).chosen = id
 
+func get_spawn_position(id: int) -> Vector2:
+	if world:
+		if gamestate==LOBBY:
+			return world.get_node("lobby-position").global_position
+		else:
+			# please name meeting-table spawnpoints normally
+			return world.get_node("Mapa/dekoracje/meeting-table/Position2D").global_position
+	return Vector2(0, 0)
 
+func game_start(params):
+	#TODO apply params, now it just teleports
+	for c in player_characters:
+		player_characters[c].global_position = get_spawn_position(c)
