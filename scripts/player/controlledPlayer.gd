@@ -4,6 +4,7 @@ var fov_toggle :bool = false #temporarily
 var impostor_toggle :bool = false  #temporarily
 
 var selected_vent = 0
+var disabled_movement:bool = false
 
 export var killCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
@@ -18,7 +19,7 @@ func _ready():
 func get_input():
 	moveX = 0; moveY = 0
 	
-	if currentInteraction == null:
+	if !disabled_movement and currentInteraction == null:
 		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;
