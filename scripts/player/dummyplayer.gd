@@ -49,7 +49,7 @@ func _ready():
 	add_to_group("players")
 	add_to_group("entities")	
 	$sprites.loadLook()
-
+	$Label.text = username
 	pass
 
 # process functions
