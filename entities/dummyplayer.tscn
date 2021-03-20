@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=8]
 [ext_resource path="res://shaders/dummyplayer.tres" type="Material" id=9]
 [ext_resource path="res://scripts/player/animation-control.gd" type="Script" id=10]
-[ext_resource path="res://textures/character/body/frame1/skin1.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 500.0
@@ -23,11 +22,6 @@ extents = Vector2( 133.092, 78.9384 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -36,16 +30,16 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -54,6 +48,29 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 } ]
 
@@ -61,17 +78,17 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk front",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk back",
+"name": "side",
 "speed": 5.0
 } ]
 
@@ -147,24 +164,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
@@ -213,32 +212,34 @@ frame = 3
 
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
-frames = SubResource( 6 )
+scale = Vector2( 0.999999, 0.999999 )
+frames = SubResource( 11 )
 animation = "walk front"
 
 [node name="face" type="Sprite" parent="sprites"]
 material = ExtResource( 9 )
 position = Vector2( 7.89365, -423.508 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 7 )
+frames = SubResource( 6 )
 animation = "front"
 
 [node name="eye-bonus" type="AnimatedSprite" parent="sprites/face/eyes"]
 material = ExtResource( 9 )
-frames = SubResource( 8 )
+frames = SubResource( 7 )
 animation = "front"
 
 [node name="nose" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 9 )
+frames = SubResource( 8 )
 animation = "front"
 
 [node name="mouth" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 10 )
+frames = SubResource( 9 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="sprites"]
@@ -248,7 +249,7 @@ scale = Vector2( 0.999999, 0.999999 )
 [node name="hair" type="AnimatedSprite" parent="sprites/wlosy"]
 material = ExtResource( 9 )
 position = Vector2( 0, 240 )
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 animation = "front"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

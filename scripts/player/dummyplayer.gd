@@ -86,8 +86,8 @@ func set_player_velocity():
 			elif player_velocity.y == 1:
 				$sprites.lookFront()
 			elif player_velocity.y == -1:
-				#lookBack()
-				$sprites.lookLeft() 
+				$sprites.lookBack()
+				#$sprites.lookLeft() 
 
 		player_velocity = player_velocity.normalized() * default_speed
 

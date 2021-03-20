@@ -60,6 +60,7 @@ func loadLook():
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(3)))
 	$body.frames.add_frame("walk side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("walk front", load(currLook.getBodyPath(4)))
+	$body.frames.add_frame("walk back", load(currLook.getBodyPath(4)))
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(2, get_parent().color)))
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(1, get_parent().color)))
 	$"clothes-top".frames.add_frame("walk front", load(currLook.getTopClotes(3, get_parent().color)))
@@ -68,6 +69,10 @@ func loadLook():
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, get_parent().color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(6, get_parent().color)))
 	$"clothes-top".frames.add_frame("walk side", load(currLook.getTopClotes(4, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk back", load(currLook.getTopClotes(8, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk back", load(currLook.getTopClotes(7, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk back", load(currLook.getTopClotes(9, get_parent().color)))
+	$"clothes-top".frames.add_frame("walk back", load(currLook.getTopClotes(7, get_parent().color)))
 	$face.texture = load(currLook.getSkinPath())
 	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
 	$face/eyes.frames.add_frame("side", load(currLook.getEyePath(2)))
@@ -89,6 +94,7 @@ func loadLook():
 	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
 	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
+	$wlosy/hair.frames.add_frame("back", load(currLook.getHairPath(3)))
 	if $wlosy/hair.animation == "side":
 		$wlosy/hair.position.y = 340
 		if $wlosy/hair.flip_h == false:
@@ -100,6 +106,8 @@ func loadLook():
 		$wlosy/hair.position.y = currLook.getHairPos()
 
 func lookRight():
+	$"clothes-top".z_index = 0
+	$body.z_index = 0
 	$face.flip_h = false
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = -80
@@ -120,6 +128,8 @@ func lookRight():
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "side"
 func lookLeft():
+	$"clothes-top".z_index = 0
+	$body.z_index = 0
 	$face.flip_h = true
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = 80
@@ -140,6 +150,8 @@ func lookLeft():
 	$wlosy/hair.flip_h = true
 	$wlosy/hair.animation  = "side"
 func lookFront():
+	$"clothes-top".z_index = 1
+	$body.z_index = 1
 	$face.flip_h = false
 	$wlosy/hair.position.y = currLook.getHairPos()
 	$wlosy/hair.position.x = 0
@@ -157,6 +169,10 @@ func lookFront():
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "front"
 func lookBack():
+	$"clothes-top".z_index = 0
+	$body.z_index = 0
+	$wlosy/hair.position.x = 0
+	$wlosy/hair.position.y = 340
 	$face.flip_h = true
 	$body.flip_h = false
 	$body.animation = "walk back"
