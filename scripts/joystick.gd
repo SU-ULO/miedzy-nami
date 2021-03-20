@@ -14,7 +14,7 @@ func _process(_delta):
 	else:
 		dot.position = Vector2(0, 0)
 		vec = Vector2(0, 0)
-	print(vec)
+	#print(vec)
 
 func _on_Area2D_input_event(_viewport, event, _shape):
 	if event is InputEventScreenTouch or event is InputEventMouseButton:
@@ -22,6 +22,7 @@ func _on_Area2D_input_event(_viewport, event, _shape):
 			pressed = true
 			
 func _input(event):
-	if pressed and event is InputEventMouseButton:
-		if !event.is_pressed():
-			pressed = false
+	if pressed:
+		if event is InputEventScreenTouch or event is InputEventMouseButton:
+			if !event.is_pressed():
+				pressed = false
