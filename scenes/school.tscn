@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=2]
@@ -56,6 +56,7 @@
 [ext_resource path="res://objects/taskpoints/iNF-debug-taskpoint.tscn" type="PackedScene" id=54]
 [ext_resource path="res://objects/taskpoints/JEZ-zwierzaki-taskpoint.tscn" type="PackedScene" id=55]
 [ext_resource path="res://objects/vents/vent2.tscn" type="PackedScene" id=56]
+[ext_resource path="res://objects/dekoracje/game-start.tscn" type="PackedScene" id=57]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -674,38 +675,8 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 
-[node name="spawnPositionsLobby" type="Node2D" parent="."]
-position = Vector2( -2096.48, 14441.6 )
-
-[node name="1" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( -294.157, -274.92 )
-
-[node name="2" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 19.9189, -277.39 )
-
-[node name="3" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 331.477, -268.364 )
-
-[node name="4" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( -313.503, 12.7751 )
-
-[node name="5" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 3.73877, -0.0310059 )
-
-[node name="6" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 322.479, 24.6055 )
-
-[node name="7" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( -333.589, 287.854 )
-
-[node name="8" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 3.49487, 280.698 )
-
-[node name="9" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 323.391, 271.943 )
-
-[node name="10" type="Position2D" parent="spawnPositionsLobby"]
-position = Vector2( 616.384, 6.81396 )
+[node name="lobby-position" type="Position2D" parent="."]
+position = Vector2( -1937.58, 14336.6 )
 
 [node name="lobby" type="Node2D" parent="."]
 
@@ -765,13 +736,13 @@ scale = Vector2( 0.567539, 0.567539 )
 position = Vector2( -1414.82, 13183.9 )
 scale = Vector2( 0.567539, 0.567539 )
 
-[node name="start button" parent="lobby" instance=ExtResource( 44 )]
-position = Vector2( -2959.95, 13604.4 )
-scale = Vector2( 0.421428, 0.421428 )
-
 [node name="tablica-main-taskpoint" parent="." instance=ExtResource( 49 )]
 position = Vector2( -23038, 754.149 )
 
 [node name="game-settings-station" parent="." instance=ExtResource( 50 )]
 position = Vector2( -1027.13, 99.1052 )
 scale = Vector2( 0.342406, 0.342406 )
+
+[node name="start" parent="." instance=ExtResource( 57 )]
+position = Vector2( -342.822, -428.982 )
+scale = Vector2( 0.130487, 0.130487 )

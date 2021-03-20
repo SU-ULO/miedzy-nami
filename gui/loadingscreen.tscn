@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/introscreen.gd" type="Script" id=2]
+
+[node name="loadingscreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 68.0
+margin_top = 144.0
+margin_right = 1877.0
+margin_bottom = 323.0
+custom_fonts/font = ExtResource( 1 )
+text = "Jest x (jakieś family-friendly słowo na impostora) 
+między nami"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="players" type="HBoxContainer" parent="."]
+margin_left = 272.0
+margin_top = 502.0
+margin_right = 312.0
+margin_bottom = 542.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
