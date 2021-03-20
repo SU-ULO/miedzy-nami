@@ -95,6 +95,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AnimatedSprite" parent="." index="5"]
+frame = 1
+
 [node name="Light" type="Light2D" parent="." index="6"]
 position = Vector2( 0, 11.4286 )
 texture = ExtResource( 5 )

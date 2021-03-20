@@ -25,11 +25,6 @@ extents = Vector2( 133.092, 78.9384 )
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk back",
 "speed": 5.0
 }, {
@@ -37,23 +32,10 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk back",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk front",
 "speed": 5.0
 } ]
 
@@ -61,17 +43,17 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
 "speed": 5.0
 } ]
 
@@ -147,6 +129,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [  ],
@@ -204,13 +204,6 @@ material = ExtResource( 9 )
 frames = SubResource( 4 )
 animation = "walk front"
 
-[node name="spodnie" type="AnimatedSprite" parent="sprites"]
-visible = false
-material = ExtResource( 9 )
-frames = SubResource( 5 )
-animation = "walk front"
-frame = 3
-
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
 scale = Vector2( 0.999999, 0.999999 )
@@ -242,6 +235,15 @@ material = ExtResource( 9 )
 frames = SubResource( 10 )
 animation = "front"
 
+[node name="spodnie" type="AnimatedSprite" parent="sprites"]
+visible = false
+scale = Vector2( 1, 1 )
+z_index = 5
+z_as_relative = false
+frames = SubResource( 5 )
+animation = "walk front"
+frame = 3
+
 [node name="wlosy" type="Node2D" parent="sprites"]
 position = Vector2( 7.894, -714.33 )
 scale = Vector2( 0.999999, 0.999999 )
@@ -257,7 +259,6 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

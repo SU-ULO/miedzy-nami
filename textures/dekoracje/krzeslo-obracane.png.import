@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sticking tounge closed.png-7581f8a23967d223983fd31a00f4ad73.stex"
+path="res://.import/krzeslo-obracane.png-91877f93992c1c98d0b5732f13e9d456.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/character/face parts/mouths/frame2/sticking tounge closed.png"
-dest_files=[ "res://.import/sticking tounge closed.png-7581f8a23967d223983fd31a00f4ad73.stex" ]
+source_file="res://textures/dekoracje/krzeslo-obracane.png"
+dest_files=[ "res://.import/krzeslo-obracane.png-91877f93992c1c98d0b5732f13e9d456.stex" ]
 
 [params]
 

@@ -30,10 +30,7 @@ func startWalk():
 	$face/mouth.playing = true
 
 func loadLook():
-	if currLook.hasBottom:
-		$spodnie.visible = true
-	else:
-		$spodnie.visible = false
+	$spodnie.visible = currLook.hasBottom
 	for i in $"clothes-top".frames.get_animation_names():
 		$"clothes-top".frames.clear(i)
 
@@ -101,6 +98,9 @@ func loadLook():
 			$wlosy/hair.position.x = -80
 		else:
 			$wlosy/hair.position.x = 80
+	elif $wlosy/hair.animation == "back":
+		$wlosy/hair.position.x = 0
+		$wlosy/hair.position.y = 340
 	else:
 		$wlosy/hair.position.x = 0
 		$wlosy/hair.position.y = currLook.getHairPos()
