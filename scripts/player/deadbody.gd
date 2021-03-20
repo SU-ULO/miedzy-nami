@@ -1,5 +1,8 @@
 extends Node2D
 
+var color
+var lateOwner
+var killer
 
 func _ready():
 	add_to_group("deadbody")
