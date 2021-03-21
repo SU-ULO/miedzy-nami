@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gui/podsceny/setting-checkbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/game settings.gd" type="Script" id=3]
 
 [node name="game settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,6 +112,7 @@ prefix = "x"
 default_value = 4
 min_val = 2
 max_val = 12
+div = 4
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/player-speed" index="0"]
 text = "player speed"

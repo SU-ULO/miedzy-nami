@@ -122,10 +122,10 @@ func set_player_velocity():
 					if -joystick_direction.y > joystick_direction.x:
 						$sprites.lookBack()
 					else:
-						$sprites.lookBack()
+						$sprites.lookRight()
 				else:
 					if -joystick_direction.y > -joystick_direction.x:
-						$sprites.lookFront()
+						$sprites.lookBack()
 					else:
 						$sprites.lookLeft()							
 		player_velocity = joystick_direction.normalized() * default_speed
