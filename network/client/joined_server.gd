@@ -8,7 +8,7 @@ signal remote_player_left(id)
 signal players_sync(players_data)
 signal meeting_start(caller, dead)
 signal kill(dead, pos)
-signal state_sync(state, params)
+signal state_sync(state, params, opt)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -35,7 +35,7 @@ func handle_events(input):
 	elif input[0]==4:
 		emit_signal("kill", input[1], input[2])
 	elif input[0]==5:
-		emit_signal("state_sync", input[1], input[2])
+		emit_signal("state_sync", input[1], input[2], input[3])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
