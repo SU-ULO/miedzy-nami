@@ -127,11 +127,14 @@ func get_spawn_position(id: int) -> Vector2:
 		if gamestate==LOBBY:
 			return world.get_node("lobby-position").global_position
 		else:
-			return world.get_node("Mapa/dekoracje/meeting-table/spawnpositions/0").global_position
+			return world.get_node("Mapa/dekoracje/meeting-table/%s" % id).global_position
 	return Vector2(0, 0)
 
 func game_start(params):
 	recalculate_pos()
-	#TODO apply params, now it just teleports
+	for i in params["imp"]:
+		if player_characters.has(i):
+			#make impostor
+			pass
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)

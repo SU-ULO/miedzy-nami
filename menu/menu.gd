@@ -6,8 +6,7 @@ var usersettings: Dictionary = {
 }
 
 var serversettings: Dictionary = {
-	"hidden": false,
-	"impostors": 1
+	"hidden": false
 }
 
 signal request_start_client()

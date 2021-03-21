@@ -54,6 +54,7 @@ func send_candidate(cand: String, id: int):
 
 func create_world(config):
 	.create_world(config)
+	print(server_key)
 	own_player = preload("res://entities/player.tscn").instance()
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
