@@ -171,7 +171,6 @@ script = ExtResource( 3 )
 
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
 visible = false
-scale = Vector2( 1, 1 )
 z_index = 5
 z_as_relative = false
 frames = SubResource( 2 )

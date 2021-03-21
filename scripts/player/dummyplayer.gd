@@ -196,7 +196,7 @@ func turn_into_corpse(pos: Vector2):
 	add_to_group("rip")
 	var instance = dead_body.instance()
 	instance.position = pos
-	instance.lateOwner = self
+	instance.lateOwner = owner_id
 	instance.get_node("sprites").currLook = currLook.duplicate()
 	instance.get_node("sprites").currLook.eye = "sad_closed"
 	instance.get_node("sprites").currLook.mouth = "sad closed"
