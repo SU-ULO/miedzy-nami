@@ -425,35 +425,37 @@ scale = Vector2( 0.250547, 0.250547 )
 [node name="meeting-table" parent="Mapa/dekoracje" instance=ExtResource( 46 )]
 position = Vector2( -4540.59, 2348.91 )
 
-[node name="0" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="spawnpositions" type="Node2D" parent="Mapa/dekoracje/meeting-table"]
+
+[node name="0" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( -33.6846, 387.281 )
 
-[node name="1" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="1" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( 43.4551, -376.534 )
 
-[node name="2" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="2" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( 417.571, -353.752 )
 
-[node name="3" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="3" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( -559.395, -254.327 )
 
-[node name="4" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="4" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( 631.758, -140.615 )
 
-[node name="5" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="5" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( 584.576, 265.909 )
 
-[node name="6" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="6" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( 302.252, 355.683 )
 
-[node name="7" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="7" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( -256.999, -373.83 )
 
-[node name="8" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
+[node name="8" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
 position = Vector2( -391.412, 342.361 )
 
-[node name="9" type="Position2D" parent="Mapa/dekoracje/meeting-table"]
-position = Vector2( -648.796, 85.7795 )
+[node name="9" type="Position2D" parent="Mapa/dekoracje/meeting-table/spawnpositions"]
+position = Vector2( -648.796, 85.7798 )
 
 [node name="komputer" parent="Mapa/dekoracje" instance=ExtResource( 47 )]
 position = Vector2( -1415.5, -2256.08 )
