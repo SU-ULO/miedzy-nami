@@ -97,7 +97,7 @@ func get_input():
 		else:
 			$CanvasLayer/playerGUI.visible = false
 
-func _physics_process(delta):
+func _process(delta):
 	scale_sight_range(delta)
 	get_input()
 	check_line_of_sight()

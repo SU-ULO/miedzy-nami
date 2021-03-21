@@ -64,12 +64,11 @@ func _ready():
 	pass
 
 # process functions
-
-func _physics_process(_delta):
+func _process(_delta):
 	if debug_mode: update()
 	set_player_velocity()
+func _physics_process(_delta):
 	player_velocity = move_and_slide(player_velocity)
-
 
 func set_player_velocity():
 	if !joystickUsed:
