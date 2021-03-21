@@ -127,7 +127,7 @@ func get_spawn_position(id: int) -> Vector2:
 		if gamestate==LOBBY:
 			return world.get_node("lobby-position").global_position
 		else:
-			return world.get_node("Mapa/dekoracje/meeting-table/%s" % id).global_position
+			return world.get_node("Mapa/dekoracje/meeting-table/spawnpositions/%s" % id).global_position
 	return Vector2(0, 0)
 
 func game_start(params):
