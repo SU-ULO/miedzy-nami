@@ -29,12 +29,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Labels"]
-margin_left = 5145.0
-margin_top = 2750.0
-margin_right = 5294.0
-margin_bottom = 2825.0
+margin_left = 4927.52
+margin_top = 2591.3
+margin_right = 5354.52
+margin_bottom = 2744.3
+rect_scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 2 )
-text = "room"
+text = "SUPERTAJNA
+SERWEROWNIA"
 __meta__ = {
 "_edit_use_anchors_": false
 }

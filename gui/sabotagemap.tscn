@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://textures/okno1.svg" type="Texture" id=1]
+[ext_resource path="res://textures/sabotage_icon1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/sabotagemap.gd" type="Script" id=2]
 [ext_resource path="res://textures/map/map-mini-red.svg" type="Texture" id=3]
 [ext_resource path="res://textures/crosss.png" type="Texture" id=4]
+[ext_resource path="res://textures/sabotage_icon3.png" type="Texture" id=5]
+[ext_resource path="res://textures/sabotage_icon2.png" type="Texture" id=6]
+[ext_resource path="res://textures/sabotage_icon4.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.752941 )
@@ -23,18 +26,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="door_b" type="TextureButton" parent="."]
-margin_left = 3548.35
-margin_top = 2117.04
-margin_right = 3643.35
-margin_bottom = 2198.04
-rect_scale = Vector2( 3.2552, 3.2552 )
-texture_normal = ExtResource( 1 )
+[node name="door" type="TextureButton" parent="."]
+margin_left = 3437.31
+margin_top = 2471.3
+margin_right = 3949.31
+margin_bottom = 2983.3
+rect_scale = Vector2( 1.00082, 1.00082 )
+texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="door_b"]
+[node name="ProgressBar" type="ProgressBar" parent="door"]
 margin_left = 7.0
 margin_top = 72.0
 margin_right = 80.0
@@ -44,61 +47,13 @@ custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
 
-[node name="door_f" type="TextureButton" parent="."]
-margin_left = 3560.69
-margin_top = 1156.38
-margin_right = 3655.69
-margin_bottom = 1237.38
-rect_scale = Vector2( 3.2552, 3.2552 )
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="door_f"]
-margin_left = 7.00024
-margin_top = 365.22
-margin_right = 80.0002
-margin_bottom = 446.22
-rect_rotation = -89.9999
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="door_c" type="TextureButton" parent="."]
-margin_left = 3548.35
-margin_top = 3105.32
-margin_right = 3643.35
-margin_bottom = 3186.32
-rect_scale = Vector2( 3.2552, 3.2552 )
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ProgressBar" type="ProgressBar" parent="door_c"]
-margin_left = 7.00024
-margin_top = -216.439
-margin_right = 80.0002
-margin_bottom = -135.439
-rect_rotation = -89.9999
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="electrical" type="TextureButton" parent="."]
-margin_left = 5016.57
-margin_top = 2630.31
-margin_right = 5111.57
-margin_bottom = 2711.31
-rect_scale = Vector2( 3.2552, 3.2552 )
-texture_normal = ExtResource( 1 )
+margin_left = 4947.84
+margin_top = 2498.12
+margin_right = 5459.84
+margin_bottom = 3010.12
+rect_scale = Vector2( 0.932331, 0.932331 )
+texture_normal = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,12 +72,12 @@ __meta__ = {
 }
 
 [node name="comms" type="TextureButton" parent="."]
-margin_left = 2400.93
-margin_top = 1149.76
-margin_right = 2495.93
-margin_bottom = 1230.76
-rect_scale = Vector2( 3.2552, 3.2552 )
-texture_normal = ExtResource( 1 )
+margin_left = 2342.77
+margin_top = 1033.44
+margin_right = 2854.77
+margin_bottom = 1545.44
+rect_scale = Vector2( 0.956836, 0.956836 )
+texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -141,11 +96,11 @@ __meta__ = {
 }
 
 [node name="dyrektor" type="TextureButton" parent="."]
-margin_left = 2419.44
-margin_top = 3062.13
-margin_right = 2514.44
-margin_bottom = 3143.13
-rect_scale = Vector2( 3.2552, 3.2552 )
+margin_left = 2313.69
+margin_top = 2951.09
+margin_right = 2825.69
+margin_bottom = 3463.09
+rect_scale = Vector2( 0.950508, 0.950508 )
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
