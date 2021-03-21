@@ -101,7 +101,11 @@ func request_kill(_dead: int):
 
 func kill(dead: int, pos: Vector2):
 	if player_characters.has(dead):
-		player_characters[dead].turn_into_corpse(pos)
+		var killed = player_characters[dead]
+		killed.turn_into_corpse(pos)
+		if own_player.dead:
+			for c in player_characters.values():
+				c.visible=true
 
 func set_chosen(id):
 		world.get_node("CanvasLayer").get_child(0).chosen = id

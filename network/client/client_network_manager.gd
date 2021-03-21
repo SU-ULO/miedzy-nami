@@ -83,8 +83,8 @@ func request_kill(dead: int):
 	if joined_server:
 		joined_server.send_kill_request(dead)
 
-func handle_state_sync(state, params, opt=[]):
+func handle_state_sync(state, params, opt=null):
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
-		game_start(gamestate_params, opt[0])
+		game_start(gamestate_params, opt)
