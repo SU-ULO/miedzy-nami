@@ -37,9 +37,11 @@ func get_input():
 			ui_selected()
 			$CanvasLayer/playerGUI.updateGUI()
 		if Input.is_action_just_pressed("ui_kill"):
-			ui_kill()
+			if self.is_in_group("impostors"):
+				ui_kill()
 		if Input.is_action_just_pressed("ui_report"):
-			ui_report()
+			if !self.is_in_group("rip"):
+				ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 		$CanvasLayer/playerGUI.updateGUI()
@@ -155,9 +157,10 @@ func check_interaction():
 					deadbody_interactable.erase(item);
 					if debug_mode: print(item.get_name(), " removed from: deadbody_interactable")
 			else:
-				if !deadbody_interactable.has(item):
-					deadbody_interactable.push_back(item);
-					if debug_mode: print(item.get_name(), " added to: deadbody_interactable")
+				if !self.is_in_group("rip"):
+					if !deadbody_interactable.has(item):
+						deadbody_interactable.push_back(item);
+						if debug_mode: print(item.get_name(), " added to: deadbody_interactable")
 		else:
 			if !in_sight.has(item):
 				if interactable.has(item):
@@ -167,6 +170,10 @@ func check_interaction():
 				if !interactable.has(item):
 					if item.is_in_group("tasks"):
 						if item in localTaskList:
+							interactable.push_back(item);
+							if debug_mode: print(item.get_name(), " added to: interactable")
+					elif item.is_in_group("vents"):
+						if self.is_in_group("impostors"):
 							interactable.push_back(item);
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					else:

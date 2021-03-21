@@ -20,6 +20,7 @@ func updateGUI():
 	$TaskPanel/VBoxContainer/tasklist.text = content
 		
 func _process(_delta):
+	$ActionButtons/report.visible = !player.is_in_group("rip")
 	usage = checkUsage()
 	$ActionButtons/use.disabled = !usage
 	$ActionButtons/report.disabled = !checkReportability()
