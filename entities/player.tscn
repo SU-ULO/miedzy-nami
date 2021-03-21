@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
 [ext_resource path="res://gui/butonstyle_white.tres" type="StyleBox" id=16]
 [ext_resource path="res://textures/crosss.png" type="Texture" id=17]
+[ext_resource path="res://gui/podsceny/joystick.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Theme" id=1]
 
@@ -94,6 +95,9 @@ texture_normal = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" parent="." index="5"]
+frame = 0
 
 [node name="Light" type="Light2D" parent="." index="6"]
 position = Vector2( 0, 11.4286 )
@@ -314,6 +318,10 @@ texture_disabled = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Joystick" parent="CanvasLayer/playerGUI" index="4" instance=ExtResource( 18 )]
+position = Vector2( 151.607, 932.581 )
+scale = Vector2( 0.602087, 0.602087 )
 [connection signal="pressed" from="CanvasLayer2/exit_button" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/TaskPanel/TasKButton" to="CanvasLayer/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]

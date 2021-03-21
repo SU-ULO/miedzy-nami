@@ -20,6 +20,8 @@ func get_input():
 	moveX = 0; moveY = 0
 	
 	if !disabled_movement and currentInteraction == null:
+		joystickUsed = $CanvasLayer/playerGUI/Joystick.pressed
+		joystick_direction = $CanvasLayer/playerGUI/Joystick.vec
 		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;

@@ -1,5 +1,6 @@
 extends Node2D
 
+var stopped = true
 var currLook
 
 func _ready():
@@ -19,8 +20,18 @@ func stopWalk():
 	$"face/eyes/eye-bonus".frame = 1
 	$face/nose.frame = 1
 	$face/mouth.frame = 1
+	stopped = true
 
 func startWalk():
+	if stopped:
+		$body.frame = 0
+		$spodnie.frame = 0
+		$"clothes-top".frame = 0
+		$face/eyes.frame = 0
+		$"face/eyes/eye-bonus".frame = 0
+		$face/nose.frame = 0
+		$face/mouth.frame = 0
+		stopped = false
 	$body.playing = true
 	$spodnie.playing = true
 	$"clothes-top".playing = true
@@ -28,6 +39,7 @@ func startWalk():
 	$"face/eyes/eye-bonus".playing = true
 	$face/nose.playing = true
 	$face/mouth.playing = true
+	
 
 func loadLook():
 	$spodnie.visible = currLook.hasBottom
