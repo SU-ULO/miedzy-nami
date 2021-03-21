@@ -89,11 +89,11 @@ func request_sabotage(type: int):
 	if joined_server and own_player:
 		joined_server.send_sabotage_request(type, own_id)
 
-func handle_state_sync(state, params, opt=[]):
+func handle_state_sync(state, params, opt=null):
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
-		game_start(gamestate_params, opt[0])
+		game_start(gamestate_params, opt)
 
 func handle_sabotage(type):
 	if joined_server and own_player:
@@ -102,3 +102,4 @@ func handle_sabotage(type):
 func handle_end_sabotage(type):
 	if joined_server and own_player:
 		own_player.handle_end_sabotage(type)
+

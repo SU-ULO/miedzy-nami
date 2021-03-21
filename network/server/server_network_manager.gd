@@ -133,10 +133,12 @@ func handle_kill_request(dead: int):
 		c.send_kill(dead, pos)
 	kill(dead, pos)
 
-func sync_gamestate():
-	for c in connected_clients.values():
-		if c.joined:
-			c.send_gamestate(gamestate, gamestate_params)
+func sync_gamestate(opt=Dictionary()):
+	for c in connected_clients:
+		if connected_clients.has(c):
+			var cl = connected_clients[c]
+			if cl.joined:
+				cl.send_gamestate(gamestate, gamestate_params, opt[c] if opt.has(c) else null)
 
 func request_game_start():
 	var Task := load("res://scripts/tasks/Task.cs")
@@ -145,8 +147,11 @@ func request_game_start():
 	var ids = player_characters.keys()
 	ids.sort()
 	Task.DivideTasks(ids)
-	sync_gamestate()
-	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))	
+	var opt = Dictionary()
+	for c in player_characters:
+		opt[c]=Task.GetTaskIDsForPlayerID(c)
+	sync_gamestate(opt)
+	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))
 
 func request_sabotage(type: int):
 	handle_sabotage_request(type, own_id)

@@ -112,8 +112,9 @@ func get_input():
 			currentInteraction = null
 		else:
 			$CanvasLayer/playerGUI.visible = false
+			$sprites.stopWalk()
 
-func _physics_process(delta):
+func _process(delta):
 	scale_sight_range(delta)
 	get_input()
 	check_line_of_sight()
@@ -268,3 +269,4 @@ func ui_selected():
 
 func _on_exit_button_pressed():
 	ui_canceled()
+
