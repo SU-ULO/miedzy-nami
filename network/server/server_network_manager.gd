@@ -137,8 +137,9 @@ func sync_gamestate():
 			c.send_gamestate(gamestate, gamestate_params)
 
 func request_game_start():
+	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
-	#here pick impostors and assign tasks then put it into gamestate_params
 	gamestate_params = {"imp": [0]}
+	Task.DivideTasks(player_characters.keys().sort())
 	sync_gamestate()
-	game_start(gamestate_params)
+	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))

@@ -11,9 +11,6 @@ signal kill_requested(dead)
 func _init(conf: Dictionary).(conf):
 	pass
 
-func get_event_task_data(tasks) -> Dictionary:
-	return {"add_tasks": tasks}
-
 func handle_updates(input):
 	if !(input is Array): return
 	if input[0]==0:
@@ -57,8 +54,8 @@ func send_meeting_start(caller: int, dead: int):
 func send_kill(dead: int, pos: Vector2):
 	send_events([4, dead, pos])
 
-func send_gamestate(state, params):
-	send_events([5, state, params])
+func send_gamestate(state, params, opt=[]):
+	send_events([5, state, params, opt])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])

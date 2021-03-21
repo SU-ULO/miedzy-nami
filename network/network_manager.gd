@@ -130,11 +130,16 @@ func get_spawn_position(id: int) -> Vector2:
 			return world.get_node("Mapa/dekoracje/meeting-table/spawnpositions/%s" % id).global_position
 	return Vector2(0, 0)
 
-func game_start(params):
+func game_start(params, taskstuff):
+	var Task := load("res://scripts/tasks/Task.cs")
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
 			#make impostor
 			pass
+	for t in taskstuff:
+		var task = Task.GetTaskByID(t)
+		task.local=true
+		own_player.localTaskList.append(task)
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
