@@ -140,6 +140,8 @@ func request_game_start():
 	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
 	gamestate_params = {"imp": [0]}
-	Task.DivideTasks(player_characters.keys().sort())
+	var ids = player_characters.keys()
+	ids.sort()
+	Task.DivideTasks(ids)
 	sync_gamestate()
 	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))
