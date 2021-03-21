@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/tick.png" type="Texture" id=2]
+[ext_resource path="res://scripts/setting-checkbox.gd" type="Script" id=3]
+[ext_resource path="res://textures/empty.png" type="Texture" id=4]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 792.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 792, 0 )
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 796.0
+margin_right = 879.0
+margin_bottom = 83.0
+custom_icons/checked = ExtResource( 2 )
+custom_icons/unchecked = ExtResource( 4 )
+[connection signal="pressed" from="CheckBox" to="." method="_on_CheckBox_pressed"]

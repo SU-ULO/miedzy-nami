@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/podsceny/setting-checkbox.tscn" type="PackedScene" id=2]
 
 [node name="game settings" type="Control"]
 anchor_right = 1.0
@@ -9,8 +10,218 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 1 )
-text = "Some button to change game options"
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 309.547
+margin_top = 119.687
+margin_right = 1409.55
+margin_bottom = 919.687
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1062.0
+margin_bottom = 1491.0
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="impostor-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 1062.0
+margin_bottom = 75.0
+default_value = 2
+min_val = 1
+max_val = 3
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-count" index="0"]
+text = "impostor count"
+
+[node name="comfirm-ejects" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 100.0
+margin_right = 1062.0
+margin_bottom = 183.0
+default_value = true
+
+[node name="Label" parent="ScrollContainer/VBoxContainer/comfirm-ejects" index="0"]
+text = "confirm eject"
+
+[node name="meeting-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 208.0
+margin_right = 1062.0
+margin_bottom = 283.0
+default_value = 1
+min_val = 1
+max_val = 9
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/meeting-count" index="0"]
+text = "meeting count"
+
+[node name="anonnymous-votes" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 308.0
+margin_right = 1062.0
+margin_bottom = 391.0
+default_value = true
+
+[node name="Label" parent="ScrollContainer/VBoxContainer/anonnymous-votes" index="0"]
+text = "annonymous votes"
+
+[node name="emergency-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 416.0
+margin_right = 1062.0
+margin_bottom = 491.0
+prefix = "s"
+default_value = 15
+step = 15
+max_val = 60
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="0"]
+text = "emergency cooldown"
+
+[node name="discussion-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 516.0
+margin_right = 1062.0
+margin_bottom = 591.0
+prefix = "s"
+default_value = 15
+step = 15
+max_val = 120
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/discussion-time" index="0"]
+text = "discussion time"
+
+[node name="voting-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 616.0
+margin_right = 1062.0
+margin_bottom = 691.0
+prefix = "s"
+default_value = 120
+step = 15
+max_val = 300
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/voting-time" index="0"]
+text = "voting time"
+
+[node name="player-speed" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 716.0
+margin_right = 1062.0
+margin_bottom = 791.0
+prefix = "x"
+default_value = 4
+min_val = 2
+max_val = 12
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/player-speed" index="0"]
+text = "player speed"
+
+[node name="crewmate-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 816.0
+margin_right = 1062.0
+margin_bottom = 891.0
+prefix = "x"
+default_value = 4
+min_val = 1
+max_val = 20
+div = 4
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="0"]
+text = "crewmate vision"
+
+[node name="impostor-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 916.0
+margin_right = 1062.0
+margin_bottom = 991.0
+prefix = "x"
+default_value = 6
+min_val = 1
+max_val = 20
+div = 4
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-vision" index="0"]
+text = "impostor vision"
+
+[node name="kill-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 1016.0
+margin_right = 1062.0
+margin_bottom = 1091.0
+prefix = "s"
+default_value = 90
+step = 5
+min_val = 20
+max_val = 120
+div = 2
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="0"]
+text = "kill cooldown"
+
+[node name="kill-distance" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 1116.0
+margin_right = 1062.0
+margin_bottom = 1191.0
+default_value = 1
+non_numeric_values = true
+values = [ "Small", "Medium", "Large" ]
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/kill-distance" index="0"]
+text = "kill distance"
+
+[node name="taskbar-updates" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 1216.0
+margin_right = 1062.0
+margin_bottom = 1291.0
+default_value = 1
+non_numeric_values = true
+values = [ "Never", "Meetings", "Always" ]
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="0"]
+text = "taskbar updates"
+
+[node name="long-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 1316.0
+margin_right = 1062.0
+margin_bottom = 1391.0
+default_value = 1
+max_val = 3
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/long-tasks" index="0"]
+text = "long tasks"
+
+[node name="short-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 1416.0
+margin_right = 1062.0
+margin_bottom = 1491.0
+default_value = 3
+max_val = 5
+
+[node name="Label2" parent="ScrollContainer/VBoxContainer/short-tasks" index="0"]
+text = "short tasks"
+
+[editable path="ScrollContainer/VBoxContainer/impostor-count"]
+
+[editable path="ScrollContainer/VBoxContainer/comfirm-ejects"]
+
+[editable path="ScrollContainer/VBoxContainer/meeting-count"]
+
+[editable path="ScrollContainer/VBoxContainer/anonnymous-votes"]
+
+[editable path="ScrollContainer/VBoxContainer/emergency-cooldown"]
+
+[editable path="ScrollContainer/VBoxContainer/discussion-time"]
+
+[editable path="ScrollContainer/VBoxContainer/voting-time"]
+
+[editable path="ScrollContainer/VBoxContainer/player-speed"]
+
+[editable path="ScrollContainer/VBoxContainer/crewmate-vision"]
+
+[editable path="ScrollContainer/VBoxContainer/impostor-vision"]
+
+[editable path="ScrollContainer/VBoxContainer/kill-cooldown"]
+
+[editable path="ScrollContainer/VBoxContainer/kill-distance"]
+
+[editable path="ScrollContainer/VBoxContainer/taskbar-updates"]
+
+[editable path="ScrollContainer/VBoxContainer/long-tasks"]
+
+[editable path="ScrollContainer/VBoxContainer/short-tasks"]
