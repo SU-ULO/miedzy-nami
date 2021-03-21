@@ -10,7 +10,7 @@ var vec = Vector2(0, 0)
 func _process(_delta):
 	if pressed:
 		dot.position = get_local_mouse_position().clamped(max_radius)
-		vec = Vector2(int(round(dot.position.x/max_radius)), int(round(dot.position.y/max_radius)))
+		vec = Vector2(dot.position.x/max_radius, dot.position.y/max_radius).normalized()
 	else:
 		dot.position = Vector2(0, 0)
 		vec = Vector2(0, 0)
