@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/okno1.svg" type="Texture" id=1]
 [ext_resource path="res://scripts/sabotagemap.gd" type="Script" id=2]
 [ext_resource path="res://textures/map/map-mini-red.svg" type="Texture" id=3]
+[ext_resource path="res://textures/crosss.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.752941 )
@@ -162,3 +163,12 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="exit" type="TextureButton" parent="."]
+margin_left = 5472.04
+margin_top = -391.708
+margin_right = 6159.04
+margin_bottom = 295.292
+rect_scale = Vector2( 0.662181, 0.662181 )
+texture_normal = ExtResource( 4 )
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

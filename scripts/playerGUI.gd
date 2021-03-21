@@ -84,8 +84,8 @@ func show_map(map_object):
 			instance.get_node("player").player = self.get_parent().get_parent()
 			instance.get_node("player").taskList = player.localTaskList
 			instance.get_node("player").addTasks()
-		#elif map_object.map_name == "SabotageMap":
-			# nothing here right now
+		elif map_object.map_name == "SabotageMap":
+			instance.connect("exit", self, "closeSabotageMap")
 		map_opened = !map_opened
 		toggleVisibility("ActionButtons")
 		toggleVisibility("TaskPanel")
@@ -158,3 +158,11 @@ func toggleVisibility(node_name = "self"):
 
 func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
+
+func closeSabotageMap():
+	map_opened = false
+	get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("SabotageMap").queue_free()
+	toggleVisibility("ActionButtons")
+	toggleVisibility("TaskPanel")
+	if player.is_in_group("impostors"):
+		toggleVisibility("impostor")	

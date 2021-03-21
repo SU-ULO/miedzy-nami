@@ -96,6 +96,7 @@ func get_input():
 			currentInteraction = null
 		else:
 			$CanvasLayer/playerGUI.visible = false
+			$sprites.stopWalk()
 
 func _process(delta):
 	scale_sight_range(delta)
