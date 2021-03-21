@@ -34,6 +34,8 @@ func create_client(config):
 		client.connect("fail", self, "kick", [config.id])
 		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
 		client.connect("kill_requested", self, "handle_kill_request")
+		client.connect("sabotage_requested", self, "handle_sabotage_request")
+		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
 		add_child(client)
 	else:
 		kick(config.id)
@@ -144,4 +146,28 @@ func request_game_start():
 	ids.sort()
 	Task.DivideTasks(ids)
 	sync_gamestate()
-	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))
+	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))	
+
+func request_sabotage(type: int):
+	handle_sabotage_request(type, own_id)
+	
+func request_end_sabotage(type: int):
+	handle_end_sabotage_request(type)
+
+func handle_end_sabotage_request(type: int):
+	for c in connected_clients.values():
+		c.send_end_sabotage(type)
+		
+	own_player.handle_end_sabotage(type)
+	
+
+func handle_sabotage_request(type: int, player_id: int):
+	# TODO: check if the requester (player_id) is an impostor
+	
+	# we check if the timer is up on the server side too to prevent potential client/server desyncs
+	if own_player.is_sabotage_timer_done():
+		for c in connected_clients.values():
+			c.send_sabotage_start(type)
+			
+		own_player.handle_sabotage(type)
+	

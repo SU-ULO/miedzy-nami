@@ -210,6 +210,9 @@ func EndInteraction(_body):
 	print("you cant be unkilled, how unfortunate")
 	# body.currentInteraction = null
 
+func handle_sabotage(type):
+	pass
+
 # draw for debug
 
 func _draw():
@@ -221,3 +224,4 @@ func _draw():
 			draw_line(Vector2(), item-position, Color("#00FF00"))
 		debug_pos_collided.clear()
 		debug_pos_ok.clear()
+

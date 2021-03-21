@@ -19,6 +19,8 @@ func create_world(config):
 	joined_server.connect("meeting_start", self, "start_meeting")
 	joined_server.connect("kill", self, "kill")
 	joined_server.connect("state_sync", self, "handle_state_sync")
+	joined_server.connect("sabotage", self, "handle_sabotage")
+	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -83,8 +85,20 @@ func request_kill(dead: int):
 	if joined_server:
 		joined_server.send_kill_request(dead)
 
+func request_sabotage(type: int):
+	if joined_server and own_player:
+		joined_server.send_sabotage_request(type, own_id)
+
 func handle_state_sync(state, params, opt=[]):
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
 		game_start(gamestate_params, opt[0])
+
+func handle_sabotage(type):
+	if joined_server and own_player:
+		own_player.handle_sabotage(type)
+		
+func handle_end_sabotage(type):
+	if joined_server and own_player:
+		own_player.handle_end_sabotage(type)

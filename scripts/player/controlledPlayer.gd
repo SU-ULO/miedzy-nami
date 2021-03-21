@@ -7,8 +7,24 @@ var selected_vent = 0
 var disabled_movement:bool = false
 
 export var killCooldown = 20
+export var sabotageCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
+
+func is_sabotage_timer_done():
+	return $SabotageCooldown.time_left == 0
+	
+# should we take into consideration fov_toggle?
+func handle_sabotage(type):
+	if $SabotageCooldown.time_left == 0:
+		if type == 0:
+			sight_range = default_sight_range / 2
+
+func handle_end_sabotage(type):
+	$SabotageCooldown.start(sabotageCooldown)
+	
+	if type == 0:
+		sight_range = default_sight_range
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
