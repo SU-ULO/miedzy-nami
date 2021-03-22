@@ -37,6 +37,7 @@ func create_client(config):
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
 		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
+		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -184,3 +185,14 @@ func handle_cameras_enable_request():
 	for c in connected_clients.values():
 		c.send_cameras_enable()
 	cameras_enable()
+
+func handle_tasks_update(state, started, id):
+	var Task = load("res://scripts/tasks/Task.cs")
+	var tasks = Task.GetAllTasks()
+	for i in state:
+		if tasks[i].IsDone() == false:
+			tasks[i].state = state[i]
+		tasks[i].local = true
+	for i in started:
+		tasks[i].started = started[i]
+		tasks[i].local = true

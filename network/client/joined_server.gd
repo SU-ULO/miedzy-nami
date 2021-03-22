@@ -69,3 +69,6 @@ func send_end_sabotage_request(type: int):
 
 func send_cameras_enable_request():
 	send_events([4])
+
+func send_tasks_update(state, started):
+	send_events([5, state, started])

@@ -4,6 +4,8 @@ class_name ClientNetworkManager
 
 var joined_server = null
 
+const Task := preload("res://scripts/tasks/Task.cs")
+
 signal send_session(sess)
 signal send_candidate(cand)
 
@@ -77,6 +79,17 @@ func handle_players_sync(data):
 func _process(_delta):
 	if joined_server and joined_server.established and own_player:
 		joined_server.send_player_character_sync(own_player.generate_sync_data())
+		if Task.CheckAndClearAnyDirty():
+			var state_changes : Dictionary = {}
+			var started_changes: Dictionary = {}
+			for t in Task.GetAllTasks():
+				if t.dirty:
+					t.dirty = false
+					state_changes[t.taskID] = t.state
+					started_changes[t.taskID] = t.started
+					if t.started and t.state < t.maxState:
+						own_player.localTaskList.add(t)
+			joined_server.send_tasks_update(state_changes, started_changes)
 
 func request_meeting(dead: int):
 	if joined_server:
@@ -107,3 +120,4 @@ func handle_end_sabotage(type):
 func request_cameras_enable():
 	if joined_server:
 		joined_server.send_cameras_enable_request()
+
