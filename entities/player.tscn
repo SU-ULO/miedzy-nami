@@ -96,6 +96,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="spodnie" parent="sprites" index="3"]
+z_index = 0
+
 [node name="AnimatedSprite" parent="." index="5"]
 frame = 1
 

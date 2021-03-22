@@ -99,8 +99,10 @@ func loadLook():
 		$wlosy/hair.position.y = currLook.getHairPos()
 
 func lookRight():
-	$"clothes-top".z_index = 0
-	$body.z_index = 0
+	$"clothes-top".show_behind_parent = true
+	$body.show_behind_parent = true
+	$wlosy.show_behind_parent = false
+	$face.show_behind_parent = false
 	$face.flip_h = false
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = -80	
@@ -109,8 +111,10 @@ func lookRight():
 		i.animation = "side"
 
 func lookLeft():
-	$"clothes-top".z_index = 0
-	$body.z_index = 0
+	$"clothes-top".show_behind_parent = true
+	$body.show_behind_parent = true
+	$wlosy.show_behind_parent = false
+	$face.show_behind_parent = false
 	$face.flip_h = true
 	$wlosy/hair.position.y = 340
 	$wlosy/hair.position.x = 80
@@ -119,8 +123,10 @@ func lookLeft():
 		i.animation = "side"
 		
 func lookFront():
-	$"clothes-top".z_index = 1
-	$body.z_index = 1
+	$"clothes-top".show_behind_parent = false
+	$body.show_behind_parent = false
+	$wlosy.show_behind_parent = true
+	$face.show_behind_parent = true
 	$face.flip_h = false
 	$wlosy/hair.position.y = currLook.getHairPos()
 	$wlosy/hair.position.x = 0
@@ -128,8 +134,10 @@ func lookFront():
 		i.flip_h = false
 		i.animation = "front"
 func lookBack():
-	$"clothes-top".z_index = 0
-	$body.z_index = 0
+	$"clothes-top".show_behind_parent = true
+	$body.show_behind_parent = true
+	$wlosy.show_behind_parent = false
+	$face.show_behind_parent = false
 	$wlosy/hair.position.x = 0
 	$wlosy/hair.position.y = 340
 	$face.flip_h = true

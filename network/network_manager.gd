@@ -33,7 +33,7 @@ func start_meeting(caller: int, dead: int):
 	var rips = []
 	own_player.disabled_movement = true
 	recalculate_pos()
-	own_player.position = world.get_node("Mapa/dekoracje/meeting-table").get_child(own_id).global_position
+	own_player.position = world.get_node("Mapa/YSort/meeting-table").get_child(own_id).global_position
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	var playerbox = load("res://gui/meeting/PalyerMeetingBox.tscn")
 	
@@ -88,7 +88,7 @@ func recalculate_pos():
 		if !player_characters[player].is_in_group("rip"):
 			alive += 1
 	
-	var spawn = world.get_node("Mapa/dekoracje/meeting-table/spawnpositions")
+	var spawn = world.get_node("Mapa/YSort/meeting-table/spawnpositions")
 	var angle = 2*PI/alive
 	var a = 0
 	var pos = spawn.position
@@ -131,7 +131,7 @@ func get_spawn_position(id: int) -> Vector2:
 		if gamestate==LOBBY:
 			return world.get_node("lobby-position").global_position
 		else:
-			return world.get_node("Mapa/dekoracje/meeting-table/spawnpositions/%s" % id).global_position
+			return world.get_node("Mapa/YSort/meeting-table/spawnpositions/%s" % id).global_position
 	return Vector2(0, 0)
 
 func game_start(params, taskstuff):
