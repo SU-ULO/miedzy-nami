@@ -163,6 +163,7 @@ func Interact(body):
 	interacted = false
 
 func turn_into_corpse(pos: Vector2):
+	dead = true
 	add_to_group("rip")
 	var instance = dead_body.instance()
 	instance.position = pos
