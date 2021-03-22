@@ -5,7 +5,7 @@ var impostor_toggle :bool = false  #temporarily
 
 var selected_vent = 0
 var disabled_movement:bool = false
-
+var joystickUsed = false
 export var killCooldown = 20
 export var sabotageCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
@@ -37,7 +37,6 @@ func get_input():
 	
 	if !disabled_movement and currentInteraction == null:
 		joystickUsed = $CanvasLayer/playerGUI/Joystick.pressed
-		joystick_direction = $CanvasLayer/playerGUI/Joystick.vec
 		$CanvasLayer/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;
@@ -50,7 +49,9 @@ func get_input():
 		
 		if Input.is_action_pressed("move_up"):
 			moveY += -1;
-		
+		if joystickUsed:
+			moveX = $CanvasLayer/playerGUI/Joystick.vec.x
+			moveY = $CanvasLayer/playerGUI/Joystick.vec.y
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
 			$CanvasLayer/playerGUI.updateGUI()
@@ -113,7 +114,6 @@ func get_input():
 		else:
 			$CanvasLayer/playerGUI.visible = false
 			$sprites.stopWalk()
-
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()

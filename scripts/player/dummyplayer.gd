@@ -28,10 +28,8 @@ var players_interactable := []
 var deadbody_interactable := []
 
 var flipped := false
-var moveX :int
-var moveY :int
-var joystickUsed = false
-var joystick_direction = Vector2()
+var moveX :float
+var moveY :float
 var currentInteraction = null
 var localTaskList := []
 
@@ -71,64 +69,37 @@ func _physics_process(_delta):
 	player_velocity = move_and_slide(player_velocity)
 
 func set_player_velocity():
-	if !joystickUsed:
-		player_velocity.x = moveX
-		player_velocity.y = moveY
-		
-		if(currentInteraction == null):
-		
-			if player_velocity.x == 0 && player_velocity.y == 0:
-				#$Sprite.visible = true
-				$sprites.stopWalk()
-				$Sprite.flip_h = flipped
-				$AnimatedSprite.visible = false
-			else:
-				$sprites.startWalk()
-				#$AnimatedSprite.visible = true
-				#$Sprite.visible = false
-				if player_velocity.x == 1:
-					$AnimatedSprite.flip_h = flipped
-					flipped = false
-					$sprites.lookRight()
-				else: if player_velocity.x == -1:
-					$AnimatedSprite.flip_h = flipped
-					flipped = true
-					$sprites.lookLeft()
-				elif player_velocity.y == 1:
-					$sprites.lookFront()
-				elif player_velocity.y == -1:
-					$sprites.lookBack()
-					#$sprites.lookLeft() 
-
-			player_velocity = player_velocity.normalized() * default_speed
-	else:
-		if joystick_direction.x == 0 && joystick_direction.y == 0:
+	player_velocity.x = moveX
+	player_velocity.y = moveY
+	
+	if(currentInteraction == null):
+		if player_velocity.x == 0 && player_velocity.y == 0:
 			$sprites.stopWalk()
 		else:
 			$sprites.startWalk()
-			if joystick_direction.y >=0:
-				if joystick_direction.x >= 0:
-					if joystick_direction.y > joystick_direction.x:
+			if player_velocity.y >=0:
+				if player_velocity.x >= 0:
+					if player_velocity.y > player_velocity.x:
 						$sprites.lookFront()
 					else:
 						$sprites.lookRight()
 				else:
-					if joystick_direction.y > -joystick_direction.x:
+					if player_velocity.y > -player_velocity.x:
 						$sprites.lookFront()
 					else:
 						$sprites.lookLeft()
 			else:
-				if joystick_direction.x >= 0:
-					if -joystick_direction.y > joystick_direction.x:
+				if player_velocity.x >= 0:
+					if -player_velocity.y > player_velocity.x:
 						$sprites.lookBack()
 					else:
 						$sprites.lookRight()
 				else:
-					if -joystick_direction.y > -joystick_direction.x:
+					if -player_velocity.y > -player_velocity.x:
 						$sprites.lookBack()
 					else:
 						$sprites.lookLeft()							
-		player_velocity = joystick_direction.normalized() * default_speed
+	player_velocity = player_velocity.normalized() * default_speed
 # sight and interaction areas
 
 func on_sight_area_enter(body):

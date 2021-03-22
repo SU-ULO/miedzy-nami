@@ -97,7 +97,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" parent="." index="5"]
-frame = 0
+frame = 1
 
 [node name="Light" type="Light2D" parent="." index="6"]
 position = Vector2( 0, 11.4286 )
