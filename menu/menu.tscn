@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=9]
 [ext_resource path="res://shaders/idk.tres" type="Theme" id=10]
 [ext_resource path="res://menu/create_room.gd" type="Script" id=11]
+[ext_resource path="res://textures/empty.png" type="Texture" id=12]
+[ext_resource path="res://textures/tick.png" type="Texture" id=13]
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
 
 [node name="Menu" type="CanvasLayer"]
@@ -272,30 +274,33 @@ __meta__ = {
 [node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
 margin_top = 79.0
 margin_right = 864.0
-margin_bottom = 154.0
+margin_bottom = 162.0
 alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
 margin_right = 864.0
-margin_bottom = 75.0
+margin_bottom = 83.0
 alignment = 1
 
 [node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 166.0
-margin_right = 670.0
-margin_bottom = 75.0
+margin_left = 136.0
+margin_top = 4.0
+margin_right = 640.0
+margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
 text = "pokój niepubliczny"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 674.0
-margin_right = 698.0
-margin_bottom = 75.0
+margin_left = 644.0
+margin_right = 727.0
+margin_bottom = 83.0
+custom_icons/checked = ExtResource( 13 )
+custom_icons/unchecked = ExtResource( 12 )
 
 [node name="ServerAcceptButton" type="TextureButton" parent="Create"]
-margin_top = 158.0
+margin_top = 166.0
 margin_right = 864.0
-margin_bottom = 266.0
+margin_bottom = 274.0
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -341,7 +346,6 @@ margin_left = 343.778
 margin_top = 12.1557
 margin_right = 510.778
 margin_bottom = 87.1557
-mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Wyjdź"

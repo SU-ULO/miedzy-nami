@@ -1,13 +1,16 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://textures/dzdzownica.png" type="Texture" id=1]
+[ext_resource path="res://textures/taskicon.png" type="Texture" id=1]
 
 [node name="icon" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -123.037
-margin_top = -173.948
-margin_right = 296.963
-margin_bottom = 351.052
-rect_scale = Vector2( 0.494238, 0.494238 )
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -92.9179
+margin_top = -88.2539
+margin_right = 38.0821
+margin_bottom = 42.7461
+rect_scale = Vector2( 1.42098, 1.42098 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
