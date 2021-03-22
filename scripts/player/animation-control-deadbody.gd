@@ -1,6 +1,6 @@
 extends Node2D
 
-var currLook
+var currLook = LookConfiguration.new()
 
 func _ready():
 	#currLook = get_parent().currLook

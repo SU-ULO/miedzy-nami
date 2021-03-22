@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://textures/drzwi1.png" type="Texture" id=1]
+[ext_resource path="res://textures/drzwi2.png" type="Texture" id=2]
+[ext_resource path="res://textures/drzwi4.png" type="Texture" id=3]
+[ext_resource path="res://textures/drzwi3.png" type="Texture" id=4]
+[ext_resource path="res://scripts/door.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "close",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "open",
+"speed": 30.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "close"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( -805.896, -327.983, -805.896, 353.494, -1.71448, 353.494, 0.173218, -337.422 ), PoolVector2Array( -614.125, -383.628, -614.125, 443.126, -1.71448, 353.494, 0.173218, -337.422 ), PoolVector2Array( 598.484, -386.362, 593.722, 429.562, -6.31531, 358.129, -3.1405, -337.152 ), PoolVector2Array( 801.672, -333.978, 803.259, 351.78, -6.31531, 358.129, -3.1405, -337.152 ) ]
+}
+
+[node name="door" type="StaticBody2D"]
+collision_layer = 5
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -805.896, -327.983, -805.896, 353.494, -1.71448, 353.494, 0.173218, -337.422 )
