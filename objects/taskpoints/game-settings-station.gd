@@ -16,15 +16,14 @@ func Interact(body):
 	if body.owner_id == 0:
 		menu.get_node("buttons/game").visible = true
 	lookMenu = menu.get_node("menus/look-menu")
-	lookMenu.currLook = body.currLook
+	lookMenu.currLook.set_look(body.currLook.get_look())
 	lookMenu.refresh()
 	colorMenu = menu.get_node("menus/color-menu")
 	colorMenu.color = body.color
-	#game_setting = body.game_settings or sth; idk where are they stored
-	#now load them (i will do it tomorrow)
+	#get_node("menus/game-menu").set_settings(somesettings?) #load settings, idk where are they stored
 func EndInteraction(body):
 	body.color = colorMenu.color
-	body.currLook = lookMenu.currLook
+	body.currLook.set_look(lookMenu.currLook.get_look())
 	game_settings = menu.get_node("menus/game-menu").get_settings()
 	print(game_settings) # and apply them or copy somewhere
 	body.get_node("sprites").loadLook()

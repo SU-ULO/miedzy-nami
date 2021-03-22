@@ -95,3 +95,27 @@ func getBodyPath(frame):
 func getTopClotes(frame, color):
 	#frame 4 means front
 	return "res://textures/character/clothes/"+ topClothes + "/frame" + str(frame) + "/" + topClothes + str(color) + ".png"
+
+func get_look():
+	var clothes_dict = {}
+	clothes_dict["skin"] = skin
+	clothes_dict["mouth"] = mouth
+	clothes_dict["nose"] = nose
+	clothes_dict["eye"] = eye
+	clothes_dict["eye_color"] = eye_color
+	clothes_dict["hair"] = hair
+	clothes_dict["hairColor"] = hairColor
+	clothes_dict["hasBottom"] = hasBottom
+	clothes_dict["topClothes"] = topClothes
+	return clothes_dict
+	
+func set_look(clothes_dict):
+	skin = clothes_dict["skin"]
+	mouth = clothes_dict["mouth"]
+	nose = clothes_dict["nose"]
+	eye = clothes_dict["eye"]
+	eye_color = clothes_dict["eye_color"]
+	hair = clothes_dict["hair"]
+	hairColor = clothes_dict["hairColor"]
+	hasBottom = clothes_dict["hasBottom"]
+	topClothes = clothes_dict["topClothes"]

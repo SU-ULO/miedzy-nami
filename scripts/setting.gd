@@ -45,3 +45,9 @@ func get_value():
 		return value
 	else:
 		return (float(value) / float(div))
+
+func set_value(x):
+	if non_numeric_values:
+		value = x
+	else:
+		value = x * div	
