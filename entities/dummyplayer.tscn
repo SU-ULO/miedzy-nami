@@ -18,8 +18,9 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 133.092, 78.9384 )
+[sub_resource type="CapsuleShape2D" id=13]
+radius = 75.0135
+height = 75.4685
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -192,11 +193,12 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.356125 )
-shape = SubResource( 3 )
+position = Vector2( 0, -0.30785 )
+rotation = -1.57079
+shape = SubResource( 13 )
 
 [node name="sprites" type="Node2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 10 )
 
 [node name="body" type="AnimatedSprite" parent="sprites"]
@@ -236,7 +238,7 @@ frames = SubResource( 9 )
 animation = "front"
 
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
-visible = false
+material = ExtResource( 9 )
 z_index = 5
 z_as_relative = false
 frames = SubResource( 10 )
@@ -268,9 +270,9 @@ texture = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 material = ExtResource( 9 )
 margin_left = -473.854
-margin_top = -534.386
+margin_top = -404.386
 margin_right = 526.146
-margin_bottom = -446.386
+margin_bottom = -316.386
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
