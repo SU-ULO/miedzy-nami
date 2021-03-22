@@ -1,10 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/dekoracje/kamera.png" type="Texture" id=1]
 [ext_resource path="res://scripts/vents and cameras/camera.gd" type="Script" id=2]
 [ext_resource path="res://textures/lightmask2.png" type="Texture" id=3]
+[ext_resource path="res://textures/dekoracje/kamera-active.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 958.23, 540.089 )
 
 [node name="Node2D" type="Node2D"]
@@ -15,16 +24,16 @@ light_mask = -2147483647
 anchor_mode = 0
 zoom = Vector2( 2, 2 )
 
-[node name="camera-sprite" type="Sprite" parent="."]
+[node name="camera-sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 43.5332, 37.4518 )
 scale = Vector2( 0.0448635, 0.0448635 )
-texture = ExtResource( 1 )
+frames = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 960, 540 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false

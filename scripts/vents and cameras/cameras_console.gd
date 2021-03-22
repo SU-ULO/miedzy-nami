@@ -20,7 +20,6 @@ func delete_gui(body):
 		# warning-ignore:return_value_discarded
 		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 		get_node(lc).get_node("Area2D").monitoring = 0
-		get_node(lc).get_node("camera-sprite").texture = load(texture_inactive)
 	canvas.remove_child(camera_gui)
 	
 	# tutaj sygnał do serwera - ktoś przestał używać kamery
@@ -45,10 +44,9 @@ func instance_gui(body):
 		# warning-ignore:return_value_discarded
 		camera.connect("camera_detection", body, "camera_visibility")
 		camera.get_node("Area2D").monitoring = 1
-		camera.get_node("camera-sprite").texture = load(texture_active)
 		camera.detect()
 		iter += 1
-		
+	get_tree().get_root().get_node('Start').network.request_cameras_enable()	
 	# tutaj sygnał do serwera - ktoś zaczął używać kamery
 	# po stronie serwera można zliczać ile osób używa
 	# i jeśli więcej niż 0 to wtedy ustawić teksture na aktywną

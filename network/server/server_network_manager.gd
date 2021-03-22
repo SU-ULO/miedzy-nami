@@ -36,6 +36,7 @@ func create_client(config):
 		client.connect("kill_requested", self, "handle_kill_request")
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
 		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
+		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
 		add_child(client)
 	else:
 		kick(config.id)
@@ -176,3 +177,10 @@ func handle_sabotage_request(type: int, player_id: int):
 			
 		own_player.handle_sabotage(type)
 	
+func request_cameras_enable():
+	handle_cameras_enable_request()
+
+func handle_cameras_enable_request():
+	for c in connected_clients.values():
+		c.send_cameras_enable()
+	cameras_enable()

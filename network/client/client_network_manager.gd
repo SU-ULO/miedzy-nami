@@ -21,6 +21,7 @@ func create_world(config):
 	joined_server.connect("state_sync", self, "handle_state_sync")
 	joined_server.connect("sabotage", self, "handle_sabotage")
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
+	joined_server.connect("cameras_enable", self, "cameras_enable")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -103,3 +104,6 @@ func handle_end_sabotage(type):
 	if joined_server and own_player:
 		own_player.handle_end_sabotage(type)
 
+func request_cameras_enable():
+	if joined_server:
+		joined_server.send_cameras_enable_request()

@@ -5,6 +5,7 @@ signal camera_detection(player, status)
 func _ready():
 	add_to_group("entities")
 	add_to_group("cameras")
+	cam_disable()
 	pass
 
 func _on_Area2D_body_entered(body):
@@ -19,3 +20,7 @@ func detect():
 	for body in $Area2D.get_overlapping_bodies():
 		if body.is_in_group("players"):
 			emit_signal("camera_detection", body, 1)
+func cam_enable():
+	$"camera-sprite".frame = 1
+func cam_disable():
+	$"camera-sprite".frame = 0

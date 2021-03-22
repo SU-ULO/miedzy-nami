@@ -151,3 +151,21 @@ func game_start(params, taskstuff):
 		own_player.localTaskList.append(task)
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
+
+func request_cameras_enable():
+	pass
+
+func cameras_enable():
+	world.get_node("Mapa/camera1").cam_enable()
+	world.get_node("Mapa/camera2").cam_enable()
+	world.get_node("Mapa/camera3").cam_enable()
+	world.get_node("Mapa/camera4").cam_enable()
+
+func request_cameras_disable():
+	pass
+
+func cameras_disable():
+	world.get_node("Mapa/camera1").cam_disable()
+	world.get_node("Mapa/camera2").cam_disable()
+	world.get_node("Mapa/camera3").cam_disable()
+	world.get_node("Mapa/camera4").cam_disable()
