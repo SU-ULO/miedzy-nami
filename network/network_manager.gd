@@ -6,7 +6,7 @@ enum {LOBBY, STARTED, MEETING}
 var gamestate := LOBBY
 var gamestate_params = null
 
-var world := preload('res://scenes/school.tscn').instance()
+var world = null
 var player_characters := Dictionary()
 var own_player = null
 var own_id := 0
@@ -21,6 +21,8 @@ signal meeting_start()
 
 func create_world(config):
 	server_key = config.key
+	load("res://scripts/tasks/Task.cs").ClientCleanup()
+	world = preload('res://scenes/school.tscn').instance()
 	add_child(world)
 
 func display_key(key):
