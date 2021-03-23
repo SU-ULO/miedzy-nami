@@ -14,7 +14,23 @@ var player_characters := Dictionary()
 var own_player = null
 var own_id := 0
 var server_key := ""
-var gamesettings := Dictionary()
+var gamesettings := {
+	"impostor-count": 2,
+	"comfirm-ejects": true,
+	"meeting-count": 1,
+	"anonnymous-votes": true,
+	"emergency-cooldown": 15,
+	"discussion-time": 15,
+	"voting-time": 120,
+	"player-speed": 1,
+	"crewmate-vision": 1,
+	"impostor-vision": 1,
+	"kill-cooldown": 45,
+	"kill-distance": 1,
+	"taskbar-updates": 1,
+	"long-tasks": 1,
+	"short-tasks": 3
+}
 
 var camera_users_count := 0
 var taken_colors := 0

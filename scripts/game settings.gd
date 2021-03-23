@@ -1,7 +1,11 @@
 extends Control
 
 func _ready():
-	pass
+	for i in $"ScrollContainer/VBoxContainer".get_children():
+		if "div" in i:
+			print("\"" + i.name + "\": " + str(i.default_value/i.div))
+		else:
+			print("\"" + i.name + "\": " + str(i.default_value))
 func get_settings():
 	var settings = {}
 	for i in $"ScrollContainer/VBoxContainer".get_children():

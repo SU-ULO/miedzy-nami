@@ -161,6 +161,8 @@ func request_game_start():
 	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
 	gamestate_params = {"imp": [0]}
+	Task.SetTaskCategoriesPerPlayer(3, gamesettings["short-tasks"])
+	Task.SetTaskCategoriesPerPlayer(0, gamesettings["long-tasks"])
 	var ids = player_characters.keys()
 	ids.sort()
 	Task.DivideTasks(ids)

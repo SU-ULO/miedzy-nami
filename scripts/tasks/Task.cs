@@ -214,10 +214,10 @@ public abstract class Task : Godot.Node2D
 		// The number of tasks of given category per player is specified in perPlayer and can be changed
 		// ADD THEM TO THE CATEGORIES ARRAY THOUGH (or declare them just there, but for ease of use's sake
 		// it is generally a good idea to have them named here)
-		public static TaskCategory VeryHard = new TaskCategory(20);
-		public static TaskCategory Hard = new TaskCategory(20);
-		public static TaskCategory Normal = new TaskCategory(20);
-		public static TaskCategory Easy = new TaskCategory(20);
+		public static TaskCategory VeryHard = new TaskCategory(1);
+		public static TaskCategory Hard = new TaskCategory(0);
+		public static TaskCategory Normal = new TaskCategory(0);
+		public static TaskCategory Easy = new TaskCategory(5);
 		
 		public static readonly TaskCategory[] categories = new TaskCategory[]{
 			VeryHard,
@@ -249,4 +249,7 @@ public abstract class Task : Godot.Node2D
 		return this.state >= this.maxState;
 	}
 
+	public static void SetTaskCategoriesPerPlayer(int index, int value){
+		TaskCategory.categories[index].perPlayer = value;
+	}
 }
