@@ -130,7 +130,7 @@ func _process(_delta):
 					state_changes[t.taskID] = t.state
 					started_changes[t.taskID] = t.started
 					if t.started and t.state < t.maxState:
-						own_player.localTaskList.add(t)
+						own_player.localTaskList.append(t)
 			handle_tasks_update(state_changes, started_changes, own_id)
 
 func request_meeting(dead: int):
