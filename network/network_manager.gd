@@ -161,7 +161,7 @@ func add_vote(voter_id, voted_id):
 		var box = world.get_node("CanvasLayer").get_child(0).get_player_box(voted_id)
 		box.set_vote(color)
 	elif voted_id == -1:
-		var box = world.get_node("CanvasLayer/BG/S").set_vote(color)
+		world.get_node("CanvasLayer/BG/S").set_vote(color)
 	
 	#oddano głos
 	var voter_box = world.get_node("CanvasLayer").get_child(0).get_player_box(voter_id)

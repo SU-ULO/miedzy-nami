@@ -1,0 +1,195 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/map/map-mini.svg" type="Texture" id=1]
+[ext_resource path="res://gui/podsceny/admin_player.tscn" type="PackedScene" id=2]
+
+[node name="Control" type="TextureRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -548.0
+margin_top = -993.6
+margin_right = 4932.0
+margin_bottom = 3542.4
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="rooms" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ped" type="HBoxContainer" parent="rooms"]
+margin_left = 1041.43
+margin_top = 295.077
+margin_right = 1503.43
+margin_bottom = 423.077
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" parent="rooms/ped" instance=ExtResource( 2 )]
+margin_left = 167.0
+margin_right = 295.0
+
+[node name="inf" type="HBoxContainer" parent="rooms"]
+margin_left = 1352.0
+margin_top = 1233.33
+margin_right = 2156.0
+margin_bottom = 1361.33
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rad" type="HBoxContainer" parent="rooms"]
+margin_left = 2151.06
+margin_top = 1231.59
+margin_right = 2970.06
+margin_bottom = 1359.59
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fiz" type="HBoxContainer" parent="rooms"]
+margin_left = 3275.0
+margin_top = 1218.82
+margin_right = 4107.0
+margin_bottom = 1346.82
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mat" type="HBoxContainer" parent="rooms"]
+margin_left = 1351.0
+margin_top = 2152.0
+margin_right = 2171.0
+margin_bottom = 2280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="geo" type="HBoxContainer" parent="rooms"]
+margin_left = 2164.0
+margin_top = 2148.24
+margin_right = 2973.0
+margin_bottom = 2276.24
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bio" type="HBoxContainer" parent="rooms"]
+margin_left = 3278.0
+margin_top = 2147.0
+margin_right = 4084.0
+margin_bottom = 2275.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sup" type="HBoxContainer" parent="rooms"]
+margin_left = 4898.0
+margin_top = 2692.0
+margin_right = 5488.0
+margin_bottom = 2820.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="aul" type="HBoxContainer" parent="rooms"]
+margin_left = 5.0
+margin_top = 3582.06
+margin_right = 1033.0
+margin_bottom = 3710.06
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jez" type="HBoxContainer" parent="rooms"]
+margin_left = 1366.54
+margin_top = 3078.39
+margin_right = 2164.54
+margin_bottom = 3206.39
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dyr" type="HBoxContainer" parent="rooms"]
+margin_left = 2170.0
+margin_top = 3098.31
+margin_right = 2978.0
+margin_bottom = 3226.31
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="che" type="HBoxContainer" parent="rooms"]
+margin_left = 3283.34
+margin_top = 3074.34
+margin_right = 4095.34
+margin_bottom = 3202.34
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="por" type="HBoxContainer" parent="rooms"]
+margin_left = 2959.0
+margin_top = 4000.24
+margin_right = 3723.0
+margin_bottom = 4128.24
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bib" type="HBoxContainer" parent="rooms"]
+margin_left = 4428.0
+margin_top = 4094.0
+margin_right = 5183.0
+margin_bottom = 4222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

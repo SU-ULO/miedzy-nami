@@ -71,7 +71,7 @@
 closed = false
 polygon = PoolVector2Array( 465.962, 14966.3, 2095.62, 14959.6, 2086.34, 13627.2, 485.706, 13624.9, 487.952, 14987.6 )
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 render_mode blend_premul_alpha;
 
@@ -109,94 +109,8 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 10 )
-shader_param/aura_width = 0.0
-shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
-
-[sub_resource type="Shader" id=11]
-code = "shader_type canvas_item;
-render_mode blend_premul_alpha;
-
-// This shader only works properly with premultiplied alpha blend mode.
-uniform float aura_width = 2.0;
-uniform vec4 aura_color: hint_color;
-
-void fragment() {
-	vec4 col = texture(TEXTURE, UV);
-	vec2 ps = TEXTURE_PIXEL_SIZE;
-	float a;
-	float maxa = col.a;
-	float mina = col.a;
-
-	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	col.rgb *= col.a;
-
-	COLOR = col;
-	COLOR.rgb += aura_color.rgb * (maxa - mina);
-}
-"
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 11 )
-shader_param/aura_width = 0.0
-shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
-
-[sub_resource type="Shader" id=12]
-code = "shader_type canvas_item;
-render_mode blend_premul_alpha;
-
-// This shader only works properly with premultiplied alpha blend mode.
-uniform float aura_width = 2.0;
-uniform vec4 aura_color: hint_color;
-
-void fragment() {
-	vec4 col = texture(TEXTURE, UV);
-	vec2 ps = TEXTURE_PIXEL_SIZE;
-	float a;
-	float maxa = col.a;
-	float mina = col.a;
-
-	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	col.rgb *= col.a;
-
-	COLOR = col;
-	COLOR.rgb += aura_color.rgb * (maxa - mina);
-}
-"
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 12 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/aura_width = 0.0
 shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
 
@@ -243,18 +157,104 @@ shader = SubResource( 4 )
 shader_param/aura_width = 0.0
 shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+// This shader only works properly with premultiplied alpha blend mode.
+uniform float aura_width = 2.0;
+uniform vec4 aura_color: hint_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+	float maxa = col.a;
+	float mina = col.a;
+
+	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	col.rgb *= col.a;
+
+	COLOR = col;
+	COLOR.rgb += aura_color.rgb * (maxa - mina);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/aura_width = 0.0
+shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+// This shader only works properly with premultiplied alpha blend mode.
+uniform float aura_width = 2.0;
+uniform vec4 aura_color: hint_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+	float maxa = col.a;
+	float mina = col.a;
+
+	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	col.rgb *= col.a;
+
+	COLOR = col;
+	COLOR.rgb += aura_color.rgb * (maxa - mina);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/aura_width = 0.0
+shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
+
+[sub_resource type="CanvasItemMaterial" id=10]
 
 [node name="Main" type="Node2D"]
 
 [node name="rooms" type="Node2D" parent="."]
 
-[node name="admin" type="Node2D" parent="rooms"]
+[node name="ped" type="Node2D" parent="rooms"]
 
-[node name="1" type="Position2D" parent="rooms/admin"]
+[node name="1" type="Position2D" parent="rooms/ped"]
 position = Vector2( -3435.07, -4541.11 )
 
-[node name="2" type="Position2D" parent="rooms/admin"]
+[node name="2" type="Position2D" parent="rooms/ped"]
 position = Vector2( -2467.75, -3135.39 )
 
 [node name="inf" type="Node2D" parent="rooms"]
@@ -265,22 +265,22 @@ position = Vector2( -2823.07, -2657.11 )
 [node name="2" type="Position2D" parent="rooms/inf"]
 position = Vector2( -1179.75, -1123.39 )
 
-[node name="radiowezel" type="Node2D" parent="rooms"]
+[node name="rad" type="Node2D" parent="rooms"]
 position = Vector2( 1680.1, 15.1019 )
 
-[node name="1" type="Position2D" parent="rooms/radiowezel"]
+[node name="1" type="Position2D" parent="rooms/rad"]
 position = Vector2( -2823.07, -2657.11 )
 
-[node name="2" type="Position2D" parent="rooms/radiowezel"]
+[node name="2" type="Position2D" parent="rooms/rad"]
 position = Vector2( -1179.75, -1123.39 )
 
-[node name="phy" type="Node2D" parent="rooms"]
+[node name="fiz" type="Node2D" parent="rooms"]
 position = Vector2( 3892.1, 11.1019 )
 
-[node name="1" type="Position2D" parent="rooms/phy"]
+[node name="1" type="Position2D" parent="rooms/fiz"]
 position = Vector2( -2823.07, -2657.11 )
 
-[node name="2" type="Position2D" parent="rooms/phy"]
+[node name="2" type="Position2D" parent="rooms/fiz"]
 position = Vector2( -1179.75, -1123.39 )
 
 [node name="bio" type="Node2D" parent="rooms"]
@@ -319,13 +319,13 @@ position = Vector2( -2823.07, -2657.11 )
 [node name="2" type="Position2D" parent="rooms/jez"]
 position = Vector2( -1227.32, -1121.01 )
 
-[node name="aula" type="Node2D" parent="rooms"]
+[node name="aul" type="Node2D" parent="rooms"]
 position = Vector2( -2641.34, 4065.03 )
 
-[node name="1" type="Position2D" parent="rooms/aula"]
+[node name="1" type="Position2D" parent="rooms/aul"]
 position = Vector2( -2823.07, -2657.11 )
 
-[node name="2" type="Position2D" parent="rooms/aula"]
+[node name="2" type="Position2D" parent="rooms/aul"]
 position = Vector2( -783.826, 239.707 )
 
 [node name="mat" type="Node2D" parent="rooms"]
@@ -346,31 +346,31 @@ position = Vector2( -2823.07, -2657.11 )
 [node name="2" type="Position2D" parent="rooms/geo"]
 position = Vector2( -1227.32, -1121.01 )
 
-[node name="cam" type="Node2D" parent="rooms"]
+[node name="por" type="Node2D" parent="rooms"]
 position = Vector2( 3299.58, 5757.34 )
 
-[node name="1" type="Position2D" parent="rooms/cam"]
+[node name="1" type="Position2D" parent="rooms/por"]
 position = Vector2( -2823.07, -2657.11 )
 
-[node name="2" type="Position2D" parent="rooms/cam"]
+[node name="2" type="Position2D" parent="rooms/por"]
 position = Vector2( -1353.31, -1342.75 )
 
-[node name="lib" type="Node2D" parent="rooms"]
+[node name="bib" type="Node2D" parent="rooms"]
 position = Vector2( 6202.44, 5858.13 )
 
-[node name="1" type="Position2D" parent="rooms/lib"]
+[node name="1" type="Position2D" parent="rooms/bib"]
 position = Vector2( -2848.27, -2541.2 )
 
-[node name="2" type="Position2D" parent="rooms/lib"]
+[node name="2" type="Position2D" parent="rooms/bib"]
 position = Vector2( -1353.31, -1342.75 )
 
-[node name="lib2" type="Node2D" parent="rooms"]
+[node name="sup" type="Node2D" parent="rooms"]
 position = Vector2( 7159.98, 2894.79 )
 
-[node name="1" type="Position2D" parent="rooms/lib2"]
+[node name="1" type="Position2D" parent="rooms/sup"]
 position = Vector2( -2821.36, -2584.93 )
 
-[node name="2" type="Position2D" parent="rooms/lib2"]
+[node name="2" type="Position2D" parent="rooms/sup"]
 position = Vector2( -1689.28, -1235.2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -412,6 +412,10 @@ polygon = PoolVector2Array( 402.105, 13846.7, 2151.17, 13851.7, 2152.85, 13501.9
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Mapa/lobby/StaticBody2D"]
 polygon = PoolVector2Array( 494.215, 15008.9, 491.695, 13461.7, 456.417, 13461.7, 458.937, 15016.4 )
+
+[node name="game-settings-station" parent="Mapa/lobby" instance=ExtResource( 50 )]
+position = Vector2( 1868.47, 13958.1 )
+scale = Vector2( 0.342406, 0.342406 )
 
 [node name="start" parent="Mapa/lobby" instance=ExtResource( 57 )]
 position = Vector2( 742, 13740.6 )
@@ -459,7 +463,7 @@ linkedcameras = [ NodePath("../camera1"), NodePath("../camera2"), NodePath("../c
 position = Vector2( 1092.07, 620.151 )
 
 [node name="camera2" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( -3090.73, 1159.28 )
+position = Vector2( -2767.48, 1178.85 )
 
 [node name="camera3" parent="Mapa" instance=ExtResource( 38 )]
 position = Vector2( -1150.55, -730.251 )
@@ -967,7 +971,7 @@ position = Vector2( 2404.15, 2625.87 )
 scale = Vector2( 0.290924, 0.290598 )
 
 [node name="biorko-taskpoint" type="StaticBody2D" parent="Mapa/YSort"]
-material = SubResource( 9 )
+material = SubResource( 3 )
 position = Vector2( 153.863, -284.264 )
 scale = Vector2( 0.406592, 0.406135 )
 script = ExtResource( 63 )
@@ -984,7 +988,7 @@ scale = Vector2( 0.621356, 0.621356 )
 polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
 
 [node name="biorko-taskpoint2" type="StaticBody2D" parent="Mapa/YSort"]
-material = SubResource( 8 )
+material = SubResource( 5 )
 position = Vector2( -1557.34, 1613.88 )
 scale = Vector2( 0.406592, 0.406135 )
 script = ExtResource( 66 )
@@ -1088,7 +1092,7 @@ position = Vector2( 2052.44, -1754.53 )
 scale = Vector2( 0.859052, 0.859052 )
 
 [node name="LIB-print" parent="Mapa/YSort" instance=ExtResource( 53 )]
-material = SubResource( 5 )
+material = SubResource( 9 )
 position = Vector2( 3743.16, 4288.72 )
 scale = Vector2( 0.676, 0.667403 )
 collision_layer = 2147483653
@@ -1106,7 +1110,7 @@ position = Vector2( -2826.1, -3735.76 )
 scale = Vector2( 0.487534, 0.487534 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-material = SubResource( 6 )
+material = SubResource( 10 )
 scale = Vector2( 1e-05, 1e-05 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
@@ -1118,7 +1122,3 @@ texture = ExtResource( 14 )
 
 [node name="lobby-position" type="Position2D" parent="."]
 position = Vector2( 1278.04, 14374.7 )
-
-[node name="game-settings-station" parent="." instance=ExtResource( 50 )]
-position = Vector2( 1943.55, 14036.4 )
-scale = Vector2( 0.342406, 0.342406 )
