@@ -38,12 +38,13 @@ var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix
 
 func generate_init_data() -> Dictionary:
-	return {"username": username, "pos": position, "dead": dead, "imp": is_in_group("impostors")}
+	return {"username": username, "pos": position, "dead": dead, "imp": is_in_group("impostors"), "color": color}
 
 func set_init_data(data: Dictionary):
 	username=data["username"]
 	position=data["pos"]
 	dead=data["dead"]
+	color=data["color"]
 	if data["imp"]: add_to_group("impostors")
 
 func generate_sync_data():

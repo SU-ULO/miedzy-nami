@@ -17,6 +17,7 @@ var server_key := ""
 var gamesettings := Dictionary()
 
 var camera_users_count := 0
+var taken_colors := 0
 
 # warning-ignore:unused_signal
 signal joined_room()
@@ -24,6 +25,22 @@ signal joined_room()
 signal left_room()
 
 signal meeting_start()
+
+func is_color_taken(c: int):
+	return taken_colors & 1<<c
+
+func set_color_taken(c: int):
+	taken_colors |= 1<<c
+
+func unset_color_taken(c: int):
+	taken_colors &= ~(1<<c)
+
+func get_free_color_and_set():
+	for i in range(14):
+		if !is_color_taken(i+1):
+			set_color_taken(i+1)
+			return i+1
+	return 0
 
 func create_world(config):
 	server_key = config.key
