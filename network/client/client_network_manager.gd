@@ -23,6 +23,7 @@ func create_world(config):
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	joined_server.connect("cameras_enable", self, "cameras_enable")
 	joined_server.connect("game_settings", self, "handle_game_settings")
+	joined_server.connect("colors_sync", self, "handle_colors_change")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -123,3 +124,6 @@ func request_cameras_enable(on_off: bool):
 	if joined_server:
 		joined_server.send_cameras_enable_request(on_off)
 
+func request_color_change(color: int):
+	if joined_server:
+		joined_server.send_color_change(color)

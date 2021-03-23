@@ -214,3 +214,13 @@ func handle_game_settings(settings):
 
 func apply_settings_to_player():
 	own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
+
+func request_color_change(color: int):
+	pass
+
+func handle_colors_change(taken: int, players: Dictionary):
+	taken_colors=taken
+	for p in players:
+		if player_characters.has(p):
+			player_characters[p].color = players[p]
+			player_characters[p].get_node("sprites").loadLook()

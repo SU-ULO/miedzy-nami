@@ -8,3 +8,4 @@ func _ready():
 		
 func changeColor(newcolor):
 	color = newcolor
+	get_tree().get_root().get_node("Start").network.request_color_change(int(color))

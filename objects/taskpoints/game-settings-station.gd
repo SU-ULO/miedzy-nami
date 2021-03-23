@@ -24,7 +24,6 @@ func Interact(body):
 	if net.own_player.owner_id==0:
 		menu.get_node("menus/game-menu").set_settings(net.gamesettings)
 func EndInteraction(body):
-	body.color = colorMenu.color
 	body.currLook.set_look(lookMenu.currLook.get_look())
 	game_settings = menu.get_node("menus/game-menu").get_settings()
 	var net = get_tree().get_root().get_node("Start").network
