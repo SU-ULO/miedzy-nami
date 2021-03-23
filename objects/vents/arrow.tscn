@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://textures/strzaak.png" type="Texture" id=1]
 [ext_resource path="res://scripts/vents and cameras/arrow.gd" type="Script" id=2]
 
 [node name="Node2D" type="Node2D"]
@@ -9,10 +9,13 @@ z_index = 1
 script = ExtResource( 2 )
 
 [node name="arrow" type="TextureButton" parent="."]
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = -271.0
+margin_top = -618.0
+margin_right = 101.0
+margin_bottom = 60.0
+rect_rotation = 449.999
+rect_scale = Vector2( 0.487203, 0.487203 )
+rect_pivot_offset = Vector2( 271.662, 616.275 )
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
