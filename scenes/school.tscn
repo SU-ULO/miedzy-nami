@@ -283,10 +283,6 @@ polygon = PoolVector2Array( 402.105, 13846.7, 2151.17, 13851.7, 2152.85, 13501.9
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Mapa/lobby/StaticBody2D"]
 polygon = PoolVector2Array( 494.215, 15008.9, 491.695, 13461.7, 456.417, 13461.7, 458.937, 15016.4 )
 
-[node name="game-settings-station" parent="Mapa/lobby" instance=ExtResource( 50 )]
-position = Vector2( -3837.94, 2912.05 )
-scale = Vector2( 0.342406, 0.342406 )
-
 [node name="start" parent="Mapa/lobby" instance=ExtResource( 57 )]
 position = Vector2( 742, 13740.6 )
 scale = Vector2( 0.106931, 0.106931 )
@@ -955,3 +951,7 @@ texture = ExtResource( 14 )
 
 [node name="lobby-position" type="Position2D" parent="."]
 position = Vector2( 1278.04, 14374.7 )
+
+[node name="game-settings-station" parent="." instance=ExtResource( 50 )]
+position = Vector2( 1943.55, 14036.4 )
+scale = Vector2( 0.342406, 0.342406 )

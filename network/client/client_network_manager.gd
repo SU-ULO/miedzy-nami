@@ -22,6 +22,7 @@ func create_world(config):
 	joined_server.connect("sabotage", self, "handle_sabotage")
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	joined_server.connect("cameras_enable", self, "cameras_enable")
+	joined_server.connect("game_settings", self, "handle_game_settings")
 	add_child(joined_server)
 
 func send_session(sess):

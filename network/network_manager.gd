@@ -14,6 +14,7 @@ var player_characters := Dictionary()
 var own_player = null
 var own_id := 0
 var server_key := ""
+var gamesettings := Dictionary()
 
 var camera_users_count := 0
 
@@ -173,3 +174,6 @@ func cameras_enable(on_off: bool): #0 for leave, 1 for join
 		world.get_node("Mapa/camera2").cam_disable()
 		world.get_node("Mapa/camera3").cam_disable()
 		world.get_node("Mapa/camera4").cam_disable()
+
+func handle_game_settings(settings):
+	gamesettings = settings

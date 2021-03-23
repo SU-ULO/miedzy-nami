@@ -65,3 +65,6 @@ func send_end_sabotage(type):
 
 func send_cameras_enable(on_off: bool):
 	send_events([8, on_off])
+
+func send_game_settings(settings):
+	send_events([9, settings])

@@ -198,7 +198,7 @@ func handle_cameras_enable_request(on_off: bool):
 		c.send_cameras_enable(on_off)
 	cameras_enable(on_off)
 
-func handle_tasks_update(state, started, id):
+func handle_tasks_update(state, started, _id):
 	var Task = load("res://scripts/tasks/Task.cs")
 	var tasks = Task.GetAllTasks()
 	for i in state:
@@ -208,3 +208,8 @@ func handle_tasks_update(state, started, id):
 	for i in started:
 		tasks[i].started = started[i]
 		tasks[i].local = true
+
+func set_game_settings(settings):
+	for c in connected_clients.values():
+		c.send_game_settings(settings)
+	handle_game_settings(settings)
