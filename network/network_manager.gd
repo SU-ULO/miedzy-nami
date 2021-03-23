@@ -14,6 +14,8 @@ var own_player = null
 var own_id := 0
 var server_key := ""
 
+var camera_users_count := 0
+
 # warning-ignore:unused_signal
 signal joined_room()
 # warning-ignore:unused_signal
@@ -152,20 +154,21 @@ func game_start(params, taskstuff):
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
 
-func request_cameras_enable():
+func request_cameras_enable(_on_off: bool):
 	pass
 
-func cameras_enable():
-	world.get_node("Mapa/camera1").cam_enable()
-	world.get_node("Mapa/camera2").cam_enable()
-	world.get_node("Mapa/camera3").cam_enable()
-	world.get_node("Mapa/camera4").cam_enable()
-
-func request_cameras_disable():
-	pass
-
-func cameras_disable():
-	world.get_node("Mapa/camera1").cam_disable()
-	world.get_node("Mapa/camera2").cam_disable()
-	world.get_node("Mapa/camera3").cam_disable()
-	world.get_node("Mapa/camera4").cam_disable()
+func cameras_enable(on_off: bool): #0 for leave, 1 for join
+	if on_off == false:
+		camera_users_count-=1
+	else:
+		camera_users_count+=1
+	if camera_users_count > 0:
+		world.get_node("Mapa/camera1").cam_enable()
+		world.get_node("Mapa/camera2").cam_enable()
+		world.get_node("Mapa/camera3").cam_enable()
+		world.get_node("Mapa/camera4").cam_enable()
+	else:
+		world.get_node("Mapa/camera1").cam_disable()
+		world.get_node("Mapa/camera2").cam_disable()
+		world.get_node("Mapa/camera3").cam_disable()
+		world.get_node("Mapa/camera4").cam_disable()

@@ -178,13 +178,13 @@ func handle_sabotage_request(type: int, player_id: int):
 			
 		own_player.handle_sabotage(type)
 	
-func request_cameras_enable():
-	handle_cameras_enable_request()
+func request_cameras_enable(on_off: bool):
+	handle_cameras_enable_request(on_off)
 
-func handle_cameras_enable_request():
+func handle_cameras_enable_request(on_off: bool):
 	for c in connected_clients.values():
-		c.send_cameras_enable()
-	cameras_enable()
+		c.send_cameras_enable(on_off)
+	cameras_enable(on_off)
 
 func handle_tasks_update(state, started, id):
 	var Task = load("res://scripts/tasks/Task.cs")

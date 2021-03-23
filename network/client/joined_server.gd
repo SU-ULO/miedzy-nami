@@ -44,7 +44,7 @@ func handle_events(input):
 	elif input[0]==7:
 		emit_signal("end_sabotage", input[1])
 	elif input[0]==8:
-		emit_signal("cameras_enable")
+		emit_signal("cameras_enable", input[1])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
@@ -67,8 +67,8 @@ func send_sabotage_request(type: int, own_id: int):
 func send_end_sabotage_request(type: int):
 	send_events([3, type])
 
-func send_cameras_enable_request():
-	send_events([4])
+func send_cameras_enable_request(on_off: bool):
+	send_events([4, on_off])
 
 func send_tasks_update(state, started):
 	send_events([5, state, started])

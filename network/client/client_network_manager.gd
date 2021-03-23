@@ -117,7 +117,7 @@ func handle_end_sabotage(type):
 	if joined_server and own_player:
 		own_player.handle_end_sabotage(type)
 
-func request_cameras_enable():
+func request_cameras_enable(on_off: bool):
 	if joined_server:
-		joined_server.send_cameras_enable_request()
+		joined_server.send_cameras_enable_request(on_off)
 

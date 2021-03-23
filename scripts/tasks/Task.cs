@@ -141,7 +141,7 @@ public abstract class Task : Godot.Node2D
 								k = (k + 1) % sortedIntoCategories[tc].Count;
 								taskIDforK = sortedIntoCategories[tc][k];
 								if(k == initialK){
-									Godot.GD.Print("One of the tasks couldn't be assigned");
+									//Godot.GD.Print("One of the tasks couldn't be assigned");
 									throw new Exception("");
 								}
 							}

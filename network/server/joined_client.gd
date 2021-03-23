@@ -32,7 +32,7 @@ func handle_events(input):
 	elif input[0]==3:
 		emit_signal("end_sabotage_requested", input[1])
 	elif input[0]==4:
-		emit_signal("cameras_enable_requested")
+		emit_signal("cameras_enable_requested", input[1])
 	elif input[0]==5:
 		emit_signal("tasks_update", input[1], input[2])
 
@@ -63,5 +63,5 @@ func send_sabotage_start(type):
 func send_end_sabotage(type):
 	send_events([7, type])
 
-func send_cameras_enable():
-	send_events([8])
+func send_cameras_enable(on_off: bool):
+	send_events([8, on_off])
