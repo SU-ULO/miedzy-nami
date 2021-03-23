@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/taskpoints/tablica-taskpoint2.tscn" type="PackedScene" id=2]
@@ -62,6 +62,8 @@
 [ext_resource path="res://objects/dekoracje/door.tscn" type="PackedScene" id=60]
 [ext_resource path="res://textures/drzwi4.png" type="Texture" id=61]
 [ext_resource path="res://textures/lobby.png" type="Texture" id=62]
+[ext_resource path="res://scripts/tasks/HasloGEO.cs" type="Script" id=63]
+[ext_resource path="res://scripts/tasks/HasloINF.cs" type="Script" id=64]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
@@ -718,6 +720,7 @@ scale = Vector2( 0.290924, 0.290598 )
 [node name="biorko-taskpoint" parent="Mapa/YSort" instance=ExtResource( 48 )]
 position = Vector2( 153.863, -284.264 )
 scale = Vector2( 0.406592, 0.406135 )
+script = ExtResource( 63 )
 
 [node name="biorko-taskpoint2" parent="Mapa/YSort" instance=ExtResource( 48 )]
 position = Vector2( -1557.34, 1613.88 )
@@ -726,6 +729,7 @@ scale = Vector2( 0.406592, 0.406135 )
 [node name="biorko-taskpoint3" parent="Mapa/YSort" instance=ExtResource( 48 )]
 position = Vector2( -2506.1, -1947.15 )
 scale = Vector2( -0.5, 0.5 )
+script = ExtResource( 64 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]
 position = Vector2( -5106.93, 1698.9 )
