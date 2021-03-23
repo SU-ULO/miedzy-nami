@@ -32,6 +32,7 @@ var moveX :float
 var moveY :float
 var currentInteraction = null
 var localTaskList := []
+var player_speed
 
 var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix
@@ -54,7 +55,7 @@ func set_sync_data(data: Dictionary):
 	position=data["pos"]
 
 func _ready():
-	
+	player_speed = default_speed
 	add_to_group("players")
 	add_to_group("entities")	
 	$sprites.loadLook()
@@ -99,7 +100,7 @@ func set_player_velocity():
 						$sprites.lookBack()
 					else:
 						$sprites.lookLeft()							
-	player_velocity = player_velocity.normalized() * default_speed
+	player_velocity = player_velocity.normalized() * player_speed
 # sight and interaction areas
 
 func on_sight_area_enter(body):

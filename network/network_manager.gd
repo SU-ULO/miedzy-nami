@@ -177,3 +177,7 @@ func cameras_enable(on_off: bool): #0 for leave, 1 for join
 
 func handle_game_settings(settings):
 	gamesettings = settings
+	apply_settings_to_player()
+
+func apply_settings_to_player():
+	own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]

@@ -13,3 +13,7 @@ func _on_CheckBox_pressed():
 
 func get_value():
 	return value
+func set_value(val):
+	$CheckBox.pressed = val
+func update_label():
+	pass

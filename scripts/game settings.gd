@@ -9,5 +9,6 @@ func get_settings():
 	return settings
 func set_settings(settings):
 	for i in $"ScrollContainer/VBoxContainer".get_children():
-		i.set_value(settings[i.name])
-		i.update_label()
+		if i.name in settings.keys():
+			i.set_value(settings[i.name])
+			i.update_label()
