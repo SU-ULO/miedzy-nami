@@ -7,7 +7,7 @@ public class HasloINF : TaskWithGUI
 		return "res://gui/haslo.tscn";
 	}
 	public override string ToString(){
-		return "SALA INFORMATYCZNA: odblokuj komputer";
+		return "SALA INFORMATYCZNA: odblokuj komputer (1/3)";
 	}
 	public HasloINF(){
 		this.category = TaskCategory.VeryHard;

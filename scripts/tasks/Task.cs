@@ -123,7 +123,7 @@ public abstract class Task : Godot.Node2D
 		}
 		
 		foreach(TaskCategory tc in TaskCategory.categories){
-			if(sortedIntoCategories[tc].Count > tc.perPlayer){
+			if(sortedIntoCategories[tc].Count < tc.perPlayer){
 				tc.perPlayer = sortedIntoCategories[tc].Count;
 			}
 		}
@@ -139,13 +139,12 @@ public abstract class Task : Godot.Node2D
 							initialK = k;
 							while(tasksForPlayers[i].Contains(taskIDforK)) {
 								k = (k + 1) % sortedIntoCategories[tc].Count;
-								taskIDforK = sortedIntoCategories[tc][k];
 								if(k == initialK){
 									//Godot.GD.Print("One of the tasks couldn't be assigned");
 									throw new Exception("");
 								}
 							}
-							
+							taskIDforK = sortedIntoCategories[tc][k];
 							tasksForPlayers[i].Add(taskIDforK);
 							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
 						}catch(Exception e){

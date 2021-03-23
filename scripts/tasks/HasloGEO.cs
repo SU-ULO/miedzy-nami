@@ -7,7 +7,7 @@ public class HasloGEO : TaskWithGUI
 		return "res://gui/haslo.tscn";
 	}
 	public override string ToString(){
-		return "SALA GEOGRAFICZNA: odblokuj komputer";
+		return "SALA GEOGRAFICZNA: odblokuj komputer (3/3)";
 	}
 	public HasloGEO()
 	{

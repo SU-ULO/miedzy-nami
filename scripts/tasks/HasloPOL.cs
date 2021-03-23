@@ -7,7 +7,7 @@ public class HasloPOL : TaskWithGUI
 		return "res://gui/haslo.tscn";
 	}
 	public override string ToString(){
-		return "SALA JĘZYKOWA: odblokuj komputer";
+		return "SALA JĘZYKOWA: odblokuj komputer (2/3)";
 	}
 	public override int GetNextTaskID()
 	{

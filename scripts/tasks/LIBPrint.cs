@@ -11,6 +11,6 @@ public class LIBPrint : TaskWithGUI
 		return "BIBLIOTEKA: wydrukuj dokument";
 	}
 	public LIBPrint(){
-		this.category = TaskCategory.VeryHard;
+		this.category = TaskCategory.Easy;
 	}
 }

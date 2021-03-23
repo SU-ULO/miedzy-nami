@@ -98,13 +98,13 @@ margin_bottom = 810.0
 texture_normal = ExtResource( 5 )
 
 [node name="GridContainer2" type="GridContainer" parent="."]
-margin_left = 1184.16
-margin_top = 514.104
-margin_right = 1259.16
-margin_bottom = 689.104
-rect_scale = Vector2( 0.817775, 0.817775 )
+margin_left = 1189.82
+margin_top = 548.083
+margin_right = 1534.82
+margin_bottom = 870.083
+rect_scale = Vector2( 1.1, 1.1 )
 mouse_filter = 2
-custom_constants/vseparation = 19
+custom_constants/vseparation = 56
 custom_constants/hseparation = 108
 columns = 3
 __meta__ = {
@@ -112,8 +112,8 @@ __meta__ = {
 }
 
 [node name="u" type="Label" parent="GridContainer2"]
-margin_right = 76.0
-margin_bottom = 175.0
+margin_right = 39.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "u"
@@ -122,9 +122,9 @@ __meta__ = {
 }
 
 [node name="O" type="Label" parent="GridContainer2"]
-margin_left = 184.0
-margin_right = 287.0
-margin_bottom = 175.0
+margin_left = 147.0
+margin_right = 198.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "O"
@@ -133,9 +133,9 @@ __meta__ = {
 }
 
 [node name="2" type="Label" parent="GridContainer2"]
-margin_left = 395.0
-margin_right = 473.0
-margin_bottom = 175.0
+margin_left = 306.0
+margin_right = 345.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "2"
@@ -144,9 +144,9 @@ __meta__ = {
 }
 
 [node name="1" type="Label" parent="GridContainer2"]
-margin_top = 194.0
-margin_right = 76.0
-margin_bottom = 369.0
+margin_top = 144.0
+margin_right = 39.0
+margin_bottom = 232.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1"
@@ -155,10 +155,10 @@ __meta__ = {
 }
 
 [node name="L" type="Label" parent="GridContainer2"]
-margin_left = 184.0
-margin_top = 194.0
-margin_right = 287.0
-margin_bottom = 369.0
+margin_left = 147.0
+margin_top = 144.0
+margin_right = 198.0
+margin_bottom = 232.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "L"
@@ -167,10 +167,10 @@ __meta__ = {
 }
 
 [node name="0" type="Label" parent="GridContainer2"]
-margin_left = 395.0
-margin_top = 194.0
-margin_right = 473.0
-margin_bottom = 369.0
+margin_left = 306.0
+margin_top = 144.0
+margin_right = 345.0
+margin_bottom = 232.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
@@ -179,9 +179,9 @@ __meta__ = {
 }
 
 [node name="o" type="Label" parent="GridContainer2"]
-margin_top = 388.0
-margin_right = 76.0
-margin_bottom = 563.0
+margin_top = 288.0
+margin_right = 39.0
+margin_bottom = 376.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "o"
@@ -190,10 +190,10 @@ __meta__ = {
 }
 
 [node name="U" type="Label" parent="GridContainer2"]
-margin_left = 184.0
-margin_top = 388.0
-margin_right = 287.0
-margin_bottom = 563.0
+margin_left = 147.0
+margin_top = 288.0
+margin_right = 198.0
+margin_bottom = 376.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "U"
@@ -202,10 +202,10 @@ __meta__ = {
 }
 
 [node name="l" type="Label" parent="GridContainer2"]
-margin_left = 395.0
-margin_top = 388.0
-margin_right = 473.0
-margin_bottom = 563.0
+margin_left = 306.0
+margin_top = 288.0
+margin_right = 345.0
+margin_bottom = 376.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "l"
