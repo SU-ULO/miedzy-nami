@@ -10,6 +10,7 @@ signal kill_requested(dead)
 signal sabotage_requested(type, player_id)
 signal end_sabotage_requested(type)
 signal cameras_enable_requested()
+signal tasks_update(state, started)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -21,21 +22,6 @@ func handle_updates(input):
 		emit_signal("player_character_sync", data)
 
 func handle_events(input):
-	#this entire tasks thing will have to be changed to signal handled by ServerNetworkManager
-	if input is Dictionary:
-		if input.has("update_tasks"):
-			var Task = load("res://scripts/tasks/Task.cs")
-			var tasks = Task.GetAllTasks()
-			if input.has("state") and input["state"] is Dictionary:
-				for i in input["state"]:
-					if tasks[i].IsDone() == false:
-						tasks[i].state = input["state"][i]
-					tasks[i].local = true
-			if input.has("started") and input["started"] is Dictionary:
-				for i in input["started"]:
-					tasks[i].started = input["started"][i]
-					tasks[i].local = true
-		return
 	if !(input is Array): return
 	if input[0]==0:
 		emit_signal("meeting_requested", input[1])
@@ -47,6 +33,9 @@ func handle_events(input):
 		emit_signal("end_sabotage_requested", input[1])
 	elif input[0]==4:
 		emit_signal("cameras_enable_requested")
+	elif input[0]==5:
+		emit_signal("tasks_update", input[1], input[2])
+
 func send_initial_sync(data: Dictionary, id: int):
 	send_events([0, id, data])
 
