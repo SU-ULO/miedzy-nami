@@ -11,6 +11,7 @@ signal sabotage_requested(type, player_id)
 signal end_sabotage_requested(type)
 signal cameras_enable_requested()
 signal tasks_update(state, started)
+signal color_update(color)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -35,6 +36,8 @@ func handle_events(input):
 		emit_signal("cameras_enable_requested", input[1])
 	elif input[0]==5:
 		emit_signal("tasks_update", input[1], input[2])
+	elif input[0]==6:
+		emit_signal("color_update", input[1])
 
 func send_initial_sync(data: Dictionary, id: int):
 	send_events([0, id, data])
@@ -68,3 +71,6 @@ func send_cameras_enable(on_off: bool):
 
 func send_game_settings(settings):
 	send_events([9, settings])
+
+func send_colors(taken: int, players: Dictionary):
+	send_events([10, taken, players])

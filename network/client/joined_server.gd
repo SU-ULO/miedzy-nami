@@ -13,6 +13,7 @@ signal sabotage(type)
 signal end_sabotage(type)
 signal cameras_enable()
 signal game_settings(settings)
+signal colors_sync(taken, players)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -48,6 +49,8 @@ func handle_events(input):
 		emit_signal("cameras_enable", input[1])
 	elif input[0]==9:
 		emit_signal("game_settings", input[1])
+	elif input[0]==10:
+		emit_signal("colors_sync", input[1], input[2])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
@@ -75,3 +78,6 @@ func send_cameras_enable_request(on_off: bool):
 
 func send_tasks_update(state, started):
 	send_events([5, state, started])
+
+func send_color_change(color: int):
+	send_events([6, color])

@@ -38,6 +38,7 @@ func create_client(config):
 		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
 		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
+		client.connect("color_update", self, "handle_color_change_request", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -106,6 +107,7 @@ func kick(id):
 					cc.send_player_removal_notification(id)
 		c.queue_free()
 	if player_characters.has(id):
+		unset_color_taken(player_characters[id].color)
 		player_characters[id].queue_free()
 # warning-ignore:return_value_discarded
 		player_characters.erase(id)
@@ -218,3 +220,22 @@ func set_game_settings(settings):
 	for c in connected_clients.values():
 		c.send_game_settings(settings)
 	handle_game_settings(settings)
+
+func request_color_change(c: int):
+	handle_color_change_request(c, own_id)
+
+func sync_colors():
+	var p = Dictionary()
+	for c in player_characters:
+		p[c]=player_characters[c].color
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_colors(taken_colors, p)
+	handle_colors_change(taken_colors, p)
+
+func handle_color_change_request(c: int, id: int):
+	if !is_color_taken(c):
+		unset_color_taken(player_characters[id].color)
+		player_characters[id].color = c
+		set_color_taken(c)
+	sync_colors()
