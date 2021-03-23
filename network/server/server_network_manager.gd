@@ -115,6 +115,18 @@ func _process(_delta):
 	for c in connected_clients.values():
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
+	if own_player:
+		if Task.CheckAndClearAnyDirty():
+			var state_changes : Dictionary = {}
+			var started_changes: Dictionary = {}
+			for t in Task.GetAllTasks():
+				if t.dirty:
+					t.dirty = false
+					state_changes[t.taskID] = t.state
+					started_changes[t.taskID] = t.started
+					if t.started and t.state < t.maxState:
+						own_player.localTaskList.add(t)
+			handle_tasks_update(state_changes, started_changes, own_id)
 
 func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)

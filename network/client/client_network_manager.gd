@@ -4,8 +4,6 @@ class_name ClientNetworkManager
 
 var joined_server = null
 
-const Task := preload("res://scripts/tasks/Task.cs")
-
 signal send_session(sess)
 signal send_candidate(cand)
 
