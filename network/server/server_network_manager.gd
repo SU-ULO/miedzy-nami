@@ -63,6 +63,7 @@ func create_world(config):
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
 	own_player.global_position = get_spawn_position(own_id)
+	own_player.color = get_free_color_and_set()
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
 
@@ -72,6 +73,7 @@ func spawn_player(id: int):
 	new_character.owner_id = id
 	new_character.username = connected_clients[id].config.username
 	new_character.global_position = get_spawn_position(id)
+	new_character.color = get_free_color_and_set()
 	player_characters[id]=new_character
 	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
@@ -85,7 +87,8 @@ func spawn_player(id: int):
 			#more initialization data for joining player here
 			var all_init_data = {
 				"players": all_players_init_data,
-				"gamestate": [gamestate, gamestate_params]
+				"gamestate": [gamestate, gamestate_params],
+				"gamesettings": gamesettings
 				}
 			c.send_initial_sync(all_init_data, id)
 		elif c.joined:

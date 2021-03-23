@@ -41,6 +41,8 @@ func set_candidate(cand: String):
 
 func handle_initial_sync(id: int, data: Dictionary):
 	var players_data = data["players"]
+	gamestate=data["gamestate"][0]
+	gamestate_params=data["gamestate"][1]
 	var preloaded_dummy = preload("res://entities/dummyplayer.tscn")
 	own_id = id
 	for c in players_data:
@@ -55,7 +57,8 @@ func handle_initial_sync(id: int, data: Dictionary):
 		player_characters[c]=added_player
 		added_player.set_init_data(init_data)
 		world.get_node('Mapa/YSort').add_child(added_player)
-		emit_signal("joined_room")
+	handle_game_settings(data["gamesettings"])
+	emit_signal("joined_room")
 
 func handle_remote_player_joining(id: int, data: Dictionary):
 	var added_player := preload("res://entities/dummyplayer.tscn").instance()
