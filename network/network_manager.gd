@@ -7,6 +7,7 @@ var gamestate := LOBBY
 var gamestate_params = null
 
 const preloadedmap := preload('res://scenes/school.tscn')
+const Task := preload("res://scripts/tasks/Task.cs")
 
 var world = null
 var player_characters := Dictionary()
