@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/taskpoints/tablica-taskpoint2.tscn" type="PackedScene" id=2]
@@ -47,7 +47,7 @@
 [ext_resource path="res://objects/taskpoints/CHE-Color-taskpoint.tscn" type="PackedScene" id=45]
 [ext_resource path="res://objects/dekoracje/meetingtable.tscn" type="PackedScene" id=46]
 [ext_resource path="res://objects/dekoracje/komputer.tscn" type="PackedScene" id=47]
-[ext_resource path="res://objects/taskpoints/haslo-taskpoint.tscn" type="PackedScene" id=48]
+[ext_resource path="res://textures/dekoracje/biorko_nauczyciela.png" type="Texture" id=48]
 [ext_resource path="res://BBB.tscn" type="PackedScene" id=49]
 [ext_resource path="res://objects/taskpoints/game-settings.tscn" type="PackedScene" id=50]
 [ext_resource path="res://objects/dekoracje/electrical.tscn" type="PackedScene" id=51]
@@ -65,6 +65,7 @@
 [ext_resource path="res://scripts/tasks/HasloGEO.cs" type="Script" id=63]
 [ext_resource path="res://scripts/tasks/HasloINF.cs" type="Script" id=64]
 [ext_resource path="res://objects/taskpoints/admin.tscn" type="PackedScene" id=65]
+[ext_resource path="res://scripts/tasks/HasloPOL.cs" type="Script" id=66]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
@@ -113,7 +114,50 @@ shader = SubResource( 2 )
 shader_param/aura_width = 0.0
 shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+render_mode blend_premul_alpha;
+
+// This shader only works properly with premultiplied alpha blend mode.
+uniform float aura_width = 2.0;
+uniform vec4 aura_color: hint_color;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+	float a;
+	float maxa = col.a;
+	float mina = col.a;
+
+	a = texture(TEXTURE, UV + vec2(0.0, -aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(0.0, aura_width) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(-aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	a = texture(TEXTURE, UV + vec2(aura_width, 0.0) * ps).a;
+	maxa = max(a, maxa);
+	mina = min(a, mina);
+
+	col.rgb *= col.a;
+
+	COLOR = col;
+	COLOR.rgb += aura_color.rgb * (maxa - mina);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/aura_width = 0.0
+shader_param/aura_color = Color( 0.909804, 1, 0.478431, 0.552941 )
+
+[sub_resource type="CanvasItemMaterial" id=6]
 
 [node name="Main" type="Node2D"]
 
@@ -836,19 +880,56 @@ scale = Vector2( 0.290924, 0.290598 )
 position = Vector2( 2404.15, 2625.87 )
 scale = Vector2( 0.290924, 0.290598 )
 
-[node name="biorko-taskpoint" parent="Mapa/YSort" instance=ExtResource( 48 )]
+[node name="biorko-taskpoint" type="StaticBody2D" parent="Mapa/YSort"]
+material = SubResource( 3 )
 position = Vector2( 153.863, -284.264 )
 scale = Vector2( 0.406592, 0.406135 )
 script = ExtResource( 63 )
 
-[node name="biorko-taskpoint2" parent="Mapa/YSort" instance=ExtResource( 48 )]
+[node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint"]
+use_parent_material = true
+position = Vector2( 1.21887, 4.59433 )
+scale = Vector2( 0.621356, 0.621356 )
+texture = ExtResource( 48 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint"]
+position = Vector2( 699.43, 457.083 )
+scale = Vector2( 0.621356, 0.621356 )
+polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
+
+[node name="biorko-taskpoint2" type="StaticBody2D" parent="Mapa/YSort"]
+material = SubResource( 3 )
 position = Vector2( -1557.34, 1613.88 )
 scale = Vector2( 0.406592, 0.406135 )
+script = ExtResource( 66 )
 
-[node name="biorko-taskpoint3" parent="Mapa/YSort" instance=ExtResource( 48 )]
+[node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint2"]
+use_parent_material = true
+position = Vector2( 1.21887, 4.59433 )
+scale = Vector2( 0.621356, 0.621356 )
+texture = ExtResource( 48 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint2"]
+position = Vector2( 699.43, 457.083 )
+scale = Vector2( 0.621356, 0.621356 )
+polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
+
+[node name="biorko-taskpoint3" type="StaticBody2D" parent="Mapa/YSort"]
+material = SubResource( 3 )
 position = Vector2( -2506.1, -1947.15 )
 scale = Vector2( -0.5, 0.5 )
 script = ExtResource( 64 )
+
+[node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint3"]
+use_parent_material = true
+position = Vector2( 1.21887, 4.59433 )
+scale = Vector2( 0.621356, 0.621356 )
+texture = ExtResource( 48 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint3"]
+position = Vector2( 699.43, 457.083 )
+scale = Vector2( 0.621356, 0.621356 )
+polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]
 position = Vector2( -5106.93, 1698.9 )
@@ -921,7 +1002,7 @@ position = Vector2( 2052.44, -1754.53 )
 scale = Vector2( 0.859052, 0.859052 )
 
 [node name="LIB-print" parent="Mapa/YSort" instance=ExtResource( 53 )]
-material = SubResource( 3 )
+material = SubResource( 5 )
 position = Vector2( 3743.16, 4288.72 )
 scale = Vector2( 0.676, 0.667403 )
 collision_layer = 2147483653
@@ -939,7 +1020,7 @@ position = Vector2( -2826.1, -3735.76 )
 scale = Vector2( 0.487534, 0.487534 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-material = SubResource( 4 )
+material = SubResource( 6 )
 scale = Vector2( 1e-05, 1e-05 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
