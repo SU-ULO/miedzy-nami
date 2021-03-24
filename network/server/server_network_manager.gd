@@ -138,9 +138,11 @@ func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
 
 func handle_meeting_request(dead: int, caller: int):
-	#here we should check if meeting is in progress and return in case it is
+	if gamestate==MEETING: return
+	gamestate=MEETING
+	gamestate_params={"caller": caller, "dead": dead}
 	for c in connected_clients.values():
-		c.send_meeting_start(caller, dead)
+		c.send_gamestate(gamestate, gamestate_params)
 	start_meeting(caller, dead)
 
 func request_kill(dead: int):

@@ -127,6 +127,10 @@ func start_meeting(caller: int, dead: int):
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
+func update_meeting():
+	#stuff for updating meeting ui, don't know what is needed for this
+	pass
+
 func recalculate_pos():
 	var radius:float = 500.0
 	var elipsyfy:float = 1.5
@@ -222,7 +226,7 @@ func handle_game_settings(settings):
 func apply_settings_to_player():
 	own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
 
-func request_color_change(color: int):
+func request_color_change(_color: int):
 	pass
 
 func handle_colors_change(taken: int, players: Dictionary):

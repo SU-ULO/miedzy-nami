@@ -48,29 +48,26 @@ func send_spawning_player_sync(data: Dictionary, id: int):
 func send_player_removal_notification(id: int):
 	send_events([2, id])
 
-func send_meeting_start(caller: int, dead: int):
-	send_events([3, caller, dead])
-
 func send_kill(dead: int, pos: Vector2):
-	send_events([4, dead, pos])
+	send_events([3, dead, pos])
 
 func send_gamestate(state, params, opt=null):
-	send_events([5, state, params, opt])
+	send_events([4, state, params, opt])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])
 	
 func send_sabotage_start(type):
-	send_events([6, type])
+	send_events([5, type])
 
 func send_end_sabotage(type):
-	send_events([7, type])
+	send_events([6, type])
 
 func send_cameras_enable(on_off: bool):
-	send_events([8, on_off])
+	send_events([7, on_off])
 
 func send_game_settings(settings):
-	send_events([9, settings])
+	send_events([8, settings])
 
 func send_colors(taken: int, players: Dictionary):
-	send_events([10, taken, players])
+	send_events([9, taken, players])

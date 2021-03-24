@@ -107,10 +107,17 @@ func request_sabotage(type: int):
 		joined_server.send_sabotage_request(type, own_id)
 
 func handle_state_sync(state, params, opt=null):
+	if gamestate==MEETING and state==MEETING:
+		gamestate = state
+		gamestate_params = params
+		#just update meeting
+		return
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
 		game_start(gamestate_params, opt)
+	elif state==MEETING:
+		start_meeting(gamestate_params["caller"], gamestate_params["dead"])
 
 func handle_sabotage(type):
 	if joined_server and own_player:

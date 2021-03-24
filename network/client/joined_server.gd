@@ -6,7 +6,6 @@ signal initial_sync(id, players_data)
 signal remote_player_joined(id, data)
 signal remote_player_left(id)
 signal players_sync(players_data)
-signal meeting_start(caller, dead)
 signal kill(dead, pos)
 signal state_sync(state, params, opt)
 signal sabotage(type)
@@ -36,20 +35,18 @@ func handle_events(input):
 	elif input[0]==2:
 		emit_signal("remote_player_left", input[1])
 	elif input[0]==3:
-		emit_signal("meeting_start", input[1], input[2])
-	elif input[0]==4:
 		emit_signal("kill", input[1], input[2])
-	elif input[0]==5:
+	elif input[0]==4:
 		emit_signal("state_sync", input[1], input[2], input[3])
-	elif input[0]==6:
+	elif input[0]==5:
 		emit_signal("sabotage", input[1])
-	elif input[0]==7:
+	elif input[0]==6:
 		emit_signal("end_sabotage", input[1])
-	elif input[0]==8:
+	elif input[0]==7:
 		emit_signal("cameras_enable", input[1])
-	elif input[0]==9:
+	elif input[0]==8:
 		emit_signal("game_settings", input[1])
-	elif input[0]==10:
+	elif input[0]==9:
 		emit_signal("colors_sync", input[1], input[2])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
