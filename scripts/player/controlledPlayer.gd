@@ -7,7 +7,7 @@ var selected_vent = 0
 var disabled_movement:bool = false
 var joystickUsed = false
 export var killCooldown = 20
-export var sabotageCooldown = 20
+export var sabotageCooldown = 10
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
@@ -16,15 +16,24 @@ func is_sabotage_timer_done():
 	
 # should we take into consideration fov_toggle?
 func handle_sabotage(type):
+	var network = get_tree().get_root().get_node("Start").network
 	if $SabotageCooldown.time_left == 0:
-		if type == 0:
+		if type == 1:
 			sight_range = default_sight_range / 2
-
+		if type == 2:
+			network.world.get_node("Mapa/YSort/door").close_door()
+			network.world.get_node("Mapa/YSort/door2").close_door()
+			network.world.get_node("Mapa/YSort/door3").close_door()
+		
 func handle_end_sabotage(type):
 	$SabotageCooldown.start(sabotageCooldown)
-	
-	if type == 0:
+	var network = get_tree().get_root().get_node("Start").network
+	if type == 1:
 		sight_range = default_sight_range
+	if type == 2:
+		network.world.get_node("Mapa/YSort/door").open_door()
+		network.world.get_node("Mapa/YSort/door2").open_door()
+		network.world.get_node("Mapa/YSort/door3").open_door()
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)

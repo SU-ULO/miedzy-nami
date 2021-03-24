@@ -35,9 +35,10 @@ func create_client(config):
 		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
 		client.connect("kill_requested", self, "handle_kill_request")
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
-		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
+		client.connect("end_sabotage_requested", self, "handle_end_sabotage_request")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
 		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
+		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
 		add_child(client)
 	else:
 		kick(config.id)
@@ -120,12 +121,17 @@ func _process(_delta):
 			var state_changes : Dictionary = {}
 			var started_changes: Dictionary = {}
 			for t in Task.GetAllTasks():
-				if t.dirty:
-					t.dirty = false
-					state_changes[t.taskID] = t.state
-					started_changes[t.taskID] = t.started
-					if t.started and t.state < t.maxState:
-						own_player.localTaskList.add(t)
+				if not t == null:
+					if t.dirty:
+						t.dirty = false
+						state_changes[t.taskID] = t.state
+						started_changes[t.taskID] = t.started
+						if t.started and t.state < t.maxState:
+							own_player.localTaskList.add(t)
+					print(t.taskID)
+				else:
+					Task.TaskDebug()
+				
 			handle_tasks_update(state_changes, started_changes, own_id)
 
 func request_meeting(dead: int):
@@ -208,3 +214,11 @@ func handle_tasks_update(state, started, id):
 	for i in started:
 		tasks[i].started = started[i]
 		tasks[i].local = true
+
+func request_gui_sync(gui_name: String, gui_data):
+	handle_gui_sync_request(gui_name, gui_data)
+	
+func handle_gui_sync_request(gui_name: String, gui_data):
+	for c in connected_clients.values():
+		c.send_gui_sync(gui_name, gui_data)
+	emit_signal("gui_sync", gui_name, gui_data)

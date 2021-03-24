@@ -12,6 +12,7 @@ signal state_sync(state, params, opt)
 signal sabotage(type)
 signal end_sabotage(type)
 signal cameras_enable()
+signal gui_sync(gui_name, gui_data)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -45,6 +46,8 @@ func handle_events(input):
 		emit_signal("end_sabotage", input[1])
 	elif input[0]==8:
 		emit_signal("cameras_enable", input[1])
+	elif input[0]==9:
+		emit_signal("gui_sync", input[1], input[2])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
@@ -72,3 +75,6 @@ func send_cameras_enable_request(on_off: bool):
 
 func send_tasks_update(state, started):
 	send_events([5, state, started])
+
+func send_gui_sync_request(gui_name: String, gui_data):
+	send_events([6, gui_name, gui_data])

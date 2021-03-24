@@ -49,3 +49,7 @@ anims/close = SubResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -805.896, -327.983, -805.896, 353.494, -1.71448, 353.494, 0.173218, -337.422 )
+
+[node name="Timer" type="Timer" parent="CollisionPolygon2D"]
+
+[node name="Timer" type="Timer" parent="."]

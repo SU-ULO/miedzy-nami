@@ -22,6 +22,7 @@ func create_world(config):
 	joined_server.connect("sabotage", self, "handle_sabotage")
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	joined_server.connect("cameras_enable", self, "cameras_enable")
+	joined_server.connect("gui_sync", self, "handle_gui_sync")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -101,6 +102,10 @@ func request_sabotage(type: int):
 	if joined_server and own_player:
 		joined_server.send_sabotage_request(type, own_id)
 
+func request_end_sabotage(type: int):
+	if joined_server and own_player:
+		joined_server.send_end_sabotage_request(type)
+
 func handle_state_sync(state, params, opt=null):
 	gamestate = state
 	gamestate_params = params
@@ -119,3 +124,9 @@ func request_cameras_enable(on_off: bool):
 	if joined_server:
 		joined_server.send_cameras_enable_request(on_off)
 
+func request_gui_sync(gui_name: String, gui_data):
+	if joined_server:
+		joined_server.send_gui_sync_request(gui_name, gui_data)
+		
+func handle_gui_sync(gui_name: String, gui_data):
+	emit_signal("gui_sync", gui_name, gui_data)

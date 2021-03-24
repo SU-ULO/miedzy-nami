@@ -10,8 +10,12 @@ func _ready():
 		i.connect("pressed", self, "sabotage_start", [i.name])
 
 func sabotage_start(name):
-	pass
-
+	var network = get_tree().get_root().get_node("Start").network
+	
+	if name == "electrical":
+		network.request_sabotage(1)
+	if name == "door":
+		network.request_sabotage(2)
 
 func _on_exit_pressed():
 	emit_signal("exit")

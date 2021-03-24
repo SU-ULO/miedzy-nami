@@ -24,6 +24,8 @@ signal left_room()
 
 signal meeting_start()
 
+signal gui_sync(gui_name, gui_data)
+
 func create_world(config):
 	server_key = config.key
 	load("res://scripts/tasks/Task.cs").ClientCleanup()
