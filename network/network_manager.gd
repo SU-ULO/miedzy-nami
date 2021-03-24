@@ -74,17 +74,21 @@ func request_meeting(_dead: int):
 
 func start_meeting(caller: int, dead: int):
 	var rips = []
+	
 	if own_player.currentInteraction != null:
 		if own_player.currentInteraction.is_in_group("tasks"):
 			own_player.currentInteraction.EndInteraction()
 		else:
 			own_player.currentInteraction.EndInteraction(own_player)
+			
 	own_player.disabled_movement = true
 	recalculate_pos()
+	
 	own_player.position = world.get_node("Mapa/YSort/meeting-table").get_child(own_id).global_position
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	var playerbox = load("res://gui/meeting/PalyerMeetingBox.tscn")
 	
+	var iter = 0
 	for player in player_characters.keys():
 		if player_characters[player].is_in_group("rip"):
 			rips.push_back(player)
@@ -94,38 +98,49 @@ func start_meeting(caller: int, dead: int):
 			box.id = player
 			box.color = "#00FF00" #get_playercolor ???
 			box.get_node("Button/L").text = player_characters[player].username
-			if(player % 2 == 0):
-				gui.get_node("H/V1").add_child(box)
-			else:
-				gui.get_node("H/V2").add_child(box)
+			gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+			iter += 1
 	
-	# handle rips
-	for player in rips:
+	for rip in rips:
 		var box = playerbox.instance()
 		box.connect("chosen", self, "set_chosen")
-		box.id = player
-		box.get_node("Button/L").text = player_characters[player].username
-		if(player % 2 == 0):
-			gui.get_node("H/V1").add_child(box)
-		else:
-			gui.get_node("H/V2").add_child(box)
-		box.get_node("Button").disabled = true
+		box.id = rip
+		box.color = "#00FF00" #get_playercolor ???
+		box.get_node("Button/L").text = player_characters[rip].username
+		gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
+		iter += 1
 	
-	if own_player.is_in_group("rip"):
-		gui.disable_all()
+	gui.set_all_buttons(0)
 	var skip = gui.get_node("S")
 	skip.connect("chosen", self, "set_chosen")
-	
-	own_player.get_node("CanvasLayer/playerGUI").toggleVisibility("TaskPanel")
-	own_player.get_node("CanvasLayer/playerGUI").toggleVisibility("ActionButtons")
-	own_player.get_node("CanvasLayer/playerGUI").toggleVisibility("TopButtons")
-	if own_player.is_in_group("impostors"):
-		own_player.get_node("CanvasLayer/playerGUI").toggleVisibility("impostor")
+	gui.connect("meeting_state_changed", self, "set_meeting_state")
+	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 0)
 	
 	world.get_node("CanvasLayer").add_child(gui)
+	gui.time = gamesettings["discussion-time"]
+	gui.set_all_buttons(0)
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
+
+func set_meeting_state(state):
+	var gui = world.get_node("CanvasLayer").get_child(0)
+	
+	if state == 1:
+		if own_player.is_in_group("rip") == false:
+			for player in player_characters.keys():
+				if player_characters[player].is_in_group("rip") == false:
+					gui.get_player_box(player).get_node("Button").disabled = false
+			gui.get_node("S").disabled = false
+			
+		gui.time = gamesettings["voting-time"]
+		gui.label_text = "Koniec głosowania za: "
+		gui.meeting_state += 1
+	if state == 2:
+		gui.queue_free()
+		own_player.disabled_movement = false
+		own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1)
 
 func recalculate_pos():
 	var radius:float = 500.0
@@ -140,6 +155,7 @@ func recalculate_pos():
 	var angle = 2*PI/alive
 	var a = 0
 	var pos = spawn.position
+	
 	for point in spawn.get_children():
 		a += angle
 		point.position = Vector2(pos.x + radius * cos(a) * elipsyfy, pos.y + radius * sin(a))
@@ -153,7 +169,7 @@ func kill(dead: int, pos: Vector2):
 		killed.turn_into_corpse(pos)
 		if own_player.dead:
 			for c in player_characters.values():
-				c.visible=true
+				c.visible = true
 
 func set_chosen(id):
 		world.get_node("CanvasLayer").get_child(0).chosen = id

@@ -14,3 +14,4 @@ func set_vote(color):
 	var instance = vote.instance()
 	instance.get_stylebox("panel", "").bg_color = Color(color)
 	get_node("SH").add_child(instance)
+	get_owner().toggle_confirm_buttons()

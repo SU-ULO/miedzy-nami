@@ -12,16 +12,17 @@ signal chosen(id)
 func _on_Control_pressed():
 	get_parent().get_owner().toggle_confirm_buttons(id)
 
-func set_color(color):
-	get_node("Button/C").get_stylebox("panel", "").bg_color = Color(color)
+func set_color(col):
+	color = Color(col)
+	get_node("Button/C").get_stylebox("panel", "").bg_color = color
 
-func set_vote(color):
+func set_vote(col):
 	var path
-	if totalvotes < 6: path = "Button/V/H1"
+	if totalvotes < 5: path = "Button/V/H1"
 	else: path = "Button/V/H2"
 	totalvotes += 1
 	var instance = vote.instance()
-	instance.get_stylebox("panel", "").bg_color = Color(color)
+	instance.get_stylebox("panel", "").bg_color = Color(col)
 	get_node(path).add_child(instance)
 
 func set_voted():
