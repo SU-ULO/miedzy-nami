@@ -16,14 +16,15 @@ func create_world(config):
 	joined_server.connect("remote_player_joined", self, "handle_remote_player_joining")
 	joined_server.connect("remote_player_left", self, "handle_remote_player_leaving")
 	joined_server.connect("players_sync", self, "handle_players_sync")
-	joined_server.connect("meeting_start", self, "start_meeting")
 	joined_server.connect("kill", self, "kill")
 	joined_server.connect("state_sync", self, "handle_state_sync")
 	joined_server.connect("sabotage", self, "handle_sabotage")
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	joined_server.connect("cameras_enable", self, "cameras_enable")
+	joined_server.connect("gui_sync", self, "handle_gui_sync")
 	joined_server.connect("game_settings", self, "handle_game_settings")
 	joined_server.connect("colors_sync", self, "handle_colors_change")
+	joined_server.connect("look", self, "set_look")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -58,6 +59,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 		player_characters[c]=added_player
 		added_player.set_init_data(init_data)
 		world.get_node('Mapa/YSort').add_child(added_player)
+		added_player.get_node("sprites").loadLook()
 	handle_game_settings(data["gamesettings"])
 	emit_signal("joined_room")
 
@@ -106,11 +108,22 @@ func request_sabotage(type: int):
 	if joined_server and own_player:
 		joined_server.send_sabotage_request(type, own_id)
 
+func request_end_sabotage(type: int):
+	if joined_server and own_player:
+		joined_server.send_end_sabotage_request(type)
+
 func handle_state_sync(state, params, opt=null):
+	if gamestate==MEETING and state==MEETING:
+		gamestate = state
+		gamestate_params = params
+		#just update meeting
+		return
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
 		game_start(gamestate_params, opt)
+	elif state==MEETING:
+		start_meeting(gamestate_params["caller"], gamestate_params["dead"])
 
 func handle_sabotage(type):
 	if joined_server and own_player:
@@ -124,6 +137,17 @@ func request_cameras_enable(on_off: bool):
 	if joined_server:
 		joined_server.send_cameras_enable_request(on_off)
 
+func request_gui_sync(gui_name: String, gui_data):
+	if joined_server:
+		joined_server.send_gui_sync_request(gui_name, gui_data)
+		
+func handle_gui_sync(gui_name: String, gui_data):
+	emit_signal("gui_sync", gui_name, gui_data)
+
 func request_color_change(color: int):
 	if joined_server:
 		joined_server.send_color_change(color)
+
+func request_set_look(look: Dictionary):
+	if joined_server:
+		joined_server.send_look_update(look)

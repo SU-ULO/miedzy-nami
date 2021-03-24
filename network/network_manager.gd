@@ -42,6 +42,8 @@ signal left_room()
 
 signal meeting_start()
 
+signal gui_sync(gui_name, gui_data)
+
 signal color_taken()
 
 func is_color_taken(c: int):
@@ -141,6 +143,10 @@ func set_meeting_state(state):
 		gui.queue_free()
 		own_player.disabled_movement = false
 		own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1)
+		
+func update_meeting():
+	#stuff for updating meeting ui, don't know what is needed for this
+	pass
 
 func recalculate_pos():
 	var radius:float = 500.0
@@ -238,7 +244,7 @@ func handle_game_settings(settings):
 func apply_settings_to_player():
 	own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
 
-func request_color_change(color: int):
+func request_color_change(_color: int):
 	pass
 
 func handle_colors_change(taken: int, players: Dictionary):
@@ -248,3 +254,11 @@ func handle_colors_change(taken: int, players: Dictionary):
 			player_characters[p].color = players[p]
 			player_characters[p].get_node("sprites").loadLook()
 	emit_signal("color_taken")
+
+func request_set_look(look: Dictionary):
+	pass
+
+func set_look(id: int, look: Dictionary):
+	if player_characters.has(id):
+		player_characters[id].currLook.set_look(look)
+		player_characters[id].get_node("sprites").loadLook()

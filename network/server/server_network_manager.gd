@@ -35,10 +35,12 @@ func create_client(config):
 		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
 		client.connect("kill_requested", self, "handle_kill_request")
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
-		client.connect("end_sabotage_requested", self, "handle_sabotage_requested")
+		client.connect("end_sabotage_requested", self, "handle_end_sabotage_request")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
 		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
+		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
 		client.connect("color_update", self, "handle_color_change_request", [config.id])
+		client.connect("look_update", self, "handle_set_look", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -138,9 +140,11 @@ func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
 
 func handle_meeting_request(dead: int, caller: int):
-	#here we should check if meeting is in progress and return in case it is
+	if gamestate==MEETING: return
+	gamestate=MEETING
+	gamestate_params={"caller": caller, "dead": dead}
 	for c in connected_clients.values():
-		c.send_meeting_start(caller, dead)
+		c.send_gamestate(gamestate, gamestate_params)
 	start_meeting(caller, dead)
 
 func request_kill(dead: int):
@@ -217,6 +221,14 @@ func handle_tasks_update(state, started, _id):
 		tasks[i].started = started[i]
 		tasks[i].local = true
 
+func request_gui_sync(gui_name: String, gui_data):
+	handle_gui_sync_request(gui_name, gui_data)
+	
+func handle_gui_sync_request(gui_name: String, gui_data):
+	for c in connected_clients.values():
+		c.send_gui_sync(gui_name, gui_data)
+	emit_signal("gui_sync", gui_name, gui_data)
+
 func set_game_settings(settings):
 	for c in connected_clients.values():
 		c.send_game_settings(settings)
@@ -240,3 +252,12 @@ func handle_color_change_request(c: int, id: int):
 		player_characters[id].color = c
 		set_color_taken(c)
 	sync_colors()
+
+func request_set_look(look: Dictionary):
+	handle_set_look(look, own_id)
+
+func handle_set_look(look: Dictionary, id: int):
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_look(id, look)
+	set_look(id, look)
