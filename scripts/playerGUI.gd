@@ -91,6 +91,11 @@ func show_map(map_object):
 			instance.get_node("player").addTasks()
 		elif map_object.map_name == "SabotageMap":
 			instance.connect("exit", self, "closeSabotageMap")
+			player.connect("sabotage_event", instance, "updateMap")
+			instance.sabotage = player.currentSabotage
+			instance.curr_time  = player.get_node("SabotageCooldown").time_left
+			instance.cooldown = player.sabotageCooldown
+			instance.refresh_self()
 		map_opened = !map_opened
 		toggleVisibility("ActionButtons")
 		toggleVisibility("TaskPanel")
