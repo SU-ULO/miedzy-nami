@@ -163,6 +163,7 @@ func Interact(body):
 	body.position = self.position
 	get_tree().get_root().get_node("Start").network.request_kill(owner_id)
 	interacted = false
+	return false
 
 func turn_into_corpse(pos: Vector2):
 	dead = true

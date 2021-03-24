@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -18,10 +18,165 @@
 [ext_resource path="res://gui/butonstyle_white.tres" type="StyleBox" id=16]
 [ext_resource path="res://textures/crosss.png" type="Texture" id=17]
 [ext_resource path="res://gui/podsceny/joystick.tscn" type="PackedScene" id=18]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=19]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=20]
+[ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=21]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="SpriteFrames" id=1]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="SpriteFrames" id=2]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="Theme" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 1, 1, 1, 0.196078 )
 border_width_left = 10
 border_width_top = 10
@@ -31,21 +186,21 @@ border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 corner_radius_bottom_right = 10
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=11]
 size = 40
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=12]
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=13]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=15]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -54,7 +209,7 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=16]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -63,17 +218,17 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="InputEventKey" id=9]
+[sub_resource type="InputEventKey" id=17]
 scancode = 84
 
-[sub_resource type="ShortCut" id=10]
-shortcut = SubResource( 9 )
+[sub_resource type="ShortCut" id=18]
+shortcut = SubResource( 17 )
 
-[sub_resource type="InputEventKey" id=11]
+[sub_resource type="InputEventKey" id=19]
 scancode = 77
 
-[sub_resource type="ShortCut" id=12]
-shortcut = SubResource( 11 )
+[sub_resource type="ShortCut" id=20]
+shortcut = SubResource( 19 )
 
 [node name="player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -96,11 +251,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="body" parent="sprites" index="0"]
+frames = SubResource( 1 )
+
+[node name="clothes-top" parent="sprites" index="1"]
+frames = SubResource( 2 )
+
+[node name="eyes" parent="sprites/face" index="0"]
+frames = SubResource( 3 )
+
+[node name="eye-bonus" parent="sprites/face/eyes" index="0"]
+frames = SubResource( 4 )
+
+[node name="nose" parent="sprites/face" index="1"]
+frames = SubResource( 5 )
+
+[node name="mouth" parent="sprites/face" index="2"]
+frames = SubResource( 6 )
+
 [node name="spodnie" parent="sprites" index="3"]
 z_index = 0
+frames = SubResource( 7 )
 
-[node name="AnimatedSprite" parent="." index="5"]
-frame = 1
+[node name="hair" parent="sprites/wlosy" index="0"]
+frames = SubResource( 8 )
 
 [node name="Light" type="Light2D" parent="." index="6"]
 position = Vector2( 0, 11.4286 )
@@ -137,7 +311,7 @@ __meta__ = {
 [node name="TaskPanel" type="Control" parent="CanvasLayer/playerGUI" index="0"]
 margin_right = 774.0
 margin_bottom = 354.0
-theme = SubResource( 1 )
+theme = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -146,7 +320,7 @@ __meta__ = {
 anchor_top = -0.000166645
 anchor_right = 1.0
 anchor_bottom = 0.999833
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -163,7 +337,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/playerGUI/TaskPanel/VBoxContainer" index="0"]
 margin_right = 764.0
 margin_bottom = 55.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 11 )
 text = "Lista zadań:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,7 +347,7 @@ __meta__ = {
 margin_top = 59.0
 margin_right = 764.0
 margin_bottom = 335.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 12 )
 text = "- fajne zadanie 1
 - fajne zadanie 2
 - fajne zadanie 3
@@ -195,12 +369,12 @@ margin_right = 173.0
 margin_bottom = 50.0
 rect_rotation = 90.0
 focus_mode = 0
-theme = SubResource( 6 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
+theme = SubResource( 14 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
 custom_styles/normal = ExtResource( 16 )
 enabled_focus_mode = 0
-shortcut = SubResource( 10 )
+shortcut = SubResource( 18 )
 text = "ukryj"
 __meta__ = {
 "_edit_lock_": true,
@@ -279,7 +453,7 @@ margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
 focus_mode = 0
 enabled_focus_mode = 0
-shortcut = SubResource( 12 )
+shortcut = SubResource( 20 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

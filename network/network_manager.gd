@@ -74,6 +74,11 @@ func request_meeting(_dead: int):
 
 func start_meeting(caller: int, dead: int):
 	var rips = []
+	if own_player.currentInteraction != null:
+		if own_player.currentInteraction.is_in_group("tasks"):
+			own_player.currentInteraction.EndInteraction()
+		else:
+			own_player.currentInteraction.EndInteraction(own_player)
 	own_player.disabled_movement = true
 	recalculate_pos()
 	own_player.position = world.get_node("Mapa/YSort/meeting-table").get_child(own_id).global_position

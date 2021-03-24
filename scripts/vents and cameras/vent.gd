@@ -8,6 +8,9 @@ onready var arrow = preload("res://objects/vents/arrow.tscn")
 const radius = 150
 
 func enter(body):
+	if body.has_node("KillCooldown"):
+		body.get_node("KillCooldown").paused = true
+
 	# center player on vent and make him invisible (but not the light)
 	body.position = self.position
 	body.get_node("sprites").visible = false
@@ -45,6 +48,8 @@ func teleport(body, vent): # called by arrow instance after click on it
 
 func exit(body):
 	
+	if body.has_node("KillCooldown"):
+		body.get_node("KillCooldown").paused = false
 	# remove all arrows first
 	for child in $arrows.get_children():
 		child.queue_free()
