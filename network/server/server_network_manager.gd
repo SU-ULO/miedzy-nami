@@ -95,6 +95,7 @@ func spawn_player(id: int):
 		elif c.joined:
 			c.send_spawning_player_sync(joining_player_init_data, id)
 	connected_clients[id].joined=true
+	sync_colors()
 
 func kick(id):
 	if connected_clients.has(id):
