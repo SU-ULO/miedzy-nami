@@ -14,6 +14,7 @@ signal cameras_enable()
 signal gui_sync(gui_name, gui_data)
 signal game_settings(settings)
 signal colors_sync(taken, players)
+signal look(id, look)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -51,7 +52,8 @@ func handle_events(input):
 		emit_signal("colors_sync", input[1], input[2])
 	elif input[0]==10:
 		emit_signal("gui_sync", input[1], input[2])
-
+	elif input[0]==11:
+		emit_signal("look", input[1], input[2])
 #tasks need to be added to event handling as signal handled by ClientNetworkManager
 
 func handle_updates(input):
@@ -85,3 +87,6 @@ func send_color_change(color: int):
 
 func send_gui_sync_request(gui_name: String, gui_data):
 	send_events([7, gui_name, gui_data])
+
+func send_look_update(look: Dictionary):
+	send_events([8, look])

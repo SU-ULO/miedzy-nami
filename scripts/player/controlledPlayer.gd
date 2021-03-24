@@ -12,6 +12,8 @@ export var sabotageCooldown = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
+signal sabotage_event()
+
 func is_sabotage_timer_done():
 	return $SabotageCooldown.time_left == 0
 	
@@ -28,7 +30,9 @@ func handle_sabotage(type):
 			network.world.get_node("Mapa/YSort/door3").close_door()
 		if type == 3:
 			network.comms_disabled = true
-		
+
+		emit_signal("sabotage_event", currentSabotage)
+
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
 		currentSabotage = 0
@@ -42,6 +46,8 @@ func handle_end_sabotage(type):
 			network.world.get_node("Mapa/YSort/door3").open_door()
 		if type == 3:
 			network.comms_disabled = false
+
+		emit_signal("sabotage_event", 0)
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)

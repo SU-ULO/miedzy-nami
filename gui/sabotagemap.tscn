@@ -26,7 +26,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="door" type="TextureButton" parent="."]
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="door" type="TextureButton" parent="Control"]
 margin_left = 3437.31
 margin_top = 2471.3
 margin_right = 3949.31
@@ -37,17 +44,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="door"]
-margin_left = 7.0
-margin_top = 72.0
-margin_right = 80.0
-margin_bottom = 153.0
+[node name="ProgressBar" type="ProgressBar" parent="Control/door"]
+margin_left = -6.0
+margin_top = 487.0
+margin_right = 441.0
+margin_bottom = 1005.0
 rect_rotation = -89.9999
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="electrical" type="TextureButton" parent="."]
+[node name="electrical" type="TextureButton" parent="Control"]
 margin_left = 4947.84
 margin_top = 2498.12
 margin_right = 5459.84
@@ -58,12 +69,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="electrical"]
-margin_left = 7.00024
-margin_top = -216.439
-margin_right = 80.0002
-margin_bottom = -135.439
+[node name="ProgressBar" type="ProgressBar" parent="Control/electrical"]
+margin_left = 20.0
+margin_top = 480.0
+margin_right = 483.0
+margin_bottom = 969.0
 rect_rotation = -89.9999
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
@@ -71,23 +83,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="comms" type="TextureButton" parent="."]
-margin_left = 2342.77
-margin_top = 1033.44
-margin_right = 2854.77
-margin_bottom = 1545.44
+[node name="comms" type="TextureButton" parent="Control"]
+margin_left = 2350.69
+margin_top = 1045.32
+margin_right = 2862.69
+margin_bottom = 1557.32
 rect_scale = Vector2( 0.956836, 0.956836 )
 texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="comms"]
-margin_left = 7.00024
-margin_top = -216.439
-margin_right = 80.0002
-margin_bottom = -135.439
+[node name="ProgressBar" type="ProgressBar" parent="Control/comms"]
+margin_left = 32.0
+margin_top = 491.0
+margin_right = 494.0
+margin_bottom = 945.0
 rect_rotation = -89.9999
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
@@ -95,7 +108,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="dyrektor" type="TextureButton" parent="."]
+[node name="dyrektor" type="TextureButton" parent="Control"]
 margin_left = 2313.69
 margin_top = 2951.09
 margin_right = 2825.69
@@ -106,12 +119,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="dyrektor"]
-margin_left = 7.00024
-margin_top = -216.439
-margin_right = 80.0002
-margin_bottom = -135.439
+[node name="ProgressBar" type="ProgressBar" parent="Control/dyrektor"]
+margin_left = 20.0
+margin_top = 488.0
+margin_right = 472.0
+margin_bottom = 969.0
 rect_rotation = -89.9999
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 percent_visible = false
@@ -126,4 +140,8 @@ margin_right = 6159.04
 margin_bottom = 295.292
 rect_scale = Vector2( 0.662181, 0.662181 )
 texture_normal = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10000.0
+one_shot = true
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

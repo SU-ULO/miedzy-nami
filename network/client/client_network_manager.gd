@@ -16,7 +16,6 @@ func create_world(config):
 	joined_server.connect("remote_player_joined", self, "handle_remote_player_joining")
 	joined_server.connect("remote_player_left", self, "handle_remote_player_leaving")
 	joined_server.connect("players_sync", self, "handle_players_sync")
-	joined_server.connect("meeting_start", self, "start_meeting")
 	joined_server.connect("kill", self, "kill")
 	joined_server.connect("state_sync", self, "handle_state_sync")
 	joined_server.connect("sabotage", self, "handle_sabotage")
@@ -25,6 +24,7 @@ func create_world(config):
 	joined_server.connect("gui_sync", self, "handle_gui_sync")
 	joined_server.connect("game_settings", self, "handle_game_settings")
 	joined_server.connect("colors_sync", self, "handle_colors_change")
+	joined_server.connect("look", self, "set_look")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -59,6 +59,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 		player_characters[c]=added_player
 		added_player.set_init_data(init_data)
 		world.get_node('Mapa/YSort').add_child(added_player)
+		added_player.get_node("sprites").loadLook()
 	handle_game_settings(data["gamesettings"])
 	emit_signal("joined_room")
 
@@ -146,3 +147,7 @@ func handle_gui_sync(gui_name: String, gui_data):
 func request_color_change(color: int):
 	if joined_server:
 		joined_server.send_color_change(color)
+
+func request_set_look(look: Dictionary):
+	if joined_server:
+		joined_server.send_look_update(look)
