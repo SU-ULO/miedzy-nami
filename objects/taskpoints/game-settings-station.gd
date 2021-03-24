@@ -30,5 +30,6 @@ func EndInteraction(body):
 	var net = get_tree().get_root().get_node("Start").network
 	if net.own_player.owner_id==0:
 		net.set_game_settings(game_settings)
+	net.request_set_look(body.currLook.get_look())
 	body.get_node("sprites").loadLook()
 	get_owner().get_node("CanvasLayer").remove_child(menu)

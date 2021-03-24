@@ -40,6 +40,7 @@ func create_client(config):
 		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
 		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
 		client.connect("color_update", self, "handle_color_change_request", [config.id])
+		client.connect("look_update", self, "handle_set_look", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -251,3 +252,12 @@ func handle_color_change_request(c: int, id: int):
 		player_characters[id].color = c
 		set_color_taken(c)
 	sync_colors()
+
+func request_set_look(look: Dictionary):
+	handle_set_look(look, own_id)
+
+func handle_set_look(look: Dictionary, id: int):
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_look(id, look)
+	set_look(id, look)

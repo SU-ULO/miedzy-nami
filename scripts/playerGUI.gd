@@ -97,18 +97,18 @@ func show_map(map_object):
 			instance.cooldown = player.sabotageCooldown
 			instance.refresh_self()
 		map_opened = !map_opened
-		toggleVisibility("ActionButtons")
-		toggleVisibility("TaskPanel")
+		setVisibility("ActionButtons", 0)
+		setVisibility("TaskPanel", 0)
 		if player.is_in_group("impostors"):
-			toggleVisibility("impostor")
+			setVisibility("impostor", 0)
 	else:
 		var current_map_name = canvas.get_child(0).name
 		canvas.get_child(0).queue_free()
 		map_opened = !map_opened
-		toggleVisibility("ActionButtons")
-		toggleVisibility("TaskPanel")
+		setVisibility("ActionButtons", 1)
+		setVisibility("TaskPanel", 1)
 		if player.is_in_group("impostors"):
-			toggleVisibility("impostor")
+			setVisibility("impostor", 1)
 		
 		if map_object.map_name != current_map_name:
 			if current_map_name == "SabotageMap":
@@ -158,13 +158,13 @@ func toggleTaskContainer():
 		task_panel_position.x += task_container_size.x
 	task_panel_opened = !task_panel_opened
 
-func toggleVisibility(node_name = "self"):
+func setVisibility(node_name = "self", state:bool = 1):
 	var node
 	if node_name == "self":
 		node = self
 	else:
 		node = get_node(node_name)
-	node.visible = !node.visible
+	node.visible = state
 
 func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
@@ -172,7 +172,7 @@ func _onTaskContainerButtonPressed():
 func closeSabotageMap():
 	map_opened = false
 	get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("SabotageMap").queue_free()
-	toggleVisibility("ActionButtons")
-	toggleVisibility("TaskPanel")
+	setVisibility("ActionButtons", 1)
+	setVisibility("TaskPanel", 1)
 	if player.is_in_group("impostors"):
-		toggleVisibility("impostor")	
+		setVisibility("impostor", 1)
