@@ -267,7 +267,6 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

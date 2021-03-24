@@ -13,9 +13,8 @@ func enter(body):
 
 	# center player on vent and make him invisible (but not the light)
 	body.position = self.position
-	body.get_node("sprites").visible = false
+	get_tree().get_root().get_node("Start").network.request_set_invisible(body.owner_id, 0)
 	# also hitbox to prevent player being detected
-	body.get_node("PlayerHitbox").visible = false
 
 	# also here probably should be animation of entering in some if
 	
@@ -55,8 +54,7 @@ func exit(body):
 		child.queue_free()
 		
 	# then make player visible
-	body.get_node("sprites").visible = true
-	body.get_node("PlayerHitbox").visible = true
+	get_tree().get_root().get_node("Start").network.request_set_invisible(body.owner_id, 1)
 
 func arrowHighlight(arrow_number = -1):
 	for child in $arrows.get_children():

@@ -262,3 +262,14 @@ func set_look(id: int, look: Dictionary):
 	if player_characters.has(id):
 		player_characters[id].currLook.set_look(look)
 		player_characters[id].get_node("sprites").loadLook()
+
+func request_set_invisible(_id, _val: bool):
+	pass
+
+func set_invisible(id, val: bool):
+	if id == own_id:			
+		own_player.get_node("sprites").visible = val
+		own_player.get_node("Label").visible = val
+		own_player.get_node("PlayerHitbox").visible = val
+	else:
+		player_characters[id].visible = val

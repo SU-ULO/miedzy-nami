@@ -73,6 +73,8 @@ func _on_report_pressed():
 	player.ui_report()
 		
 func checkKillability():
+	if player.currentInteraction != null:
+		return false
 	return player.players_interactable.size() > 0
 
 

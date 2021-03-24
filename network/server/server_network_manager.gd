@@ -41,6 +41,7 @@ func create_client(config):
 		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
 		client.connect("color_update", self, "handle_color_change_request", [config.id])
 		client.connect("look_update", self, "handle_set_look", [config.id])
+		client.connect("set_invisible", self, "handle_set_invisible")
 		add_child(client)
 	else:
 		kick(config.id)
@@ -261,3 +262,11 @@ func handle_set_look(look: Dictionary, id: int):
 		if c.joined:
 			c.send_look(id, look)
 	set_look(id, look)
+
+func request_set_invisible(id, val: bool):
+	handle_set_invisible(id, val)
+
+func handle_set_invisible(id, val: bool):
+	for c in connected_clients.values():
+		c.send_set_invisible(id, val)
+	set_invisible(id, val)

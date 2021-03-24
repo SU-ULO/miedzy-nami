@@ -25,6 +25,7 @@ func create_world(config):
 	joined_server.connect("game_settings", self, "handle_game_settings")
 	joined_server.connect("colors_sync", self, "handle_colors_change")
 	joined_server.connect("look", self, "set_look")
+	joined_server.connect("invisible", self, "set_invisible")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -151,3 +152,6 @@ func request_color_change(color: int):
 func request_set_look(look: Dictionary):
 	if joined_server:
 		joined_server.send_look_update(look)
+func request_set_invisible(id, val: bool):
+	if joined_server:
+		joined_server.send_set_invisible(id, val)
