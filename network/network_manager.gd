@@ -238,3 +238,11 @@ func handle_colors_change(taken: int, players: Dictionary):
 			player_characters[p].color = players[p]
 			player_characters[p].get_node("sprites").loadLook()
 	emit_signal("color_taken")
+
+func request_set_look(look: Dictionary):
+	pass
+
+func set_look(id: int, look: Dictionary):
+	if player_characters.has(id):
+		player_characters[id].currLook.set_look(look)
+		player_characters[id].get_node("sprites").loadLook()
