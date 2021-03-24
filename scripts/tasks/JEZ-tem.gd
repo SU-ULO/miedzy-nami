@@ -2,6 +2,7 @@ extends Sprite
 
 var pickedUp = false
 var clickDelta = Vector2()
+var in_place = false
 
 func _ready():
 	#warning-ignore: return_value_discarded
@@ -19,8 +20,12 @@ func pickUp():
 	
 func drop():
 	pickedUp = false
-	if (position - get_parent().get_node(name + "-pos").position).length_squared() < 600:
+	if (position - get_parent().get_node(name + "-pos").position).length_squared() < 1200:
 		position =  get_parent().get_node(name + "-pos").position
-		get_parent().im_good()
+		if !in_place:
+			get_parent().im_good()
+			in_place = true
 	else:
-		get_parent().im_bad()
+		if in_place:
+			get_parent().im_bad()
+			in_place = false
