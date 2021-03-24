@@ -20,6 +20,7 @@ func Interact(body):
 	lookMenu.refresh()
 	colorMenu = menu.get_node("menus/color-menu")
 	colorMenu.color = body.color
+	colorMenu.update_colors()
 	var net = get_tree().get_root().get_node("Start").network
 	if net.own_player.owner_id==0:
 		menu.get_node("menus/game-menu").set_settings(net.gamesettings)

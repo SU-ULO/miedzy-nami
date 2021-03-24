@@ -42,6 +42,8 @@ signal left_room()
 
 signal meeting_start()
 
+signal color_taken()
+
 func is_color_taken(c: int):
 	return taken_colors & 1<<c
 
@@ -224,3 +226,4 @@ func handle_colors_change(taken: int, players: Dictionary):
 		if player_characters.has(p):
 			player_characters[p].color = players[p]
 			player_characters[p].get_node("sprites").loadLook()
+	emit_signal("color_taken")
