@@ -5,6 +5,11 @@ var rooms = {}
 var opened = false
 var players_count = {}
 
+onready var map_res = load("res://gui/admin.tscn")
+onready var player_icon_res = load("res://gui/podsceny/admin_player.tscn")
+onready var canvas = get_owner().get_node("CanvasLayer")
+var map = null
+
 func _ready():
 	add_to_group("interactable")
 	add_to_group("entities")
@@ -19,10 +24,31 @@ func _process(_delta):
 			for j in players.values():
 				if in_room(j, rooms[i]):
 					players_count[i]+=1
+		if map != null:
+			update_map()
+
+func update_map():
+	# hot mess but who cares :)
+	
+	var path
+	for data in players_count.keys():
+		path = "rooms/" + data
+		
+		for child in map.get_node(path).get_children():
+			child.queue_free()
+		
+		for _iter in range(players_count[data]):
+			map.get_node(path).add_child(player_icon_res.instance())
+
+
 func Interact(_body):
 	opened = true
-	print("ej")
+	map = map_res.instance()
+	canvas.add_child(map)
+	
 func EndInteraction(_body):
+	map.queue_free()
+	map = null
 	opened = false
 
 func in_room(who, room):

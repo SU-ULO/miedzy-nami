@@ -123,7 +123,7 @@ public abstract class Task : Godot.Node2D
 		}
 		
 		foreach(TaskCategory tc in TaskCategory.categories){
-			if(sortedIntoCategories[tc].Count > tc.perPlayer){
+			if(sortedIntoCategories[tc].Count < tc.perPlayer){
 				tc.perPlayer = sortedIntoCategories[tc].Count;
 			}
 		}
@@ -139,13 +139,12 @@ public abstract class Task : Godot.Node2D
 							initialK = k;
 							while(tasksForPlayers[i].Contains(taskIDforK)) {
 								k = (k + 1) % sortedIntoCategories[tc].Count;
-								taskIDforK = sortedIntoCategories[tc][k];
 								if(k == initialK){
 									//Godot.GD.Print("One of the tasks couldn't be assigned");
 									throw new Exception("");
 								}
 							}
-							
+							taskIDforK = sortedIntoCategories[tc][k];
 							tasksForPlayers[i].Add(taskIDforK);
 							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
 						}catch(Exception e){
@@ -214,10 +213,10 @@ public abstract class Task : Godot.Node2D
 		// The number of tasks of given category per player is specified in perPlayer and can be changed
 		// ADD THEM TO THE CATEGORIES ARRAY THOUGH (or declare them just there, but for ease of use's sake
 		// it is generally a good idea to have them named here)
-		public static TaskCategory VeryHard = new TaskCategory(20);
-		public static TaskCategory Hard = new TaskCategory(20);
-		public static TaskCategory Normal = new TaskCategory(20);
-		public static TaskCategory Easy = new TaskCategory(20);
+		public static TaskCategory VeryHard = new TaskCategory(1);
+		public static TaskCategory Hard = new TaskCategory(0);
+		public static TaskCategory Normal = new TaskCategory(0);
+		public static TaskCategory Easy = new TaskCategory(5);
 		
 		public static readonly TaskCategory[] categories = new TaskCategory[]{
 			VeryHard,
@@ -249,4 +248,7 @@ public abstract class Task : Godot.Node2D
 		return this.state >= this.maxState;
 	}
 
+	public static void SetTaskCategoriesPerPlayer(int index, int value){
+		TaskCategory.categories[index].perPlayer = value;
+	}
 }

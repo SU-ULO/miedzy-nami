@@ -39,6 +39,7 @@ func create_client(config):
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
 		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
 		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
+		client.connect("color_update", self, "handle_color_change_request", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -64,6 +65,7 @@ func create_world(config):
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
 	own_player.global_position = get_spawn_position(own_id)
+	own_player.color = get_free_color_and_set()
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
 
@@ -73,6 +75,7 @@ func spawn_player(id: int):
 	new_character.owner_id = id
 	new_character.username = connected_clients[id].config.username
 	new_character.global_position = get_spawn_position(id)
+	new_character.color = get_free_color_and_set()
 	player_characters[id]=new_character
 	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
@@ -86,12 +89,14 @@ func spawn_player(id: int):
 			#more initialization data for joining player here
 			var all_init_data = {
 				"players": all_players_init_data,
-				"gamestate": [gamestate, gamestate_params]
+				"gamestate": [gamestate, gamestate_params],
+				"gamesettings": gamesettings
 				}
 			c.send_initial_sync(all_init_data, id)
 		elif c.joined:
 			c.send_spawning_player_sync(joining_player_init_data, id)
 	connected_clients[id].joined=true
+	sync_colors()
 
 func kick(id):
 	if connected_clients.has(id):
@@ -104,6 +109,7 @@ func kick(id):
 					cc.send_player_removal_notification(id)
 		c.queue_free()
 	if player_characters.has(id):
+		unset_color_taken(player_characters[id].color)
 		player_characters[id].queue_free()
 # warning-ignore:return_value_discarded
 		player_characters.erase(id)
@@ -121,26 +127,23 @@ func _process(_delta):
 			var state_changes : Dictionary = {}
 			var started_changes: Dictionary = {}
 			for t in Task.GetAllTasks():
-				if not t == null:
-					if t.dirty:
-						t.dirty = false
-						state_changes[t.taskID] = t.state
-						started_changes[t.taskID] = t.started
-						if t.started and t.state < t.maxState:
-							own_player.localTaskList.add(t)
-					print(t.taskID)
-				else:
-					Task.TaskDebug()
-				
+				if t.dirty:
+					t.dirty = false
+					state_changes[t.taskID] = t.state
+					started_changes[t.taskID] = t.started
+					if t.started and t.state < t.maxState:
+						own_player.localTaskList.append(t)
 			handle_tasks_update(state_changes, started_changes, own_id)
 
 func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
 
 func handle_meeting_request(dead: int, caller: int):
-	#here we should check if meeting is in progress and return in case it is
+	if gamestate==MEETING: return
+	gamestate=MEETING
+	gamestate_params={"caller": caller, "dead": dead}
 	for c in connected_clients.values():
-		c.send_meeting_start(caller, dead)
+		c.send_gamestate(gamestate, gamestate_params)
 	start_meeting(caller, dead)
 
 func request_kill(dead: int):
@@ -164,6 +167,8 @@ func request_game_start():
 	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
 	gamestate_params = {"imp": [0]}
+	Task.SetTaskCategoriesPerPlayer(3, gamesettings["short-tasks"])
+	Task.SetTaskCategoriesPerPlayer(0, gamesettings["long-tasks"])
 	var ids = player_characters.keys()
 	ids.sort()
 	Task.DivideTasks(ids)
@@ -204,7 +209,7 @@ func handle_cameras_enable_request(on_off: bool):
 		c.send_cameras_enable(on_off)
 	cameras_enable(on_off)
 
-func handle_tasks_update(state, started, id):
+func handle_tasks_update(state, started, _id):
 	var Task = load("res://scripts/tasks/Task.cs")
 	var tasks = Task.GetAllTasks()
 	for i in state:
@@ -222,3 +227,27 @@ func handle_gui_sync_request(gui_name: String, gui_data):
 	for c in connected_clients.values():
 		c.send_gui_sync(gui_name, gui_data)
 	emit_signal("gui_sync", gui_name, gui_data)
+
+func set_game_settings(settings):
+	for c in connected_clients.values():
+		c.send_game_settings(settings)
+	handle_game_settings(settings)
+
+func request_color_change(c: int):
+	handle_color_change_request(c, own_id)
+
+func sync_colors():
+	var p = Dictionary()
+	for c in player_characters:
+		p[c]=player_characters[c].color
+	for c in connected_clients.values():
+		if c.joined:
+			c.send_colors(taken_colors, p)
+	handle_colors_change(taken_colors, p)
+
+func handle_color_change_request(c: int, id: int):
+	if !is_color_taken(c):
+		unset_color_taken(player_characters[id].color)
+		player_characters[id].color = c
+		set_color_taken(c)
+	sync_colors()

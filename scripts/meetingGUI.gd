@@ -3,6 +3,17 @@ extends Panel
 var chosen = -2 setget set_chosen
 var time = 40.0 setget set_time
 
+var confirm_id = null
+
+func toggle_confirm_buttons(new_box_id = null):
+	if confirm_id != null:
+		var old_box = get_player_box(confirm_id)
+		old_box.get_node("Button/CB").visible = false
+		confirm_id = null
+	if new_box_id != null:
+		get_player_box(new_box_id).get_node("Button/CB").visible = true
+		confirm_id = new_box_id
+
 func _ready():
 	get_node("Timer").start(time)
 

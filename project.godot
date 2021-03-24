@@ -103,6 +103,7 @@ window/stretch/aspect="keep"
 [gdnative]
 
 singletons=[ "res://webrtc/webrtc.tres" ]
+singletons_disabled=[  ]
 
 [input]
 

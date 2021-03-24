@@ -23,6 +23,8 @@ func create_world(config):
 	joined_server.connect("end_sabotage", self, "handle_end_sabotage")
 	joined_server.connect("cameras_enable", self, "cameras_enable")
 	joined_server.connect("gui_sync", self, "handle_gui_sync")
+	joined_server.connect("game_settings", self, "handle_game_settings")
+	joined_server.connect("colors_sync", self, "handle_colors_change")
 	add_child(joined_server)
 
 func send_session(sess):
@@ -41,6 +43,8 @@ func set_candidate(cand: String):
 
 func handle_initial_sync(id: int, data: Dictionary):
 	var players_data = data["players"]
+	gamestate=data["gamestate"][0]
+	gamestate_params=data["gamestate"][1]
 	var preloaded_dummy = preload("res://entities/dummyplayer.tscn")
 	own_id = id
 	for c in players_data:
@@ -55,7 +59,8 @@ func handle_initial_sync(id: int, data: Dictionary):
 		player_characters[c]=added_player
 		added_player.set_init_data(init_data)
 		world.get_node('Mapa/YSort').add_child(added_player)
-		emit_signal("joined_room")
+	handle_game_settings(data["gamesettings"])
+	emit_signal("joined_room")
 
 func handle_remote_player_joining(id: int, data: Dictionary):
 	var added_player := preload("res://entities/dummyplayer.tscn").instance()
@@ -107,10 +112,17 @@ func request_end_sabotage(type: int):
 		joined_server.send_end_sabotage_request(type)
 
 func handle_state_sync(state, params, opt=null):
+	if gamestate==MEETING and state==MEETING:
+		gamestate = state
+		gamestate_params = params
+		#just update meeting
+		return
 	gamestate = state
 	gamestate_params = params
 	if state==STARTED:
 		game_start(gamestate_params, opt)
+	elif state==MEETING:
+		start_meeting(gamestate_params["caller"], gamestate_params["dead"])
 
 func handle_sabotage(type):
 	if joined_server and own_player:
@@ -130,3 +142,7 @@ func request_gui_sync(gui_name: String, gui_data):
 		
 func handle_gui_sync(gui_name: String, gui_data):
 	emit_signal("gui_sync", gui_name, gui_data)
+
+func request_color_change(color: int):
+	if joined_server:
+		joined_server.send_color_change(color)

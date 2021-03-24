@@ -37,7 +37,12 @@ func _process(_delta):
 	processGui()
 
 func _on_use_pressed():
-	player.ui_selected()
+	if player.currentInteraction != null:	 
+		if player.currentInteraction.is_in_group("vents"):
+			player.currentInteraction.EndInteraction(player)
+			player.currentInteraction = null
+	else:
+		player.ui_selected()
 
 func interactionGUIupdate():
 	if player.is_in_group("impostors"):

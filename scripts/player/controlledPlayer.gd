@@ -118,8 +118,6 @@ func get_input():
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
 			$CanvasLayer2/exit_button.visible = false
-		else: if currentInteraction.is_in_group("players") and interacted == false:
-			currentInteraction = null
 		else:
 			$CanvasLayer/playerGUI.visible = false
 			$sprites.stopWalk()
@@ -221,7 +219,7 @@ func showMyTasks():
 # interactions
 
 func ui_kill():
-	if(players_interactable.size() != 0):
+	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0):
 		var currentBestItem = players_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -270,11 +268,11 @@ func ui_selected():
 		if currentBestItem.is_in_group("tasks"): 
 			result = currentBestItem.Interact(); 
 		else: result = currentBestItem.Interact(self)
-		
 		if result == false:
 			return
 		currentInteraction = currentBestItem
-		$CanvasLayer2/exit_button.visible = true
+		if !currentInteraction.is_in_group("vents"): 
+			$CanvasLayer2/exit_button.visible = true
 
 func _on_exit_button_pressed():
 	ui_canceled()

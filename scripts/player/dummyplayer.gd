@@ -32,17 +32,19 @@ var moveX :float
 var moveY :float
 var currentInteraction = null
 var localTaskList := []
+var player_speed
 
 var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix
 
 func generate_init_data() -> Dictionary:
-	return {"username": username, "pos": position, "dead": dead, "imp": is_in_group("impostors")}
+	return {"username": username, "pos": position, "dead": dead, "imp": is_in_group("impostors"), "color": color}
 
 func set_init_data(data: Dictionary):
 	username=data["username"]
 	position=data["pos"]
 	dead=data["dead"]
+	color=data["color"]
 	if data["imp"]: add_to_group("impostors")
 
 func generate_sync_data():
@@ -54,7 +56,7 @@ func set_sync_data(data: Dictionary):
 	position=data["pos"]
 
 func _ready():
-	
+	player_speed = default_speed
 	add_to_group("players")
 	add_to_group("entities")	
 	$sprites.loadLook()
@@ -99,7 +101,7 @@ func set_player_velocity():
 						$sprites.lookBack()
 					else:
 						$sprites.lookLeft()							
-	player_velocity = player_velocity.normalized() * default_speed
+	player_velocity = player_velocity.normalized() * player_speed
 # sight and interaction areas
 
 func on_sight_area_enter(body):
@@ -161,6 +163,7 @@ func Interact(body):
 	body.position = self.position
 	get_tree().get_root().get_node("Start").network.request_kill(owner_id)
 	interacted = false
+	return false
 
 func turn_into_corpse(pos: Vector2):
 	dead = true

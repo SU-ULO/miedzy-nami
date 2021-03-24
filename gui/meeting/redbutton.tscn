@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://textures/nay.png" type="Texture" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_bottom = 10.0
+bg_color = Color( 0.960784, 0.384314, 0.384314, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_bottom = 10.0
+bg_color = Color( 0.960784, 0.384314, 0.384314, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_bottom = 10.0
+bg_color = Color( 0.913725, 0.207843, 0.207843, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+
+[node name="Button" type="Button"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.00246084
+anchor_right = 1.00246
+anchor_bottom = 1.0
+margin_left = 7.84251
+margin_top = 8.0
+margin_right = 3.84251
+margin_bottom = 4.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -144,3 +144,4 @@ func lookBack():
 	for i in all_animated_sprites:
 		i.flip_h = false
 		i.animation = "back"
+

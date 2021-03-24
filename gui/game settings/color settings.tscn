@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/character color buttons/c11.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://textures/character color buttons/c4.png" type="Texture" id=14]
 [ext_resource path="res://textures/character color buttons/c7.png" type="Texture" id=15]
 [ext_resource path="res://scripts/color settings.gd" type="Script" id=16]
+[ext_resource path="res://textures/bald.png" type="Texture" id=17]
 
 [node name="color settings" type="Control"]
 anchor_right = 1.0
@@ -31,7 +32,7 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 1 )
 text = "Some button to change your color"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="buttons" type="GridContainer" parent="."]
 margin_left = 47.5684
 margin_top = 111.785
 margin_right = 2019.57
@@ -44,92 +45,210 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="TextureButton" parent="GridContainer"]
+[node name="1" type="TextureButton" parent="buttons"]
 margin_right = 490.0
 margin_bottom = 490.0
 texture_normal = ExtResource( 6 )
 
-[node name="2" type="TextureButton" parent="GridContainer"]
+[node name="2" type="TextureButton" parent="buttons"]
 margin_left = 510.0
 margin_right = 1000.0
 margin_bottom = 490.0
 texture_normal = ExtResource( 9 )
 
-[node name="3" type="TextureButton" parent="GridContainer"]
+[node name="3" type="TextureButton" parent="buttons"]
 margin_left = 1020.0
 margin_right = 1510.0
 margin_bottom = 490.0
 texture_normal = ExtResource( 5 )
 
-[node name="4" type="TextureButton" parent="GridContainer"]
+[node name="4" type="TextureButton" parent="buttons"]
 margin_left = 1530.0
 margin_right = 2020.0
 margin_bottom = 490.0
 texture_normal = ExtResource( 14 )
 
-[node name="5" type="TextureButton" parent="GridContainer"]
+[node name="5" type="TextureButton" parent="buttons"]
 margin_top = 510.0
 margin_right = 490.0
 margin_bottom = 1000.0
 texture_normal = ExtResource( 7 )
 
-[node name="6" type="TextureButton" parent="GridContainer"]
+[node name="6" type="TextureButton" parent="buttons"]
 margin_left = 510.0
 margin_top = 510.0
 margin_right = 1000.0
 margin_bottom = 1000.0
 texture_normal = ExtResource( 8 )
 
-[node name="7" type="TextureButton" parent="GridContainer"]
+[node name="7" type="TextureButton" parent="buttons"]
 margin_left = 1020.0
 margin_top = 510.0
 margin_right = 1510.0
 margin_bottom = 1000.0
 texture_normal = ExtResource( 15 )
 
-[node name="8" type="TextureButton" parent="GridContainer"]
+[node name="8" type="TextureButton" parent="buttons"]
 margin_left = 1530.0
 margin_top = 510.0
 margin_right = 2020.0
 margin_bottom = 1000.0
 texture_normal = ExtResource( 10 )
 
-[node name="9" type="TextureButton" parent="GridContainer"]
+[node name="9" type="TextureButton" parent="buttons"]
 margin_top = 1020.0
 margin_right = 490.0
 margin_bottom = 1510.0
 texture_normal = ExtResource( 4 )
 
-[node name="10" type="TextureButton" parent="GridContainer"]
+[node name="10" type="TextureButton" parent="buttons"]
 margin_left = 510.0
 margin_top = 1020.0
 margin_right = 1000.0
 margin_bottom = 1510.0
 texture_normal = ExtResource( 13 )
 
-[node name="11" type="TextureButton" parent="GridContainer"]
+[node name="11" type="TextureButton" parent="buttons"]
 margin_left = 1020.0
 margin_top = 1020.0
 margin_right = 1510.0
 margin_bottom = 1510.0
 texture_normal = ExtResource( 2 )
 
-[node name="12" type="TextureButton" parent="GridContainer"]
+[node name="12" type="TextureButton" parent="buttons"]
 margin_left = 1530.0
 margin_top = 1020.0
 margin_right = 2020.0
 margin_bottom = 1510.0
 texture_normal = ExtResource( 11 )
 
-[node name="13" type="TextureButton" parent="GridContainer"]
+[node name="13" type="TextureButton" parent="buttons"]
 margin_top = 1530.0
 margin_right = 490.0
 margin_bottom = 2020.0
 texture_normal = ExtResource( 3 )
 
-[node name="14" type="TextureButton" parent="GridContainer"]
+[node name="14" type="TextureButton" parent="buttons"]
 margin_left = 510.0
 margin_top = 1530.0
 margin_right = 1000.0
 margin_bottom = 2020.0
 texture_normal = ExtResource( 12 )
+
+[node name="iksy" type="GridContainer" parent="."]
+margin_left = 59.397
+margin_top = 121.622
+margin_right = 2199.4
+margin_bottom = 2261.62
+rect_scale = Vector2( 0.370807, 0.370807 )
+mouse_filter = 2
+custom_constants/vseparation = 91
+custom_constants/hseparation = 88
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="TextureRect" parent="iksy"]
+margin_right = 532.0
+margin_bottom = 532.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="2" type="TextureRect" parent="iksy"]
+margin_left = 620.0
+margin_right = 1152.0
+margin_bottom = 532.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="3" type="TextureRect" parent="iksy"]
+margin_left = 1240.0
+margin_right = 1772.0
+margin_bottom = 532.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="4" type="TextureRect" parent="iksy"]
+margin_left = 1860.0
+margin_right = 2392.0
+margin_bottom = 532.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="5" type="TextureRect" parent="iksy"]
+margin_top = 623.0
+margin_right = 532.0
+margin_bottom = 1155.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="6" type="TextureRect" parent="iksy"]
+margin_left = 620.0
+margin_top = 623.0
+margin_right = 1152.0
+margin_bottom = 1155.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="7" type="TextureRect" parent="iksy"]
+margin_left = 1240.0
+margin_top = 623.0
+margin_right = 1772.0
+margin_bottom = 1155.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="8" type="TextureRect" parent="iksy"]
+margin_left = 1860.0
+margin_top = 623.0
+margin_right = 2392.0
+margin_bottom = 1155.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="9" type="TextureRect" parent="iksy"]
+margin_top = 1246.0
+margin_right = 532.0
+margin_bottom = 1778.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="10" type="TextureRect" parent="iksy"]
+margin_left = 620.0
+margin_top = 1246.0
+margin_right = 1152.0
+margin_bottom = 1778.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="11" type="TextureRect" parent="iksy"]
+margin_left = 1240.0
+margin_top = 1246.0
+margin_right = 1772.0
+margin_bottom = 1778.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="12" type="TextureRect" parent="iksy"]
+margin_left = 1860.0
+margin_top = 1246.0
+margin_right = 2392.0
+margin_bottom = 1778.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="13" type="TextureRect" parent="iksy"]
+margin_top = 1869.0
+margin_right = 532.0
+margin_bottom = 2401.0
+mouse_filter = 2
+texture = ExtResource( 17 )
+
+[node name="14" type="TextureRect" parent="iksy"]
+margin_left = 620.0
+margin_top = 1869.0
+margin_right = 1152.0
+margin_bottom = 2401.0
+mouse_filter = 2
+texture = ExtResource( 17 )
