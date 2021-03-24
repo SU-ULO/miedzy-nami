@@ -22,8 +22,9 @@ func _process(_delta):
 func addTasks():
 	for i in taskIcons:
 		i.queue_free()
-	for i in taskList:
-		taskIcons.append(task_icon.instance())
-		get_parent().add_child(taskIcons.back())
-		taskIcons.back().position = map_center + i.position/2
+	if not get_tree().get_root().get_node("Start").network.comms_disabled:
+		for i in taskList:
+			taskIcons.append(task_icon.instance())
+			get_parent().add_child(taskIcons.back())
+			taskIcons.back().position = map_center + i.position/2
 		

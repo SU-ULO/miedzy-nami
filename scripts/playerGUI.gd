@@ -3,6 +3,8 @@ extends Control
 var player
 var usage
 
+var network
+
 var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
 var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
 var map_opened = false
@@ -10,6 +12,7 @@ var map_opened = false
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
+	network = get_tree().get_root().get_node("Start").network
 
 func updateGUI():
 	player.showMyTasks()
@@ -140,6 +143,7 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 
 func processGui():
 	var task_panel = get_node("TaskPanel")
+	task_panel.visible = !network.comms_disabled
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
 	task_container.rect_size.y = max(list_size.y + task_label_size.y, task_list_min_size)
 	

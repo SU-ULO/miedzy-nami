@@ -50,5 +50,5 @@ func draw_sin(scale = 1, length = 500, resolution = 4, speed = 1, offset = Vecto
 		draw_line(points[i], points[i + 1], color)
 
 func _on_Timer_timeout():
-	print("you won lol")
+	get_tree().get_root().get_node("Start").network.request_end_sabotage(3)
 	

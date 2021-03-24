@@ -28,7 +28,11 @@ func handle_sabotage(type):
 			network.world.get_node("Mapa/YSort/door").close_door()
 			network.world.get_node("Mapa/YSort/door2").close_door()
 			network.world.get_node("Mapa/YSort/door3").close_door()
+		if type == 3:
+			network.comms_disabled = true
+
 		emit_signal("sabotage_event", currentSabotage)
+
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
 		currentSabotage = 0
@@ -40,12 +44,19 @@ func handle_end_sabotage(type):
 			network.world.get_node("Mapa/YSort/door").open_door()
 			network.world.get_node("Mapa/YSort/door2").open_door()
 			network.world.get_node("Mapa/YSort/door3").open_door()
+		if type == 3:
+			network.comms_disabled = false
+
 		emit_signal("sabotage_event", 0)
+
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
 	$CanvasLayer/playerGUI.updateGUI()
 	$KillCooldown.wait_time = killCooldown
+	var network = get_tree().get_root().get_node("Start").network
+	network.connect("sabotage", self, "handle_sabotage")
+	network.connect("sabotage_end", self, "handle_end_sabotage")
 
 func get_input():
 	moveX = 0; moveY = 0

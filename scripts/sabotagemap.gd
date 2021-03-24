@@ -31,6 +31,8 @@ func sabotage_start(name):
 		network.request_sabotage(1)
 	if name == "door":
 		network.request_sabotage(2)
+	if name == "comms":
+		network.request_sabotage(3)
 
 func _on_exit_pressed():
 	emit_signal("exit")
