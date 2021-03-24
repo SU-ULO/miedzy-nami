@@ -3,7 +3,7 @@ extends Control
 const LookConfiguration = preload("look-configuration.gd")		
 
 var currLook = LookConfiguration.new()
-
+var ccolor = 5
 #get previous config and load it
 
 func _ready():
@@ -86,10 +86,10 @@ func _clothes_Change(name):
 		$"body-parts/jeans".visible = true
 		
 	currLook.topClothes = name
-	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, 5))
+	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, ccolor))
 
 func refresh():
-	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, 5))
+	$"body-parts/clothes".texture = load(currLook.getTopClotes(1, ccolor))
 	$"body-parts/jeans".visible = currLook.hasBottom
 	$"body-parts/eye".texture = load(currLook.getEyePath())
 	var bonuspath = currLook.getEyeBonusPath()

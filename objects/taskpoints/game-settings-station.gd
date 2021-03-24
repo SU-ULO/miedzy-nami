@@ -17,6 +17,7 @@ func Interact(body):
 		menu.get_node("buttons/game").visible = true
 	lookMenu = menu.get_node("menus/look-menu")
 	lookMenu.currLook.set_look(body.currLook.get_look())
+	lookMenu.ccolor = body.color
 	lookMenu.refresh()
 	colorMenu = menu.get_node("menus/color-menu")
 	colorMenu.color = body.color

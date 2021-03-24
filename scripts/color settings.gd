@@ -12,6 +12,7 @@ func _ready():
 func changeColor(newcolor):
 	color = newcolor
 	update_colors()
+	get_parent().get_node("look-menu").ccolor = color
 	get_tree().get_root().get_node("Start").network.request_color_change(int(color))
 	
 func update_colors():

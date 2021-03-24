@@ -15,6 +15,6 @@ func _on_ruchome1_button_down():
 	dragging = true
 	clickDelta = (get_viewport().get_mouse_position().x - rect_global_position.x)
 
-
 func _on_ruchome1_button_up():
 	dragging = false
+	get_parent().get_parent().checkWin()

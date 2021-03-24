@@ -14,6 +14,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="ColorRect" parent="."]
+margin_left = -206.0
+margin_top = -105.0
+margin_right = 2195.0
+margin_bottom = 1240.0
+color = Color( 0.662745, 0.666667, 0.666667, 1 )
+
 [node name="menus" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
