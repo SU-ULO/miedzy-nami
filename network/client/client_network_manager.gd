@@ -126,11 +126,11 @@ func handle_state_sync(state, params, opt=null):
 
 func handle_sabotage(type):
 	if joined_server and own_player:
-		own_player.handle_sabotage(type)
+		emit_signal("sabotage", type)
 		
 func handle_end_sabotage(type):
 	if joined_server and own_player:
-		own_player.handle_end_sabotage(type)
+		emit_signal("sabotage_end", type)
 
 func request_cameras_enable(on_off: bool):
 	if joined_server:

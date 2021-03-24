@@ -11,6 +11,7 @@ func close_door():
 	$Timer.start(10)
 	yield($Timer, "timeout")
 	open_door()
+	get_tree().get_root().get_node("Start").network.request_end_sabotage(2)
 
 
 func open_door():

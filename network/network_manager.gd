@@ -28,12 +28,13 @@ var gamesettings := {
 	"kill-cooldown": 45,
 	"kill-distance": 1,
 	"taskbar-updates": 1,
-	"long-tasks": 1,
-	"short-tasks": 3
+	"long-tasks": 15,
+	"short-tasks": 15
 }
 
 var camera_users_count := 0
 var taken_colors := 0
+var comms_disabled = 0
 
 # warning-ignore:unused_signal
 signal joined_room()
@@ -45,6 +46,10 @@ signal meeting_start()
 signal gui_sync(gui_name, gui_data)
 
 signal color_taken()
+
+signal sabotage(type)
+
+signal sabotage_end(type)
 
 func is_color_taken(c: int):
 	return taken_colors & 1<<c

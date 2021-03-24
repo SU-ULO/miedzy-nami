@@ -4,11 +4,13 @@ var players
 var rooms = {}
 var opened = false
 var players_count = {}
+var player
 
 onready var map_res = load("res://gui/admin.tscn")
 onready var player_icon_res = load("res://gui/podsceny/admin_player.tscn")
 onready var canvas = get_owner().get_node("CanvasLayer")
 var map = null
+var disabled = false
 
 func _ready():
 	add_to_group("interactable")
@@ -42,14 +44,20 @@ func update_map():
 
 
 func Interact(_body):
-	opened = true
-	map = map_res.instance()
-	canvas.add_child(map)
+	player = _body
+	if not get_tree().get_root().get_node("Start").network.comms_disabled:
+		opened = true
+		map = map_res.instance()
+		canvas.add_child(map)
+	else:
+		return false
+		
 	
 func EndInteraction(_body):
-	map.queue_free()
-	map = null
-	opened = false
+	if opened:
+		map.queue_free()
+		map = null
+		opened = false
 
 func in_room(who, room):
 	return room[0].x < who.global_position.x && room[0].y < who.global_position.y && room[1].x > who.global_position.x && room[1].y > who.global_position.y
