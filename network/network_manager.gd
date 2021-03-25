@@ -112,6 +112,8 @@ func start_meeting(caller: int, dead: int):
 			own_player.currentInteraction.EndInteraction()
 		else:
 			own_player.currentInteraction.EndInteraction(own_player)
+		own_player.currentInteraction = null
+		own_player.get_node("CanvasLayer2/exit_button").visible = false
 	#get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
 		i.queue_free()

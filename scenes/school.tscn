@@ -731,7 +731,7 @@ scale = Vector2( 0.250547, 0.250266 )
 
 [node name="meeting-table" parent="Mapa/YSort" instance=ExtResource( 46 )]
 position = Vector2( -4540.59, 2346.27 )
-scale = Vector2( 1, 0.998878 )
+scale = Vector2( 0.405383, 0.404929 )
 
 [node name="spawnpositions" type="Node2D" parent="Mapa/YSort/meeting-table"]
 

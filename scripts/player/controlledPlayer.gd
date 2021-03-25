@@ -11,6 +11,7 @@ export var killCooldown = 20
 export var sabotageCooldown = 40
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
+var meetings_left
 
 signal sabotage_event()
 
@@ -65,6 +66,7 @@ func _ready():
 	var network = get_tree().get_root().get_node("Start").network
 	network.connect("sabotage", self, "handle_sabotage")
 	network.connect("sabotage_end", self, "handle_end_sabotage")
+	meetings_left = network.gamesettings["meeting-count"]
 
 func get_input():
 	moveX = 0; moveY = 0
