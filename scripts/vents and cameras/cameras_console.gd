@@ -8,6 +8,8 @@ onready var world = get_world_2d()
 var texture_inactive = "res://textures/dekoracje/kamera.png"
 var texture_active = "res://textures/dekoracje/kamera-active.png"
 
+var disabled = false
+
 func _ready():
 	self.add_to_group("entities")
 	self.add_to_group("interactable")
@@ -29,21 +31,26 @@ func instance_gui(body):
 		camera_gui.get_node(vp).world_2d = world
 		
 	canvas.add_child(camera_gui)
-	var iter = 0
-	
+	camera_gui.get_node("off").visible = disabled
+	if !disabled:
+		var iter = 0
+		for vp in camera_gui.viewports:
+			var camera = get_node(linkedcameras[iter])
+			camera.get_node("Camera2D").set_custom_viewport(camera_gui.get_node(vp))
+			camera.get_node("Camera2D").current = 1
+			camera.get_node("Light2D").visible = 1
+			# warning-ignore:return_value_discarded
+			camera.connect("camera_detection", body, "camera_visibility")
+			camera.get_node("Area2D").monitoring = 1
+			camera.detect()
+			iter += 1
+		get_tree().get_root().get_node('Start').network.request_cameras_enable(true)
+		
 	for vp in camera_gui.viewports:
-		var camera = get_node(linkedcameras[iter])
-		camera.get_node("Camera2D").set_custom_viewport(camera_gui.get_node(vp))
-		camera.get_node("Camera2D").current = 1
-		camera.get_node("Light2D").visible = 1
-		# warning-ignore:return_value_discarded
-		camera.connect("camera_detection", body, "camera_visibility")
-		camera.get_node("Area2D").monitoring = 1
-		camera.detect()
-		iter += 1
-	get_tree().get_root().get_node('Start').network.request_cameras_enable(true)
+		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
 
 func Interact(body):
+	disabled = get_tree().get_root().get_node("Start").network.comms_disabled
 	instance_gui(body)
 
 func EndInteraction(body):

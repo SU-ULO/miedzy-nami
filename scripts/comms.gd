@@ -24,8 +24,9 @@ func _ready():
 func _process(delta):
 	update()
 	x+=move*delta
+	
 func check(noise):
-	if abs(noise) < 0.1: set = true
+	if abs(noise) < 0.25: set = true
 	else: set = false
 	
 	if set and timer.time_left == 0: timer.start()

@@ -20,7 +20,7 @@ func _ready():
 	players = get_tree().get_root().get_node('Start').network.player_characters
 
 func _process(_delta):
-	if opened:
+	if opened and !disabled:
 		for i in rooms.keys():
 			players_count[i] = 0
 			for j in players.values():
@@ -34,25 +34,22 @@ func update_map():
 	
 	var path
 	for data in players_count.keys():
-		path = "rooms/" + data
+		path = "map/rooms/" + data
 		
 		for child in map.get_node(path).get_children():
 			child.queue_free()
-		
+			
 		for _iter in range(players_count[data]):
 			map.get_node(path).add_child(player_icon_res.instance())
 
+func Interact(body):
+	disabled = get_tree().get_root().get_node("Start").network.comms_disabled
+	player = body
+	opened = true
+	map = map_res.instance()
+	canvas.add_child(map)
+	map.get_node("off").visible =  disabled
 
-func Interact(_body):
-	player = _body
-	if not get_tree().get_root().get_node("Start").network.comms_disabled:
-		opened = true
-		map = map_res.instance()
-		canvas.add_child(map)
-	else:
-		return false
-		
-	
 func EndInteraction(_body):
 	if opened:
 		map.queue_free()
