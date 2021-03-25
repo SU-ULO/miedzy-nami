@@ -13,7 +13,7 @@ func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
 	network = get_tree().get_root().get_node("Start").network
-
+	$gamecode.text = network.server_key
 func updateGUI():
 	player.showMyTasks()
 	var content = ""

@@ -8,7 +8,7 @@ var disabled_movement:bool = false
 var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
-export var sabotageCooldown = 20
+export var sabotageCooldown = 40
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 
@@ -23,7 +23,8 @@ func handle_sabotage(type):
 	if $SabotageCooldown.time_left == 0 and currentSabotage == 0:
 		currentSabotage = type
 		if type == 1:
-			sight_range = default_sight_range / 2
+			if !is_in_group("impostors"):
+				sight_range = default_sight_range / 2
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
@@ -42,7 +43,8 @@ func handle_end_sabotage(type):
 		$SabotageCooldown.start(sabotageCooldown)
 		var network = get_tree().get_root().get_node("Start").network
 		if type == 1:
-			sight_range = default_sight_range
+			if !is_in_group("impostors"):
+				sight_range = default_sight_range
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:

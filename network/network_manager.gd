@@ -112,7 +112,9 @@ func start_meeting(caller: int, dead: int):
 			own_player.currentInteraction.EndInteraction()
 		else:
 			own_player.currentInteraction.EndInteraction(own_player)
-			
+	#get rid of all the bodies
+	for i in world.get_tree().get_nodes_in_group("deadbody"):
+		i.queue_free()
 	#disable movement and calculate teleport positions
 	own_player.disabled_movement = true
 	recalculate_pos()

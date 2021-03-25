@@ -296,7 +296,10 @@ one_shot = true
 [node name="SabotageCooldown" type="Timer" parent="." index="10"]
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="11"]
+[node name="DoorCooldown" type="Timer" parent="." index="11"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="12"]
 
 [node name="playerGUI" type="Control" parent="CanvasLayer" index="0"]
 anchor_left = 0.5
@@ -314,7 +317,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TaskPanel" type="Control" parent="CanvasLayer/playerGUI" index="0"]
+[node name="gamecode" type="Label" parent="CanvasLayer/playerGUI" index="0"]
+margin_left = 829.423
+margin_top = 906.293
+margin_right = 1219.42
+margin_bottom = 981.293
+rect_scale = Vector2( 0.903384, 0.903384 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 5
+custom_constants/shadow_as_outline = 4
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskPanel" type="Control" parent="CanvasLayer/playerGUI" index="1"]
 margin_right = 774.0
 margin_bottom = 354.0
 theme = SubResource( 9 )
@@ -387,7 +407,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="impostor" type="Control" parent="CanvasLayer/playerGUI" index="1"]
+[node name="impostor" type="Control" parent="CanvasLayer/playerGUI" index="2"]
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -419,19 +439,22 @@ __meta__ = {
 }
 
 [node name="cooldown" type="Label" parent="CanvasLayer/playerGUI/impostor/kill" index="0"]
-margin_left = -445.439
-margin_top = 1093.9
-margin_right = -335.439
-margin_bottom = 1181.9
+margin_left = 1609.58
+margin_top = 1152.2
+margin_right = 1719.58
+margin_bottom = 1240.2
 rect_scale = Vector2( 9.74788, 9.74788 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 0.560784 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 2
 text = "20s"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopButtons" type="Control" parent="CanvasLayer/playerGUI" index="2"]
+[node name="TopButtons" type="Control" parent="CanvasLayer/playerGUI" index="3"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -465,7 +488,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtons" type="Control" parent="CanvasLayer/playerGUI" index="3"]
+[node name="ActionButtons" type="Control" parent="CanvasLayer/playerGUI" index="4"]
 margin_left = 0.794006
 margin_top = 1.58899
 margin_right = 40.794
@@ -502,7 +525,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="CanvasLayer/playerGUI" index="4" instance=ExtResource( 18 )]
+[node name="Joystick" parent="CanvasLayer/playerGUI" index="5" instance=ExtResource( 18 )]
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
 [connection signal="pressed" from="CanvasLayer2/exit_button" to="." method="_on_exit_button_pressed"]
