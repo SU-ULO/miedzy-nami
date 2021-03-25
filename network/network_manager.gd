@@ -127,7 +127,7 @@ func start_meeting(caller: int, dead: int):
 			var box = playerbox.instance()
 			box.connect("chosen", self, "set_chosen")
 			box.id = player
-			box.color = colors[player_characters[player].color] #get_playercolor ???
+			box.color = Color(colors[player_characters[player].color])
 			box.get_node("Button/L").text = player_characters[player].username
 			gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
 			iter += 1
@@ -136,7 +136,7 @@ func start_meeting(caller: int, dead: int):
 		var box = playerbox.instance()
 		box.connect("chosen", self, "set_chosen")
 		box.id = rip
-		box.color = colors[player_characters[rip].color] #get_playercolor ???
+		box.color =  Color(colors[player_characters[rip].color])
 		box.get_node("Button/L").text = player_characters[rip].username
 		gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
@@ -214,7 +214,7 @@ func add_vote(voter_id, voted_id):
 	# powiedz serwerowi że gracz wybrał gracza
 	
 	#głos
-	var color = "#FF0000" #var color = voter_id cośtam color ???
+	var color =  Color(colors[player_characters[voter_id].color])
 	if voted_id >= 0:
 		var box = world.get_node("CanvasLayer").get_child(0).get_player_box(voted_id)
 		box.set_vote(color)
