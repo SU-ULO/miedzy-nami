@@ -205,3 +205,7 @@ func _draw():
 		debug_pos_collided.clear()
 		debug_pos_ok.clear()
 
+func become_impostor():
+	$Label.add_color_override("font_color", Color(1,0,0,1))
+func stop_beeing_impostor():
+	$Label.add_color_override("font_color", Color(0,0,0,1))
