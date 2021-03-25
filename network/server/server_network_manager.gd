@@ -189,9 +189,7 @@ func request_end_sabotage(type: int):
 func handle_end_sabotage_request(type: int):
 	for c in connected_clients.values():
 		c.send_end_sabotage(type)
-		
-	own_player.handle_end_sabotage(type)
-	
+	emit_signal("sabotage_end", type)
 
 func handle_sabotage_request(type: int, player_id: int):
 	# TODO: check if the requester (player_id) is an impostor
@@ -201,7 +199,7 @@ func handle_sabotage_request(type: int, player_id: int):
 		for c in connected_clients.values():
 			c.send_sabotage_start(type)
 			
-		own_player.handle_sabotage(type)
+		emit_signal("sabotage", type)
 	
 func request_cameras_enable(on_off: bool):
 	handle_cameras_enable_request(on_off)

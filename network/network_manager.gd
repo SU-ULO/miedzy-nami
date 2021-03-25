@@ -72,6 +72,10 @@ func create_world(config):
 	load("res://scripts/tasks/Task.cs").ClientCleanup()
 	world = preloadedmap.instance()
 	add_child(world)
+	connect("sabotage", world.get_node("Mapa/YSort/telewizorek"), "check_on")
+	connect("sabotage_end", world.get_node("Mapa/YSort/telewizorek"), "check_off")
+	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
+	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")	
 
 func display_key(key):
 	server_key = key

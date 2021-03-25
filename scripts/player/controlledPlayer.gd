@@ -24,13 +24,16 @@ func handle_sabotage(type):
 		currentSabotage = type
 		if type == 1:
 			sight_range = default_sight_range / 2
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
+				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
 			network.world.get_node("Mapa/YSort/door").close_door()
 			network.world.get_node("Mapa/YSort/door2").close_door()
 			network.world.get_node("Mapa/YSort/door3").close_door()
 		if type == 3:
 			network.comms_disabled = true
-
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
+				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
 		emit_signal("sabotage_event", currentSabotage)
 
 func handle_end_sabotage(type):
@@ -40,13 +43,16 @@ func handle_end_sabotage(type):
 		var network = get_tree().get_root().get_node("Start").network
 		if type == 1:
 			sight_range = default_sight_range
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
+				on_interaction_area_exit(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
 			network.world.get_node("Mapa/YSort/door").open_door()
 			network.world.get_node("Mapa/YSort/door2").open_door()
 			network.world.get_node("Mapa/YSort/door3").open_door()
 		if type == 3:
 			network.comms_disabled = false
-
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
+				on_interaction_area_exit(network.world.get_node("Mapa/YSort/telewizorek"))
 		emit_signal("sabotage_event", 0)
 
 func _ready():
