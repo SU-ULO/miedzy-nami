@@ -117,7 +117,7 @@ func start_meeting(caller: int, dead: int):
 	own_player.disabled_movement = true
 	recalculate_pos()
 	
-	own_player.position = world.get_node("Mapa/YSort/meeting-table").get_child(own_id).global_position
+	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	var playerbox = load("res://gui/meeting/PalyerMeetingBox.tscn")
 	
@@ -193,7 +193,10 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
-	add_vote(own_id, id) # add vote to player box
+	request_vote(id)
+
+func request_vote(id: int):
+	pass
 
 func add_vote(voter_id, voted_id):
 	var color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
@@ -206,11 +209,7 @@ func add_vote(voter_id, voted_id):
 	
 	# set little marker next to voter box indicating that they voted
 	var voter_box = world.get_node("CanvasLayer").get_child(0).get_player_box(voter_id)
-	voter_box.set_voted()	
-	
-func update_meeting():
-	#stuff for updating meeting ui, don't know what is needed for this
-	pass
+	voter_box.set_voted()
 
 func recalculate_pos():
 	var radius:float = 500.0

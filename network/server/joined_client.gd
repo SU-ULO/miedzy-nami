@@ -15,6 +15,7 @@ signal gui_sync_requested(gui_name, gui_data)
 signal color_update(color)
 signal look_update(look)
 signal set_invisible(id, val)
+signal vote(id)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -47,6 +48,8 @@ func handle_events(input):
 		emit_signal("look_update", input[1])
 	elif input[0]==9:
 		emit_signal("set_invisible", input[1], input[2])
+	elif input[0]==10:
+		emit_signal("vote", input[1])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])
@@ -89,3 +92,6 @@ func send_look(id: int, look: Dictionary):
 
 func send_set_invisible(id, val: bool):
 	send_events([12, id, val])
+
+func send_vote(voter, voted):
+	send_events([13, voter, voted])

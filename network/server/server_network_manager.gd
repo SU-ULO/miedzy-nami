@@ -42,6 +42,7 @@ func create_client(config):
 		client.connect("color_update", self, "handle_color_change_request", [config.id])
 		client.connect("look_update", self, "handle_set_look", [config.id])
 		client.connect("set_invisible", self, "handle_set_invisible")
+		client.connect("vote", self, "handle_vote_request", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -268,3 +269,11 @@ func handle_set_invisible(id, val: bool):
 	for c in connected_clients.values():
 		c.send_set_invisible(id, val)
 	set_invisible(id, val)
+
+func request_vote(id: int):
+	handle_vote_request(id, own_id)
+
+func handle_vote_request(voted, voter):
+	for c in connected_clients.values():
+		c.send_vote(voter, voted)
+	add_vote(voter, voted)

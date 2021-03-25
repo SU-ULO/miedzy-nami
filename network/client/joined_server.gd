@@ -16,6 +16,8 @@ signal game_settings(settings)
 signal colors_sync(taken, players)
 signal look(id, look)
 signal invisible(id, val)
+signal vote(voter, voted)
+
 func _init(conf: Dictionary).(conf):
 	pass
 
@@ -56,7 +58,8 @@ func handle_events(input):
 		emit_signal("look", input[1], input[2])
 	elif input[0]==12:
 		emit_signal("invisible", input[1], input[2])
-#tasks need to be added to event handling as signal handled by ClientNetworkManager
+	elif input[0]==13:
+		emit_signal("vote", input[1], input[2])
 
 func handle_updates(input):
 	if !(input is Array): return
@@ -95,3 +98,6 @@ func send_look_update(look: Dictionary):
 
 func send_set_invisible(id, val: bool):
 	send_events([9, id, val])
+
+func send_vote(id):
+	send_events([10, id])
