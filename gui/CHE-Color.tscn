@@ -130,14 +130,31 @@ position = Vector2( 1113.56, 536.213 )
 scale = Vector2( 0.667616, 0.667616 )
 texture = ExtResource( 6 )
 
-[node name="sticky" type="Sprite" parent="."]
-position = Vector2( 1691.83, 200.706 )
+[node name="Timer" type="Timer" parent="."]
+
+[node name="cel" type="Node2D" parent="."]
+position = Vector2( 1321.37, -182.934 )
+
+[node name="cel-bottom" type="Sprite" parent="cel"]
+position = Vector2( 277.324, 425.577 )
+scale = Vector2( 0.2, 0.2 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="sticky" type="Sprite" parent="cel/cel-bottom"]
+show_behind_parent = true
+position = Vector2( 28.709, 66.0625 )
+scale = Vector2( 5, 5 )
 texture = ExtResource( 7 )
 
-[node name="cel" type="Polygon2D" parent="."]
-position = Vector2( -727.2, -72.0956 )
-scale = Vector2( 1.44595, 1.44595 )
-polygon = PoolVector2Array( 1612, 119, 1612, 215, 1714, 215, 1714, 119 )
+[node name="shape" type="Polygon2D" parent="cel"]
+position = Vector2( -56.8789, 264.369 )
+scale = Vector2( 0.3, 0.3 )
+antialiased = true
+polygon = PoolVector2Array( 863.715, 769.977, 866.773, 777.764, 874.721, 786.985, 889.071, 794.66, 916.102, 805.34, 954.145, 814.016, 998.862, 821.024, 1040.58, 824.695, 1107.32, 826.364, 1157.04, 826.03, 1215.44, 821.357, 1287.19, 808.674, 1328.91, 796.994, 1354.27, 781.643, 1361.28, 768.628, 1360.6, 566.087, 1343.85, 557.757, 1316.5, 548.838, 1291, 541.5, 1265.36, 536.946, 1242.17, 532.189, 1214.82, 528.622, 1181.52, 525.648, 1146.44, 523.27, 1107.79, 522.675, 1072.71, 522.675, 1032.28, 523.865, 998.981, 526.243, 966.872, 529.216, 932.385, 533.378, 906.802, 538.566, 882.637, 542.575, 863.799, 550.953 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="cel-top" type="Sprite" parent="cel"]
+position = Vector2( 277.369, 425.462 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
 [connection signal="animation_finished" from="wynik" to="." method="_on_wynik_animation_finished"]

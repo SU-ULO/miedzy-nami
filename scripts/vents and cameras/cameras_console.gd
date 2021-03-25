@@ -23,12 +23,6 @@ func delete_gui(body):
 	canvas.remove_child(camera_gui)
 	
 	get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
-	# tutaj sygnał do serwera - ktoś przestał używać kamery
-	# po stronie serwera można zliczać ile osób używa
-	# i jeśli stanie się 0 to wtedy ustawić teksture na nieaktywną
-	# for lc in linkedcameras:
-	# 	get_node(lc).get_node("camera-sprite").texture = load(texture_inactive)
-	# nwm czy to jest odopwiednie miejsce ale tutaj jest lista kamer wszystkich
 
 func instance_gui(body):
 	for vp in camera_gui.viewports:
@@ -47,13 +41,7 @@ func instance_gui(body):
 		camera.get_node("Area2D").monitoring = 1
 		camera.detect()
 		iter += 1
-	get_tree().get_root().get_node('Start').network.request_cameras_enable(true)	
-	# tutaj sygnał do serwera - ktoś zaczął używać kamery
-	# po stronie serwera można zliczać ile osób używa
-	# i jeśli więcej niż 0 to wtedy ustawić teksture na aktywną
-	# for lc in linkedcameras:
-	# 	get_node(lc).get_node("camera-sprite").texture = load(texture_active)
-	# nwm czy to jest odopwiednie miejsce ale tutaj jest lista kamer wszystkich
+	get_tree().get_root().get_node('Start').network.request_cameras_enable(true)
 
 func Interact(body):
 	instance_gui(body)
