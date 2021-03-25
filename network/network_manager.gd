@@ -32,6 +32,22 @@ var gamesettings := {
 	"short-tasks": 15
 }
 
+var colors := {
+	1: "#894d36",
+	2: "#111315",
+	3: "#cdd9e2",
+	4: "#c80b29",
+	5: "#fe5275",
+	6: "#ff943f",
+	7: "#ffe462",
+	8: "#377a2f",
+	9: "#bc3abc",
+	10: "#76e754",
+	11: "#00d2a6",
+	12: "#00a9e3",
+	13: "#004b93",
+	14: "#5c358d"
+}
 var camera_users_count := 0
 var taken_colors := 0
 var comms_disabled = 0
@@ -111,7 +127,7 @@ func start_meeting(caller: int, dead: int):
 			var box = playerbox.instance()
 			box.connect("chosen", self, "set_chosen")
 			box.id = player
-			box.color = "#00FF00" #get_playercolor ???
+			box.color = colors[player_characters[player].color] #get_playercolor ???
 			box.get_node("Button/L").text = player_characters[player].username
 			gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
 			iter += 1
@@ -120,7 +136,7 @@ func start_meeting(caller: int, dead: int):
 		var box = playerbox.instance()
 		box.connect("chosen", self, "set_chosen")
 		box.id = rip
-		box.color = "#00FF00" #get_playercolor ???
+		box.color = colors[player_characters[rip].color] #get_playercolor ???
 		box.get_node("Button/L").text = player_characters[rip].username
 		gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
