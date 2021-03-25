@@ -7,7 +7,7 @@ func _ready():
 	randomize()
 	colors.shuffle()
 	cel = colors.front()
-	$cel.color = cel
+	$cel/shape.color = cel
 	# warning-ignore:return_value_discarded
 	$r.connect("pressed", self, "changeColor")
 	# warning-ignore:return_value_discarded
