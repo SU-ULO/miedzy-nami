@@ -106,12 +106,14 @@ func request_meeting(_dead: int):
 func start_meeting(caller: int, dead: int):
 	var rips = []
 	
+	#end all interactions
 	if own_player.currentInteraction != null:
 		if own_player.currentInteraction.is_in_group("tasks"):
 			own_player.currentInteraction.EndInteraction()
 		else:
 			own_player.currentInteraction.EndInteraction(own_player)
 			
+	#disable movement and calculate teleport positions
 	own_player.disabled_movement = true
 	recalculate_pos()
 	
@@ -120,59 +122,92 @@ func start_meeting(caller: int, dead: int):
 	var playerbox = load("res://gui/meeting/PalyerMeetingBox.tscn")
 	
 	var iter = 0
+	# for every player
 	for player in player_characters.keys():
 		if player_characters[player].is_in_group("rip"):
-			rips.push_back(player)
+			rips.push_back(player) # if dead then handle later
 		else:
-			var box = playerbox.instance()
+			var box = playerbox.instance() #make box in meeting gui
+			
+			#set box atributes
 			box.connect("chosen", self, "set_chosen")
 			box.id = player
 			box.color = Color(colors[player_characters[player].color])
 			box.get_node("Button/L").text = player_characters[player].username
+			
+			# put it in right place
 			gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+		
 			iter += 1
 	
-	for rip in rips:
+	for rip in rips: # now same for rips because we want them last on list
 		var box = playerbox.instance()
+
 		box.connect("chosen", self, "set_chosen")
 		box.id = rip
 		box.color =  Color(colors[player_characters[rip].color])
 		box.get_node("Button/L").text = player_characters[rip].username
+
 		gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+		# aslo different color cause they dead
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
 		iter += 1
 	
-	gui.set_all_buttons(0)
-	var skip = gui.get_node("S")
-	skip.connect("chosen", self, "set_chosen")
-	gui.connect("meeting_state_changed", self, "set_meeting_state")
-	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 0)
-	
-	world.get_node("CanvasLayer").add_child(gui)
+	#now we disable all butons because no one can vote in discussion time
 	gui.time = gamesettings["discussion-time"]
 	gui.set_all_buttons(0)
+	var skip = gui.get_node("S")
+
+	#connect "click" signal to skip button and signal to change meeting state to voting time
+	skip.connect("chosen", self, "set_chosen")
+	gui.connect("meeting_state_changed", self, "set_meeting_state")
+	
+	#turn off all player gui
+	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 0)
+	
+	# show gui on screen
+	world.get_node("CanvasLayer").add_child(gui)
+
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
-func set_meeting_state(state):
-	var gui = world.get_node("CanvasLayer").get_child(0)
+func set_meeting_state(state): # func to toggle from discussion time to voting time and to end meeting
+	var gui = world.get_node("CanvasLayer").get_child(0) #get gui
 	
-	if state == 1:
-		if own_player.is_in_group("rip") == false:
-			for player in player_characters.keys():
+	if state == 1: #if change to voting time
+		if own_player.is_in_group("rip") == false: # if player is dead then wi dont need to do anything
+			for player in player_characters.keys(): # otherwise for every alive player we anable their button
 				if player_characters[player].is_in_group("rip") == false:
 					gui.get_player_box(player).get_node("Button").disabled = false
-			gui.get_node("S").disabled = false
-			
+			gui.get_node("S").disabled = false # also skip button
+		
+		#set time and label
 		gui.time = gamesettings["voting-time"]
 		gui.label_text = "Koniec głosowania za: "
 		gui.meeting_state += 1
-	if state == 2:
-		gui.queue_free()
+	if state == 2: # if change to end
+		gui.queue_free() # remove gui add shop player gui and anable movement
 		own_player.disabled_movement = false
 		own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1)
-		
+
+func set_chosen(id): # called form signal chosen comming from player meeting box (button)
+	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
+	add_vote(own_id, id) # add vote to player box
+
+func add_vote(voter_id, voted_id):
+	var color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
+	
+	if voted_id >= 0: # if its player box then get their box and add vote to it
+		var box = world.get_node("CanvasLayer").get_child(0).get_player_box(voted_id)
+		box.set_vote(color) 
+	elif voted_id == -1: # if its skip button then add vote there
+		world.get_node("CanvasLayer/BG/S").set_vote(color)
+	
+	# set little marker next to voter box indicating that they voted
+	var voter_box = world.get_node("CanvasLayer").get_child(0).get_player_box(voter_id)
+	voter_box.set_voted()	
+	
 func update_meeting():
 	#stuff for updating meeting ui, don't know what is needed for this
 	pass
@@ -205,25 +240,6 @@ func kill(dead: int, pos: Vector2):
 		if own_player.dead:
 			for c in player_characters.values():
 				c.visible = true
-
-func set_chosen(id):
-		world.get_node("CanvasLayer").get_child(0).chosen = id
-		add_vote(own_id, id)
-
-func add_vote(voter_id, voted_id):
-	# powiedz serwerowi że gracz wybrał gracza
-	
-	#głos
-	var color =  Color(colors[player_characters[voter_id].color])
-	if voted_id >= 0:
-		var box = world.get_node("CanvasLayer").get_child(0).get_player_box(voted_id)
-		box.set_vote(color)
-	elif voted_id == -1:
-		world.get_node("CanvasLayer/BG/S").set_vote(color)
-	
-	#oddano głos
-	var voter_box = world.get_node("CanvasLayer").get_child(0).get_player_box(voter_id)
-	voter_box.set_voted()
 
 func get_spawn_position(id: int) -> Vector2:
 	if world:
