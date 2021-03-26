@@ -15,7 +15,7 @@ dest_files=[ "res://.import/bez_napis_1980x1080.png-3f2cdf523a13116965d22243736f
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.5
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2

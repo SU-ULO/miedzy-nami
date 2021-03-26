@@ -15,7 +15,7 @@ dest_files=[ "res://.import/floor.svg-61811da5dd9602e9f38b73441faa0988.stex" ]
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.4
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2

@@ -15,7 +15,7 @@ dest_files=[ "res://.import/przycisk_9.png-9e9db100ff6523651d260dad98ad0080.stex
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.5
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2

@@ -15,7 +15,7 @@ dest_files=[ "res://.import/suwmiarka_cz_ruchoma_2.png-884c2d0951e25e1c5349f2b96
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.5
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2

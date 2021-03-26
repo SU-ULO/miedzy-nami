@@ -15,7 +15,7 @@ dest_files=[ "res://.import/bloczek.png-900187fb8ffcaab8eae9e809e1263450.stex" ]
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.52
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2
