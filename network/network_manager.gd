@@ -2,9 +2,11 @@ extends Node
 
 class_name NetworkManager
 
-enum {LOBBY, STARTED, MEETING}
+enum {LOBBY, STARTED, MEETING, ENDED}
 var gamestate := LOBBY
 var gamestate_params = null
+
+var currentconfig
 
 const preloadedmap := preload('res://scenes/school.tscn')
 const Task := preload("res://scripts/tasks/Task.cs")
@@ -87,8 +89,9 @@ func get_free_color_and_set():
 	return 0
 
 func create_world(config):
+	currentconfig=config
 	server_key = config.key
-	load("res://scripts/tasks/Task.cs").ClientCleanup()
+	Task.ClientCleanup()
 	world = preloadedmap.instance()
 	add_child(world)
 # warning-ignore:return_value_discarded
@@ -99,6 +102,12 @@ func create_world(config):
 	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
 # warning-ignore:return_value_discarded
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
+
+func recreate_world():
+	world.queue_free()
+	player_characters.clear()
+	own_player=null
+	create_world(currentconfig)
 
 func display_key(key):
 	server_key = key
