@@ -179,7 +179,7 @@ func start_meeting(caller: int, dead: int):
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
-func set_meeting_state(state): # func to toggle from discussion time to voting time and to end meeting
+func set_meeting_state(state): # func to toggle from discussion time to voting time and to reveal results
 	var gui = world.get_node("CanvasLayer").get_child(0) #get gui
 	gui.meeting_state += 1
 	
@@ -233,11 +233,12 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			gui.show_votes(player_characters[best_id], imps)
 	if state == 3: # show verdict
 		gui.show_verdict()
-	if state == 4: #kill gui reset current votes
-		gui.queue_free() # remove gui
-		own_player.disabled_movement = false # anable player movement
-		own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
-		current_votes.clear()
+
+func end_meeting():
+	world.get_node("CanvasLayer").get_child(0).queue_free() # remove gui
+	own_player.disabled_movement = false # enable player movement
+	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
+	current_votes.clear()
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id

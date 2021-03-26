@@ -277,3 +277,12 @@ func handle_vote_request(voted, voter):
 	for c in connected_clients.values():
 		c.send_vote(voter, voted)
 	add_vote(voter, voted)
+
+func set_meeting_state(state):
+	if state==4:
+		gamestate=STARTED
+		gamestate_params=null
+		sync_gamestate()
+		end_meeting()
+	else: .set_meeting_state(state)
+
