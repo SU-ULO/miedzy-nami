@@ -1,6 +1,7 @@
 extends Control
 
 var meetings_left
+var sabotage_on = false
 signal emergency_meeting_requested()
 
 func _ready():
@@ -12,10 +13,14 @@ func wait5s():
 		$Timer.start()
 		yield($Timer, "timeout")
 	$Button.disabled = false
+	$Button.modulate = Color(1, 1, 1)
 func start_gui():
-	$Label.text = "Możesz zwołać zebranie jeszcze " + str(meetings_left) + " raz / razy" 
-	if meetings_left > 0:
-		wait5s()
+	if sabotage_on:
+		$Label.text = "Nie możesz zwołać zebrania podczas kryzysu!" 
+	else:
+		$Label.text = "Możesz zwołać zebranie jeszcze " + str(meetings_left) + " raz / razy" 
+		if meetings_left > 0:
+			wait5s()
 
 
 func _on_Button_pressed():

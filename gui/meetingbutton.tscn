@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/meetingbutton.gd" type="Script" id=2]
+[ext_resource path="res://textures/awaria_guzik.png" type="Texture" id=3]
+[ext_resource path="res://textures/awaria_guzik_w.png" type="Texture" id=4]
+[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=5]
 
 [node name="meetingbutton" type="Control"]
 anchor_right = 1.0
@@ -11,13 +14,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="TextureButton" parent="."]
+modulate = Color( 0.180392, 0.180392, 0.180392, 1 )
 margin_left = 661.085
 margin_top = 244.095
 margin_right = 1357.08
 margin_bottom = 650.095
-custom_fonts/font = ExtResource( 1 )
-text = "Zwołaj zebranie"
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,16 +30,26 @@ __meta__ = {
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 381.272
-margin_top = 664.0
-margin_right = 907.272
-margin_bottom = 771.0
+margin_left = 57.9293
+margin_top = 736.0
+margin_right = 1868.93
+margin_bottom = 843.0
 custom_fonts/font = ExtResource( 1 )
+align = 1
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 413.308
-margin_top = 794.814
-margin_right = 939.308
-margin_bottom = 901.814
+margin_left = 88.7043
+margin_top = 856.888
+margin_right = 1839.7
+margin_bottom = 963.888
 custom_fonts/font = ExtResource( 1 )
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 637.558
+margin_top = 112.246
+margin_right = 1252.56
+margin_bottom = 200.246
+custom_fonts/font = ExtResource( 5 )
+text = "ZWOŁAJ ZEBRANIE"
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
