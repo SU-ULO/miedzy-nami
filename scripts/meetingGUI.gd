@@ -27,7 +27,8 @@ func _process(_delta):
 func set_time(t):
 	var timer = get_node("Timer")
 	time = t
-	timer.start(t)
+	if timer.is_inside_tree():
+		timer.start(t)
 
 func update_time():
 	var timer = get_node("Timer")

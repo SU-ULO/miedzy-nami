@@ -123,7 +123,7 @@ func start_meeting(caller: int, dead: int):
 	
 	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
-	var playerbox = load("res://gui/meeting/PalyerMeetingBox.tscn")
+	var playerbox = load("res://gui/meeting/PlayerMeetingBox.tscn")
 	
 	var iter = 0
 	# for every player
