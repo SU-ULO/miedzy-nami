@@ -4,6 +4,7 @@ var chosen = -2 setget set_chosen
 var time = 40.0 setget set_time
 var label_text = "Koniec czasu dyskusji za: "
 var meeting_state = 0
+var show_imps = 1
 
 signal meeting_state_changed(state)
 
@@ -35,6 +36,7 @@ func update_time():
 	var label = get_node("TL")
 	label.text = label_text + to_time(timer.time_left)
 
+
 func to_time(s):
 	var mins = int(round(s)/60)
 	var secs = round(s) - mins*60
@@ -44,6 +46,24 @@ func to_time(s):
 	mins = String(mins)
 	
 	return mins + ":" + secs
+
+func show_votes(player = null, imps = 0):
+	# tekst do dporacowania ;)
+	var verdict = get_node("verdict")
+	if player == null:
+		verdict.get_node("massage").text = "nikt nie został wyeksterminowany"
+	else:
+		verdict.get_node("massage").text = String(player.username) + " został wyjaśniony"
+	
+	if show_imps:
+		verdict.get_node("imps").text = "pozostało " + String(imps) + " zadymiarzy"
+	else:
+		verdict.get_node("imps").text = "" # empty :(
+	self.time = 1.5
+
+func show_verdict():
+	get_node("verdict").visible = true
+	self.time = 3
 
 func set_chosen(id):
 	chosen = id
@@ -70,5 +90,8 @@ func set_all_buttons(state:bool): # 0 disabled, 1 enabled
 		
 	get_node("S").disabled = !state
 
-func _on_Timer_timeout():
+func progress_meeting():
 	emit_signal("meeting_state_changed", meeting_state+1)
+
+func _on_Timer_timeout():
+	progress_meeting()

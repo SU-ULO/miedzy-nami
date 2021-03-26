@@ -25,6 +25,10 @@ func set_vote(col):
 	instance.get_stylebox("panel", "").bg_color = Color(col)
 	get_node(path).add_child(instance)
 
+func set_vote_visibility(state):
+	get_node("Button/V/H1").visible = state
+	get_node("Button/V/H2").visible = state
+
 func set_voted():
 	get_node("Button/Voted").visible = true
 

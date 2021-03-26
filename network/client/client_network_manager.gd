@@ -115,10 +115,10 @@ func request_end_sabotage(type: int):
 		joined_server.send_end_sabotage_request(type)
 
 func handle_state_sync(state, params, opt=null):
-	if gamestate==MEETING and state==MEETING:
+	if gamestate==MEETING and state==STARTED:
 		gamestate = state
 		gamestate_params = params
-		#just update meeting
+		end_meeting()
 		return
 	gamestate = state
 	gamestate_params = params

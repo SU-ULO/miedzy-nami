@@ -72,7 +72,10 @@ func create_world(config):
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
 
-func spawn_player(id: int):
+func recreate_world():
+	pass
+
+func spawn_player(id: int, init_data: Dictionary = Dictionary()):
 	if !connected_clients.has(id): return
 	var new_character = preload("res://entities/dummyplayer.tscn").instance()
 	new_character.owner_id = id
@@ -82,6 +85,8 @@ func spawn_player(id: int):
 	player_characters[id]=new_character
 	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
+	if !init_data.empty():
+		new_character.set_init_data(init_data)
 	var joining_player_init_data = new_character.generate_init_data()
 	for cid in connected_clients:
 		var c = connected_clients[cid]
@@ -277,3 +282,12 @@ func handle_vote_request(voted, voter):
 	for c in connected_clients.values():
 		c.send_vote(voter, voted)
 	add_vote(voter, voted)
+
+func set_meeting_state(state):
+	if state==4:
+		gamestate=STARTED
+		gamestate_params=null
+		sync_gamestate()
+		end_meeting()
+	else: .set_meeting_state(state)
+

@@ -2,9 +2,11 @@ extends Node
 
 class_name NetworkManager
 
-enum {LOBBY, STARTED, MEETING}
+enum {LOBBY, STARTED, MEETING, ENDED}
 var gamestate := LOBBY
 var gamestate_params = null
+
+var currentconfig
 
 const preloadedmap := preload('res://scenes/school.tscn')
 const Task := preload("res://scripts/tasks/Task.cs")
@@ -48,9 +50,12 @@ var colors := {
 	13: "#004b93",
 	14: "#5c358d"
 }
+
 var camera_users_count := 0
 var taken_colors := 0
 var comms_disabled = 0
+
+var current_votes = {}
 
 # warning-ignore:unused_signal
 signal joined_room()
@@ -84,8 +89,9 @@ func get_free_color_and_set():
 	return 0
 
 func create_world(config):
+	currentconfig=config
 	server_key = config.key
-	load("res://scripts/tasks/Task.cs").ClientCleanup()
+	Task.ClientCleanup()
 	world = preloadedmap.instance()
 	add_child(world)
 # warning-ignore:return_value_discarded
@@ -96,6 +102,12 @@ func create_world(config):
 	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
 # warning-ignore:return_value_discarded
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
+
+func recreate_world():
+	world.queue_free()
+	player_characters.clear()
+	own_player=null
+	create_world(currentconfig)
 
 func display_key(key):
 	server_key = key
@@ -176,10 +188,11 @@ func start_meeting(caller: int, dead: int):
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
-func set_meeting_state(state): # func to toggle from discussion time to voting time and to end meeting
+func set_meeting_state(state): # func to toggle from discussion time to voting time and to reveal results
 	var gui = world.get_node("CanvasLayer").get_child(0) #get gui
+	gui.meeting_state += 1
 	
-	if state == 1: #if change to voting time
+	if state == 1: # voting starts
 		if own_player.is_in_group("rip") == false: # if player is dead then wi dont need to do anything
 			for player in player_characters.keys(): # otherwise for every alive player we anable their button
 				if player_characters[player].is_in_group("rip") == false:
@@ -189,11 +202,52 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 		#set time and label
 		gui.time = gamesettings["voting-time"]
 		gui.label_text = "Koniec głosowania za: "
-		gui.meeting_state += 1
-	if state == 2: # if change to end
-		gui.queue_free() # remove gui add shop player gui and anable movement
-		own_player.disabled_movement = false
-		own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1)
+	
+	if state == 2: # voting ended
+		#show votes
+		for box in gui.get_node("H/V1").get_children():
+			box.set_vote_visibility(1)
+			
+		for box in gui.get_node("H/V2").get_children():
+			box.set_vote_visibility(1)
+			
+		#determin meeting "winner"
+		
+		var votes = {}
+		# count votes
+		for vote in current_votes:
+			if !votes.has(vote): votes[vote] = 1
+			else:votes[vote] += 1
+		# find max
+		var best = 0
+		var best_id = -1
+		
+		for key in votes.keys():
+			if votes[key] > best:
+				best = votes[key]
+				best_id = key
+			elif votes[key] == best:
+				best_id = -1
+				
+		# count alive impostors
+		var imps = 0
+		for imp in get_tree().get_nodes_in_group("impostors"):
+			if !imp.is_in_group("rip"):
+				imps += 1
+				
+		# show votes
+		if best_id == -1 or !player_characters.has(best_id):
+			gui.show_votes(null, imps)
+		else:
+			gui.show_votes(player_characters[best_id], imps)
+	if state == 3: # show verdict
+		gui.show_verdict()
+
+func end_meeting():
+	world.get_node("CanvasLayer").get_child(0).queue_free() # remove gui
+	own_player.disabled_movement = false # enable player movement
+	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
+	current_votes.clear()
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
@@ -203,21 +257,36 @@ func request_vote(id: int):
 	pass
 
 func add_vote(voter_id, voted_id):
+	validate_vote(voter_id, voted_id)
 	var color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
+	var gui = world.get_node("CanvasLayer").get_child(0)
 	
 	if voted_id >= 0: # if its player box then get their box and add vote to it
-		var box = world.get_node("CanvasLayer").get_child(0).get_player_box(voted_id)
+		var box = gui.get_player_box(voted_id)
 		box.set_vote(color) 
 	elif voted_id == -1: # if its skip button then add vote there
-		world.get_node("CanvasLayer/BG/S").set_vote(color)
+		gui.get_node("S").set_vote(color)
 	
 	# set little marker next to voter box indicating that they voted
-	var voter_box = world.get_node("CanvasLayer").get_child(0).get_player_box(voter_id)
+	var voter_box = gui.get_player_box(voter_id)
 	voter_box.set_voted()
+	
+	
+	# if all players voted stop voting
+	if current_votes.size() == player_characters.size() - get_tree().get_nodes_in_group("rip").size():
+		gui.progress_meeting()
+
+func validate_vote(voter_id, voted_id):
+	if !current_votes.has(voter_id):
+		current_votes[voter_id] = voted_id
+		
+	for id in current_votes.keys():
+		if !player_characters.has(id):
+			current_votes.erase(id)
 
 func recalculate_pos():
-	var radius:float = 500.0
-	var elipsyfy:float = 1.5
+	var radius:float = 750.0
+	var elipsyfy:float = 1.8
 	var alive = 0
 	
 	for player in player_characters.keys():
