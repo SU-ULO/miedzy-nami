@@ -1,7 +1,6 @@
 extends "dummyplayer.gd"
 
 var fov_toggle :bool = false #temporarily
-var impostor_toggle :bool = false  #temporarily
 
 var selected_vent = 0
 var disabled_movement:bool = false
@@ -108,20 +107,6 @@ func get_input():
 		else:
 			sight_range = 500 * sight_range_scale
 		fov_toggle = !fov_toggle
-
-	if Input.is_action_just_pressed("GetImpostored"):
-		if !impostor_toggle:
-			self.add_to_group("impostors")
-			self.modulate = Color("#00FF00")
-			if debug_mode:
-				# most likely broken
-				var temp = get_parent().get_parent().get_node("dekoracje/meeting-table/game-spawner")
-				temp.teleport_players()
-		else:
-			self.remove_from_group("impostors")
-			self.modulate = Color("#FFFFFF")
-		impostor_toggle = !impostor_toggle
-		$CanvasLayer/playerGUI.interactionGUIupdate()
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -302,6 +287,10 @@ func ui_selected():
 		currentInteraction = currentBestItem
 		if !currentInteraction.is_in_group("vents"): 
 			$CanvasLayer2/exit_button.visible = true
+
+func become_impostor():
+	.become_impostor()
+	$CanvasLayer/playerGUI.interactionGUIupdate()
 
 func _on_exit_button_pressed():
 	ui_canceled()

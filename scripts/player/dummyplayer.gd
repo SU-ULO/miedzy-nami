@@ -70,9 +70,11 @@ func _ready():
 	pass
 
 # process functions
+
 func _process(_delta):
 	if debug_mode: update()
 	set_player_velocity()
+
 func _physics_process(_delta):
 	player_velocity = move_and_slide(player_velocity)
 
@@ -206,7 +208,6 @@ func _draw():
 		debug_pos_ok.clear()
 
 func become_impostor():
-	$Label.add_color_override("font_color", Color(1,0,0,1))
-
-func stop_beeing_impostor():
-	$Label.add_color_override("font_color", Color(0,0,0,1))
+	self.add_to_group("impostors")
+	if get_tree().get_root().get_node("Start").network.own_player.is_in_group("impostors"):
+		$Label.add_color_override("font_color", Color(1,0,0,1))
