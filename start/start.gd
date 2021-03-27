@@ -11,6 +11,7 @@ var matchmaking = null
 var network = null
 
 func _ready():
+	randomize()
 # warning-ignore:return_value_discarded
 	menu.connect("request_start_client", self, "start_client")
 # warning-ignore:return_value_discarded

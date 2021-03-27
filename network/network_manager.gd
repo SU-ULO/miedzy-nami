@@ -331,8 +331,7 @@ func game_start(params, taskstuff):
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
-			#make impostor
-			pass
+			player_characters[i].become_impostor()
 	if "impostor" == "impostor": #scale sight range if player is impostor
 		own_player.sight_range_scale = gamesettings["impostor-vision"]
 	else:

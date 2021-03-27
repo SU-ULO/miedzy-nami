@@ -185,10 +185,20 @@ func sync_gamestate(opt=Dictionary()):
 			if cl.joined:
 				cl.send_gamestate(gamestate, gamestate_params, opt[c] if opt.has(c) else null)
 
+func pick_impostors()->Array:
+	var ids = player_characters.keys()
+	var impostors:=[]
+	while impostors.size()<gamesettings["impostor-count"]:
+		var rnd = ids[randi()%ids.size()]
+		if !impostors.has(rnd):
+			impostors.push_back(rnd)
+	return impostors
+
 func request_game_start():
+	if player_characters.size()<2*gamesettings["impostor-count"]+1: return
 	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
-	gamestate_params = {"imp": [0]}
+	gamestate_params = {"imp": pick_impostors()}
 	Task.SetTaskCategoriesPerPlayer(3, gamesettings["short-tasks"])
 	Task.SetTaskCategoriesPerPlayer(0, gamesettings["long-tasks"])
 	var ids = player_characters.keys()
