@@ -29,6 +29,14 @@ func create_world(config):
 	joined_server.connect("vote", self, "add_vote")
 	add_child(joined_server)
 
+func recreate_world(): #that is a copy from NetworkManager but we use NetworkManager's create_world
+	taken_colors=0
+	remove_child(world)
+	world.queue_free()
+	player_characters.clear()
+	own_player=null
+	.create_world(currentconfig)
+
 func send_session(sess):
 	emit_signal("send_session", sess)
 	
@@ -126,6 +134,8 @@ func handle_state_sync(state, params, opt=null):
 		game_start(gamestate_params, opt)
 	elif state==MEETING:
 		start_meeting(gamestate_params["caller"], gamestate_params["dead"])
+	elif state==LOBBY:
+		recreate_world()
 
 func handle_sabotage(type):
 	if joined_server and own_player:

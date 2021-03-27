@@ -73,20 +73,35 @@ func create_world(config):
 	emit_signal("joined_room")
 
 func recreate_world():
-	pass
+	var init_dict := {}
+	for ch in player_characters.values():
+		init_dict[ch.owner_id]=ch.generate_init_data()
+		init_dict[ch.owner_id]["pos"]=get_spawn_position(ch.owner_id)
+	.recreate_world()
+	taken_colors=0
+	player_characters[0].set_init_data(init_dict[0])
+	set_color_taken(own_player.color)
+# warning-ignore:return_value_discarded
+	init_dict.erase(0)
+	own_player.get_node("sprites").loadLook()
+	for c in init_dict:
+		spawn_player(c, init_dict[c])
+	sync_colors()
 
-func spawn_player(id: int, init_data: Dictionary = Dictionary()):
+func spawn_player(id: int, init_data: Dictionary = {}):
 	if !connected_clients.has(id): return
 	var new_character = preload("res://entities/dummyplayer.tscn").instance()
 	new_character.owner_id = id
-	new_character.username = connected_clients[id].config.username
-	new_character.global_position = get_spawn_position(id)
-	new_character.color = get_free_color_and_set()
+	if init_data.empty():
+		new_character.username = connected_clients[id].config.username
+		new_character.global_position = get_spawn_position(id)
+		new_character.color = get_free_color_and_set()
+	else:
+		new_character.set_init_data(init_data)
+		set_color_taken(new_character.color)
 	player_characters[id]=new_character
 	connected_clients[id].connect("player_character_sync", new_character, "set_sync_data")
 	world.get_node('Mapa/YSort').add_child(new_character)
-	if !init_data.empty():
-		new_character.set_init_data(init_data)
 	var joining_player_init_data = new_character.generate_init_data()
 	for cid in connected_clients:
 		var c = connected_clients[cid]
@@ -94,7 +109,6 @@ func spawn_player(id: int, init_data: Dictionary = Dictionary()):
 			var all_players_init_data := Dictionary()
 			for ch in player_characters.values():
 				all_players_init_data[ch.owner_id]=ch.generate_init_data()
-			#more initialization data for joining player here
 			var all_init_data = {
 				"players": all_players_init_data,
 				"gamestate": [gamestate, gamestate_params],
@@ -291,3 +305,10 @@ func set_meeting_state(state):
 		end_meeting()
 	else: .set_meeting_state(state)
 
+func request_end_game():
+	gamestate=LOBBY
+	gamestate_params=null
+	sync_gamestate()
+	for c in connected_clients.values():
+		c.joined=false
+	recreate_world()

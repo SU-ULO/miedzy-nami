@@ -104,7 +104,10 @@ func create_world(config):
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
 	if own_id == 0:
 		world.get_node("Mapa/lobby/start").add_to_group("interactable")
+
 func recreate_world():
+	taken_colors=0
+	remove_child(world)
 	world.queue_free()
 	player_characters.clear()
 	own_player=null
@@ -397,3 +400,6 @@ func set_invisible(id, val: bool):
 		own_player.get_node("PlayerHitbox").visible = val
 	else:
 		player_characters[id].visible = val
+
+func end_game(): #add some endgame parameters like who won etc.
+	pass # this is supposed to display endgame screen
