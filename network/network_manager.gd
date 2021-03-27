@@ -91,7 +91,7 @@ func get_free_color_and_set():
 func create_world(config):
 	currentconfig=config
 	server_key = config.key
-	Task.ClientCleanup()
+	load("res://scripts/tasks/Task.cs").ClientCleanup()
 	world = preloadedmap.instance()
 	add_child(world)
 # warning-ignore:return_value_discarded
@@ -341,7 +341,7 @@ func game_start(params, taskstuff):
 		own_player.localTaskList.append(task)
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
-
+	own_player.get_node("CanvasLayer/playerGUI").updateGUI()
 func request_cameras_enable(_on_off: bool):
 	pass
 

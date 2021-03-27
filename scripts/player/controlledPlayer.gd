@@ -145,6 +145,7 @@ func get_input():
 				selected_vent = 0
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
+			$CanvasLayer/playerGUI.updateGUI()
 			$CanvasLayer2/exit_button.visible = false
 		else:
 			$CanvasLayer/playerGUI.visible = false
