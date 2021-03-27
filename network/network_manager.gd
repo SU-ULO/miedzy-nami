@@ -102,7 +102,8 @@ func create_world(config):
 	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
 # warning-ignore:return_value_discarded
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
-
+	if own_id == 0:
+		world.get_node("Mapa/lobby/start").add_to_group("interactable")
 func recreate_world():
 	world.queue_free()
 	player_characters.clear()
@@ -322,12 +323,18 @@ func get_spawn_position(id: int) -> Vector2:
 	return Vector2(0, 0)
 
 func game_start(params, taskstuff):
+	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
 	var Task := load("res://scripts/tasks/Task.cs")
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
 			#make impostor
 			pass
+	if "impostor" == "impostor": #scale sight range if player is impostor
+		own_player.sight_range_scale = gamesettings["impostor-vision"]
+	else:
+		own_player.sight_range_scale = gamesettings["crewmate-vision"]
+	own_player.sight_range = own_player.default_sight_range * own_player.sight_range_scale
 	for t in taskstuff:
 		var task = Task.GetTaskByID(t)
 		task.local=true

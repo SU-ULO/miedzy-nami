@@ -11,6 +11,7 @@ export var killCooldown = 20
 export var sabotageCooldown = 40
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
+var sight_range_scale = 1
 var meetings_left
 
 signal sabotage_event()
@@ -25,7 +26,7 @@ func handle_sabotage(type):
 		currentSabotage = type
 		if type == 1:
 			if !is_in_group("impostors"):
-				sight_range = default_sight_range / 2
+				sight_range = default_sight_range * sight_range_scale / 2
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
@@ -45,7 +46,7 @@ func handle_end_sabotage(type):
 		var network = get_tree().get_root().get_node("Start").network
 		if type == 1:
 			if !is_in_group("impostors"):
-				sight_range = default_sight_range
+				sight_range = default_sight_range * sight_range_scale
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
@@ -103,9 +104,9 @@ func get_input():
 		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
-			sight_range = 2000;
+			sight_range = 2000 * sight_range_scale;
 		else:
-			sight_range = 500
+			sight_range = 500 * sight_range_scale
 		fov_toggle = !fov_toggle
 
 	if Input.is_action_just_pressed("GetImpostored"):
