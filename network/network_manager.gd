@@ -222,9 +222,11 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 		
 		var votes = {}
 		# count votes
-		for vote in current_votes:
-			if !votes.has(vote): votes[vote] = 1
-			else:votes[vote] += 1
+		for vote in current_votes.keys():
+			if votes.has(current_votes[vote]):
+				votes[current_votes[vote]] += 1
+			else:
+				votes[current_votes[vote]] = 1
 		# find max
 		var best = 0
 		var best_id = -1
@@ -241,13 +243,16 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 		for imp in get_tree().get_nodes_in_group("impostors"):
 			if !imp.is_in_group("rip"):
 				imps += 1
-				
+		
 		votingwinnerid=best_id
+		
 		# show votes
-		if best_id == -1 or !player_characters.has(best_id):
-			gui.show_votes(null, imps)
-		else:
+		if player_characters.has(best_id):
+			if player_characters[best_id].is_in_group("impostors"):
+				imps -= 1
 			gui.show_votes(player_characters[best_id], imps)
+		else:
+			gui.show_votes(null, imps)
 	elif state == 3: # show verdict
 		gui.show_verdict()
 		kill(votingwinnerid, Vector2(0, 0), false)
@@ -286,7 +291,7 @@ func add_vote(voter_id, voted_id):
 		gui.progress_meeting()
 
 func validate_vote(voter_id, voted_id):
-	if !current_votes.has(voter_id):
+	if player_characters.has(voted_id):
 		current_votes[voter_id] = voted_id
 		
 	for id in current_votes.keys():
