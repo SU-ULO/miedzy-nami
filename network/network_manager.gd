@@ -64,12 +64,15 @@ signal left_room()
 
 signal meeting_start()
 
+# warning-ignore:unused_signal
 signal gui_sync(gui_name, gui_data)
 
 signal color_taken()
 
+# warning-ignore:unused_signal
 signal sabotage(type)
 
+# warning-ignore:unused_signal
 signal sabotage_end(type)
 
 func is_color_taken(c: int):
@@ -257,7 +260,7 @@ func set_chosen(id): # called form signal chosen comming from player meeting box
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
 	request_vote(id)
 
-func request_vote(id: int):
+func request_vote(_id: int):
 	pass
 
 func add_vote(voter_id, voted_id):
@@ -381,7 +384,7 @@ func handle_colors_change(taken: int, players: Dictionary):
 			player_characters[p].get_node("sprites").loadLook()
 	emit_signal("color_taken")
 
-func request_set_look(look: Dictionary):
+func request_set_look(_look: Dictionary):
 	pass
 
 func set_look(id: int, look: Dictionary):
