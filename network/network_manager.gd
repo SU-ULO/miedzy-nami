@@ -292,7 +292,7 @@ func add_vote(voter_id, voted_id):
 		gui.progress_meeting()
 
 func validate_vote(voter_id, voted_id):
-	if player_characters.has(voted_id):
+	if player_characters.has(voted_id) or voted_id == -1:
 		current_votes[voter_id] = voted_id
 		
 	for id in current_votes.keys():
