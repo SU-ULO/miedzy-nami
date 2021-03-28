@@ -195,6 +195,7 @@ func start_meeting(caller: int, dead: int):
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
+var votingwinnerid:=-1
 func set_meeting_state(state): # func to toggle from discussion time to voting time and to reveal results
 	var gui = world.get_node("CanvasLayer").get_child(0) #get gui
 	gui.meeting_state += 1
@@ -242,6 +243,7 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			if !imp.is_in_group("rip"):
 				imps += 1
 				
+		votingwinnerid=best_id
 		# show votes
 		if best_id == -1 or !player_characters.has(best_id):
 			gui.show_votes(null, imps)
@@ -249,6 +251,7 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			gui.show_votes(player_characters[best_id], imps)
 	if state == 3: # show verdict
 		gui.show_verdict()
+		kill(votingwinnerid, Vector2(0, 0), false)
 
 func end_meeting():
 	world.get_node("CanvasLayer").get_child(0).queue_free() # remove gui
@@ -312,13 +315,17 @@ func recalculate_pos():
 func request_kill(_dead: int):
 	pass
 
-func kill(dead: int, pos: Vector2):
+func kill(dead: int, pos: Vector2, spawnbody: bool=true):
 	if player_characters.has(dead):
 		var killed = player_characters[dead]
-		killed.turn_into_corpse(pos)
+		if spawnbody: killed.turn_into_corpse(pos)
 		if own_player.dead:
 			for c in player_characters.values():
 				c.visible = true
+				if c.owner_id==own_id:
+					c.modulate = Color(1, 1, 1, 0.8)
+				elif c.dead:
+					c.modulate = Color(1, 1, 1, 0.2)
 
 func get_spawn_position(id: int) -> Vector2:
 	if world:
