@@ -92,6 +92,7 @@ func get_free_color_and_set():
 	return 0
 
 func create_world(config):
+	if endscreen: endscreen.queue_free()
 	currentconfig=config
 	server_key = config.key
 	load("res://scripts/tasks/Task.cs").ClientCleanup()
@@ -414,13 +415,15 @@ func set_invisible(id, val: bool):
 	else:
 		player_characters[id].visible = val
 
-func end_game(crew_win :bool):
+var endscreen = null
+func end_game(crew_win: bool):
 	var end_screen = load("res://gui/meeting/verdict.tscn").instance()
 	
 	if crew_win:
-		end_screen.get_node("message").text = "Uczniowe wygrali!"
+		end_screen.get_node("Control/message").text = "Uczniowe wygrali!"
 	else:
-		end_screen.get_node("message").text = "<nazwa impostorów> wygrali!"
+		end_screen.get_node("Control/message").text = "<nazwa impostorów> wygrali!"
 		
-	end_screen.get_node("imps").text = "" # unused label
+	end_screen.get_node("Control/imps").text = "" # unused label
 	self.add_child(end_screen)
+	endscreen=end_screen
