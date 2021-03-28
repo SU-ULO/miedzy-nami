@@ -159,7 +159,7 @@ func start_meeting(caller: int, dead: int):
 			box.get_node("Button/L").text = player_characters[player].username
 			
 			# put it in right place
-			gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+			gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 		
 			iter += 1
 	
@@ -171,7 +171,7 @@ func start_meeting(caller: int, dead: int):
 		box.color =  Color(colors[player_characters[rip].color])
 		box.get_node("Button/L").text = player_characters[rip].username
 
-		gui.get_node("H/V" + String(iter%2 + 1)).add_child(box)
+		gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 		# aslo different color cause they dead
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
 		iter += 1
@@ -179,7 +179,7 @@ func start_meeting(caller: int, dead: int):
 	#now we disable all butons because no one can vote in discussion time
 	gui.time = gamesettings["discussion-time"]
 	gui.set_all_buttons(0)
-	var skip = gui.get_node("S")
+	var skip = gui.get_node("BG/S")
 
 	#connect "click" signal to skip button and signal to change meeting state to voting time
 	skip.connect("chosen", self, "set_chosen")
@@ -204,18 +204,17 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			for player in player_characters.keys(): # otherwise for every alive player we anable their button
 				if player_characters[player].is_in_group("rip") == false:
 					gui.get_player_box(player).get_node("Button").disabled = false
-			gui.get_node("S").disabled = false # also skip button
+			gui.get_node("BG/S").disabled = false # also skip button
 		
 		#set time and label
 		gui.time = gamesettings["voting-time"]
 		gui.label_text = "Koniec głosowania za: "
-	
-	if state == 2: # voting ended
+	elif state == 2: # voting ended
 		#show votes
-		for box in gui.get_node("H/V1").get_children():
+		for box in gui.get_node("BG/H/V1").get_children():
 			box.set_vote_visibility(1)
 			
-		for box in gui.get_node("H/V2").get_children():
+		for box in gui.get_node("BG/H/V2").get_children():
 			box.set_vote_visibility(1)
 			
 		#determin meeting "winner"
@@ -247,7 +246,7 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			gui.show_votes(null, imps)
 		else:
 			gui.show_votes(player_characters[best_id], imps)
-	if state == 3: # show verdict
+	elif state == 3: # show verdict
 		gui.show_verdict()
 
 func end_meeting():
@@ -272,7 +271,7 @@ func add_vote(voter_id, voted_id):
 		var box = gui.get_player_box(voted_id)
 		box.set_vote(color) 
 	elif voted_id == -1: # if its skip button then add vote there
-		gui.get_node("S").set_vote(color)
+		gui.get_node("BG/S").set_vote(color)
 	
 	# set little marker next to voter box indicating that they voted
 	var voter_box = gui.get_player_box(voter_id)
@@ -396,12 +395,20 @@ func request_set_invisible(_id, _val: bool):
 	pass
 
 func set_invisible(id, val: bool):
-	if id == own_id:			
+	if id == own_id:
 		own_player.get_node("sprites").visible = val
 		own_player.get_node("Label").visible = val
 		own_player.get_node("PlayerHitbox").visible = val
 	else:
 		player_characters[id].visible = val
 
-func end_game(): #add some endgame parameters like who won etc.
-	pass # this is supposed to display endgame screen
+func end_game(crew_win :bool):
+	var end_screen = load("res://gui/meeting/verdict.tscn").instance()
+	
+	if crew_win:
+		end_screen.get_node("message").text = "Uczniowe wygrali!"
+	else:
+		end_screen.get_node("message").text = "<nazwa impostorów> wygrali!"
+		
+	end_screen.get_node("imps").text = "" # unused label
+	self.add_child(end_screen)

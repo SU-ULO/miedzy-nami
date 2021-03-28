@@ -106,6 +106,7 @@ func get_input():
 			sight_range = 2000 * sight_range_scale;
 		else:
 			sight_range = 500 * sight_range_scale
+			get_tree().get_root().get_node("Start").network.end_game(true)
 		fov_toggle = !fov_toggle
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
