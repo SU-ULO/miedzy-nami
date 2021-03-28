@@ -430,5 +430,7 @@ func end_game(crew_win: bool):
 		end_screen.get_node("Control/message").text = "<nazwa impostorów> wygrali!"
 		
 	end_screen.get_node("Control/imps").text = "" # unused label
+	end_screen.get_node("Control").visible = true
+	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 0)
 	self.add_child(end_screen)
 	endscreen=end_screen

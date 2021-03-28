@@ -173,7 +173,7 @@ __meta__ = {
 }
 
 [node name="verdict" parent="." instance=ExtResource( 4 )]
-visible = false
+layer = 2
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

@@ -62,7 +62,7 @@ func show_votes(player = null, imps = 0):
 	self.time = 1.5
 
 func show_verdict():
-	get_node("verdict").visible = true
+	get_node("verdict/Control").visible = true
 	self.time = 3
 
 func set_chosen(id):
