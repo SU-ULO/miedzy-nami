@@ -323,7 +323,12 @@ func request_kill(_dead: int):
 func kill(dead: int, pos: Vector2, spawnbody: bool=true):
 	if player_characters.has(dead):
 		var killed = player_characters[dead]
-		if spawnbody: killed.turn_into_corpse(pos)
+		if spawnbody:
+			killed.turn_into_corpse(pos)
+		else:
+			killed.dead = true
+			killed.add_to_group("rip")
+			killed.visible = false
 		if own_player.dead:
 			for c in player_characters.values():
 				c.visible = true
