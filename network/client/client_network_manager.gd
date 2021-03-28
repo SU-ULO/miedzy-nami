@@ -134,6 +134,8 @@ func handle_state_sync(state, params, opt=null):
 		game_start(gamestate_params, opt)
 	elif state==MEETING:
 		start_meeting(gamestate_params["caller"], gamestate_params["dead"])
+	elif state==ENDED:
+		end_game(gamestate_params)
 	elif state==LOBBY:
 		recreate_world()
 

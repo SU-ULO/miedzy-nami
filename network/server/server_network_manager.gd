@@ -77,6 +77,8 @@ func recreate_world():
 	for ch in player_characters.values():
 		init_dict[ch.owner_id]=ch.generate_init_data()
 		init_dict[ch.owner_id]["pos"]=get_spawn_position(ch.owner_id)
+		init_dict[ch.owner_id]["imp"]=false
+		init_dict[ch.owner_id]["dead"]=false
 	.recreate_world()
 	taken_colors=0
 	player_characters[0].set_init_data(init_dict[0])
@@ -156,6 +158,25 @@ func _process(_delta):
 					if t.started and t.state < t.maxState:
 						own_player.localTaskList.append(t)
 			handle_tasks_update(state_changes, started_changes, own_id)
+	if gamestate==STARTED:
+		var alivelivecrewmates := 0
+		var aliveimpostors := 0
+		for c in player_characters.values():
+			if !c.dead:
+				if c.is_in_group("impostors"):
+					aliveimpostors+=1
+				else:
+					alivelivecrewmates+=1
+		if aliveimpostors==0:
+			gamestate=ENDED
+			gamestate_params=true
+			sync_gamestate()
+			end_game(gamestate_params)
+		elif aliveimpostors>=alivelivecrewmates:
+			gamestate=ENDED
+			gamestate_params=false
+			sync_gamestate()
+			end_game(gamestate_params)
 
 func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
@@ -322,3 +343,8 @@ func request_end_game():
 	for c in connected_clients.values():
 		c.joined=false
 	recreate_world()
+
+func end_game(crew_win: bool):
+	.end_game(crew_win)
+	yield(get_tree().create_timer(1.0), "timeout")
+	request_end_game()
