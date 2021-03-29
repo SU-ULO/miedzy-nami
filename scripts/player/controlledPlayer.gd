@@ -14,6 +14,25 @@ var sight_range_scale = 1
 var meetings_left
 var network
 
+var electrical_switches = [0,0,0,0,0]
+var electrical_good = [0,0,0,0,0]
+
+func randomize_electrical():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
+	while electrical_good == electrical_switches:
+		for _i in range(0, 5):
+			electrical_good[_i] = rng.randi_range(0, 1)
+			electrical_switches[_i] = rng.randi_range(0,1)
+	
+	print("state randomized")
+
+func handle_gui_sync(name: String, gui_data: Dictionary):
+	if name == "electrical":
+		electrical_good = gui_data["good"]
+		electrical_switches = gui_data["switches"]
+
 signal sabotage_event()
 
 func is_sabotage_timer_done():
@@ -67,6 +86,7 @@ func _ready():
 	network = get_tree().get_root().get_node("Start").network
 	network.connect("sabotage", self, "handle_sabotage")
 	network.connect("sabotage_end", self, "handle_end_sabotage")
+	network.connect("gui_sync", self, "handle_gui_sync")
 	meetings_left = network.gamesettings["meeting-count"]
 
 func get_input():

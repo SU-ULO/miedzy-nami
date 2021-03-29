@@ -10,6 +10,8 @@ func _ready():
 func Interact(body):
 	bodyxx = body
 	gui = load("res://gui/electrical.tscn").instance()
+	gui.switches = body.electrical_switches
+	gui.good = body.electrical_good
 	get_owner().get_node("CanvasLayer").add_child(gui)
 func EndInteraction(_body):
 	if gui!=null:
@@ -23,9 +25,10 @@ func check_off(type):
 	if type == 1:
 		if is_in_group("interactable"):
 			remove_from_group("interactable")
-		if gui.is_inside_tree():
+		if not gui == null and gui.is_inside_tree():
 			$Timer.start()
 			yield($Timer, "timeout")
-			gui.queue_free()
+			if not gui == null:
+				gui.queue_free()
 			if bodyxx != null:
 				bodyxx.ui_canceled()

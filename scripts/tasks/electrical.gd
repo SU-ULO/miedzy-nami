@@ -19,13 +19,6 @@ func gui_sync(gui_name: String, gui_data: Dictionary):
 func toggleLight(number):
 	get_node("GridContainer/switch" + str(number) + "/status").pressed = !get_node("GridContainer/switch" + str(number) + "/status").pressed
 
-func randomizeSwitches():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	good.clear()
-	for _i in range(0, 5):
-		good.append(rng.randi_range(0, 1))
-
 func loadStatus():
 	for i in range(1, 6):
 		get_node("GridContainer/switch" + str(i)).pressed = switches[i-1]

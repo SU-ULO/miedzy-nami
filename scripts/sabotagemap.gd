@@ -28,6 +28,8 @@ func sabotage_start(name):
 	var network = get_tree().get_root().get_node("Start").network
 	
 	if name == "electrical":
+		network.own_player.randomize_electrical()
+		network.request_gui_sync(name, {"good": network.own_player.electrical_good, "switches": network.own_player.electrical_switches})
 		network.request_sabotage(1)
 	if name == "door":
 		network.request_sabotage(2)
