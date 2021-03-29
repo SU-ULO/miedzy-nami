@@ -263,7 +263,9 @@ func end_meeting():
 	own_player.disabled_movement = false # enable player movement
 	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
 	current_votes.clear()
-
+	if own_player.is_in_group("impostors"):
+		own_player.get_node("KillCooldown").start(own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3))
+		
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
 	request_vote(id)
@@ -364,7 +366,8 @@ func game_start(params, taskstuff):
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
 	own_player.get_node("CanvasLayer/playerGUI").updateGUI()
-
+	if own_player.is_in_group("impostors"):
+		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 func request_cameras_enable(_on_off: bool):
 	pass
 

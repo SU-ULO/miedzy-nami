@@ -12,6 +12,7 @@ onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 var sight_range_scale = 1
 var meetings_left
+var network
 
 signal sabotage_event()
 
@@ -63,7 +64,7 @@ func _ready():
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
 	$CanvasLayer/playerGUI.updateGUI()
 	$KillCooldown.wait_time = killCooldown
-	var network = get_tree().get_root().get_node("Start").network
+	network = get_tree().get_root().get_node("Start").network
 	network.connect("sabotage", self, "handle_sabotage")
 	network.connect("sabotage_end", self, "handle_end_sabotage")
 	meetings_left = network.gamesettings["meeting-count"]
@@ -184,9 +185,10 @@ func check_interaction():
 	for item in in_interaction_range:
 		if item.is_in_group("players"):
 			if !in_sight.has(item):
-				if players_interactable.has(item):
-					players_interactable.erase(item);
-					if debug_mode: print(item.get_name(), " removed from: players_interactable")
+				if is_in_group("impostors") && !item.is_in_group("rips"):
+					if players_interactable.has(item):
+						players_interactable.erase(item);
+						if debug_mode: print(item.get_name(), " removed from: players_interactable")
 			else:
 				if !players_interactable.has(item):
 					players_interactable.push_back(item);
