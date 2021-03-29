@@ -30,8 +30,8 @@ var gamesettings := {
 	"kill-cooldown": 45,
 	"kill-distance": 1,
 	"taskbar-updates": 1,
-	"long-tasks": 15,
-	"short-tasks": 15
+	"long-tasks": 1,
+	"short-tasks": 3
 }
 
 var colors := {
