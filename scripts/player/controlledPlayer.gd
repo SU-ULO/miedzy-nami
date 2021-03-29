@@ -271,6 +271,7 @@ func ui_selected():
 		print("sight: ", in_sight)
 	
 	if(interactable.size() != 0):
+		$CanvasLayer/playerGUI.show_map()
 		var currentBestItem = interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			

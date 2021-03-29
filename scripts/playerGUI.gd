@@ -7,8 +7,7 @@ var network
 
 var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
 var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
-var map_opened = false
-
+var map_opened:Dictionary = {}
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
@@ -84,43 +83,46 @@ func checkKillability():
 func _on_kill_pressed():
 	player.ui_kill()
 
-func show_map(map_object):
+func show_map(map_object = map_opened):
 	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
-	if(!map_opened):
-		var instance = map_object.res.instance()
-		canvas.add_child(instance)
-		instance.name = map_object.map_name
-		if map_object.map_name == "MiniMap":
-			instance.get_node("player").player = self.get_parent().get_parent()
-			instance.get_node("player").taskList = player.localTaskList
-			instance.get_node("player").addTasks()
-		elif map_object.map_name == "SabotageMap":
-			instance.connect("exit", self, "closeSabotageMap")
-			player.connect("sabotage_event", instance, "updateMap")
-			instance.sabotage = player.currentSabotage
-			instance.curr_time  = player.get_node("SabotageCooldown").time_left
-			instance.cooldown = player.sabotageCooldown
-			instance.refresh_self()
-		map_opened = !map_opened
-		setVisibility("ActionButtons", 0)
-		setVisibility("TaskPanel", 0)
-		if player.is_in_group("impostors"):
-			setVisibility("impostor", 0)
+	if map_opened.empty():
+		if !map_object.empty():
+			var instance = map_object.res.instance()
+			canvas.add_child(instance)
+			instance.name = map_object.map_name
+			if map_object.map_name == "MiniMap":
+				instance.get_node("player").player = self.get_parent().get_parent()
+				instance.get_node("player").taskList = player.localTaskList
+				instance.get_node("player").addTasks()
+			elif map_object.map_name == "SabotageMap":
+				instance.connect("exit", self, "closeSabotageMap")
+				player.connect("sabotage_event", instance, "updateMap")
+				instance.sabotage = player.currentSabotage
+				instance.curr_time  = player.get_node("SabotageCooldown").time_left
+				instance.cooldown = player.sabotageCooldown
+				instance.refresh_self()
+			map_opened = map_object
+			setVisibility("ActionButtons", 0)
+			setVisibility("TaskPanel", 0)
+			if player.is_in_group("impostors"):
+				setVisibility("impostor", 0)
 	else:
-		var current_map_name = canvas.get_child(0).name
 		canvas.get_child(0).queue_free()
-		map_opened = !map_opened
 		setVisibility("ActionButtons", 1)
 		setVisibility("TaskPanel", 1)
 		if player.is_in_group("impostors"):
 			setVisibility("impostor", 1)
+		map_opened.clear()
 		
-		if map_object.map_name != current_map_name:
-			if current_map_name == "SabotageMap":
-				show_map(minimap)
-			elif current_map_name == "MiniMap":
-				print("You shouldn't be able to do that")
-				show_map(sabotagemap)
+		if !map_object.empty():
+			if map_object.map_name != map_opened.name:
+				if map_opened.name == "SabotageMap":
+					show_map(minimap)
+				elif map_opened.name == "MiniMap":
+					print("You shouldn't be able to do that")
+					show_map(sabotagemap)
+					
+			map_opened = map_object
 
 
 func _on_sabotage_pressed():
@@ -176,7 +178,7 @@ func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
 
 func closeSabotageMap():
-	map_opened = false
+	map_opened.clear()
 	get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("SabotageMap").queue_free()
 	setVisibility("ActionButtons", 1)
 	setVisibility("TaskPanel", 1)
