@@ -117,10 +117,6 @@ func show_map(map_object = map_opened):
 		setVisibility("TaskPanel", 1)
 		if player.is_in_group("impostors"):
 			setVisibility("impostor", 1)
-
-		if !map_object.empty():
-			if map_object.map_name != map_opened.map_name:
-				show_map(map_object)
 		map_opened.clear()
 
 
