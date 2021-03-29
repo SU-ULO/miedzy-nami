@@ -51,12 +51,12 @@ func show_votes(player = null, imps = 0):
 	# tekst do dporacowania ;)
 	var verdict = get_node("verdict")
 	if player == null:
-		verdict.get_node("Control/message").text = "nikt nie został wyeksterminowany"
+		verdict.get_node("Control/message").text = "nikt nie został wyrzucony"
 	else:
-		verdict.get_node("Control/message").text = String(player.username) + " został wyjaśniony"
+		verdict.get_node("Control/message").text = String(player.username) + " został wyrzucony"
 	
 	if show_imps:
-		verdict.get_node("Control/imps").text = "pozostało " + String(imps) + " zadymiarzy"
+		verdict.get_node("Control/imps").text = "pozostało " + String(imps) + " impostorów"
 	else:
 		verdict.get_node("Control/imps").text = "" # empty :(
 	self.time = 1.5
