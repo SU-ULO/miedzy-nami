@@ -27,6 +27,7 @@ func _ready():
 	emit_signal("start1")
 
 func Record(note):
+	print(note)
 	if stage > 0 && x < 4 :
 		if note == sequence[x]:
 			get_node(note).queue("good")

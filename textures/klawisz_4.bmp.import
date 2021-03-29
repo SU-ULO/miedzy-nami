@@ -1,34 +1,15 @@
 [remap]
 
-importer="texture"
-type="StreamTexture"
-path="res://.import/klawisz_4.bmp-127fdef963b26b60cb4c7d1115a23e41.stex"
-metadata={
-"vram_texture": false
-}
+importer="bitmap"
+type="BitMap"
+path="res://.import/klawisz_4.bmp-127fdef963b26b60cb4c7d1115a23e41.res"
 
 [deps]
 
 source_file="res://textures/klawisz_4.bmp"
-dest_files=[ "res://.import/klawisz_4.bmp-127fdef963b26b60cb4c7d1115a23e41.stex" ]
+dest_files=[ "res://.import/klawisz_4.bmp-127fdef963b26b60cb4c7d1115a23e41.res" ]
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.1
-compress/hdr_mode=0
-compress/bptc_ldr=0
-compress/normal_map=2
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=false
-svg/scale=1.0
+create_from=1
+threshold=0.5
