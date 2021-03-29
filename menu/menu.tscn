@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://textures/empty.png" type="Texture" id=12]
 [ext_resource path="res://textures/tick.png" type="Texture" id=13]
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
+[ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -320,6 +321,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MenuButton" parent="Create" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 278.0
+margin_right = 864.0
+margin_bottom = 388.0
+
+[node name="Label" parent="Create/MenuButton/TextureButton" index="0"]
+text = "WYJDŹ"
+
 [node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
@@ -433,5 +444,8 @@ valign = 1
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
+[connection signal="pressed" from="Create/MenuButton/TextureButton" to="." method="open_main"]
 [connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
+
+[editable path="Create/MenuButton"]

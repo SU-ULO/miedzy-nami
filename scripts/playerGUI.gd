@@ -8,6 +8,8 @@ var network
 var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
 var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
 var map_opened:Dictionary = {}
+var settings = {"res": preload("res://gui/menumenu.tscn"), "map_name": "Menu"}
+
 func _ready():
 	player = get_parent().get_parent()
 	interactionGUIupdate()
@@ -95,12 +97,15 @@ func show_map(map_object = map_opened):
 				instance.get_node("player").taskList = player.localTaskList
 				instance.get_node("player").addTasks()
 			elif map_object.map_name == "SabotageMap":
-				instance.connect("exit", self, "closeSabotageMap")
+				instance.connect("exit", self, "show_map", [map_object])
 				player.connect("sabotage_event", instance, "updateMap")
 				instance.sabotage = player.currentSabotage
 				instance.curr_time  = player.get_node("SabotageCooldown").time_left
 				instance.cooldown = player.sabotageCooldown
 				instance.refresh_self()
+			elif map_object.map_name == "Menu":
+				instance.connect("exit", self, "show_map", [map_object])
+				instance.connect("leave_game", self, "leave_game")
 			map_opened = map_object
 			setVisibility("ActionButtons", 0)
 			setVisibility("TaskPanel", 0)
@@ -184,3 +189,10 @@ func closeSabotageMap():
 	setVisibility("TaskPanel", 1)
 	if player.is_in_group("impostors"):
 		setVisibility("impostor", 1)
+
+
+func _on_settings_pressed():
+	show_map(settings)
+
+func leave_game():
+	player.get_tree().get_root().get_node("Start").leave_room()
