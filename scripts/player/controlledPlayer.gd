@@ -244,6 +244,7 @@ func ui_kill():
 			if(position.distance_squared_to(item.position) < currentBestDistance):
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
+		players_interactable.erase(self)
 		currentBestItem.Interact(self)
 
 func ui_report():
