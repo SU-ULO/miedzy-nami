@@ -7,8 +7,8 @@ var network
 
 var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
 var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
+var settings = { "res": preload("res://gui/menumenu.tscn"), "map_name": "Menu" }
 var map_opened:Dictionary = {}
-var settings = {"res": preload("res://gui/menumenu.tscn"), "map_name": "Menu"}
 
 func _ready():
 	player = get_parent().get_parent()
@@ -106,7 +106,7 @@ func show_map(map_object = map_opened):
 			elif map_object.map_name == "Menu":
 				instance.connect("exit", self, "show_map", [map_object])
 				instance.connect("leave_game", self, "leave_game")
-			map_opened = map_object
+			map_opened = map_object.duplicate()
 			setVisibility("ActionButtons", 0)
 			setVisibility("TaskPanel", 0)
 			if player.is_in_group("impostors"):
@@ -117,17 +117,12 @@ func show_map(map_object = map_opened):
 		setVisibility("TaskPanel", 1)
 		if player.is_in_group("impostors"):
 			setVisibility("impostor", 1)
-		map_opened.clear()
-		
+
 		if !map_object.empty():
-			if map_object.map_name != map_opened.name:
-				if map_opened.name == "SabotageMap":
-					show_map(minimap)
-				elif map_opened.name == "MiniMap":
-					print("You shouldn't be able to do that")
-					show_map(sabotagemap)
-					
-			map_opened = map_object
+			if map_object.map_name != map_opened.map_name:
+				show_map(map_object)
+		map_opened.clear()
+
 
 
 func _on_sabotage_pressed():
@@ -135,7 +130,6 @@ func _on_sabotage_pressed():
 
 func _on_map_pressed():
 	show_map(minimap)
-
 
 # # # GUI VISUAL FUNCTIONS AND VARIABLES # # #
 
