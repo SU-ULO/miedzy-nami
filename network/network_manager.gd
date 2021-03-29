@@ -437,7 +437,8 @@ func end_game(crew_win: bool):
 	end_screen.get_node("Control").visible = true
 	self.add_child(end_screen)
 	endscreen=end_screen
-
+	if own_player.currentSabotage != 0:
+		own_player.handle_end_sabotage(own_player.currentSabotage)
 func request_inform_all_tasks_finished():
 	pass
 
