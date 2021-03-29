@@ -440,6 +440,18 @@ func request_inform_all_tasks_finished():
 
 var sentalldone:=false
 func _process(_delta):
+	if own_player:
+		if Task.CheckAndClearAnyDirty():
+			var state_changes : Dictionary = {}
+			var started_changes: Dictionary = {}
+			for t in Task.GetAllTasks():
+				if t.dirty:
+					t.dirty = false
+					state_changes[t.taskID] = t.state
+					started_changes[t.taskID] = t.started
+					if t.started and t.state < t.maxState:
+						own_player.localTaskList.append(t)
+			tasks_update(state_changes, started_changes, own_id)
 	if gamestate==STARTED:
 		var alldone = true
 		for t in Task.GetAllTasks():
@@ -448,3 +460,14 @@ func _process(_delta):
 				break
 		if alldone and !sentalldone:
 			request_inform_all_tasks_finished()
+
+func tasks_update(state, started, _id):
+	var Task := load("res://scripts/tasks/Task.cs")
+	var tasks = Task.GetAllTasks()
+	for i in state:
+		if tasks[i].IsDone() == false:
+			tasks[i].state = state[i]
+		tasks[i].local = true
+	for i in started:
+		tasks[i].started = started[i]
+		tasks[i].local = true

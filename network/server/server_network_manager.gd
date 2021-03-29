@@ -146,18 +146,6 @@ func _process(_delta):
 	for c in connected_clients.values():
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
-	if own_player:
-		if Task.CheckAndClearAnyDirty():
-			var state_changes : Dictionary = {}
-			var started_changes: Dictionary = {}
-			for t in Task.GetAllTasks():
-				if t.dirty:
-					t.dirty = false
-					state_changes[t.taskID] = t.state
-					started_changes[t.taskID] = t.started
-					if t.started and t.state < t.maxState:
-						own_player.localTaskList.append(t)
-			handle_tasks_update(state_changes, started_changes, own_id)
 	if gamestate==STARTED:
 		var alivelivecrewmates := 0
 		var aliveimpostors := 0
@@ -263,17 +251,6 @@ func handle_cameras_enable_request(on_off: bool):
 	for c in connected_clients.values():
 		c.send_cameras_enable(on_off)
 	cameras_enable(on_off)
-
-func handle_tasks_update(state, started, _id):
-	var Task := load("res://scripts/tasks/Task.cs")
-	var tasks = Task.GetAllTasks()
-	for i in state:
-		if tasks[i].IsDone() == false:
-			tasks[i].state = state[i]
-		tasks[i].local = true
-	for i in started:
-		tasks[i].started = started[i]
-		tasks[i].local = true
 
 func handle_tasks_done(id):
 	if player_characters.has(id):
