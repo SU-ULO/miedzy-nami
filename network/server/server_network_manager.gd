@@ -37,7 +37,7 @@ func create_client(config):
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
 		client.connect("end_sabotage_requested", self, "handle_end_sabotage_request")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
-		client.connect("tasks_update", self, "handle_tasks_update", [config.id])
+		client.connect("tasks_done", self, "handle_tasks_done", [config.id])
 		client.connect("gui_sync_requested", self, "handle_gui_sync_request")
 		client.connect("color_update", self, "handle_color_change_request", [config.id])
 		client.connect("look_update", self, "handle_set_look", [config.id])
@@ -161,13 +161,17 @@ func _process(_delta):
 	if gamestate==STARTED:
 		var alivelivecrewmates := 0
 		var aliveimpostors := 0
+		var tasksdone:=true
 		for c in player_characters.values():
-			if !c.dead:
-				if c.is_in_group("impostors"):
+			if c.is_in_group("impostors"):
+				if !c.dead:
 					aliveimpostors+=1
-				else:
+			else:
+				if !c.donealltasks:
+					tasksdone=false
+				if !c.dead:
 					alivelivecrewmates+=1
-		if aliveimpostors==0:
+		if aliveimpostors==0 or tasksdone:
 			gamestate=ENDED
 			gamestate_params=true
 			sync_gamestate()
@@ -261,7 +265,7 @@ func handle_cameras_enable_request(on_off: bool):
 	cameras_enable(on_off)
 
 func handle_tasks_update(state, started, _id):
-	var Task = load("res://scripts/tasks/Task.cs")
+	var Task := load("res://scripts/tasks/Task.cs")
 	var tasks = Task.GetAllTasks()
 	for i in state:
 		if tasks[i].IsDone() == false:
@@ -270,6 +274,13 @@ func handle_tasks_update(state, started, _id):
 	for i in started:
 		tasks[i].started = started[i]
 		tasks[i].local = true
+
+func handle_tasks_done(id):
+	if player_characters.has(id):
+		player_characters[id].donealltasks=true
+
+func request_inform_all_tasks_finished():
+	handle_tasks_done(own_id)
 
 func request_gui_sync(gui_name: String, gui_data):
 	handle_gui_sync_request(gui_name, gui_data)

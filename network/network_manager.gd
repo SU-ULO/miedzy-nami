@@ -364,6 +364,7 @@ func game_start(params, taskstuff):
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
 	own_player.get_node("CanvasLayer/playerGUI").updateGUI()
+
 func request_cameras_enable(_on_off: bool):
 	pass
 
@@ -433,3 +434,17 @@ func end_game(crew_win: bool):
 	end_screen.get_node("Control").visible = true
 	self.add_child(end_screen)
 	endscreen=end_screen
+
+func request_inform_all_tasks_finished():
+	pass
+
+var sentalldone:=false
+func _process(_delta):
+	if gamestate==STARTED:
+		var alldone = true
+		for t in Task.GetAllTasks():
+			if t.local and !t.IsDone():
+				alldone=false
+				break
+		if alldone and !sentalldone:
+			request_inform_all_tasks_finished()

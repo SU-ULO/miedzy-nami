@@ -94,17 +94,6 @@ func handle_players_sync(data):
 func _process(_delta):
 	if joined_server and joined_server.established and own_player:
 		joined_server.send_player_character_sync(own_player.generate_sync_data())
-		if Task.CheckAndClearAnyDirty():
-			var state_changes : Dictionary = {}
-			var started_changes: Dictionary = {}
-			for t in Task.GetAllTasks():
-				if t.dirty:
-					t.dirty = false
-					state_changes[t.taskID] = t.state
-					started_changes[t.taskID] = t.started
-					if t.started and t.state < t.maxState:
-						own_player.localTaskList.add(t)
-			joined_server.send_tasks_update(state_changes, started_changes)
 
 func request_meeting(dead: int):
 	if joined_server:
@@ -139,6 +128,10 @@ func handle_state_sync(state, params, opt=null):
 	elif state==LOBBY:
 		recreate_world()
 
+func game_start(params, taskstuff):
+	.game_start(params, taskstuff)
+	sentalldone=false
+
 func handle_sabotage(type):
 	if joined_server and own_player:
 		emit_signal("sabotage", type)
@@ -172,3 +165,6 @@ func request_set_invisible(id, val: bool):
 func request_vote(id: int):
 	if joined_server:
 		joined_server.send_vote(id)
+
+func request_inform_all_tasks_finished():
+	joined_server.send_tasks_done()
