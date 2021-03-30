@@ -128,14 +128,6 @@ func toggleTaskContainer():
 		task_panel_position.x += task_container_size.x
 	task_panel_opened = !task_panel_opened
 
-func setVisibility(node_name = "self", state:bool = 1):
-	var node
-	if node_name == "self":
-		node = self
-	else:
-		node = get_node(node_name)
-	node.visible = state
-
 func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
 
