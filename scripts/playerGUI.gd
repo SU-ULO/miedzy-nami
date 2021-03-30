@@ -75,13 +75,24 @@ func checkKillability():
 
 func _on_gui_button_pressed(button_name):
 	if button_name == "sabotage":
-		GUI.replace_on_canvas(sabotagemap["gui_res"].instance(), sabotagemap["gui_name"])
+		var instance = sabotagemap["gui_res"].instance()
+		instance.player = get_owner()
+		player.connect("sabotage_event", instance, "updateMap")
+		instance.sabotage = player.currentSabotage
+		instance.curr_time  = player.get_node("SabotageCooldown").time_left
+		instance.cooldown = player.sabotageCooldown
+		instance.refresh_self()
+		GUI.replace_on_canvas(instance, sabotagemap["gui_name"])
 	elif button_name == "kill":
 		player.ui_kill()
 	elif button_name == "settings":
 		GUI.replace_on_canvas(settings["gui_res"].instance(), settings["gui_name"])
 	elif button_name == "map":
-		GUI.replace_on_canvas(minimap["gui_res"].instance(), minimap["gui_name"])
+		var instance = minimap["gui_res"].instance()
+		if GUI.replace_on_canvas(instance, minimap["gui_name"]):
+			instance.get_node("player").player = player
+			instance.get_node("player").taskList = player.localTaskList
+			instance.get_node("player").addTasks()
 	elif button_name == "use":
 		if player.currentInteraction != null:
 			if player.currentInteraction.is_in_group("vents"):

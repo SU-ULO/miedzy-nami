@@ -15,7 +15,8 @@ func Interact(body):
 	gui.sabotage_on = bool(body.currentSabotage != 2 && body.currentSabotage != 0)
 	get_owner().get_node("CanvasLayer").add_child(gui)
 	gui.start_gui()
-func EndInteraction(body):
+
+func EndInteraction(_body):
 	if gui!=null:
 		gui.queue_free()
 

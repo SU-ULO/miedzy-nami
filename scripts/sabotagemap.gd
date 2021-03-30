@@ -1,5 +1,7 @@
 extends Control
 
+var player
+
 #icons are temporary
 var cooldown
 var curr_time
@@ -37,7 +39,7 @@ func sabotage_start(name):
 		network.request_sabotage(3)
 
 func _on_exit_pressed():
-	emit_signal("exit")
+	player.get_node("GUI").clear_canvas()
 
 func refresh_self():
 	if curr_time > 0:

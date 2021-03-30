@@ -56,10 +56,11 @@ func replace_on_canvas(gui:Node = null, gui_name:String = ""):
 	if currentGUI != null and gui != null:
 		if currentGUI.name == gui_name:
 				clear_canvas()
-				return
+				return false
 
 	clear_canvas()
 	add_to_canvas(gui, gui_name)
+	return true
 
 
 # this functions work both with IntercationCanvas and PlayerCanvas
