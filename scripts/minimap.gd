@@ -27,4 +27,6 @@ func addTasks():
 			taskIcons.append(task_icon.instance())
 			get_parent().add_child(taskIcons.back())
 			taskIcons.back().position = map_center + i.position/2
-		
+
+func _close():
+	player.get_node("GUI").clear_canvas()

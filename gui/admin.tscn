@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://textures/map/map-mini.svg" type="Texture" id=1]
 [ext_resource path="res://gui/commsoff.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/adminClose.gd" type="Script" id=4]
 
 [node name="top" type="Control"]
 anchor_right = 1.0
@@ -197,4 +199,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="close" parent="." instance=ExtResource( 3 )]
+margin_left = 1374.62
+margin_top = 223.446
+margin_right = 1470.62
+margin_bottom = 319.446
+script = ExtResource( 4 )
+
 [node name="off" parent="." instance=ExtResource( 2 )]
+[connection signal="pressed" from="close" to="close" method="_close"]

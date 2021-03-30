@@ -51,6 +51,7 @@ func remove_form_canvas(gui_name:String = ""):
 
 
 # helper function, clears and if current GUI != new GUI, adds new GUI
+# returns false if GUI is not added (current GUI = new GUI) and true otherwise
 
 func replace_on_canvas(gui:Node = null, gui_name:String = ""):
 	if currentGUI != null and gui != null:
