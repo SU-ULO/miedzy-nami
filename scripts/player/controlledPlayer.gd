@@ -313,7 +313,7 @@ func ui_selected():
 
 func become_impostor():
 	.become_impostor()
-	$CanvasLayer/playerGUI.interactionGUIupdate()
+	$GUI/PlayerCanvas/playerGUI.interactionGUIupdate()
 
 func _on_exit_button_pressed():
 	ui_canceled()

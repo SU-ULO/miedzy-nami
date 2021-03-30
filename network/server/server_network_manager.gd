@@ -4,6 +4,8 @@ class_name ServerNetworkManager
 
 var connected_clients := Dictionary()
 
+var debug:bool = true
+
 signal kick(id)
 signal send_session(id, sess)
 signal send_candidate(id, cand)
@@ -146,29 +148,30 @@ func _process(_delta):
 	for c in connected_clients.values():
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
-	if gamestate==STARTED:
-		var alivelivecrewmates := 0
-		var aliveimpostors := 0
-		var tasksdone:=true
-		for c in player_characters.values():
-			if c.is_in_group("impostors"):
-				if !c.dead:
-					aliveimpostors+=1
-			else:
-				if !c.donealltasks:
-					tasksdone=false
-				if !c.dead:
-					alivelivecrewmates+=1
-		if aliveimpostors==0 or tasksdone:
-			gamestate=ENDED
-			gamestate_params=true
-			sync_gamestate()
-			end_game(gamestate_params)
-		elif aliveimpostors>=alivelivecrewmates:
-			gamestate=ENDED
-			gamestate_params=false
-			sync_gamestate()
-			end_game(gamestate_params)
+	if !debug:
+		if gamestate==STARTED:
+			var alivelivecrewmates := 0
+			var aliveimpostors := 0
+			var tasksdone:=true
+			for c in player_characters.values():
+				if c.is_in_group("impostors"):
+					if !c.dead:
+						aliveimpostors+=1
+				else:
+					if !c.donealltasks:
+						tasksdone=false
+					if !c.dead:
+						alivelivecrewmates+=1
+			if aliveimpostors==0 or tasksdone:
+				gamestate=ENDED
+				gamestate_params=true
+				sync_gamestate()
+				end_game(gamestate_params)
+			elif aliveimpostors>=alivelivecrewmates:
+				gamestate=ENDED
+				gamestate_params=false
+				sync_gamestate()
+				end_game(gamestate_params)
 
 func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
@@ -208,7 +211,8 @@ func pick_impostors()->Array:
 	return impostors
 
 func request_game_start():
-	if player_characters.size()<2*gamesettings["impostor-count"]+1: return
+	if !debug:
+		if player_characters.size()<2*gamesettings["impostor-count"]+1: return
 	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
 	gamestate_params = {"imp": pick_impostors()}

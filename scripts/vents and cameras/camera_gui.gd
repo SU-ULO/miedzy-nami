@@ -1,5 +1,7 @@
 extends Control
 
+var player
+
 var viewports = [
 	"VBoxContainer/HBoxContainer/ViewportContainer1/Viewport1",
 	"VBoxContainer/HBoxContainer/ViewportContainer2/Viewport2",
@@ -9,3 +11,6 @@ var viewports = [
 
 func _ready():
 	pass
+
+func _close():
+	player.ui_canceled()

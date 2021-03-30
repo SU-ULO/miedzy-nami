@@ -1,7 +1,7 @@
 extends Node2D
 
 export var linkedcameras = []
-onready var camera_gui = preload("res://gui/cameras/camera-gui.tscn").instance()
+onready var gui_res = "res://gui/cameras/camera-gui.tscn"
 onready var world = get_world_2d()
 
 var texture_inactive = "res://textures/dekoracje/kamera.png"
@@ -26,10 +26,13 @@ func delete_gui(body):
 	get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
 
 func instance_gui(body):
+	var camera_gui = load(gui_res).instance()
 	for vp in camera_gui.viewports:
 		camera_gui.get_node(vp).world_2d = world
-		
+	
+	camera_gui.player = body
 	body.get_node("GUI").replace_on_canvas(camera_gui)
+	
 	camera_gui.get_node("off").visible = disabled
 	if !disabled:
 		var iter = 0
