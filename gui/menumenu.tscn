@@ -15,7 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 margin_left = 518.0
 margin_top = 144.0
 margin_right = 1518.0
@@ -23,7 +23,7 @@ margin_bottom = 953.0
 rect_scale = Vector2( 0.891854, 0.891854 )
 texture = ExtResource( 1 )
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="C" type="TextureButton" parent="."]
 margin_left = 1439.52
 margin_top = 140.56
 margin_right = 2126.52
@@ -34,7 +34,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="E" type="TextureButton" parent="."]
 margin_left = 783.715
 margin_top = 676.081
 margin_right = 1283.72
@@ -45,7 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TextureButton2"]
+[node name="L" type="Label" parent="E"]
 margin_left = 35.6146
 margin_top = 36.5778
 margin_right = 479.615
@@ -56,5 +56,5 @@ text = "WYJDŹ Z GRY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="C" to="." method="_close"]
+[connection signal="pressed" from="E" to="." method="_exit"]

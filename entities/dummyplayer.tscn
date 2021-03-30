@@ -27,12 +27,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -46,12 +46,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -65,12 +65,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -84,12 +84,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -103,12 +103,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -122,12 +122,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -139,14 +139,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=10]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -160,12 +160,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -267,6 +267,7 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
