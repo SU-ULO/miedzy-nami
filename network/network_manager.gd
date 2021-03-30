@@ -365,7 +365,7 @@ func game_start(params, taskstuff):
 		own_player.localTaskList.append(task)
 	for c in player_characters:
 		player_characters[c].global_position = get_spawn_position(c)
-	own_player.get_node("CanvasLayer/playerGUI").updateGUI()
+	own_player.get_node("CanvasLayer/playerGUI").updateTaskList()
 	if own_player.is_in_group("impostors"):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 func request_cameras_enable(_on_off: bool):

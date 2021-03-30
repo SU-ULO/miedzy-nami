@@ -81,7 +81,7 @@ func handle_end_sabotage(type):
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
-	$CanvasLayer/playerGUI.updateGUI()
+	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	$KillCooldown.wait_time = killCooldown
 	network = get_tree().get_root().get_node("Start").network
 	network.connect("sabotage", self, "handle_sabotage")
@@ -93,8 +93,8 @@ func get_input():
 	moveX = 0; moveY = 0
 	
 	if !disabled_movement and currentInteraction == null:
-		joystickUsed = $CanvasLayer/playerGUI/Joystick.pressed
-		$CanvasLayer/playerGUI.visible = true
+		joystickUsed = $GUI/PlayerCanvas/playerGUI/Joystick.pressed
+		$GUI/PlayerCanvas/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;
 		
@@ -107,11 +107,11 @@ func get_input():
 		if Input.is_action_pressed("move_up"):
 			moveY += -1;
 		if joystickUsed:
-			moveX = $CanvasLayer/playerGUI/Joystick.vec.x
-			moveY = $CanvasLayer/playerGUI/Joystick.vec.y
+			moveX = $GUI/PlayerCanvas/playerGUI/Joystick.vec.x
+			moveY = $GUI/PlayerCanvas/playerGUI/Joystick.vec.y
 		if Input.is_action_just_pressed("ui_select"):
 			ui_selected()
-			$CanvasLayer/playerGUI.updateGUI()
+			$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		if Input.is_action_just_pressed("ui_kill"):
 			if self.is_in_group("impostors"):
 				ui_kill()
@@ -120,7 +120,7 @@ func get_input():
 				ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
-		$CanvasLayer/playerGUI.updateGUI()
+		$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
 		if fov_toggle:
@@ -152,17 +152,18 @@ func get_input():
 				selected_vent = 0
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
-			$CanvasLayer/playerGUI.updateGUI()
-			$CanvasLayer2/exit_button.visible = false
+			$GUI/PlayerCanvas/playerGUI.updateTaskList()
+			$GUI/PlayerCanvas/PlayerGUI/exit_button.visible = false
 		else:
-			$CanvasLayer/playerGUI.visible = false
+			$GUI/PlayerCanvas/playerGUI.visible = false
 			$sprites.stopWalk()
+
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()
 	check_line_of_sight()
 	check_interaction()
-	
+
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -280,12 +281,12 @@ func ui_report():
 
 func ui_canceled():
 	if(currentInteraction != null):
-		$CanvasLayer2/exit_button.visible = false
+		$GUI/PlayerCanvas/playerGUI/exit_button.visible = false
 		if currentInteraction.is_in_group("tasks"):
 			currentInteraction.EndInteraction()
 		else:
 			currentInteraction.EndInteraction(self)
-		print(currentInteraction.get_name())
+		print(currentInteraction.name)
 		currentInteraction = null
 		
 func ui_selected():
@@ -294,7 +295,6 @@ func ui_selected():
 		print("sight: ", in_sight)
 	
 	if(interactable.size() != 0):
-		$CanvasLayer/playerGUI.show_map()
 		var currentBestItem = interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -303,15 +303,14 @@ func ui_selected():
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
 
-		var result
-		if currentBestItem.is_in_group("tasks"): 
-			result = currentBestItem.Interact(); 
-		else: result = currentBestItem.Interact(self)
+		var result = currentBestItem.Interact(self)
+		
 		if result == false:
 			return
-		currentInteraction = currentBestItem
-		if !currentInteraction.is_in_group("vents"): 
-			$CanvasLayer2/exit_button.visible = true
+		else:
+			currentInteraction = currentBestItem
+			if !currentInteraction.is_in_group("vents"): 
+				$CanvasLayer2/exit_button.visible = true
 
 func become_impostor():
 	.become_impostor()
@@ -319,4 +318,3 @@ func become_impostor():
 
 func _on_exit_button_pressed():
 	ui_canceled()
-
