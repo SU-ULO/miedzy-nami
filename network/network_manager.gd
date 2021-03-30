@@ -348,6 +348,10 @@ func get_spawn_position(id: int) -> Vector2:
 	return Vector2(0, 0)
 
 func game_start(params, taskstuff):
+	for i in world.get_tree().get_nodes_in_group("tasks"):
+		if i.material != null:
+			if i.material is ShaderMaterial:
+				i.material.set_shader_param("aura_width", 0)
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
 	var Task := load("res://scripts/tasks/Task.cs")
 	recalculate_pos()

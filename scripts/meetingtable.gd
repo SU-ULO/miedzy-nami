@@ -20,5 +20,6 @@ func EndInteraction(body):
 		gui.queue_free()
 
 func call_meeting():
-	bodyxx.meetings_left -= 1
-	get_tree().get_root().get_node("Start").network.request_meeting(-1)
+	if !bodyxx.is_in_group("rip"):
+		bodyxx.meetings_left -= 1
+		get_tree().get_root().get_node("Start").network.request_meeting(-1)

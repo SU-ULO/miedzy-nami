@@ -110,6 +110,7 @@ func get_input():
 			moveX = $CanvasLayer/playerGUI/Joystick.vec.x
 			moveY = $CanvasLayer/playerGUI/Joystick.vec.y
 		if Input.is_action_just_pressed("ui_select"):
+			print(localTaskList)
 			ui_selected()
 			$CanvasLayer/playerGUI.updateGUI()
 		if Input.is_action_just_pressed("ui_kill"):
@@ -251,12 +252,12 @@ func showMyTasks():
 				if i.material is ShaderMaterial:
 					i.material.set_shader_param("aura_width", 0)
 		elif i.material != null:
-				if i.material is ShaderMaterial:
-					i.material.set_shader_param("aura_width", 18)
+			if i.material is ShaderMaterial:
+				i.material.set_shader_param("aura_width", 18)
 # interactions
 
 func ui_kill():
-	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0):
+	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0 && !is_in_group("rip")):
 		var currentBestItem = players_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -268,7 +269,7 @@ func ui_kill():
 		currentBestItem.Interact(self)
 
 func ui_report():
-	if(deadbody_interactable.size() != 0):
+	if(deadbody_interactable.size() != 0 && !is_in_group("rip")):
 		var currentBestItem = deadbody_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
