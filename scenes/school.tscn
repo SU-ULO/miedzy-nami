@@ -1114,6 +1114,8 @@ material = SubResource( 10 )
 scale = Vector2( 1e-05, 1e-05 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )

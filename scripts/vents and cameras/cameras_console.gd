@@ -2,6 +2,7 @@ extends Node2D
 
 export var linkedcameras = []
 onready var camera_gui = preload("res://gui/cameras/camera-gui.tscn").instance()
+onready var canvas = get_owner().get_node("CanvasLayer")
 onready var world = get_world_2d()
 
 var texture_inactive = "res://textures/dekoracje/kamera.png"
@@ -21,7 +22,7 @@ func delete_gui(body):
 		# warning-ignore:return_value_discarded
 		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 		get_node(lc).get_node("Area2D").monitoring = 0
-	body.get_node("GUI").clear_canvas()
+	canvas.remove_child(camera_gui)
 	
 	get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
 
@@ -29,7 +30,7 @@ func instance_gui(body):
 	for vp in camera_gui.viewports:
 		camera_gui.get_node(vp).world_2d = world
 		
-	body.get_node("GUI").replace_on_canvas(camera_gui)
+	canvas.add_child(camera_gui)
 	camera_gui.get_node("off").visible = disabled
 	if !disabled:
 		var iter = 0

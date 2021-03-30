@@ -8,6 +8,7 @@ var player
 
 onready var map_res = load("res://gui/admin.tscn")
 onready var player_icon_res = load("res://gui/podsceny/admin_player.tscn")
+onready var canvas = get_owner().get_node("CanvasLayer")
 var map = null
 var disabled = false
 
@@ -46,8 +47,8 @@ func Interact(body):
 	player = body
 	opened = true
 	map = map_res.instance()
+	canvas.add_child(map)
 	map.get_node("off").visible =  disabled
-	body.get_node("GUI").replace_on_canvas(map)
 
 func EndInteraction(_body):
 	if opened:
