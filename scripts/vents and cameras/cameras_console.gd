@@ -15,15 +15,15 @@ func _ready():
 	self.add_to_group("cameras")
 
 func delete_gui(body):
-	for lc in linkedcameras:
-		get_node(lc).get_node("Camera2D").current = 0
-		get_node(lc).get_node("Light2D").visible = 0
-		# warning-ignore:return_value_discarded
-		get_node(lc).disconnect("camera_detection", body, "camera_visibility")
-		get_node(lc).get_node("Area2D").monitoring = 0
+	if !disabled:
+		for lc in linkedcameras:
+			get_node(lc).get_node("Camera2D").current = 0
+			get_node(lc).get_node("Light2D").visible = 0
+			# warning-ignore:return_value_discarded
+			get_node(lc).disconnect("camera_detection", body, "camera_visibility")
+			get_node(lc).get_node("Area2D").monitoring = 0
+		get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
 	body.get_node("GUI").clear_canvas()
-	
-	get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
 
 func instance_gui(body):
 	var camera_gui = load(gui_res).instance()
@@ -47,7 +47,7 @@ func instance_gui(body):
 			camera.detect()
 			iter += 1
 		get_tree().get_root().get_node('Start').network.request_cameras_enable(true)
-		
+	
 	for vp in camera_gui.viewports:
 		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
 

@@ -20,12 +20,14 @@ func check_off(type):
 			gui.queue_free()
 			if bodyxx != null:
 				bodyxx.ui_canceled()
+
 func Interact(body):
 	bodyxx = body
 	gui = load("res://gui/comms.tscn").instance()
-	get_owner().get_node("CanvasLayer").add_child(gui)
+	body.get_node("GUI").replace_on_canvas(gui)
 	print(gui)
-func EndInteraction(_body):
+
+func EndInteraction(body):
 	if gui!=null:
-		gui.queue_free()
+		body.get_node("GUI").clear_canvas()
 		bodyxx = null
