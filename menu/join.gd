@@ -19,7 +19,7 @@ func update_servers(list: Array):
 		var b = bbb.get_node("TextureButton")
 		var l = b.get_node("Label")
 		b.name=s.key
-		l.text=s.key
+		l.text=s.name+' '+s.key+' '+String(s.players)+'/10 '+("gra trwa" if s.gameinprogress else "")
 		b.connect("pressed", get_parent(), 'request_join_server', [s.key])
 		serverlist.add_child(bbb)
 
@@ -29,3 +29,7 @@ func _on_Refresh_pressed():
 
 func _on_Exit_pressed():
 	get_parent().request_end()
+
+
+func _on_TextureButton_pressed():
+	get_parent().request_join_server($JoinedKey/JoinedKeyField.text)

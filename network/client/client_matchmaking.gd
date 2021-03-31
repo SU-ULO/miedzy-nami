@@ -6,6 +6,7 @@ signal matchmaking_hello()
 signal room_list_updated(list)
 signal received_session(sess)
 signal received_candidate(cand)
+signal loading_label(text)
 
 var clientsettings
 
@@ -59,6 +60,10 @@ func parse_matchmaking(msg:  String):
 		if arr.size()<2: return
 		emit_signal("key_changed", arr[1])
 		return
+	elif msg=="SERVER_FULL":
+		emit_signal("loading_label", "W tym pokoju jest już 10 graczy, proszę czekać...")
+	elif msg=="GAME_IN_PROGRESS":
+		emit_signal("loading_label", "Gra zaczęła się w tym pokoju, proszę czekać...")
 
 func client_hello():
 	send_message("CLIENT:"+JSON.print({"username": clientsettings.username}))

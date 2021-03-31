@@ -72,6 +72,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 		added_player.get_node("sprites").loadLook()
 	handle_game_settings(data["gamesettings"])
 	emit_signal("joined_room")
+	if endscreen: endscreen.queue_free()
 
 func handle_remote_player_joining(id: int, data: Dictionary):
 	var added_player := preload("res://entities/dummyplayer.tscn").instance()
