@@ -206,14 +206,14 @@ func check_interaction():
 	for item in in_interaction_range:
 		if item.is_in_group("players"):
 			if !in_sight.has(item):
-				if is_in_group("impostors") && !item.is_in_group("rips"):
-					if players_interactable.has(item):
-						players_interactable.erase(item);
-						if debug_mode: print(item.get_name(), " removed from: players_interactable")
+				if players_interactable.has(item):
+					players_interactable.erase(item);
+					if debug_mode: print(item.get_name(), " removed from: players_interactable")
 			else:
-				if !players_interactable.has(item):
-					players_interactable.push_back(item);
-					if debug_mode: print(item.get_name(), " added to: players_interactable")
+				if is_in_group("impostors") && !item.is_in_group("rips"):
+					if !players_interactable.has(item):
+						players_interactable.push_back(item);
+						if debug_mode: print(item.get_name(), " added to: players_interactable")
 
 		elif item.is_in_group("deadbody"):
 			if !in_sight.has(item):
@@ -265,7 +265,7 @@ func ui_kill():
 			if(position.distance_squared_to(item.position) < currentBestDistance):
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
-		players_interactable.erase(self)
+		players_interactable.erase(currentBestItem)
 		currentBestItem.Interact(self)
 
 func ui_report():
