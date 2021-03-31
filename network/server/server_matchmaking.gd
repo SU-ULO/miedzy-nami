@@ -65,7 +65,7 @@ func kick(id):
 	send_message("LEAVE:" + str(id))
 
 func server_hello():
-	send_message("SERVER:"+JSON.print({"hidden": serversettings.hidden}))
+	send_message("SERVER:"+JSON.print({"hidden": serversettings.hidden, "name": serversettings.name}))
 
 func refresh_servers():
 	send_message("LIST")
@@ -77,3 +77,6 @@ func send_candidate(id: int, cand: String):
 func send_session(id: int, sess: String):
 # warning-ignore:return_value_discarded
 	send_message("CONNECTION:"+str(id)+":SESSION:"+sess)
+
+func send_game_progress(inprogress: bool):
+	send_message("GAMEINPROGRESS:"+("YES" if inprogress else "NO"))

@@ -8,6 +8,7 @@ var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
 export var sabotageCooldown = 40
+export var death_time = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 var sight_range_scale = 1
@@ -56,6 +57,8 @@ func handle_sabotage(type):
 			network.comms_disabled = true
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
+		if type == 4:
+			$DeathTimer.start(death_time)
 		emit_signal("sabotage_event", currentSabotage)
 
 func handle_end_sabotage(type):
@@ -76,6 +79,8 @@ func handle_end_sabotage(type):
 			network.comms_disabled = false
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/telewizorek"))
+		if type == 4:
+			$DeathTimer.stop()
 		emit_signal("sabotage_event", 0)
 
 func _ready():
@@ -124,12 +129,13 @@ func get_input():
 		$CanvasLayer/playerGUI.updateGUI()
 		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
-		if fov_toggle:
-			sight_range = 2000 * sight_range_scale;
-		else:
-			sight_range = 500 * sight_range_scale
-			get_tree().get_root().get_node("Start").network.end_game(true)
-		fov_toggle = !fov_toggle
+		become_impostor()
+#		if fov_toggle:
+#			sight_range = 2000 * sight_range_scale;
+#		else:
+#			sight_range = 500 * sight_range_scale
+#			get_tree().get_root().get_node("Start").network.end_game(true)
+#		fov_toggle = !fov_toggle
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -242,7 +248,8 @@ func check_interaction():
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					else:
 						interactable.push_back(item);
-						if debug_mode: print(item.get_name(), " added to: interactable")
+						#if debug_mode: 
+						print(item.get_name(), " added to: interactable")
 
 func showMyTasks():
 	for i in localTaskList:
@@ -320,4 +327,10 @@ func become_impostor():
 
 func _on_exit_button_pressed():
 	ui_canceled()
+	
 
+
+func _on_DeathTimer_timeout():
+	if not is_in_group("imposotors"):
+		self.Interact(self)
+	pass # Replace with function body.

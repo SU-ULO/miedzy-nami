@@ -290,13 +290,16 @@ smoothing_enabled = true
 [node name="KillCooldown" type="Timer" parent="." index="9"]
 one_shot = true
 
-[node name="SabotageCooldown" type="Timer" parent="." index="10"]
+[node name="DeathTimer" type="Timer" parent="." index="10"]
 one_shot = true
 
-[node name="DoorCooldown" type="Timer" parent="." index="11"]
+[node name="SabotageCooldown" type="Timer" parent="." index="11"]
 one_shot = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="12"]
+[node name="DoorCooldown" type="Timer" parent="." index="12"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="13"]
 
 [node name="playerGUI" type="Control" parent="CanvasLayer" index="0"]
 anchor_left = 0.5
@@ -526,6 +529,7 @@ __meta__ = {
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
 [connection signal="pressed" from="CanvasLayer2/exit_button" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/TaskPanel/TasKButton" to="CanvasLayer/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
 [connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]

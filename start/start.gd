@@ -56,6 +56,7 @@ func start_server(options):
 	network.connect("joined_room", menu, "close_everything")
 	network.connect("send_session", matchmaking, "send_session")
 	network.connect("send_candidate", matchmaking, "send_candidate")
+	network.connect("gameinprogresschange", matchmaking, "send_game_progress")
 	network.connect("kick", matchmaking, "kick")
 	add_child(matchmaking)
 	add_child(network)
@@ -70,6 +71,7 @@ func start_client():
 	matchmaking.connect("leave_room", self, "leave_room")
 	matchmaking.connect("room_list_updated", menu, "update_servers")
 	matchmaking.connect("matchmaking_hello", menu, "open_roomlist")
+	matchmaking.connect("loading_label", menu, "joining_label")
 	add_child(matchmaking)
 	matchmaking.start()
 	network_side = CLIENT
@@ -78,12 +80,13 @@ func join_server(key):
 	if network_side != CLIENT or !matchmaking:
 		leave_matchmaking()
 		return
-	network = ClientNetworkManager.new()
-	matchmaking.connect("join_room", network, "create_world")
-	matchmaking.connect("received_session", network, "set_session")
-	matchmaking.connect("received_candidate", network, "set_candidate")
-	network.connect("send_session", matchmaking, "send_session")
-	network.connect("send_candidate", matchmaking, "send_candidate")
-	network.connect("joined_room", menu, "close_everything")
-	add_child(network)
+	if !network or !(network is ClientNetworkManager):
+		network = ClientNetworkManager.new()
+		matchmaking.connect("join_room", network, "create_world")
+		matchmaking.connect("received_session", network, "set_session")
+		matchmaking.connect("received_candidate", network, "set_candidate")
+		network.connect("send_session", matchmaking, "send_session")
+		network.connect("send_candidate", matchmaking, "send_candidate")
+		network.connect("joined_room", menu, "close_everything")
+		add_child(network)
 	matchmaking.join_server(key)

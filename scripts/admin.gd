@@ -15,6 +15,7 @@ var disabled = false
 func _ready():
 	add_to_group("interactable")
 	add_to_group("entities")
+	print(get_tree().get_root().get_node('Start').network)
 	for i in get_tree().get_root().get_node('Start').network.world.get_node("rooms").get_children():
 		rooms[i.name] = [i.get_node("1").global_position, i.get_node("2").global_position]
 	players = get_tree().get_root().get_node('Start').network.player_characters
