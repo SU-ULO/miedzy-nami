@@ -280,7 +280,6 @@ func ui_canceled():
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	showMyTasks()
 	if(currentInteraction != null):
-		$GUI/PlayerCanvas/playerGUI/exit_button.visible = false
 		currentInteraction.EndInteraction(self)
 		print(currentInteraction.name)
 		currentInteraction = null
@@ -306,10 +305,6 @@ func ui_selected():
 		else:
 			currentInteraction = currentBestItem
 
-
 func become_impostor():
 	.become_impostor()
 	$GUI/PlayerCanvas/playerGUI.interactionGUIupdate()
-
-func _on_exit_button_pressed():
-	ui_canceled()
