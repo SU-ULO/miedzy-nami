@@ -128,10 +128,7 @@ func start_meeting(caller: int, dead: int):
 	
 	#end all interactions
 	if own_player.currentInteraction != null:
-		if own_player.currentInteraction.is_in_group("tasks"):
-			own_player.currentInteraction.EndInteraction()
-		else:
-			own_player.currentInteraction.EndInteraction(own_player)
+		own_player.currentInteraction.EndInteraction(own_player)
 		own_player.currentInteraction = null
 		own_player.get_node("CanvasLayer2/exit_button").visible = false
 	#get rid of all the bodies

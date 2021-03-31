@@ -151,7 +151,6 @@ func get_input():
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
 			$GUI/PlayerCanvas/playerGUI.updateTaskList()
-			$GUI/PlayerCanvas/PlayerGUI/exit_button.visible = false
 		else:
 			$GUI/PlayerCanvas/playerGUI.visible = false
 			$sprites.stopWalk()
@@ -282,10 +281,7 @@ func ui_canceled():
 	showMyTasks()
 	if(currentInteraction != null):
 		$GUI/PlayerCanvas/playerGUI/exit_button.visible = false
-		if currentInteraction.is_in_group("tasks"):
-			currentInteraction.EndInteraction()
-		else:
-			currentInteraction.EndInteraction(self)
+		currentInteraction.EndInteraction(self)
 		print(currentInteraction.name)
 		currentInteraction = null
 		
