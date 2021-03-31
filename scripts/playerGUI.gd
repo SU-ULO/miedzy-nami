@@ -76,13 +76,16 @@ func checkKillability():
 func _on_gui_button_pressed(button_name):
 	if button_name == "sabotage":
 		var instance = sabotagemap["gui_res"].instance()
-		instance.player = get_owner()
-		player.connect("sabotage_event", instance, "updateMap")
-		instance.sabotage = player.currentSabotage
-		instance.curr_time  = player.get_node("SabotageCooldown").time_left
-		instance.cooldown = player.sabotageCooldown
-		instance.refresh_self()
-		GUI.replace_on_canvas(instance, sabotagemap["gui_name"])
+		if GUI.replace_on_canvas(instance, sabotagemap["gui_name"]):
+			instance.player = player
+			player.connect("sabotage_event", instance, "updateMap")
+			instance.sabotage = player.currentSabotage
+			instance.curr_time  = player.get_node("SabotageCooldown").time_left
+			instance.cooldown = player.sabotageCooldown
+			instance.refresh_self()
+		else:
+			player.disconnect("sabotage_event", instance, "updateMap")
+
 	elif button_name == "kill":
 		player.ui_kill()
 	elif button_name == "settings":
