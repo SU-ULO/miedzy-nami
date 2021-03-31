@@ -25,7 +25,6 @@ func add_to_canvas(gui:Node = null, gui_name:String = ""): # adds scene as Inter
 
 	if gui_name == "":
 		print("WARRNING: no GUI name. No way to detect GUI later")
-		
 	else:
 		gui.name = gui_name
 	
@@ -36,19 +35,12 @@ func add_to_canvas(gui:Node = null, gui_name:String = ""): # adds scene as Inter
 # this method shouldn't be really usefull since there should be no situation 
 # when there is more than one GUI on canvas
 
-func remove_form_canvas(gui_name:String = ""):
-	if gui_name == "":
-		# use clear canvas instead
-		print("WARRNING: no GUI name. Assuming GUI is first child of Canvas")
-		IC.get_child(0).queue_free()
-	else:
-		for child in IC.get_children():
-			if child.name == gui_name:
-				child.queue_free()
-				return
-	
+func remove_form_canvas(gui_name:String):
+	var gui = get_node_or_null(gui_name) # get gui by name
+	if gui != null: # if gui exist
+		gui.queue_free() # remove it
+	else: # else print
 		print("WARRNING: no GUI with name ", gui_name)
-
 
 # helper function, clears and if current GUI != new GUI, adds new GUI
 # returns false if GUI is not added (current GUI = new GUI) and true otherwise

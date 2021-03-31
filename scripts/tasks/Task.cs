@@ -9,6 +9,8 @@ public abstract class Task : Godot.Node2D
 {
 	public static bool anyDirty = false;
 	
+	public Godot.Node2D player = null;
+	
 	public static bool CheckAndClearAnyDirty(){
 		bool tmp = anyDirty;
 		anyDirty = false;
@@ -191,7 +193,7 @@ public abstract class Task : Godot.Node2D
 					}
 					
 					Godot.GD.Print("Ending task "+taskID);
-					GetTaskByID(taskID).GetParent().GetParent().Call("clear_canvas");
+					player.GetNode("GUI").Call("clear_canvas");
 					return;
 				}
 			}

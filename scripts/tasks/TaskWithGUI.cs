@@ -86,11 +86,13 @@ public class TaskWithGUI : Task, IInteractable
 		guiInstance.AddToGroup("gui_task_"+taskID);
 		// task name here ???
 		body.GetNode("GUI").Call("replace_on_canvas", guiInstance);
+		this.player = body;
 	}
 	
 	public override void TaskEndInteraction(Godot.Node2D body){
 		GD.Print("koniec");
 		body.GetNode("GUI").Call("clear_canvas");
+		this.player = null;
 	}
 	
 	public virtual bool Interact(Godot.Node2D body){
