@@ -35,6 +35,8 @@ func sabotage_start(name):
 		network.request_sabotage(2)
 	if name == "comms":
 		network.request_sabotage(3)
+	if name == "dyrektor":
+		network.request_sabotage(4)
 
 func _on_exit_pressed():
 	emit_signal("exit")
