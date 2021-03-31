@@ -6,7 +6,8 @@ var usersettings: Dictionary = {
 }
 
 var serversettings: Dictionary = {
-	"hidden": false
+	"hidden": false,
+	"name": "nazwa"
 }
 
 signal request_start_client()
@@ -44,8 +45,13 @@ func open_roomlist():
 	$RoomList.visible=true
 	$background.visible = true
 
+func joining_label(text: String):
+	$'Joining'.set_label(text)
+
 func open_joining():
 	close_everything()
+	$'Joining'.set_label("łączenie...")
+	$'Joining'.set_button_visibility(false)
 	$'Joining'.visible=true
 	$background.visible = true
 
@@ -59,7 +65,9 @@ func request_start_server():
 	emit_signal("request_start_server", serversettings)
 
 func request_join_server(key: String):
+	$'Joining'.joining_key=""
 	open_joining()
+	$'Joining'.joining_key=key
 	emit_signal("request_join_server", key)
 
 func request_refresh_servers():
@@ -67,6 +75,7 @@ func request_refresh_servers():
 
 func update_servers(list: Array):
 	$'RoomList'.update_servers(list)
+	$'Joining'.update_servers(list)
 
 func end():
 	open_main()

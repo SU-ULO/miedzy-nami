@@ -92,7 +92,6 @@ func get_free_color_and_set():
 	return 0
 
 func create_world(config):
-	if endscreen: endscreen.queue_free()
 	currentconfig=config
 	server_key = config.key
 	load("res://scripts/tasks/Task.cs").ClientCleanup()
@@ -108,6 +107,7 @@ func create_world(config):
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
 	if own_id == 0:
 		world.get_node("Mapa/lobby/start").add_to_group("interactable")
+		if endscreen: endscreen.queue_free()
 
 func recreate_world():
 	taken_colors=0
@@ -264,8 +264,8 @@ func end_meeting():
 	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
 	current_votes.clear()
 	if own_player.is_in_group("impostors"):
-		own_player.get_node("KillCooldown").start(own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3))
-		
+		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
+
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
 	request_vote(id)

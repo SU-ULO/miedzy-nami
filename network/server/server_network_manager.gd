@@ -7,6 +7,7 @@ var connected_clients := Dictionary()
 signal kick(id)
 signal send_session(id, sess)
 signal send_candidate(id, cand)
+signal gameinprogresschange(inprogress)
 
 func is_username_taken(requested_name: String)->bool:
 	if own_player.username==requested_name: return true
@@ -192,6 +193,7 @@ func handle_kill_request(dead: int):
 	kill(dead, pos)
 
 func sync_gamestate(opt=Dictionary()):
+	emit_signal("gameinprogresschange", gamestate!=LOBBY)
 	for c in connected_clients:
 		if connected_clients.has(c):
 			var cl = connected_clients[c]

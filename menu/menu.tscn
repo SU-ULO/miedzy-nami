@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://textures/tick.png" type="Texture" id=13]
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
 [ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
+[ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -165,6 +166,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label3" type="Label" parent="Main/OptionsButton"]
+margin_left = 348.025
+margin_top = 16.9486
+margin_right = 539.025
+margin_bottom = 91.9486
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "OPCJE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
@@ -275,7 +289,7 @@ __meta__ = {
 [node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
 margin_top = 79.0
 margin_right = 864.0
-margin_bottom = 162.0
+margin_bottom = 241.0
 alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
@@ -298,10 +312,29 @@ margin_bottom = 83.0
 custom_icons/checked = ExtResource( 13 )
 custom_icons/unchecked = ExtResource( 12 )
 
-[node name="ServerAcceptButton" type="TextureButton" parent="Create"]
-margin_top = 166.0
+[node name="ServerName" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
+margin_top = 87.0
 margin_right = 864.0
-margin_bottom = 274.0
+margin_bottom = 162.0
+alignment = 1
+
+[node name="ServerNameLabel" type="Label" parent="Create/ServerSettingsContainer/ServerName"]
+margin_left = 149.0
+margin_right = 653.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 8 )
+text = "pokój niepubliczny"
+
+[node name="ServerNameField" type="LineEdit" parent="Create/ServerSettingsContainer/ServerName"]
+margin_left = 657.0
+margin_right = 715.0
+margin_bottom = 75.0
+text = "nazwa"
+
+[node name="ServerAcceptButton" type="TextureButton" parent="Create"]
+margin_top = 245.0
+margin_right = 864.0
+margin_bottom = 353.0
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -324,32 +357,29 @@ __meta__ = {
 [node name="MenuButton" parent="Create" instance=ExtResource( 15 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 278.0
+margin_top = 357.0
 margin_right = 864.0
-margin_bottom = 388.0
+margin_bottom = 467.0
 
 [node name="Label" parent="Create/MenuButton/TextureButton" index="0"]
 text = "WYJDŹ"
 
 [node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -215.41
-margin_top = -128.637
-margin_right = 648.59
-margin_bottom = 271.363
-rect_scale = Vector2( 0.480756, 0.480756 )
+anchor_left = 0.15
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.75, 0.75 )
+alignment = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Exit" type="TextureButton" parent="RoomList"]
-margin_right = 864.0
-margin_bottom = 108.0
+margin_top = 372.0
+margin_right = 1632.0
+margin_bottom = 480.0
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="RoomList/Exit"]
@@ -364,10 +394,40 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="JoinedKey" type="HBoxContainer" parent="RoomList"]
+margin_top = 484.0
+margin_right = 1632.0
+margin_bottom = 592.0
+
+[node name="JoinedKeyField" type="LineEdit" parent="RoomList/JoinedKey"]
+margin_right = 58.0
+margin_bottom = 108.0
+text = "KOD"
+align = 3
+expand_to_text_length = true
+
+[node name="TextureButton" type="TextureButton" parent="RoomList/JoinedKey"]
+margin_left = 62.0
+margin_right = 926.0
+margin_bottom = 108.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="RoomList/JoinedKey/TextureButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Wejdź"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Refresh" type="TextureButton" parent="RoomList"]
-margin_top = 112.0
-margin_right = 864.0
-margin_bottom = 220.0
+margin_top = 596.0
+margin_right = 1632.0
+margin_bottom = 704.0
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="RoomList/Refresh"]
@@ -384,9 +444,9 @@ __meta__ = {
 }
 
 [node name="ServersList" type="VBoxContainer" parent="RoomList"]
-margin_top = 224.0
-margin_right = 864.0
-margin_bottom = 224.0
+margin_top = 708.0
+margin_right = 1632.0
+margin_bottom = 708.0
 
 [node name="Joining" type="VBoxContainer" parent="."]
 visible = false
@@ -400,12 +460,13 @@ margin_right = 156.5
 margin_bottom = 41.5894
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Joining"]
-margin_right = 313.0
+margin_right = 864.0
 margin_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -414,6 +475,26 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Łączenie..."
 align = 1
 valign = 1
+
+[node name="Button" type="TextureButton" parent="Joining"]
+visible = false
+margin_top = 79.0
+margin_right = 864.0
+margin_bottom = 187.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="Joining/Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "ANULUJ"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LoggingIn" type="VBoxContainer" parent="."]
 visible = false
@@ -446,6 +527,8 @@ valign = 1
 [connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/MenuButton/TextureButton" to="." method="open_main"]
 [connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
+[connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
+[connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
 
 [editable path="Create/MenuButton"]

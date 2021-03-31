@@ -7,10 +7,12 @@ func _ready():
 func get_settings():
 	var settings = get_parent().serversettings
 	$ServerSettingsContainer/ServerHidden/ServerHiddenCheckBox.pressed=settings["hidden"]
+	$ServerSettingsContainer/ServerName/ServerNameField.text=settings["name"]
 
 func set_settings():
 	var settings = get_parent().serversettings
 	settings["hidden"]=$ServerSettingsContainer/ServerHidden/ServerHiddenCheckBox.pressed
+	settings["name"]=$ServerSettingsContainer/ServerName/ServerNameField.text
 
 
 func _on_ServerAcceptButton_pressed():
