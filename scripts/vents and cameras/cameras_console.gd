@@ -31,7 +31,7 @@ func instance_gui(body):
 		camera_gui.get_node(vp).world_2d = world
 	
 	camera_gui.player = body
-	body.get_node("GUI").replace_on_canvas(camera_gui)
+	body.get_node("GUI").add_to_canvas(camera_gui)
 	
 	camera_gui.get_node("off").visible = disabled
 	if !disabled:

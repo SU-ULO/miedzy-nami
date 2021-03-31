@@ -40,7 +40,6 @@ func is_sabotage_timer_done():
 	
 # should we take into consideration fov_toggle?
 func handle_sabotage(type):
-	var network = get_tree().get_root().get_node("Start").network
 	if $SabotageCooldown.time_left == 0 and currentSabotage == 0:
 		currentSabotage = type
 		if type == 1:
@@ -62,7 +61,6 @@ func handle_end_sabotage(type):
 	if not currentSabotage == 0:
 		currentSabotage = 0
 		$SabotageCooldown.start(sabotageCooldown)
-		var network = get_tree().get_root().get_node("Start").network
 		if type == 1:
 			if !is_in_group("impostors"):
 				sight_range = default_sight_range * sight_range_scale
@@ -94,7 +92,6 @@ func get_input():
 	
 	if !disabled_movement and currentInteraction == null:
 		joystickUsed = $GUI/PlayerCanvas/playerGUI/Joystick.pressed
-		$GUI/PlayerCanvas/playerGUI.visible = true
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;
 		
@@ -152,7 +149,6 @@ func get_input():
 			currentInteraction = null
 			$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		else:
-			$GUI/PlayerCanvas/playerGUI.visible = false
 			$sprites.stopWalk()
 
 func _process(delta):
@@ -285,6 +281,7 @@ func ui_canceled():
 		currentInteraction = null
 		
 func ui_selected():
+	if get_node("GUI").currentGUI != null: return
 	if debug_mode:
 		print("sight_range: ", in_sight_range)
 		print("sight: ", in_sight)

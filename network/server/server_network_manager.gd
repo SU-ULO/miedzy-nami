@@ -238,7 +238,7 @@ func handle_end_sabotage_request(type: int):
 		c.send_end_sabotage(type)
 	emit_signal("sabotage_end", type)
 
-func handle_sabotage_request(type: int, player_id: int):
+func handle_sabotage_request(type: int, _player_id: int):
 	# TODO: check if the requester (player_id) is an impostor
 	
 	# we check if the timer is up on the server side too to prevent potential client/server desyncs

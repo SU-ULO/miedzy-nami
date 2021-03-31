@@ -24,7 +24,7 @@ func check_off(type):
 func Interact(body):
 	bodyxx = body
 	gui = load("res://gui/comms.tscn").instance()
-	body.get_node("GUI").replace_on_canvas(gui)
+	body.get_node("GUI").add_to_canvas(gui)
 	print(gui)
 
 func EndInteraction(body):

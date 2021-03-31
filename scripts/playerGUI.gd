@@ -34,7 +34,6 @@ func interactionGUIupdate():
 		$ActionButtons/use.visible = true
 
 func _process(_delta):
-	$ActionButtons/report.visible = !player.is_in_group("rip")
 	usage = checkUsage()
 	$ActionButtons/use.disabled = !usage
 	$ActionButtons/report.disabled = !checkReportability()
@@ -76,7 +75,8 @@ func checkKillability():
 func _on_gui_button_pressed(button_name):
 	if button_name == "sabotage":
 		var instance = sabotagemap["gui_res"].instance()
-		if GUI.replace_on_canvas(instance, sabotagemap["gui_name"]):
+		instance.name = sabotagemap["gui_name"]
+		if GUI.replace_on_canvas(instance):
 			instance.player = player
 			player.connect("sabotage_event", instance, "updateMap")
 			instance.sabotage = player.currentSabotage
@@ -86,10 +86,13 @@ func _on_gui_button_pressed(button_name):
 	elif button_name == "kill":
 		player.ui_kill()
 	elif button_name == "settings":
-		GUI.replace_on_canvas(settings["gui_res"].instance(), settings["gui_name"])
+		var instance = settings["gui_res"].instance()
+		instance.name = settings["gui_name"]
+		GUI.replace_on_canvas(instance)
 	elif button_name == "map":
 		var instance = minimap["gui_res"].instance()
-		if GUI.replace_on_canvas(instance, minimap["gui_name"]):
+		instance.name = minimap["gui_name"]
+		if GUI.replace_on_canvas(instance):
 			instance.get_node("player").player = player
 			instance.get_node("player").taskList = player.localTaskList
 			instance.get_node("player").addTasks()
@@ -118,7 +121,6 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 
 func processGui():
 	var task_panel = get_node("TaskPanel")
-	task_panel.visible = !network.comms_disabled
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
 	task_container.rect_size.y = max(list_size.y + task_label_size.y, task_list_min_size)
 	

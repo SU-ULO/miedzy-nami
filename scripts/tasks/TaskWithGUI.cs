@@ -84,8 +84,7 @@ public class TaskWithGUI : Task, IInteractable
 		Resource gui = ResourceLoader.Load(GetResourceLocation());
 		Node guiInstance = ((PackedScene)gui).Instance();
 		guiInstance.AddToGroup("gui_task_"+taskID);
-		// task name here ???
-		body.GetNode("GUI").Call("replace_on_canvas", guiInstance);
+		body.GetNode("GUI").Call("add_to_canvas", guiInstance);
 		this.player = body;
 	}
 	

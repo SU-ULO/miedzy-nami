@@ -48,7 +48,7 @@ func Interact(body):
 	map = map_res.instance()
 	map.get_node("off").visible =  disabled
 	map.get_node("close").player = body
-	body.get_node("GUI").replace_on_canvas(map)
+	body.get_node("GUI").add_to_canvas(map)
 
 func EndInteraction(_body):
 	if opened:

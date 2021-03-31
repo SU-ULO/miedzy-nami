@@ -6,7 +6,6 @@ var player
 var cooldown
 var curr_time
 var sabotage
-signal exit()
 
 var bars
 
@@ -39,7 +38,7 @@ func sabotage_start(name):
 		network.request_sabotage(3)
 
 func _on_exit_pressed():
-	player.get_node("GUI").clear_canvas()
+	player.get_node("GUI").replace_on_canvas(self)
 
 func refresh_self():
 	if curr_time > 0:
@@ -54,4 +53,3 @@ func updateMap(newsabotage):
 	else:
 		curr_time = cooldown
 	refresh_self()
-		

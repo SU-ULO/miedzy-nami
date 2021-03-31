@@ -29,4 +29,4 @@ func addTasks():
 			taskIcons.back().position = map_center + i.position/2
 
 func _close():
-	player.get_node("GUI").clear_canvas()
+	player.get_node("GUI").replace_on_canvas(get_owner())
