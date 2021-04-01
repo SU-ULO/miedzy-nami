@@ -187,7 +187,7 @@ func start_meeting(caller: int, dead: int):
 	gui.connect("meeting_state_changed", self, "set_meeting_state")
 	
 	# show gui on screen
-	own_player.get_node("GUI").add_to_canvas(gui)
+	own_player.get_node("GUI").add_to_canvas(gui, false)
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")

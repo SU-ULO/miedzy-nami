@@ -6,6 +6,8 @@ onready var player = get_owner()
 onready var IC = get_node("InteractionCanvas")
 # canvas for persistent GUI elements (no option to add nodes to that canvas etc.)
 onready var PC = get_node("PlayerCanvas")
+# close button for Tasks and other interactions (but not for maps)
+onready var CB = get_node("CloseButton")
 
 var currentGUI:Node = null
 
@@ -18,6 +20,8 @@ func clear_canvas(): # removes all canvas children
 		child.queue_free()
 	currentGUI = null
 	set_visibility("PC", "playerGUI", 1)
+	set_visibility("PC", "playerGUI", 1)
+	set_visibility("CB", "B", 0)
 
 func canvas_empty():
 	if IC.get_child_count() > 0:
@@ -48,10 +52,12 @@ func remove_form_canvas(gui_name:String = "no name was spacified"):
 # clears canvas and adds gui to canvas, 
 # returns true if GUI was added and false if not
 
-func add_to_canvas(gui:Node = null):
+func add_to_canvas(gui:Node = null, show_button:bool = true):
 	clear_canvas()
 	if add(gui):
 		set_visibility("PC", "playerGUI", 0)
+		if show_button:
+			set_visibility("CB", "B", 1)
 		return true
 	return false
 
@@ -85,27 +91,28 @@ func replace_on_canvas(gui:Node = null):
 		return true
 	return false
 
-# this functions work both with IntercationCanvas and PlayerCanvas
+# this function work with all GUI canvases
 
-# need canvas_name to be specified: IntercationCanvas, PlayerCanvas
-# short names work as well: IC, PC
-# and gui_item_path which is path relative to CanvasLayer
+# needs canvas_name to be specified: IntercationCanvas, PlayerCanvas, CloseButton
+# short names work as well: IC, PC, CB
+# gui_item_path which is path relative to CanvasLayer
 # and state which is boolean: true = visible, flase = invisible
 
 # example: set_visibility("PC", "playerGUI/ActionButtons", false)
 
 func set_visibility(canvas_name:String = "PC", gui_item_path:String = "", state:bool = false): # of GUI element
+	var item = null
 	if canvas_name == "IC" or canvas_name == "IntercationCanvas":
-		var item = IC.get_node(gui_item_path)
-		if item == null:
-			print("WARRNING: no item with path ", gui_item_path, " on IntercationCanvas")
-		else:
-			item.visible = state
+		item = IC.get_node_or_null(gui_item_path)
 	elif canvas_name == "PC" or canvas_name == "PlayerCanvas":
-		var item = PC.get_node(gui_item_path)
-		if item == null:
-			print("WARRNING: no item with path ", gui_item_path, " on PlayerCanvas")
-		else:
-			item.visible = state
+		item = PC.get_node_or_null(gui_item_path)
+	elif canvas_name == "CB" or canvas_name == "CloseButton":
+		item = CB.get_node_or_null(gui_item_path)
 	else:
 		print("WARRNING: no Canvas with name ", canvas_name)
+		return false
+	
+	if item == null:
+		print("WARRNING: no item with path ", gui_item_path, " on ", canvas_name)
+	else:
+		item.visible = state

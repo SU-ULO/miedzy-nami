@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=20]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=21]
 [ext_resource path="res://scripts/GUI.gd" type="Script" id=22]
+[ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -531,6 +533,12 @@ __meta__ = {
 }
 
 [node name="InteractionCanvas" type="CanvasLayer" parent="GUI" index="1"]
+
+[node name="CloseButton" type="CanvasLayer" parent="GUI" index="2"]
+
+[node name="B" parent="GUI/CloseButton" index="0" instance=ExtResource( 23 )]
+visible = false
+script = ExtResource( 24 )
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
@@ -539,3 +547,4 @@ __meta__ = {
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/use" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "use" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/report" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "report" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/exit_button" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "exit" ]]
+[connection signal="pressed" from="GUI/CloseButton/B" to="GUI/CloseButton/B" method="_close"]
