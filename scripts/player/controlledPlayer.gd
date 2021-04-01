@@ -204,14 +204,14 @@ func check_interaction():
 	for item in in_interaction_range:
 		if item.is_in_group("players"):
 			if !in_sight.has(item):
-				if is_in_group("impostors") && !item.is_in_group("rips"):
-					if players_interactable.has(item):
+				if players_interactable.has(item):
 						players_interactable.erase(item);
 						if debug_mode: print(item.get_name(), " removed from: players_interactable")
 			else:
-				if !players_interactable.has(item):
-					players_interactable.push_back(item);
-					if debug_mode: print(item.get_name(), " added to: players_interactable")
+				if is_in_group("impostors") && !item.is_in_group("rips"):
+					if !players_interactable.has(item):
+						players_interactable.push_back(item);
+						if debug_mode: print(item.get_name(), " added to: players_interactable")
 
 		elif item.is_in_group("deadbody"):
 			if !in_sight.has(item):
@@ -250,12 +250,12 @@ func showMyTasks():
 				if i.material is ShaderMaterial:
 					i.material.set_shader_param("aura_width", 0)
 		elif i.material != null:
-				if i.material is ShaderMaterial:
-					i.material.set_shader_param("aura_width", 18)
+			if i.material is ShaderMaterial:
+				i.material.set_shader_param("aura_width", 18)
 # interactions
 
 func ui_kill():
-	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0):
+	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0 && !is_in_group("rip")):
 		var currentBestItem = players_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -263,11 +263,11 @@ func ui_kill():
 			if(position.distance_squared_to(item.position) < currentBestDistance):
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
-		players_interactable.erase(self)
+		players_interactable.erase(currentBestItem)
 		currentBestItem.Interact(self)
 
 func ui_report():
-	if(deadbody_interactable.size() != 0):
+	if(deadbody_interactable.size() != 0 && !is_in_group("rip")):
 		var currentBestItem = deadbody_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
