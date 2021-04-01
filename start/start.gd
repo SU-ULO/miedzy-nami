@@ -10,6 +10,9 @@ onready var menu := $MainMenu
 var matchmaking = null
 var network = null
 
+func _init():
+	Globals.start=self
+
 func _ready():
 	randomize()
 # warning-ignore:return_value_discarded
@@ -71,7 +74,7 @@ func start_client():
 	matchmaking.connect("leave_room", self, "leave_room")
 	matchmaking.connect("room_list_updated", menu, "update_servers")
 	matchmaking.connect("matchmaking_hello", menu, "open_roomlist")
-	matchmaking.connect("loading_label", menu, "joining_label")
+	matchmaking.connect("server_join_error", menu, "joining_error")
 	add_child(matchmaking)
 	matchmaking.start()
 	network_side = CLIENT

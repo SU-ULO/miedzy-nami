@@ -45,8 +45,8 @@ func open_roomlist():
 	$RoomList.visible=true
 	$background.visible = true
 
-func joining_label(text: String):
-	$'Joining'.set_label(text)
+func joining_error(reason: String):
+	$'Joining'.join_error(reason)
 
 func open_joining():
 	close_everything()
