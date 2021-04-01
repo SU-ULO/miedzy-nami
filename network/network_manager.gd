@@ -55,6 +55,7 @@ var camera_users_count := 0
 var taken_colors := 0
 var comms_disabled:bool = 0 setget toggle_list
 
+var meeting_gui = null
 var current_votes = {}
 
 # warning-ignore:unused_signal
@@ -130,10 +131,11 @@ func start_meeting(caller: int, dead: int):
 	if own_player.currentInteraction != null:
 		own_player.currentInteraction.EndInteraction(own_player)
 		own_player.currentInteraction = null
-		own_player.get_node("CanvasLayer2/exit_button").visible = false
+	
 	#get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
 		i.queue_free()
+	
 	#disable movement and calculate teleport positions
 	own_player.disabled_movement = true
 	recalculate_pos()
@@ -141,6 +143,7 @@ func start_meeting(caller: int, dead: int):
 	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	var playerbox = load("res://gui/meeting/PlayerMeetingBox.tscn")
+	meeting_gui = gui
 	
 	var iter = 0
 	# for every player
@@ -158,7 +161,7 @@ func start_meeting(caller: int, dead: int):
 			
 			# put it in right place
 			gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
-		
+			
 			iter += 1
 	
 	for rip in rips: # now same for rips because we want them last on list
@@ -168,7 +171,7 @@ func start_meeting(caller: int, dead: int):
 		box.id = rip
 		box.color =  Color(colors[player_characters[rip].color])
 		box.get_node("Button/L").text = player_characters[rip].username
-
+		
 		gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 		# aslo different color cause they dead
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
@@ -178,24 +181,23 @@ func start_meeting(caller: int, dead: int):
 	gui.time = gamesettings["discussion-time"]
 	gui.set_all_buttons(0)
 	var skip = gui.get_node("BG/S")
-
+	
 	#connect "click" signal to skip button and signal to change meeting state to voting time
 	skip.connect("chosen", self, "set_chosen")
 	gui.connect("meeting_state_changed", self, "set_meeting_state")
 	
-	#turn off all player gui
-	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 0)
-	
 	# show gui on screen
-	world.get_node("CanvasLayer").add_child(gui)
-
+	own_player.get_node("GUI").add_to_canvas(gui)
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 
-var votingwinnerid:=-1
+var votingwinnerid := -1
+
 func set_meeting_state(state): # func to toggle from discussion time to voting time and to reveal results
-	var gui = world.get_node("CanvasLayer").get_child(0) #get gui
+	var gui = meeting_gui #get gui
+	if meeting_gui == null: return null
+	
 	gui.meeting_state += 1
 	
 	if state == 1: # voting starts
@@ -215,7 +217,9 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			
 		for box in gui.get_node("BG/H/V2").get_children():
 			box.set_vote_visibility(1)
-			
+		
+		gui.get_node("BG/S/SH").visible = true
+		
 		#determin meeting "winner"
 		
 		var votes = {}
@@ -242,29 +246,32 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 			if !imp.is_in_group("rip"):
 				imps += 1
 		
-		votingwinnerid=best_id
+		votingwinnerid = best_id
 		
 		# show votes
 		if player_characters.has(best_id):
 			if player_characters[best_id].is_in_group("impostors"):
 				imps -= 1
-			gui.show_votes(player_characters[best_id], imps)
+			gui.update_verdict(player_characters[best_id], imps)
 		else:
-			gui.show_votes(null, imps)
+			gui.update_verdict(null, imps)
 	elif state == 3: # show verdict
 		gui.show_verdict()
 		kill(votingwinnerid, Vector2(0, 0), false)
 
 func end_meeting():
-	world.get_node("CanvasLayer").get_child(0).queue_free() # remove gui
+	# remove gui
+	own_player.get_node("GUI").clear_canvas()
+	meeting_gui = null 
+	
 	own_player.disabled_movement = false # enable player movement
-	own_player.get_node("CanvasLayer/playerGUI").setVisibility("self", 1) #add player gui
-	current_votes.clear()
-	if own_player.is_in_group("impostors"):
-		own_player.get_node("KillCooldown").start(own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3))
+	current_votes.clear() # clear votes
+	if own_player.is_in_group("impostors"): # set cooldown for impostor
+		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 		
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
-	world.get_node("CanvasLayer").get_child(0).chosen = id # set chosen (var in gui script) to chosen palyer id
+	if meeting_gui == null: return false
+	meeting_gui.chosen = id # set chosen (var in gui script) to chosen palyer id
 	request_vote(id)
 
 func request_vote(_id: int):
@@ -273,18 +280,19 @@ func request_vote(_id: int):
 func add_vote(voter_id, voted_id):
 	validate_vote(voter_id, voted_id)
 	var color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
-	var gui = world.get_node("CanvasLayer").get_child(0)
 	
-	if voted_id >= 0: # if its player box then get their box and add vote to it
+	var gui = meeting_gui
+	if meeting_gui == null: return false
+	
+	if voted_id >= 0: # if player was voted, get their player box and add vote to it
 		var box = gui.get_player_box(voted_id)
 		box.set_vote(color) 
-	elif voted_id == -1: # if its skip button then add vote there
+	elif voted_id == -1: # if vote skipped, add vote to skip button
 		gui.get_node("BG/S").set_vote(color)
 	
 	# set little marker next to voter box indicating that they voted
 	var voter_box = gui.get_player_box(voter_id)
 	voter_box.set_voted()
-	
 	
 	# if all players voted stop voting
 	if current_votes.size() == player_characters.size() - get_tree().get_nodes_in_group("rip").size():

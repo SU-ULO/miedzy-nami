@@ -19,6 +19,12 @@ func clear_canvas(): # removes all canvas children
 	currentGUI = null
 	set_visibility("PC", "playerGUI", 1)
 
+func canvas_empty():
+	if IC.get_child_count() > 0:
+		return false
+	else:
+		return true
+
 func add(gui:Node = null): # adds scene as InteractionCanvas child
 	if Node == null:
 		print("WARRNING: no GUI node. Scene not found")
