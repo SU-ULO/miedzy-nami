@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://textures/przelacznik_2.png" type="Texture" id=1]
-[ext_resource path="res://textures/przelacznik_1.png" type="Texture" id=2]
-[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://textures/sabotage4.png" type="Texture" id=1]
 [ext_resource path="res://scripts/sabotage4gui.cs" type="Script" id=4]
-[ext_resource path="res://textures/sabotage_icon2.png" type="Texture" id=7]
 
 [node name="sabotage4" type="Control"]
 anchor_right = 1.0
@@ -24,54 +21,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 351.0
-margin_top = 744.0
-margin_right = 2299.0
-margin_bottom = 936.0
-custom_fonts/font = ExtResource( 3 )
-text = "NIECH KTOŚ ZROBI ASSETY, PROSZE!11!!!
-~~Z PODZIĘKOWANIAMI Z GÓRY, MARCIN"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 936.0
-margin_top = 548.0
-margin_right = 1075.0
-margin_bottom = 835.0
-custom_constants/hseparation = 63
-columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="switch1" type="TextureButton" parent="GridContainer"]
-margin_right = 139.0
-margin_bottom = 287.0
+[node name="switch1" type="TextureButton" parent="ColorRect"]
+margin_left = 476.392
+margin_top = 113.44
+margin_right = 823.392
+margin_bottom = 677.44
 toggle_mode = true
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="icon" type="TextureRect" parent="."]
-margin_left = -465.378
-margin_top = 212.377
-margin_right = 2451.62
-margin_bottom = 392.377
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.0
-texture = ExtResource( 7 )
 expand = true
-stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="GridContainer/switch1" to="." method="OnSwitchDown"]
-[connection signal="button_up" from="GridContainer/switch1" to="." method="OnSwitchUp"]
+[connection signal="button_down" from="ColorRect/switch1" to="." method="OnSwitchDown"]
+[connection signal="button_up" from="ColorRect/switch1" to="." method="OnSwitchUp"]

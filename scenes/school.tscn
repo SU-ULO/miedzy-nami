@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/taskpoints/tablica-taskpoint2.tscn" type="PackedScene" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://scripts/tasks/HasloINF.cs" type="Script" id=64]
 [ext_resource path="res://objects/taskpoints/admin.tscn" type="PackedScene" id=65]
 [ext_resource path="res://scripts/tasks/HasloPOL.cs" type="Script" id=66]
+[ext_resource path="res://scripts/Sabotage4.cs" type="Script" id=67]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
@@ -924,6 +925,16 @@ scale = Vector2( 0.323727, 0.323364 )
 [node name="biorko-nauczyciela6" parent="Mapa/YSort" instance=ExtResource( 19 )]
 position = Vector2( -250.145, 2208.59 )
 scale = Vector2( 0.524629, 0.52404 )
+
+[node name="pseudotaskpoint1" parent="Mapa/YSort" instance=ExtResource( 19 )]
+position = Vector2( -781.995, 1992.46 )
+scale = Vector2( 0.524629, 0.52404 )
+script = ExtResource( 67 )
+
+[node name="door4" parent="Mapa/YSort" instance=ExtResource( 60 )]
+position = Vector2( -900.964, 2161.63 )
+scale = Vector2( 0.291, 0.291 )
+script = ExtResource( 67 )
 
 [node name="polka5" parent="Mapa/YSort" instance=ExtResource( 28 )]
 position = Vector2( -1177.55, 1297.33 )
