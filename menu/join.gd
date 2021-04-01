@@ -5,12 +5,12 @@ func _ready():
 	pass # Replace with function body.
 
 func clean_list():
-	for c in $'ServersList'.get_children():
+	for c in $'ServersList/VBoxContainer'.get_children():
 		c.queue_free()
 
 func update_servers(list: Array):
 	clean_list()
-	var serverlist = $'ServersList'
+	var serverlist = $'ServersList/VBoxContainer'
 	for s in list:
 		if !(s.key is String):
 			clean_list()
@@ -32,4 +32,4 @@ func _on_Exit_pressed():
 
 
 func _on_TextureButton_pressed():
-	get_parent().request_join_server($JoinedKey/JoinedKeyField.text)
+	get_parent().request_join_server($JoinedKeyField.text.to_upper())
