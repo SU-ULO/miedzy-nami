@@ -134,10 +134,10 @@ __meta__ = {
 }
 
 [node name="TextureButton" parent="." instance=ExtResource( 4 )]
-margin_left = 5078.49
-margin_top = 414.492
-margin_right = 5590.49
-margin_bottom = 926.492
+margin_left = 5050.0
+margin_top = 780.0
+margin_right = 5650.0
+margin_bottom = 1380.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10000.0

@@ -219,8 +219,8 @@ __meta__ = {
 position = Vector2( 2740, 2268 )
 
 [node name="close" parent="." instance=ExtResource( 5 )]
-margin_left = 4651.21
-margin_top = 1235.15
-margin_right = 5035.21
-margin_bottom = 1619.15
+margin_left = 4720.0
+margin_top = 1200.0
+margin_right = 5200.0
+margin_bottom = 1680.0
 [connection signal="pressed" from="close" to="player" method="_close"]

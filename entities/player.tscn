@@ -261,9 +261,6 @@ frames = SubResource( 7 )
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
 
-[node name="AnimatedSprite" parent="." index="4"]
-frame = 0
-
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
 texture = ExtResource( 5 )
