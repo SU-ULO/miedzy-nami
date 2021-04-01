@@ -8,7 +8,6 @@ var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
 export var sabotageCooldown = 40
-export var death_time = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 var sight_range_scale = 1
@@ -84,7 +83,7 @@ func handle_end_sabotage(type):
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
-	$CanvasLayer/playerGUI.updateGUI()
+	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	$KillCooldown.wait_time = killCooldown
 	network = get_tree().get_root().get_node("Start").network
 	network.connect("sabotage", self, "handle_sabotage")
@@ -109,12 +108,11 @@ func get_input():
 		if Input.is_action_pressed("move_up"):
 			moveY += -1;
 		if joystickUsed:
-			moveX = $CanvasLayer/playerGUI/Joystick.vec.x
-			moveY = $CanvasLayer/playerGUI/Joystick.vec.y
+			moveX = $GUI/PlayerCanvas/playerGUI/Joystick.vec.x
+			moveY = $GUI/PlayerCanvas/playerGUI/Joystick.vec.y
 		if Input.is_action_just_pressed("ui_select"):
-			print(localTaskList)
 			ui_selected()
-			$CanvasLayer/playerGUI.updateGUI()
+			$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		if Input.is_action_just_pressed("ui_kill"):
 			if self.is_in_group("impostors"):
 				ui_kill()
@@ -124,13 +122,12 @@ func get_input():
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
 	if Input.is_action_just_pressed("set_fov"):
-		become_impostor()
-#		if fov_toggle:
-#			sight_range = 2000 * sight_range_scale;
-#		else:
-#			sight_range = 500 * sight_range_scale
-#			get_tree().get_root().get_node("Start").network.end_game(true)
-#		fov_toggle = !fov_toggle
+		if fov_toggle:
+			sight_range = 2000 * sight_range_scale;
+		else:
+			sight_range = 500 * sight_range_scale
+			get_tree().get_root().get_node("Start").network.end_game(true)
+		fov_toggle = !fov_toggle
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -157,12 +154,13 @@ func get_input():
 			$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		else:
 			$sprites.stopWalk()
+
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()
 	check_line_of_sight()
 	check_interaction()
-	
+
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -205,14 +203,14 @@ func check_interaction():
 	for item in in_interaction_range:
 		if item.is_in_group("players"):
 			if !in_sight.has(item):
-				if players_interactable.has(item):
-					players_interactable.erase(item);
-					if debug_mode: print(item.get_name(), " removed from: players_interactable")
-			else:
 				if is_in_group("impostors") && !item.is_in_group("rips"):
-					if !players_interactable.has(item):
-						players_interactable.push_back(item);
-						if debug_mode: print(item.get_name(), " added to: players_interactable")
+					if players_interactable.has(item):
+						players_interactable.erase(item);
+						if debug_mode: print(item.get_name(), " removed from: players_interactable")
+			else:
+				if !players_interactable.has(item):
+					players_interactable.push_back(item);
+					if debug_mode: print(item.get_name(), " added to: players_interactable")
 
 		elif item.is_in_group("deadbody"):
 			if !in_sight.has(item):
@@ -241,8 +239,7 @@ func check_interaction():
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					else:
 						interactable.push_back(item);
-						#if debug_mode: 
-						print(item.get_name(), " added to: interactable")
+						if debug_mode: print(item.get_name(), " added to: interactable")
 
 func showMyTasks():
 	for i in localTaskList:
@@ -252,12 +249,12 @@ func showMyTasks():
 				if i.material is ShaderMaterial:
 					i.material.set_shader_param("aura_width", 0)
 		elif i.material != null:
-			if i.material is ShaderMaterial:
-				i.material.set_shader_param("aura_width", 18)
+				if i.material is ShaderMaterial:
+					i.material.set_shader_param("aura_width", 18)
 # interactions
 
 func ui_kill():
-	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0 && !is_in_group("rip")):
+	if(players_interactable.size() != 0 && $KillCooldown.time_left == 0):
 		var currentBestItem = players_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -265,11 +262,11 @@ func ui_kill():
 			if(position.distance_squared_to(item.position) < currentBestDistance):
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
-		players_interactable.erase(currentBestItem)
+		players_interactable.erase(self)
 		currentBestItem.Interact(self)
 
 func ui_report():
-	if(deadbody_interactable.size() != 0 && !is_in_group("rip")):
+	if(deadbody_interactable.size() != 0):
 		var currentBestItem = deadbody_interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -294,7 +291,6 @@ func ui_selected():
 		print("sight: ", in_sight)
 	
 	if(interactable.size() != 0):
-		$CanvasLayer/playerGUI.show_map()
 		var currentBestItem = interactable[0]
 		var currentBestDistance = position.distance_squared_to(currentBestItem.position)
 			
@@ -303,13 +299,10 @@ func ui_selected():
 				currentBestItem = item
 				currentBestDistance = position.distance_squared_to(currentBestItem.position)
 
-		var result
-		if currentBestItem.is_in_group("tasks"): 
-			result = currentBestItem.Interact(); 
-		else: result = currentBestItem.Interact(self)
+		var result = currentBestItem.Interact(self)
+		
 		if result == false:
 			return
-
 		else:
 			currentInteraction = currentBestItem
 
