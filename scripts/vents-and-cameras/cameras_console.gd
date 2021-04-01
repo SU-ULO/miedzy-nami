@@ -22,7 +22,7 @@ func delete_gui(body):
 			# warning-ignore:return_value_discarded
 			get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 			get_node(lc).get_node("Area2D").monitoring = 0
-		get_tree().get_root().get_node('Start').network.request_cameras_enable(false)
+		Globals.start.network.request_cameras_enable(false)
 	body.get_node("GUI").clear_canvas()
 
 func instance_gui(body):
@@ -46,7 +46,7 @@ func instance_gui(body):
 			camera.get_node("Area2D").monitoring = 1
 			camera.detect()
 			iter += 1
-		get_tree().get_root().get_node('Start').network.request_cameras_enable(true)
+		Globals.start.network.request_cameras_enable(true)
 	
 	for vp in camera_gui.viewports:
 		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
