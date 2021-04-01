@@ -40,7 +40,7 @@ public class Sabotage4 : Node2D, IInteractable
 			network.Call("request_end_sabotage", 4);
 		
 		
-		network.Get("own_player").GetNode("GUI").Call("clear_canvas");
+		((Node2D)network.Get("own_player")).GetNode("GUI").Call("clear_canvas");
 		Godot.GD.Print("state: "+currentlyPressed);
 	}
 
