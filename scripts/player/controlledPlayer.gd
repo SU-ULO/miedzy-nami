@@ -8,6 +8,7 @@ var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
 export var sabotageCooldown = 40
+export var death_time = 20
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 var sight_range_scale = 1

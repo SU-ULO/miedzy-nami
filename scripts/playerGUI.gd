@@ -54,9 +54,8 @@ func checkUsage():
 		return false
 	for i in player.interactable:
 		if i.is_in_group("tasks"):
-			if !player.is_in_group("impostors"):
-				if i in player.localTaskList:
-					return true
+			if i in player.localTaskList:
+				return true
 		elif i.is_in_group("vents"):
 			if player.is_in_group("impostors"):
 				return true
