@@ -17,6 +17,3 @@ func showMenu(name):
 	$menus.get_node(name + "-menu").visible = true
 	if name == "look":
 		$menus.get_node("look-menu").refresh()
-
-func _close():
-	player.ui_canceled()
