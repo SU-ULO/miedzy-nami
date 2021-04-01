@@ -34,14 +34,12 @@ public class Sabotage4 : Node2D, IInteractable
 				currentlyPressed = (int)data["currentlyPressed"];
 								Godot.GD.Print("Setting total to " + currentlyPressed);
 			}
+			if(currentlyPressed >= needed)
+				network.Call("request_end_sabotage", 4);
+		
+			((Node2D)network.Get("own_player")).GetNode("GUI").Call("clear_canvas");
+			Godot.GD.Print("state: "+currentlyPressed);
 		}
-		
-		if(currentlyPressed >= needed)
-			network.Call("request_end_sabotage", 4);
-		
-		
-		((Node2D)network.Get("own_player")).GetNode("GUI").Call("clear_canvas");
-		Godot.GD.Print("state: "+currentlyPressed);
 	}
 
 	public bool Interact(Node2D body){
