@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Sabotage4 : StaticBody2D
+public class Sabotage4 : Node2D, IInteractable
 {
 	public static int currentlyPressed = 0;
 	public static int needed = 2;
@@ -20,16 +20,27 @@ public class Sabotage4 : StaticBody2D
 	
 	public void HandleGUISync(string guiName, Godot.Collections.Dictionary<String, object> data){
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
-		if(guiName == GetName()){
-			if(data.ContainsKey("currentlyPressedDelta"))
+		if(guiName == "sabotage4"){
+			Godot.GD.Print(data.Keys.Count, data.Count);
+			foreach (String s in data.Keys){
+				Godot.GD.Print("key: " + s);
+			}
+			
+			if(data.ContainsKey("currentlyPressedDelta")){
 				currentlyPressed += (int)data["currentlyPressedDelta"];
-			if(data.ContainsKey("currentlyPressed"))
+				Godot.GD.Print("Delta: " + (int)data["currentlyPressedDelta"]);
+			}
+			if(data.ContainsKey("currentlyPressed")){
 				currentlyPressed = (int)data["currentlyPressed"];
+								Godot.GD.Print("Setting total to " + currentlyPressed);
+			}
 		}
 		
 		if(currentlyPressed >= needed)
 			network.Call("request_end_sabotage", 4);
-			
+		
+		
+		network.Get("own_player").GetNode("GUI").Call("clear_canvas");
 		Godot.GD.Print("state: "+currentlyPressed);
 	}
 
@@ -42,29 +53,21 @@ public class Sabotage4 : StaticBody2D
 			return false;
 		}
 			
-		Node canvasLayer = (Node)GetOwner().GetNode("CanvasLayer");
 		Resource gui = ResourceLoader.Load("res://gui/sabotage4.tscn");
 		Node guiInstance = ((PackedScene)gui).Instance();
 		guiInstance.AddToGroup("gui_sabotage_4");
-		canvasLayer.AddChild(guiInstance);
+		body.GetNode("GUI").Call("add_to_canvas", guiInstance);
 		
 		
 		return true;
 	}
 	
-	public bool EndInteraction(Node2D b){
-		Node n = (Node)GetOwner().GetNode("CanvasLayer");
-		Godot.Collections.Array children = n.GetChildren();
-		
-		// Kill all children 
-		foreach (Node child in children){
-			if(child.IsInGroup("gui_sabotage_4"))
-				n.RemoveChild(child);
-			else
-				GD.Print(child.GetName() + " is staying attached to " + "CanvasLayer");
-		}
-		
-		return true;
+	public void EndInteraction(Node2D body){
+		body.GetNode("GUI").Call("clear_canvas");
+	}
+	
+	public bool IsDone(){
+		throw new Exception("Unimplemented, why is it called on this object?");
 	}
 
 }
