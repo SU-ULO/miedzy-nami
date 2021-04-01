@@ -13,6 +13,7 @@ func set_settings():
 	var settings = get_parent().serversettings
 	settings["hidden"]=$ServerSettingsContainer/ServerHidden/ServerHiddenCheckBox.pressed
 	settings["name"]=$ServerSettingsContainer/ServerName/ServerNameField.text
+	Globals.save_file("user://ss.settings", settings)
 
 
 func _on_ServerAcceptButton_pressed():

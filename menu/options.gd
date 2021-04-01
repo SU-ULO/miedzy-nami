@@ -11,6 +11,7 @@ func get_settings():
 func set_settings():
 	var settings = get_parent().usersettings
 	settings["signaling_url"]=$OptionsContainer/MatchmakingURL.text
+	Globals.save_file("user://us.settings", settings)
 
 func _on_OptionsAcceptButton_pressed():
 	set_settings()

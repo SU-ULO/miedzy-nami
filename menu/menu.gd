@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var usersettings: Dictionary = {
 	"signaling_url": 'wss://gaming.rakbook.pl/miedzy-nami/signaling',
-	"username": ""
+	"username": "nazwa"
 }
 
 var serversettings: Dictionary = {
@@ -16,8 +16,16 @@ signal request_end()
 signal request_refresh_servers()
 signal request_join_server(key)
 
+func _init():
+	var us = Globals.read_file("user://us.settings")
+	if us and us is Dictionary and us.has("signaling_url") and us.has("username"):
+		usersettings = us
+	var ss = Globals.read_file("user://ss.settings")
+	if ss and ss is Dictionary and ss.has("hidden") and ss.has("name"):
+		serversettings = ss
+
 func _ready():
-	pass
+	$Main/Username.text=usersettings["username"]
 
 func close_everything():
 	for n in get_children():
@@ -89,10 +97,12 @@ func _on_OptionsButton_pressed():
 func _on_StartServerButton_pressed():
 	usersettings.username = $'Main/Username'.text
 	if usersettings.username.length()>0:
+		Globals.save_file("user://us.settings", usersettings)
 		open_create_room()
 
 func _on_StartClientButton_pressed():
 	open_logging_in()
 	usersettings.username = $'Main/Username'.text
 	if usersettings.username.length()>0:
+		Globals.save_file("user://us.settings", usersettings)
 		emit_signal("request_start_client")

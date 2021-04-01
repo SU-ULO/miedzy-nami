@@ -22,7 +22,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	menu.connect("request_start_server", self, "start_server")
 # warning-ignore:return_value_discarded
-	menu.connect("request_end", self, "leave_room")
+	menu.connect("request_end", self, "leave_matchmaking")
 
 func leave_matchmaking():
 	if matchmaking:
