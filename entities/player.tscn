@@ -30,12 +30,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -49,12 +49,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -68,12 +68,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -87,12 +87,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -106,12 +106,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -125,12 +125,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -142,14 +142,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -163,12 +163,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -260,6 +260,9 @@ frames = SubResource( 7 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
+
+[node name="AnimatedSprite" parent="." index="4"]
+frame = 0
 
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
@@ -538,6 +541,7 @@ __meta__ = {
 [node name="B" parent="GUI/CloseButton" index="0" instance=ExtResource( 23 )]
 visible = false
 script = ExtResource( 24 )
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
@@ -547,4 +551,3 @@ script = ExtResource( 24 )
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/report" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "report" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/exit_button" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "exit" ]]
 [connection signal="pressed" from="GUI/CloseButton/B" to="GUI/CloseButton/B" method="_close"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

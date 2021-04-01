@@ -100,8 +100,8 @@ func _on_gui_button_pressed(button_name):
 			if player.currentInteraction.is_in_group("vents"):
 				player.currentInteraction.EndInteraction(player)
 				player.currentInteraction = null
-			else:
-				player.ui_selected()
+		else:
+			player.ui_selected()
 	elif button_name == "report":
 		player.ui_report()
 	elif button_name == "exit":
