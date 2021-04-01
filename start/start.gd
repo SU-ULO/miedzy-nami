@@ -43,7 +43,7 @@ func leave_room():
 		menu.open_create_room()
 	else:
 		menu.open_main()
-	network_side = NONE
+		network_side = NONE
 
 func start_server(options):
 	if network_side != NONE:
