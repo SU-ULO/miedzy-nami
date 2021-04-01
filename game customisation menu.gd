@@ -1,5 +1,8 @@
 extends Control
 
+var station
+var player
+
 func _ready():
 	for i in $buttons.get_children():
 		# warning-ignore:return_value_discarded
@@ -14,4 +17,6 @@ func showMenu(name):
 	$menus.get_node(name + "-menu").visible = true
 	if name == "look":
 		$menus.get_node("look-menu").refresh()
-	
+
+func _close():
+	player.ui_canceled()

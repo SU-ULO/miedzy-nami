@@ -9,6 +9,8 @@ public abstract class Task : Godot.Node2D
 {
 	public static bool anyDirty = false;
 	
+	public Godot.Node2D player = null;
+	
 	public static bool CheckAndClearAnyDirty(){
 		bool tmp = anyDirty;
 		anyDirty = false;
@@ -168,6 +170,7 @@ public abstract class Task : Godot.Node2D
 
 	public List<int> playerIDs = new List<int>();
 	private int _state;
+	
 	public int state { 
 		get {
 			return _state;
@@ -190,7 +193,7 @@ public abstract class Task : Godot.Node2D
 					}
 					
 					Godot.GD.Print("Ending task "+taskID);
-					TaskEndInteraction();
+					player.GetNode("GUI").Call("clear_canvas");
 					return;
 				}
 			}
@@ -236,8 +239,8 @@ public abstract class Task : Godot.Node2D
 
 	public TaskCategory category = TaskCategory.Normal;
 	
-	public virtual void TaskInteract(){}
-	public virtual void TaskEndInteraction(){}
+	public virtual void TaskInteract(Godot.Node2D body){}
+	public virtual void TaskEndInteraction(Godot.Node2D body){}
 	public virtual void TaskOnProgress(int progress){}
 	public virtual void TaskOnCompleted(){}
 	

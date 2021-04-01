@@ -1,5 +1,5 @@
-[gd_scene load_steps=42 format=2]
 
+[gd_scene load_steps=45 format=2]
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/playerGUI.gd" type="Script" id=3]
@@ -21,6 +21,10 @@
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=19]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=20]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=21]
+[ext_resource path="res://scripts/GUI.gd" type="Script" id=22]
+[ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=23]
+[ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
+
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -528,12 +532,35 @@ __meta__ = {
 [node name="Joystick" parent="CanvasLayer/playerGUI" index="5" instance=ExtResource( 18 )]
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
-[connection signal="pressed" from="CanvasLayer2/exit_button" to="." method="_on_exit_button_pressed"]
-[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/TaskPanel/TasKButton" to="CanvasLayer/playerGUI" method="_onTaskContainerButtonPressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/impostor/sabotage" to="CanvasLayer/playerGUI" method="_on_sabotage_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/impostor/kill" to="CanvasLayer/playerGUI" method="_on_kill_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/TopButtons/settings" to="CanvasLayer/playerGUI" method="_on_settings_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/TopButtons/map" to="CanvasLayer/playerGUI" method="_on_map_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/ActionButtons/use" to="CanvasLayer/playerGUI" method="_on_use_pressed"]
-[connection signal="pressed" from="CanvasLayer/playerGUI/ActionButtons/report" to="CanvasLayer/playerGUI" method="_on_report_pressed"]
+
+[node name="exit_button" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI" index="6"]
+visible = false
+light_mask = 2
+margin_left = 1791.34
+margin_top = 12.384
+margin_right = 2478.34
+margin_bottom = 699.384
+rect_scale = Vector2( 0.159295, 0.159295 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InteractionCanvas" type="CanvasLayer" parent="GUI" index="1"]
+
+[node name="CloseButton" type="CanvasLayer" parent="GUI" index="2"]
+
+[node name="B" parent="GUI/CloseButton" index="0" instance=ExtResource( 23 )]
+visible = false
+script = ExtResource( 24 )
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TopButtons/settings" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "settings" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TopButtons/map" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "map" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/use" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "use" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/report" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "report" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/exit_button" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "exit" ]]
+[connection signal="pressed" from="GUI/CloseButton/B" to="GUI/CloseButton/B" method="_close"]

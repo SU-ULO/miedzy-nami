@@ -2,68 +2,63 @@ extends Control
 
 var player
 var usage
-
 var network
+var GUI
 
-var minimap = { "res": preload("res://gui/minimap.tscn"), "map_name": "MiniMap" }
-var sabotagemap = { "res": preload("res://gui/sabotagemap.tscn"), "map_name": "SabotageMap" }
-var settings = { "res": preload("res://gui/menumenu.tscn"), "map_name": "Menu" }
-var map_opened:Dictionary = {}
+#  GUI resources
+var minimap = { "gui_res": load("res://gui/minimap.tscn"), "gui_name": "MiniMap" }
+var sabotagemap = { "gui_res": load("res://gui/sabotagemap.tscn"), "gui_name": "SabotageMap" }
+var settings = { "gui_res": load("res://gui/menumenu.tscn"), "gui_name": "Settings" }
 
 func _ready():
-	player = get_parent().get_parent()
-	interactionGUIupdate()
 	network = get_tree().get_root().get_node("Start").network
+	player = get_owner()
+	GUI = get_parent().get_parent()
+	
 	$gamecode.text = network.server_key
-func updateGUI():
+	interactionGUIupdate()
+
+func updateTaskList():
 	player.showMyTasks()
 	var content = ""
 	for i in player.localTaskList:
 		content += i.ToString() 
 		content += "\n"
 	$TaskPanel/VBoxContainer/tasklist.text = content
-		
+
+func interactionGUIupdate():
+	if player.is_in_group("impostors"):
+		$ImpostorButtons.visible = true
+	else:
+		$ImpostorButtons.visible = false
+		$ActionButtons/use.visible = true
+
 func _process(_delta):
-	$ActionButtons/report.visible = !player.is_in_group("rip")
 	usage = checkUsage()
 	$ActionButtons/use.disabled = !usage
 	$ActionButtons/report.disabled = !checkReportability()
 	if player.is_in_group("impostors"):
 		$ActionButtons/use.visible = usage
-	$impostor/sabotage.visible = !usage
+	$ImpostorButtons/sabotage.visible = !usage
 	if int(player.get_node("KillCooldown").time_left) > 0:
-		$impostor/kill/cooldown.text = str(int(player.get_node("KillCooldown").time_left))
-		$impostor/kill/cooldown.visible = true
+		$ImpostorButtons/kill/cooldown.text = str(int(player.get_node("KillCooldown").time_left))
+		$ImpostorButtons/kill/cooldown.visible = true
 	else:
-		$impostor/kill/cooldown.visible = false
-	$impostor/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
+		$ImpostorButtons/kill/cooldown.visible = false
+	$ImpostorButtons/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
 	
 	processGui()
-
-func _on_use_pressed():
-	if player.currentInteraction != null:	 
-		if player.currentInteraction.is_in_group("vents"):
-			player.currentInteraction.EndInteraction(player)
-			player.currentInteraction = null
-	else:
-		player.ui_selected()
-
-func interactionGUIupdate():
-	if player.is_in_group("impostors"):
-		$impostor.visible = true
-	else:
-		$impostor.visible = false
-		$ActionButtons/use.visible = true
 
 func checkUsage():
 	if player.interactable.size() == 0:
 		return false
 	for i in player.interactable:
 		if i.is_in_group("tasks"):
-			if i in player.localTaskList:
-				return true
+			if !player.is_in_group("impostors"):
+				if i in player.localTaskList:
+					return true
 		elif i.is_in_group("vents"):
-			if 	player.is_in_group("impostors"):
+			if player.is_in_group("impostors"):
 				return true
 		else:
 				return true
@@ -71,60 +66,47 @@ func checkUsage():
 
 func checkReportability():
 	return player.deadbody_interactable.size() > 0
-
-func _on_report_pressed():
-	player.ui_report()
-		
+	
 func checkKillability():
 	if player.currentInteraction != null:
 		return false
 	return player.players_interactable.size() > 0
 
-
-func _on_kill_pressed():
-	player.ui_kill()
-
-func show_map(map_object = map_opened):
-	var canvas = get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer")
-	if map_opened.empty():
-		if !map_object.empty():
-			var instance = map_object.res.instance()
-			canvas.add_child(instance)
-			instance.name = map_object.map_name
-			if map_object.map_name == "MiniMap":
-				instance.get_node("player").player = self.get_parent().get_parent()
-				instance.get_node("player").taskList = player.localTaskList
-				instance.get_node("player").addTasks()
-			elif map_object.map_name == "SabotageMap":
-				instance.connect("exit", self, "show_map", [map_object])
-				player.connect("sabotage_event", instance, "updateMap")
-				instance.sabotage = player.currentSabotage
-				instance.curr_time  = player.get_node("SabotageCooldown").time_left
-				instance.cooldown = player.sabotageCooldown
-				instance.refresh_self()
-			elif map_object.map_name == "Menu":
-				instance.connect("exit", self, "show_map", [map_object])
-				instance.connect("leave_game", self, "leave_game")
-			map_opened = map_object.duplicate()
-			setVisibility("ActionButtons", 0)
-			setVisibility("TaskPanel", 0)
-			if player.is_in_group("impostors"):
-				setVisibility("impostor", 0)
-	else:
-		canvas.get_child(0).queue_free()
-		setVisibility("ActionButtons", 1)
-		setVisibility("TaskPanel", 1)
-		if player.is_in_group("impostors"):
-			setVisibility("impostor", 1)
-		map_opened.clear()
-
-
-
-func _on_sabotage_pressed():
-	show_map(sabotagemap)
-
-func _on_map_pressed():
-	show_map(minimap)
+func _on_gui_button_pressed(button_name):
+	if button_name == "sabotage":
+		var instance = sabotagemap["gui_res"].instance()
+		instance.name = sabotagemap["gui_name"]
+		if GUI.replace_on_canvas(instance):
+			instance.player = player
+			player.connect("sabotage_event", instance, "updateMap")
+			instance.sabotage = player.currentSabotage
+			instance.curr_time  = player.get_node("SabotageCooldown").time_left
+			instance.cooldown = player.sabotageCooldown
+			instance.refresh_self()
+	elif button_name == "kill":
+		player.ui_kill()
+	elif button_name == "settings":
+		var instance = settings["gui_res"].instance()
+		instance.name = settings["gui_name"]
+		GUI.replace_on_canvas(instance)
+	elif button_name == "map":
+		var instance = minimap["gui_res"].instance()
+		instance.name = minimap["gui_name"]
+		if GUI.replace_on_canvas(instance):
+			instance.get_node("player").player = player
+			instance.get_node("player").taskList = player.localTaskList
+			instance.get_node("player").addTasks()
+	elif button_name == "use":
+		if player.currentInteraction != null:
+			if player.currentInteraction.is_in_group("vents"):
+				player.currentInteraction.EndInteraction(player)
+				player.currentInteraction = null
+			else:
+				player.ui_selected()
+	elif button_name == "report":
+		player.ui_report()
+	elif button_name == "exit":
+		player.ui_canceled()
 
 # # # GUI VISUAL FUNCTIONS AND VARIABLES # # #
 
@@ -139,7 +121,6 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 
 func processGui():
 	var task_panel = get_node("TaskPanel")
-	task_panel.visible = !network.comms_disabled
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
 	task_container.rect_size.y = max(list_size.y + task_label_size.y, task_list_min_size)
 	
@@ -160,28 +141,8 @@ func toggleTaskContainer():
 		task_panel_position.x += task_container_size.x
 	task_panel_opened = !task_panel_opened
 
-func setVisibility(node_name = "self", state:bool = 1):
-	var node
-	if node_name == "self":
-		node = self
-	else:
-		node = get_node(node_name)
-	node.visible = state
-
 func _onTaskContainerButtonPressed():
 	toggleTaskContainer()
-
-func closeSabotageMap():
-	map_opened.clear()
-	get_owner().get_parent().get_parent().get_parent().get_node("CanvasLayer").get_node("SabotageMap").queue_free()
-	setVisibility("ActionButtons", 1)
-	setVisibility("TaskPanel", 1)
-	if player.is_in_group("impostors"):
-		setVisibility("impostor", 1)
-
-
-func _on_settings_pressed():
-	show_map(settings)
 
 func leave_game():
 	player.get_tree().get_root().get_node("Start").leave_room()

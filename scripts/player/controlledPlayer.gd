@@ -41,7 +41,6 @@ func is_sabotage_timer_done():
 	
 # should we take into consideration fov_toggle?
 func handle_sabotage(type):
-	var network = get_tree().get_root().get_node("Start").network
 	if $SabotageCooldown.time_left == 0 and currentSabotage == 0:
 		currentSabotage = type
 		if type == 1:
@@ -65,7 +64,6 @@ func handle_end_sabotage(type):
 	if not currentSabotage == 0:
 		currentSabotage = 0
 		$SabotageCooldown.start(sabotageCooldown)
-		var network = get_tree().get_root().get_node("Start").network
 		if type == 1:
 			if !is_in_group("impostors"):
 				sight_range = default_sight_range * sight_range_scale
@@ -98,8 +96,7 @@ func get_input():
 	moveX = 0; moveY = 0
 	
 	if !disabled_movement and currentInteraction == null:
-		joystickUsed = $CanvasLayer/playerGUI/Joystick.pressed
-		$CanvasLayer/playerGUI.visible = true
+		joystickUsed = $GUI/PlayerCanvas/playerGUI/Joystick.pressed
 		if Input.is_action_pressed("move_right"):
 			moveX += 1;
 		
@@ -126,8 +123,6 @@ func get_input():
 				ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
-		$CanvasLayer/playerGUI.updateGUI()
-		showMyTasks()
 	if Input.is_action_just_pressed("set_fov"):
 		become_impostor()
 #		if fov_toggle:
@@ -159,10 +154,8 @@ func get_input():
 				selected_vent = 0
 		else: if currentInteraction.is_in_group("tasks") and currentInteraction.IsDone():
 			currentInteraction = null
-			$CanvasLayer/playerGUI.updateGUI()
-			$CanvasLayer2/exit_button.visible = false
+			$GUI/PlayerCanvas/playerGUI.updateTaskList()
 		else:
-			$CanvasLayer/playerGUI.visible = false
 			$sprites.stopWalk()
 func _process(delta):
 	scale_sight_range(delta)
@@ -287,16 +280,15 @@ func ui_report():
 		currentBestItem.Interact(self)
 
 func ui_canceled():
+	$GUI/PlayerCanvas/playerGUI.updateTaskList()
+	showMyTasks()
 	if(currentInteraction != null):
-		$CanvasLayer2/exit_button.visible = false
-		if currentInteraction.is_in_group("tasks"):
-			currentInteraction.EndInteraction()
-		else:
-			currentInteraction.EndInteraction(self)
-		print(currentInteraction.get_name())
+		currentInteraction.EndInteraction(self)
+		print(currentInteraction.name)
 		currentInteraction = null
 		
 func ui_selected():
+	if get_node("GUI").currentGUI != null: return
 	if debug_mode:
 		print("sight_range: ", in_sight_range)
 		print("sight: ", in_sight)
@@ -317,20 +309,14 @@ func ui_selected():
 		else: result = currentBestItem.Interact(self)
 		if result == false:
 			return
-		currentInteraction = currentBestItem
-		if !currentInteraction.is_in_group("vents"): 
-			$CanvasLayer2/exit_button.visible = true
+
+		else:
+			currentInteraction = currentBestItem
 
 func become_impostor():
 	.become_impostor()
-	$CanvasLayer/playerGUI.interactionGUIupdate()
-
-func _on_exit_button_pressed():
-	ui_canceled()
-	
-
+	$GUI/PlayerCanvas/playerGUI.interactionGUIupdate()
 
 func _on_DeathTimer_timeout():
 	if not is_in_group("imposotors"):
 		self.Interact(self)
-	pass # Replace with function body.

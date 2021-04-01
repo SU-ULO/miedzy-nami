@@ -7,12 +7,12 @@ public class TablicaHelperTask : TaskWithGUI
 		return "res://gui/tablica.tscn";
 	}
 	
-	public override bool Interact(){
+	public override bool Interact(Godot.Node2D body){
 		TablicaMainTask mainTablicaTask = (TablicaMainTask)GetTasksOfType(typeof(TablicaMainTask))[0];
 		bool mainLocal = mainTablicaTask.local;
 		
 		if(mainLocal){
-			TaskInteract();
+			TaskInteract(body);
 		}
 		
 		return mainLocal;

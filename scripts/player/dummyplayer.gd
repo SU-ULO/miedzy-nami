@@ -173,7 +173,9 @@ func Interact(body):
 	var network = get_tree().get_root().get_node("Start").network
 	body.get_node("KillCooldown").start(network.gamesettings["kill-cooldown"])
 	body.position = self.position
-	get_tree().get_root().get_node("Start").network.request_kill(owner_id)
+	network.request_kill(owner_id)
+	if owner_id == network.own_id:
+		network.own_player.get_node("GUI").set_visibility("PC", "PlayerGUI/ActionButtons/report", 0)
 	interacted = false
 	return false
 
@@ -196,7 +198,7 @@ func EndInteraction(_body):
 	print("you cant be unkilled, how unfortunate")
 	# body.currentInteraction = null
 
-func handle_sabotage(type):
+func handle_sabotage(_type):
 	pass
 
 # draw for debug

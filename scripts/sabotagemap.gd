@@ -1,10 +1,11 @@
 extends Control
 
+var player
+
 #icons are temporary
 var cooldown
 var curr_time
 var sabotage
-signal exit()
 
 var bars
 
@@ -39,7 +40,7 @@ func sabotage_start(name):
 		network.request_sabotage(4)
 
 func _on_exit_pressed():
-	emit_signal("exit")
+	player.get_node("GUI").replace_on_canvas(self)
 
 func refresh_self():
 	if curr_time > 0:
@@ -54,4 +55,3 @@ func updateMap(newsabotage):
 	else:
 		curr_time = cooldown
 	refresh_self()
-		

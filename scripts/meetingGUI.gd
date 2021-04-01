@@ -47,9 +47,9 @@ func to_time(s):
 	
 	return mins + ":" + secs
 
-func show_votes(player = null, imps = 0):
-	# tekst do dporacowania ;)
+func update_verdict(player = null, imps = 0):
 	var verdict = get_node("verdict")
+	
 	if player == null:
 		verdict.get_node("Control/message").text = "nikt nie został wyrzucony"
 	else:

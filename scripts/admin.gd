@@ -50,10 +50,11 @@ func Interact(body):
 	map = map_res.instance()
 	canvas.add_child(map)
 	map.get_node("off").visible =  disabled
+	body.get_node("GUI").add_to_canvas(map)
 
 func EndInteraction(_body):
 	if opened:
-		map.queue_free()
+		player.get_node("GUI").clear_canvas()
 		map = null
 		opened = false
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gui/commsoff.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/vents and cameras/camera_gui.gd" type="Script" id=2]
 [ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.12549, 0.152941, 0.823529, 1 )
@@ -211,3 +212,12 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="off" parent="." instance=ExtResource( 1 )]
+
+[node name="TextureButton" parent="." instance=ExtResource( 4 )]
+anchor_right = 0.146
+anchor_bottom = 0.087
+margin_left = 1781.23
+margin_top = 57.7155
+margin_right = 1564.91
+margin_bottom = 27.7555
+[connection signal="pressed" from="TextureButton" to="." method="_close"]

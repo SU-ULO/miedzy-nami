@@ -3,7 +3,7 @@
 [ext_resource path="res://textures/sabotage_icon1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/sabotagemap.gd" type="Script" id=2]
 [ext_resource path="res://textures/map/map-mini-red.svg" type="Texture" id=3]
-[ext_resource path="res://textures/crosss.png" type="Texture" id=4]
+[ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://textures/sabotage_icon3.png" type="Texture" id=5]
 [ext_resource path="res://textures/sabotage_icon2.png" type="Texture" id=6]
 [ext_resource path="res://textures/sabotage_icon4.png" type="Texture" id=7]
@@ -133,15 +133,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="exit" type="TextureButton" parent="."]
-margin_left = 5472.04
-margin_top = -391.708
-margin_right = 6159.04
-margin_bottom = 295.292
-rect_scale = Vector2( 0.662181, 0.662181 )
-texture_normal = ExtResource( 4 )
+[node name="TextureButton" parent="." instance=ExtResource( 4 )]
+margin_left = 5050.0
+margin_top = 780.0
+margin_right = 5650.0
+margin_bottom = 1380.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10000.0
 one_shot = true
-[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_exit_pressed"]
