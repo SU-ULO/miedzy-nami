@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -24,8 +24,9 @@
 [ext_resource path="res://scripts/GUI.gd" type="Script" id=22]
 [ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
+[ext_resource path="res://gui/ChatPanel.tscn" type="PackedScene" id=25]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=11]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -44,7 +45,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=12]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -63,7 +64,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=13]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -82,7 +83,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=14]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -101,7 +102,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=15]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -120,7 +121,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=16]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -139,7 +140,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=17]
 resource_local_to_scene = true
 animations = [ {
 "frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
@@ -158,7 +159,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=18]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -177,9 +178,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Theme" id=9]
+[sub_resource type="Theme" id=1]
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 0.196078 )
 border_width_left = 10
 border_width_top = 10
@@ -189,28 +190,28 @@ border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 corner_radius_bottom_right = 10
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFontData" id=12]
+[sub_resource type="DynamicFontData" id=19]
 font_path = "res://fonts/OpenSans-Bold.ttf"
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=20]
 size = 24
-font_data = SubResource( 12 )
+font_data = SubResource( 19 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=16]
-default_font = SubResource( 15 )
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=7]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -219,7 +220,7 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=8]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -228,11 +229,11 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="InputEventKey" id=19]
+[sub_resource type="InputEventKey" id=9]
 scancode = 84
 
-[sub_resource type="ShortCut" id=20]
-shortcut = SubResource( 19 )
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
 
 [sub_resource type="InputEventKey" id=21]
 scancode = 77
@@ -244,32 +245,29 @@ shortcut = SubResource( 21 )
 script = ExtResource( 1 )
 
 [node name="body" parent="sprites" index="0"]
-frames = SubResource( 1 )
+frames = SubResource( 11 )
 
 [node name="clothes-top" parent="sprites" index="1"]
-frames = SubResource( 2 )
+frames = SubResource( 12 )
 
 [node name="eyes" parent="sprites/face" index="0"]
-frames = SubResource( 3 )
+frames = SubResource( 13 )
 
 [node name="eye-bonus" parent="sprites/face/eyes" index="0"]
-frames = SubResource( 4 )
+frames = SubResource( 14 )
 
 [node name="nose" parent="sprites/face" index="1"]
-frames = SubResource( 5 )
+frames = SubResource( 15 )
 
 [node name="mouth" parent="sprites/face" index="2"]
-frames = SubResource( 6 )
+frames = SubResource( 16 )
 
 [node name="spodnie" parent="sprites" index="3"]
 z_index = 0
-frames = SubResource( 7 )
+frames = SubResource( 17 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
-frames = SubResource( 8 )
-
-[node name="AnimatedSprite" parent="." index="4"]
-frame = 1
+frames = SubResource( 18 )
 
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
@@ -334,7 +332,7 @@ __meta__ = {
 [node name="TaskPanel" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="1"]
 margin_right = 774.0
 margin_bottom = 354.0
-theme = SubResource( 9 )
+theme = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -345,7 +343,7 @@ anchor_right = 1.0
 anchor_bottom = 0.999833
 margin_top = 0.0589923
 margin_bottom = 10.0591
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -362,7 +360,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="0"]
 margin_right = 764.0
 margin_bottom = 55.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 3 )
 text = "Lista zadań:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -373,7 +371,7 @@ visible = false
 margin_top = 59.0
 margin_right = 764.0
 margin_bottom = 93.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 0.705882, 0, 0, 1 )
 text = "Onie zły sabotaż"
 
@@ -381,7 +379,7 @@ text = "Onie zły sabotaż"
 margin_top = 59.0
 margin_right = 764.0
 margin_bottom = 335.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "- fajne zadanie 1
 - fajne zadanie 2
 - fajne zadanie 3
@@ -403,19 +401,25 @@ margin_right = 173.0
 margin_bottom = 50.0
 rect_rotation = 90.0
 focus_mode = 0
-theme = SubResource( 16 )
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
+theme = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 16 )
 enabled_focus_mode = 0
-shortcut = SubResource( 20 )
+shortcut = SubResource( 10 )
 text = "ukryj"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="2"]
+[node name="ChatPanel" parent="GUI/PlayerCanvas/playerGUI" index="2" instance=ExtResource( 25 )]
+margin_left = 1.25989
+margin_top = 369.157
+margin_right = 602.26
+margin_bottom = 681.157
+
+[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
 margin_right = 40.0
 margin_bottom = 40.0
 
@@ -462,7 +466,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
+[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -496,7 +500,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
+[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="5"]
 margin_left = 0.794006
 margin_top = 1.58899
 margin_right = 40.794
@@ -533,11 +537,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="5" instance=ExtResource( 18 )]
+[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="6" instance=ExtResource( 18 )]
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
 
-[node name="exit_button" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI" index="6"]
+[node name="exit_button" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI" index="7"]
 visible = false
 light_mask = 2
 margin_left = 1791.34

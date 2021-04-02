@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/ChatPanel.cs" type="Script" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.196078 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_bottom_right = 10
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="ChatPanel" type="Control"]
+margin_right = 390.0
+margin_bottom = 216.0
+theme = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatContainer" type="Panel" parent="."]
+anchor_top = -0.000166645
+anchor_right = 1.0
+anchor_bottom = 0.999833
+margin_top = 0.0359953
+margin_right = 57.0
+margin_bottom = 57.0361
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChatContainer"]
+anchor_right = 1.0
+anchor_bottom = 0.944
+margin_left = 10.0
+margin_top = 10.0
+margin_bottom = -22.896
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ChatContainer/VBoxContainer"]
+margin_right = 437.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 3 )
+text = "Chat:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chat" type="RichTextLabel" parent="ChatContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 69.0
+margin_right = -10.0
+margin_bottom = -71.0
+custom_fonts/normal_font = SubResource( 4 )
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="TextEdit" parent="ChatContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = -62.0
+margin_right = -126.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 5 )
+text = "a"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Send" type="Button" parent="ChatContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -124.108
+margin_top = -61.0
+margin_right = -14.1085
+margin_bottom = -11.0
+custom_fonts/font = SubResource( 6 )
+text = "Wyślij"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="focus_entered" from="ChatContainer/Input" to="." method="OnFocusEntered"]
+[connection signal="focus_exited" from="ChatContainer/Input" to="." method="OnFocusExited"]
+[connection signal="text_changed" from="ChatContainer/Input" to="." method="OnTextChanged"]
+[connection signal="pressed" from="ChatContainer/Send" to="." method="OnSendPressed"]
