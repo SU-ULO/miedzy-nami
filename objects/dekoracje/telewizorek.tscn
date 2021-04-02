@@ -8,6 +8,7 @@ script = ExtResource( 2 )
 
 [node name="telewizorek" type="Sprite" parent="."]
 position = Vector2( -35.4426, 218.545 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

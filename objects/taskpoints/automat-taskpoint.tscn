@@ -59,7 +59,7 @@ wait_time = 60.0
 [node name="automat-taskpoint" type="Sprite" parent="."]
 use_parent_material = true
 position = Vector2( 42.2159, 41.7184 )
-scale = Vector2( 0.303292, 0.303292 )
+scale = Vector2( 0.909, 0.909 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
