@@ -9,9 +9,10 @@ public class Sabotage4 : Node2D, IInteractable
 	
 	public override void _Ready(){
 		AddToGroup("entities");
-		AddToGroup("interactable");
 		AddToGroup("sabotage");
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
+		network.Connect("sabotage", this, "SetInteractable");
+		network.Connect("sabotage_end", this, "SetInteractable");
 		if(signalAttached == false)
 		{
 			signalAttached = true;
@@ -67,5 +68,13 @@ public class Sabotage4 : Node2D, IInteractable
 	public bool IsDone(){
 		throw new Exception("Unimplemented, why is it called on this object?");
 	}
-
+	public void SetInteractable(int type)
+	{
+		if (type == 4)
+		{
+			AddToGroup("interactable");
+		}else{
+			RemoveFromGroup("interactable");
+		}
+	}
 }
