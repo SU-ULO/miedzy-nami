@@ -66,7 +66,7 @@ func set_sync_data(data: Dictionary):
 func _ready():
 	player_speed = default_speed
 	add_to_group("players")
-	add_to_group("entities")	
+	add_to_group("entities")
 	$sprites.loadLook()
 	$Label.text = username
 	pass
@@ -89,7 +89,7 @@ func set_player_velocity():
 			$sprites.stopWalk()
 		else:
 			$sprites.startWalk()
-			if player_velocity.y >=0:
+			if player_velocity.y >= 0:
 				if player_velocity.x >= 0:
 					if player_velocity.y > player_velocity.x:
 						$sprites.lookFront()
@@ -110,8 +110,9 @@ func set_player_velocity():
 					if -player_velocity.y > -player_velocity.x:
 						$sprites.lookBack()
 					else:
-						$sprites.lookLeft()							
+						$sprites.lookLeft()
 	player_velocity = player_velocity.normalized() * player_speed
+
 # sight and interaction areas
 
 func on_sight_area_enter(body):
@@ -154,6 +155,7 @@ func on_interaction_area_exit(body):
 		if deadbody_interactable.has(body):
 			deadbody_interactable.erase(body)
 			if debug_mode: print(body.get_name(), " removed from: deadbody_interaction")
+
 # decection via camera
 
 func camera_visibility(body, status):
@@ -164,9 +166,7 @@ func camera_visibility(body, status):
 		in_sight.erase(body)
 		if debug_mode: print(body.get_name(), " exited camera")
 
-# get shreked
-
-func Interact(body):
+func Interact(body): # player interaction with player = kill
 	interacted = true
 	print(body.username, " wants to kill", self.username)
 	body.players_interactable.erase(self)
