@@ -345,6 +345,7 @@ func set_meeting_state(state):
 		gamestate_params=null
 		sync_gamestate()
 		end_meeting()
+		request_kill(votingwinnerid)
 	else: .set_meeting_state(state)
 
 func request_end_game():
