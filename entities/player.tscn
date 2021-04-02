@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -193,17 +193,24 @@ corner_radius_bottom_right = 10
 size = 40
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://fonts/OpenSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+font_data = SubResource( 12 )
+
+[sub_resource type="DynamicFont" id=14]
 size = 20
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=15]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Theme" id=14]
-default_font = SubResource( 13 )
+[sub_resource type="Theme" id=16]
+default_font = SubResource( 15 )
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=17]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -212,7 +219,7 @@ border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=18]
 content_margin_bottom = 10.0
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
@@ -220,18 +227,18 @@ border_width_top = 10
 border_width_right = 10
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
-
-[sub_resource type="InputEventKey" id=17]
-scancode = 84
-
-[sub_resource type="ShortCut" id=18]
-shortcut = SubResource( 17 )
 
 [sub_resource type="InputEventKey" id=19]
-scancode = 77
+scancode = 84
 
 [sub_resource type="ShortCut" id=20]
 shortcut = SubResource( 19 )
+
+[sub_resource type="InputEventKey" id=21]
+scancode = 77
+
+[sub_resource type="ShortCut" id=22]
+shortcut = SubResource( 21 )
 
 [node name="player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -262,7 +269,7 @@ frames = SubResource( 7 )
 frames = SubResource( 8 )
 
 [node name="AnimatedSprite" parent="." index="4"]
-frame = 0
+frame = 1
 
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
@@ -336,6 +343,8 @@ __meta__ = {
 anchor_top = -0.000166645
 anchor_right = 1.0
 anchor_bottom = 0.999833
+margin_top = 0.0589923
+margin_bottom = 10.0591
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -359,11 +368,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tasklist" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="1"]
+[node name="sabotage" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="1"]
+visible = false
+margin_top = 59.0
+margin_right = 764.0
+margin_bottom = 93.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.705882, 0, 0, 1 )
+text = "Onie zły sabotaż"
+
+[node name="tasklist" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="2"]
 margin_top = 59.0
 margin_right = 764.0
 margin_bottom = 335.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 text = "- fajne zadanie 1
 - fajne zadanie 2
 - fajne zadanie 3
@@ -385,12 +403,12 @@ margin_right = 173.0
 margin_bottom = 50.0
 rect_rotation = 90.0
 focus_mode = 0
-theme = SubResource( 14 )
-custom_styles/hover = SubResource( 15 )
-custom_styles/pressed = SubResource( 16 )
+theme = SubResource( 16 )
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
 custom_styles/normal = ExtResource( 16 )
 enabled_focus_mode = 0
-shortcut = SubResource( 18 )
+shortcut = SubResource( 20 )
 text = "ukryj"
 __meta__ = {
 "_edit_lock_": true,
@@ -472,7 +490,7 @@ margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
 focus_mode = 0
 enabled_focus_mode = 0
-shortcut = SubResource( 20 )
+shortcut = SubResource( 22 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

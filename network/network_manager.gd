@@ -53,7 +53,7 @@ var colors := {
 
 var camera_users_count := 0
 var taken_colors := 0
-var comms_disabled:bool = 0 setget toggle_list
+var comms_disabled:bool = 0
 
 var meeting_gui = null
 var current_votes = {}
@@ -475,7 +475,6 @@ func _process(_delta):
 			request_inform_all_tasks_finished()
 
 func tasks_update(state, started, _id):
-	if comms_disabled: return
 	var Task := load("res://scripts/tasks/Task.cs")
 	var tasks = Task.GetAllTasks()
 	for i in state:
@@ -486,11 +485,4 @@ func tasks_update(state, started, _id):
 		tasks[i].started = started[i]
 		tasks[i].local = true
 
-func toggle_list(state):
-	comms_disabled = state
-	var pg = own_player.get_node("GUI/PlayerCanvas/playerGUI")
-	if state:
-		pg.get_node("TaskPanel/VBoxContainer/tasklist").text = "sabotage"
-	else:
-		pg.updateTaskList()
 		

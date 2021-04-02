@@ -8,7 +8,7 @@ var username := ""
 var dead := false
 
 export var default_speed := 900.0
-export var default_sight_range := 2000.0
+export var default_sight_range := 1500.0
 export var default_scaling_speed := 2000.0
 
 # debug mode for visibility checking

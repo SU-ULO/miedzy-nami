@@ -4,7 +4,7 @@ var player
 var usage
 var network
 var GUI
-
+var comms = false
 #  GUI resources
 var minimap = { "gui_res": load("res://gui/minimap.tscn"), "gui_name": "MiniMap" }
 var sabotagemap = { "gui_res": load("res://gui/sabotagemap.tscn"), "gui_name": "SabotageMap" }
@@ -21,9 +21,10 @@ func _ready():
 func updateTaskList():
 	player.showMyTasks()
 	var content = ""
-	for i in player.localTaskList:
-		content += i.ToString() 
-		content += "\n"
+	if !comms:
+		for i in player.localTaskList:
+			content += i.ToString() 
+			content += "\n"
 	$TaskPanel/VBoxContainer/tasklist.text = content
 
 func interactionGUIupdate():
@@ -47,6 +48,8 @@ func _process(_delta):
 		$ImpostorButtons/kill/cooldown.visible = false
 	$ImpostorButtons/kill.disabled = !(checkKillability() && (int(player.get_node("KillCooldown").time_left) == 0))
 	
+	if player.currentSabotage == 4:
+		$TaskPanel/VBoxContainer/sabotage.text = "Idź spytać się czy są lekcje! (" + str(int(player.get_node("DeathTimer").get_time_left())) + "s)"
 	processGui()
 
 func checkUsage():
@@ -94,7 +97,8 @@ func _on_gui_button_pressed(button_name):
 		if GUI.replace_on_canvas(instance):
 			instance.get_node("player").player = player
 			instance.get_node("player").taskList = player.localTaskList
-			instance.get_node("player").addTasks()
+			if !comms:
+				instance.get_node("player").addTasks()
 	elif button_name == "use":
 		if player.currentInteraction != null:
 			if player.currentInteraction.is_in_group("vents"):
@@ -121,7 +125,8 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 func processGui():
 	var task_panel = get_node("TaskPanel")
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
-	task_container.rect_size.y = max(list_size.y + task_label_size.y, task_list_min_size)
+	var sabotage_size = get_node("TaskPanel/VBoxContainer/sabotage").rect_size
+	task_container.rect_size.y = max(list_size.y + task_label_size.y + sabotage_size.y, task_list_min_size)
 	
 	if(task_panel.rect_position.x != task_panel_position.x):
 		if(task_panel.rect_position.x > task_panel_position.x):
@@ -145,3 +150,19 @@ func _onTaskContainerButtonPressed():
 
 func leave_game():
 	player.get_tree().get_root().get_node("Start").leave_room()
+
+func handle_sabotage(type, enabled):
+	if enabled:
+		if type == 1:
+			$TaskPanel/VBoxContainer/sabotage.text = "Światła są wyłączone!"
+		if type == 3:
+			comms = true
+			$TaskPanel/VBoxContainer/sabotage.text = "Komunikacja jest wyłączona!"
+		if type == 4:
+			$TaskPanel/VBoxContainer/sabotage.text = "Idź spytać się czy są lekcje!"
+		if type != 2:
+			$TaskPanel/VBoxContainer/sabotage.visible = true
+	else:
+		$TaskPanel/VBoxContainer/sabotage.visible = false
+		comms = false
+	updateTaskList()

@@ -926,13 +926,13 @@ scale = Vector2( 0.323727, 0.323364 )
 position = Vector2( -250.145, 2208.59 )
 scale = Vector2( 0.524629, 0.52404 )
 
-[node name="pseudotaskpoint1" parent="Mapa/YSort" instance=ExtResource( 19 )]
-position = Vector2( -781.995, 1992.46 )
-scale = Vector2( 0.524629, 0.52404 )
+[node name="door4" parent="Mapa/YSort" instance=ExtResource( 60 )]
+position = Vector2( -548.959, 2630.18 )
+scale = Vector2( 0.291, 0.291 )
 script = ExtResource( 67 )
 
-[node name="door4" parent="Mapa/YSort" instance=ExtResource( 60 )]
-position = Vector2( -900.964, 2161.63 )
+[node name="door5" parent="Mapa/YSort" instance=ExtResource( 60 )]
+position = Vector2( 123.855, 2630.72 )
 scale = Vector2( 0.291, 0.291 )
 script = ExtResource( 67 )
 

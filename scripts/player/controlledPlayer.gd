@@ -8,7 +8,7 @@ var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
 export var sabotageCooldown = 40
-export var death_time = 20
+export var death_time = 60
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
 var sight_range_scale = 1
@@ -42,6 +42,7 @@ func is_sabotage_timer_done():
 # should we take into consideration fov_toggle?
 func handle_sabotage(type):
 	if $SabotageCooldown.time_left == 0 and currentSabotage == 0:
+		$GUI/PlayerCanvas/playerGUI.handle_sabotage(type, 1)
 		currentSabotage = type
 		if type == 1:
 			if !is_in_group("impostors"):
@@ -62,6 +63,7 @@ func handle_sabotage(type):
 
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
+		$GUI/PlayerCanvas/playerGUI.handle_sabotage(0, 0)
 		currentSabotage = 0
 		$SabotageCooldown.start(sabotageCooldown)
 		if type == 1:
