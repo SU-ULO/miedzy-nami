@@ -11,6 +11,13 @@ signal send_session(id, sess)
 signal send_candidate(id, cand)
 signal gameinprogresschange(inprogress)
 
+func _ready():
+	var gs = Globals.read_file("user://gs.settings")
+	if gs and gs is Dictionary:
+		for k in gamesettings:
+			if gs.has(k):
+				gamesettings[k]=gs[k]
+
 func is_username_taken(requested_name: String)->bool:
 	if own_player.username==requested_name: return true
 	for c in connected_clients.values():
@@ -272,6 +279,10 @@ func handle_gui_sync_request(gui_name: String, gui_data):
 	for c in connected_clients.values():
 		c.send_gui_sync(gui_name, gui_data)
 	emit_signal("gui_sync", gui_name, gui_data)
+
+func handle_game_settings(settings):
+	Globals.save_file("user://gs.settings", settings)
+	.handle_game_settings(settings)
 
 func set_game_settings(settings):
 	for c in connected_clients.values():

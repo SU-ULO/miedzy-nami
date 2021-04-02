@@ -91,6 +91,14 @@ func _ready():
 	network.connect("sabotage_end", self, "handle_end_sabotage")
 	network.connect("gui_sync", self, "handle_gui_sync")
 	meetings_left = network.gamesettings["meeting-count"]
+	var ls = Globals.read_file("user://ls.settings")
+	var looktoset = currLook.get_look()
+	if ls and ls is Dictionary:
+		for k in looktoset:
+			if ls.has(k):
+				looktoset[k]=ls[k]
+	currLook.set_look(looktoset)
+	network.request_set_look(currLook.get_look())
 
 func get_input():
 	moveX = 0; moveY = 0
