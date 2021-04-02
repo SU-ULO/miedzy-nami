@@ -11,6 +11,13 @@ signal send_session(id, sess)
 signal send_candidate(id, cand)
 signal gameinprogresschange(inprogress)
 
+func _ready():
+	var gs = Globals.read_file("user://gs.settings")
+	if gs and gs is Dictionary:
+		for k in gamesettings:
+			if gs.has(k):
+				gamesettings[k]=gs[k]
+
 func is_username_taken(requested_name: String)->bool:
 	if own_player.username==requested_name: return true
 	for c in connected_clients.values():
@@ -142,6 +149,31 @@ func kick(id):
 		player_characters.erase(id)
 	emit_signal("kick", id)
 
+func check_winning_conditions():
+	if gamestate==STARTED:
+		var alivelivecrewmates := 0
+		var aliveimpostors := 0
+		var tasksdone:=true
+		for c in player_characters.values():
+			if c.is_in_group("impostors"):
+				if !c.dead:
+					aliveimpostors+=1
+			else:
+				if !c.donealltasks:
+					tasksdone=false
+				if !c.dead:
+					alivelivecrewmates+=1
+		if aliveimpostors==0 or tasksdone:
+			gamestate=ENDED
+			gamestate_params=true
+			sync_gamestate()
+			end_game(gamestate_params)
+		elif aliveimpostors>=alivelivecrewmates:
+			gamestate=ENDED
+			gamestate_params=false
+			sync_gamestate()
+			end_game(gamestate_params)
+
 func _process(_delta):
 	var sync_data := Dictionary()
 	for pc in player_characters.values():
@@ -149,30 +181,10 @@ func _process(_delta):
 	for c in connected_clients.values():
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
-	if !debug:
-		if gamestate==STARTED:
-			var alivelivecrewmates := 0
-			var aliveimpostors := 0
-			var tasksdone:=true
-			for c in player_characters.values():
-				if c.is_in_group("impostors"):
-					if !c.dead:
-						aliveimpostors+=1
-				else:
-					if !c.donealltasks:
-						tasksdone=false
-					if !c.dead:
-						alivelivecrewmates+=1
-			if aliveimpostors==0 or tasksdone:
-				gamestate=ENDED
-				gamestate_params=true
-				sync_gamestate()
-				end_game(gamestate_params)
-			elif aliveimpostors>=alivelivecrewmates:
-				gamestate=ENDED
-				gamestate_params=false
-				sync_gamestate()
-				end_game(gamestate_params)
+
+func kill(dead: int, pos: Vector2, spawnbody: bool=true):
+	.kill(dead, pos, spawnbody)
+	check_winning_conditions()
 
 func request_meeting(dead: int):
 	handle_meeting_request(dead, own_id)
@@ -261,6 +273,7 @@ func handle_cameras_enable_request(on_off: bool):
 func handle_tasks_done(id):
 	if player_characters.has(id):
 		player_characters[id].donealltasks=true
+	check_winning_conditions()
 
 func request_inform_all_tasks_finished():
 	handle_tasks_done(own_id)
@@ -272,6 +285,10 @@ func handle_gui_sync_request(gui_name: String, gui_data):
 	for c in connected_clients.values():
 		c.send_gui_sync(gui_name, gui_data)
 	emit_signal("gui_sync", gui_name, gui_data)
+
+func handle_game_settings(settings):
+	Globals.save_file("user://gs.settings", settings)
+	.handle_game_settings(settings)
 
 func set_game_settings(settings):
 	for c in connected_clients.values():

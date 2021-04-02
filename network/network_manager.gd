@@ -16,6 +16,7 @@ var player_characters := Dictionary()
 var own_player = null
 var own_id := 0
 var server_key := ""
+
 var gamesettings := {
 	"impostor-count": 1,
 	"comfirm-ejects": true,

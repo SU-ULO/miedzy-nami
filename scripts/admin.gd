@@ -15,7 +15,6 @@ var disabled = false
 func _ready():
 	add_to_group("interactable")
 	add_to_group("entities")
-	print(Globals.start.network)
 	for i in Globals.start.network.world.get_node("rooms").get_children():
 		rooms[i.name] = [i.get_node("1").global_position, i.get_node("2").global_position]
 	players = Globals.start.network.player_characters

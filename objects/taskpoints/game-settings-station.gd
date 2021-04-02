@@ -29,7 +29,9 @@ func Interact(body):
 		menu.get_node("menus/game-menu").set_settings(net.gamesettings)
 
 func EndInteraction(body):
-	body.currLook.set_look(lookMenu.currLook.get_look())
+	var looktoset=lookMenu.currLook.get_look()
+	body.currLook.set_look(looktoset)
+	Globals.save_file("user://ls.settings", looktoset)
 	game_settings = menu.get_node("menus/game-menu").get_settings()
 	var net = get_tree().get_root().get_node("Start").network
 	if net.own_player.owner_id == 0:
