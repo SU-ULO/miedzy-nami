@@ -7,6 +7,7 @@ enum {NONE, SERVER, CLIENT}
 var network_side := NONE
 
 onready var menu := $MainMenu
+onready var vc := $VoiceChat
 var matchmaking = null
 var network = null
 
