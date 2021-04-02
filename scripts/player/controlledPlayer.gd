@@ -59,6 +59,8 @@ func handle_sabotage(type):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
 		if type == 4:
 			$DeathTimer.start(death_time)
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
+				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 		emit_signal("sabotage_event", currentSabotage)
 
 func handle_end_sabotage(type):
@@ -84,6 +86,8 @@ func handle_end_sabotage(type):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/telewizorek"))
 		if type == 4:
 			$DeathTimer.stop()
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
+				on_interaction_area_exit(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 		emit_signal("sabotage_event", 0)
 
 func _ready():
