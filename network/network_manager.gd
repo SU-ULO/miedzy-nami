@@ -269,7 +269,7 @@ func end_meeting():
 	current_votes.clear() # clear votes
 	if own_player.is_in_group("impostors"): # set cooldown for impostor
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
-		
+
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	if meeting_gui == null: return false
 	meeting_gui.chosen = id # set chosen (var in gui script) to chosen palyer id
