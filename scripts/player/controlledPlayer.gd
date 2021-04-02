@@ -63,6 +63,9 @@ func handle_sabotage(type):
 
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
+		if currentInteraction != null:
+			if currentInteraction.is_in_group("sabotage"):
+				ui_canceled()
 		$GUI/PlayerCanvas/playerGUI.handle_sabotage(0, 0)
 		currentSabotage = 0
 		$SabotageCooldown.start(sabotageCooldown)

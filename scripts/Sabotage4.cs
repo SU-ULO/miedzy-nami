@@ -10,6 +10,7 @@ public class Sabotage4 : Node2D, IInteractable
 	public override void _Ready(){
 		AddToGroup("entities");
 		AddToGroup("interactable");
+		AddToGroup("sabotage");
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
 		if(signalAttached == false)
 		{
@@ -36,7 +37,6 @@ public class Sabotage4 : Node2D, IInteractable
 			}
 			if(currentlyPressed >= needed){
 				network.Call("request_end_sabotage", 4);
-				((Node2D)network.Get("own_player")).GetNode("GUI").Call("clear_canvas");
 				Godot.GD.Print("state: "+currentlyPressed);
 				}
 		}

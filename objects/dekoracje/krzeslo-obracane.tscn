@@ -6,7 +6,7 @@
 
 [node name="krzeslo-obracane" type="Sprite" parent="."]
 position = Vector2( 12.5177, 2.04272 )
-scale = Vector2( 0.432104, 0.432104 )
+scale = Vector2( 1.296, 1.296 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

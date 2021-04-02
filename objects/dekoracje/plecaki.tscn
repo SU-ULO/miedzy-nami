@@ -4,13 +4,16 @@
 
 [node name="plecaki" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 786.477, 498.313 )
 scale = Vector2( 0.709287, 0.709287 )
-texture = ExtResource( 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
-position = Vector2( -28.2292, -287.938 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( -28.2291, -287.938 )
+scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( -410.135, 828.569, -679.164, 531.055, -672.834, 252.531, -384.815, -136.769, 4.48523, -79.7985, 137.417, 154.415, 618.504, 157.58, 688.134, 736.782, 191.223, 774.763 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 786.477, 498.313 )
+scale = Vector2( 1.418, 1.418 )
+texture = ExtResource( 1 )

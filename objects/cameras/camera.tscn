@@ -5,7 +5,6 @@
 [ext_resource path="res://textures/lightmask2.png" type="Texture" id=3]
 [ext_resource path="res://textures/dekoracje/kamera-active.png" type="Texture" id=4]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
@@ -27,7 +26,7 @@ zoom = Vector2( 2, 2 )
 
 [node name="camera-sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 43.5332, 37.4518 )
-scale = Vector2( 0.0448635, 0.0448635 )
+scale = Vector2( 0.135, 0.135 )
 frames = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

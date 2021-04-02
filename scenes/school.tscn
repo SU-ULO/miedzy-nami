@@ -553,7 +553,7 @@ texture = ExtResource( 33 )
 
 [node name="umywalka" type="Sprite" parent="Mapa/YSort"]
 position = Vector2( -972.209, 3255.59 )
-scale = Vector2( 0.165516, 0.16533 )
+scale = Vector2( 0.498, 0.495 )
 texture = ExtResource( 31 )
 
 [node name="toaleta2" parent="Mapa/YSort" instance=ExtResource( 30 )]
@@ -990,7 +990,7 @@ script = ExtResource( 63 )
 [node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint"]
 use_parent_material = true
 position = Vector2( 1.21887, 4.59433 )
-scale = Vector2( 0.621356, 0.621356 )
+scale = Vector2( 1.863, 1.863 )
 texture = ExtResource( 48 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint"]
@@ -1007,7 +1007,7 @@ script = ExtResource( 66 )
 [node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint2"]
 use_parent_material = true
 position = Vector2( 1.21887, 4.59433 )
-scale = Vector2( 0.621356, 0.621356 )
+scale = Vector2( 1.863, 1.863 )
 texture = ExtResource( 48 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint2"]
@@ -1024,7 +1024,7 @@ script = ExtResource( 64 )
 [node name="pianino" type="Sprite" parent="Mapa/YSort/biorko-taskpoint3"]
 use_parent_material = true
 position = Vector2( 1.21887, 4.59433 )
-scale = Vector2( 0.621356, 0.621356 )
+scale = Vector2( 1.863, 1.863 )
 texture = ExtResource( 48 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mapa/YSort/biorko-taskpoint3"]
