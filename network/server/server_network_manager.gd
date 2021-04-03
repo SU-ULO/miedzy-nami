@@ -151,6 +151,7 @@ func kick(id):
 	emit_signal("kick", id)
 
 func check_winning_conditions():
+	if debug: return
 	if gamestate==STARTED:
 		var alivelivecrewmates := 0
 		var aliveimpostors := 0
