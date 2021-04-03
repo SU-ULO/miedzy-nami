@@ -198,15 +198,15 @@ func handle_meeting_request(dead: int, caller: int):
 		c.send_gamestate(gamestate, gamestate_params)
 	start_meeting(caller, dead)
 
-func request_kill(dead: int):
-	handle_kill_request(dead)
+func request_kill(dead: int, generatebody: bool = true):
+	handle_kill_request(dead, generatebody)
 
-func handle_kill_request(dead: int):
+func handle_kill_request(dead: int, generatebody: bool = true):
 	if !(player_characters.has(dead)): return
 	var pos: Vector2 = player_characters[dead].position
 	for c in connected_clients.values():
-		c.send_kill(dead, pos)
-	kill(dead, pos)
+		c.send_kill(dead, pos, generatebody)
+	kill(dead, pos, generatebody)
 
 func sync_gamestate(opt=Dictionary()):
 	emit_signal("gameinprogresschange", gamestate!=LOBBY)
@@ -345,7 +345,7 @@ func set_meeting_state(state):
 		gamestate_params=null
 		sync_gamestate()
 		end_meeting()
-		request_kill(votingwinnerid)
+		request_kill(votingwinnerid, false)
 	else: .set_meeting_state(state)
 
 func request_end_game():
