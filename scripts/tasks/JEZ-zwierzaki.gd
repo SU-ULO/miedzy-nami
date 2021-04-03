@@ -10,8 +10,7 @@ func im_good():
 	if count == 0:
 		$Timer.start()
 		yield($Timer, "timeout")
-		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-		TaskWithGUI.TaskWithGUICompleteTask(self)
+		TaskWithGui.TaskWithGuiCompleteTask(self)
 		
 func im_bad():
 	count+=1

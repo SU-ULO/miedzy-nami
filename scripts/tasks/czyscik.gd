@@ -65,5 +65,4 @@ func _on_czyscik_button_up():
 func endpls():
 		get_parent().get_node("Timer").start()
 		yield(get_parent().get_node("Timer"), "timeout")
-		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-		TaskWithGUI.TaskWithGUICompleteTask(get_parent())
+		TaskWithGui.TaskWithGuiCompleteTask(get_parent())

@@ -29,7 +29,7 @@ public class ChatPanel : Control
 			RichTextLabel chat = (RichTextLabel)GetNode("ChatContainer/Chat");	
 			if(data.ContainsKey("append")){
 				if(data.ContainsKey("dead"))
-					if(data["dead"] == true && ((bool)player.Get("dead")) == false)
+					if((bool)data["dead"] && !(bool)player.Get("dead"))
 						return;
 				chat.Text += data["append"].ToString();
 			}else if(data.ContainsKey("set")){

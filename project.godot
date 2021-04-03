@@ -102,6 +102,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://globals.gd"
+Task="*res://scripts/tasks/Task.cs"
+TaskWithGui="*res://scripts/tasks/TaskWithGUI.cs"
 
 [display]
 

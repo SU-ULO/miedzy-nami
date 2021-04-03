@@ -9,5 +9,4 @@ func DeskComplete():
 	if deskCount == 0:
 		$Timer.start()
 		yield($Timer, "timeout")
-		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-		TaskWithGUI.TaskWithGUICompleteTask(self)
+		TaskWithGui.TaskWithGuiCompleteTask(self)

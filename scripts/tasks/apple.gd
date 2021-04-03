@@ -33,8 +33,7 @@ func notAbleToBeFed(area):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "grow":
-		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-		TaskWithGUI.TaskWithGUICompleteTask(get_parent().get_parent())
+		TaskWithGui.TaskWithGuiCompleteTask(get_parent().get_parent())
 
 
 func _on_jablko_button_down():

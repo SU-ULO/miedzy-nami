@@ -5,13 +5,11 @@ var rozmiar
 var cukier
 var done = 3
 var timeleft
-var TaskWithGUI
+var TaskWithGui
 var t
 var rng = RandomNumberGenerator.new()
 func _ready():
-	
-	TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-	t = TaskWithGUI.GetTaskFromControl(self)
+	t = TaskWithGui.GetTaskFromControl(self)
 	done = t.done
 	if done == 1:
 		kawa = t.kawa
@@ -77,5 +75,4 @@ func countFrom(time):
 		
 
 func _on_kubek_pressed():
-	TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
-	TaskWithGUI.TaskWithGUICompleteTask(self)
+	TaskWithGui.TaskWithGuiCompleteTask(self)
