@@ -414,6 +414,7 @@ __meta__ = {
 }
 
 [node name="ChatPanel" parent="GUI/PlayerCanvas/playerGUI" index="2" instance=ExtResource( 25 )]
+visible = false
 margin_left = 1.25989
 margin_top = 369.157
 margin_right = 602.26

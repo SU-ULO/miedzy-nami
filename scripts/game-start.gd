@@ -6,6 +6,7 @@ var heh
 
 func _ready():
 	add_to_group("entities")
+	add_to_group("interactable")
 
 func get_heh():
 	heh = get_tree().get_root().get_node("Start").network.own_player
