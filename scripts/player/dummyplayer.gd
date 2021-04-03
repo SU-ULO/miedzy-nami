@@ -195,6 +195,18 @@ func turn_into_corpse(pos: Vector2, killer: int = -1):
 	instance.get_node("sprites").stopWalk()
 	get_parent().add_child(instance)
 	self.visible = 0
+	
+	var network = get_tree().get_root().get_node("Start").network
+	if owner_id == network.own_id:
+		var killername = network.player_characters[killer].username
+		var popup = get_node("GUI/DeathMessage/Control")
+		popup.get_node("message").text = "Zostałeś uśpiony"
+		popup.get_node("imps").text = "przez " + killername
+		popup.visible = true
+		var timer  = popup.get_node("Timer")
+		timer.start()
+		yield(timer, "timeout")
+		popup.visible = false
 
 func EndInteraction(_body):
 	print("you cant be unkilled, how unfortunate")

@@ -55,3 +55,6 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="Control"]
+wait_time = 2.0
