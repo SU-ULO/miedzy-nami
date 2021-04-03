@@ -7,7 +7,7 @@ func _ready():
 
 func task_end():
 	print("Task ended!")
-	TaskWithGui.TaskWithGuiCompleteTask(self)
+	TaskWithGUI.TaskWithGUICompleteTask(self)
 
 
 func _on_sunflower_pressed():

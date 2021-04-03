@@ -65,4 +65,4 @@ func _on_wynik_animation_finished(_anim_name):
 	if cel == $wynik/wynik.color:
 		$Timer.start()
 		yield($Timer, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)

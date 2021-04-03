@@ -103,7 +103,7 @@ config/icon="res://icon.png"
 
 Globals="*res://globals.gd"
 Task="*res://scripts/tasks/Task.cs"
-TaskWithGui="*res://scripts/tasks/TaskWithGUI.cs"
+TaskWithGUI="*res://scripts/tasks/TaskWithGUI.cs"
 
 [display]
 

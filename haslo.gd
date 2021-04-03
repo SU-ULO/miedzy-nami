@@ -20,7 +20,7 @@ func addToBuffer(x):
 	if buffer == correct:
 		$Timer.start()
 		yield($Timer, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)
 
 
 func _on_nie_pressed():

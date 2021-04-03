@@ -10,4 +10,4 @@ func bugKilledRIP():
 	if bugcount == 0:
 		$Timer2.start()
 		yield($Timer2, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)

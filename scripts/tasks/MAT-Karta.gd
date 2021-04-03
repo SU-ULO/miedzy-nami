@@ -9,4 +9,4 @@ func DeskComplete():
 	if deskCount == 0:
 		$Timer.start()
 		yield($Timer, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)

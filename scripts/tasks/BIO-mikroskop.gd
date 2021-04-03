@@ -45,4 +45,4 @@ func checkWin():
 	checking = true
 	$Timer.start()
 	yield($Timer, "timeout")
-	TaskWithGui.TaskWithGuiCompleteTask(self)
+	TaskWithGUI.TaskWithGUICompleteTask(self)

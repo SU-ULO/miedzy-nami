@@ -12,4 +12,4 @@ func _on_TextureButton_pressed():
 	$AnimationPlayer/ProgressBar.visible = true
 	$AnimationPlayer.play("print")
 	yield($AnimationPlayer, "animation_finished")
-	TaskWithGui.TaskWithGuiCompleteTask(self)
+	TaskWithGUI.TaskWithGUICompleteTask(self)

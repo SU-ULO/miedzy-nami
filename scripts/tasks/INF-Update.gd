@@ -11,9 +11,9 @@ func _on_Button_pressed():
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
-	print("Loading TaskWithGui")
+	print("Loading TaskWithGUI")
 	# we want to get a direct child (not a grand child) of the node highest in the hierarchy
 	# or the node highest in the hierarchy itself 
 	
 	# in this case, we get the highest node
-	TaskWithGui.TaskWithGuiCompleteTask(self.get_owner())
+	TaskWithGUI.TaskWithGUICompleteTask(self.get_owner())

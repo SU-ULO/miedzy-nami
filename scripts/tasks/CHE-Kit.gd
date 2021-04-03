@@ -57,4 +57,4 @@ func checkForEnd():
 	if userKit == taskKit:
 		$Timer.start()
 		yield($Timer, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)

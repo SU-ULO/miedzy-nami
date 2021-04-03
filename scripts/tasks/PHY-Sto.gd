@@ -27,4 +27,4 @@ func _on_TextureButton_pressed():
 
 func _on_AnimationPlayer2_animation_finished(anim_name):
 	if anim_name == "wait":
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)

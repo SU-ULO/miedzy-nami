@@ -37,4 +37,4 @@ func checkWin():
 		$arr_down.disconnect("decrement", self, "decrement")
 		$Timer.start()
 		yield($Timer, "timeout")
-		TaskWithGui.TaskWithGuiCompleteTask(self)
+		TaskWithGUI.TaskWithGUICompleteTask(self)
