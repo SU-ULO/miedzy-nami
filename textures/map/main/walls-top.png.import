@@ -2,20 +2,20 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor.png-10573061cf57dd23ff87b6d55d8d06d1.stex"
+path="res://.import/walls-top.png-c1b58e6f3f47964b30e5af8d6a7d7395.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/floor.png"
-dest_files=[ "res://.import/floor.png-10573061cf57dd23ff87b6d55d8d06d1.stex" ]
+source_file="res://textures/map/main/walls-top.png"
+dest_files=[ "res://.import/walls-top.png-c1b58e6f3f47964b30e5af8d6a7d7395.stex" ]
 
 [params]
 
 compress/mode=1
-compress/lossy_quality=1.0
+compress/lossy_quality=0.1
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map-mini-red.svg-8eac87ab198c77cb3c07a2deaba5a980.stex"
+path="res://.import/floor-tr.png-615228aa7706d1311f6f64b4e79cd9e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/map/map-mini-red.svg"
-dest_files=[ "res://.import/map-mini-red.svg-8eac87ab198c77cb3c07a2deaba5a980.stex" ]
+source_file="res://textures/map/main/floor-tr.png"
+dest_files=[ "res://.import/floor-tr.png-615228aa7706d1311f6f64b4e79cd9e5.stex" ]
 
 [params]
 

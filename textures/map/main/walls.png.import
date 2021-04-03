@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor-doors.png-c783bb8b16e232271170450c4c480f7e.stex"
+path="res://.import/walls.png-f0c753d0d4851e80a754914724380385.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/floor-doors.png"
-dest_files=[ "res://.import/floor-doors.png-c783bb8b16e232271170450c4c480f7e.stex" ]
+source_file="res://textures/map/main/walls.png"
+dest_files=[ "res://.import/walls.png-f0c753d0d4851e80a754914724380385.stex" ]
 
 [params]
 

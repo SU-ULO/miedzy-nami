@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/map-mini.svg-fe86543322f618e9dddab787b6666ea5.stex"
+path="res://.import/map-mini-red.svg-090065623b0a464ead58983503734afc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/map/map-mini.svg"
-dest_files=[ "res://.import/map-mini.svg-fe86543322f618e9dddab787b6666ea5.stex" ]
+source_file="res://textures/map/mini/map-mini-red.svg"
+dest_files=[ "res://.import/map-mini-red.svg-090065623b0a464ead58983503734afc.stex" ]
 
 [params]
 
