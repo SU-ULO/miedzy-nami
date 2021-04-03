@@ -7,7 +7,7 @@ var player = null
 
 var map_center
 const map_scale:float = 0.2
-const player_height = 38
+const player_height:float = 38.0
 
 var taskList = []
 var taskIcons = []
@@ -19,7 +19,7 @@ func _ready():
 
 func _process(_delta):
 	if player != null:
-		icon.position = player.position * map_scale/2 + map_center + Vector2(0, player_height)
+		icon.position = player.position * map_scale/2 + map_center - Vector2(0, player_height/2)
 
 func addTasks():
 	var node = get_node("task-icons")
