@@ -63,8 +63,8 @@ func send_spawning_player_sync(data: Dictionary, id: int):
 func send_player_removal_notification(id: int):
 	send_events([2, id])
 
-func send_kill(dead: int, pos: Vector2, generatebody: bool = true):
-	send_events([3, dead, pos, generatebody])
+func send_kill(dead: int, pos: Vector2, generatebody: bool = true, killer: int = -1):
+	send_events([3, dead, pos, generatebody, killer])
 
 func send_gamestate(state, params, opt=null):
 	send_events([4, state, params, opt])

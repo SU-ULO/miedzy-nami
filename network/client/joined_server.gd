@@ -6,7 +6,7 @@ signal initial_sync(id, players_data)
 signal remote_player_joined(id, data)
 signal remote_player_left(id)
 signal players_sync(players_data)
-signal kill(dead, pos, spawnbody)
+signal kill(dead, pos, spawnbody, killer)
 signal state_sync(state, params, opt)
 signal sabotage(type)
 signal end_sabotage(type)
@@ -39,7 +39,7 @@ func handle_events(input):
 	elif input[0]==2:
 		emit_signal("remote_player_left", input[1])
 	elif input[0]==3:
-		emit_signal("kill", input[1], input[2], input[3])
+		emit_signal("kill", input[1], input[2], input[3], input[4])
 	elif input[0]==4:
 		emit_signal("state_sync", input[1], input[2], input[3])
 	elif input[0]==5:
