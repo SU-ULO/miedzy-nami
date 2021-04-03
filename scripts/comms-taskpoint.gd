@@ -18,7 +18,8 @@ func check_off(type):
 		if gui.is_inside_tree():
 			$Timer.start()
 			yield($Timer, "timeout")
-			gui.queue_free()
+			if gui:
+				gui.queue_free()
 			if bodyxx != null:
 				bodyxx.ui_canceled()
 
