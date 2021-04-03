@@ -403,7 +403,8 @@ func handle_game_settings(settings):
 	apply_settings_to_player()
 
 func apply_settings_to_player():
-	own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
+	if own_player:
+		own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
 
 func request_color_change(_color: int):
 	pass
