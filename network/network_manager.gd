@@ -330,11 +330,11 @@ func recalculate_pos():
 func request_kill(_dead: int):
 	pass
 
-func kill(dead: int, pos: Vector2, spawnbody: bool=true):
+func kill(dead: int, pos: Vector2, spawnbody: bool=true, killer: int = -1):
 	if player_characters.has(dead):
 		var killed = player_characters[dead]
 		if spawnbody:
-			killed.turn_into_corpse(pos)
+			killed.turn_into_corpse(pos, killer)
 		else:
 			killed.dead = true
 			killed.add_to_group("rip")

@@ -181,7 +181,7 @@ func Interact(body): # player interaction with player = kill
 	interacted = false
 	return false
 
-func turn_into_corpse(pos: Vector2):
+func turn_into_corpse(pos: Vector2, killer: int = -1):
 	dead = true
 	add_to_group("rip")
 	var instance = dead_body.instance()

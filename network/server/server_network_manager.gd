@@ -43,7 +43,7 @@ func create_client(config):
 		client.connect("success", self, "spawn_player", [config.id])
 		client.connect("fail", self, "kick", [config.id])
 		client.connect("meeting_requested", self, "handle_meeting_request", [config.id])
-		client.connect("kill_requested", self, "handle_kill_request")
+		client.connect("kill_requested", self, "handle_kill_request", [true, config.id])
 		client.connect("sabotage_requested", self, "handle_sabotage_request")
 		client.connect("end_sabotage_requested", self, "handle_end_sabotage_request")
 		client.connect("cameras_enable_requested", self, "handle_cameras_enable_request")
@@ -184,8 +184,8 @@ func _process(_delta):
 		if c.joined:
 			c.send_player_character_sync_data(sync_data)
 
-func kill(dead: int, pos: Vector2, spawnbody: bool=true):
-	.kill(dead, pos, spawnbody)
+func kill(dead: int, pos: Vector2, spawnbody: bool=true, killer: int = -1):
+	.kill(dead, pos, spawnbody, killer)
 	check_winning_conditions()
 
 func request_meeting(dead: int):
@@ -199,15 +199,15 @@ func handle_meeting_request(dead: int, caller: int):
 		c.send_gamestate(gamestate, gamestate_params)
 	start_meeting(caller, dead)
 
-func request_kill(dead: int, generatebody: bool = true):
-	handle_kill_request(dead, generatebody)
+func request_kill(dead: int):
+	handle_kill_request(dead, true, own_id)
 
-func handle_kill_request(dead: int, generatebody: bool = true):
+func handle_kill_request(dead: int, generatebody: bool = true, killer: int = -1):
 	if !(player_characters.has(dead)): return
 	var pos: Vector2 = player_characters[dead].position
 	for c in connected_clients.values():
-		c.send_kill(dead, pos, generatebody)
-	kill(dead, pos, generatebody)
+		c.send_kill(dead, pos, generatebody, killer)
+	kill(dead, pos, generatebody, killer)
 
 func sync_gamestate(opt=Dictionary()):
 	emit_signal("gameinprogresschange", gamestate!=LOBBY)
@@ -346,7 +346,7 @@ func set_meeting_state(state):
 		gamestate_params=null
 		sync_gamestate()
 		end_meeting()
-		request_kill(votingwinnerid, false)
+		handle_kill_request(votingwinnerid, false)
 	else: .set_meeting_state(state)
 
 func request_end_game():
