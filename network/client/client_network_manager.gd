@@ -65,7 +65,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 			own_player = added_player
 		else:
 			added_player = preloaded_dummy.instance()
-		added_player.owner_id=c
+		added_player.owner_id = c
 		player_characters[c]=added_player
 		added_player.set_init_data(init_data)
 		world.get_node('Mapa/YSort').add_child(added_player)

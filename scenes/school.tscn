@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/taskpoints/tablica-taskpoint2.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://objects/taskpoints/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/taskpoints/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/taskpoints/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
-[ext_resource path="res://textures/map/main/walls-top.png" type="Texture" id=14]
+[ext_resource path="res://textures/map/main/doors-bl.png" type="Texture" id=14]
 [ext_resource path="res://objects/windows/window1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/windows/window2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/windows/window4.tscn" type="PackedScene" id=17]
@@ -67,6 +67,9 @@
 [ext_resource path="res://objects/taskpoints/admin.tscn" type="PackedScene" id=65]
 [ext_resource path="res://scripts/tasks/HasloPOL.cs" type="Script" id=66]
 [ext_resource path="res://scripts/Sabotage4.cs" type="Script" id=67]
+[ext_resource path="res://textures/map/main/doors-tr.png" type="Texture" id=68]
+[ext_resource path="res://textures/map/main/doors-br.png" type="Texture" id=69]
+[ext_resource path="res://textures/map/main/doors-tl.png" type="Texture" id=70]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
@@ -1111,16 +1114,29 @@ scale = Vector2( 0.0608888, 0.0608888 )
 position = Vector2( -2826.1, -3735.76 )
 scale = Vector2( 0.487534, 0.487534 )
 
+[node name="map-top-sprites" type="Node2D" parent="."]
+scale = Vector2( 2, 2 )
+
+[node name="TL" type="Sprite" parent="map-top-sprites"]
+position = Vector2( -1368.5, -1131.25 )
+texture = ExtResource( 70 )
+
+[node name="TR" type="Sprite" parent="map-top-sprites"]
+position = Vector2( 1368.5, -1131.25 )
+texture = ExtResource( 68 )
+
+[node name="BL" type="Sprite" parent="map-top-sprites"]
+position = Vector2( -1368.5, 1131.25 )
+texture = ExtResource( 14 )
+
+[node name="BR" type="Sprite" parent="map-top-sprites"]
+position = Vector2( 1368.5, 1131.25 )
+texture = ExtResource( 69 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 10 )
 scale = Vector2( 1e-05, 1e-05 )
 color = Color( 0.188235, 0.188235, 0.188235, 1 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="doors-top" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 14 )
 
 [node name="lobby-position" type="Position2D" parent="."]
 position = Vector2( 1278.04, 14374.7 )

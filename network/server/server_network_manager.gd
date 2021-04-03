@@ -120,7 +120,7 @@ func spawn_player(id: int, init_data: Dictionary = {}):
 		if cid==id:
 			var all_players_init_data := Dictionary()
 			for ch in player_characters.values():
-				all_players_init_data[ch.owner_id]=ch.generate_init_data()
+				all_players_init_data[ch.owner_id] = ch.generate_init_data()
 			var all_init_data = {
 				"players": all_players_init_data,
 				"gamestate": [gamestate, gamestate_params],
@@ -129,7 +129,7 @@ func spawn_player(id: int, init_data: Dictionary = {}):
 			c.send_initial_sync(all_init_data, id)
 		elif c.joined:
 			c.send_spawning_player_sync(joining_player_init_data, id)
-	connected_clients[id].joined=true
+	connected_clients[id].joined = true
 	sync_colors()
 
 func kick(id):

@@ -2,31 +2,34 @@ extends Control
 
 var res = preload("res://gui/playericon.tscn")
 var task_icon = preload("res://gui/taskicon.tscn")
-var map_center
 var icon = null
 var player = null
+
+var map_center
+const map_scale:float = 0.2
+const player_height = 38
 
 var taskList = []
 var taskIcons = []
 
 func _ready():
-	self.add_child(res.instance())
-	icon = self.get_child(0)
-	map_center = get_parent().get_node("Position2D").position
-
+	icon = res.instance()
+	self.add_child(icon)
+	map_center = get_node("Position2D").position
 
 func _process(_delta):
 	if player != null:
-		icon.position = map_center + player.position/2
+		icon.position = player.position * map_scale/2 + map_center + Vector2(0, player_height)
 
 func addTasks():
-	for i in taskIcons:
-		i.queue_free()
+	var node = get_node("task-icons")
+	taskIcons.clear()
+	
 	if not get_tree().get_root().get_node("Start").network.comms_disabled:
-		for i in taskList:
+		for task in taskList:
 			taskIcons.append(task_icon.instance())
-			get_parent().add_child(taskIcons.back())
-			taskIcons.back().position = map_center + i.position/2
+			node.add_child(taskIcons.back())
+			taskIcons.back().position = map_center + task.position * map_scale/2
 
 func _close():
-	player.get_node("GUI").replace_on_canvas(get_owner())
+	player.get_node("GUI").replace_on_canvas(self)
