@@ -37,7 +37,6 @@ func Record(note):
 					yield(get_node(note), "animation_finished")
 					$"cis/Timer".start()
 					yield($"cis/Timer", "timeout")
-					var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
 					TaskWithGUI.TaskWithGUICompleteTask(self)
 				else:
 					yield(get_node(note), "animation_finished")

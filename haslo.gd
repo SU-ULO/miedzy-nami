@@ -20,7 +20,6 @@ func addToBuffer(x):
 	if buffer == correct:
 		$Timer.start()
 		yield($Timer, "timeout")
-		var TaskWithGUI = load("res://scripts/tasks/TaskWithGUI.cs")
 		TaskWithGUI.TaskWithGUICompleteTask(self)
 
 

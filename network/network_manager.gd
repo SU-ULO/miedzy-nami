@@ -9,7 +9,6 @@ var gamestate_params = null
 var currentconfig
 
 const preloadedmap := preload('res://scenes/school.tscn')
-const Task := preload("res://scripts/tasks/Task.cs")
 
 var world = null
 var player_characters := Dictionary()
@@ -93,10 +92,13 @@ func get_free_color_and_set():
 			return i+1
 	return 0
 
+func cleanup_tasks():
+	Task.ClientCleanup()
+
 func create_world(config):
 	currentconfig=config
 	server_key = config.key
-	load("res://scripts/tasks/Task.cs").ClientCleanup()
+	cleanup_tasks()
 	world = preloadedmap.instance()
 	add_child(world)
 # warning-ignore:return_value_discarded
@@ -359,7 +361,6 @@ func game_start(params, taskstuff):
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
-	var Task := load("res://scripts/tasks/Task.cs")
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
@@ -476,7 +477,6 @@ func _process(_delta):
 			request_inform_all_tasks_finished()
 
 func tasks_update(state, started, _id):
-	var Task := load("res://scripts/tasks/Task.cs")
 	var tasks = Task.GetAllTasks()
 	for i in state:
 		if tasks[i].IsDone() == false:

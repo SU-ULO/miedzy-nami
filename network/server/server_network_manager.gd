@@ -227,7 +227,6 @@ func pick_impostors()->Array:
 func request_game_start():
 	if !debug:
 		if player_characters.size()<2*gamesettings["impostor-count"]+1: return
-	var Task := load("res://scripts/tasks/Task.cs")
 	gamestate = STARTED
 	gamestate_params = {"imp": pick_impostors()}
 	Task.SetTaskCategoriesPerPlayer(3, gamesettings["short-tasks"])
