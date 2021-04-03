@@ -45,7 +45,8 @@ func generate_init_data() -> Dictionary:
 		"dead": dead,
 		"imp": is_in_group("impostors"),
 		"color": color,
-		"look": currLook.get_look()}
+		"look": currLook.get_look(),
+		"id": owner_id}
 
 func set_init_data(data: Dictionary):
 	username=data["username"]
@@ -54,6 +55,7 @@ func set_init_data(data: Dictionary):
 	color=data["color"]
 	if data["imp"]: add_to_group("impostors")
 	currLook.set_look(data["look"])
+	owner_id=data["id"]
 
 func generate_sync_data():
 	return {"mov": Vector2(moveX, moveY), "pos": position}
