@@ -97,7 +97,7 @@ run/main_scene="res://start/start.tscn"
 boot_splash/image="res://textures/dzdzownica.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.784314, 0.784314, 0, 1 )
-config/icon="res://icon.png"
+config/icon="res://textures/dzdzownica.png"
 
 [autoload]
 
