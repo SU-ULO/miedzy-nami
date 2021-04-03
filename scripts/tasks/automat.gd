@@ -5,7 +5,6 @@ var rozmiar
 var cukier
 var done = 3
 var timeleft
-var TaskWithGUI
 var t
 var rng = RandomNumberGenerator.new()
 func _ready():
