@@ -107,7 +107,9 @@ func create_world(config):
 	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
 # warning-ignore:return_value_discarded
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
-	if endscreen: endscreen.queue_free()
+	if own_id == 0:
+		world.get_node("Mapa/lobby/start").add_to_group("interactable")
+		if endscreen: endscreen.queue_free()
 
 func recreate_world():
 	taken_colors=0

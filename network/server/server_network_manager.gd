@@ -4,7 +4,7 @@ class_name ServerNetworkManager
 
 var connected_clients := Dictionary()
 
-var debug:bool = false
+var debug:bool = true
 
 signal kick(id)
 signal send_session(id, sess)
@@ -74,7 +74,7 @@ func send_candidate(cand: String, id: int):
 func create_world(config):
 	.create_world(config)
 	print(server_key)
-	own_player = load("res://entities/player.tscn").instance()
+	own_player = preload("res://entities/player.tscn").instance()
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
 	own_player.global_position = get_spawn_position(own_id)

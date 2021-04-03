@@ -139,6 +139,13 @@ func get_input():
 				ui_report()
 	if Input.is_action_pressed("ui_cancel"):
 		ui_canceled()
+	if Input.is_action_just_pressed("set_fov"):
+		if fov_toggle:
+			sight_range = 2000 * sight_range_scale;
+		else:
+			sight_range = 500 * sight_range_scale
+			get_tree().get_root().get_node("Start").network.end_game(true)
+		fov_toggle = !fov_toggle
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
