@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/floor.png-cd5bf1226633f1ab0920f9daf3dc8617.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/map/main/floor.png"
+dest_files=[ "res://.import/floor.png-cd5bf1226633f1ab0920f9daf3dc8617.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.5
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

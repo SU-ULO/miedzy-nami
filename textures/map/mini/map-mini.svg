@@ -7,16 +7,16 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1450.0176mm"
-   height="1200.1858mm"
-   viewBox="0 0 1450.0176 1200.1858"
+   width="289.64136mm"
+   height="239.6729mm"
+   viewBox="0 0 289.64136 239.6729"
    version="1.1"
    id="svg8"
    inkscape:export-filename="C:\Users\sobgo\Desktop\hitbox.png"
    inkscape:export-xdpi="25"
    inkscape:export-ydpi="25"
    sodipodi:docname="map-mini.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.063162252"
-     inkscape:cx="3548.9184"
-     inkscape:cy="951.25744"
+     inkscape:zoom="0.063831521"
+     inkscape:cx="3548.2342"
+     inkscape:cy="952.80923"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -63,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -71,12 +71,13 @@
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(619.09037,452.06385)">
+     transform="translate(618.90933,452.47443)">
     <g
        id="g7147-4-1-6"
        transform="rotate(-90,272.79812,-82.697199)" />
     <g
-       id="g4250">
+       id="g4250"
+       transform="matrix(0.19975024,0,0,0.1996965,-495.24588,-362.19886)">
       <path
          id="rect3998-0"
          style="opacity:0.997;fill:#80b3ff;stroke:#ffffff;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none"
