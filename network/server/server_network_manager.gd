@@ -81,6 +81,7 @@ func create_world(config):
 	own_player.color = get_free_color_and_set()
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
+	set_game_settings(gamesettings)
 
 func recreate_world():
 	var init_dict := {}
