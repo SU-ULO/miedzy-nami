@@ -22,9 +22,15 @@ public class ChatPanel : Control
 	}
 	
 	void HandleGUISync(string guiName, Godot.Collections.Dictionary<string, object> data){
+		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
+		Node2D player = ((Node2D)network.Get("own_player"));
+		
 		if(guiName.Equals("chat")){
 			RichTextLabel chat = (RichTextLabel)GetNode("ChatContainer/Chat");	
 			if(data.ContainsKey("append")){
+				if(data.ContainsKey("dead"))
+					if(data["dead"] == true && ((bool)player.Get("dead")) == false)
+						return;
 				chat.Text += data["append"].ToString();
 			}else if(data.ContainsKey("set")){
 				chat.Text = data["set"].ToString();
@@ -37,7 +43,8 @@ public class ChatPanel : Control
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
 		TextEdit input = (TextEdit)GetNode("ChatContainer/Input");		
 		network.Call("request_gui_sync", "chat", new Godot.Collections.Dictionary<string, object>(){
-			["append"]="\n["+(string)((Node2D)network.Get("own_player")).Get("username")+"]: "+input.Text
+			["append"]="\n["+(string)((Node2D)network.Get("own_player")).Get("username")+"]: "+input.Text,
+			["dead"]=(bool)((Node2D)network.Get("own_player")).Get("dead")
 		});
 	}
 	
