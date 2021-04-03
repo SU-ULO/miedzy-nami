@@ -95,10 +95,10 @@ func _on_gui_button_pressed(button_name):
 		var instance = minimap["gui_res"].instance()
 		instance.name = minimap["gui_name"]
 		if GUI.replace_on_canvas(instance):
-			instance.get_node("player").player = player
-			instance.get_node("player").taskList = player.localTaskList
+			instance.player = player
+			instance.taskList = player.localTaskList
 			if !comms:
-				instance.get_node("player").addTasks()
+				instance.addTasks()
 	elif button_name == "use":
 		if player.currentInteraction != null:
 			if player.currentInteraction.is_in_group("vents"):
