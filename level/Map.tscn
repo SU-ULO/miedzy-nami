@@ -57,6 +57,22 @@ texture = ExtResource( 6 )
 position = Vector2( 1368.5, 1131.25 )
 texture = ExtResource( 8 )
 
+[node name="sciana" type="Sprite" parent="scale"]
+position = Vector2( -182.054, 932.506 )
+scale = Vector2( 3.8595, 3.69301 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="scale/sciana"]
+margin_left = -102.604
+margin_top = -14.8625
+margin_right = -62.6042
+margin_bottom = 25.1375
+rect_scale = Vector2( 5.17448, 0.104334 )
+color = Color( 0.211765, 0.211765, 0.211765, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="walls-sprites" type="Node2D" parent="scale"]
 
 [node name="TL" type="Sprite" parent="scale/walls-sprites"]
@@ -74,22 +90,6 @@ texture = ExtResource( 9 )
 [node name="BR" type="Sprite" parent="scale/walls-sprites"]
 position = Vector2( 1368.5, 1131.25 )
 texture = ExtResource( 1 )
-
-[node name="sciana" type="Sprite" parent="scale"]
-position = Vector2( -182.054, 932.506 )
-scale = Vector2( 3.8595, 3.69301 )
-texture = ExtResource( 4 )
-
-[node name="ColorRect" type="ColorRect" parent="scale/sciana"]
-margin_left = -102.604
-margin_top = -14.8625
-margin_right = -62.6042
-margin_bottom = 25.1375
-rect_scale = Vector2( 5.17448, 0.104334 )
-color = Color( 0.211765, 0.211765, 0.211765, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="hitbox" type="StaticBody2D" parent="scale"]
 collision_layer = 4
