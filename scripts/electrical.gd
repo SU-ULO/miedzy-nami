@@ -6,6 +6,7 @@ var player
 
 func _ready():
 	add_to_group("entities")
+	add_to_group("sabotage")
 
 func Interact(body):
 	player = body

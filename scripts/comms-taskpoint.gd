@@ -5,6 +5,7 @@ var bodyxx
 
 func _ready():
 	add_to_group("entities")
+	add_to_group("sabotage")
 
 func check_on(type):
 	if type == 3:

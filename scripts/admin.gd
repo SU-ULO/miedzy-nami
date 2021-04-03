@@ -23,7 +23,7 @@ func _process(_delta):
 		for i in rooms.keys():
 			players_count[i] = 0
 			for j in players.values():
-				if in_room(j, rooms[i]):
+				if in_room(j, rooms[i]) && !j.is_in_group("rip"):
 					players_count[i]+=1
 		if map != null:
 			update_map()

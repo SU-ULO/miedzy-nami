@@ -25,7 +25,10 @@ func randomize_electrical():
 	while electrical_good == electrical_switches:
 		for _i in range(0, 5):
 			electrical_good[_i] = rng.randi_range(0, 1)
-			electrical_switches[_i] = rng.randi_range(0,1)
+			if electrical_good[_i] == 0:
+				electrical_switches[_i] = 1
+			else:
+				electrical_switches[_i] = 0
 	
 	print("state randomized")
 
@@ -47,7 +50,7 @@ func handle_sabotage(type):
 		if type == 1:
 			if !is_in_group("impostors"):
 				sight_range = default_sight_range * sight_range_scale / 2
-			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
 			network.world.get_node("Mapa/YSort/door").close_door()
@@ -55,11 +58,11 @@ func handle_sabotage(type):
 			network.world.get_node("Mapa/YSort/door3").close_door()
 		if type == 3:
 			network.comms_disabled = true
-			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
 		if type == 4:
 			$DeathTimer.start(death_time)
-			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
+			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 		emit_signal("sabotage_event", currentSabotage)
 
@@ -253,6 +256,10 @@ func check_interaction():
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					elif item.is_in_group("vents"):
 						if self.is_in_group("impostors"):
+							interactable.push_back(item);
+							if debug_mode: print(item.get_name(), " added to: interactable")
+					elif item.is_in_group("sabotage"):
+						if !is_in_group("rip"):
 							interactable.push_back(item);
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					else:
