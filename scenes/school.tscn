@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://objects/taskpoints/iNF-update-taskpoint.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/taskpoints/tablica-taskpoint2.tscn" type="PackedScene" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://objects/taskpoints/BIO-mikroskop-taskpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/taskpoints/GEO-kamienie-taskpoint.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/taskpoints/LIB-books-taskpoint.tscn" type="PackedScene" id=13]
-[ext_resource path="res://textures/map/main/doors-bl.png" type="Texture" id=14]
+[ext_resource path="res://textures/map/main/door-top.png" type="Texture" id=14]
 [ext_resource path="res://objects/windows/window1.tscn" type="PackedScene" id=15]
 [ext_resource path="res://objects/windows/window2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://objects/windows/window4.tscn" type="PackedScene" id=17]
@@ -67,9 +67,7 @@
 [ext_resource path="res://objects/taskpoints/admin.tscn" type="PackedScene" id=65]
 [ext_resource path="res://scripts/tasks/HasloPOL.cs" type="Script" id=66]
 [ext_resource path="res://scripts/Sabotage4.cs" type="Script" id=67]
-[ext_resource path="res://textures/map/main/doors-tr.png" type="Texture" id=68]
-[ext_resource path="res://textures/map/main/doors-br.png" type="Texture" id=69]
-[ext_resource path="res://textures/map/main/doors-tl.png" type="Texture" id=70]
+[ext_resource path="res://textures/dekoracje/warning sign.png" type="Texture" id=71]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
@@ -389,11 +387,76 @@ __meta__ = {
 }
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1.63184, 1.00171 )
 
 [node name="drzwi_otwarte" type="Sprite" parent="Mapa"]
 position = Vector2( -1048.21, 1881.53 )
 scale = Vector2( 0.261899, 0.261899 )
 texture = ExtResource( 61 )
+
+[node name="map-top-sprites" type="Node2D" parent="Mapa"]
+position = Vector2( -1.63184, -1.00171 )
+scale = Vector2( 2, 2 )
+
+[node name="dynamic" type="Node2D" parent="Mapa/map-top-sprites"]
+z_index = 100
+
+[node name="door-top1" type="Sprite" parent="Mapa/map-top-sprites/dynamic"]
+position = Vector2( 1255.6, 1258.52 )
+texture = ExtResource( 14 )
+
+[node name="door-top2" type="Sprite" parent="Mapa/map-top-sprites/dynamic"]
+position = Vector2( 1260.94, 306.681 )
+texture = ExtResource( 14 )
+
+[node name="doo-topr3" type="Sprite" parent="Mapa/map-top-sprites/dynamic"]
+position = Vector2( 1261.15, -643.47 )
+texture = ExtResource( 14 )
+
+[node name="door-top4" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( 123.617, -644.017 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top5" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -684.006, -643.612 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top6" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -1473.52, -1569.75 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top7" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -1279.1, 305.944 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top8" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -471.169, 306.428 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top9" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -466.969, 1258.18 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top10" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -1278.37, 1257.48 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top11" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( -744.853, 1532.5 )
+z_index = 100
+texture = ExtResource( 14 )
+
+[node name="door-top12" type="Sprite" parent="Mapa/map-top-sprites"]
+position = Vector2( 345.399, 1532.54 )
+z_index = 100
+texture = ExtResource( 14 )
 
 [node name="lobby" type="Node2D" parent="Mapa"]
 
@@ -475,28 +538,106 @@ position = Vector2( -1150.55, -730.251 )
 [node name="camera4" parent="Mapa" instance=ExtResource( 38 )]
 position = Vector2( -1141.54, -2626.78 )
 
-[node name="YSort" type="YSort" parent="Mapa"]
+[node name="door" parent="Mapa" instance=ExtResource( 60 )]
+position = Vector2( 2405.8, 719.454 )
+scale = Vector2( 0.290924, 0.290598 )
 
-[node name="window1" parent="Mapa/YSort" instance=ExtResource( 15 )]
+[node name="door3" parent="Mapa" instance=ExtResource( 60 )]
+position = Vector2( 2405.8, -1178.2 )
+scale = Vector2( 0.290924, 0.290598 )
+
+[node name="door2" parent="Mapa" instance=ExtResource( 60 )]
+position = Vector2( 2393.39, 2622.84 )
+scale = Vector2( 0.290924, 0.290598 )
+
+[node name="window1" parent="Mapa" instance=ExtResource( 15 )]
 position = Vector2( 2204.43, -2536.97 )
 scale = Vector2( 2, 1.99776 )
 
-[node name="window2" parent="Mapa/YSort" instance=ExtResource( 16 )]
+[node name="window2" parent="Mapa" instance=ExtResource( 16 )]
 position = Vector2( 1523.79, -2523.29 )
 scale = Vector2( 1, 0.998878 )
 
-[node name="window3" parent="Mapa/YSort" instance=ExtResource( 18 )]
+[node name="window3" parent="Mapa" instance=ExtResource( 18 )]
 position = Vector2( 2591, -2427.35 )
 scale = Vector2( 1, 0.998878 )
 
-[node name="window4" parent="Mapa/YSort" instance=ExtResource( 17 )]
+[node name="window4" parent="Mapa" instance=ExtResource( 17 )]
 position = Vector2( 1226.43, -2430.85 )
 scale = Vector2( 1, 0.998878 )
 
-[node name="plakaty" type="Sprite" parent="Mapa/YSort"]
+[node name="plakaty" type="Sprite" parent="Mapa"]
 position = Vector2( 2512.81, 1280.55 )
 scale = Vector2( 0.269034, 0.268732 )
 texture = ExtResource( 43 )
+
+[node name="zegar" type="Sprite" parent="Mapa"]
+position = Vector2( 2547.48, -653.065 )
+scale = Vector2( 0.0609122, 0.0608439 )
+texture = ExtResource( 23 )
+
+[node name="plakaty2" type="Sprite" parent="Mapa"]
+position = Vector2( 1721.24, -638.002 )
+scale = Vector2( 0.413844, 0.41338 )
+texture = ExtResource( 24 )
+
+[node name="zegar2" type="Sprite" parent="Mapa"]
+position = Vector2( 336.76, -676.443 )
+scale = Vector2( 0.0499927, 0.0499366 )
+texture = ExtResource( 23 )
+
+[node name="plakat3" type="Sprite" parent="Mapa"]
+position = Vector2( -564.728, -625.769 )
+scale = Vector2( 0.128963, 0.128819 )
+texture = ExtResource( 33 )
+
+[node name="plakat1" type="Sprite" parent="Mapa"]
+position = Vector2( 3773.15, 3276.09 )
+scale = Vector2( 0.159478, 0.159299 )
+texture = ExtResource( 26 )
+
+[node name="plakaty3" type="Sprite" parent="Mapa"]
+position = Vector2( -131.079, -611.861 )
+scale = Vector2( 0.505136, 0.504569 )
+texture = ExtResource( 35 )
+
+[node name="zegar3" type="Sprite" parent="Mapa"]
+position = Vector2( -2689.64, -657.505 )
+scale = Vector2( 0.0569661, 0.0569022 )
+texture = ExtResource( 23 )
+
+[node name="zegar4" type="Sprite" parent="Mapa"]
+position = Vector2( -3806.33, 1607.55 )
+scale = Vector2( 0.0919397, 0.0918365 )
+texture = ExtResource( 23 )
+
+[node name="zegar5" type="Sprite" parent="Mapa"]
+position = Vector2( -1384.74, -2546.79 )
+scale = Vector2( 0.0725471, 0.0724657 )
+texture = ExtResource( 23 )
+
+[node name="warning sign" type="Sprite" parent="Mapa"]
+position = Vector2( 4742.92, 436.062 )
+scale = Vector2( 0.410224, 0.410224 )
+texture = ExtResource( 71 )
+
+[node name="zegar6" type="Sprite" parent="Mapa"]
+position = Vector2( 1726.45, -2552.68 )
+rotation = 3.14159
+scale = Vector2( 0.0726774, -0.0725959 )
+texture = ExtResource( 23 )
+
+[node name="zegar7" type="Sprite" parent="Mapa"]
+position = Vector2( -3095.52, -4414.62 )
+scale = Vector2( 0.065672, 0.0655983 )
+texture = ExtResource( 23 )
+
+[node name="plakaty1" type="Sprite" parent="Mapa"]
+position = Vector2( -1384.54, 1277.29 )
+scale = Vector2( 0.187012, 0.186802 )
+texture = ExtResource( 52 )
+
+[node name="YSort" type="YSort" parent="Mapa"]
 
 [node name="biorko-nauczyciela" parent="Mapa/YSort" instance=ExtResource( 19 )]
 position = Vector2( 2307.75, 1595.57 )
@@ -505,16 +646,6 @@ scale = Vector2( 0.5, 0.499439 )
 [node name="stolik" parent="Mapa/YSort" instance=ExtResource( 21 )]
 position = Vector2( 1935.16, -43.0306 )
 scale = Vector2( 0.413844, 0.41338 )
-
-[node name="zegar" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 2547.48, -653.065 )
-scale = Vector2( 0.0609122, 0.0608439 )
-texture = ExtResource( 23 )
-
-[node name="plakaty2" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 1721.24, -638.002 )
-scale = Vector2( 0.413844, 0.41338 )
-texture = ExtResource( 24 )
 
 [node name="stolik2" parent="Mapa/YSort" instance=ExtResource( 21 )]
 position = Vector2( 2131.47, 137.149 )
@@ -540,19 +671,9 @@ scale = Vector2( 0.392281, 0.391841 )
 position = Vector2( 3673.69, 3932.1 )
 scale = Vector2( 0.392281, 0.391841 )
 
-[node name="zegar2" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 336.76, -676.443 )
-scale = Vector2( 0.0499927, 0.0499366 )
-texture = ExtResource( 23 )
-
 [node name="plecaki3" parent="Mapa/YSort" instance=ExtResource( 44 )]
 position = Vector2( -2417.8, 162.435 )
 scale = Vector2( 0.221875, 0.221627 )
-
-[node name="plakat3" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -564.728, -625.769 )
-scale = Vector2( 0.128963, 0.128819 )
-texture = ExtResource( 33 )
 
 [node name="umywalka" type="Sprite" parent="Mapa/YSort"]
 position = Vector2( -972.209, 3255.59 )
@@ -579,11 +700,6 @@ scale = Vector2( 0.451258, 0.450752 )
 position = Vector2( 3938.14, 3291.09 )
 scale = Vector2( 0.263746, 0.26345 )
 
-[node name="plakat1" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 3773.15, 3276.09 )
-scale = Vector2( 0.159478, 0.159299 )
-texture = ExtResource( 26 )
-
 [node name="szafka" parent="Mapa/YSort" instance=ExtResource( 32 )]
 position = Vector2( -1218.1, -759.96 )
 scale = Vector2( 0.414818, 0.414353 )
@@ -595,11 +711,6 @@ scale = Vector2( 0.347618, 0.347228 )
 [node name="stolik6" parent="Mapa/YSort" instance=ExtResource( 21 )]
 position = Vector2( -514.148, -19.6454 )
 scale = Vector2( 0.451636, 0.451129 )
-
-[node name="plakaty3" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -131.079, -611.861 )
-scale = Vector2( 0.505136, 0.504569 )
-texture = ExtResource( 35 )
 
 [node name="stolik9" parent="Mapa/YSort" instance=ExtResource( 21 )]
 position = Vector2( 1957.51, 1802.98 )
@@ -658,11 +769,6 @@ scale = Vector2( 0.614562, 0.613872 )
 [node name="stolik23" parent="Mapa/YSort" instance=ExtResource( 21 )]
 position = Vector2( -1908.27, 99.7865 )
 scale = Vector2( 0.528032, 0.52744 )
-
-[node name="zegar3" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -2689.64, -657.505 )
-scale = Vector2( 0.0569661, 0.0569022 )
-texture = ExtResource( 23 )
 
 [node name="lawka2" parent="Mapa/YSort" instance=ExtResource( 25 )]
 position = Vector2( -5400.4, 2997.36 )
@@ -724,11 +830,6 @@ scale = Vector2( 0.537289, 0.536686 )
 position = Vector2( -4226.5, 2144.16 )
 scale = Vector2( 0.537289, 0.536686 )
 
-[node name="zegar4" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -3806.33, 1607.55 )
-scale = Vector2( 0.0919397, 0.0918365 )
-texture = ExtResource( 23 )
-
 [node name="plecaki4" parent="Mapa/YSort" instance=ExtResource( 44 )]
 position = Vector2( -5031.39, 3902.91 )
 scale = Vector2( 0.250547, 0.250266 )
@@ -786,11 +887,6 @@ position = Vector2( -1941.95, -1527.75 )
 rotation = 3.14159
 scale = Vector2( 0.5, -0.499439 )
 
-[node name="zegar5" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -1384.74, -2546.79 )
-scale = Vector2( 0.0725471, 0.0724657 )
-texture = ExtResource( 23 )
-
 [node name="szafka2" parent="Mapa/YSort" instance=ExtResource( 32 )]
 position = Vector2( -2749.11, -2654.98 )
 scale = Vector2( 0.379188, 0.378763 )
@@ -813,16 +909,6 @@ position = Vector2( -827.982, -2385.03 )
 rotation = 3.14159
 scale = Vector2( 0.218171, -0.217926 )
 
-[node name="warning sign" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 4742.92, 436.062 )
-scale = Vector2( 0.410224, 0.410224 )
-
-[node name="zegar6" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( 1726.45, -2552.68 )
-rotation = 3.14159
-scale = Vector2( 0.0726774, -0.0725959 )
-texture = ExtResource( 23 )
-
 [node name="JEZ-zwiezaki" parent="Mapa/YSort" instance=ExtResource( 55 )]
 position = Vector2( -2070.93, 1718.84 )
 scale = Vector2( 0.762177, 0.762177 )
@@ -830,11 +916,6 @@ scale = Vector2( 0.762177, 0.762177 )
 [node name="polka4" parent="Mapa/YSort" instance=ExtResource( 28 )]
 position = Vector2( -2894.06, -4357.48 )
 scale = Vector2( 0.310652, 0.310303 )
-
-[node name="zegar7" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -3095.52, -4414.62 )
-scale = Vector2( 0.065672, 0.0655983 )
-texture = ExtResource( 23 )
 
 [node name="stolik10" parent="Mapa/YSort" instance=ExtResource( 22 )]
 position = Vector2( -1639.56, 1981.01 )
@@ -912,11 +993,6 @@ scale = Vector2( 0.533261, 0.532663 )
 position = Vector2( -294.091, -1469.67 )
 scale = Vector2( 0.533261, 0.532663 )
 
-[node name="plakaty1" type="Sprite" parent="Mapa/YSort"]
-position = Vector2( -1384.54, 1277.29 )
-scale = Vector2( 0.187012, 0.186802 )
-texture = ExtResource( 52 )
-
 [node name="biorko-nauczyciela3" parent="Mapa/YSort" instance=ExtResource( 19 )]
 position = Vector2( 20.3489, 1422.26 )
 scale = Vector2( 0.524629, 0.52404 )
@@ -962,18 +1038,6 @@ scale = Vector2( 0.51093, 0.510357 )
 [node name="telewizorek" parent="Mapa/YSort" instance=ExtResource( 58 )]
 position = Vector2( -896.658, -1827.99 )
 scale = Vector2( 0.322025, 0.321664 )
-
-[node name="door" parent="Mapa/YSort" instance=ExtResource( 60 )]
-position = Vector2( 2417.45, 724.751 )
-scale = Vector2( 0.290924, 0.290598 )
-
-[node name="door3" parent="Mapa/YSort" instance=ExtResource( 60 )]
-position = Vector2( 2409.3, -1179.26 )
-scale = Vector2( 0.290924, 0.290598 )
-
-[node name="door2" parent="Mapa/YSort" instance=ExtResource( 60 )]
-position = Vector2( 2404.15, 2625.87 )
-scale = Vector2( 0.290924, 0.290598 )
 
 [node name="biorko-taskpoint" type="StaticBody2D" parent="Mapa/YSort"]
 material = SubResource( 3 )
@@ -1113,25 +1177,6 @@ scale = Vector2( 0.0608888, 0.0608888 )
 [node name="admin" parent="Mapa/YSort" instance=ExtResource( 65 )]
 position = Vector2( -2826.1, -3735.76 )
 scale = Vector2( 0.487534, 0.487534 )
-
-[node name="map-top-sprites" type="Node2D" parent="."]
-scale = Vector2( 2, 2 )
-
-[node name="TL" type="Sprite" parent="map-top-sprites"]
-position = Vector2( -1368.5, -1131.25 )
-texture = ExtResource( 70 )
-
-[node name="TR" type="Sprite" parent="map-top-sprites"]
-position = Vector2( 1368.5, -1131.25 )
-texture = ExtResource( 68 )
-
-[node name="BL" type="Sprite" parent="map-top-sprites"]
-position = Vector2( -1368.5, 1131.25 )
-texture = ExtResource( 14 )
-
-[node name="BR" type="Sprite" parent="map-top-sprites"]
-position = Vector2( 1368.5, 1131.25 )
-texture = ExtResource( 69 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource( 10 )

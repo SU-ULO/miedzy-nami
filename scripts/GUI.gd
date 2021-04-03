@@ -31,7 +31,7 @@ func canvas_empty():
 
 func add(gui:Node = null): # adds scene as InteractionCanvas child
 	if Node == null:
-		print("WARRNING: no GUI node. Scene not found")
+		print("WARNING: no GUI node. Scene not found")
 		return false
 
 	IC.add_child(gui)
@@ -47,7 +47,7 @@ func remove_form_canvas(gui_name:String = "no name was spacified"):
 	if gui != null: # if gui exist
 		gui.queue_free() # remove it
 	else: # else print
-		print("WARRNING: no GUI with name ", gui_name)
+		print("WARNING: no GUI with name ", gui_name)
 
 # clears canvas and adds gui to canvas, 
 # returns true if GUI was added and false if not
@@ -109,10 +109,10 @@ func set_visibility(canvas_name:String = "PC", gui_item_path:String = "", state:
 	elif canvas_name == "CB" or canvas_name == "CloseButton":
 		item = CB.get_node_or_null(gui_item_path)
 	else:
-		print("WARRNING: no Canvas with name ", canvas_name)
+		print("WARNING: no Canvas with name ", canvas_name)
 		return false
 	
 	if item == null:
-		print("WARRNING: no item with path ", gui_item_path, " on ", canvas_name)
+		print("WARNING: no item with path ", gui_item_path, " on ", canvas_name)
 	else:
 		item.visible = state

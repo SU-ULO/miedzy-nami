@@ -19,37 +19,11 @@ animations = [ {
 "speed": 30.0
 } ]
 
-[sub_resource type="Animation" id=2]
-resource_name = "close"
-length = 0.15
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array( -805.896, -327.983, -805.896, 353.494, -1.71448, 353.494, 0.173218, -337.422 ), PoolVector2Array( -614.125, -383.628, -614.125, 443.126, -1.71448, 353.494, 0.173218, -337.422 ), PoolVector2Array( 598.484, -386.362, 593.722, 429.562, -6.31531, 358.129, -3.1405, -337.152 ), PoolVector2Array( 801.672, -333.978, 803.259, 351.78, -6.31531, 358.129, -3.1405, -337.152 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LightOccluder2D:occluder:polygon")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array( -842.432, -499.641, -34.4755, -503.417, -36.3632, 178.061, -838.656, 178.061 ), PoolVector2Array( -649.774, -559.268, -34.4755, -503.417, -36.3632, 178.061, -650.98, 270.215 ), PoolVector2Array( 560.501, -560.759, -37.9606, -507.842, -37.9609, 185.114, 557.982, 258.19 ), PoolVector2Array( 768.513, -504.693, -37.9606, -507.842, -37.9609, 185.114, 776.065, 184.336 ) ]
-}
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 402.229, 358.927 )
 
 [sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -842.432, -499.641, -34.4755, -503.417, -36.3632, 178.061, -838.656, 178.061 )
+polygon = PoolVector2Array( -843.849, -312, 22.151, -312, 20.151, -204, -841, -204 )
 
 [node name="door" type="StaticBody2D"]
 collision_layer = 5
@@ -60,16 +34,14 @@ script = ExtResource( 5 )
 frames = SubResource( 1 )
 animation = "close"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 2 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -805.896, -327.983, -805.896, 353.494, -1.71448, 353.494, 0.173218, -337.422 )
-
-[node name="Timer" type="Timer" parent="CollisionPolygon2D"]
-
 [node name="Timer" type="Timer" parent="."]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2( 33.9796, 171.785 )
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2( 397.439, 13.205 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="occluder" type="LightOccluder2D" parent="."]
+visible = false
+position = Vector2( 799.725, -156.284 )
 occluder = SubResource( 3 )

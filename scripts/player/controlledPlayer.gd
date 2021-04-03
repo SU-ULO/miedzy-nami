@@ -53,9 +53,10 @@ func handle_sabotage(type):
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
-			network.world.get_node("Mapa/YSort/door").close_door()
-			network.world.get_node("Mapa/YSort/door2").close_door()
-			network.world.get_node("Mapa/YSort/door3").close_door()
+			network.world.get_node("Mapa/door").close_door()
+			network.world.get_node("Mapa/door2").close_door()
+			network.world.get_node("Mapa/door3").close_door()
+			network.world.get_node("Mapa/map-top-sprites/dynamic").z_index = 0
 		if type == 3:
 			network.comms_disabled = true
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")) && !is_in_group("rip"):
@@ -80,9 +81,10 @@ func handle_end_sabotage(type):
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/electrical"))
 		if type == 2:
-			network.world.get_node("Mapa/YSort/door").open_door()
-			network.world.get_node("Mapa/YSort/door2").open_door()
-			network.world.get_node("Mapa/YSort/door3").open_door()
+			network.world.get_node("Mapa/door").open_door()
+			network.world.get_node("Mapa/door2").open_door()
+			network.world.get_node("Mapa/door3").open_door()
+			network.world.get_node("Mapa/map-top-sprites/dynamic").z_index = 100
 		if type == 3:
 			network.comms_disabled = false
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
