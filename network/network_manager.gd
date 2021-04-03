@@ -361,6 +361,7 @@ func game_start(params, taskstuff):
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
+	own_player.ui_canceled()
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
