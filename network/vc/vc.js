@@ -72,6 +72,30 @@ class Peer
 	}
 }
 
+function set_offer(offer, id)
+{
+	if(peers.has(id))
+	{
+		peers.get(id).answercall(offer);
+	}
+}
+
+function set_answer(answer, id)
+{
+	if(peers.has(id))
+	{
+		peers.get(id).setAnswer(answer);
+	}
+}
+
+function set_candidate(candidate, id)
+{
+	if(peers.has(id))
+	{
+		peers.get(id).setcandidate(candidate);
+	}
+}
+
 function createpeer(webrtc, id)
 {
 	peers.set(id, new Peer(webrtc, id));
@@ -79,10 +103,36 @@ function createpeer(webrtc, id)
 
 function callpeer(id)
 {
+	console.log(id);
 	if(peers.has(id))
 	{
 		peers.get(id).call();
 	}
+}
+
+function addpeer(id, webrtc)
+{
+	if(!peers.has(id))
+	{
+		peers.set(id, new Peer(webrtc, id));
+	}
+}
+
+function removepeer(id)
+{
+	if(peers.has(id))
+	{
+		peers.get(id).end();
+		peers.delete(id);
+	}
+}
+
+function clearpeers()
+{
+	peers.forEach((peer)=>{
+		peer.end();
+	});
+	peers.clear();
 }
 
 function poll()
@@ -115,6 +165,7 @@ function askforstream()
 	navigator.mediaDevices.getUserMedia({video: false, audio: true}).then((mediastream)=>{
 		localstream=mediastream;
 		audioelements[10].srcObject=localstream;
+		setmute(true);
 	});
 }
 
@@ -133,3 +184,11 @@ function soundtest(play)
 		audioelements[10].pause();
 	}
 }
+
+function setmute(m)
+{
+	if(localstream) localstream.getAudioTracks().forEach((stream)=>{
+		stream.enabled=!m;
+	});
+}
+

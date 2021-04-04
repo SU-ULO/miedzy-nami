@@ -497,4 +497,16 @@ func tasks_update(state, started, _id):
 		tasks[i].started = started[i]
 		tasks[i].local = true
 
-		
+func send_vc_offer(_offer, _id: int):
+	pass
+
+func send_vc_answer(_answer, _id: int):
+	pass
+
+func send_vc_candidate(_candidate, _id: int):
+	pass
+
+func _ready():
+	Globals.start.vc.connect("offer", self, "send_vc_offer")
+	Globals.start.vc.connect("answer", self, "send_vc_answer")
+	Globals.start.vc.connect("candidate", self, "send_vc_candidate")

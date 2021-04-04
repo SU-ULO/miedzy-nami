@@ -4,6 +4,9 @@ class_name VoiceChat
 
 var available := false
 
+var webrtc := JSON.print({"iceServers":[{"urls":["stun:stun.l.google.com:19302"]}]})
+var own_id := -1
+
 signal offer(offer, id)
 signal answer(answer, id)
 signal candidate(candidate, id)
@@ -20,9 +23,9 @@ func _ready():
 func _input(event):
 	if available:
 		if event.is_action_pressed("vc_push_to_talk"):
-			pass
+			JavaScript.eval("setmute(false)", true)
 		elif event.is_action_released("vc_push_to_talk"):
-			pass
+			JavaScript.eval("setmute(true)", true)
 
 func askforstream():
 	if !available: return
@@ -32,9 +35,47 @@ func audiotest(play: bool = true):
 	if !available: return
 	JavaScript.eval("soundtest("+("true" if play else "false")+")", true)
 
+func addpeer(id: int):
+	if !available: return
+	JavaScript.eval("addpeer("+String(id)+","+webrtc+")", true)
+	if id<own_id:
+		JavaScript.eval("callpeer("+String(id)+")", true)
+
+func removepeer(id: int):
+	if !available: return
+	JavaScript.eval("removepeer("+String(id)+")", true)
+
+func clearpeers():
+	if !available: return
+	JavaScript.eval("clearpeers()", true)
+
+func set_offer(offer, id: int):
+	JavaScript.eval("set_offer("+JSON.print(offer)+","+String(id)+")", true)
+
+func set_answer(answer, id: int):
+	JavaScript.eval("set_answer("+JSON.print(answer)+","+String(id)+")", true)
+
+func set_candidate(candidate, id: int):
+	JavaScript.eval("set_candidate("+JSON.print(candidate)+","+String(id)+")", true)
+
+func handle_poll(data: Dictionary):
+	for id in data:
+		var p = data[id]
+		if p.has("offer"):
+			emit_signal("offer", p["offer"], int(id))
+		if p.has("answer"):
+			emit_signal("answer", p["answer"], int(id))
+		if p.has("candidates"):
+			for c in p["candidates"]:
+				emit_signal("candidate", c, int(id))
+
 var time := 0.0
 func _process(delta):
-	if time >= 1:
-		print(JavaScript.eval("poll()", true))
+	if time >= 0.1:
+		var polled = JavaScript.eval("poll()", true)
+		if polled:
+			var json = JSON.parse(polled)
+			if json.error==OK:
+				handle_poll(json.result)
 		time=0.0
 	time+=delta

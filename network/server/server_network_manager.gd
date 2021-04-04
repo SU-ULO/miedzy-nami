@@ -53,6 +53,9 @@ func create_client(config):
 		client.connect("look_update", self, "handle_set_look", [config.id])
 		client.connect("set_invisible", self, "handle_set_invisible")
 		client.connect("vote", self, "handle_vote_request", [config.id])
+		client.connect("vc_offer", self, "handle_vc_offer", [config.id])
+		client.connect("vc_answer", self, "handle_vc_answer", [config.id])
+		client.connect("vc_candidate", self, "handle_vc_candidate", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -102,6 +105,7 @@ func recreate_world():
 	sync_colors()
 
 func spawn_player(id: int, init_data: Dictionary = {}):
+	Globals.start.vc.addpeer(id)
 	if !connected_clients.has(id): return
 	var new_character = preload("res://entities/dummyplayer.tscn").instance()
 	new_character.owner_id = id
@@ -133,7 +137,8 @@ func spawn_player(id: int, init_data: Dictionary = {}):
 	connected_clients[id].joined = true
 	sync_colors()
 
-func kick(id):
+func kick(id: int):
+	Globals.start.vc.removepeer(id)
 	if connected_clients.has(id):
 		var c = connected_clients[id]
 # warning-ignore:return_value_discarded
@@ -361,3 +366,31 @@ func end_game(crew_win: bool):
 	.end_game(crew_win)
 	yield(get_tree().create_timer(1.0), "timeout")
 	request_end_game()
+
+func handle_vc_offer(offer, id, requester_id):
+	if id==own_id:
+		Globals.start.vc.set_offer(offer, requester_id)
+	else:
+		if connected_clients.has(id):
+			connected_clients[id].send_vc_offer(offer, requester_id)
+
+func handle_vc_answer(answer, id, requester_id):
+	if id==own_id:
+		Globals.start.vc.set_offer(answer, requester_id)
+	else:
+		if connected_clients.has(id):
+			connected_clients[id].send_vc_answer(answer, requester_id)
+
+func handle_vc_candidate(candidate, id, requester_id):
+	if id==own_id:
+		Globals.start.vc.set_candidate(candidate, requester_id)
+	else:
+		if connected_clients.has(id):
+			connected_clients[id].send_vc_candidate(candidate, requester_id)
+
+func send_vc_answer(answer, id):
+	handle_vc_answer(answer, id, own_id)
+
+func send_vc_candidate(candidate, id):
+	handle_vc_candidate(candidate, id, own_id)
+
