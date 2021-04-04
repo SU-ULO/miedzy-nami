@@ -15,4 +15,9 @@ func set_settings():
 
 func _on_OptionsAcceptButton_pressed():
 	set_settings()
+	Globals.start.vc.audiotest(false)
 	get_parent().open_main()
+
+
+func _on_AudioTest_pressed():
+	Globals.start.vc.audiotest()

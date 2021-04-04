@@ -577,20 +577,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Main/OptionsButton"]
-margin_left = 348.025
-margin_top = 16.9486
-margin_right = 539.025
-margin_bottom = 91.9486
-mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
-text = "OPCJE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="Main/OptionsButton"]
+[node name="Label" type="Label" parent="Main/OptionsButton"]
 margin_left = 348.025
 margin_top = 16.9486
 margin_right = 539.025
@@ -631,6 +618,9 @@ __meta__ = {
 [node name="OptionsContainer" type="Control" parent="Options"]
 margin_right = 500.0
 margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
 margin_left = 99.9603
@@ -680,6 +670,30 @@ mouse_filter = 1
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Zatwierdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioTest" type="TextureButton" parent="Options"]
+margin_left = -89.924
+margin_top = 261.254
+margin_right = 774.076
+margin_bottom = 369.254
+rect_scale = Vector2( 0.773, 0.773 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Options/AudioTest"]
+margin_left = 348.025
+margin_top = 16.9486
+margin_right = 539.025
+margin_bottom = 91.9486
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "test mikrofonu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -979,6 +993,7 @@ valign = 1
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
+[connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
 [connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/MenuButton/TextureButton" to="." method="open_main"]
 [connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
