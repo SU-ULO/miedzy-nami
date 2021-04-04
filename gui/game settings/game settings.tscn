@@ -23,7 +23,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1062.0
-margin_bottom = 1491.0
+margin_bottom = 1543.0
 custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
@@ -31,83 +31,137 @@ __meta__ = {
 
 [node name="impostor-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_right = 1062.0
-margin_bottom = 75.0
+margin_bottom = 79.0
 default_value = 2
 min_val = 1
 max_val = 3
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-count" index="0"]
+margin_bottom = 79.0
 text = "impostor count"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/impostor-count" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/impostor-count" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/impostor-count" index="3"]
+margin_bottom = 79.0
+
 [node name="comfirm-ejects" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 100.0
+margin_top = 104.0
 margin_right = 1062.0
-margin_bottom = 183.0
+margin_bottom = 187.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/comfirm-ejects" index="0"]
+margin_top = 2.0
+margin_bottom = 81.0
 text = "confirm eject"
 
 [node name="meeting-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 208.0
+margin_top = 212.0
 margin_right = 1062.0
-margin_bottom = 283.0
+margin_bottom = 291.0
 default_value = 1
 min_val = 1
 max_val = 9
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/meeting-count" index="0"]
+margin_bottom = 79.0
 text = "meeting count"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/meeting-count" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/meeting-count" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/meeting-count" index="3"]
+margin_bottom = 79.0
+
 [node name="anonnymous-votes" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 308.0
+margin_top = 316.0
 margin_right = 1062.0
-margin_bottom = 391.0
+margin_bottom = 399.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/anonnymous-votes" index="0"]
+margin_top = 2.0
+margin_bottom = 81.0
 text = "annonymous votes"
 
 [node name="emergency-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 416.0
+margin_top = 424.0
 margin_right = 1062.0
-margin_bottom = 491.0
+margin_bottom = 503.0
 prefix = "s"
 default_value = 15
 step = 15
 max_val = 60
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="0"]
+margin_bottom = 79.0
 text = "emergency cooldown"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="3"]
+margin_bottom = 79.0
+
 [node name="discussion-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 516.0
+margin_top = 528.0
 margin_right = 1062.0
-margin_bottom = 591.0
+margin_bottom = 607.0
 prefix = "s"
 default_value = 15
 step = 15
 max_val = 120
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/discussion-time" index="0"]
+margin_bottom = 79.0
 text = "discussion time"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/discussion-time" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/discussion-time" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/discussion-time" index="3"]
+margin_bottom = 79.0
+
 [node name="voting-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 616.0
+margin_top = 632.0
 margin_right = 1062.0
-margin_bottom = 691.0
+margin_bottom = 711.0
 prefix = "s"
 default_value = 120
 step = 15
 max_val = 300
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/voting-time" index="0"]
+margin_bottom = 79.0
 text = "voting time"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/voting-time" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/voting-time" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/voting-time" index="3"]
+margin_bottom = 79.0
+
 [node name="player-speed" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 716.0
+margin_top = 736.0
 margin_right = 1062.0
-margin_bottom = 791.0
+margin_bottom = 815.0
 prefix = "x"
 default_value = 4
 min_val = 2
@@ -115,12 +169,22 @@ max_val = 12
 div = 4
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/player-speed" index="0"]
+margin_bottom = 79.0
 text = "player speed"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/player-speed" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/player-speed" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/player-speed" index="3"]
+margin_bottom = 79.0
+
 [node name="crewmate-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 816.0
+margin_top = 840.0
 margin_right = 1062.0
-margin_bottom = 891.0
+margin_bottom = 919.0
 prefix = "x"
 default_value = 4
 min_val = 1
@@ -128,12 +192,22 @@ max_val = 20
 div = 4
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="0"]
+margin_bottom = 79.0
 text = "crewmate vision"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="3"]
+margin_bottom = 79.0
+
 [node name="impostor-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 916.0
+margin_top = 944.0
 margin_right = 1062.0
-margin_bottom = 991.0
+margin_bottom = 1023.0
 prefix = "x"
 default_value = 6
 min_val = 1
@@ -141,12 +215,22 @@ max_val = 20
 div = 4
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-vision" index="0"]
+margin_bottom = 79.0
 text = "impostor vision"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/impostor-vision" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/impostor-vision" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/impostor-vision" index="3"]
+margin_bottom = 79.0
+
 [node name="kill-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 1016.0
+margin_top = 1048.0
 margin_right = 1062.0
-margin_bottom = 1091.0
+margin_bottom = 1127.0
 prefix = "s"
 default_value = 90
 step = 5
@@ -155,49 +239,99 @@ max_val = 120
 div = 2
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="0"]
+margin_bottom = 79.0
 text = "kill cooldown"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="3"]
+margin_bottom = 79.0
+
 [node name="kill-distance" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 1116.0
+margin_top = 1152.0
 margin_right = 1062.0
-margin_bottom = 1191.0
+margin_bottom = 1231.0
 default_value = 1
 non_numeric_values = true
 values = [ "Small", "Medium", "Large" ]
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/kill-distance" index="0"]
+margin_bottom = 79.0
 text = "kill distance"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/kill-distance" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/kill-distance" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/kill-distance" index="3"]
+margin_bottom = 79.0
+
 [node name="taskbar-updates" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 1216.0
+margin_top = 1256.0
 margin_right = 1062.0
-margin_bottom = 1291.0
+margin_bottom = 1335.0
 default_value = 1
 non_numeric_values = true
 values = [ "Never", "Meetings", "Always" ]
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="0"]
+margin_bottom = 79.0
 text = "taskbar updates"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="3"]
+margin_bottom = 79.0
+
 [node name="long-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 1316.0
+margin_top = 1360.0
 margin_right = 1062.0
-margin_bottom = 1391.0
+margin_bottom = 1439.0
 default_value = 1
 max_val = 3
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/long-tasks" index="0"]
+margin_bottom = 79.0
 text = "long tasks"
 
+[node name="minus" parent="ScrollContainer/VBoxContainer/long-tasks" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/long-tasks" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/long-tasks" index="3"]
+margin_bottom = 79.0
+
 [node name="short-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 1416.0
+margin_top = 1464.0
 margin_right = 1062.0
-margin_bottom = 1491.0
+margin_bottom = 1543.0
 default_value = 3
 max_val = 5
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/short-tasks" index="0"]
+margin_bottom = 79.0
 text = "short tasks"
+
+[node name="minus" parent="ScrollContainer/VBoxContainer/short-tasks" index="1"]
+margin_bottom = 79.0
+
+[node name="value" parent="ScrollContainer/VBoxContainer/short-tasks" index="2"]
+margin_bottom = 79.0
+
+[node name="plus" parent="ScrollContainer/VBoxContainer/short-tasks" index="3"]
+margin_bottom = 79.0
 
 [editable path="ScrollContainer/VBoxContainer/impostor-count"]
 

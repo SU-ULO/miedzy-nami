@@ -132,28 +132,18 @@ func on_sight_area_exit(body):
 			if debug_mode: print(body.get_name(), " removed from: sight")
 
 func _on_interaction_area_enter(body):
-	if body.is_in_group("interactable"):
-		in_interaction_range.push_back(body)
-		if debug_mode: print(body.get_name(), " added to: interaction range")
-		
-	else: if body.is_in_group("players") \
-		and self.is_in_group("impostors") \
-		and body != self and !body.is_in_group("impostors") \
-		and !body.is_in_group("rip"):
+	if body.is_in_group("interactable") && !body.is_in_group("players"):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 
 func on_interaction_area_exit(body):
-	if in_interaction_range.has(body): 
+	if in_interaction_range.has(body) && !body.is_in_group("players"): 
 		in_interaction_range.erase(body)
 		if debug_mode: print(body.get_name(), " removed from: interaction range")
 		
 		if interactable.has(body):
 			interactable.erase(body)
 			if debug_mode: print(body.get_name(), " removed from: interaction")
-		if players_interactable.has(body):
-			players_interactable.erase(body)
-			if debug_mode: print(body.get_name(), " removed from: players_interaction")
 		if deadbody_interactable.has(body):
 			deadbody_interactable.erase(body)
 			if debug_mode: print(body.get_name(), " removed from: deadbody_interaction")
@@ -231,3 +221,21 @@ func become_impostor():
 	self.add_to_group("impostors")
 	if get_tree().get_root().get_node("Start").network.own_player.is_in_group("impostors"):
 		$Label.add_color_override("font_color", Color(1,0,0,1))
+
+
+func _on_KillArea_body_entered(body):
+	if body.is_in_group("players") \
+		and self.is_in_group("impostors") \
+		and body != self and !body.is_in_group("impostors") \
+		and !body.is_in_group("rip"):
+		in_interaction_range.push_back(body)
+		if debug_mode: print(body.get_name(), " added to: interaction range")
+
+
+func _on_KillArea_body_exited(body):
+	if in_interaction_range.has(body) && body.is_in_group("players"): 
+		in_interaction_range.erase(body)
+		if debug_mode: print(body.get_name(), " removed from: interaction range")
+		if players_interactable.has(body):
+				players_interactable.erase(body)
+				if debug_mode: print(body.get_name(), " removed from: players_interaction")

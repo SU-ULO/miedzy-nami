@@ -145,6 +145,7 @@ func start_meeting(caller: int, dead: int):
 	
 	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
+	gui.show_imps = gamesettings["comfirm-ejects"]
 	var playerbox = load("res://gui/meeting/PlayerMeetingBox.tscn")
 	meeting_gui = gui
 	
@@ -282,7 +283,11 @@ func request_vote(_id: int):
 
 func add_vote(voter_id, voted_id):
 	validate_vote(voter_id, voted_id)
-	var color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
+	var color
+	if gamesettings["anonnymous-votes"]:
+		color = Color("#666666")
+	else:
+		color =  Color(colors[player_characters[voter_id].color]) # set vote color to voter color
 	
 	var gui = meeting_gui
 	if meeting_gui == null: return false
@@ -361,7 +366,6 @@ func game_start(params, taskstuff):
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
-	own_player.ui_canceled()
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):
@@ -380,6 +384,7 @@ func game_start(params, taskstuff):
 	own_player.get_node("GUI/PlayerCanvas/playerGUI").updateTaskList()
 	if own_player.is_in_group("impostors"):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
+	own_player.get_node("KillArea").scale = Vector2((gamesettings["kill-distance"] + 1)/2, (gamesettings["kill-distance"]+1)/2)
 func request_cameras_enable(_on_off: bool):
 	pass
 

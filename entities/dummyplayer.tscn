@@ -194,6 +194,12 @@ visible = false
 [node name="AreaShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource( 1 )
 
+[node name="KillArea" type="Area2D" parent="."]
+visible = false
+
+[node name="AreaShape" type="CollisionShape2D" parent="KillArea"]
+shape = SubResource( 1 )
+
 [node name="SightArea" type="Area2D" parent="."]
 visible = false
 
@@ -267,6 +273,7 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -294,5 +301,7 @@ __meta__ = {
 }
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]
+[connection signal="body_entered" from="KillArea" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_exited" from="KillArea" to="." method="_on_KillArea_body_exited"]
 [connection signal="body_entered" from="SightArea" to="." method="on_sight_area_enter"]
 [connection signal="body_exited" from="SightArea" to="." method="on_sight_area_exit"]
