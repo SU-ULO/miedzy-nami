@@ -349,6 +349,10 @@ func kill(dead: int, pos: Vector2, spawnbody: bool=true, killer: int = -1):
 				c.visible = true
 				if c.owner_id==own_id:
 					c.modulate = Color(1, 1, 1, 0.8)
+					own_player.collision_layer = 0
+					own_player.collision_mask = 0b10000000000000000000
+					own_player.sight_range = 200000000
+					own_player.get_node("Light").shadow_enabled = false
 				elif c.dead:
 					c.modulate = Color(1, 1, 1, 0.2)
 

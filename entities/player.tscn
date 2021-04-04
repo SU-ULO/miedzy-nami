@@ -264,14 +264,10 @@ frames = SubResource( 5 )
 frames = SubResource( 6 )
 
 [node name="spodnie" parent="sprites" index="3"]
-z_index = 0
 frames = SubResource( 7 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
-
-[node name="AnimatedSprite" parent="." index="4"]
-frame = 0
 
 [node name="Light" type="Light2D" parent="." index="5"]
 position = Vector2( 0, 11.4286 )
@@ -283,6 +279,9 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
+
+[node name="AnimatedSprite" parent="." index="7"]
+frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true

@@ -1185,3 +1185,11 @@ color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="lobby-position" type="Position2D" parent="."]
 position = Vector2( 1278.04, 14374.7 )
+
+[node name="border-of-notcrossingness" type="StaticBody2D" parent="."]
+collision_layer = 524288
+collision_mask = 524288
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="border-of-notcrossingness"]
+build_mode = 1
+polygon = PoolVector2Array( -5650.45, 4435.63, 5346.48, 4639.28, 5640.63, 317.438, 2721.7, -2827.77, -1396.49, -2940.91, -2414.73, -4637.97, -3568.72, -4660.59, -3681.86, 1086.77, -5673.08, 1245.16 )
