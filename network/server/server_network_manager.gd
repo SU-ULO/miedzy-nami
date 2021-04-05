@@ -56,6 +56,7 @@ func create_client(config):
 		client.connect("vc_offer", self, "handle_vc_offer", [config.id])
 		client.connect("vc_answer", self, "handle_vc_answer", [config.id])
 		client.connect("vc_candidate", self, "handle_vc_candidate", [config.id])
+		client.connect("vc_speaking", self, "handle_vc_speaking", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)
@@ -388,9 +389,16 @@ func handle_vc_candidate(candidate, id, requester_id):
 		if connected_clients.has(id):
 			connected_clients[id].send_vc_candidate(candidate, requester_id)
 
+func handle_vc_speaking(speaking: bool, id: int):
+	for c in  connected_clients.values():
+		c.send_vc_speaking(speaking, id)
+	Globals.start.vc.setremotespeaking(speaking, id)
+
 func send_vc_answer(answer, id):
 	handle_vc_answer(answer, id, own_id)
 
 func send_vc_candidate(candidate, id):
 	handle_vc_candidate(candidate, id, own_id)
 
+func send_vc_speaking(speaking: bool):
+	handle_vc_speaking(speaking, own_id)

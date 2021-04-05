@@ -24,17 +24,18 @@ class Peer
 		this.pc = new RTCPeerConnection(webrtcConfig);
 		this.remotestream = new MediaStream();
 		audioelements[this.id].srcObject=this.remotestream;
+		this.speaking=false;
 		this.offer=null;
 		this.answer=null;
 		this.candidates=[]
 		if(localstream)
 		{
-			localstream.getAudioTracks().forEach((track)=>{
+			localstream.getAudioTracks().forEach(track=>{
 				this.pc.addTrack(track, localstream);
 			});
 		};
 		this.pc.ontrack = (event)=>{
-			event.streams[0].getAudioTracks().forEach((track)=>{
+			event.streams[0].getAudioTracks().forEach(track=>{
 				this.remotestream.addTrack(track);
 			});
 		};
@@ -103,7 +104,6 @@ function createpeer(webrtc, id)
 
 function callpeer(id)
 {
-	console.log(id);
 	if(peers.has(id))
 	{
 		peers.get(id).call();
@@ -138,6 +138,7 @@ function clearpeers()
 function poll()
 {
 	let ret = {};
+	let peerinfo = {};
 	peers.forEach((peer, id)=>{
 		let p = {};
 		if(peer.offer)
@@ -154,15 +155,15 @@ function poll()
 			p.candidates=peer.candidates.slice();
 			peer.candidates=[];
 		}
-		if(Object.keys(p).length>0) ret[id]=p;
+		if(Object.keys(p).length>0) peerinfo[id]=p;
 	});
-	if(Object.keys(ret).length>0) return JSON.stringify(ret);
-	else return null;
+	if(Object.keys(peerinfo).length>0) ret.peers=peerinfo;
+	return JSON.stringify(ret);
 }
 
 function askforstream()
 {
-	navigator.mediaDevices.getUserMedia({video: false, audio: true}).then((mediastream)=>{
+	navigator.mediaDevices.getUserMedia({video: false, audio: true}).then(mediastream=>{
 		localstream=mediastream;
 		audioelements[10].srcObject=localstream;
 		setmute(true);
@@ -185,10 +186,24 @@ function soundtest(play)
 	}
 }
 
+function isunmuted()
+{
+	let unmuted=false;
+	if(localstream) for(let track of localstream.getAudioTracks())
+	{
+		if(track.enabled)
+		{
+			unmuted=true;
+			break;
+		}
+	}
+	return unmuted;
+}
+
 function setmute(m)
 {
-	if(localstream) localstream.getAudioTracks().forEach((stream)=>{
-		stream.enabled=!m;
+	if(localstream) localstream.getAudioTracks().forEach(track=>{
+		track.enabled=!m;
 	});
 }
 

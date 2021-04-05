@@ -19,6 +19,7 @@ signal vote(id)
 signal vc_offer(offer, id)
 signal vc_answer(answer, id)
 signal vc_candidate(candidate, id)
+signal vc_speaking(speaking)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -59,6 +60,8 @@ func handle_events(input):
 		emit_signal("vc_answer", input[1], input[2])
 	elif input[0]==13:
 		emit_signal("vc_candidate", input[1], input[2])
+	elif input[0]==14:
+		emit_signal("vc_speaking", input[1])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])
@@ -113,3 +116,6 @@ func send_vc_answer(answer, id: int):
 
 func send_vc_candidate(candidate, id: int):
 	send_events([16, candidate, id])
+
+func send_vc_speaking(speaking: bool, id: int):
+	send_events([17, speaking, id])

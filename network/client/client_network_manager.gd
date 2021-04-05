@@ -30,6 +30,7 @@ func create_world(config):
 	joined_server.connect("vc_offer", Globals.start.vc, "set_offer")
 	joined_server.connect("vc_answer", Globals.start.vc, "set_answer")
 	joined_server.connect("vc_candidate", Globals.start.vc, "set_candidate")
+	joined_server.connect("vc_speaking", Globals.start.vc, "setremotespeaking")
 	add_child(joined_server)
 
 func recreate_world(): #that is a copy from NetworkManager but we use NetworkManager's create_world
@@ -189,3 +190,6 @@ func send_vc_candidate(candidate, id):
 	if joined_server:
 		joined_server.send_vc_candidate(candidate, id)
 
+func send_vc_speaking(speaking: bool):
+	if joined_server:
+		joined_server.send_vc_speaking(speaking)

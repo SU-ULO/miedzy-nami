@@ -20,6 +20,7 @@ signal vote(voter, voted)
 signal vc_offer(offer, id)
 signal vc_answer(answer, id)
 signal vc_candidate(candidate, id)
+signal vc_speaking(speaking, id)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -69,6 +70,8 @@ func handle_events(input):
 		emit_signal("vc_answer", input[1], input[2])
 	elif input[0]==16:
 		emit_signal("vc_candidate", input[1], input[2])
+	elif input[0]==17:
+		emit_signal("vc_speaking", input[1], input[2])
 
 func handle_updates(input):
 	if !(input is Array): return
@@ -119,3 +122,6 @@ func send_vc_answer(answer, id: int):
 
 func send_vc_candidate(candidate, id: int):
 	send_events([13, candidate, id])
+
+func send_vc_speaking(speaking: bool):
+	send_events(([14, speaking]))
