@@ -23,6 +23,12 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		if self == main.dragged:
 			self.position = get_viewport().get_mouse_position() - clickDelta
+	if event is InputEventMouseButton:
+		if !event.is_pressed():
+			if main.dragged != null:
+				main.toDrag.clear()
+				drag_off()
+				main.checkForEnd()
 
 func inputEvent(_viewport, event, _shape):
 	if event is InputEventScreenTouch || event is InputEventMouseButton:
@@ -30,26 +36,20 @@ func inputEvent(_viewport, event, _shape):
 			main.toDrag.append(self.get_index())
 			if main.toDrag.max() == self.get_index():
 				drag_on(self)
-		elif main.dragged != null:
-			main.toDrag.clear()
-			drag_off()
-			main.checkForEnd()
+
 
 func drag_on(body):
 	if main.dragged != null:
 		drag_off()
 	main.dragged = body
-	print("draging ", body.name)
-	if body.inBox && !body.inFront:
-		main.toSort += 1
-		print("+1, total = ", main.toSort)
+	if !main.books.has(body.name):
+		main.books.append(body.name)
 	clickDelta = (get_viewport().get_mouse_position() - body.position)
 
 func drag_off():
-	print("stopped draging ", main.dragged.name)
 	if main.dragged.inBox && !main.dragged.inFront:
-		main.toSort -= 1
-		print("-1, total = ", main.toSort)
+		if main.books.has(main.dragged.name):
+			main.books.erase(main.dragged.name)
 	main.dragged = null
 
 func isInBox(area):
