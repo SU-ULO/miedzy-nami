@@ -1,7 +1,7 @@
 extends Control
 
 func update_vc_mode():
-	Globals.start.vc.update_vc_mode($'setting'.get_value())
+	VoiceChat.update_vc_mode($'setting'.get_value())
 
 func _ready():
 	get_settings()
@@ -11,6 +11,7 @@ func get_settings():
 	var settings = get_parent().usersettings
 	$OptionsContainer/MatchmakingURL.text=settings["signaling_url"]
 	$'setting'.set_value(settings["vc-mode"])
+	$setting.update_label()
 
 func set_settings():
 	var settings = get_parent().usersettings
@@ -20,10 +21,11 @@ func set_settings():
 
 func _on_OptionsAcceptButton_pressed():
 	set_settings()
-	Globals.start.vc.update_vc_mode()
-	Globals.start.vc.audiotest(false)
+	VoiceChat.update_vc_mode()
+	VoiceChat.audiotest(false)
 	get_parent().open_main()
 
 
 func _on_AudioTest_pressed():
-	Globals.start.vc.audiotest()
+	VoiceChat.update_vc_mode()
+	VoiceChat.audiotest()

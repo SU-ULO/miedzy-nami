@@ -7,7 +7,6 @@ enum {NONE, SERVER, CLIENT}
 var network_side := NONE
 
 onready var menu := $MainMenu
-onready var vc := $VoiceChat
 var matchmaking = null
 var network = null
 
@@ -45,8 +44,8 @@ func leave_room():
 	else:
 		menu.open_main()
 		network_side = NONE
-	Globals.start.vc.own_id=-1
-	Globals.start.vc.clearpeers()
+	VoiceChat.own_id=-1
+	VoiceChat.clearpeers()
 
 func start_server(options):
 	if network_side != NONE:
@@ -68,7 +67,7 @@ func start_server(options):
 	add_child(network)
 	matchmaking.start()
 	network_side = SERVER
-	Globals.start.vc.own_id=0
+	VoiceChat.own_id=0
 
 func start_client():
 	if network_side != NONE:

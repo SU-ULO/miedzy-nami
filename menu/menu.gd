@@ -39,7 +39,7 @@ func open_logging_in():
 
 func open_options():
 	close_everything()
-	Globals.start.vc.askforstream()
+	VoiceChat.askforstream()
 	var optionsnode=$"Options"
 	optionsnode.get_settings()
 	optionsnode.visible=true

@@ -106,7 +106,7 @@ func recreate_world():
 	sync_colors()
 
 func spawn_player(id: int, init_data: Dictionary = {}):
-	Globals.start.vc.addpeer(id)
+	VoiceChat.addpeer(id)
 	if !connected_clients.has(id): return
 	var new_character = preload("res://entities/dummyplayer.tscn").instance()
 	new_character.owner_id = id
@@ -139,7 +139,7 @@ func spawn_player(id: int, init_data: Dictionary = {}):
 	sync_colors()
 
 func kick(id: int):
-	Globals.start.vc.removepeer(id)
+	VoiceChat.removepeer(id)
 	if connected_clients.has(id):
 		var c = connected_clients[id]
 # warning-ignore:return_value_discarded
@@ -370,21 +370,21 @@ func end_game(crew_win: bool):
 
 func handle_vc_offer(offer, id, requester_id):
 	if id==own_id:
-		Globals.start.vc.set_offer(offer, requester_id)
+		VoiceChat.set_offer(offer, requester_id)
 	else:
 		if connected_clients.has(id):
 			connected_clients[id].send_vc_offer(offer, requester_id)
 
 func handle_vc_answer(answer, id, requester_id):
 	if id==own_id:
-		Globals.start.vc.set_offer(answer, requester_id)
+		VoiceChat.set_offer(answer, requester_id)
 	else:
 		if connected_clients.has(id):
 			connected_clients[id].send_vc_answer(answer, requester_id)
 
 func handle_vc_candidate(candidate, id, requester_id):
 	if id==own_id:
-		Globals.start.vc.set_candidate(candidate, requester_id)
+		VoiceChat.set_candidate(candidate, requester_id)
 	else:
 		if connected_clients.has(id):
 			connected_clients[id].send_vc_candidate(candidate, requester_id)
@@ -392,7 +392,7 @@ func handle_vc_candidate(candidate, id, requester_id):
 func handle_vc_speaking(speaking: bool, id: int):
 	for c in  connected_clients.values():
 		c.send_vc_speaking(speaking, id)
-	Globals.start.vc.setremotespeaking(speaking, id)
+	VoiceChat.setremotespeaking(speaking, id)
 
 func send_vc_answer(answer, id):
 	handle_vc_answer(answer, id, own_id)

@@ -92,13 +92,14 @@ func _on_gui_button_pressed(button_name):
 	elif button_name == "settings":
 		var instance = settings["gui_res"].instance()
 		instance.name = settings["gui_name"]
-		if GUI.is_in_gui(instance):
+		if GUI.is_on_canvas(instance):
 			#save setting
 			pass
 		else:
 			#set setting
 			pass
 		GUI.replace_on_canvas(instance)
+		instance.onopen()
 	elif button_name == "map":
 		var instance = minimap["gui_res"].instance()
 		instance.name = minimap["gui_name"]

@@ -27,10 +27,10 @@ func create_world(config):
 	joined_server.connect("look", self, "set_look")
 	joined_server.connect("invisible", self, "set_invisible")
 	joined_server.connect("vote", self, "add_vote")
-	joined_server.connect("vc_offer", Globals.start.vc, "set_offer")
-	joined_server.connect("vc_answer", Globals.start.vc, "set_answer")
-	joined_server.connect("vc_candidate", Globals.start.vc, "set_candidate")
-	joined_server.connect("vc_speaking", Globals.start.vc, "setremotespeaking")
+	joined_server.connect("vc_offer", VoiceChat, "set_offer")
+	joined_server.connect("vc_answer", VoiceChat, "set_answer")
+	joined_server.connect("vc_candidate", VoiceChat, "set_candidate")
+	joined_server.connect("vc_speaking", VoiceChat, "setremotespeaking")
 	add_child(joined_server)
 
 func recreate_world(): #that is a copy from NetworkManager but we use NetworkManager's create_world
@@ -61,7 +61,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 	gamestate_params=data["gamestate"][1]
 	var preloaded_dummy = preload("res://entities/dummyplayer.tscn")
 	own_id = id
-	Globals.start.vc.own_id=own_id
+	VoiceChat.own_id=own_id
 	for c in players_data:
 		var init_data = players_data[c]
 		var added_player
@@ -69,7 +69,7 @@ func handle_initial_sync(id: int, data: Dictionary):
 			added_player = preload("res://entities/player.tscn").instance()
 			own_player = added_player
 		else:
-			Globals.start.vc.addpeer(c)
+			VoiceChat.addpeer(c)
 			added_player = preloaded_dummy.instance()
 		added_player.owner_id = c
 		player_characters[c]=added_player
@@ -81,14 +81,14 @@ func handle_initial_sync(id: int, data: Dictionary):
 	if endscreen: endscreen.queue_free()
 
 func handle_remote_player_joining(id: int, data: Dictionary):
-	Globals.start.vc.addpeer(id)
+	VoiceChat.addpeer(id)
 	var added_player := preload("res://entities/dummyplayer.tscn").instance()
 	added_player.set_init_data(data)
 	player_characters[id] = added_player
 	world.get_node('Mapa/YSort').add_child(added_player)
 
 func handle_remote_player_leaving(id: int):
-	Globals.start.vc.removepeer(id)
+	VoiceChat.removepeer(id)
 	if player_characters.has(id):
 		var c = player_characters[id]
 # warning-ignore:return_value_discarded

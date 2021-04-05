@@ -1,7 +1,5 @@
 extends Node
 
-class_name VoiceChat
-
 var available := false
 
 var webrtc := JSON.print({"iceServers":[{"urls":["stun:stun.l.google.com:19302"]}]})
@@ -19,7 +17,7 @@ signal speaking(isspeaking)
 
 func update_vc_mode(mode: int = -1):
 	if mode==-1:
-		vc_mode = Globals.start.menu.usersettings["vc-mode"]
+		mode = Globals.start.menu.usersettings["vc-mode"]
 	else:
 		Globals.start.menu.usersettings["vc-mode"]=mode
 	vc_mode = mode
@@ -121,6 +119,8 @@ func handle_poll(data: Dictionary):
 			if p.has("candidates"):
 				for c in p["candidates"]:
 					emit_signal("candidate", c, int(id))
+			if p.has("gotstream"):
+				update_vc_mode()
 
 var time := 0.0
 func _process(delta):

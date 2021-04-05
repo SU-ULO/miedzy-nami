@@ -141,6 +141,8 @@ function clearpeers()
 	peers.clear();
 }
 
+let gotstreaminfo = false
+
 function poll()
 {
 	let ret = {};
@@ -164,6 +166,11 @@ function poll()
 		if(Object.keys(p).length>0) peerinfo[id]=p;
 	});
 	if(Object.keys(peerinfo).length>0) ret.peers=peerinfo;
+	if(gotstreaminfo)
+	{
+		ret.gotstream=true;
+		gotstreaminfo=false
+	}
 	return JSON.stringify(ret);
 }
 
@@ -178,7 +185,9 @@ function askforstream()
 			localstream.getAudioTracks().forEach(track=>{
 				peer.pc.addTrack(track, localstream);
 			});
+			peer.call();
 		});
+		gotstreaminfo=true;
 	});
 }
 

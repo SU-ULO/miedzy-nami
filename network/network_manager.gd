@@ -420,17 +420,17 @@ func handle_game_settings(settings):
 func apply_vc_settings():
 	var vcs = gamesettings["voice-chat"]
 	if vcs==0:
-		Globals.start.vc.forcemute(true)
+		VoiceChat.forcemute(true)
 	else:
-		Globals.start.vc.askforstream()
+		VoiceChat.askforstream()
 	if vcs==1:
 		if gamestate==LOBBY or gamestate==MEETING:
-			Globals.start.vc.forcemute(false)
+			VoiceChat.forcemute(false)
 		else:
-			Globals.start.vc.forcemute(true)
+			VoiceChat.forcemute(true)
 	else:
-		Globals.start.vc.forcemute(false)
-	Globals.start.vc.setunmutepeers(calculate_muted_remotes())
+		VoiceChat.forcemute(false)
+	VoiceChat.setunmutepeers(calculate_muted_remotes())
 
 func apply_settings_to_player():
 	if own_player:
@@ -533,10 +533,11 @@ func send_vc_speaking(_speaking: bool):
 	pass
 
 func _ready():
-	Globals.start.vc.connect("offer", self, "send_vc_offer")
-	Globals.start.vc.connect("answer", self, "send_vc_answer")
-	Globals.start.vc.connect("candidate", self, "send_vc_candidate")
-	Globals.start.vc.connect("speaking", self, "send_vc_speaking")
+	VoiceChat.connect("offer", self, "send_vc_offer")
+	VoiceChat.connect("answer", self, "send_vc_answer")
+	VoiceChat.connect("candidate", self, "send_vc_candidate")
+	VoiceChat.connect("speaking", self, "send_vc_speaking")
+	VoiceChat.update_vc_mode()
 
 func calculate_muted_remotes()->int:
 	if !own_player: return 0

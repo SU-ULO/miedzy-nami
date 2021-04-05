@@ -73,11 +73,6 @@ _global_script_classes=[ {
 "class": "Start",
 "language": "GDScript",
 "path": "res://start/start.gd"
-}, {
-"base": "Node",
-"class": "VoiceChat",
-"language": "GDScript",
-"path": "res://network/vc/VoiceChat.gd"
 } ]
 _global_script_class_icons={
 "ClientNetworkManager": "",
@@ -92,8 +87,7 @@ _global_script_class_icons={
 "Player": "",
 "ServerNetworkManager": "",
 "Server_Matchmaking": "",
-"Start": "",
-"VoiceChat": ""
+"Start": ""
 }
 
 [application]
@@ -110,6 +104,7 @@ config/icon="res://textures/dzdzownica.png"
 Globals="*res://globals.gd"
 Task="*res://scripts/tasks/Task.cs"
 TaskWithGUI="*res://scripts/tasks/TaskWithGUI.cs"
+VoiceChat="*res://network/vc/VoiceChat.gd"
 
 [display]
 
