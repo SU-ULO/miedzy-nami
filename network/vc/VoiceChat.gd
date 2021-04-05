@@ -7,6 +7,8 @@ var available := false
 var webrtc := JSON.print({"iceServers":[{"urls":["stun:stun.l.google.com:19302"]}]})
 var own_id := -1
 var speaking_ids := 0
+var forcedmute := false
+var wantstospeak := false
 
 signal offer(offer, id)
 signal answer(answer, id)
@@ -22,9 +24,16 @@ func _ready():
 			available=true
 	askforstream()
 
+func forcemute(mute: bool):
+	forcedmute = mute
+	if mute:
+		setmute(true)
+	else:
+		setmute(!wantstospeak)
+
 func setmute(mute: bool):
 	if available:
-		if mute:
+		if mute or forcedmute:
 			JavaScript.eval("setmute(true)", true)
 		else:
 			JavaScript.eval("setmute(false)", true)
@@ -33,8 +42,10 @@ func setmute(mute: bool):
 func _input(event):
 	if available:
 		if event.is_action_pressed("vc_push_to_talk"):
+			wantstospeak=true
 			setmute(false)
 		elif event.is_action_released("vc_push_to_talk"):
+			wantstospeak=false
 			setmute(true)
 
 func askforstream():
@@ -60,6 +71,7 @@ func clearpeers():
 	if !available: return
 	JavaScript.eval("clearpeers()", true)
 	speaking_ids=0
+	forcemute(false)
 
 func set_offer(offer, id: int):
 	if !available: return
