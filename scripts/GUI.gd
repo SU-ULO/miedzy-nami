@@ -138,3 +138,9 @@ func set_visibility(canvas_name:String = "PC", gui_item_path:String = "", state:
 		print("WARNING: no item with path ", gui_item_path, " on ", canvas_name)
 	else:
 		item.visible = state
+
+func is_on_canvas(gui :Node = null):
+	if currentGUI!=null:
+		if currentGUI.name == gui.name:
+			return true
+	return false

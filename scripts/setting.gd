@@ -2,6 +2,8 @@ extends HBoxContainer
 
 #get value by function get_value(), not by varible directly!!!
 
+signal settingchanged()
+
 var value
 export var prefix := ""
 export var default_value := 0
@@ -19,21 +21,22 @@ func _ready():
 	else:
 		$value.text = str(get_value()) + prefix
 
-
-
 func _on_plus_pressed():
 	value = count_next(step)
 	update_label()
+	emit_signal("settingchanged")
 
 func _on_minus_pressed():
 	value = count_next(-step)
 	update_label()
-	
+	emit_signal("settingchanged")
+
 func count_next(val):
 	if non_numeric_values:
 		return wrapi(value + val, 0, values.size())
 	else:
 		return wrapi(value + val, min_val, max_val + step)
+
 func update_label():
 	if non_numeric_values:
 		$value.text = values[value] + prefix

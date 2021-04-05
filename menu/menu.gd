@@ -2,7 +2,8 @@ extends CanvasLayer
 
 var usersettings: Dictionary = {
 	"signaling_url": 'wss://gaming.rakbook.pl/miedzy-nami/signaling',
-	"username": "nazwa"
+	"username": "nazwa",
+	"vc-mode": 0
 }
 
 var serversettings: Dictionary = {
@@ -18,7 +19,7 @@ signal request_join_server(key)
 
 func _init():
 	var us = Globals.read_file("user://us.settings")
-	if us and us is Dictionary and us.has("signaling_url") and us.has("username"):
+	if us and us is Dictionary and us.has("signaling_url") and us.has("username") and us.has("vc-mode"):
 		usersettings = us
 	var ss = Globals.read_file("user://ss.settings")
 	if ss and ss is Dictionary and ss.has("hidden") and ss.has("name"):
@@ -37,9 +38,10 @@ func open_logging_in():
 	$background.visible = true
 
 func open_options():
+	close_everything()
+	Globals.start.vc.askforstream()
 	var optionsnode=$"Options"
 	optionsnode.get_settings()
-	close_everything()
 	optionsnode.visible=true
 	$background.visible = true
 

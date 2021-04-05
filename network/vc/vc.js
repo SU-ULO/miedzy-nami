@@ -169,11 +169,16 @@ function poll()
 
 function askforstream()
 {
-	navigator.mediaDevices.getUserMedia({video: false, audio: true}).then(mediastream=>{
+	if(localstream==null) navigator.mediaDevices.getUserMedia({video: false, audio: true}).then(mediastream=>{
 		if(localstream!=null) return;
 		localstream=mediastream;
 		audioelements[10].srcObject=localstream;
 		setmute(true);
+		peers.forEach(peer=>{
+			localstream.getAudioTracks().forEach(track=>{
+				peer.pc.addTrack(track, localstream);
+			});
+		});
 	});
 }
 
