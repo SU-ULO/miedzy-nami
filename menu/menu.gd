@@ -38,9 +38,10 @@ func open_logging_in():
 	$background.visible = true
 
 func open_options():
+	close_everything()
+	Globals.start.vc.askforstream()
 	var optionsnode=$"Options"
 	optionsnode.get_settings()
-	close_everything()
 	optionsnode.visible=true
 	$background.visible = true
 
