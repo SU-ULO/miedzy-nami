@@ -239,3 +239,13 @@ func _on_KillArea_body_exited(body):
 		if players_interactable.has(body):
 				players_interactable.erase(body)
 				if debug_mode: print(body.get_name(), " removed from: players_interaction")
+func players_in_sight_range(var type :String=""):
+	var to_return = []
+	for i in in_sight:
+		if i.is_in_group("players"):
+			if type != "":
+				if i.is_in_group(type):
+					to_return.append(i)
+			else:
+				to_return.append(i)
+	return to_return
