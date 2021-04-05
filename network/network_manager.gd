@@ -196,7 +196,7 @@ func start_meeting(caller: int, dead: int):
 	
 	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
-	Globals.start.vc.forcemute(false)
+	apply_vc_settings()
 
 var votingwinnerid := -1
 
@@ -274,7 +274,7 @@ func end_meeting():
 	current_votes.clear() # clear votes
 	if own_player.is_in_group("impostors"): # set cooldown for impostor
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
-	Globals.start.vc.forcemute(true) #set to false if chat in game
+	apply_vc_settings()
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	if meeting_gui == null: return false
@@ -393,7 +393,7 @@ func game_start(params, taskstuff):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 	own_player.get_node("KillArea").scale = \
 		Vector2((gamesettings["kill-distance"] + 1)/2,(gamesettings["kill-distance"]+1)/2)
-	Globals.start.vc.forcemute(true) #set to false if chat in game
+	apply_vc_settings()
 
 func request_cameras_enable(_on_off: bool):
 	pass
@@ -418,9 +418,21 @@ func handle_game_settings(settings):
 	gamesettings = settings
 	apply_settings_to_player()
 
+func apply_vc_settings():
+	if gamesettings["voice-chat"]==0:
+		Globals.start.vc.forcemute(true)
+	elif gamesettings["voice-chat"]==1:
+		if gamestate==LOBBY or gamestate==MEETING:
+			Globals.start.vc.forcemute(false)
+		else:
+			Globals.start.vc.forcemute(true)
+	else:
+		Globals.start.vc.forcemute(false)
+
 func apply_settings_to_player():
 	if own_player:
 		own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
+	apply_vc_settings()
 
 func request_color_change(_color: int):
 	pass
@@ -467,7 +479,7 @@ func end_game(crew_win: bool):
 	endscreen=end_screen
 	if own_player.currentSabotage != 0:
 		own_player.handle_end_sabotage(own_player.currentSabotage)
-	Globals.start.vc.forcemute(false)
+	apply_vc_settings()
 
 func request_inform_all_tasks_finished():
 	pass

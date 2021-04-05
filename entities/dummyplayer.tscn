@@ -201,7 +201,6 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="SightArea" type="Area2D" parent="."]
-visible = false
 
 [node name="AreaShape" type="CollisionShape2D" parent="SightArea"]
 shape = SubResource( 2 )
@@ -271,7 +270,6 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
