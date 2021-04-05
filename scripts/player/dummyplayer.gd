@@ -249,6 +249,3 @@ func players_in_sight(var type: String=""):
 			else:
 				to_return.append(i)
 	return to_return
-
-func players_in_voice_range():
-	return players_in_sight()

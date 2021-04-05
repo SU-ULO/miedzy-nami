@@ -359,3 +359,6 @@ func become_impostor():
 func _on_DeathTimer_timeout():
 	if not is_in_group("imposotors"):
 		self.Interact(self)
+
+func players_in_voice_range():
+	return players_in_sight()
