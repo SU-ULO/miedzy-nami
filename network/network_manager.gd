@@ -194,7 +194,6 @@ func start_meeting(caller: int, dead: int):
 	# show gui on screen
 	own_player.get_node("GUI").add_to_canvas(gui, false)
 	
-	print("meeting started by "+String(caller)+" corpse belongs to "+String(dead))
 	emit_signal("meeting_start")
 	apply_vc_settings()
 
@@ -419,15 +418,17 @@ func handle_game_settings(settings):
 	apply_settings_to_player()
 
 func apply_vc_settings():
-	if gamesettings["voice-chat"]==0:
+	var vcs = gamesettings["voice-chat"]
+	if vcs==0:
 		Globals.start.vc.forcemute(true)
-	elif gamesettings["voice-chat"]==1:
+	elif vcs==1:
 		if gamestate==LOBBY or gamestate==MEETING:
 			Globals.start.vc.forcemute(false)
 		else:
 			Globals.start.vc.forcemute(true)
 	else:
 		Globals.start.vc.forcemute(false)
+	Globals.start.vc.setunmutepeers(calculate_muted_remotes())
 
 func apply_settings_to_player():
 	if own_player:
@@ -534,3 +535,21 @@ func _ready():
 	Globals.start.vc.connect("answer", self, "send_vc_answer")
 	Globals.start.vc.connect("candidate", self, "send_vc_candidate")
 	Globals.start.vc.connect("speaking", self, "send_vc_speaking")
+
+func calculate_muted_remotes()->int:
+	if !own_player: return 0
+	var vcs = gamesettings["voice-chat"]
+	if (((gamestate==LOBBY and vcs!=3) or gamestate==MEETING) and (vcs!=0)) or \
+	(gamestate==STARTED and vcs==2):
+		var out:=0
+		for i in player_characters:
+			if own_player.dead or !player_characters[i].dead:
+				out|=1<<i
+		return out
+	elif gamestate==STARTED or gamestate==LOBBY and vcs == 3:
+		var out := 0
+		for p in own_player.players_in_voice_range():
+			if own_player.dead or !p.dead:
+				out|=1<<p.owner_id
+		return out
+	return 0

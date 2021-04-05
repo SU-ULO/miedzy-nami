@@ -231,7 +231,6 @@ func _on_KillArea_body_entered(body):
 		in_interaction_range.push_back(body)
 		if debug_mode: print(body.get_name(), " added to: interaction range")
 
-
 func _on_KillArea_body_exited(body):
 	if in_interaction_range.has(body) && body.is_in_group("players"): 
 		in_interaction_range.erase(body)
@@ -239,7 +238,8 @@ func _on_KillArea_body_exited(body):
 		if players_interactable.has(body):
 				players_interactable.erase(body)
 				if debug_mode: print(body.get_name(), " removed from: players_interaction")
-func players_in_sight_range(var type :String=""):
+
+func players_in_sight(var type: String=""):
 	var to_return = []
 	for i in in_sight:
 		if i.is_in_group("players"):
@@ -249,3 +249,6 @@ func players_in_sight_range(var type :String=""):
 			else:
 				to_return.append(i)
 	return to_return
+
+func players_in_voice_range():
+	return players_in_sight()

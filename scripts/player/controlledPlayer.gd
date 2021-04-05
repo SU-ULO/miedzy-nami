@@ -215,11 +215,13 @@ func check_line_of_sight():
 			if debug_mode: debug_pos_collided.append(sight_check.position)
 			if in_sight.has(item):
 				in_sight.erase(item);
+				Globals.start.network.apply_vc_settings()
 				if debug_mode: print(item.get_name(), " removed from: sight")
 		else:
 			if debug_mode: debug_pos_ok.append(item.position)
 			if !in_sight.has(item):
 				in_sight.push_back(item);
+				Globals.start.network.apply_vc_settings()
 				if debug_mode: print(item.get_name(), " added to: sight")
 
 func check_interaction():

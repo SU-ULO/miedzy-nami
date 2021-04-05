@@ -42,19 +42,15 @@ func end():
 	emit_signal("matchmaking_disconnected")
 
 func _closed_request_ws(code: int, reason: String):
-	print("closed with ", code, " ", reason)
 	end()
 
 func _closed_ws(_was_clean = false):
-	print("Disconnected from matchmaking server")
 	end()
 
 func _connection_error():
-	print("Error connecting to matchmaking")
 	end()
 
 func _connected_ws(_proto = ""):
-	print("Connected to matchmaking server")
 	wsc.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	emit_signal("matchmaking_connected")
 
@@ -69,4 +65,3 @@ func start():
 	if wsc.connect_to_url(matchmaking_url) != OK:
 		print("Unable to connect to matchmaking server")
 		end()
-		return

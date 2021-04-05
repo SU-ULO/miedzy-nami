@@ -16,7 +16,6 @@ func changeColor(newcolor):
 	get_tree().get_root().get_node("Start").network.request_color_change(int(color))
 	
 func update_colors():
-	print(net.taken_colors)
 	for i in $buttons.get_children():
 		if net.is_color_taken(int(i.name)) && !i.name == str(color):
 			$iksy.get_node(i.name).modulate = Color(0, 0, 0, 1)

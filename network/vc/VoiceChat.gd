@@ -7,6 +7,7 @@ var available := false
 var webrtc := JSON.print({"iceServers":[{"urls":["stun:stun.l.google.com:19302"]}]})
 var own_id := -1
 var speaking_ids := 0
+var unmuted_ids := 0
 var forcedmute := false
 var wantstospeak := false
 
@@ -85,6 +86,11 @@ func set_candidate(candidate, id: int):
 	if !available: return
 	JavaScript.eval("set_candidate("+JSON.print(candidate)+","+String(id)+")", true)
 
+func setunmutepeers(unmuted: int):
+	if !available: return
+	unmuted_ids=unmuted
+	JavaScript.eval("setunmutepeers("+String(unmuted)+")", true)
+
 func isunmuted():
 	if !available: return
 	return JavaScript.eval("isunmuted()", true)
@@ -122,3 +128,4 @@ func setremotespeaking(speaking: bool, id: int):
 
 func is_speaking(id: int):
 	return bool(speaking_ids&(1<<id))
+

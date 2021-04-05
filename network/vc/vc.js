@@ -71,6 +71,12 @@ class Peer
 	{
 		this.pc.close();
 	}
+	setmute(mute)
+	{
+		this.remotestream.getAudioTracks().forEach(track=>{
+			track.enabled=!mute;
+		});
+	}
 }
 
 function set_offer(offer, id)
@@ -207,3 +213,15 @@ function setmute(m)
 	});
 }
 
+function setunmutepeers(m)
+{
+	peers.forEach((peer, id)=>{
+		if(m&(1<<id))
+		{
+			peer.setmute(false);
+		}else
+		{
+			peer.setmute(true);
+		}
+	});
+}

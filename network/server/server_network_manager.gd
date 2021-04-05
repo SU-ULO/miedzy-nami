@@ -34,7 +34,8 @@ func get_non_taken_username(requested_name: String) -> String:
 	return requested_name+String(num)
 
 func create_client(config):
-	if !connected_clients.has(config.id):
+	if !connected_clients.has(config.id) and \
+	gamestate==LOBBY and player_characters.size()<10:
 		config.username=get_non_taken_username(config.username)
 		var client = JoinedClient.new(config)
 		connected_clients[config.id] = client
@@ -77,7 +78,6 @@ func send_candidate(cand: String, id: int):
 
 func create_world(config):
 	.create_world(config)
-	print(server_key)
 	own_player = preload("res://entities/player.tscn").instance()
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
