@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
 [ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
+[ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
@@ -478,6 +479,7 @@ __meta__ = {
 }
 
 [node name="Main" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -591,7 +593,6 @@ __meta__ = {
 }
 
 [node name="Options" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -601,6 +602,9 @@ margin_top = -117.766
 margin_right = 200.0
 margin_bottom = 282.234
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MatchmakingURLLabel" type="Label" parent="Options"]
 margin_left = -17.8197
@@ -676,9 +680,9 @@ __meta__ = {
 
 [node name="AudioTest" type="TextureButton" parent="Options"]
 margin_left = -89.924
-margin_top = 261.254
+margin_top = 332.73
 margin_right = 774.076
-margin_bottom = 369.254
+margin_bottom = 440.73
 rect_scale = Vector2( 0.773, 0.773 )
 texture_normal = ExtResource( 4 )
 __meta__ = {
@@ -686,10 +690,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Options/AudioTest"]
-margin_left = 348.025
+margin_left = 220.748
 margin_top = 16.9486
-margin_right = 539.025
-margin_bottom = 91.9486
+margin_right = 657.748
+margin_bottom = 95.9486
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
@@ -697,6 +701,35 @@ text = "test mikrofonu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="setting" parent="Options" instance=ExtResource( 17 )]
+margin_left = -187.785
+margin_top = 270.91
+margin_right = 1044.21
+margin_bottom = 349.91
+rect_scale = Vector2( 0.691037, 0.691037 )
+non_numeric_values = true
+values = [ "push-to-talk", "otwarty" ]
+
+[node name="Label2" parent="Options/setting" index="0"]
+margin_right = 630.0
+rect_min_size = Vector2( 630, 0 )
+custom_colors/font_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
+text = "aktywacja mikrofonu"
+
+[node name="minus" parent="Options/setting" index="1"]
+margin_left = 634.0
+margin_right = 709.0
+
+[node name="value" parent="Options/setting" index="2"]
+margin_left = 713.0
+margin_right = 1153.0
+rect_min_size = Vector2( 440, 0 )
+custom_colors/font_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+
+[node name="plus" parent="Options/setting" index="3"]
+margin_left = 1157.0
+margin_right = 1232.0
 
 [node name="Create" type="VBoxContainer" parent="."]
 visible = false
@@ -1000,5 +1033,7 @@ valign = 1
 [connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
 [connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
+
+[editable path="Options/setting"]
 
 [editable path="Create/MenuButton"]

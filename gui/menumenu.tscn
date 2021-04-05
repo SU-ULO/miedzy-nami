@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://textures/menubackground.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://textures/planbutton.png" type="Texture" id=4]
 [ext_resource path="res://gui/menumenu.gd" type="Script" id=5]
+[ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=6]
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
@@ -51,5 +52,34 @@ text = "WYJDŹ Z GRY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="voice-chat" parent="." instance=ExtResource( 6 )]
+margin_left = 557.609
+margin_top = 240.307
+margin_right = 1835.61
+margin_bottom = 319.307
+rect_scale = Vector2( 0.658553, 0.658553 )
+non_numeric_values = true
+values = [ "push-to-talk", "otwarty" ]
+
+[node name="Label2" parent="voice-chat" index="0"]
+margin_right = 630.0
+rect_min_size = Vector2( 630, 0 )
+text = "aktywacja mikrofonu"
+
+[node name="minus" parent="voice-chat" index="1"]
+margin_left = 634.0
+margin_right = 709.0
+
+[node name="value" parent="voice-chat" index="2"]
+margin_left = 713.0
+margin_right = 1153.0
+rect_min_size = Vector2( 440, 0 )
+
+[node name="plus" parent="voice-chat" index="3"]
+margin_left = 1157.0
+margin_right = 1232.0
 [connection signal="pressed" from="C" to="." method="_close"]
 [connection signal="pressed" from="E" to="." method="_exit"]
+
+[editable path="voice-chat"]

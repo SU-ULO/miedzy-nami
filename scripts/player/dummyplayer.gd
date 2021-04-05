@@ -129,6 +129,8 @@ func on_sight_area_exit(body):
 		
 		if in_sight.has(body):
 			in_sight.erase(body)
+			if self == Globals.start.network.own_player:
+				Globals.start.network.apply_vc_settings()
 			if debug_mode: print(body.get_name(), " removed from: sight")
 
 func _on_interaction_area_enter(body):
@@ -156,6 +158,8 @@ func camera_visibility(body, status):
 		if debug_mode: print(body.get_name(), " entered camera")
 	if status == 0 and in_sight.has(body):
 		in_sight.erase(body)
+		if self == Globals.start.network.own_player:
+			Globals.start.network.apply_vc_settings()
 		if debug_mode: print(body.get_name(), " exited camera")
 
 func Interact(body): # player interaction with player = kill
