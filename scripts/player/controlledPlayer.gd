@@ -1,5 +1,7 @@
 extends "dummyplayer.gd"
 
+class_name Player
+
 var fov_toggle :bool = false #temporarily
 
 var selected_vent = 0

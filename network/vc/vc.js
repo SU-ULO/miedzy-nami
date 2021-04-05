@@ -174,6 +174,11 @@ function askforstream()
 		localstream=mediastream;
 		audioelements[10].srcObject=localstream;
 		setmute(true);
+		peers.forEach(peer=>{
+			localstream.getAudioTracks().forEach(track=>{
+				peer.pc.addTrack(track, localstream);
+			});
+		});
 	});
 }
 

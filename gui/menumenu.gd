@@ -1,7 +1,8 @@
 extends Control
 
 func _close():
-	#get_parent().player.change_voice_method(get_voice_method()) or sth
+	Globals.start.menu.usersettings["vc-mode"]=get_voice_method()
+	Globals.start.vc.update_vc_mode()
 	get_parent().get_parent().replace_on_canvas(self)
 
 func _exit():

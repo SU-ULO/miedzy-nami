@@ -10,11 +10,26 @@ var speaking_ids := 0
 var unmuted_ids := 0
 var forcedmute := false
 var wantstospeak := false
+var vc_mode := 0
 
 signal offer(offer, id)
 signal answer(answer, id)
 signal candidate(candidate, id)
 signal speaking(isspeaking)
+
+func update_vc_mode(mode: int = -1):
+	if mode==-1:
+		vc_mode = Globals.start.menu.usersettings["vc-mode"]
+	else:
+		Globals.start.menu.usersettings["vc-mode"]=mode
+	vc_mode = mode
+	if vc_mode==0:
+		wantstospeak=false
+		setmute(true)
+	elif vc_mode==1:
+		wantstospeak=true
+		setmute(false)
+	
 
 func _ready():
 	if OS.has_feature('JavaScript'):
@@ -40,7 +55,7 @@ func setmute(mute: bool):
 		emit_signal("speaking", !mute)
 
 func _input(event):
-	if available:
+	if available and vc_mode==0:
 		if event.is_action_pressed("vc_push_to_talk"):
 			wantstospeak=true
 			setmute(false)
@@ -109,7 +124,7 @@ func handle_poll(data: Dictionary):
 
 var time := 0.0
 func _process(delta):
-	if !available: return
+	if !available or own_id<0: return
 	if time >= 0.1:
 		var polled = JavaScript.eval("poll()", true)
 		if polled:
