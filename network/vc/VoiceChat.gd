@@ -23,7 +23,6 @@ func _ready():
 			JavaScript.eval(f.get_as_text(), true)
 			f.close()
 			available=true
-	askforstream()
 
 func forcemute(mute: bool):
 	forcedmute = mute

@@ -421,7 +421,9 @@ func apply_vc_settings():
 	var vcs = gamesettings["voice-chat"]
 	if vcs==0:
 		Globals.start.vc.forcemute(true)
-	elif vcs==1:
+	else:
+		Globals.start.vc.askforstream()
+	if vcs==1:
 		if gamestate==LOBBY or gamestate==MEETING:
 			Globals.start.vc.forcemute(false)
 		else:
