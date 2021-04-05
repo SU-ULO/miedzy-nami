@@ -19,6 +19,7 @@ signal success
 
 func _init(conf: Dictionary):
 	config=conf
+	Globals.start.vc.webrtc=JSON.print(config["webrtc"])
 
 func _ready():
 	if peer.initialize(config["webrtc"])!=OK:
@@ -88,7 +89,9 @@ func _process(_delta):
 		established=true
 		emit_signal("success")
 	elif established:
-		if peer.get_connection_state()!=WebRTCPeerConnection.STATE_CONNECTED:
+		if peer.get_connection_state()!=WebRTCPeerConnection.STATE_CONNECTED or \
+		game_events.get_ready_state()!=WebRTCDataChannel.STATE_OPEN or \
+		game_updates.get_ready_state()!=WebRTCDataChannel.STATE_OPEN:
 			established=false
 			emit_signal("fail")
 		else:

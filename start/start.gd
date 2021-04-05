@@ -34,6 +34,8 @@ func leave_matchmaking():
 	leave_room()
 
 func leave_room():
+	Globals.start.vc.own_id=-1
+	Globals.start.vc.clearpeers()
 	if network:
 		network.queue_free()
 	network = null
@@ -66,6 +68,7 @@ func start_server(options):
 	add_child(network)
 	matchmaking.start()
 	network_side = SERVER
+	Globals.start.vc.own_id=0
 
 func start_client():
 	if network_side != NONE:

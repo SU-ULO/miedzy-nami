@@ -17,6 +17,10 @@ signal colors_sync(taken, players)
 signal look(id, look)
 signal invisible(id, val)
 signal vote(voter, voted)
+signal vc_offer(offer, id)
+signal vc_answer(answer, id)
+signal vc_candidate(candidate, id)
+signal vc_speaking(speaking, id)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -60,6 +64,14 @@ func handle_events(input):
 		emit_signal("invisible", input[1], input[2])
 	elif input[0]==13:
 		emit_signal("vote", input[1], input[2])
+	elif input[0]==14:
+		emit_signal("vc_offer", input[1], input[2])
+	elif input[0]==15:
+		emit_signal("vc_answer", input[1], input[2])
+	elif input[0]==16:
+		emit_signal("vc_candidate", input[1], input[2])
+	elif input[0]==17:
+		emit_signal("vc_speaking", input[1], input[2])
 
 func handle_updates(input):
 	if !(input is Array): return
@@ -101,3 +113,15 @@ func send_set_invisible(id, val: bool):
 
 func send_vote(id):
 	send_events([10, id])
+
+func send_vc_offer(offer, id: int):
+	send_events([11, offer, id])
+
+func send_vc_answer(answer, id: int):
+	send_events([12, answer, id])
+
+func send_vc_candidate(candidate, id: int):
+	send_events([13, candidate, id])
+
+func send_vc_speaking(speaking: bool):
+	send_events(([14, speaking]))
