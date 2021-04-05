@@ -15,9 +15,9 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	own_area.connect("input_event", self, "inputEvent")
 	# warning-ignore:return_value_discarded
-	own_area.connect("area_entered", self, "isInBox")
+	own_area.connect("area_entered", self, "stateChanged", [true])
 	# warning-ignore:return_value_discarded
-	own_area.connect("area_exited", self, "notInBox")
+	own_area.connect("area_exited", self, "stateChanged", [false])
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -37,43 +37,26 @@ func inputEvent(_viewport, event, _shape):
 			if main.toDrag.max() == self.get_index():
 				drag_on(self)
 
-
 func drag_on(body):
 	if main.dragged != null:
 		drag_off()
 	main.dragged = body
-	if !main.books.has(body.name):
-		main.books.append(body.name)
+	if !main.wrong.has(body.name):
+		main.wrong.append(body.name)
+		print("+1 ", main.wrong.size())
 	clickDelta = (get_viewport().get_mouse_position() - body.position)
 
 func drag_off():
 	if main.dragged.inBox && !main.dragged.inFront:
-		if main.books.has(main.dragged.name):
-			main.books.erase(main.dragged.name)
+		if main.wrong.has(main.dragged.name):
+			main.wrong.erase(main.dragged.name)
+			print("-1 ", main.wrong.size())
 	main.dragged = null
 
-func isInBox(area):
+func stateChanged(area, state):
 	if area.name == "shelf-front":
-		inFront = true
+		inFront = state
 	
-	if area.name == "shelf-blue" && own_area.name == "blue":
-		inBox = true
-	
-	if area.name == "shelf-red" && own_area.name == "red":
-		inBox = true
-	
-	if area.name == "shelf-green" && own_area.name == "green":
-		inBox = true
-
-func notInBox(area):
-	if area.name == "shelf-front":
-		inFront = false
-	
-	if area.name == "shelf-blue" && own_area.name == "blue":
-		inBox = false
-	
-	if area.name == "shelf-red" && own_area.name == "red":
-		inBox = false
-	
-	if area.name == "shelf-green" && own_area.name == "green":
-		inBox = false
+	for color in main.colors:
+		if area.name == "shelf-" + color and own_area.name == color:
+			inBox = state

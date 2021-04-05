@@ -3,10 +3,10 @@ extends Node2D
 var count
 
 func _ready():
-	count = $tablica_czysta.get_children().size()
+	count = $tablica_czysta.get_child_count()
 	
 func imDone():
-	count -=1
+	count -= 1
 	if count == 0:
 		$Timer.start()
 		yield($Timer, "timeout")

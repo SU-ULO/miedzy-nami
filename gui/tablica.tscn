@@ -10,11 +10,11 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.5274
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 43.9397
 height = 84.0366
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 107.892
 height = 351.124
 
@@ -42,17 +42,6 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos/Area2D"]
-position = Vector2( -2.77795, 0.396851 )
-shape = SubResource( 1 )
-
-[node name="Area2D2" type="Area2D" parent="tablica_czysta/cos"]
-visible = false
-position = Vector2( 4.09753, -2.88544 )
-scale = Vector2( 1.44758, 1.44758 )
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tablica_czysta/cos/Area2D2"]
 position = Vector2( -2.77795, 0.396851 )
 shape = SubResource( 1 )
 
@@ -1563,7 +1552,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gabka/gabka"]
 position = Vector2( 13.3, -10.0894 )
 rotation = 1.57079
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="click" type="Area2D" parent="gabka"]
 collision_layer = 8
@@ -1572,7 +1561,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gabka/click"]
 position = Vector2( 13.3, -10.0894 )
 rotation = 1.57079
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6

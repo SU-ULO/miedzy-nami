@@ -15,22 +15,15 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	connect("input_event", self, "inputEvent")
 	get_parent().z_index = -1
-	main = get_parent().get_parent()
+	main = get_owner()
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		if pickedUp:
 			get_parent().position = get_viewport().get_mouse_position() - clickDelta
-
-func inputEvent(_viewport, event, _shape):
 	if event is InputEventScreenTouch || event is InputEventMouseButton:
-		if event.is_pressed():
-			get_parent().get_parent().toDrag.append(get_parent().get_index())
-			if get_parent().get_parent().toDrag.min() == get_parent().get_index():
-				pickedUp = true
-				clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
-		else:
-			get_parent().get_parent().toDrag.clear()
+		if !event.is_pressed():
+			main.toDrag.clear()
 			pickedUp = false
 			if inBox && !inFront:
 					if !main.userKit.has(get_parent().name):
@@ -40,7 +33,15 @@ func inputEvent(_viewport, event, _shape):
 				if main.userKit.has(get_parent().name):
 					main.userKit.erase(get_parent().name)
 					main.checkForEnd()
-					
+
+func inputEvent(_viewport, event, _shape):
+	if event is InputEventScreenTouch || event is InputEventMouseButton:
+		if event.is_pressed():
+			main.toDrag.append(get_parent().get_index())
+			if main.toDrag.min() == get_parent().get_index():
+				pickedUp = true
+				clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
+
 func isInBox(area):
 	if area.name == "koszyk-bottom":
 		inFront = true

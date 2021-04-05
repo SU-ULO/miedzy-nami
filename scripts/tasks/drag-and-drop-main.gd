@@ -1,12 +1,17 @@
 extends Node2D
 
 var toDrag = []
-var toSort = 6
+var wrong = []
+export var colors = []
+
+var dragged = null
+
 func _ready():
-	pass # Replace with function body.
+	for child in get_node("items").get_children():
+		wrong.append(child.name)
 
 func checkForEnd():
-	if toSort == 0:
+	if wrong.empty():
 		$Timer.start()
 		yield($Timer, "timeout")
 		TaskWithGUI.TaskWithGUICompleteTask(self)

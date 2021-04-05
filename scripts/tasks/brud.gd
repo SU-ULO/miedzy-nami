@@ -10,6 +10,6 @@ func hideSelf(area):
 	if self.visible:
 		if area.name == "gabka":
 			self.visible = false
-			get_parent().get_parent().imDone()
+			get_owner().imDone()
 			
 			

@@ -40,7 +40,7 @@ func checkForEnd():
 	
 	for item in taskKit:
 		if userKit.has(item):
-			print("item it")
+			print("item in")
 			if item in trueNames:	
 				labels[iter].text = "0x " + str(trueNames[item])
 			else:

@@ -17,23 +17,13 @@ func _ready():
 	connect("area_entered", self, "onDesk")
 	# warning-ignore:return_value_discarded
 	connect("area_exited", self, "offDesk")
-			
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		if pickedUp:
 			get_parent().position = get_viewport().get_mouse_position() - clickDelta
-
-
-func inputEvent(_viewport, event, _shape):
 	if event is InputEventScreenTouch || event is InputEventMouseButton:
-		if event.is_pressed():
-					if active:
-						get_parent().get_parent().toDrag.append(get_parent().get_index())
-						if get_parent().get_parent().toDrag.min() == get_parent().get_index():
-								pickedUp = true
-								clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
-
-		else:
+		if !event.is_pressed():
 			pickedUp = false
 			get_parent().get_parent().toDrag.clear()
 			if isOnDesk:
@@ -46,7 +36,15 @@ func inputEvent(_viewport, event, _shape):
 				get_parent().position = desk.get_parent().position + Vector2(0, -160)
 				get_parent().z_index = 1
 
-			
+func inputEvent(_viewport, event, _shape):
+	if event is InputEventScreenTouch || event is InputEventMouseButton:
+		if event.is_pressed():
+					if active:
+						get_parent().get_parent().toDrag.append(get_parent().get_index())
+						if get_parent().get_parent().toDrag.min() == get_parent().get_index():
+								pickedUp = true
+								clickDelta = (get_viewport().get_mouse_position() - get_parent().position)
+
 func onDesk(area):
 	if area.name == "lawka":
 		areaCount+=1
