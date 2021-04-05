@@ -18,6 +18,7 @@ var server_key := ""
 
 var gamesettings := {
 	"impostor-count": 1,
+	"voice-chat": 0,
 	"comfirm-ejects": true,
 	"meeting-count": 1,
 	"anonnymous-votes": true,
