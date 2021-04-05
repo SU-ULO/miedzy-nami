@@ -16,7 +16,7 @@
 [ext_resource path="res://textures/map.png" type="Texture" id=14]
 [ext_resource path="res://textures/sabotaz.png" type="Texture" id=15]
 [ext_resource path="res://gui/butonstyle_white.tres" type="StyleBox" id=16]
-[ext_resource path="res://textures/crosss.png" type="Texture" id=17]
+[ext_resource path="res://textures/wiadomosc.png" type="Texture" id=17]
 [ext_resource path="res://gui/podsceny/joystick.tscn" type="PackedScene" id=18]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=19]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=20]
@@ -26,6 +26,7 @@
 [ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
 [ext_resource path="res://gui/ChatPanel.tscn" type="PackedScene" id=25]
 [ext_resource path="res://gui/meeting/verdict.tscn" type="PackedScene" id=26]
+[ext_resource path="res://textures/mic-on.png" type="Texture" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -236,14 +237,13 @@ scancode = 84
 [sub_resource type="ShortCut" id=20]
 shortcut = SubResource( 19 )
 
-[sub_resource type="InputEventKey" id=21]
-scancode = 77
-
 [sub_resource type="ShortCut" id=22]
-shortcut = SubResource( 21 )
 
 [node name="player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+
+[node name="SightArea" parent="." index="2"]
+visible = false
 
 [node name="body" parent="sprites" index="0"]
 frames = SubResource( 1 )
@@ -270,7 +270,7 @@ frames = SubResource( 7 )
 frames = SubResource( 8 )
 
 [node name="Light" type="Light2D" parent="." index="5"]
-position = Vector2( 0, 11.4286 )
+position = Vector2( -17.9701, 36.8197 )
 texture = ExtResource( 5 )
 mode = 2
 shadow_enabled = true
@@ -279,9 +279,6 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
-
-[node name="AnimatedSprite" parent="." index="7"]
-frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
@@ -299,7 +296,42 @@ script = ExtResource( 22 )
 
 [node name="PlayerCanvas" type="CanvasLayer" parent="GUI" index="0"]
 
-[node name="playerGUI" type="Control" parent="GUI/PlayerCanvas" index="0"]
+[node name="CommunicationButtons" type="Control" parent="GUI/PlayerCanvas" index="0"]
+margin_left = -3.57628e-07
+margin_top = 7.15256e-07
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chat" type="TextureButton" parent="GUI/PlayerCanvas/CommunicationButtons" index="0"]
+margin_left = 9.08588
+margin_top = 382.047
+margin_right = 137.086
+margin_bottom = 510.047
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mic" type="TextureButton" parent="GUI/PlayerCanvas/CommunicationButtons" index="1"]
+margin_left = 9.23286
+margin_top = 498.828
+margin_right = 137.233
+margin_bottom = 626.828
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 27 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerGUI" type="Control" parent="GUI/PlayerCanvas" index="1"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -381,9 +413,10 @@ text = "Onie zły sabotaż"
 [node name="tasklist" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="2"]
 margin_top = 59.0
 margin_right = 764.0
-margin_bottom = 335.0
+margin_bottom = 366.0
 custom_fonts/font = SubResource( 14 )
-text = "- fajne zadanie 1
+text = "- tutaj jakiś sabotaż
+- fajne zadanie 1
 - fajne zadanie 2
 - fajne zadanie 3
 - fajne zadanie 4
@@ -416,15 +449,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChatPanel" parent="GUI/PlayerCanvas/playerGUI" index="2" instance=ExtResource( 25 )]
-margin_left = 1.25989
-margin_top = 369.157
-margin_right = 602.26
-margin_bottom = 681.157
-
-[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
+[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="2"]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="sabotage" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI/ImpostorButtons" index="0"]
 margin_left = 1551.2
@@ -469,7 +499,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
+[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -503,7 +533,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="5"]
+[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
 margin_left = 0.794006
 margin_top = 1.58899
 margin_right = 40.794
@@ -540,35 +570,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="6" instance=ExtResource( 18 )]
+[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="5" instance=ExtResource( 18 )]
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
-
-[node name="exit_button" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI" index="7"]
-visible = false
-light_mask = 2
-margin_left = 1791.34
-margin_top = 12.384
-margin_right = 2478.34
-margin_bottom = 699.384
-rect_scale = Vector2( 0.159295, 0.159295 )
-focus_mode = 0
-enabled_focus_mode = 0
-texture_normal = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InteractionCanvas" type="CanvasLayer" parent="GUI" index="1"]
 
 [node name="CloseButton" type="CanvasLayer" parent="GUI" index="2"]
 
-[node name="B" parent="GUI/CloseButton" index="0" instance=ExtResource( 23 )]
+[node name="ChatPanel" parent="GUI/CloseButton" index="0" instance=ExtResource( 25 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -532.866
+margin_top = -398.909
+margin_right = 403.134
+margin_bottom = 230.211
+
+[node name="B" parent="GUI/CloseButton" index="1" instance=ExtResource( 23 )]
 visible = false
 script = ExtResource( 24 )
 
 [node name="DeathMessage" parent="GUI" index="3" instance=ExtResource( 26 )]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/chat" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "chat" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/mic" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "mic" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
@@ -576,5 +604,4 @@ script = ExtResource( 24 )
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TopButtons/map" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "map" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/use" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "use" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ActionButtons/report" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "report" ]]
-[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/exit_button" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "exit" ]]
 [connection signal="pressed" from="GUI/CloseButton/B" to="GUI/CloseButton/B" method="_close"]

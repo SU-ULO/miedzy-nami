@@ -10,6 +10,7 @@ onready var PC = get_node("PlayerCanvas")
 onready var CB = get_node("CloseButton")
 
 var currentGUI:Node = null
+var isInstance:bool = true
 
 # these functions modify interactionCanvas only
 # because player GUI should be persistent
@@ -30,7 +31,7 @@ func canvas_empty():
 		return true
 
 func add(gui:Node = null): # adds scene as InteractionCanvas child
-	if Node == null:
+	if gui == null:
 		print("WARNING: no GUI node. Scene not found")
 		return false
 
@@ -46,6 +47,7 @@ func remove_form_canvas(gui_name:String = "no name was spacified"):
 	var gui = get_node_or_null(gui_name) # get gui by name
 	if gui != null: # if gui exist
 		gui.queue_free() # remove it
+		currentGUI = null
 	else: # else print
 		print("WARNING: no GUI with name ", gui_name)
 
@@ -65,11 +67,20 @@ func add_to_canvas(gui:Node = null, show_button:bool = true):
 # (basically add to gui but for maps and other popups)
 # returns true if GUI was added and false if not
 
-func replace_on_canvas(gui:Node = null):
+# edit: if instance == false, gui should exist and have function to hide itself
+# named show() and take one argument true/false
+
+func replace_on_canvas(gui:Node = null, instance = true):
 	
 	if currentGUI != null:
 		if currentGUI.name == gui.name:
-			clear_canvas()
+			if instance:
+				clear_canvas()
+			else:
+				currentGUI.show(false)
+				currentGUI = null
+				isInstance = true
+			
 			set_visibility("PC", "playerGUI/ActionButtons", 1)
 			set_visibility("PC", "playerGUI/TaskPanel", 1)
 			set_visibility("PC", "playerGUI/gamecode", 1)
@@ -78,18 +89,29 @@ func replace_on_canvas(gui:Node = null):
 				set_visibility("PC", "playerGUI/ImpostorButtons", 1)
 				set_visibility("PC", "playerGUI/ActionButtons/report", 1)
 			return false
+			
+		elif !isInstance:
+			currentGUI.show(false)
+			currentGUI = null
+			isInstance = true
+		else:
+			clear_canvas()
 	
-	clear_canvas()
-	if add(gui):
-		set_visibility("PC", "playerGUI/ActionButtons", 0)
-		set_visibility("PC", "playerGUI/TaskPanel", 0)
-		set_visibility("PC", "playerGUI/gamecode", 0)
+	if !instance:
+		gui.show(true)
+		isInstance = false
+		currentGUI = gui
+	elif !add(gui):
+		return false
+	
+	set_visibility("PC", "playerGUI/ActionButtons", 0)
+	set_visibility("PC", "playerGUI/TaskPanel", 0)
+	set_visibility("PC", "playerGUI/gamecode", 0)
 		
-		if player.is_in_group("impostors"):
-			set_visibility("PC", "playerGUI/ImpostorButtons", 0)
-			set_visibility("PC", "playerGUI/ActionButtons/report", 0)
-		return true
-	return false
+	if player.is_in_group("impostors"):
+		set_visibility("PC", "playerGUI/ImpostorButtons", 0)
+		set_visibility("PC", "playerGUI/ActionButtons/report", 0)
+	return true
 
 # this function work with all GUI canvases
 

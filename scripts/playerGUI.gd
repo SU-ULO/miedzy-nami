@@ -10,6 +10,8 @@ var minimap = { "gui_res": load("res://gui/minimap.tscn"), "gui_name": "MiniMap"
 var sabotagemap = { "gui_res": load("res://gui/sabotagemap.tscn"), "gui_name": "SabotageMap" }
 var settings = { "gui_res": load("res://gui/menumenu.tscn"), "gui_name": "Settings" }
 
+var chat_open = false
+
 func _ready():
 	network = get_tree().get_root().get_node("Start").network
 	player = get_owner()
@@ -110,6 +112,11 @@ func _on_gui_button_pressed(button_name):
 		player.ui_report()
 	elif button_name == "exit":
 		player.ui_canceled()
+	elif button_name == "chat":
+		var chat = GUI.get_node("CloseButton/ChatPanel")
+		GUI.replace_on_canvas(chat, false)
+	elif button_name == "mic":
+		print("mic")
 
 # # # GUI VISUAL FUNCTIONS AND VARIABLES # # #
 
@@ -125,7 +132,13 @@ onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_siz
 func processGui():
 	var task_panel = get_node("TaskPanel")
 	var list_size = get_node("TaskPanel/VBoxContainer/tasklist").rect_size
-	var sabotage_size = get_node("TaskPanel/VBoxContainer/sabotage").rect_size
+	var sabotage_size
+	
+	if player.currentSabotage != 0:
+		sabotage_size = get_node("TaskPanel/VBoxContainer/sabotage").rect_size
+	else: 
+		sabotage_size = Vector2()
+	
 	task_container.rect_size.y = max(list_size.y + task_label_size.y + sabotage_size.y, task_list_min_size)
 	
 	if(task_panel.rect_position.x != task_panel_position.x):
