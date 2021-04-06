@@ -103,8 +103,8 @@ func _on_StartServerButton_pressed():
 		open_create_room()
 
 func _on_StartClientButton_pressed():
-	open_logging_in()
 	usersettings.username = $'Main/Username'.text
 	if usersettings.username.length()>0:
+		open_logging_in()
 		Globals.save_file("user://us.settings", usersettings)
 		emit_signal("request_start_client")
