@@ -15,6 +15,10 @@ signal answer(answer, id)
 signal candidate(candidate, id)
 signal speaking(isspeaking)
 
+func setwantstospeak(wants: bool):
+	wantstospeak=wants
+	setmute(!wantstospeak)
+
 func update_vc_mode(mode: int = -1):
 	if mode==-1:
 		mode = Globals.start.menu.usersettings["vc-mode"]
@@ -25,9 +29,7 @@ func update_vc_mode(mode: int = -1):
 		wantstospeak=false
 		setmute(true)
 	elif vc_mode==1:
-		wantstospeak=true
-		setmute(false)
-	
+		setmute(!wantstospeak)
 
 func _ready():
 	if OS.has_feature('JavaScript'):
@@ -50,16 +52,25 @@ func setmute(mute: bool):
 			JavaScript.eval("setmute(true)", true)
 		else:
 			JavaScript.eval("setmute(false)", true)
-		emit_signal("speaking", !mute)
+		emit_signal("speaking", isunmuted())
+
+func button_down():
+	if vc_mode==0:
+		setwantstospeak(true)
+	else:
+		setwantstospeak(!wantstospeak)
+
+func button_up():
+	if vc_mode==0:
+		wantstospeak=false
+		setmute(true)
 
 func _input(event):
-	if available and vc_mode==0:
+	if available:
 		if event.is_action_pressed("vc_push_to_talk"):
-			wantstospeak=true
-			setmute(false)
+			button_down()
 		elif event.is_action_released("vc_push_to_talk"):
-			wantstospeak=false
-			setmute(true)
+			button_up()
 
 func askforstream():
 	if !available: return

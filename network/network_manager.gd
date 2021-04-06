@@ -420,6 +420,7 @@ func handle_game_settings(settings):
 func apply_vc_settings():
 	var vcs = gamesettings["voice-chat"]
 	if vcs==0:
+		VoiceChat.setwantstospeak(false)
 		VoiceChat.forcemute(true)
 	else:
 		VoiceChat.askforstream()

@@ -23,6 +23,7 @@ func _on_OptionsAcceptButton_pressed():
 	set_settings()
 	VoiceChat.update_vc_mode()
 	VoiceChat.audiotest(false)
+	VoiceChat.setwantstospeak(false)
 	get_parent().open_main()
 
 
