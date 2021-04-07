@@ -131,6 +131,10 @@ func request_meeting(_dead: int):
 func start_meeting(caller: int, dead: int):
 	var rips = []
 	
+	#end sabotage
+	if own_player.currentSabotage == 4:
+		own_player.handle_end_sabotage(4)
+	
 	#end all interactions
 	if own_player.currentInteraction != null:
 		own_player.currentInteraction.EndInteraction(own_player)
