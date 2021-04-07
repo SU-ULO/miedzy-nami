@@ -26,7 +26,7 @@
 [ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
 [ext_resource path="res://gui/ChatPanel.tscn" type="PackedScene" id=25]
 [ext_resource path="res://gui/meeting/verdict.tscn" type="PackedScene" id=26]
-[ext_resource path="res://textures/mic-on.png" type="Texture" id=27]
+[ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -321,18 +321,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mic" type="TextureButton" parent="GUI/PlayerCanvas/CommunicationButtons" index="1"]
-margin_left = 9.23286
+[node name="mic-mute-button" parent="GUI/PlayerCanvas/CommunicationButtons" index="1" instance=ExtResource( 27 )]
+margin_left = 9.233
 margin_top = 498.828
 margin_right = 137.233
 margin_bottom = 626.828
-focus_mode = 0
-enabled_focus_mode = 0
-texture_normal = ExtResource( 27 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="playerGUI" type="Control" parent="GUI/PlayerCanvas" index="1"]
 anchor_left = 0.5
@@ -599,7 +593,6 @@ script = ExtResource( 24 )
 [node name="DeathMessage" parent="GUI" index="3" instance=ExtResource( 26 )]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/chat" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "chat" ]]
-[connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/mic" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "mic" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
