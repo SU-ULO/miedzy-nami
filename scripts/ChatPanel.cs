@@ -27,9 +27,12 @@ public class ChatPanel : Control
 		if(state){
 			GetNode("ChatContainer/Input").Call("grab_focus");
 			GetNode("ChatContainer/Input").Set("readonly", !state);
+			originalMovement = GetMovement();
+			SetMovement(false);
 		}
 		else{
 			GetNode("ChatContainer/Input").Call("release_focus");
+			SetMovement(originalMovement);
 		}
 	}
 	
@@ -63,17 +66,6 @@ public class ChatPanel : Control
 		
 		GetNode("ChatContainer/Input").Set("text", "");
 		GetNode("ChatContainer/Input").Call("grab_focus");
-	}
-	
-	private void OnFocusEntered()
-	{
-		originalMovement = GetMovement();
-		SetMovement(false);
-	}
-	
-	private void OnFocusExited()
-	{
-		SetMovement(originalMovement);
 	}
 
 	private void OnTextChanged()

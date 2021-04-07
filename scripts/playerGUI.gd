@@ -121,7 +121,11 @@ func _on_gui_button_pressed(button_name):
 		player.ui_canceled()
 	elif button_name == "chat":
 		var chat = GUI.get_node("CloseButton/ChatPanel")
-		GUI.replace_on_canvas(chat, false)
+		if network.gamestate == NetworkManager.MEETING:
+			chat.get_node("bg").visible = !chat.visible
+			chat.show(!chat.visible)
+		else:
+			GUI.replace_on_canvas(chat, false)
 	elif button_name == "mic":
 		print("mic")
 
@@ -135,6 +139,7 @@ onready var task_container = get_node("TaskPanel/TaskContainer")
 onready var task_panel_position = task_container.rect_position
 onready var task_container_size = task_container.rect_size
 onready var task_label_size = get_node("TaskPanel/VBoxContainer/Label").rect_size
+onready var button = get_node("TaskPanel/TaskButton")
 
 func processGui():
 	var task_panel = get_node("TaskPanel")
@@ -153,10 +158,12 @@ func processGui():
 			task_panel.rect_position.x -= task_panel_slide_speed
 			if(task_panel.rect_position.x < task_panel_position.x):
 				task_panel.rect_position.x = task_panel_position.x
-		elif(task_panel.rect_position.x< task_panel_position.x):
+				button.text = "pokaż"
+		elif(task_panel.rect_position.x < task_panel_position.x):
 			task_panel.rect_position.x += task_panel_slide_speed
 			if(task_panel.rect_position.x > task_panel_position.x):
 				task_panel.rect_position.x = task_panel_position.x
+				button.text = "ukryj"
 
 func toggleTaskContainer():
 	if(task_panel_opened):

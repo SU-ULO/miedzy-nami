@@ -33,12 +33,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -52,12 +52,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -71,12 +71,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -90,12 +90,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -109,12 +109,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -128,12 +128,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -145,14 +145,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -166,12 +166,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -183,7 +183,7 @@ animations = [ {
 [sub_resource type="Theme" id=9]
 
 [sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 1, 1, 1, 0.196078 )
+bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -215,7 +215,7 @@ default_font = SubResource( 15 )
 
 [sub_resource type="StyleBoxFlat" id=17]
 content_margin_bottom = 10.0
-bg_color = Color( 1, 1, 1, 0.392157 )
+bg_color = Color( 1, 1, 1, 0.196078 )
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -224,7 +224,7 @@ border_blend = true
 
 [sub_resource type="StyleBoxFlat" id=18]
 content_margin_bottom = 10.0
-bg_color = Color( 1, 1, 1, 0.392157 )
+bg_color = Color( 1, 1, 1, 0.196078 )
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -279,9 +279,6 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
-
-[node name="AnimatedSprite" parent="." index="7"]
-frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
@@ -383,14 +380,14 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/PlayerCanvas/playerGUI/TaskPanel" index="1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
+margin_left = 20.0
 margin_top = 10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="0"]
-margin_right = 764.0
+margin_right = 754.0
 margin_bottom = 55.0
 custom_fonts/font = SubResource( 11 )
 text = "Lista zadań:"
@@ -409,7 +406,7 @@ text = "Onie zły sabotaż"
 
 [node name="tasklist" type="Label" parent="GUI/PlayerCanvas/playerGUI/TaskPanel/VBoxContainer" index="2"]
 margin_top = 59.0
-margin_right = 764.0
+margin_right = 754.0
 margin_bottom = 366.0
 custom_fonts/font = SubResource( 14 )
 text = "- tutaj jakiś sabotaż
@@ -426,7 +423,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TasKButton" type="Button" parent="GUI/PlayerCanvas/playerGUI/TaskPanel" index="2"]
+[node name="TaskButton" type="Button" parent="GUI/PlayerCanvas/playerGUI/TaskPanel" index="2"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = 49.0001
@@ -593,7 +590,8 @@ script = ExtResource( 24 )
 [node name="DeathMessage" parent="GUI" index="3" instance=ExtResource( 26 )]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
 [connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/chat" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "chat" ]]
-[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TasKButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
+[connection signal="pressed" from="GUI/PlayerCanvas/CommunicationButtons/mic-mute-button" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "mic" ]]
+[connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TaskPanel/TaskButton" to="GUI/PlayerCanvas/playerGUI" method="_onTaskContainerButtonPressed"]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "sabotage" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/ImpostorButtons/kill" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "kill" ]]
 [connection signal="pressed" from="GUI/PlayerCanvas/playerGUI/TopButtons/settings" to="GUI/PlayerCanvas/playerGUI" method="_on_gui_button_pressed" binds= [ "settings" ]]
