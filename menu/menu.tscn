@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
 [ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=17]
+[ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
@@ -730,6 +731,13 @@ custom_colors/font_color = Color( 0.156863, 0.156863, 0.156863, 1 )
 [node name="plus" parent="Options/setting" index="3"]
 margin_left = 1157.0
 margin_right = 1232.0
+
+[node name="mic-mute-button" parent="Options" instance=ExtResource( 18 )]
+margin_left = -207.949
+margin_top = 317.48
+margin_right = 304.051
+margin_bottom = 829.48
+rect_scale = Vector2( 0.219162, 0.219162 )
 
 [node name="Create" type="VBoxContainer" parent="."]
 visible = false
