@@ -140,6 +140,10 @@ func start_meeting(caller: int, dead: int):
 		own_player.currentInteraction.EndInteraction(own_player)
 		own_player.currentInteraction = null
 	
+	#close all gui
+	if own_player.get_node("GUI").currentGUI != null:
+		own_player.replace_on_canvas()
+	
 	#get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
 		i.queue_free()
@@ -272,6 +276,10 @@ func end_meeting():
 	# remove gui
 	own_player.get_node("GUI").clear_canvas()
 	meeting_gui = null 
+	
+	#hide chat if open
+	own_player.get_node("GUI/CloseButton/ChatPanel").show(false)
+	own_player.get_node("GUI/CloseButton/ChatPanel/bg").visible = false
 	
 	own_player.disabled_movement = false # enable player movement
 	current_votes.clear() # clear votes
