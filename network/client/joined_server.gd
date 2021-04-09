@@ -21,6 +21,7 @@ signal vc_offer(offer, id)
 signal vc_answer(answer, id)
 signal vc_candidate(candidate, id)
 signal vc_speaking(speaking, id)
+signal taskschange(tasksdone, tasksassigned)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -72,6 +73,8 @@ func handle_events(input):
 		emit_signal("vc_candidate", input[1], input[2])
 	elif input[0]==17:
 		emit_signal("vc_speaking", input[1], input[2])
+	elif input[0]==18:
+		emit_signal("taskschange", input[1], input[2])
 
 func handle_updates(input):
 	if !(input is Array): return

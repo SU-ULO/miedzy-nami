@@ -31,6 +31,7 @@ func create_world(config):
 	joined_server.connect("vc_answer", VoiceChat, "set_answer")
 	joined_server.connect("vc_candidate", VoiceChat, "set_candidate")
 	joined_server.connect("vc_speaking", VoiceChat, "setremotespeaking")
+	joined_server.connect("taskschange", self, "tasksync")
 	add_child(joined_server)
 
 func recreate_world(): #that is a copy from NetworkManager but we use NetworkManager's create_world

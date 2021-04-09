@@ -10,7 +10,6 @@ signal kick(id)
 signal send_session(id, sess)
 signal send_candidate(id, cand)
 signal gameinprogresschange(inprogress)
-signal taskschange(tasksdone, tasksassigned)
 
 func _ready():
 	var gs = Globals.read_file("user://gs.settings")
@@ -173,8 +172,7 @@ func check_winning_conditions():
 				alltasks+=c.assignedtasks
 				if !c.dead:
 					alivelivecrewmates+=1
-		print("tasks: %d/%d" % [donetasks, alltasks])
-		emit_signal("taskschange", donetasks, alltasks)
+		tasksync(donetasks, alltasks)
 		if aliveimpostors==0 or (donetasks>=alltasks and alltasks>0):
 			gamestate=ENDED
 			gamestate_params=true
@@ -413,3 +411,8 @@ func send_vc_candidate(candidate, id):
 
 func send_vc_speaking(speaking: bool):
 	handle_vc_speaking(speaking, own_id)
+
+func tasksync(done: int, all: int):
+	for c in  connected_clients.values():
+		c.send_tasks_done(done, all)
+	.tasksync(done, all)

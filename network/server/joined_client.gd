@@ -119,3 +119,6 @@ func send_vc_candidate(candidate, id: int):
 
 func send_vc_speaking(speaking: bool, id: int):
 	send_events([17, speaking, id])
+
+func send_tasks_done(done: int, all: int):
+	send_events([18, done, all])

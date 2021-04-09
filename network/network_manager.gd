@@ -2,6 +2,8 @@ extends Node
 
 class_name NetworkManager
 
+signal taskschange(tasksdone, tasksassigned)
+
 enum {LOBBY, STARTED, MEETING, ENDED}
 var gamestate := LOBBY
 var gamestate_params = null
@@ -128,7 +130,7 @@ func display_key(key):
 func request_meeting(_dead: int):
 	pass
 
-func start_meeting(caller: int, dead: int):
+func start_meeting(_caller: int, _dead: int):
 	var rips = []
 	
 	#end sabotage
@@ -546,9 +548,13 @@ func send_vc_speaking(_speaking: bool):
 	pass
 
 func _ready():
+# warning-ignore:return_value_discarded
 	VoiceChat.connect("offer", self, "send_vc_offer")
+# warning-ignore:return_value_discarded
 	VoiceChat.connect("answer", self, "send_vc_answer")
+# warning-ignore:return_value_discarded
 	VoiceChat.connect("candidate", self, "send_vc_candidate")
+# warning-ignore:return_value_discarded
 	VoiceChat.connect("speaking", self, "send_vc_speaking")
 	VoiceChat.update_vc_mode()
 
@@ -569,3 +575,6 @@ func calculate_muted_remotes()->int:
 				out|=1<<p.owner_id
 		return out
 	return 0
+
+func tasksync(done: int, all: int):
+	emit_signal("taskschange", done, all)
