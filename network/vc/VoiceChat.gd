@@ -115,7 +115,7 @@ func setunmutepeers(unmuted: int):
 	JavaScript.eval("setunmutepeers("+String(unmuted)+")", true)
 
 func isunmuted():
-	if !available: return
+	if !available: return false
 	return JavaScript.eval("isunmuted()", true)
 
 func handle_poll(data: Dictionary):
