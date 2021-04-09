@@ -10,7 +10,7 @@ signal kill_requested(dead)
 signal sabotage_requested(type, player_id)
 signal end_sabotage_requested(type)
 signal cameras_enable_requested()
-signal tasks_done()
+signal tasks_done(finished)
 signal gui_sync_requested(gui_name, gui_data)
 signal color_update(color)
 signal look_update(look)
@@ -43,7 +43,7 @@ func handle_events(input):
 	elif input[0]==4:
 		emit_signal("cameras_enable_requested", input[1])
 	elif input[0]==5:
-		emit_signal("tasks_done")
+		emit_signal("tasks_done", input[1])
 	elif input[0]==6:
 		emit_signal("color_update", input[1])
 	elif input[0]==7:

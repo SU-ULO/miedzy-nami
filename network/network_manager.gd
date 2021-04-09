@@ -497,10 +497,10 @@ func end_game(crew_win: bool):
 		own_player.handle_end_sabotage(own_player.currentSabotage)
 	apply_vc_settings()
 
-func request_inform_all_tasks_finished():
+func send_tasks_finished(_finished: int):
 	pass
 
-var sentalldone:=false
+var lasttasknum := 0
 func _process(_delta):
 	if own_player:
 		if Task.CheckAndClearAnyDirty():
@@ -515,13 +515,13 @@ func _process(_delta):
 						own_player.localTaskList.append(t)
 			tasks_update(state_changes, started_changes, own_id)
 	if gamestate==STARTED:
-		var alldone = true
+		var donetasks := 0
 		for t in Task.GetAllTasks():
-			if t.local and !t.IsDone():
-				alldone=false
-				break
-		if alldone and !sentalldone:
-			request_inform_all_tasks_finished()
+			if t.local and t.IsDone():
+				donetasks+=1
+		if donetasks!=lasttasknum:
+			lasttasknum=donetasks
+			send_tasks_finished(donetasks)
 
 func tasks_update(state, started, _id):
 	var tasks = Task.GetAllTasks()

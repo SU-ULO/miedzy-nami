@@ -139,7 +139,7 @@ func handle_state_sync(state, params, opt=null):
 
 func game_start(params, taskstuff):
 	.game_start(params, taskstuff)
-	sentalldone=false
+	lasttasknum=0
 
 func handle_sabotage(type):
 	if joined_server and own_player:
@@ -175,8 +175,8 @@ func request_vote(id: int):
 	if joined_server:
 		joined_server.send_vote(id)
 
-func request_inform_all_tasks_finished():
-	joined_server.send_tasks_done()
+func send_tasks_finished(finished: int):
+	joined_server.send_tasks_done(finished)
 
 func send_vc_offer(offer, id: int):
 	if joined_server:

@@ -34,7 +34,9 @@ var currentInteraction = null
 var localTaskList := []
 var player_speed
 
-var donealltasks:=false #this is used only on server
+#task stuff used only on server
+var donetasks := 0
+var assignedtasks := 0
 
 var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix

@@ -4,12 +4,13 @@ class_name ServerNetworkManager
 
 var connected_clients := Dictionary()
 
-var debug:bool = true
+var debug:bool = false
 
 signal kick(id)
 signal send_session(id, sess)
 signal send_candidate(id, cand)
 signal gameinprogresschange(inprogress)
+signal taskschange(tasksdone, tasksassigned)
 
 func _ready():
 	var gs = Globals.read_file("user://gs.settings")
@@ -161,17 +162,20 @@ func check_winning_conditions():
 	if gamestate==STARTED:
 		var alivelivecrewmates := 0
 		var aliveimpostors := 0
-		var tasksdone:=true
+		var donetasks := 0
+		var alltasks := 0
 		for c in player_characters.values():
 			if c.is_in_group("impostors"):
 				if !c.dead:
 					aliveimpostors+=1
 			else:
-				if !c.donealltasks:
-					tasksdone=false
+				donetasks+=c.donetasks
+				alltasks+=c.assignedtasks
 				if !c.dead:
 					alivelivecrewmates+=1
-		if aliveimpostors==0 or tasksdone:
+		print("tasks: %d/%d" % [donetasks, alltasks])
+		emit_signal("taskschange", donetasks, alltasks)
+		if aliveimpostors==0 or (donetasks>=alltasks and alltasks>0):
 			gamestate=ENDED
 			gamestate_params=true
 			sync_gamestate()
@@ -232,6 +236,9 @@ func pick_impostors()->Array:
 			impostors.push_back(rnd)
 	return impostors
 
+func get_tasks_number(tasksarray: Array) -> int:
+	return tasksarray.size()
+
 func request_game_start():
 	if !debug:
 		if player_characters.size()<2*gamesettings["impostor-count"]+1: return
@@ -244,9 +251,13 @@ func request_game_start():
 	Task.DivideTasks(ids)
 	var opt = Dictionary()
 	for c in player_characters:
-		opt[c]=Task.GetTaskIDsForPlayerID(c)
+		var tasks_for_player = Task.GetTaskIDsForPlayerID(c)
+		player_characters[c].assignedtasks=get_tasks_number(tasks_for_player)
+		opt[c]=tasks_for_player
 	sync_gamestate(opt)
-	game_start(gamestate_params, Task.GetTaskIDsForPlayerID(own_id))
+	var own_tasks = Task.GetTaskIDsForPlayerID(own_id)
+	own_player.assignedtasks=get_tasks_number(own_tasks)
+	game_start(gamestate_params, own_tasks)
 
 func request_sabotage(type: int):
 	handle_sabotage_request(type, own_id)
@@ -277,13 +288,13 @@ func handle_cameras_enable_request(on_off: bool):
 		c.send_cameras_enable(on_off)
 	cameras_enable(on_off)
 
-func handle_tasks_done(id):
+func handle_tasks_done(done, id):
 	if player_characters.has(id):
-		player_characters[id].donealltasks=true
+		player_characters[id].donetasks=done
 	check_winning_conditions()
 
-func request_inform_all_tasks_finished():
-	handle_tasks_done(own_id)
+func send_tasks_finished(finished: int):
+	handle_tasks_done(finished, own_id)
 
 func request_gui_sync(gui_name: String, gui_data):
 	handle_gui_sync_request(gui_name, gui_data)
