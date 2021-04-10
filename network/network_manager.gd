@@ -154,6 +154,10 @@ func start_meeting(_caller: int, _dead: int):
 	own_player.disabled_movement = true
 	recalculate_pos()
 	
+	#update task bar
+	if gamesettings["taskbar-updates"] == 1:
+		# emit signal for task update
+		pass
 	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	gui.show_imps = gamesettings["comfirm-ejects"]
@@ -283,6 +287,7 @@ func end_meeting():
 	own_player.get_node("GUI/CloseButton/ChatPanel").show(false)
 	own_player.get_node("GUI/CloseButton/ChatPanel/bg").visible = false
 	
+	world.get_node("Mapa/YSort/meeting-table/Timer").start(gamesettings["emergency-cooldown"])
 	own_player.disabled_movement = false # enable player movement
 	current_votes.clear() # clear votes
 	if own_player.is_in_group("impostors"): # set cooldown for impostor
@@ -385,6 +390,7 @@ func game_start(params, taskstuff):
 		if i.material != null:
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
+	world.get_node("Mapa/YSort/meeting-table/Timer").start(gamesettings["emergency-cooldown"])
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
 	recalculate_pos()
 	for i in params["imp"]:
@@ -577,4 +583,6 @@ func calculate_muted_remotes()->int:
 	return 0
 
 func tasksync(done: int, all: int):
-	emit_signal("taskschange", done, all)
+	if own_player.currentSabotege != 3:
+		if gamesettings["taskbar-updates"] == 2:
+			emit_signal("taskschange", done, all)

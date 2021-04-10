@@ -33,12 +33,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -52,12 +52,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -71,12 +71,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -90,12 +90,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -109,12 +109,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -128,12 +128,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -145,14 +145,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -166,12 +166,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -358,7 +358,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TaskPanel" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="1"]
+[node name="ProgressBar" type="ProgressBar" parent="GUI/PlayerCanvas/playerGUI" index="1"]
+margin_left = 927.587
+margin_top = 42.0
+margin_right = 1672.59
+margin_bottom = 140.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TaskPanel" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="2"]
 margin_right = 774.0
 margin_bottom = 354.0
 theme = SubResource( 9 )
@@ -443,7 +453,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="2"]
+[node name="ImpostorButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -493,7 +503,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="3"]
+[node name="TopButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -527,7 +537,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="4"]
+[node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="5"]
 margin_left = 0.794006
 margin_top = 1.58899
 margin_right = 40.794
@@ -564,7 +574,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="5" instance=ExtResource( 18 )]
+[node name="Joystick" parent="GUI/PlayerCanvas/playerGUI" index="6" instance=ExtResource( 18 )]
 position = Vector2( 151.607, 932.581 )
 scale = Vector2( 0.602087, 0.602087 )
 

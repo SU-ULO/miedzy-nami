@@ -15,5 +15,6 @@ public class LIBbooks : TaskWithGUI
 	}
 	public LIBbooks(){
 		this.category = TaskCategory.VeryHard;
+		taskLength = 2;
 	}
 }

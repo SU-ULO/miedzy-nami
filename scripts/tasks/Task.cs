@@ -256,4 +256,5 @@ public abstract class Task : Godot.Node2D
 	public static void SetTaskCategoriesPerPlayer(int index, int value){
 		TaskCategory.categories[index].perPlayer = value;
 	}
+	public int taskLength = 1;
 }

@@ -13,6 +13,7 @@ func Interact(body):
 	gui.connect("emergency_meeting_requested", self, "call_meeting")
 	gui.meetings_left = body.meetings_left
 	gui.sabotage_on = bool(body.currentSabotage != 2 && body.currentSabotage != 0)
+	gui.countdown = $Timer.time_left
 	player.get_node("GUI").add_to_canvas(gui)
 	gui.start_gui()
 

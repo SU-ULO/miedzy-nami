@@ -17,3 +17,5 @@ polygon = PoolVector2Array( -885.541, 849.729, -897.49, 156.652, -467.304, -309.
 position = Vector2( 9.98874, 0 )
 scale = Vector2( 1.984, 1.984 )
 texture = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]

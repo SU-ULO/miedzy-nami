@@ -14,6 +14,7 @@ var chat_open = false
 
 func _ready():
 	network = get_tree().get_root().get_node("Start").network
+	network.connect("taskschange", self, "progress_update")
 	player = get_owner()
 	GUI = get_parent().get_parent()
 	
@@ -193,3 +194,6 @@ func handle_sabotage(type, enabled):
 		$TaskPanel/VBoxContainer/sabotage.visible = false
 		comms = false
 	updateTaskList()
+func progress_update(done, all):
+	print((done * 100) / all)
+	$ProgressBar.value = (done * 100) / all
