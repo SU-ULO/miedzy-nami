@@ -4,6 +4,8 @@ class_name Player
 
 var fov_toggle :bool = false #temporarily
 
+const arrow_radius = 300.0
+
 var selected_vent = 0
 var disabled_movement:bool = false
 var joystickUsed = false
@@ -13,6 +15,8 @@ export var sabotageCooldown = 40
 export var death_time = 60
 onready var mask_width = $Light.get_texture().get_width()
 onready var sight_range :float = default_sight_range
+var sabotagearrow = null
+var sabotagepoint = null
 var sight_range_scale = 1
 var meetings_left
 var network
@@ -43,8 +47,7 @@ signal sabotage_event()
 
 func is_sabotage_timer_done():
 	return $SabotageCooldown.time_left == 0
-	
-# should we take into consideration fov_toggle?
+
 func handle_sabotage(type):
 	if $SabotageCooldown.time_left == 0 and currentSabotage == 0:
 		$GUI/PlayerCanvas/playerGUI.handle_sabotage(type, 1)
@@ -54,6 +57,8 @@ func handle_sabotage(type):
 				sight_range = default_sight_range * sight_range_scale / 2
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/electrical")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/electrical"))
+			sabotagepoint = network.world.get_node("Mapa/YSort/electrical")
+			sabotagearrow.visible = true
 		if type == 2:
 			network.world.get_node("Mapa/door").close_door()
 			network.world.get_node("Mapa/door2").close_door()
@@ -63,10 +68,14 @@ func handle_sabotage(type):
 			network.comms_disabled = true
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
+			sabotagepoint = network.world.get_node("Mapa/YSort/telewizorek")
+			sabotagearrow.visible = true
 		if type == 4:
 			$DeathTimer.start(death_time)
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")) && !is_in_group("rip"):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
+			sabotagepoint = network.world.get_node("Mapa/YSort/biorko-nauczyciela6")
+			sabotagearrow.visible = true
 		emit_signal("sabotage_event", currentSabotage)
 
 func handle_end_sabotage(type):
@@ -96,6 +105,8 @@ func handle_end_sabotage(type):
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 		emit_signal("sabotage_event", 0)
+		sabotagepoint = null
+		sabotagearrow.visible = false
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
@@ -115,6 +126,12 @@ func _ready():
 				looktoset[k]=ls[k]
 	currLook.set_look(looktoset)
 	network.request_set_look(currLook.get_look())
+	sabotagearrow = get_node("arrow")
+	
+	# dirty fix for reused arrow
+	sabotagearrow.get_child(0).disconnect("button_down", sabotagearrow, "_on_arrow_button_down")
+	sabotagearrow.get_child(0).disconnect("mouse_entered", sabotagearrow,  "_on_arrow_mouse_entered")
+	sabotagearrow.get_child(0).disconnect("mouse_exited", sabotagearrow, "_on_arrow_mouse_exited")
 
 func get_input():
 	moveX = 0; moveY = 0
@@ -180,11 +197,20 @@ func get_input():
 		else:
 			$sprites.stopWalk()
 
+func update_arrows():
+	if sabotagepoint == null: return
+	var pos = sabotagepoint.position
+	var angle = pos.angle_to_point(self.position)
+	sabotagearrow.set_position(Vector2(arrow_radius * cos(angle), arrow_radius * sin(angle)))
+	sabotagearrow.set_rotation(angle)
+
+
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()
 	check_line_of_sight()
 	check_interaction()
+	update_arrows()
 
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
