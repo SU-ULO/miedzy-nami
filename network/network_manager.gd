@@ -442,13 +442,16 @@ func apply_vc_settings():
 	if vcs==0:
 		VoiceChat.setwantstospeak(false)
 		VoiceChat.forcemute(true)
+		VoiceChat.setallvolumes(0)
 	else:
 		VoiceChat.askforstream()
 	if vcs==1:
 		if gamestate==LOBBY or gamestate==MEETING:
 			VoiceChat.forcemute(false)
+			VoiceChat.setallvolumes(1)
 		else:
 			VoiceChat.forcemute(true)
+			VoiceChat.setallvolumes(0)
 	else:
 		VoiceChat.forcemute(false)
 	VoiceChat.setunmutepeers(calculate_muted_remotes())

@@ -13,6 +13,19 @@ for (let i = 0; i < 11; ++i)
 audioelements[10].autoplay=false;
 audioelements[10].id='audioelement-test';
 
+function setvolume(id, volume)
+{
+	audioelements[id].volume=volume;
+}
+
+function setallvolumes(volume)
+{
+	for(audio of audioelements)
+	{
+		audio.volume=volume;
+	}
+}
+
 let localstream = null;
 let peers = new Map();
 
