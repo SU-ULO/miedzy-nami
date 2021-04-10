@@ -2,14 +2,20 @@ extends Control
 
 var meetings_left
 var sabotage_on = false
+var countdown = 0
 signal emergency_meeting_requested()
 
 func _ready():
 	$Button.disabled = true
 	start_gui()
 func wait5s():
-	for i in range(0, 5):
-		$Label2.text = "czekaj " + str(4 - i) + "s"
+	var x
+	if countdown == 0:
+		x = 3
+	else:
+		x = int(countdown)
+	for i in range(1, x):
+		$Label2.text = "czekaj " + str(x - 1 - i) + "s"
 		$Timer.start()
 		yield($Timer, "timeout")
 	$Button.disabled = false

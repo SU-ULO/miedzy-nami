@@ -11,6 +11,7 @@ public class HasloINF : TaskWithGUI
 	}
 	public HasloINF(){
 		this.category = TaskCategory.VeryHard;
+		taskLength = 3;
 	}
 	public override int GetNextTaskID()
 	{

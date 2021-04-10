@@ -70,6 +70,7 @@ func handle_sabotage(type):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
 			sabotagepoint = network.world.get_node("Mapa/YSort/telewizorek")
 			sabotagearrow.visible = true
+			get_node("GUI/PlayerCanvas/playerGUI/ProgressBar").value = 0
 		if type == 4:
 			$DeathTimer.start(death_time)
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")) && !is_in_group("rip"):
@@ -100,6 +101,9 @@ func handle_end_sabotage(type):
 			network.comms_disabled = false
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/telewizorek"))
+			if network.gamesettings["taskbar-updates"] > 0:
+				pass
+				#emit signal for bar update
 		if type == 4:
 			$DeathTimer.stop()
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):

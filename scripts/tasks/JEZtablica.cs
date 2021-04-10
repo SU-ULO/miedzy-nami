@@ -15,5 +15,6 @@ public class JEZtablica : TaskWithGUI
 	}
 	public JEZtablica(){
 		this.category = TaskCategory.VeryHard;
+		taskLength = 2;
 	}
 }

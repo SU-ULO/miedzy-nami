@@ -235,7 +235,10 @@ func pick_impostors()->Array:
 	return impostors
 
 func get_tasks_number(tasksarray: Array) -> int:
-	return tasksarray.size()
+	var task_count = 0
+	for i in tasksarray:
+		task_count += Task.GetTaskByID(i).taskLength
+	return task_count
 
 func request_game_start():
 	if !debug:
