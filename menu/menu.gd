@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var usersettings: Dictionary = {
-	"signaling_url": 'wss://gaming.rakbook.pl/miedzy-nami/signaling',
+	"signaling_url": 'wss://miedzy-nami.rakbook.pl/signaling',
 	"username": "nazwa",
 	"vc-mode": 0
 }
