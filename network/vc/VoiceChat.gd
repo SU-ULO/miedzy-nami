@@ -154,3 +154,10 @@ func setremotespeaking(speaking: bool, id: int):
 func is_speaking(id: int):
 	return bool(speaking_ids&(1<<id))
 
+func setvolume(id: int, volume: float):
+	if !available: return
+	JavaScript.eval('setvolume(%d,%f)' % [id, volume])
+
+func setallvolumes(volume: float):
+	if !available: return
+	JavaScript.eval('setallvolumes(%f)' % volume)
