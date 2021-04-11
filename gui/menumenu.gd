@@ -22,6 +22,7 @@ func onopen():
 func _close():
 	Globals.start.menu.usersettings["vc-mode"]=get_voice_method()
 	VoiceChat.update_vc_mode()
+	Globals.save_file("user://us.settings", Globals.start.menu.usersettings)
 	get_parent().get_parent().replace_on_canvas(self)
 
 func _exit():
