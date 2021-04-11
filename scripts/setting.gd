@@ -17,9 +17,9 @@ export(Array, String) var values = [] #only used if non numeric values is true
 func _ready():
 	value = default_value
 	if non_numeric_values:
-		$value.text = values[default_value] + prefix
+		$C/value.text = values[default_value] + prefix
 	else:
-		$value.text = str(get_value()) + prefix
+		$C/value.text = str(get_value()) + prefix
 
 func _on_plus_pressed():
 	value = count_next(step)
@@ -39,9 +39,9 @@ func count_next(val):
 
 func update_label():
 	if non_numeric_values:
-		$value.text = values[value] + prefix
+		$C/value.text = values[value] + prefix
 	else:
-		$value.text = str(get_value()) + prefix
+		$C/value.text = str(get_value()) + prefix
 
 func get_value():
 	if non_numeric_values:
@@ -53,4 +53,4 @@ func set_value(x):
 	if non_numeric_values:
 		value = x
 	else:
-		value = x * div	
+		value = x * div

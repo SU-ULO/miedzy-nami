@@ -4,7 +4,7 @@ class_name ServerNetworkManager
 
 var connected_clients := Dictionary()
 
-var debug:bool = false
+var debug:bool = true
 
 signal kick(id)
 signal send_session(id, sess)
@@ -157,7 +157,6 @@ func kick(id: int):
 	emit_signal("kick", id)
 
 func check_winning_conditions():
-	if debug: return
 	if gamestate==STARTED:
 		var alivelivecrewmates := 0
 		var aliveimpostors := 0
@@ -173,6 +172,7 @@ func check_winning_conditions():
 				if !c.dead:
 					alivelivecrewmates+=1
 		tasksync(donetasks, alltasks)
+		if debug: return
 		if aliveimpostors==0 or (donetasks>=alltasks and alltasks>0):
 			gamestate=ENDED
 			gamestate_params=true

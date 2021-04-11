@@ -2,7 +2,7 @@ extends CanvasLayer
 
 var usersettings: Dictionary = {
 	"signaling_url": 'wss://miedzy-nami.rakbook.pl/signaling',
-	"username": "nazwa",
+	"username": "",
 	"vc-mode": 0
 }
 
@@ -26,11 +26,11 @@ func _init():
 		serversettings = ss
 
 func _ready():
-	$Main/Username.text=usersettings["username"]
+	$Main/Username.text = usersettings["username"]
 
 func close_everything():
 	for n in get_children():
-		n.visible=false
+		n.visible = false
 
 func open_logging_in():
 	close_everything()
@@ -101,6 +101,8 @@ func _on_StartServerButton_pressed():
 	if usersettings.username.length()>0:
 		Globals.save_file("user://us.settings", usersettings)
 		open_create_room()
+	else:
+		highlight()
 
 func _on_StartClientButton_pressed():
 	usersettings.username = $'Main/Username'.text
@@ -108,3 +110,8 @@ func _on_StartClientButton_pressed():
 		open_logging_in()
 		Globals.save_file("user://us.settings", usersettings)
 		emit_signal("request_start_client")
+	else:
+		highlight()
+
+func highlight():
+	get_node("Main/AnimationPlayer").play("highlight")

@@ -1,52 +1,138 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
-[ext_resource path="res://textures/plus.png" type="Texture" id=2]
-[ext_resource path="res://textures/minus.png" type="Texture" id=3]
+[ext_resource path="res://textures/arrow.png" type="Texture" id=2]
+[ext_resource path="res://textures/przycisk_na_username.png" type="Texture" id=3]
 [ext_resource path="res://scripts/setting.gd" type="Script" id=4]
 
 [node name="setting" type="HBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 155.0
+margin_right = 1533.0
+margin_bottom = 79.0
+custom_constants/separation = 50
+alignment = 1
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_right = 600.0
+margin_left = 71.0
+margin_right = 729.0
 margin_bottom = 79.0
-rect_min_size = Vector2( 600, 0 )
+rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = ExtResource( 1 )
+text = "aktywacja mikrofonu: "
 
-[node name="minus" type="TextureButton" parent="."]
-margin_left = 604.0
-margin_right = 679.0
-margin_bottom = 79.0
-texture_normal = ExtResource( 3 )
+[node name="TextureRect" type="TextureRect" parent="Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 199.159
+margin_top = -128.224
+margin_right = 335.159
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="value" type="Label" parent="."]
-margin_left = 683.0
-margin_right = 983.0
+[node name="TextureRect2" type="TextureRect" parent="Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -246.841
+margin_top = -128.224
+margin_right = -110.841
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 646.159
+margin_top = -128.224
+margin_right = 782.159
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="HBoxContainer" parent="."]
+margin_left = 779.0
+margin_right = 1307.0
 margin_bottom = 79.0
-rect_min_size = Vector2( 300, 0 )
+rect_min_size = Vector2( 528, 79 )
+custom_constants/separation = 30
+alignment = 1
+
+[node name="minus" type="Control" parent="C"]
+margin_left = 34.0
+margin_right = 98.0
+margin_bottom = 79.0
+
+[node name="minus" type="TextureButton" parent="C/minus"]
+light_mask = -2147483647
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 31.0
+margin_right = 32.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 64, 64 )
+rect_rotation = -90.0
+texture_normal = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="value" type="Label" parent="C"]
+margin_left = 64.0
+margin_right = 464.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 400, 0 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "1"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="plus" type="TextureButton" parent="."]
-margin_left = 987.0
-margin_right = 1062.0
+[node name="plus" type="Control" parent="C"]
+margin_left = 494.0
+margin_right = 558.0
 margin_bottom = 79.0
+
+[node name="plus" type="TextureButton" parent="C/plus"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -33.0
+margin_right = 96.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 64, 64 )
+rect_rotation = 90.0
 texture_normal = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="minus" to="." method="_on_minus_pressed"]
-[connection signal="pressed" from="plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="C/minus/minus" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="C/plus/plus" to="." method="_on_plus_pressed"]
