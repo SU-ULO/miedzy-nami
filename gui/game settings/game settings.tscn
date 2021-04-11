@@ -52,12 +52,12 @@ margin_right = 1228.0
 margin_bottom = 183.0
 min_val = 1
 non_numeric_values = true
-values = [ "disabled", "meetings", "always", "proximity" ]
+values = [ "wyłączony", "zebrania", "zawsze", "dystans" ]
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/voice-chat" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "voice chat"
+text = "czat głosowy"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/voice-chat" index="1"]
 margin_left = 700.0
@@ -84,7 +84,7 @@ max_val = 9
 [node name="Label2" parent="ScrollContainer/VBoxContainer/meeting-count" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "meeting count"
+text = "liczba zebrań"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/meeting-count" index="1"]
 margin_left = 700.0
@@ -97,7 +97,7 @@ margin_bottom = 503.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/anonnymous-votes" index="0"]
-text = "annonymous votes"
+text = "anonimowe głosy"
 
 [node name="emergency-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
@@ -131,7 +131,7 @@ max_val = 120
 [node name="Label2" parent="ScrollContainer/VBoxContainer/discussion-time" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "discussion time"
+text = "czas dyskusji"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/discussion-time" index="1"]
 margin_left = 700.0
@@ -150,7 +150,7 @@ max_val = 300
 [node name="Label2" parent="ScrollContainer/VBoxContainer/voting-time" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "voting time"
+text = "czas głosowania"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/voting-time" index="1"]
 margin_left = 700.0
@@ -170,7 +170,7 @@ div = 4
 [node name="Label2" parent="ScrollContainer/VBoxContainer/player-speed" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "player speed"
+text = "szybkość gracza"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/player-speed" index="1"]
 margin_left = 700.0
@@ -244,7 +244,7 @@ margin_right = 1228.0
 margin_bottom = 1335.0
 default_value = 1
 non_numeric_values = true
-values = [ "Small", "Medium", "Large" ]
+values = [ "mały", "średni", "duży" ]
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/kill-distance" index="0"]
 margin_left = 0.0
@@ -262,12 +262,12 @@ margin_right = 1228.0
 margin_bottom = 1439.0
 default_value = 1
 non_numeric_values = true
-values = [ "Never", "Meetings", "Always" ]
+values = [ "nigdy", "zebrania", "zawsze" ]
 
 [node name="Label2" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "taskbar updates"
+text = "pasek zadań"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/taskbar-updates" index="1"]
 margin_left = 700.0
@@ -284,7 +284,7 @@ max_val = 3
 [node name="Label2" parent="ScrollContainer/VBoxContainer/long-tasks" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "long tasks"
+text = "długie zadania"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/long-tasks" index="1"]
 margin_left = 700.0
@@ -301,7 +301,7 @@ max_val = 5
 [node name="Label2" parent="ScrollContainer/VBoxContainer/short-tasks" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "short tasks"
+text = "krótkie zadania"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/short-tasks" index="1"]
 margin_left = 700.0

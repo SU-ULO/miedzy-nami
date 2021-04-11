@@ -50,38 +50,39 @@ margin_bottom = -0.951538
 rect_scale = Vector2( 0.840592, 0.859657 )
 
 [node name="buttons" type="HBoxContainer" parent="."]
-margin_left = 1422.8
+margin_left = 1403.83
 margin_top = 982.167
-margin_right = 1706.8
-margin_bottom = 1063.17
+margin_right = 1901.83
+margin_bottom = 1067.17
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="color" type="Button" parent="buttons"]
-margin_right = 152.0
-margin_bottom = 81.0
+margin_right = 160.0
+margin_bottom = 85.0
 custom_fonts/font = ExtResource( 2 )
-text = "color"
+text = "kolor"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="look" type="Button" parent="buttons"]
-margin_left = 156.0
-margin_right = 284.0
-margin_bottom = 81.0
+margin_left = 164.0
+margin_right = 384.0
+margin_bottom = 85.0
 custom_fonts/font = ExtResource( 2 )
-text = "look"
+text = "wygląd"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="game" type="Button" parent="buttons"]
-visible = false
-margin_left = 1640.69
-margin_top = 948.439
-margin_right = 1913.69
-margin_bottom = 1051.44
+margin_left = 388.0
+margin_right = 498.0
+margin_bottom = 85.0
 custom_fonts/font = ExtResource( 2 )
-text = "game"
+text = "gra"
 __meta__ = {
 "_edit_use_anchors_": false
 }
