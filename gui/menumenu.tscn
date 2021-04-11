@@ -31,9 +31,9 @@ margin_right = 1516.0
 margin_bottom = 252.0
 
 [node name="E" type="TextureButton" parent="."]
-margin_left = 783.715
+margin_left = 772.715
 margin_top = 676.081
-margin_right = 1283.72
+margin_right = 1272.72
 margin_bottom = 837.081
 rect_scale = Vector2( 0.791857, 0.791857 )
 texture_normal = ExtResource( 4 )
@@ -54,31 +54,29 @@ __meta__ = {
 }
 
 [node name="voice-chat" parent="." instance=ExtResource( 6 )]
-margin_left = 557.609
+margin_left = 670.609
 margin_top = 240.307
-margin_right = 1835.61
+margin_right = 1948.61
 margin_bottom = 319.307
-rect_scale = Vector2( 0.658553, 0.658553 )
+rect_scale = Vector2( 0.443, 0.45 )
 non_numeric_values = true
 values = [ "push-to-talk", "otwarty" ]
 
 [node name="Label2" parent="voice-chat" index="0"]
-margin_right = 630.0
+margin_left = 35.0
+margin_right = 665.0
 rect_min_size = Vector2( 630, 0 )
 text = "aktywacja mikrofonu"
 
-[node name="minus" parent="voice-chat" index="1"]
-margin_left = 634.0
-margin_right = 709.0
+[node name="C" parent="voice-chat" index="1"]
+margin_left = 715.0
+margin_right = 1243.0
 
-[node name="value" parent="voice-chat" index="2"]
-margin_left = 713.0
-margin_right = 1153.0
-rect_min_size = Vector2( 440, 0 )
+[node name="minus" parent="voice-chat/C" index="0"]
+margin_right = 34.0
 
-[node name="plus" parent="voice-chat" index="3"]
-margin_left = 1157.0
-margin_right = 1232.0
+[node name="plus" parent="voice-chat/C" index="2"]
+margin_right = 494.0
 [connection signal="pressed" from="C" to="." method="_close"]
 [connection signal="pressed" from="E" to="." method="_exit"]
 
