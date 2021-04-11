@@ -133,6 +133,11 @@ func request_meeting(_dead: int):
 func start_meeting(_caller: int, _dead: int):
 	var rips = []
 	
+	#set volume to 1
+	if gamesettings["voice-chat"] == 3:
+		for i in player_characters:
+			i.vc_volume = 1
+	
 	#end sabotage
 	if own_player.currentSabotage == 4:
 		own_player.handle_end_sabotage(4)

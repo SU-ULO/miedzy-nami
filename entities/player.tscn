@@ -246,6 +246,20 @@ script = ExtResource( 1 )
 [node name="SightArea" parent="." index="2"]
 visible = false
 
+[node name="VoiceArea" parent="." index="3"]
+visible = false
+
+[node name="Light" type="Light2D" parent="." index="5"]
+position = Vector2( -17.9701, 36.8197 )
+texture = ExtResource( 5 )
+mode = 2
+shadow_enabled = true
+
+[node name="Camera" type="Camera2D" parent="." index="6"]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+
 [node name="body" parent="sprites" index="0"]
 frames = SubResource( 1 )
 
@@ -269,17 +283,6 @@ frames = SubResource( 7 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
-
-[node name="Light" type="Light2D" parent="." index="5"]
-position = Vector2( -17.9701, 36.8197 )
-texture = ExtResource( 5 )
-mode = 2
-shadow_enabled = true
-
-[node name="Camera" type="Camera2D" parent="." index="6"]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true

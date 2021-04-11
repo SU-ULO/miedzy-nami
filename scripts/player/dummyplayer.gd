@@ -22,6 +22,7 @@ var currLook := LookConfiguration.new()
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
 
+var voice_range := []
 var in_sight := []
 var interactable := []
 var players_interactable := []
@@ -40,6 +41,8 @@ var assignedtasks := 0
 
 var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix
+
+var vc_volume := 0.0
 
 func generate_init_data() -> Dictionary:
 	return {"username": username,
@@ -131,8 +134,6 @@ func on_sight_area_exit(body):
 		
 		if in_sight.has(body):
 			in_sight.erase(body)
-			if self == Globals.start.network.own_player:
-				Globals.start.network.apply_vc_settings()
 			if debug_mode: print(body.get_name(), " removed from: sight")
 
 func _on_interaction_area_enter(body):
@@ -160,8 +161,6 @@ func camera_visibility(body, status):
 		if debug_mode: print(body.get_name(), " entered camera")
 	if status == 0 and in_sight.has(body):
 		in_sight.erase(body)
-		if self == Globals.start.network.own_player:
-			Globals.start.network.apply_vc_settings()
 		if debug_mode: print(body.get_name(), " exited camera")
 
 func Interact(body): # player interaction with player = kill
@@ -255,3 +254,19 @@ func players_in_sight(var type: String=""):
 			else:
 				to_return.append(i)
 	return to_return
+
+
+func _on_VoiceArea_body_entered(body):
+	if body.is_in_group("players"):
+		if !voice_range.has(body):
+			voice_range.append(body)
+			if self == Globals.start.network.own_player:
+				Globals.start.network.apply_vc_settings()
+
+
+func _on_VoiceArea_body_exited(body):
+	if body.is_in_group("players"):
+		if voice_range.has(body):
+			voice_range.erase(body)
+			if self == Globals.start.network.own_player:
+				Globals.start.network.apply_vc_settings()

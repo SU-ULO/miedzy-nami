@@ -218,7 +218,8 @@ func _process(delta):
 	check_line_of_sight()
 	check_interaction()
 	update_arrows()
-
+	if network.gamesettings["voice-chat"] == 3 && network.gamestate != network.LOBBY:
+		calculate_volume()
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -250,13 +251,11 @@ func check_line_of_sight():
 			if debug_mode: debug_pos_collided.append(sight_check.position)
 			if in_sight.has(item):
 				in_sight.erase(item);
-				Globals.start.network.apply_vc_settings()
 				if debug_mode: print(item.get_name(), " removed from: sight")
 		else:
 			if debug_mode: debug_pos_ok.append(item.position)
 			if !in_sight.has(item):
 				in_sight.push_back(item);
-				Globals.start.network.apply_vc_settings()
 				if debug_mode: print(item.get_name(), " added to: sight")
 
 func check_interaction():
@@ -397,3 +396,7 @@ func _on_DeathTimer_timeout():
 
 func players_in_voice_range():
 	return players_in_sight()
+
+func calculate_volume():
+	for i in voice_range:
+		i.vc_volume = sqrt(1 - (i.position.distance_to(position) / $VoiceArea/AreaShape.shape.radius))

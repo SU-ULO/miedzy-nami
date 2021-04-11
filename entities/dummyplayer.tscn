@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
@@ -17,6 +17,9 @@ radius = 500.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 1848.1
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 75.0135
@@ -205,6 +208,11 @@ shape = SubResource( 1 )
 [node name="AreaShape" type="CollisionShape2D" parent="SightArea"]
 shape = SubResource( 2 )
 
+[node name="VoiceArea" type="Area2D" parent="."]
+
+[node name="AreaShape" type="CollisionShape2D" parent="VoiceArea"]
+shape = SubResource( 13 )
+
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.30785 )
 rotation = -1.57079
@@ -270,6 +278,7 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 12 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -301,3 +310,5 @@ __meta__ = {
 [connection signal="body_exited" from="KillArea" to="." method="_on_KillArea_body_exited"]
 [connection signal="body_entered" from="SightArea" to="." method="on_sight_area_enter"]
 [connection signal="body_exited" from="SightArea" to="." method="on_sight_area_exit"]
+[connection signal="body_entered" from="VoiceArea" to="." method="_on_VoiceArea_body_entered"]
+[connection signal="body_exited" from="VoiceArea" to="." method="_on_VoiceArea_body_exited"]
