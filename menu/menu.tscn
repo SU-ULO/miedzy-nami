@@ -513,6 +513,7 @@ __meta__ = {
 }
 
 [node name="Main" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1048,15 +1049,14 @@ rect_scale = Vector2( 0.753996, 0.753996 )
 text = "WYJDŹ"
 
 [node name="RoomList" type="VBoxContainer" parent="."]
-visible = false
 anchor_left = 0.15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 455.317
-margin_top = 404.149
-margin_right = -312.683
-margin_bottom = 428.149
-rect_scale = Vector2( 0.570095, 0.570095 )
+margin_left = 244.783
+margin_top = 406.669
+margin_right = 344.783
+margin_bottom = 638.669
+rect_scale = Vector2( 0.503346, 0.503346 )
 alignment = 1
 script = ExtResource( 3 )
 __meta__ = {
@@ -1064,8 +1064,12 @@ __meta__ = {
 }
 
 [node name="Exit" type="TextureButton" parent="RoomList"]
-margin_right = 864.0
+margin_left = 434.0
+margin_right = 1298.0
 margin_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="RoomList/Exit"]
@@ -1082,8 +1086,8 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="RoomList"]
 margin_top = 112.0
-margin_right = 864.0
-margin_bottom = 187.0
+margin_right = 1732.0
+margin_bottom = 191.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "dołącz kodem:"
@@ -1093,18 +1097,23 @@ __meta__ = {
 }
 
 [node name="JoinedKeyField" type="LineEdit" parent="RoomList"]
-margin_top = 191.0
-margin_right = 864.0
-margin_bottom = 276.0
+margin_left = 433.0
+margin_top = 195.0
+margin_right = 1297.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 864, 0 )
+size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 8 )
 text = "KOD"
 align = 1
 expand_to_text_length = true
 
 [node name="JoinedKey" type="HBoxContainer" parent="RoomList"]
-margin_top = 280.0
-margin_right = 864.0
-margin_bottom = 388.0
+margin_left = 434.0
+margin_top = 288.0
+margin_right = 1298.0
+margin_bottom = 396.0
+size_flags_horizontal = 4
 
 [node name="TextureButton" type="TextureButton" parent="RoomList/JoinedKey"]
 margin_right = 864.0
@@ -1125,9 +1134,11 @@ __meta__ = {
 }
 
 [node name="Refresh" type="TextureButton" parent="RoomList"]
-margin_top = 392.0
-margin_right = 864.0
-margin_bottom = 500.0
+margin_left = 434.0
+margin_top = 400.0
+margin_right = 1298.0
+margin_bottom = 508.0
+size_flags_horizontal = 4
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="RoomList/Refresh"]
@@ -1143,13 +1154,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ServersList" type="ScrollContainer" parent="RoomList"]
-margin_top = 504.0
-margin_right = 864.0
-margin_bottom = 1104.0
-rect_min_size = Vector2( 0, 600 )
+[node name="lists" type="HBoxContainer" parent="RoomList"]
+margin_top = 512.0
+margin_right = 1732.0
+margin_bottom = 1312.0
+rect_min_size = Vector2( 0, 800 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RoomList/ServersList"]
+[node name="ver" type="VBoxContainer" parent="RoomList/lists"]
+margin_right = 864.0
+margin_bottom = 800.0
+
+[node name="Label" type="Label" parent="RoomList/lists/ver"]
+margin_right = 864.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "oficjalne:"
+align = 1
+
+[node name="ServersListVeryfied" type="ScrollContainer" parent="RoomList/lists/ver"]
+margin_top = 83.0
+margin_right = 864.0
+margin_bottom = 683.0
+rect_min_size = Vector2( 864, 600 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomList/lists/ver/ServersListVeryfied"]
+
+[node name="rest" type="VBoxContainer" parent="RoomList/lists"]
+margin_left = 868.0
+margin_right = 1732.0
+margin_bottom = 800.0
+
+[node name="Label3" type="Label" parent="RoomList/lists/rest"]
+margin_right = 864.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "nieoficjalne:"
+align = 1
+
+[node name="ServersList" type="ScrollContainer" parent="RoomList/lists/rest"]
+margin_top = 83.0
+margin_right = 864.0
+margin_bottom = 683.0
+rect_min_size = Vector2( 864, 600 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RoomList/lists/rest/ServersList"]
 
 [node name="Joining" type="VBoxContainer" parent="."]
 visible = false

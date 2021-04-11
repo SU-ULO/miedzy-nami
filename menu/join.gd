@@ -5,12 +5,15 @@ func _ready():
 	pass # Replace with function body.
 
 func clean_list():
-	for c in $'ServersList/VBoxContainer'.get_children():
+	for c in $'lists/ver/ServersListVeryfied/VBoxContainer'.get_children():
+		c.queue_free()
+	for c in $'lists/rest/ServersList/VBoxContainer'.get_children():
 		c.queue_free()
 
 func update_servers(list: Array):
 	clean_list()
-	var serverlist = $'ServersList/VBoxContainer'
+	var serverlist_veryfied = $'lists/ver/ServersListVeryfied/VBoxContainer'
+	var serverlist_rest = $'lists/rest/ServersList/VBoxContainer'
 	for s in list:
 		if !(s.key is String):
 			clean_list()
@@ -23,7 +26,9 @@ func update_servers(list: Array):
 		b.connect("pressed", get_parent(), 'request_join_server', [s.key])
 		if(s.has('verified') and s['verified']):
 			pass #stuff to do with verified servers
-		serverlist.add_child(bbb)
+			serverlist_veryfied.add_child(bbb)
+		else:
+			serverlist_rest.add_child(bbb)
 
 func _on_Refresh_pressed():
 	get_parent().request_refresh_servers()
