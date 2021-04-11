@@ -19,3 +19,4 @@ scale = Vector2( 1.984, 1.984 )
 texture = ExtResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true

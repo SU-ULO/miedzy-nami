@@ -49,9 +49,9 @@ func _on_ready_pressed():
 		if $AnimationPlayer/main/herbata.pressed == bool(kawa) && $AnimationPlayer/main/mala.pressed == bool(rozmiar) && int($"AnimationPlayer/main/1".group.get_pressed_button().name) == cukier:
 			print ("jej!")
 			$AnimationPlayer.play_backwards("open")
+			yield($AnimationPlayer, "animation_finished")
 			done = 2
 			t.done = 2
-			yield($AnimationPlayer, "animation_finished")
 			t.get_node("Timer").start()
 			countFrom(60)
 		else:

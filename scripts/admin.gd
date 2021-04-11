@@ -25,6 +25,9 @@ func _process(_delta):
 			for j in players.values():
 				if in_room(j, rooms[i]) && !j.is_in_group("rip"):
 					players_count[i]+=1
+			for j in get_owner().get_tree().get_nodes_in_group("deadbody"):
+				if in_room(j, rooms[i]) && !j.is_in_group("rip"):
+					players_count[i]+=1
 		if map != null:
 			update_map()
 
