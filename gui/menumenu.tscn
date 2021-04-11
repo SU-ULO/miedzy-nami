@@ -54,23 +54,37 @@ __meta__ = {
 }
 
 [node name="voice-chat" parent="." instance=ExtResource( 6 )]
-margin_left = 670.609
-margin_top = 240.307
-margin_right = 1948.61
-margin_bottom = 319.307
-rect_scale = Vector2( 0.443, 0.45 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -382.0
+margin_top = -298.5
+margin_right = 896.0
+margin_bottom = -219.5
+rect_scale = Vector2( 0.6, 0.6 )
 non_numeric_values = true
 values = [ "push-to-talk", "otwarty" ]
 
 [node name="Label2" parent="voice-chat" index="0"]
-margin_left = 35.0
-margin_right = 665.0
+margin_left = 32.0
+margin_right = 668.0
 rect_min_size = Vector2( 630, 0 )
-text = "aktywacja mikrofonu"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "aktywacja mikrofonu:"
+
+[node name="TextureRect" parent="voice-chat/Label2" index="0"]
+visible = false
+
+[node name="TextureRect2" parent="voice-chat/Label2" index="1"]
+visible = false
+
+[node name="TextureRect3" parent="voice-chat/Label2" index="2"]
+visible = false
 
 [node name="C" parent="voice-chat" index="1"]
-margin_left = 715.0
-margin_right = 1243.0
+margin_left = 718.0
+margin_right = 1246.0
 
 [node name="minus" parent="voice-chat/C" index="0"]
 margin_right = 34.0
