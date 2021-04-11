@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -34,12 +34,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -53,12 +53,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -72,12 +72,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -91,12 +91,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -110,12 +110,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -129,12 +129,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -146,14 +146,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -167,12 +167,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -180,6 +180,20 @@ animations = [ {
 "name": "side",
 "speed": 5.0
 } ]
+
+[sub_resource type="StyleBoxFlat" id=22]
+content_margin_bottom = 10.0
+bg_color = Color( 0.611765, 0.976471, 0.113725, 0.392157 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=23]
+size = 40
+font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=9]
 
@@ -246,20 +260,6 @@ script = ExtResource( 1 )
 [node name="SightArea" parent="." index="2"]
 visible = false
 
-[node name="VoiceArea" parent="." index="3"]
-visible = false
-
-[node name="Light" type="Light2D" parent="." index="5"]
-position = Vector2( -17.9701, 36.8197 )
-texture = ExtResource( 5 )
-mode = 2
-shadow_enabled = true
-
-[node name="Camera" type="Camera2D" parent="." index="6"]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-
 [node name="body" parent="sprites" index="0"]
 frames = SubResource( 1 )
 
@@ -283,6 +283,17 @@ frames = SubResource( 7 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
+
+[node name="Light" type="Light2D" parent="." index="5"]
+position = Vector2( -17.9701, 36.5522 )
+texture = ExtResource( 5 )
+mode = 2
+shadow_enabled = true
+
+[node name="Camera" type="Camera2D" parent="." index="6"]
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
@@ -311,9 +322,9 @@ __meta__ = {
 
 [node name="chat" type="TextureButton" parent="GUI/PlayerCanvas/CommunicationButtons" index="0"]
 margin_left = 9.08588
-margin_top = 382.047
+margin_top = 446.047
 margin_right = 137.086
-margin_bottom = 510.047
+margin_bottom = 574.047
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = ExtResource( 17 )
@@ -324,9 +335,9 @@ __meta__ = {
 
 [node name="mic-mute-button" parent="GUI/PlayerCanvas/CommunicationButtons" index="1" instance=ExtResource( 27 )]
 margin_left = 9.233
-margin_top = 498.828
+margin_top = 562.828
 margin_right = 137.233
-margin_bottom = 626.828
+margin_bottom = 690.828
 expand = true
 
 [node name="playerGUI" type="Control" parent="GUI/PlayerCanvas" index="1"]
@@ -363,18 +374,32 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="GUI/PlayerCanvas/playerGUI" index="1"]
-margin_left = 927.587
-margin_top = 42.0
-margin_right = 1672.59
-margin_bottom = 140.0
+margin_top = -3.0
+margin_right = 773.0
+margin_bottom = 74.0
+custom_styles/fg = SubResource( 22 )
+custom_styles/bg = ExtResource( 16 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="GUI/PlayerCanvas/playerGUI/ProgressBar" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -186.0
+margin_top = -27.5
+margin_right = 186.0
+margin_bottom = 27.5
+custom_fonts/font = SubResource( 23 )
+text = "wykonane zadania"
+
 [node name="TaskPanel" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="2"]
+margin_top = 73.0
 margin_right = 774.0
-margin_bottom = 354.0
+margin_bottom = 427.0
 theme = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -384,8 +409,8 @@ __meta__ = {
 anchor_top = -0.000166645
 anchor_right = 1.0
 anchor_bottom = 0.999833
-margin_top = 0.0589923
-margin_bottom = 10.0591
+margin_top = -0.0461255
+margin_bottom = 9.95398
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -592,10 +617,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -532.866
-margin_top = -398.909
-margin_right = 403.134
-margin_bottom = 230.211
+margin_left = -476.0
+margin_top = -322.56
+margin_right = 460.0
+margin_bottom = 306.56
 
 [node name="B" parent="GUI/CloseButton" index="1" instance=ExtResource( 23 )]
 visible = false
