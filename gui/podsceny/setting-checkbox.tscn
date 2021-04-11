@@ -14,18 +14,18 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_top = 4.0
-margin_right = 792.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 792, 0 )
+margin_top = 2.0
+margin_right = 919.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 919, 0 )
 custom_fonts/font = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 796.0
-margin_right = 879.0
+margin_left = 923.0
+margin_right = 1006.0
 margin_bottom = 83.0
 custom_icons/checked = ExtResource( 2 )
 custom_icons/unchecked = ExtResource( 4 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -16,9 +16,10 @@
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
 [ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
-[ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scripts/setting.gd" type="Script" id=17]
 [ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=18]
 [ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://textures/arrow.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
 resource_name = "highlight"
@@ -47,14 +48,14 @@ tracks/1/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 46
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
 
-[sub_resource type="Theme" id=3]
+[sub_resource type="Theme" id=4]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -230,7 +231,7 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
-LineEdit/styles/normal = SubResource( 2 )
+LineEdit/styles/normal = SubResource( 3 )
 LineEdit/styles/read_only = null
 LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
 LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -779,14 +780,14 @@ margin_top = -36.9127
 margin_right = 333.0
 margin_bottom = 42.0873
 mouse_filter = 1
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
 text = "test mikrofonu (odsłuch)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="setting" parent="Options" instance=ExtResource( 17 )]
+[node name="setting" type="HBoxContainer" parent="Options"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -796,29 +797,133 @@ margin_top = -36.5
 margin_right = 795.0
 margin_bottom = 42.5
 rect_scale = Vector2( 0.691037, 0.691037 )
+custom_constants/separation = 50
+alignment = 1
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 non_numeric_values = true
 values = [ "push-to-talk", "otwarty" ]
 
-[node name="Label2" parent="Options/setting" index="0"]
-margin_left = 0.0
+[node name="Label2" type="Label" parent="Options/setting"]
 margin_right = 636.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 630, 0 )
+custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 text = "aktywacja mikrofonu:"
 
-[node name="TextureRect2" parent="Options/setting/Label2" index="1"]
-margin_left = -244.407
-margin_right = -44.4068
+[node name="TextureRect" type="TextureRect" parent="Options/setting/Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 199.159
+margin_top = -128.224
+margin_right = 335.159
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="C" parent="Options/setting" index="1"]
+[node name="TextureRect2" type="TextureRect" parent="Options/setting/Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -244.407
+margin_top = -128.224
+margin_right = -44.4068
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="Options/setting/Label2"]
+show_behind_parent = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 646.159
+margin_top = -128.224
+margin_right = 782.159
+margin_bottom = 21.776
+rect_scale = Vector2( 1, 1.2 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="C" type="HBoxContainer" parent="Options/setting"]
 margin_left = 686.0
 margin_right = 1214.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 528, 79 )
+custom_constants/separation = 30
+alignment = 1
 
-[node name="minus" parent="Options/setting/C" index="0"]
+[node name="minus" type="Control" parent="Options/setting/C"]
+margin_left = 34.0
 margin_right = 34.0
+margin_bottom = 79.0
 
-[node name="plus" parent="Options/setting/C" index="2"]
+[node name="minus" type="TextureButton" parent="Options/setting/C/minus"]
+light_mask = -2147483647
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 31.0
+margin_right = 32.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 64, 64 )
+rect_rotation = -90.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="value" type="Label" parent="Options/setting/C"]
+margin_left = 64.0
+margin_right = 464.0
+margin_bottom = 79.0
+rect_min_size = Vector2( 400, 0 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plus" type="Control" parent="Options/setting/C"]
+margin_left = 494.0
 margin_right = 494.0
+margin_bottom = 79.0
+
+[node name="plus" type="TextureButton" parent="Options/setting/C/plus"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -33.0
+margin_right = 96.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 64, 64 )
+rect_rotation = 90.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="mic-mute-button" parent="Options" instance=ExtResource( 18 )]
 margin_left = -158.067
@@ -899,7 +1004,7 @@ margin_left = 240.0
 margin_right = 840.0
 margin_bottom = 75.0
 rect_min_size = Vector2( 600, 0 )
-theme = SubResource( 3 )
+theme = SubResource( 4 )
 custom_fonts/font = ExtResource( 8 )
 text = "mój pokój"
 max_length = 20
@@ -1123,13 +1228,13 @@ valign = 1
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
+[connection signal="pressed" from="Options/setting/C/minus/minus" to="Options/setting" method="_on_minus_pressed"]
+[connection signal="pressed" from="Options/setting/C/plus/plus" to="Options/setting" method="_on_plus_pressed"]
 [connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/MenuButton/TextureButton" to="." method="open_main"]
 [connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
 [connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
-
-[editable path="Options/setting"]
 
 [editable path="Create/MenuButton"]
