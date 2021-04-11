@@ -18,31 +18,12 @@ radius = 500.0
 [sub_resource type="CircleShape2D" id=2]
 radius = 1750.0
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=3]
 radius = 1848.1
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 75.0135
 height = 75.4685
-
-[sub_resource type="SpriteFrames" id=4]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
 
 [sub_resource type="SpriteFrames" id=5]
 resource_local_to_scene = true
@@ -142,7 +123,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=10]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [  ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -161,7 +142,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=11]
 resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -178,6 +159,25 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=12]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
@@ -211,12 +211,12 @@ shape = SubResource( 2 )
 [node name="VoiceArea" type="Area2D" parent="."]
 
 [node name="AreaShape" type="CollisionShape2D" parent="VoiceArea"]
-shape = SubResource( 13 )
+shape = SubResource( 3 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.30785 )
 rotation = -1.57079
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="sprites" type="Node2D" parent="."]
 scale = Vector2( 0.4, 0.4 )
@@ -224,13 +224,13 @@ script = ExtResource( 10 )
 
 [node name="body" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 animation = "front"
 
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
 scale = Vector2( 0.999999, 0.999999 )
-frames = SubResource( 5 )
+frames = SubResource( 6 )
 animation = "front"
 
 [node name="face" type="Sprite" parent="sprites"]
@@ -240,27 +240,27 @@ texture = ExtResource( 8 )
 
 [node name="eyes" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 6 )
+frames = SubResource( 7 )
 animation = "front"
 
 [node name="eye-bonus" type="AnimatedSprite" parent="sprites/face/eyes"]
 material = ExtResource( 9 )
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 animation = "front"
 
 [node name="nose" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 8 )
+frames = SubResource( 9 )
 animation = "front"
 
 [node name="mouth" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-frames = SubResource( 9 )
+frames = SubResource( 10 )
 animation = "front"
 
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
-frames = SubResource( 10 )
+frames = SubResource( 11 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="sprites"]
@@ -270,15 +270,14 @@ scale = Vector2( 0.999999, 0.999999 )
 [node name="hair" type="AnimatedSprite" parent="sprites/wlosy"]
 material = ExtResource( 9 )
 position = Vector2( 0, 240 )
-frames = SubResource( 11 )
+frames = SubResource( 12 )
 animation = "front"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 12 )
-frame = 1
+frames = SubResource( 13 )
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

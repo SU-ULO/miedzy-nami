@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://textures/menubackground.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://textures/planbutton.png" type="Texture" id=4]
 [ext_resource path="res://gui/menumenu.gd" type="Script" id=5]
 [ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=7]
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
@@ -67,30 +68,51 @@ non_numeric_values = true
 values = [ "push-to-talk", "otwarty" ]
 
 [node name="Label2" parent="voice-chat" index="0"]
-margin_left = 32.0
-margin_right = 668.0
+margin_right = 636.0
 rect_min_size = Vector2( 630, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "aktywacja mikrofonu:"
 
-[node name="TextureRect" parent="voice-chat/Label2" index="0"]
-visible = false
+[node name="minus" parent="voice-chat" index="1"]
+margin_left = 640.0
+margin_right = 715.0
 
-[node name="TextureRect2" parent="voice-chat/Label2" index="1"]
-visible = false
+[node name="value" parent="voice-chat" index="2"]
+margin_left = 719.0
+margin_right = 1019.0
 
-[node name="TextureRect3" parent="voice-chat/Label2" index="2"]
-visible = false
+[node name="plus" parent="voice-chat" index="3"]
+margin_left = 1023.0
+margin_right = 1098.0
 
-[node name="C" parent="voice-chat" index="1"]
-margin_left = 718.0
-margin_right = 1246.0
+[node name="kick1" type="VBoxContainer" parent="."]
+margin_left = 609.973
+margin_top = 395.384
+margin_right = 1254.97
+margin_bottom = 1001.38
+rect_scale = Vector2( 0.43024, 0.43024 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="minus" parent="voice-chat/C" index="0"]
-margin_right = 34.0
+[node name="kick2" type="VBoxContainer" parent="."]
+margin_left = 1044.92
+margin_top = 395.384
+margin_right = 1689.92
+margin_bottom = 1001.38
+rect_scale = Vector2( 0.43024, 0.43024 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="plus" parent="voice-chat/C" index="2"]
-margin_right = 494.0
+[node name="Label" type="Label" parent="."]
+margin_left = 875.117
+margin_top = 332.671
+margin_right = 1094.12
+margin_bottom = 411.671
+rect_scale = Vector2( 0.8025, 0.8025 )
+custom_fonts/font = ExtResource( 7 )
+text = "wyrzuć:"
 [connection signal="pressed" from="C" to="." method="_close"]
 [connection signal="pressed" from="E" to="." method="_exit"]
 
