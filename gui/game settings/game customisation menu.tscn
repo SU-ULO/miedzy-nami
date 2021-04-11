@@ -78,6 +78,7 @@ __meta__ = {
 }
 
 [node name="game" type="Button" parent="buttons"]
+visible = false
 margin_left = 388.0
 margin_right = 498.0
 margin_bottom = 85.0

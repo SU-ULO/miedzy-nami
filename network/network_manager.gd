@@ -390,6 +390,8 @@ func get_spawn_position(id: int) -> Vector2:
 	return Vector2(0, 0)
 
 func game_start(params, taskstuff):
+	if own_player.currentInteraction != null:
+		own_player.ui_canceled()
 	for i in world.get_tree().get_nodes_in_group("tasks"):
 		if i.material != null:
 			if i.material is ShaderMaterial:

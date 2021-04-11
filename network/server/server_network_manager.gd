@@ -4,7 +4,7 @@ class_name ServerNetworkManager
 
 var connected_clients := Dictionary()
 
-var debug:bool = true
+var debug:bool = false
 
 signal kick(id)
 signal send_session(id, sess)
