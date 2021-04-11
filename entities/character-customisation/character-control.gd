@@ -78,7 +78,7 @@ func _hair_color_Change(color):
 	_hair_Change(currLook.hair)
 	
 func _clothes_Change(name):
-	if name == "dress":
+	if name == "dress" || name == "hoodie":
 		currLook.hasBottom = false
 		$"body-parts/jeans".visible = false
 	else:
