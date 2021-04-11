@@ -404,4 +404,5 @@ func players_in_voice_range():
 
 func calculate_volume():
 	for i in voice_range:
-		i.vc_volume = sqrt(1 - (i.position.distance_to(position) / $VoiceArea/AreaShape.shape.radius))
+		i.vc_volume = ($VoiceArea/AreaShape.shape.radius - i.position.distance_to(position)) / $VoiceArea/AreaShape.shape.radius
+		
