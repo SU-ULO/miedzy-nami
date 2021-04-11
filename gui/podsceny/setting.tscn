@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://textures/arrow.png" type="Texture" id=2]
-[ext_resource path="res://textures/przycisk_na_username.png" type="Texture" id=3]
 [ext_resource path="res://scripts/setting.gd" type="Script" id=4]
 
 [node name="setting" type="HBoxContainer"]
@@ -24,51 +23,6 @@ rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = ExtResource( 1 )
 text = "aktywacja mikrofonu: "
 
-[node name="TextureRect" type="TextureRect" parent="Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 199.159
-margin_top = -128.224
-margin_right = 335.159
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -246.841
-margin_top = -128.224
-margin_right = -110.841
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 646.159
-margin_top = -128.224
-margin_right = 782.159
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="C" type="HBoxContainer" parent="."]
 margin_left = 779.0
 margin_right = 1307.0
@@ -79,7 +33,7 @@ alignment = 1
 
 [node name="minus" type="Control" parent="C"]
 margin_left = 34.0
-margin_right = 98.0
+margin_right = 34.0
 margin_bottom = 79.0
 
 [node name="minus" type="TextureButton" parent="C/minus"]
@@ -115,7 +69,7 @@ __meta__ = {
 
 [node name="plus" type="Control" parent="C"]
 margin_left = 494.0
-margin_right = 558.0
+margin_right = 494.0
 margin_bottom = 79.0
 
 [node name="plus" type="TextureButton" parent="C/plus"]
