@@ -133,10 +133,14 @@ func handle_poll(data: Dictionary):
 			if p.has("gotstream"):
 				update_vc_mode()
 
+var volumesdict = {}
+
 var time := 0.0
 func _process(delta):
 	if !available or own_id<0: return
 	if time >= 0.1:
+		for i in volumesdict:
+			JavaScript.eval('setvolume(%d,%f)' % [i, volumesdict[i]])
 		var polled = JavaScript.eval("poll()", true)
 		if polled:
 			var json = JSON.parse(polled)
@@ -156,8 +160,10 @@ func is_speaking(id: int):
 
 func setvolume(id: int, volume: float):
 	if !available: return
-	JavaScript.eval('setvolume(%d,%f)' % [id, volume])
+	volumesdict[id]=volume
 
 func setallvolumes(volume: float):
 	if !available: return
+	for i in volumesdict:
+		volumesdict[i]=1.0
 	JavaScript.eval('setallvolumes(%f)' % volume)

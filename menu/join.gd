@@ -21,6 +21,8 @@ func update_servers(list: Array):
 		b.name=s.key
 		l.text=s.name+' '+s.key+' '+String(s.players)+'/10 '+("gra trwa" if s.gameinprogress else "")
 		b.connect("pressed", get_parent(), 'request_join_server', [s.key])
+		if(s.has('verified') and s['verified']):
+			pass #stuff to do with verified servers
 		serverlist.add_child(bbb)
 
 func _on_Refresh_pressed():

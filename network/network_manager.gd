@@ -518,6 +518,11 @@ func send_tasks_finished(_finished: int):
 var lasttasknum := 0
 func _process(_delta):
 	if own_player:
+		if gamesettings["voice-chat"]==3 and (gamestate==STARTED or gamestate==LOBBY):
+			for p in own_player.players_in_voice_range():
+				VoiceChat.setvolume(p.owner_id, p.vc_volume)
+		else:
+			VoiceChat.setallvolumes(1)
 		if Task.CheckAndClearAnyDirty():
 			var state_changes : Dictionary = {}
 			var started_changes: Dictionary = {}
@@ -529,14 +534,14 @@ func _process(_delta):
 					if t.started and t.state < t.maxState:
 						own_player.localTaskList.append(t)
 			tasks_update(state_changes, started_changes, own_id)
-	if gamestate==STARTED:
-		var donetasks := 0
-		for t in Task.GetAllTasks():
-			if t.local and t.IsDone():
-				donetasks+=1
-		if donetasks!=lasttasknum:
-			lasttasknum=donetasks
-			send_tasks_finished(donetasks)
+			if gamestate==STARTED:
+				var donetasks := 0
+				for t in Task.GetAllTasks():
+					if t.local and t.IsDone():
+						donetasks+=1
+				if donetasks!=lasttasknum:
+					lasttasknum=donetasks
+					send_tasks_finished(donetasks)
 
 func tasks_update(state, started, _id):
 	var tasks = Task.GetAllTasks()

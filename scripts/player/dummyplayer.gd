@@ -244,18 +244,6 @@ func _on_KillArea_body_exited(body):
 				players_interactable.erase(body)
 				if debug_mode: print(body.get_name(), " removed from: players_interaction")
 
-func players_in_sight(var type: String=""):
-	var to_return = []
-	for i in in_sight:
-		if i.is_in_group("players"):
-			if type != "":
-				if i.is_in_group(type):
-					to_return.append(i)
-			else:
-				to_return.append(i)
-	return to_return
-
-
 func _on_VoiceArea_body_entered(body):
 	if body.is_in_group("players"):
 		if !voice_range.has(body):

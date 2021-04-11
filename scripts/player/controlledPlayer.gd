@@ -218,7 +218,8 @@ func _process(delta):
 	check_line_of_sight()
 	check_interaction()
 	update_arrows()
-	if network.gamesettings["voice-chat"] == 3 && network.gamestate != network.LOBBY:
+	if network.gamesettings["voice-chat"] == 3 and \
+		network.gamestate == network.STARTED or network.gamestate == network.LOBBY:
 		calculate_volume()
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
@@ -395,7 +396,11 @@ func _on_DeathTimer_timeout():
 		self.Interact(self)
 
 func players_in_voice_range():
-	return players_in_sight()
+	var to_return = []
+	for i in voice_range:
+		if i.is_in_group("players"):
+			to_return.append(i)
+	return to_return
 
 func calculate_volume():
 	for i in voice_range:
