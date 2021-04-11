@@ -4,6 +4,8 @@ var player
 var usage
 var network
 var GUI
+var all = 1
+var done = 0
 var comms = false
 #  GUI resources
 var minimap = { "gui_res": load("res://gui/minimap.tscn"), "gui_name": "MiniMap" }
@@ -194,6 +196,12 @@ func handle_sabotage(type, enabled):
 		$TaskPanel/VBoxContainer/sabotage.visible = false
 		comms = false
 	updateTaskList()
-func progress_update(done, all):
-	print((done * 100) / all)
+func progress_update(done_n, all_n):
+	done = done_n
+	all = all_n
+	if player.currentSabotage != 3:
+		if network.gamesettings["taskbar-updates"] == 2:
+			refresh_task_bar()
+
+func refresh_task_bar():
 	$ProgressBar.value = (done * 100) / all

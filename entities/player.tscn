@@ -281,9 +281,6 @@ current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 
-[node name="AnimatedSprite" parent="." index="7"]
-frame = 1
-
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
 

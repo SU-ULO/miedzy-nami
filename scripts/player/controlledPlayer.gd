@@ -20,6 +20,7 @@ var sabotagepoint = null
 var sight_range_scale = 1
 var meetings_left
 var network
+var bar_last = 0;
 
 var electrical_switches = [0,0,0,0,0]
 var electrical_good = [0,0,0,0,0]
@@ -70,6 +71,7 @@ func handle_sabotage(type):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/telewizorek"))
 			sabotagepoint = network.world.get_node("Mapa/YSort/telewizorek")
 			sabotagearrow.visible = true
+			bar_last = get_node("GUI/PlayerCanvas/playerGUI/ProgressBar").value
 			get_node("GUI/PlayerCanvas/playerGUI/ProgressBar").value = 0
 		if type == 4:
 			$DeathTimer.start(death_time)
@@ -101,9 +103,10 @@ func handle_end_sabotage(type):
 			network.comms_disabled = false
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/telewizorek")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/telewizorek"))
-			if network.gamesettings["taskbar-updates"] > 0:
-				pass
-				#emit signal for bar update
+			if network.gamesettings["taskbar-updates"] == 1:
+				get_node("GUI/PlayerCanvas/playerGUI/ProgressBar").value = bar_last
+			if network.gamesettings["taskbar-updates"] == 2:
+				get_node("GUI/PlayerCanvas/playerGUI").refresh_task_bar()
 		if type == 4:
 			$DeathTimer.stop()
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):

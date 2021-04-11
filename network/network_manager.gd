@@ -156,8 +156,7 @@ func start_meeting(_caller: int, _dead: int):
 	
 	#update task bar
 	if gamesettings["taskbar-updates"] == 1:
-		# emit signal for task update
-		pass
+		own_player.get_node("GUI/PlayerCanvas/playerGUI").refresh_task_bar()
 	own_player.position = get_spawn_position(own_id)
 	var gui = load("res://gui/meeting/meetingGUI.tscn").instance()
 	gui.show_imps = gamesettings["comfirm-ejects"]
@@ -586,6 +585,4 @@ func calculate_muted_remotes()->int:
 	return 0
 
 func tasksync(done: int, all: int):
-	if own_player.currentSabotege != 3:
-		if gamesettings["taskbar-updates"] == 2:
-			emit_signal("taskschange", done, all)
+	emit_signal("taskschange", done, all)
