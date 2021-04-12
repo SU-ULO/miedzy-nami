@@ -16,11 +16,6 @@ height = 0.0
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk back",
 "speed": 5.0
 }, {
@@ -28,15 +23,15 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
@@ -45,6 +40,11 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
 "speed": 5.0
 } ]
 
@@ -52,17 +52,17 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
 "speed": 5.0
 } ]
 
@@ -172,8 +172,6 @@ script = ExtResource( 3 )
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
 visible = false
 material = ExtResource( 4 )
-z_index = 5
-z_as_relative = false
 frames = SubResource( 2 )
 animation = "walk front"
 frame = 3
