@@ -135,8 +135,8 @@ func start_meeting(_caller: int, _dead: int):
 	
 	#set volume to 1
 	if gamesettings["voice-chat"] == 3:
-		for i in player_characters:
-			i.vc_volume = 1
+		for i in player_characters.values():
+			i.vc_volume = 1.0
 	
 	#end sabotage
 	if own_player.currentSabotage == 4:
