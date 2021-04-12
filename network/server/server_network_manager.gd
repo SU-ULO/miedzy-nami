@@ -155,6 +155,7 @@ func kick(id: int):
 # warning-ignore:return_value_discarded
 		player_characters.erase(id)
 	emit_signal("kick", id)
+	check_winning_conditions()
 
 func check_winning_conditions():
 	if gamestate==STARTED:
