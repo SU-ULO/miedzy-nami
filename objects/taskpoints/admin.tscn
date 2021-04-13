@@ -8,6 +8,7 @@ collision_layer = 2147483651
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 scale = Vector2( 2.034, 2.034 )
 texture = ExtResource( 1 )
 

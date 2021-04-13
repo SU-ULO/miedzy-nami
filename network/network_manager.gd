@@ -112,9 +112,6 @@ func create_world(config):
 	connect("sabotage", world.get_node("Mapa/YSort/electrical"), "check_on")
 # warning-ignore:return_value_discarded
 	connect("sabotage_end", world.get_node("Mapa/YSort/electrical"), "check_off")
-	if own_id == 0:
-		world.get_node("Mapa/lobby/start").add_to_group("interactable")
-		if endscreen: endscreen.queue_free()
 
 func recreate_world():
 	taken_colors=0
@@ -149,7 +146,7 @@ func start_meeting(_caller: int, _dead: int):
 	
 	#close all gui
 	if own_player.get_node("GUI").currentGUI != null:
-		own_player.replace_on_canvas()
+		own_player.get_node("GUI").replace_on_canvas()
 	
 	#get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
@@ -296,6 +293,7 @@ func end_meeting():
 	current_votes.clear() # clear votes
 	if own_player.is_in_group("impostors"): # set cooldown for impostor
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
+		own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
 	apply_vc_settings()
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
@@ -396,8 +394,12 @@ func game_start(params, taskstuff):
 		if i.material != null:
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
+	if world.get_node("Mapa/vent1").material != null:
+			if world.get_node("Mapa/vent1").material is ShaderMaterial:
+				world.get_node("Mapa/vent1").material.set_shader_param("aura_width", 0)
 	world.get_node("Mapa/YSort/meeting-table/Timer").start(gamesettings["emergency-cooldown"])
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
+	own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
 	recalculate_pos()
 	for i in params["imp"]:
 		if player_characters.has(i):

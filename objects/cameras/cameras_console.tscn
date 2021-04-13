@@ -8,6 +8,7 @@ collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="kamery-monitor" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 3.81699, 11.3643 )
 scale = Vector2( 1.605, 1.605 )
 texture = ExtResource( 2 )
