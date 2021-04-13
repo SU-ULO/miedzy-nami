@@ -17,7 +17,7 @@ func onopen():
 				if x < 6:
 					$kick1.add_child(xx)
 				else:
-					$kick1.add_child(xx)
+					$kick2.add_child(xx)
 				x+=1
 func _close():
 	Globals.start.menu.usersettings["vc-mode"]=get_voice_method()

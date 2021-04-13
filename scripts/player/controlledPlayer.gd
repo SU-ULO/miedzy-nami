@@ -392,7 +392,7 @@ func become_impostor():
 	$GUI/PlayerCanvas/playerGUI.interactionGUIupdate()
 
 func _on_DeathTimer_timeout():
-	if not is_in_group("imposotors"):
+	if not is_in_group("impostors"):
 		self.Interact(self)
 
 func players_in_voice_range():

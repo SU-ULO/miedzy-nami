@@ -74,7 +74,9 @@ public class Sabotage4 : Node2D, IInteractable
 		{
 			AddToGroup("interactable");
 		}else{
+			if (IsInGroup("interactable")){
 			RemoveFromGroup("interactable");
+			}
 		}
 	}
 }

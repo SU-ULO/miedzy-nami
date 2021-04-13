@@ -75,6 +75,8 @@ func checkReportability():
 	return player.deadbody_interactable.size() > 0
 	
 func checkKillability():
+	if player.is_in_group("rip"):
+		return false
 	if player.currentInteraction != null:
 		return false
 	return player.players_interactable.size() > 0
