@@ -69,6 +69,11 @@ func open_create_room():
 	close_everything()
 	$Create.visible=true
 	$background.visible=true
+	
+func open_credits():
+	close_everything()
+	$Credits.visible = true
+	$background.visible=true
 
 func request_start_server():
 	open_joining()
@@ -115,3 +120,7 @@ func _on_StartClientButton_pressed():
 
 func highlight():
 	get_node("Main/AnimationPlayer").play("highlight")
+
+
+func _on_CreditsButton_pressed():
+	open_credits()

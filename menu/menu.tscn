@@ -630,6 +630,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CreditsButton" type="TextureButton" parent="Main"]
+margin_left = -89.924
+margin_top = 415.019
+margin_right = 774.076
+margin_bottom = 523.019
+rect_scale = Vector2( 0.773, 0.773 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Main/CreditsButton"]
+margin_left = 311.061
+margin_top = 16.9486
+margin_right = 564.061
+margin_bottom = 95.9486
+mouse_filter = 1
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Options" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
@@ -949,7 +973,7 @@ __meta__ = {
 
 [node name="CreateRoomlabel" type="Label" parent="Create"]
 margin_right = 864.0
-margin_bottom = 75.0
+margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "UTWÓRZ POKÓJ"
@@ -959,9 +983,9 @@ __meta__ = {
 }
 
 [node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
-margin_top = 79.0
+margin_top = 83.0
 margin_right = 864.0
-margin_bottom = 241.0
+margin_bottom = 249.0
 alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
@@ -970,17 +994,17 @@ margin_bottom = 83.0
 alignment = 1
 
 [node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 136.0
-margin_top = 4.0
-margin_right = 640.0
-margin_bottom = 79.0
+margin_left = 123.0
+margin_top = 2.0
+margin_right = 654.0
+margin_bottom = 81.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
 text = "pokój niepubliczny"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 644.0
-margin_right = 727.0
+margin_left = 658.0
+margin_right = 741.0
 margin_bottom = 83.0
 custom_icons/checked = ExtResource( 13 )
 custom_icons/unchecked = ExtResource( 12 )
@@ -988,21 +1012,21 @@ custom_icons/unchecked = ExtResource( 12 )
 [node name="ServerName" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
 margin_top = 87.0
 margin_right = 864.0
-margin_bottom = 162.0
+margin_bottom = 166.0
 alignment = 1
 
 [node name="ServerNameLabel" type="Label" parent="Create/ServerSettingsContainer/ServerName"]
-margin_left = 23.0
-margin_right = 236.0
-margin_bottom = 75.0
+margin_left = 16.0
+margin_right = 243.0
+margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "nazwa: "
 
 [node name="ServerNameField" type="LineEdit" parent="Create/ServerSettingsContainer/ServerName"]
-margin_left = 240.0
-margin_right = 840.0
-margin_bottom = 75.0
+margin_left = 247.0
+margin_right = 847.0
+margin_bottom = 79.0
 rect_min_size = Vector2( 600, 0 )
 theme = SubResource( 4 )
 custom_fonts/font = ExtResource( 8 )
@@ -1010,9 +1034,9 @@ text = "mój pokój"
 max_length = 20
 
 [node name="ServerAcceptButton" type="TextureButton" parent="Create"]
-margin_top = 245.0
+margin_top = 253.0
 margin_right = 864.0
-margin_bottom = 353.0
+margin_bottom = 361.0
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1035,9 +1059,9 @@ __meta__ = {
 [node name="MenuButton" parent="Create" instance=ExtResource( 15 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 357.0
+margin_top = 365.0
 margin_right = 864.0
-margin_bottom = 467.0
+margin_bottom = 475.0
 
 [node name="Label" parent="Create/MenuButton/TextureButton" index="0"]
 margin_left = 125.272
@@ -1276,9 +1300,90 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Łączenie z serwerem matchmakingowym..."
 align = 1
 valign = 1
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+margin_left = 511.876
+margin_top = 275.588
+margin_right = 1276.88
+margin_bottom = 1758.59
+rect_scale = Vector2( 0.67487, 0.67487 )
+
+[node name="Label" type="Label" parent="Credits"]
+margin_left = -32.9066
+margin_top = -32.1927
+margin_right = 732.093
+margin_bottom = 55.8073
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Stworzone przez:"
+
+[node name="Label2" type="Label" parent="Credits"]
+margin_left = 707.25
+margin_top = 179.94
+margin_right = 1472.25
+margin_bottom = 996.94
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "projektanta rozgrywki:
+Jakuba Niździńskiego
+
+pod opieką
+dr Anny Kwiatkowskiej
+
+z inicjatywy
+Samorządu Uczniowskiego
+Uniwersyteckiego Liceum
+Ogólnokształcącego"
+
+[node name="Label3" type="Label" parent="Credits"]
+margin_left = -32.9066
+margin_top = 99.5031
+margin_right = 732.093
+margin_bottom = 1490.5
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "programistów:
+Mateusza Sobkowiaka
+Marcina Jabłońskiego
+Mikołaja Judę
+Wojciecha Malechę
+
+rysujących:
+Agatę Empel
+Annę Przedmojską
+Elizę Reinhold
+Karola Zwierza
+"
+
+[node name="MenuButton2" parent="Credits" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 149.111
+margin_top = 773.599
+margin_right = 1013.11
+margin_bottom = 883.599
+
+[node name="TextureButton" parent="Credits/MenuButton2" index="0"]
+margin_left = 76.787
+margin_top = 268.755
+margin_right = 940.787
+margin_bottom = 376.755
+
+[node name="Label" parent="Credits/MenuButton2/TextureButton" index="0"]
+margin_left = 125.272
+margin_top = 25.4684
+margin_right = 925.272
+margin_bottom = 100.468
+rect_scale = Vector2( 0.753996, 0.753996 )
+text = "WYJDŹ"
 [connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
 [connection signal="pressed" from="Options/setting/C/minus/minus" to="Options/setting" method="_on_minus_pressed"]
@@ -1289,5 +1394,8 @@ valign = 1
 [connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
 [connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
+[connection signal="pressed" from="Credits/MenuButton2/TextureButton" to="." method="open_main"]
 
 [editable path="Create/MenuButton"]
+
+[editable path="Credits/MenuButton2"]
