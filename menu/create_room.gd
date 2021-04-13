@@ -17,5 +17,8 @@ func set_settings():
 
 
 func _on_ServerAcceptButton_pressed():
-	set_settings()
-	get_parent().request_start_server()
+	if get_owner().get_node("Create/ServerSettingsContainer/ServerName/ServerNameField").text == "":
+		get_owner().get_node("Create/AnimationPlayer").play("highlight")
+	else:
+		set_settings()
+		get_parent().request_start_server()

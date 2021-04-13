@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=18]
 [ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://textures/arrow.png" type="Texture" id=20]
+[ext_resource path="res://gui/menubutton.tres" type="StyleBox" id=21]
+[ext_resource path="res://gui/invisiblebutton.tres" type="StyleBox" id=22]
 
 [sub_resource type="Animation" id=1]
 resource_name = "highlight"
@@ -476,6 +478,179 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=19]
+size = 40
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=17]
+size = 40
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 40
+font_data = ExtResource( 19 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "highlight"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ServerSettingsContainer/ServerName/ServerNameField:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ServerSettingsContainer/ServerName/ServerNameField:placeholder_alpha")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.8, 0.5 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -513,6 +688,7 @@ __meta__ = {
 }
 
 [node name="Main" type="Control" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -962,20 +1138,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -399.835
-margin_top = -117.766
-margin_right = 464.165
-margin_bottom = 282.234
+margin_left = -400.0
+margin_top = -158.0
+margin_right = 464.0
+margin_bottom = 490.0
+custom_constants/separation = 20
+alignment = 1
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CreateRoomlabel" type="Label" parent="Create"]
+margin_top = 41.0
 margin_right = 864.0
-margin_bottom = 79.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "UTWÓRZ POKÓJ"
 align = 1
 __meta__ = {
@@ -983,28 +1162,29 @@ __meta__ = {
 }
 
 [node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
-margin_top = 83.0
+margin_top = 140.0
 margin_right = 864.0
-margin_bottom = 249.0
+margin_bottom = 326.0
 alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
 margin_right = 864.0
 margin_bottom = 83.0
+custom_constants/separation = 20
 alignment = 1
 
 [node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 123.0
+margin_left = 115.0
 margin_top = 2.0
-margin_right = 654.0
+margin_right = 646.0
 margin_bottom = 81.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
 text = "pokój niepubliczny"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 658.0
-margin_right = 741.0
+margin_left = 666.0
+margin_right = 749.0
 margin_bottom = 83.0
 custom_icons/checked = ExtResource( 13 )
 custom_icons/unchecked = ExtResource( 12 )
@@ -1012,13 +1192,14 @@ custom_icons/unchecked = ExtResource( 12 )
 [node name="ServerName" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
 margin_top = 87.0
 margin_right = 864.0
-margin_bottom = 166.0
+margin_bottom = 186.0
 alignment = 1
 
 [node name="ServerNameLabel" type="Label" parent="Create/ServerSettingsContainer/ServerName"]
 margin_left = 16.0
+margin_top = 10.0
 margin_right = 243.0
-margin_bottom = 79.0
+margin_bottom = 89.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 text = "nazwa: "
@@ -1026,50 +1207,62 @@ text = "nazwa: "
 [node name="ServerNameField" type="LineEdit" parent="Create/ServerSettingsContainer/ServerName"]
 margin_left = 247.0
 margin_right = 847.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 600, 0 )
+margin_bottom = 99.0
+rect_min_size = Vector2( 600, 99 )
 theme = SubResource( 4 )
-custom_fonts/font = ExtResource( 8 )
-text = "mój pokój"
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 19 )
+custom_colors/selection_color = Color( 0.388235, 0.368627, 0.368627, 1 )
+custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+align = 1
 max_length = 20
+placeholder_text = "wpisz nazwę"
+placeholder_alpha = 0.8
 
-[node name="ServerAcceptButton" type="TextureButton" parent="Create"]
-margin_top = 253.0
+[node name="create" type="Button" parent="Create"]
+margin_top = 346.0
 margin_right = 864.0
-margin_bottom = 361.0
-texture_normal = ExtResource( 4 )
+margin_bottom = 466.0
+rect_min_size = Vector2( 700, 120 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/normal = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Create/create"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+text = "Stwórz Pokój"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Create/ServerAcceptButton"]
-margin_left = 323.992
-margin_top = 24.3612
-margin_right = 973.992
-margin_bottom = 199.361
-rect_scale = Vector2( 0.5857, 0.5857 )
-mouse_filter = 1
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Zatwierdź"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MenuButton" parent="Create" instance=ExtResource( 15 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 365.0
+[node name="exit" type="Button" parent="Create"]
+margin_top = 486.0
 margin_right = 864.0
-margin_bottom = 475.0
+margin_bottom = 606.0
+rect_min_size = Vector2( 800, 120 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/normal = ExtResource( 21 )
 
-[node name="Label" parent="Create/MenuButton/TextureButton" index="0"]
-margin_left = 125.272
-margin_top = 25.4684
-margin_right = 925.272
-margin_bottom = 100.468
-rect_scale = Vector2( 0.753996, 0.753996 )
+[node name="Label" type="Label" parent="Create/exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "WYJDŹ"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Create"]
+anims/highlight = SubResource( 16 )
 
 [node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
@@ -1077,9 +1270,9 @@ anchor_left = 0.15
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 244.783
-margin_top = 406.669
+margin_top = 400.0
 margin_right = 344.783
-margin_bottom = 638.669
+margin_bottom = 632.0
 rect_scale = Vector2( 0.503346, 0.503346 )
 alignment = 1
 script = ExtResource( 3 )
@@ -1087,62 +1280,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="TextureButton" parent="RoomList"]
-margin_left = 434.0
-margin_right = 1298.0
-margin_bottom = 108.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="JoinedKey" type="HBoxContainer" parent="RoomList"]
+margin_left = 414.0
+margin_top = 24.0
+margin_right = 1318.0
+margin_bottom = 143.0
 size_flags_horizontal = 4
-texture_normal = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="RoomList/Exit"]
-margin_left = 343.778
-margin_top = 12.1557
-margin_right = 510.778
-margin_bottom = 87.1557
+[node name="JoinedKeyField" type="LineEdit" parent="RoomList/JoinedKey"]
+margin_right = 600.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 4
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 11 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Wyjdź"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="RoomList"]
-margin_top = 112.0
-margin_right = 1732.0
-margin_bottom = 191.0
-custom_fonts/font = ExtResource( 8 )
+custom_colors/cursor_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
-text = "dołącz kodem:"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="JoinedKeyField" type="LineEdit" parent="RoomList"]
-margin_left = 434.0
-margin_top = 195.0
-margin_right = 1298.0
-margin_bottom = 284.0
-rect_min_size = Vector2( 864, 0 )
-size_flags_horizontal = 4
-custom_fonts/font = ExtResource( 8 )
-text = "KOD"
 align = 1
 expand_to_text_length = true
+placeholder_text = "wpisz kod"
+placeholder_alpha = 0.8
 
-[node name="JoinedKey" type="HBoxContainer" parent="RoomList"]
-margin_left = 434.0
-margin_top = 288.0
-margin_right = 1298.0
-margin_bottom = 396.0
-size_flags_horizontal = 4
+[node name="Button" type="Button" parent="RoomList/JoinedKey/JoinedKeyField"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/hover = ExtResource( 22 )
+custom_styles/pressed = ExtResource( 22 )
+custom_styles/focus = ExtResource( 22 )
+custom_styles/disabled = ExtResource( 22 )
+custom_styles/normal = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureButton" type="TextureButton" parent="RoomList/JoinedKey"]
-margin_right = 864.0
-margin_bottom = 108.0
-texture_normal = ExtResource( 4 )
+[node name="TextureButton" type="Button" parent="RoomList/JoinedKey"]
+margin_left = 604.0
+margin_right = 904.0
+margin_bottom = 119.0
+rect_min_size = Vector2( 300, 110 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/JoinedKey/TextureButton"]
 anchor_right = 1.0
@@ -1157,31 +1336,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Refresh" type="TextureButton" parent="RoomList"]
-margin_left = 434.0
-margin_top = 400.0
-margin_right = 1298.0
-margin_bottom = 508.0
+[node name="Label" type="Label" parent="RoomList"]
+margin_top = 147.0
+margin_right = 1732.0
+margin_bottom = 235.0
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+text = "lub wybierz pokój z listy"
+align = 1
+valign = 1
+
+[node name="Refresh" type="Button" parent="RoomList"]
+margin_left = 566.0
+margin_top = 239.0
+margin_right = 1166.0
+margin_bottom = 359.0
+rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
-texture_normal = ExtResource( 4 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/Refresh"]
-margin_left = 314.124
-margin_top = 9.75531
-margin_right = 544.124
-margin_bottom = 84.7553
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -121.5
+margin_top = -39.5
+margin_right = 121.5
+margin_bottom = 39.5
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "Odśwież"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lists" type="HBoxContainer" parent="RoomList"]
-margin_top = 512.0
+margin_top = 363.0
 margin_right = 1732.0
-margin_bottom = 1312.0
+margin_bottom = 1163.0
 rect_min_size = Vector2( 0, 800 )
 
 [node name="ver" type="VBoxContainer" parent="RoomList/lists"]
@@ -1192,7 +1388,7 @@ margin_bottom = 800.0
 margin_right = 864.0
 margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "oficjalne:"
 align = 1
 
@@ -1203,17 +1399,18 @@ margin_bottom = 683.0
 rect_min_size = Vector2( 864, 600 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RoomList/lists/ver/ServersListVeryfied"]
+custom_constants/separation = 25
 
 [node name="rest" type="VBoxContainer" parent="RoomList/lists"]
 margin_left = 868.0
 margin_right = 1732.0
 margin_bottom = 800.0
 
-[node name="Label3" type="Label" parent="RoomList/lists/rest"]
+[node name="Label" type="Label" parent="RoomList/lists/rest"]
 margin_right = 864.0
 margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "nieoficjalne:"
 align = 1
 
@@ -1227,6 +1424,39 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RoomList/lists/rest/ServersList"]
+custom_constants/separation = 25
+
+[node name="Exit" type="Button" parent="RoomList"]
+margin_left = 566.0
+margin_top = 1167.0
+margin_right = 1166.0
+margin_bottom = 1287.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 600, 120 )
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RoomList/Exit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -88.5
+margin_top = -39.5
+margin_right = 88.5
+margin_bottom = 39.5
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+text = "Wyjdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Joining" type="VBoxContainer" parent="."]
 visible = false
@@ -1302,7 +1532,6 @@ align = 1
 valign = 1
 
 [node name="Credits" type="Control" parent="."]
-visible = false
 margin_left = 511.876
 margin_top = 275.588
 margin_right = 1276.88
@@ -1374,10 +1603,10 @@ margin_right = 940.787
 margin_bottom = 376.755
 
 [node name="Label" parent="Credits/MenuButton2/TextureButton" index="0"]
-margin_left = 125.272
-margin_top = 25.4684
-margin_right = 925.272
-margin_bottom = 100.468
+margin_left = 125.0
+margin_top = 25.0
+margin_right = 88.0
+margin_bottom = 4.0
 rect_scale = Vector2( 0.753996, 0.753996 )
 text = "WYJDŹ"
 [connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
@@ -1388,14 +1617,13 @@ text = "WYJDŹ"
 [connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
 [connection signal="pressed" from="Options/setting/C/minus/minus" to="Options/setting" method="_on_minus_pressed"]
 [connection signal="pressed" from="Options/setting/C/plus/plus" to="Options/setting" method="_on_plus_pressed"]
-[connection signal="pressed" from="Create/ServerAcceptButton" to="Create" method="_on_ServerAcceptButton_pressed"]
-[connection signal="pressed" from="Create/MenuButton/TextureButton" to="." method="open_main"]
-[connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
+[connection signal="pressed" from="Create/create" to="Create" method="_on_ServerAcceptButton_pressed"]
+[connection signal="pressed" from="Create/exit" to="RoomList" method="_on_Exit_pressed"]
+[connection signal="pressed" from="RoomList/JoinedKey/JoinedKeyField/Button" to="RoomList" method="_on_Button_pressed"]
 [connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
+[connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
 [connection signal="pressed" from="Credits/MenuButton2/TextureButton" to="." method="open_main"]
-
-[editable path="Create/MenuButton"]
 
 [editable path="Credits/MenuButton2"]
