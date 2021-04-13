@@ -86,6 +86,8 @@ func create_world(config):
 	world.get_node('Mapa/YSort').add_child(own_player)
 	emit_signal("joined_room")
 	set_game_settings(gamesettings)
+	world.get_node("Mapa/lobby/start").add_to_group("interactable")
+	if endscreen: endscreen.queue_free()
 
 func recreate_world():
 	var init_dict := {}
