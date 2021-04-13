@@ -1,16 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/vents-and-cameras/vent.gd" type="Script" id=1]
 [ext_resource path="res://textures/dekoracje/toaleta.png" type="Texture" id=2]
-
+[ext_resource path="res://shaders/impglow.tres" type="Material" id=3]
 
 [node name="vent" type="StaticBody2D"]
+material = ExtResource( 3 )
 collision_layer = 0
 script = ExtResource( 1 )
 
 [node name="arrows" type="Node2D" parent="."]
 
 [node name="toaleta" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 0.45076, 2.35367 )
 scale = Vector2( 0.170133, 0.170133 )
 texture = ExtResource( 2 )

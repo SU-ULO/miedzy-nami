@@ -390,6 +390,9 @@ func refresh_areas():
 func become_impostor():
 	.become_impostor()
 	$GUI/PlayerCanvas/playerGUI.interactionGUIupdate()
+	if network.world.get_node("Mapa/vent1").material != null:
+			if network.world.get_node("Mapa/vent1").material is ShaderMaterial:
+				network.world.get_node("Mapa/vent1").material.set_shader_param("aura_width", 70)
 
 func _on_DeathTimer_timeout():
 	if not is_in_group("impostors"):

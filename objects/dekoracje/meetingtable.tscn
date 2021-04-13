@@ -14,6 +14,7 @@ position = Vector2( -22.2543, -287.938 )
 polygon = PoolVector2Array( -885.541, 849.729, -897.49, 156.652, -467.304, -309.383, 482.69, -294.446, 969.636, 138.728, 972.624, 822.843 )
 
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 9.98874, 0 )
 scale = Vector2( 1.984, 1.984 )
 texture = ExtResource( 1 )

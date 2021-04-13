@@ -397,6 +397,9 @@ func game_start(params, taskstuff):
 		if i.material != null:
 			if i.material is ShaderMaterial:
 				i.material.set_shader_param("aura_width", 0)
+	if world.get_node("Mapa/vent1").material != null:
+			if world.get_node("Mapa/vent1").material is ShaderMaterial:
+				world.get_node("Mapa/vent1").material.set_shader_param("aura_width", 0)
 	world.get_node("Mapa/YSort/meeting-table/Timer").start(gamesettings["emergency-cooldown"])
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
 	own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
