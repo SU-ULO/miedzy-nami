@@ -101,16 +101,22 @@ public abstract class Task : Godot.Node2D
 	}
 
 	public static void DivideTasks(int[] playerIDs){
-		int numberOfPlayers = playerIDs.Length;
+		int maxPlayerPlusOne = 0;
+		for(int i = 0; i < playerIDs.Length; i++){
+			if(maxPlayerPlusOne < playerIDs[i])
+				maxPlayerPlusOne = playerIDs[i];
+		}
+		
+		maxPlayerPlusOne++;
 		
 		Dictionary<TaskCategory, List<int>> sortedIntoCategories = new Dictionary<TaskCategory, List<int>>();
-		tasksForPlayers = new List<int>[numberOfPlayers];
+		tasksForPlayers = new List<int>[maxPlayerPlusOne];
 		
 		foreach(TaskCategory tc in TaskCategory.categories){
 			sortedIntoCategories.Add(tc, new List<int>());
 		}
 		
-		for(int i = 0; i < numberOfPlayers; i++){
+		for(int i = 0; i < maxPlayerPlusOne; i++){
 			tasksForPlayers[i] = (new List<int>());
 		}
 		
@@ -130,7 +136,7 @@ public abstract class Task : Godot.Node2D
 			}
 		}
 		
-		for (int i = 0; i < numberOfPlayers; i++){
+		for (int i = 0; i < playerIDs.Length; i++){
 			foreach (TaskCategory tc in TaskCategory.categories){
 				if(sortedIntoCategories[tc].Count > 0){
 					for(int j = 0; j < tc.perPlayer; j++){
@@ -140,7 +146,7 @@ public abstract class Task : Godot.Node2D
 							k = r.Next(0, sortedIntoCategories[tc].Count - 1);
 							initialK = k;
 							taskIDforK = sortedIntoCategories[tc][k];
-							while(tasksForPlayers[i].Contains(taskIDforK)) {
+							while(tasksForPlayers[playerIDs[i]].Contains(taskIDforK)) {
 								k = (k + 1) % sortedIntoCategories[tc].Count;
 								taskIDforK = sortedIntoCategories[tc][k];
 								if(k == initialK){
@@ -149,7 +155,7 @@ public abstract class Task : Godot.Node2D
 								}
 							}
 							taskIDforK = sortedIntoCategories[tc][k];
-							tasksForPlayers[i].Add(taskIDforK);
+							tasksForPlayers[playerIDs[i]].Add(taskIDforK);
 							GetTaskByID(taskIDforK).playerIDs.Add(playerIDs[i]);
 						}catch(Exception e){
 							if(e.Message.Equals("") == false){
