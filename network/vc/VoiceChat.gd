@@ -38,6 +38,7 @@ func _ready():
 		scr.src = 'https://webrtchacks.github.io/adapter/adapter-latest.js';
 		document.head.appendChild(scr);
 		""", true)
+		yield(get_tree().create_timer(1), "timeout")
 		var f := File.new()
 		if f.open("res://network/vc/vc.js", File.READ) == OK:
 			JavaScript.eval(f.get_as_text(), true)
