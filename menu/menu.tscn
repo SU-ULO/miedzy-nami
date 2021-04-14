@@ -925,6 +925,7 @@ script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+text_id = "username"
 
 [node name="TextureRect" type="TextureRect" parent="Main/Username"]
 show_behind_parent = true
@@ -1420,6 +1421,8 @@ align = 1
 max_length = 20
 placeholder_text = "wpisz nazwę"
 placeholder_alpha = 0.8
+script = ExtResource( 23 )
+text_id = "roomname"
 
 [node name="create" type="Button" parent="Create/ServerSettingsContainer"]
 margin_top = 190.0
