@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://textures/arrow.png" type="Texture" id=20]
 [ext_resource path="res://gui/menubutton.tres" type="StyleBox" id=21]
 [ext_resource path="res://gui/invisiblebutton.tres" type="StyleBox" id=22]
+[ext_resource path="res://scripts/js/text_input.gd" type="Script" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "highlight"
@@ -478,7 +479,7 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -490,12 +491,12 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=6]
 size = 40
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -507,7 +508,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -519,16 +520,16 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=9]
 size = 40
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=18]
+[sub_resource type="DynamicFont" id=10]
 size = 40
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=11]
 resource_name = "highlight"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ServerSettingsContainer/ServerName/ServerNameField:custom_colors/font_color")
@@ -567,7 +568,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=11]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -579,7 +580,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -591,7 +592,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -603,7 +604,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -615,7 +616,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -627,7 +628,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -639,7 +640,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -717,6 +718,7 @@ placeholder_text = "tu wpisz swój nick"
 placeholder_alpha = 0.8
 caret_blink = true
 caret_blink_speed = 0.5
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1209,8 +1211,8 @@ margin_right = 847.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 600, 99 )
 theme = SubResource( 4 )
-custom_styles/normal = SubResource( 13 )
-custom_fonts/font = SubResource( 19 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/selection_color = Color( 0.388235, 0.368627, 0.368627, 1 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 align = 1
@@ -1223,14 +1225,14 @@ margin_top = 346.0
 margin_right = 864.0
 margin_bottom = 466.0
 rect_min_size = Vector2( 700, 120 )
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Create/create"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "Stwórz Pokój"
 align = 1
@@ -1244,14 +1246,14 @@ margin_top = 486.0
 margin_right = 864.0
 margin_bottom = 606.0
 rect_min_size = Vector2( 800, 120 )
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Create/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "WYJDŹ"
 align = 1
@@ -1261,7 +1263,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Create"]
-anims/highlight = SubResource( 16 )
+anims/highlight = SubResource( 11 )
 
 [node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
@@ -1292,7 +1294,7 @@ margin_bottom = 119.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
 custom_styles/focus = SubResource( 12 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/normal = SubResource( 13 )
 custom_fonts/font = ExtResource( 8 )
 custom_colors/cursor_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
@@ -1318,8 +1320,8 @@ margin_left = 604.0
 margin_right = 904.0
 margin_bottom = 119.0
 rect_min_size = Vector2( 300, 110 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 6 )
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 15 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/JoinedKey/TextureButton"]
@@ -1352,8 +1354,8 @@ margin_right = 1166.0
 margin_bottom = 359.0
 rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/Refresh"]
@@ -1434,8 +1436,8 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
 custom_styles/normal = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -105,6 +105,7 @@ Globals="*res://globals.gd"
 Task="*res://scripts/tasks/Task.cs"
 TaskWithGUI="*res://scripts/tasks/TaskWithGUI.cs"
 VoiceChat="*res://network/vc/VoiceChat.gd"
+TouchscreenKeyboard="*res://scripts/js/touchscreenkeyboard.gd"
 
 [display]
 
