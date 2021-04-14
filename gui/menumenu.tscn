@@ -68,22 +68,15 @@ non_numeric_values = true
 values = [ "push-to-talk", "otwarty" ]
 
 [node name="Label2" parent="voice-chat" index="0"]
-margin_right = 636.0
+margin_left = 32.0
+margin_right = 668.0
 rect_min_size = Vector2( 630, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "aktywacja mikrofonu:"
 
-[node name="minus" parent="voice-chat" index="1"]
-margin_left = 640.0
-margin_right = 715.0
-
-[node name="value" parent="voice-chat" index="2"]
-margin_left = 719.0
-margin_right = 1019.0
-
-[node name="plus" parent="voice-chat" index="3"]
-margin_left = 1023.0
-margin_right = 1098.0
+[node name="C" parent="voice-chat" index="1"]
+margin_left = 718.0
+margin_right = 1246.0
 
 [node name="kick1" type="VBoxContainer" parent="."]
 margin_left = 609.973
