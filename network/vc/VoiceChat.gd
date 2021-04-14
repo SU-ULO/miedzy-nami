@@ -33,6 +33,11 @@ func update_vc_mode(mode: int = -1):
 
 func _ready():
 	if OS.has_feature('JavaScript'):
+		JavaScript.eval("""
+		let scr = document.createElement('script');
+		scr.src = 'https://webrtchacks.github.io/adapter/adapter-latest.js';
+		document.head.appendChild(scr);
+		""", true)
 		var f := File.new()
 		if f.open("res://network/vc/vc.js", File.READ) == OK:
 			JavaScript.eval(f.get_as_text(), true)
