@@ -49,7 +49,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=28]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -61,7 +61,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=29]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -73,7 +73,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=30]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -85,7 +85,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=31]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -97,7 +97,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=32]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -109,7 +109,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=33]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -121,7 +121,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=34]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -133,7 +133,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=35]
+[sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -145,7 +145,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=21]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -157,7 +157,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=22]
+[sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -169,11 +169,11 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=12]
 size = 46
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=23]
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -185,7 +185,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=24]
+[sub_resource type="StyleBoxFlat" id=14]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -197,18 +197,18 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFontData" id=25]
+[sub_resource type="DynamicFontData" id=15]
 font_path = "res://fonts/PottaOne-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=16]
 size = 32
 use_filter = true
-font_data = SubResource( 25 )
+font_data = SubResource( 15 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
 
-[sub_resource type="Theme" id=4]
+[sub_resource type="Theme" id=18]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -384,7 +384,7 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
-LineEdit/styles/normal = SubResource( 3 )
+LineEdit/styles/normal = SubResource( 17 )
 LineEdit/styles/read_only = null
 LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
 LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -629,7 +629,7 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
-[sub_resource type="StyleBoxFlat" id=27]
+[sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -641,7 +641,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=20]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -653,12 +653,12 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=21]
 size = 40
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -670,7 +670,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -682,17 +682,16 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=24]
 size = 40
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=25]
 size = 32
 font_data = ExtResource( 19 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "highlight"
+[sub_resource type="Animation" id=26]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ServerSettingsContainer/ServerName/ServerNameField:custom_colors/font_color")
 tracks/0/interp = 1
@@ -718,7 +717,7 @@ tracks/1/keys = {
 "values": [ 0.8, 0.5 ]
 }
 
-[sub_resource type="StyleBoxFlat" id=12]
+[sub_resource type="StyleBoxFlat" id=27]
 bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -730,7 +729,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=28]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -742,7 +741,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=29]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -754,7 +753,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=30]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -766,7 +765,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=31]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -778,7 +777,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=32]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -790,7 +789,7 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -802,7 +801,19 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=19]
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=35]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -826,24 +837,12 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=37]
-bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="DynamicFont" id=37]
 size = 40
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxFlat" id=20]
+[sub_resource type="StyleBoxFlat" id=38]
 bg_color = Color( 0.819608, 0.772549, 0.552941, 1 )
 border_width_left = 16
 border_width_top = 16
@@ -945,8 +944,8 @@ margin_top = 137.143
 margin_right = 779.076
 margin_bottom = 245.143
 rect_scale = Vector2( 0.772785, 0.772785 )
-custom_styles/hover = SubResource( 28 )
-custom_styles/pressed = SubResource( 29 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -971,8 +970,8 @@ margin_top = 229.143
 margin_right = 780.076
 margin_bottom = 337.143
 rect_scale = Vector2( 0.772785, 0.772785 )
-custom_styles/hover = SubResource( 30 )
-custom_styles/pressed = SubResource( 31 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 5 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/StartServerButton"]
@@ -994,8 +993,8 @@ margin_top = 322.95
 margin_right = 774.076
 margin_bottom = 430.95
 rect_scale = Vector2( 0.773, 0.773 )
-custom_styles/hover = SubResource( 32 )
-custom_styles/pressed = SubResource( 33 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/OptionsButton"]
@@ -1017,8 +1016,8 @@ margin_top = 415.019
 margin_right = 774.076
 margin_bottom = 523.019
 rect_scale = Vector2( 0.773, 0.773 )
-custom_styles/hover = SubResource( 34 )
-custom_styles/pressed = SubResource( 35 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/CreditsButton"]
@@ -1287,8 +1286,8 @@ margin_top = 231.0
 margin_right = 827.0
 margin_bottom = 339.0
 rect_scale = Vector2( 0.773, 0.773 )
-custom_styles/hover = SubResource( 21 )
-custom_styles/pressed = SubResource( 22 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Options/AudioTest"]
@@ -1301,7 +1300,7 @@ margin_top = -36.9127
 margin_right = 333.0
 margin_bottom = 42.0873
 mouse_filter = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "test mikrofonu (odsłuch)"
 __meta__ = {
@@ -1317,15 +1316,15 @@ margin_left = -299.0
 margin_top = 5.0
 margin_right = 301.0
 margin_bottom = 115.0
-custom_styles/hover = SubResource( 23 )
-custom_styles/pressed = SubResource( 24 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 26 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "ZATWIERDŹ"
 align = 1
@@ -1411,10 +1410,10 @@ margin_left = 247.0
 margin_right = 847.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 600, 99 )
-theme = SubResource( 4 )
-custom_styles/focus = SubResource( 27 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+theme = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+custom_fonts/font = SubResource( 21 )
 custom_colors/selection_color = Color( 0.388235, 0.368627, 0.368627, 1 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
 align = 1
@@ -1429,14 +1428,14 @@ margin_top = 190.0
 margin_right = 864.0
 margin_bottom = 290.0
 rect_min_size = Vector2( 500, 100 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Create/ServerSettingsContainer/create"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "Stwórz Pokój"
 align = 1
@@ -1450,14 +1449,14 @@ margin_top = 508.0
 margin_right = 864.0
 margin_bottom = 608.0
 rect_min_size = Vector2( 500, 100 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Create/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "WYJDŹ"
 align = 1
@@ -1467,7 +1466,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Create"]
-anims/highlight = SubResource( 11 )
+anims/highlight = SubResource( 26 )
 
 [node name="RoomList" type="VBoxContainer" parent="."]
 visible = false
@@ -1497,8 +1496,8 @@ margin_right = 600.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
-custom_styles/focus = SubResource( 12 )
-custom_styles/normal = SubResource( 13 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/normal = SubResource( 28 )
 custom_fonts/font = ExtResource( 8 )
 custom_colors/cursor_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
@@ -1524,8 +1523,8 @@ margin_left = 604.0
 margin_right = 904.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 300, 110 )
-custom_styles/hover = SubResource( 14 )
-custom_styles/pressed = SubResource( 15 )
+custom_styles/hover = SubResource( 29 )
+custom_styles/pressed = SubResource( 30 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/JoinedKey/TextureButton"]
@@ -1558,8 +1557,8 @@ margin_right = 1166.0
 margin_bottom = 355.0
 rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
+custom_styles/hover = SubResource( 31 )
+custom_styles/pressed = SubResource( 32 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="RoomList/Refresh"]
@@ -1640,8 +1639,8 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 19 )
+custom_styles/hover = SubResource( 33 )
+custom_styles/pressed = SubResource( 34 )
 custom_styles/normal = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1698,15 +1697,15 @@ margin_top = 83.0
 margin_right = 864.0
 margin_bottom = 183.0
 rect_min_size = Vector2( 0, 100 )
-custom_styles/hover = SubResource( 36 )
-custom_styles/pressed = SubResource( 37 )
+custom_styles/hover = SubResource( 35 )
+custom_styles/pressed = SubResource( 36 )
 custom_styles/normal = ExtResource( 21 )
 
 [node name="Label2" type="Label" parent="Joining/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 38 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "ANULUJ"
 align = 1
@@ -1915,7 +1914,7 @@ margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "projektu"
+text = "projektanta"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -2059,9 +2058,9 @@ margin_top = -145.0
 margin_right = 250.0
 margin_bottom = -55.0
 rect_min_size = Vector2( 500, 90 )
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/normal = SubResource( 20 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/normal = SubResource( 38 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2069,7 +2068,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="Credits/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "WYJDŹ"
 align = 1

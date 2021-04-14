@@ -165,7 +165,7 @@ func camera_visibility(body, status):
 
 func Interact(body): # player interaction with player = kill
 	interacted = true
-	print(body.username, " wants to kill", self.username)
+	print(body.username, " wants to kill ", self.username)
 	body.players_interactable.erase(self)
 	var network = get_tree().get_root().get_node("Start").network
 	body.get_node("KillCooldown").start(network.gamesettings["kill-cooldown"])
