@@ -1,9 +1,8 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
 [ext_resource path="res://menu/join.gd" type="Script" id=3]
-[ext_resource path="res://textures/button-menu.png" type="Texture" id=4]
 [ext_resource path="res://textures/bez_napis_1980x1080.png" type="Texture" id=5]
 [ext_resource path="res://textures/sam_napis_1980x1080.png" type="Texture" id=6]
 [ext_resource path="res://textures/przycisk_na_username.png" type="Texture" id=7]
@@ -14,7 +13,6 @@
 [ext_resource path="res://textures/empty.png" type="Texture" id=12]
 [ext_resource path="res://textures/tick.png" type="Texture" id=13]
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
-[ext_resource path="res://gui/podsceny/MenuButton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
 [ext_resource path="res://scripts/setting.gd" type="Script" id=17]
 [ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=18]
@@ -51,9 +49,161 @@ tracks/1/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=30]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=31]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=32]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=35]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [sub_resource type="DynamicFont" id=2]
 size = 46
 font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFontData" id=25]
+font_path = "res://fonts/PottaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=26]
+size = 32
+use_filter = true
+font_data = SubResource( 25 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
@@ -479,12 +629,24 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -498,10 +660,10 @@ font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -510,10 +672,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -526,7 +688,7 @@ use_filter = true
 font_data = ExtResource( 19 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 40
+size = 32
 font_data = ExtResource( 19 )
 
 [sub_resource type="Animation" id=11]
@@ -558,10 +720,10 @@ tracks/1/keys = {
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -570,10 +732,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.964706, 0.952941, 0.894118, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -594,10 +756,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -606,10 +768,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -618,10 +780,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -630,10 +792,10 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -642,10 +804,51 @@ corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=36]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=37]
+bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=38]
+size = 40
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.819608, 0.772549, 0.552941, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
 border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
 corner_radius_top_left = 16
 corner_radius_top_right = 16
@@ -715,7 +918,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 1
 max_length = 16
 placeholder_text = "tu wpisz swój nick"
-placeholder_alpha = 0.8
+placeholder_alpha = 0.5
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 23 )
@@ -735,13 +938,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartClientButton" type="TextureButton" parent="Main"]
-margin_left = -89.924
+[node name="StartClientButton" type="Button" parent="Main"]
+margin_left = -90.924
 margin_top = 137.143
-margin_right = 780.076
+margin_right = 779.076
 margin_bottom = 245.143
 rect_scale = Vector2( 0.772785, 0.772785 )
-texture_normal = ExtResource( 4 )
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/normal = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -753,22 +958,21 @@ margin_right = 545.643
 margin_bottom = 88.8341
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_colors/font_color = Color( 0.47451, 0.556863, 0.556863, 1 )
 text = "DOŁĄCZ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartServerButton" type="TextureButton" parent="Main"]
+[node name="StartServerButton" type="Button" parent="Main"]
 margin_left = -89.924
 margin_top = 229.143
 margin_right = 780.076
 margin_bottom = 337.143
 rect_scale = Vector2( 0.772785, 0.772785 )
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/StartServerButton"]
 margin_left = 210.827
@@ -777,22 +981,21 @@ margin_right = 659.827
 margin_bottom = 88.8341
 mouse_filter = 1
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_colors/font_color = Color( 0.47451, 0.556863, 0.556863, 1 )
 text = "UTWÓRZ POKÓJ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsButton" type="TextureButton" parent="Main"]
+[node name="OptionsButton" type="Button" parent="Main"]
 margin_left = -89.924
 margin_top = 322.95
 margin_right = 774.076
 margin_bottom = 430.95
 rect_scale = Vector2( 0.773, 0.773 )
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/hover = SubResource( 32 )
+custom_styles/pressed = SubResource( 33 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/OptionsButton"]
 margin_left = 348.025
@@ -807,16 +1010,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreditsButton" type="TextureButton" parent="Main"]
+[node name="CreditsButton" type="Button" parent="Main"]
 margin_left = -89.924
 margin_top = 415.019
 margin_right = 774.076
 margin_bottom = 523.019
 rect_scale = Vector2( 0.773, 0.773 )
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 35 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/CreditsButton"]
 margin_left = 311.061
@@ -857,7 +1059,8 @@ margin_right = 691.0
 margin_bottom = -63.5
 rect_scale = Vector2( 0.532555, 0.532555 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "URL serwera matchmakingowego:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -878,6 +1081,7 @@ margin_bottom = 175.0
 rect_scale = Vector2( 0.720081, 0.720081 )
 theme = ExtResource( 10 )
 custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 align = 1
 placeholder_text = "url"
 caret_blink = true
@@ -927,63 +1131,6 @@ margin_top = -108.126
 margin_right = -9.6759
 margin_bottom = 41.8739
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OptionsAcceptButton" type="TextureButton" parent="Options"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = 133.0
-margin_right = 614.0
-margin_bottom = 241.0
-rect_scale = Vector2( 0.565934, 0.565934 )
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
-margin_left = 328.0
-margin_top = 31.203
-margin_right = 655.0
-margin_bottom = 119.203
-rect_scale = Vector2( 0.5857, 0.5857 )
-mouse_filter = 1
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Zatwierdź"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AudioTest" type="TextureButton" parent="Options"]
-margin_left = -37.0
-margin_top = 231.0
-margin_right = 827.0
-margin_bottom = 339.0
-rect_scale = Vector2( 0.773, 0.773 )
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Options/AudioTest"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -333.0
-margin_top = -36.9127
-margin_right = 333.0
-margin_bottom = 42.0873
-mouse_filter = 1
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
-text = "test mikrofonu (odsłuch)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1133,17 +1280,70 @@ margin_right = 353.933
 margin_bottom = 723.861
 rect_scale = Vector2( 0.219162, 0.219162 )
 
+[node name="AudioTest" type="Button" parent="Options"]
+margin_left = -37.0
+margin_top = 231.0
+margin_right = 827.0
+margin_bottom = 339.0
+rect_scale = Vector2( 0.773, 0.773 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/normal = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Options/AudioTest"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -333.0
+margin_top = -36.9127
+margin_right = 333.0
+margin_bottom = 42.0873
+mouse_filter = 1
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+text = "test mikrofonu (odsłuch)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsAcceptButton" type="Button" parent="Options"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -299.0
+margin_top = 5.0
+margin_right = 301.0
+margin_bottom = 115.0
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/normal = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 26 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+text = "ZATWIERDŹ"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Create" type="VBoxContainer" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -400.0
-margin_top = -158.0
-margin_right = 464.0
-margin_bottom = 490.0
-custom_constants/separation = 20
+margin_left = -432.0
+margin_top = -175.0
+margin_right = 432.0
+margin_bottom = 473.0
+custom_constants/separation = 50
 alignment = 1
 script = ExtResource( 11 )
 __meta__ = {
@@ -1151,9 +1351,9 @@ __meta__ = {
 }
 
 [node name="CreateRoomlabel" type="Label" parent="Create"]
-margin_top = 41.0
+margin_top = 39.0
 margin_right = 864.0
-margin_bottom = 120.0
+margin_bottom = 118.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "UTWÓRZ POKÓJ"
@@ -1163,9 +1363,9 @@ __meta__ = {
 }
 
 [node name="ServerSettingsContainer" type="VBoxContainer" parent="Create"]
-margin_top = 140.0
+margin_top = 168.0
 margin_right = 864.0
-margin_bottom = 326.0
+margin_bottom = 458.0
 alignment = 1
 
 [node name="ServerHidden" type="HBoxContainer" parent="Create/ServerSettingsContainer"]
@@ -1175,17 +1375,17 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="ServerdHiddenLabel" type="Label" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 115.0
+margin_left = 105.0
 margin_top = 2.0
-margin_right = 646.0
+margin_right = 656.0
 margin_bottom = 81.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
-text = "pokój niepubliczny"
+text = "pokój niepubliczny:"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
-margin_left = 666.0
-margin_right = 749.0
+margin_left = 676.0
+margin_right = 759.0
 margin_bottom = 83.0
 custom_icons/checked = ExtResource( 13 )
 custom_icons/unchecked = ExtResource( 12 )
@@ -1211,6 +1411,7 @@ margin_right = 847.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 600, 99 )
 theme = SubResource( 4 )
+custom_styles/focus = SubResource( 27 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 custom_colors/selection_color = Color( 0.388235, 0.368627, 0.368627, 1 )
@@ -1220,16 +1421,16 @@ max_length = 20
 placeholder_text = "wpisz nazwę"
 placeholder_alpha = 0.8
 
-[node name="create" type="Button" parent="Create"]
-margin_top = 346.0
+[node name="create" type="Button" parent="Create/ServerSettingsContainer"]
+margin_top = 190.0
 margin_right = 864.0
-margin_bottom = 466.0
-rect_min_size = Vector2( 700, 120 )
+margin_bottom = 290.0
+rect_min_size = Vector2( 500, 100 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="Create/create"]
+[node name="Label" type="Label" parent="Create/ServerSettingsContainer/create"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 9 )
@@ -1242,10 +1443,10 @@ __meta__ = {
 }
 
 [node name="exit" type="Button" parent="Create"]
-margin_top = 486.0
+margin_top = 508.0
 margin_right = 864.0
-margin_bottom = 606.0
-rect_min_size = Vector2( 800, 120 )
+margin_bottom = 608.0
+rect_min_size = Vector2( 500, 100 )
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = ExtResource( 21 )
@@ -1283,14 +1484,14 @@ __meta__ = {
 
 [node name="JoinedKey" type="HBoxContainer" parent="RoomList"]
 margin_left = 414.0
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 1318.0
-margin_bottom = 143.0
+margin_bottom = 139.0
 size_flags_horizontal = 4
 
 [node name="JoinedKeyField" type="LineEdit" parent="RoomList/JoinedKey"]
 margin_right = 600.0
-margin_bottom = 119.0
+margin_bottom = 111.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
 custom_styles/focus = SubResource( 12 )
@@ -1318,7 +1519,7 @@ __meta__ = {
 [node name="TextureButton" type="Button" parent="RoomList/JoinedKey"]
 margin_left = 604.0
 margin_right = 904.0
-margin_bottom = 119.0
+margin_bottom = 111.0
 rect_min_size = Vector2( 300, 110 )
 custom_styles/hover = SubResource( 14 )
 custom_styles/pressed = SubResource( 15 )
@@ -1338,9 +1539,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="RoomList"]
-margin_top = 147.0
+margin_top = 143.0
 margin_right = 1732.0
-margin_bottom = 235.0
+margin_bottom = 231.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 text = "lub wybierz pokój z listy"
@@ -1349,9 +1550,9 @@ valign = 1
 
 [node name="Refresh" type="Button" parent="RoomList"]
 margin_left = 566.0
-margin_top = 239.0
+margin_top = 235.0
 margin_right = 1166.0
-margin_bottom = 359.0
+margin_bottom = 355.0
 rect_min_size = Vector2( 600, 120 )
 size_flags_horizontal = 4
 custom_styles/hover = SubResource( 16 )
@@ -1376,9 +1577,9 @@ __meta__ = {
 }
 
 [node name="lists" type="HBoxContainer" parent="RoomList"]
-margin_top = 363.0
+margin_top = 359.0
 margin_right = 1732.0
-margin_bottom = 1163.0
+margin_bottom = 1159.0
 rect_min_size = Vector2( 0, 800 )
 
 [node name="ver" type="VBoxContainer" parent="RoomList/lists"]
@@ -1429,9 +1630,9 @@ custom_constants/separation = 25
 
 [node name="Exit" type="Button" parent="RoomList"]
 margin_left = 566.0
-margin_top = 1167.0
+margin_top = 1163.0
 margin_right = 1166.0
-margin_bottom = 1287.0
+margin_bottom = 1283.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 600, 120 )
@@ -1454,7 +1655,7 @@ margin_right = 88.5
 margin_bottom = 39.5
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
-text = "Wyjdź"
+text = "WYJDŹ"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1478,28 +1679,32 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="Joining"]
 margin_right = 864.0
-margin_bottom = 75.0
+margin_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Łączenie..."
 align = 1
 valign = 1
 
-[node name="Button" type="TextureButton" parent="Joining"]
+[node name="Button" type="Button" parent="Joining"]
 visible = false
-margin_top = 79.0
+margin_top = 83.0
 margin_right = 864.0
-margin_bottom = 187.0
-texture_normal = ExtResource( 4 )
+margin_bottom = 183.0
+rect_min_size = Vector2( 0, 100 )
+custom_styles/hover = SubResource( 36 )
+custom_styles/pressed = SubResource( 37 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label2" type="Label" parent="Joining/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = SubResource( 38 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "ANULUJ"
 align = 1
 valign = 1
@@ -1522,110 +1727,366 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="LoggingIn"]
-margin_right = 1175.0
-margin_bottom = 75.0
+margin_right = 1239.0
+margin_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Łączenie z serwerem matchmakingowym..."
 align = 1
 valign = 1
 
 [node name="Credits" type="Control" parent="."]
 visible = false
-margin_left = 511.876
-margin_top = 275.588
-margin_right = 1276.88
-margin_bottom = 1758.59
-rect_scale = Vector2( 0.67487, 0.67487 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.6004
+margin_top = -0.989929
+margin_right = -8.60034
+margin_bottom = -0.98999
 
-[node name="Label" type="Label" parent="Credits"]
-margin_left = -32.9066
-margin_top = -32.1927
-margin_right = 732.093
-margin_bottom = 55.8073
-custom_fonts/font = ExtResource( 9 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Stworzone przez:"
+[node name="scale" type="Control" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -495.301
+margin_top = -221.221
+margin_right = 1424.7
+margin_bottom = 858.779
+rect_scale = Vector2( 0.625, 0.625 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label2" type="Label" parent="Credits"]
-margin_left = 707.25
-margin_top = 179.94
-margin_right = 1472.25
-margin_bottom = 996.94
+[node name="stworzone-przez" type="Label" parent="Credits/scale"]
+margin_left = -45.0474
+margin_top = -124.616
+margin_right = 754.952
+margin_bottom = -45.6161
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "projektanta rozgrywki:
-Jakuba Niździńskiego
+text = "Gra stworzona przez:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-pod opieką
-dr Anny Kwiatkowskiej
+[node name="content" type="HBoxContainer" parent="Credits/scale"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-z inicjatywy
-Samorządu Uczniowskiego
-Uniwersyteckiego Liceum
-Ogólnokształcącego"
+[node name="left" type="VBoxContainer" parent="Credits/scale/content"]
+margin_right = 800.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 800, 900 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label3" type="Label" parent="Credits"]
-margin_left = -32.9066
-margin_top = 99.5031
-margin_right = 732.093
-margin_bottom = 1490.5
+[node name="fancy-label" type="Control" parent="Credits/scale/content/left"]
+margin_right = 800.0
+margin_bottom = 450.0
+rect_min_size = Vector2( 800, 450 )
+
+[node name="programistów" type="Label" parent="Credits/scale/content/left/fancy-label"]
+margin_right = 800.0
+margin_bottom = 79.0
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "programistów:
-Mateusza Sobkowiaka
+text = "programistów"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Credits/scale/content/left/fancy-label/programistów"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -67.5911
+margin_right = 418.0
+margin_bottom = 82.4089
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits/scale/content/left/fancy-label/programistów"]
+margin_top = 83.0
+margin_right = 800.0
+margin_bottom = 408.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Mateusza Sobkowiaka
 Marcina Jabłońskiego
 Mikołaja Judę
-Wojciecha Malechę
+Wojciecha Malechę"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-rysujących:
-Agatę Empel
+[node name="fancy-label2" type="Control" parent="Credits/scale/content/left"]
+margin_top = 454.0
+margin_right = 800.0
+margin_bottom = 904.0
+rect_min_size = Vector2( 800, 450 )
+
+[node name="rysowników" type="Label" parent="Credits/scale/content/left/fancy-label2"]
+margin_right = 800.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "rysowników"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Credits/scale/content/left/fancy-label2/rysowników"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -67.5911
+margin_right = 418.0
+margin_bottom = 82.4089
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits/scale/content/left/fancy-label2/rysowników"]
+margin_top = 83.0
+margin_right = 800.0
+margin_bottom = 408.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Agatę Empel
 Annę Przedmojską
 Elizę Reinhold
-Karola Zwierza
-"
+Karola Zwierza"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MenuButton2" parent="Credits" instance=ExtResource( 15 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 149.111
-margin_top = 773.599
-margin_right = 1013.11
-margin_bottom = 883.599
+[node name="right" type="VBoxContainer" parent="Credits/scale/content"]
+margin_left = 900.0
+margin_right = 1700.0
+margin_bottom = 1080.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureButton" parent="Credits/MenuButton2" index="0"]
-margin_left = 76.787
-margin_top = 268.755
-margin_right = 940.787
-margin_bottom = 376.755
+[node name="fancy-label3" type="Control" parent="Credits/scale/content/right"]
+margin_top = 172.0
+margin_right = 800.0
+margin_bottom = 372.0
+rect_min_size = Vector2( 800, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" parent="Credits/MenuButton2/TextureButton" index="0"]
-margin_left = 125.0
-margin_top = 25.0
-margin_right = 88.0
-margin_bottom = 4.0
-rect_scale = Vector2( 0.753996, 0.753996 )
+[node name="projektanta" type="Label" parent="Credits/scale/content/right/fancy-label3"]
+margin_right = 800.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "projektu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Credits/scale/content/right/fancy-label3/projektanta"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -67.5911
+margin_right = 418.0
+margin_bottom = 82.4089
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits/scale/content/right/fancy-label3/projektanta"]
+margin_top = 83.0
+margin_right = 800.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Jakuba Niździńskiego"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fancy-label4" type="Control" parent="Credits/scale/content/right"]
+margin_top = 376.0
+margin_right = 800.0
+margin_bottom = 576.0
+rect_min_size = Vector2( 800, 200 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pod-opieką" type="Label" parent="Credits/scale/content/right/fancy-label4"]
+margin_right = 800.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "pod opieką"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Credits/scale/content/right/fancy-label4/pod-opieką"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -67.5911
+margin_right = 418.0
+margin_bottom = 82.4089
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits/scale/content/right/fancy-label4/pod-opieką"]
+margin_top = 83.0
+margin_right = 800.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "dr Anny Kwiatkowskiej"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fancy-label5" type="Control" parent="Credits/scale/content/right"]
+margin_top = 580.0
+margin_right = 800.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 800, 500 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="z-inicjatywy" type="Label" parent="Credits/scale/content/right/fancy-label5"]
+margin_right = 800.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "z inicjatywy"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Credits/scale/content/right/fancy-label5/z-inicjatywy"]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -418.0
+margin_top = -67.5911
+margin_right = 418.0
+margin_bottom = 82.4089
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits/scale/content/right/fancy-label5/z-inicjatywy"]
+margin_top = 83.0
+margin_right = 800.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Samorządu Uczniowskiego
+Uniwersyteckiego Liceum
+Ogólnokształcącego"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="Credits"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -250.0
+margin_top = -145.0
+margin_right = 250.0
+margin_bottom = -55.0
+rect_min_size = Vector2( 500, 90 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Credits/exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "WYJDŹ"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
-[connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
 [connection signal="pressed" from="Options/setting/C/minus/minus" to="Options/setting" method="_on_minus_pressed"]
 [connection signal="pressed" from="Options/setting/C/plus/plus" to="Options/setting" method="_on_plus_pressed"]
-[connection signal="pressed" from="Create/create" to="Create" method="_on_ServerAcceptButton_pressed"]
+[connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
+[connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
+[connection signal="pressed" from="Create/ServerSettingsContainer/create" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="RoomList/JoinedKey/JoinedKeyField/Button" to="RoomList" method="_on_Button_pressed"]
 [connection signal="pressed" from="RoomList/JoinedKey/TextureButton" to="RoomList" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="RoomList/Refresh" to="RoomList" method="_on_Refresh_pressed"]
 [connection signal="pressed" from="RoomList/Exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="Joining/Button" to="Joining" method="_on_Button_pressed"]
-[connection signal="pressed" from="Credits/MenuButton2/TextureButton" to="." method="open_main"]
-
-[editable path="Credits/MenuButton2"]
+[connection signal="pressed" from="Credits/exit" to="RoomList" method="_on_Exit_pressed"]
