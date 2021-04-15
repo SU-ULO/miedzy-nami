@@ -460,7 +460,7 @@ func apply_vc_settings():
 		else:
 			VoiceChat.forcemute(true)
 			VoiceChat.setallvolumes(0)
-	else:
+	elif vcs!=0:
 		VoiceChat.forcemute(false)
 	VoiceChat.setunmutepeers(calculate_muted_remotes())
 
