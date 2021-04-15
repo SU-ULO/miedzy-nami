@@ -16,9 +16,40 @@ height = 0.0
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk back",
+"name": "walk front",
 "speed": 5.0
 }, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk back",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "walk front",
@@ -28,41 +59,10 @@ animations = [ {
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk side",
 "speed": 5.0
 } ]
 
@@ -169,23 +169,24 @@ rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 3 )
 
-[node name="spodnie" type="AnimatedSprite" parent="sprites"]
-visible = false
-material = ExtResource( 4 )
-frames = SubResource( 2 )
-animation = "walk front"
-frame = 3
-
 [node name="body" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 4 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "walk front"
 
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 4 )
 scale = Vector2( 0.999999, 0.999999 )
+frames = SubResource( 3 )
+animation = "walk front"
+
+[node name="spodnie" type="AnimatedSprite" parent="sprites"]
+visible = false
+material = ExtResource( 4 )
+scale = Vector2( 1, 1 )
 frames = SubResource( 4 )
 animation = "walk front"
+frame = 3
 
 [node name="face" type="Sprite" parent="sprites"]
 material = ExtResource( 4 )
