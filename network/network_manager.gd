@@ -474,7 +474,7 @@ func apply_vc_settings():
 		VoiceChat.forcemute(false)
 	VoiceChat.setunmutepeers(calculate_muted_remotes())
 	
-	if vcs != 2:
+	if own_player and vcs != 2:
 		if gamestate == MEETING or gamestate==LOBBY:
 			own_player.get_node("GUI").set_visibility("PC", "CommunicationButtons/chat", 1)
 		else:
