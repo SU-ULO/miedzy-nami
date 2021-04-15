@@ -10,7 +10,7 @@ func _ready():
 		if f.open("res://scripts/js/touchscreenkeyboard.js", File.READ) == OK:
 			JavaScript.eval(f.get_as_text(), true)
 			f.close()
-			if JavaScript.eval('setup_touchscreen_keyboard()'):
+			if JavaScript.eval('setup_touchscreen_keyboard()', true):
 				available=true
 
 func start_input(id: String, text: String):
