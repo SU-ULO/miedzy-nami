@@ -181,6 +181,9 @@ func start_meeting(_caller: int, _dead: int):
 			box.color = Color(colors[player_characters[player].color])
 			box.get_node("Button/L").text = player_characters[player].username
 			
+			if player_characters[player].is_in_group("impostors") and own_player.is_in_group("impostors"):
+				box.get_node("Button/L").set("custom_colors/font_color", Color("#DE2323"))
+			
 			# put it in right place
 			gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 			
@@ -194,9 +197,12 @@ func start_meeting(_caller: int, _dead: int):
 		box.color =  Color(colors[player_characters[rip].color])
 		box.get_node("Button/L").text = player_characters[rip].username
 		
+		if player_characters[rip].is_in_group("impostors") and own_player.is_in_group("impostors"):
+			box.get_node("Button/L").set("custom_colors/font_color", Color("#DE2323"))
+		
 		gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 		# aslo different color cause they dead
-		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#2874A6")
+		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#5C93CD")
 		iter += 1
 	
 	#now we disable all butons because no one can vote in discussion time
@@ -516,7 +522,7 @@ func end_game(crew_win: bool):
 	if crew_win:
 		end_screen.get_node("Control/message").text = "Uczniowe wygrali!"
 	else:
-		end_screen.get_node("Control/message").text = "<nazwa impostorów> wygrali!"
+		end_screen.get_node("Control/message").text = "Impostorzy wygrali!"
 		
 	end_screen.get_node("Control/imps").text = "" # unused label
 	end_screen.get_node("Control").visible = true
