@@ -70,11 +70,11 @@ func add_to_canvas(gui:Node = null, show_button:bool = true):
 # edit: if instance == false, gui should exist and have function to hide itself
 # named show() and take one argument true/false
 
-func replace_on_canvas(gui:Node = null, instance = true):
+func replace_on_canvas(gui:Node, instance = true):
 	
 	if currentGUI != null:
 		if currentGUI.name == gui.name:
-			if instance:
+			if isInstance:
 				clear_canvas()
 			else:
 				currentGUI.show(false)

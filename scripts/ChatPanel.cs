@@ -34,6 +34,9 @@ public class ChatPanel : Control
 			GetNode("ChatContainer/Input").Call("release_focus");
 			SetMovement(originalMovement);
 		}
+		
+		Node GUI = GetParent().GetParent();
+		GUI.Call("set_visibility", "PC", "CommunicationButtons/chat/new", 0);
 	}
 	
 	void HandleGUISync(string guiName, Godot.Collections.Dictionary<string, object> data){
@@ -41,7 +44,7 @@ public class ChatPanel : Control
 		Node2D player = ((Node2D)network.Get("own_player"));
 		
 		if(guiName.Equals("chat")){
-			RichTextLabel chat = (RichTextLabel)GetNode("ChatContainer/Chat");	
+			RichTextLabel chat = (RichTextLabel)GetNode("ChatContainer/Chat");
 			if(data.ContainsKey("append")){
 				if(data.ContainsKey("dead"))
 					if((bool)data["dead"] && !(bool)player.Get("dead"))
@@ -50,6 +53,10 @@ public class ChatPanel : Control
 			}else if(data.ContainsKey("set")){
 				chat.Text = data["set"].ToString();
 			}
+		}
+		if(!this.Visible){
+			Node GUI = GetParent().GetParent();
+			GUI.Call("set_visibility", "PC", "CommunicationButtons/chat/new", 1);
 		}
 	}
 	

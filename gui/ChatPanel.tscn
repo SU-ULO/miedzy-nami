@@ -3,7 +3,7 @@
 [ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/ChatPanel.cs" type="Script" id=3]
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.541176, 0.541176, 0.541176, 1 )
 border_width_left = 10
 border_width_top = 10
@@ -16,7 +16,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 0.392157 )
 border_width_left = 10
 border_width_top = 10
@@ -32,15 +32,15 @@ corner_radius_bottom_left = 10
 size = 60
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -60,7 +60,7 @@ anchor_bottom = 0.999833
 margin_top = 0.0359953
 margin_right = 57.0
 margin_bottom = 57.0361
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,7 +72,7 @@ anchor_bottom = 0.999833
 margin_top = 0.0359953
 margin_right = 57.0
 margin_bottom = 57.0361
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -96,7 +96,7 @@ margin_left = 30.0
 margin_top = 115.0
 margin_right = -10.0
 margin_bottom = -132.0
-custom_fonts/normal_font = SubResource( 9 )
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0.172549, 0.164706, 0.196078, 1 )
 scroll_following = true
 __meta__ = {
@@ -111,7 +111,7 @@ margin_left = 11.0
 margin_top = -63.0
 margin_right = -126.0
 margin_bottom = -11.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -125,7 +125,7 @@ margin_left = -124.108
 margin_top = -62.2963
 margin_right = -14.108
 margin_bottom = -11.2963
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "Wyślij"
 __meta__ = {
 "_edit_use_anchors_": false
