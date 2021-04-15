@@ -7,6 +7,7 @@ func onopen():
 	$'voice-chat'.set_value(Globals.start.menu.usersettings["vc-mode"])
 	$'voice-chat'.update_label()
 	if Globals.start.network.own_id == 0:
+		$Label.visible = true
 		var x = 0
 		for i in Globals.start.network.player_characters.keys():
 			if i!=0:

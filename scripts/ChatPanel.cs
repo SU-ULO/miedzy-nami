@@ -56,7 +56,7 @@ public class ChatPanel : Control
 	private void OnSendPressed()
 	{
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
-		TextEdit input = (TextEdit)GetNode("ChatContainer/Input");
+		LineEdit input = (LineEdit)GetNode("ChatContainer/Input");
 		if(input.Text != ""){
 			network.Call("request_gui_sync", "chat", new Godot.Collections.Dictionary<string, object>(){
 			["append"]="\n["+(string)((Node2D)network.Get("own_player")).Get("username")+"]: "+input.Text,
@@ -68,9 +68,9 @@ public class ChatPanel : Control
 		GetNode("ChatContainer/Input").Call("grab_focus");
 	}
 
-	private void OnTextChanged()
+	private void OnTextChanged(String newText)
 	{
-		TextEdit input = (TextEdit)GetNode("ChatContainer/Input");
+		LineEdit input = (LineEdit)GetNode("ChatContainer/Input");
 	   	if(input.Text.Length > 0){
 			if(input.Text[input.Text.Length - 1] == '\n'){
 				input.Text = input.Text.Trim(new char[]{'\n'});

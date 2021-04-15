@@ -1505,6 +1505,8 @@ align = 1
 expand_to_text_length = true
 placeholder_text = "wpisz kod"
 placeholder_alpha = 0.8
+script = ExtResource( 23 )
+text_id = "joinkey"
 
 [node name="Button" type="Button" parent="RoomList/JoinedKey/JoinedKeyField"]
 anchor_right = 1.0

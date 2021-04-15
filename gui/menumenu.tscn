@@ -99,6 +99,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 875.117
 margin_top = 332.671
 margin_right = 1094.12
@@ -106,6 +107,9 @@ margin_bottom = 411.671
 rect_scale = Vector2( 0.8025, 0.8025 )
 custom_fonts/font = ExtResource( 7 )
 text = "wyrzuć:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="C" to="." method="_close"]
 [connection signal="pressed" from="E" to="." method="_exit"]
 
