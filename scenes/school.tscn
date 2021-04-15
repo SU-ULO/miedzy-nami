@@ -485,12 +485,21 @@ polygon = PoolVector2Array( 402.105, 13846.7, 2151.17, 13851.7, 2152.85, 13501.9
 polygon = PoolVector2Array( 494.215, 15008.9, 491.695, 13461.7, 456.417, 13461.7, 458.937, 15016.4 )
 
 [node name="game-settings-station" parent="Mapa/lobby" instance=ExtResource( 50 )]
-position = Vector2( 1868.47, 13958.1 )
+position = Vector2( 1919.44, 13858 )
 scale = Vector2( 0.342406, 0.342406 )
 
 [node name="start" parent="Mapa/lobby" instance=ExtResource( 57 )]
 position = Vector2( 742, 13740.6 )
 scale = Vector2( 0.106931, 0.106931 )
+
+[node name="plecaki8" parent="Mapa/lobby" instance=ExtResource( 44 )]
+position = Vector2( 985.649, 14796.4 )
+scale = Vector2( 0.177704, 0.177505 )
+z_index = 1
+
+[node name="lawka10" parent="Mapa/lobby" instance=ExtResource( 25 )]
+position = Vector2( 459.444, 14648.4 )
+scale = Vector2( 0.4, 0.3 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Mapa/lobby"]
 occluder = SubResource( 1 )
