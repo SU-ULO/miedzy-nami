@@ -167,12 +167,11 @@ func Interact(body): # player interaction with player = kill
 	interacted = true
 	print(body.username, " wants to kill ", self.username)
 	body.players_interactable.erase(self)
-	var network = get_tree().get_root().get_node("Start").network
+	var network = Globals.start.network
 	body.get_node("KillCooldown").start(network.gamesettings["kill-cooldown"])
 	body.position = self.position
 	network.request_kill(owner_id)
-	if owner_id == network.own_id:
-		network.own_player.get_node("GUI").set_visibility("PC", "PlayerGUI/ActionButtons/report", 0)
+	
 	interacted = false
 	return false
 
@@ -191,12 +190,17 @@ func turn_into_corpse(pos: Vector2, killer: int = -1):
 	get_parent().add_child(instance)
 	self.visible = 0
 	
-	var network = get_tree().get_root().get_node("Start").network
+	var network = Globals.start.network
 	if owner_id == network.own_id:
 		var killername = network.player_characters[killer].username
 		var popup = get_node("GUI/DeathMessage/Control")
 		popup.get_node("message").text = "Zostałeś uśpiony"
 		popup.get_node("imps").text = "przez " + killername
+		network.own_player.ui_canceled()
+		var current = network.own_player.get_node("GUI").currentGUI
+		if current != null:
+			network.own_player.get_node("GUI").replace_on_canvas(current)
+		
 		popup.visible = true
 		var timer  = popup.get_node("Timer")
 		timer.start()

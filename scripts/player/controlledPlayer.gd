@@ -341,7 +341,6 @@ func ui_report():
 		currentBestItem.Interact(self)
 
 func ui_canceled():
-	refresh_areas()
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	showMyTasks()
 	if(currentInteraction != null):
@@ -356,8 +355,6 @@ func ui_selected():
 	if debug_mode:
 		print("sight_range: ", in_sight_range)
 		print("sight: ", in_sight)
-	
-	refresh_areas()
 	
 	if(interactable.size() != 0):
 		var currentBestItem = interactable[0]
@@ -374,18 +371,6 @@ func ui_selected():
 			return
 		else:
 			currentInteraction = currentBestItem
-
-func refresh_areas():
-	var area1 = get_node("InteractionArea/AreaShape")
-	var area2 = get_node("SightArea/AreaShape")
-	var radius1 = area1.shape.radius
-	var radius2 = area2.shape.radius
-	
-	get_node("InteractionArea/AreaShape").shape.radius = 0
-	get_node("SightArea/AreaShape").shape.radius = 0
-	# force update
-	get_node("InteractionArea/AreaShape").shape.radius = radius1
-	get_node("SightArea/AreaShape").shape.radius = radius2
 
 func become_impostor():
 	.become_impostor()
