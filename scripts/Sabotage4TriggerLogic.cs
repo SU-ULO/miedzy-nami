@@ -15,7 +15,7 @@ public class Sabotage4TriggerLogic : Node
 	
 	public void Cleanup(int type){
 		if(type == 4)
-			currentylPressed = 0;
+			currentlyPressed = 0;
 	}
 
 	public void HandleGUISync(string guiName, Godot.Collections.Dictionary<String, object> data){
