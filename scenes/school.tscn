@@ -541,16 +541,24 @@ scale = Vector2( 0.393559, 0.393559 )
 linkedcameras = [ NodePath("../camera1"), NodePath("../camera2"), NodePath("../camera3"), NodePath("../camera4") ]
 
 [node name="camera1" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( 1092.07, 620.151 )
+position = Vector2( 243.297, 623.561 )
 
 [node name="camera2" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( -2767.48, 1178.85 )
+position = Vector2( -5245.03, 1516.29 )
+
+[node name="camera-sprite" parent="Mapa/camera2" index="1"]
+position = Vector2( 43.333, 37.452 )
+flip_h = false
 
 [node name="camera3" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( -1150.55, -730.251 )
+position = Vector2( -3152.76, -689.626 )
 
 [node name="camera4" parent="Mapa" instance=ExtResource( 38 )]
-position = Vector2( -1141.54, -2626.78 )
+position = Vector2( 1172.27, -1277.68 )
+
+[node name="camera-sprite" parent="Mapa/camera4" index="1"]
+position = Vector2( 43.333, 37.452 )
+flip_h = false
 
 [node name="door" parent="Mapa" instance=ExtResource( 60 )]
 position = Vector2( 2405.8, 719.454 )
@@ -1106,7 +1114,7 @@ scale = Vector2( 0.621356, 0.621356 )
 polygon = PoolVector2Array( -1963.48, -573.163, -1066.61, -119.611, -343.656, -112.79, -350.477, -886.898, -1414.45, -1354.09, -1960.07, -1354.09 )
 
 [node name="automat" parent="Mapa/YSort" instance=ExtResource( 36 )]
-position = Vector2( -5106.93, 1698.9 )
+position = Vector2( -5044.93, 1694.9 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="BIO-Flower" parent="Mapa/YSort" instance=ExtResource( 5 )]
@@ -1210,3 +1218,7 @@ collision_mask = 524288
 visible = false
 build_mode = 1
 polygon = PoolVector2Array( -5650.45, 4435.63, 5346.48, 4639.28, 5640.63, 317.438, 2721.7, -2827.77, -1396.49, -2940.91, -2414.73, -4637.97, -3568.72, -4660.59, -3681.86, 1086.77, -5673.08, 1245.16 )
+
+[editable path="Mapa/camera2"]
+
+[editable path="Mapa/camera4"]
