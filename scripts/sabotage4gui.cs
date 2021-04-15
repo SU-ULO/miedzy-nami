@@ -27,6 +27,8 @@ public class sabotage4gui : Control
 	
 	private void OnSwitchUp()
 	{
+		if(!pressed)
+			return;
 		pressed = false;
 		RequestPressedDeltaGUISync(this, -1);
 		Label label = (Label) GetNode("ColorRect/Label");
