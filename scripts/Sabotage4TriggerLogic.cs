@@ -13,11 +13,6 @@ public class Sabotage4TriggerLogic : Node
 		network.Connect("sabotage", this, "Cleanup");
 	}
 	
-	public void Cleanup(int type){
-		if(type == 4)
-			currentylPressed = 0;
-	}
-
 	public void HandleGUISync(string guiName, Godot.Collections.Dictionary<String, object> data){
 		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
 		if(guiName == "sabotage4"){

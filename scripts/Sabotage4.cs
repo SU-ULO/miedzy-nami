@@ -31,6 +31,10 @@ public class Sabotage4 : Node2D, IInteractable
 	}
 	
 	public void EndInteraction(Node2D body){
+		if(sabotage4gui.pressed){
+			sabotage4gui.RequestPressedDeltaGUISync(this, -1);
+			sabotage4gui.pressed = false;
+		}
 		body.GetNode("GUI").Call("clear_canvas");
 	}
 	

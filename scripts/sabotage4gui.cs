@@ -4,8 +4,10 @@ using System;
 public class sabotage4gui : Control
 {
 
-	private void RequestPressedDeltaGUISync(int delta){
-		Node network = (Node)GetTree().GetRoot().GetNode("Start").Get("network");
+	public static bool pressed = false;
+
+	public static void RequestPressedDeltaGUISync(Node caller, int delta){
+		Node network = (Node)caller.GetTree().GetRoot().GetNode("Start").Get("network");
 		network.Call("request_gui_sync", "sabotage4", new Godot.Collections.Dictionary<string, object>(){
 			["currentlyPressedDelta"] = delta
 		});
@@ -13,7 +15,8 @@ public class sabotage4gui : Control
 	
 	private void OnSwitchDown()
 	{
-		RequestPressedDeltaGUISync(1);
+		pressed = true;
+		RequestPressedDeltaGUISync(this, 1);
 		Label label = (Label) GetNode("ColorRect/Label");
 		label.Text = "Oczekiwanie na drugiego gracza...";
 		TextureButton button = (TextureButton) GetNode("ColorRect/switch1");
@@ -22,7 +25,8 @@ public class sabotage4gui : Control
 	
 	private void OnSwitchUp()
 	{
-		RequestPressedDeltaGUISync(-1);
+		pressed = false;
+		RequestPressedDeltaGUISync(this, -1);
 		Label label = (Label) GetNode("ColorRect/Label");
 		label.Text= "Wciśnij znak zapytania!";
 		TextureButton button = (TextureButton) GetNode("ColorRect/switch1");
