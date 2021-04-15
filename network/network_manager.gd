@@ -145,8 +145,10 @@ func start_meeting(_caller: int, _dead: int):
 		own_player.currentInteraction = null
 	
 	#close all gui
-	if own_player.get_node("GUI").currentGUI != null:
-		own_player.get_node("GUI").replace_on_canvas()
+	var current = own_player.get_node("GUI").currentGUI
+	if current != null:
+		print(current.name)
+		own_player.get_node("GUI").replace_on_canvas(current)
 	
 	#get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
@@ -447,12 +449,14 @@ func handle_game_settings(settings):
 
 func apply_vc_settings():
 	var vcs = gamesettings["voice-chat"]
+	
 	if vcs==0:
 		VoiceChat.setwantstospeak(false)
 		VoiceChat.forcemute(true)
 		VoiceChat.setallvolumes(0)
 	else:
 		VoiceChat.askforstream()
+	
 	if vcs==1:
 		if gamestate==LOBBY or gamestate==MEETING:
 			VoiceChat.forcemute(false)
@@ -463,6 +467,12 @@ func apply_vc_settings():
 	elif vcs!=0:
 		VoiceChat.forcemute(false)
 	VoiceChat.setunmutepeers(calculate_muted_remotes())
+	
+	if vcs != 2:
+		if gamestate == MEETING or gamestate==LOBBY:
+			own_player.get_node("GUI").set_visibility("PC", "CommunicationButtons/chat", 1)
+		else:
+			own_player.get_node("GUI").set_visibility("PC", "CommunicationButtons/chat", 0)
 
 func apply_settings_to_player():
 	if own_player:

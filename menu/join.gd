@@ -1,8 +1,5 @@
 extends VBoxContainer
 
-signal button_hover_enter(button)
-signal button_hover_exit(button)
-
 func _ready():
 	pass # Replace with function body.
 

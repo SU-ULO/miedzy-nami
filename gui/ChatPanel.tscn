@@ -113,6 +113,9 @@ margin_top = -63.0
 margin_right = -126.0
 margin_bottom = -11.0
 custom_fonts/font = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 script = ExtResource( 2 )
 text_id = "chatinput"
 
