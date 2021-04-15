@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/OpenSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/js/text_input.gd" type="Script" id=2]
 [ext_resource path="res://scripts/ChatPanel.cs" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -103,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Input" type="TextEdit" parent="ChatContainer"]
+[node name="Input" type="LineEdit" parent="ChatContainer"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -115,6 +116,8 @@ custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+script = ExtResource( 2 )
+text_id = "chatinput"
 
 [node name="Send" type="Button" parent="ChatContainer"]
 anchor_left = 1.0
