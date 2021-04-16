@@ -616,3 +616,6 @@ func calculate_muted_remotes()->int:
 
 func tasksync(done: int, all: int):
 	emit_signal("taskschange", done, all)
+
+func request_end_sabotage(_type: int):
+	pass

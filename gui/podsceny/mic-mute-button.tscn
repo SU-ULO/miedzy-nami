@@ -6,7 +6,9 @@
 [node name="mic-mute-button" type="TextureButton"]
 margin_right = 40.0
 margin_bottom = 40.0
+focus_mode = 0
 toggle_mode = true
+enabled_focus_mode = 0
 texture_normal = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
