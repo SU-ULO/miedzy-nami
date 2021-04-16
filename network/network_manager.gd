@@ -414,15 +414,14 @@ func game_start(params, taskstuff):
 	own_player.get_node("KillCooldown").wait_time = gamesettings["kill-cooldown"]
 	own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
 	recalculate_pos()
-	for i in params["imp"]:
-		if player_characters.has(i):
-			player_characters[i].become_impostor()
-	var playerImpostor = false
-	if params["imp"].has(own_id): #scale sight range if player is impostor
+	if params["imp"].has(own_id):
+		own_player.become_impostor()
 		own_player.sight_range_scale = gamesettings["impostor-vision"]
-		playerImpostor = true
 	else:
 		own_player.sight_range_scale = gamesettings["crewmate-vision"]
+	for i in params["imp"]:
+		if i!=own_id and player_characters.has(i):
+			player_characters[i].become_impostor()
 	own_player.sight_range = own_player.default_sight_range * own_player.sight_range_scale
 	for t in taskstuff:
 		var task = Task.GetTaskByID(t)
@@ -436,7 +435,7 @@ func game_start(params, taskstuff):
 	own_player.get_node("KillArea").scale = \
 		Vector2((gamesettings["kill-distance"] + 1)/2,(gamesettings["kill-distance"]+1)/2)
 	apply_vc_settings()
-	own_player.show_start(playerImpostor)
+	own_player.show_start()
 
 func request_cameras_enable(_on_off: bool):
 	pass

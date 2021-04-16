@@ -403,9 +403,9 @@ func calculate_volume():
 	for i in voice_range:
 		i.vc_volume = clamp(($VoiceArea/AreaShape.shape.radius - i.position.distance_to(position)) / $VoiceArea/AreaShape.shape.radius, 0, 1)
 		
-func show_start(impostor:bool):
+func show_start():
 	var popup = get_node("GUI/DeathMessage/Control")
-	if impostor:
+	if is_in_group("impostors"):
 		popup.get_node("message").text = "Jesteś Impostorem"
 		popup.get_node("imps").text = "Uśpij wszystkich uczniów, sabotuj lekcje, nie daj się wykryć"
 	else:

@@ -228,7 +228,7 @@ func _draw():
 
 func become_impostor():
 	self.add_to_group("impostors")
-	if get_tree().get_root().get_node("Start").network.own_player.is_in_group("impostors"):
+	if Globals.start.network.own_player.is_in_group("impostors"):
 		$Label.add_color_override("font_color", Color(1,0,0,1))
 
 
