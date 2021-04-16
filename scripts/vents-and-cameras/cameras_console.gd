@@ -7,6 +7,7 @@ onready var world = get_world_2d()
 var texture_inactive = "res://textures/dekoracje/kamera.png"
 var texture_active = "res://textures/dekoracje/kamera-active.png"
 
+var camera_gui = null
 var disabled = false
 
 func _ready():
@@ -14,7 +15,7 @@ func _ready():
 	self.add_to_group("interactable")
 	self.add_to_group("cameras")
 
-func delete_gui(body):
+func cameras_off(body):
 	if !disabled:
 		for lc in linkedcameras:
 			get_node(lc).get_node("Camera2D").current = 0
@@ -23,17 +24,10 @@ func delete_gui(body):
 			get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 			get_node(lc).get_node("Area2D").monitoring = 0
 		Globals.start.network.request_cameras_enable(false)
-	body.get_node("GUI").clear_canvas()
 
-func instance_gui(body):
-	var camera_gui = load(gui_res).instance()
-	for vp in camera_gui.viewports:
-		camera_gui.get_node(vp).world_2d = world
-	
-	camera_gui.player = body
-	body.get_node("GUI").add_to_canvas(camera_gui)
-	
-	camera_gui.get_node("off").visible = disabled
+func cameras_on(body):
+	if camera_gui != null:
+		camera_gui.get_node("off").visible = disabled
 	if !disabled:
 		var iter = 0
 		for vp in camera_gui.viewports:
@@ -52,8 +46,25 @@ func instance_gui(body):
 		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
 
 func Interact(body):
-	disabled = get_tree().get_root().get_node("Start").network.comms_disabled
-	instance_gui(body)
+	disabled = Globals.start.network.comms_disabled
+	body.connect("sabotage_event", self, "refresh")
+	camera_gui = load(gui_res).instance()
+	for vp in camera_gui.viewports:
+		camera_gui.get_node(vp).world_2d = world
+		
+	camera_gui.player = body
+	body.get_node("GUI").add_to_canvas(camera_gui)
+	cameras_on(body)
 
 func EndInteraction(body):
-	delete_gui(body)
+	cameras_off(body)
+	body.disconnect("sabotage_event", self, "refresh")
+	body.get_node("GUI").clear_canvas()
+	camera_gui = null
+
+func refresh(sabotage):
+	if sabotage == 3 or sabotage == 0:
+		var body = Globals.start.network.own_player
+		disabled = Globals.start.network.comms_disabled
+		cameras_off(body)
+		cameras_on(body)

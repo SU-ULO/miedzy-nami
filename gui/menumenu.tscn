@@ -269,7 +269,7 @@ custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "impostor:
  uśpij: Q
- sabotaże: S
+ sabotaże: Z
  wentylacja:
   - wyjdź: ESC
   - następny: A
