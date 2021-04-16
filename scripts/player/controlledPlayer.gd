@@ -2,12 +2,11 @@ extends "dummyplayer.gd"
 
 class_name Player
 
-var fov_toggle :bool = false #temporarily
-
 const arrow_radius = 300.0
 
 var selected_vent = 0
 var disabled_movement:bool = false
+var chat_focused:bool = false
 var joystickUsed = false
 var currentSabotage = 0
 export var killCooldown = 20
@@ -168,15 +167,21 @@ func get_input():
 		if Input.is_action_just_pressed("ui_report"):
 			if !self.is_in_group("rip"):
 				ui_report()
-	if Input.is_action_pressed("ui_cancel"):
+			
+		if Input.is_action_just_pressed("ui_map"):
+			if get_node("GUI/PlayerCanvas/playerGUI/TopButtons/map").visible:
+				get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("map")
+		if Input.is_action_just_pressed("ui_sabotage") and self.is_in_group("impostors"):
+			if get_node("GUI/PlayerCanvas/playerGUI/ImpostorButtons/sabotage").visible:
+				get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("sabotage")
+		if Input.is_action_just_pressed("ui_chat"):
+			if get_node("GUI/PlayerCanvas/CommunicationButtons/chat").visible:
+				get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("chat")
+	if Input.is_action_just_pressed("chat_send"): 
+		if chat_focused:
+			get_node("GUI/CloseButton/ChatPanel").OnSendPressed()
+	if Input.is_action_just_pressed("ui_cancel"):
 		ui_canceled()
-#	if Input.is_action_just_pressed("set_fov"):
-#		if fov_toggle:
-#			sight_range = 2000 * sight_range_scale;
-#		else:
-#			sight_range = 500 * sight_range_scale
-#			get_tree().get_root().get_node("Start").network.end_game(true)
-#		fov_toggle = !fov_toggle
 	if currentInteraction != null:
 		if currentInteraction.is_in_group("vents"):
 			
@@ -343,11 +348,14 @@ func ui_report():
 func ui_canceled():
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	showMyTasks()
-	if(currentInteraction != null):
+	if currentInteraction == null:
+		if get_node("GUI/PlayerCanvas/playerGUI/TopButtons/settings").visible:
+			get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("settings")
+	else:
 		currentInteraction.EndInteraction(self)
 		print(currentInteraction.name)
 		currentInteraction = null
-		
+
 func ui_selected():
 	if get_node("GUI").currentGUI != null:
 		return
