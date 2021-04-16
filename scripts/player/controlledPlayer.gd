@@ -119,7 +119,7 @@ func _ready():
 	$Light.set_texture_scale(default_sight_range/mask_width*2)
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	$KillCooldown.wait_time = killCooldown
-	network = get_tree().get_root().get_node("Start").network
+	network = Globals.start.network
 	network.connect("sabotage", self, "handle_sabotage")
 	network.connect("sabotage_end", self, "handle_end_sabotage")
 	network.connect("gui_sync", self, "handle_gui_sync")
@@ -226,6 +226,7 @@ func _process(delta):
 	if network.gamesettings["voice-chat"] == 3 and \
 		network.gamestate == network.STARTED or network.gamestate == network.LOBBY:
 		calculate_volume()
+
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
 	var radius :float = area.get_radius()
@@ -402,3 +403,16 @@ func calculate_volume():
 	for i in voice_range:
 		i.vc_volume = clamp(($VoiceArea/AreaShape.shape.radius - i.position.distance_to(position)) / $VoiceArea/AreaShape.shape.radius, 0, 1)
 		
+func show_start(impostor:bool):
+	var popup = get_node("GUI/DeathMessage/Control")
+	if impostor:
+		popup.get_node("message").text = "Jesteś Impostorem"
+		popup.get_node("imps").text = "Uśpij wszystkich uczniów, sabotuj lekcje, nie daj się wykryć"
+	else:
+		popup.get_node("message").text = "Jesteś Uczneim"
+		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Imposotrów"
+	popup.visible = true
+	var timer  = popup.get_node("Timer")
+	timer.start()
+	yield(timer, "timeout")
+	popup.visible = false

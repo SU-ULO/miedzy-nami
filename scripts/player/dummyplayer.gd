@@ -255,7 +255,6 @@ func _on_VoiceArea_body_entered(body):
 			if self == Globals.start.network.own_player:
 				Globals.start.network.apply_vc_settings()
 
-
 func _on_VoiceArea_body_exited(body):
 	if body.is_in_group("players"):
 		if voice_range.has(body):

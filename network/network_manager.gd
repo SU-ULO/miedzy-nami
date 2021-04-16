@@ -417,8 +417,10 @@ func game_start(params, taskstuff):
 	for i in params["imp"]:
 		if player_characters.has(i):
 			player_characters[i].become_impostor()
-	if "impostor" == "impostor": #scale sight range if player is impostor
+	var playerImpostor = false
+	if params["imp"].has(own_id): #scale sight range if player is impostor
 		own_player.sight_range_scale = gamesettings["impostor-vision"]
+		playerImpostor = true
 	else:
 		own_player.sight_range_scale = gamesettings["crewmate-vision"]
 	own_player.sight_range = own_player.default_sight_range * own_player.sight_range_scale
@@ -434,6 +436,7 @@ func game_start(params, taskstuff):
 	own_player.get_node("KillArea").scale = \
 		Vector2((gamesettings["kill-distance"] + 1)/2,(gamesettings["kill-distance"]+1)/2)
 	apply_vc_settings()
+	own_player.show_start(playerImpostor)
 
 func request_cameras_enable(_on_off: bool):
 	pass
