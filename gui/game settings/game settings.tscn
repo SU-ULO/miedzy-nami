@@ -39,7 +39,7 @@ max_val = 3
 [node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-count" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "impostor count"
+text = "liczba impostorów"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/impostor-count" index="1"]
 margin_left = 700.0
@@ -70,7 +70,8 @@ margin_bottom = 291.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/comfirm-ejects" index="0"]
-text = "confirm eject"
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "potwierdź wyrzucenie"
 
 [node name="meeting-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
@@ -97,6 +98,7 @@ margin_bottom = 503.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/anonnymous-votes" index="0"]
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "anonimowe głosy"
 
 [node name="emergency-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
@@ -112,7 +114,7 @@ max_val = 60
 [node name="Label2" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "emergency cooldown"
+text = "odnowienie zebrań"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/emergency-cooldown" index="1"]
 margin_left = 700.0
@@ -190,7 +192,7 @@ div = 4
 [node name="Label2" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "crewmate vision"
+text = "wizja ucznia"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/crewmate-vision" index="1"]
 margin_left = 700.0
@@ -210,7 +212,7 @@ div = 4
 [node name="Label2" parent="ScrollContainer/VBoxContainer/impostor-vision" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "impostor vision"
+text = "wizja impostora"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/impostor-vision" index="1"]
 margin_left = 700.0
@@ -231,7 +233,7 @@ div = 2
 [node name="Label2" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "kill cooldown"
+text = "odnowienie usypiania"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/kill-cooldown" index="1"]
 margin_left = 700.0
@@ -249,7 +251,7 @@ values = [ "mały", "średni", "duży" ]
 [node name="Label2" parent="ScrollContainer/VBoxContainer/kill-distance" index="0"]
 margin_left = 0.0
 margin_right = 650.0
-text = "kill distance"
+text = "dystans usypiania"
 
 [node name="C" parent="ScrollContainer/VBoxContainer/kill-distance" index="1"]
 margin_left = 700.0
