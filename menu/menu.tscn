@@ -1502,6 +1502,7 @@ custom_fonts/font = ExtResource( 8 )
 custom_colors/cursor_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 align = 1
+max_length = 9
 expand_to_text_length = true
 placeholder_text = "wpisz kod"
 placeholder_alpha = 0.8

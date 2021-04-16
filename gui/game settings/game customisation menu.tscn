@@ -43,10 +43,10 @@ margin_right = 1.53406
 margin_bottom = 3.54163
 
 [node name="look-menu" parent="menus" instance=ExtResource( 3 )]
-margin_left = 0.492493
-margin_top = -0.951569
-margin_right = 0.492432
-margin_bottom = -0.951538
+margin_left = 40.4925
+margin_top = 27.0484
+margin_right = 40.4924
+margin_bottom = 27.0485
 rect_scale = Vector2( 0.840592, 0.859657 )
 
 [node name="buttons" type="HBoxContainer" parent="."]
