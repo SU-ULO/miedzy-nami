@@ -17,7 +17,7 @@ func _ready():
 	for i in Globals.start.network.world.get_node("rooms").get_children():
 		rooms[i.name] = [i.get_node("1").global_position, i.get_node("2").global_position]
 	players = Globals.start.network.player_characters
-	Globals.start.network.connect("sabotage", self, "exit_gui")
+
 func _process(_delta):
 	if opened and !disabled:
 		for i in rooms.keys():
@@ -40,13 +40,15 @@ func update_map():
 		
 		for child in map.get_node(path).get_children():
 			child.queue_free()
-			
-		for _iter in range(players_count[data]):
-			map.get_node(path).add_child(player_icon_res.instance())
+		
+		if !disabled:
+			for _iter in range(players_count[data]):
+				map.get_node(path).add_child(player_icon_res.instance())
 
 func Interact(body):
-	disabled = get_tree().get_root().get_node("Start").network.comms_disabled
+	disabled = Globals.start.network.comms_disabled
 	player = body
+	player.connect("sabotage_event", self, "refresh_gui")
 	opened = true
 	map = map_res.instance()
 	map.get_node("off").visible =  disabled
@@ -55,6 +57,7 @@ func Interact(body):
 func EndInteraction(_body):
 	if opened:
 		player.get_node("GUI").clear_canvas()
+		player.disconnect("sabotage_event", self, "refresh_gui")
 		player = null
 		map = null
 		opened = false
@@ -62,7 +65,8 @@ func EndInteraction(_body):
 func in_room(who, room):
 	return room[0].x < who.global_position.x && room[0].y < who.global_position.y && room[1].x > who.global_position.x && room[1].y > who.global_position.y
 
-func exit_gui(type):
-	if type == 3:
-		if player:
-			player.ui_canceled()
+func refresh_gui(type):
+	if type == 3 or type == 0:
+		disabled = Globals.start.network.comms_disabled
+		map.get_node("off").visible =  disabled
+		update_map()
