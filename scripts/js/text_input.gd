@@ -19,3 +19,6 @@ func handle_text_keyboard(keyboardtext: String, id: String):
 		text=keyboardtext
 	else:
 		release_focus()
+
+func on_focus(state):
+	Globals.start.network.own_player.chat_focused = state

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -253,8 +253,6 @@ scancode = 84
 [sub_resource type="ShortCut" id=22]
 shortcut = SubResource( 21 )
 
-[sub_resource type="ShortCut" id=23]
-
 [node name="player" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
@@ -326,9 +324,9 @@ __meta__ = {
 
 [node name="chat" type="TextureButton" parent="GUI/PlayerCanvas/CommunicationButtons" index="0"]
 margin_left = 9.08588
-margin_top = 446.047
+margin_top = 443.802
 margin_right = 137.086
-margin_bottom = 574.047
+margin_bottom = 571.802
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = ExtResource( 17 )
@@ -573,7 +571,6 @@ margin_bottom = 1748.88
 rect_scale = Vector2( 0.103651, 0.103651 )
 focus_mode = 0
 enabled_focus_mode = 0
-shortcut = SubResource( 23 )
 texture_normal = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -21,6 +21,7 @@ margin_right = 729.0
 margin_bottom = 79.0
 rect_min_size = Vector2( 650, 0 )
 custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "aktywacja mikrofonu: "
 
 [node name="C" type="HBoxContainer" parent="."]

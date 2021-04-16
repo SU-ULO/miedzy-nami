@@ -1,12 +1,90 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://textures/menubackground.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://textures/planbutton.png" type="Texture" id=4]
+[ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://gui/menumenu.gd" type="Script" id=5]
 [ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/PottaOne-Regular.tres" type="DynamicFont" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=4]
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id=7]
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 4 )
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
@@ -31,22 +109,79 @@ margin_top = 156.0
 margin_right = 1516.0
 margin_bottom = 252.0
 
-[node name="E" type="TextureButton" parent="."]
-margin_left = 772.715
-margin_top = 676.081
-margin_right = 1272.72
-margin_bottom = 837.081
-rect_scale = Vector2( 0.791857, 0.791857 )
-texture_normal = ExtResource( 4 )
+[node name="main" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="L" type="Label" parent="E"]
-margin_left = 35.6146
-margin_top = 36.5778
-margin_right = 479.615
-margin_bottom = 124.578
+[node name="voice-chat" parent="main" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 558.0
+margin_top = 221.5
+margin_right = 1836.0
+margin_bottom = 300.5
+rect_scale = Vector2( 0.6, 0.6 )
+non_numeric_values = true
+values = [ "push-to-talk", "otwarty" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="main"]
+margin_left = 599.363
+margin_top = 307.066
+margin_right = 1315.36
+margin_bottom = 387.066
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="main/HBoxContainer"]
+margin_top = 16.0
+margin_right = 412.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "skróty klawiszowe:      "
+
+[node name="Button" type="Button" parent="main/HBoxContainer"]
+margin_left = 416.0
+margin_right = 716.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 300, 80 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+text = "sprawdź"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="E" type="Button" parent="main"]
+margin_left = 775.0
+margin_top = 701.0
+margin_right = 1275.0
+margin_bottom = 841.0
+rect_scale = Vector2( 0.791857, 0.791857 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L" type="Label" parent="main/E"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -213.16
+margin_top = -42.7373
+margin_right = 230.84
+margin_bottom = 45.2629
 rect_scale = Vector2( 0.95701, 0.95701 )
 custom_fonts/font = ExtResource( 2 )
 text = "WYJDŹ Z GRY"
@@ -54,63 +189,115 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="voice-chat" parent="." instance=ExtResource( 6 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -382.0
-margin_top = -298.5
-margin_right = 896.0
-margin_bottom = -219.5
-rect_scale = Vector2( 0.6, 0.6 )
-non_numeric_values = true
-values = [ "push-to-talk", "otwarty" ]
-
-[node name="Label2" parent="voice-chat" index="0"]
-margin_left = 32.0
-margin_right = 668.0
-rect_min_size = Vector2( 630, 0 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "aktywacja mikrofonu:"
-
-[node name="C" parent="voice-chat" index="1"]
-margin_left = 718.0
-margin_right = 1246.0
-
-[node name="kick1" type="VBoxContainer" parent="."]
-margin_left = 609.973
-margin_top = 395.384
-margin_right = 1254.97
-margin_bottom = 1001.38
+[node name="kick1" type="VBoxContainer" parent="main"]
+margin_left = 610.0
+margin_top = 435.0
+margin_right = 1255.0
+margin_bottom = 1040.0
 rect_scale = Vector2( 0.43024, 0.43024 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="kick2" type="VBoxContainer" parent="."]
-margin_left = 1044.92
-margin_top = 395.384
-margin_right = 1689.92
-margin_bottom = 1001.38
+[node name="kick2" type="VBoxContainer" parent="main"]
+margin_left = 1035.0
+margin_top = 435.0
+margin_right = 1680.0
+margin_bottom = 1040.0
 rect_scale = Vector2( 0.43024, 0.43024 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="main"]
 visible = false
-margin_left = 875.117
-margin_top = 332.671
-margin_right = 1094.12
-margin_bottom = 411.671
-rect_scale = Vector2( 0.8025, 0.8025 )
-custom_fonts/font = ExtResource( 7 )
+margin_left = 599.675
+margin_top = 387.119
+margin_right = 729.675
+margin_bottom = 435.119
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "wyrzuć:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="C" to="." method="_close"]
-[connection signal="pressed" from="E" to="." method="_exit"]
 
-[editable path="voice-chat"]
+[node name="keybinds" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.49832
+margin_right = -1.49829
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="keybinds"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -167.0
+margin_top = 187.0
+margin_right = 167.0
+margin_bottom = 235.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "skróty klawiszowe:"
+
+[node name="list" type="Label" parent="keybinds"]
+margin_left = 601.0
+margin_top = 239.0
+margin_right = 1028.0
+margin_bottom = 650.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "wszyscy:
+ użyj: SPACJA
+ zgłoś: E
+ mapa: M
+ ukryj/pokaż zadania: T
+ czat: C
+ mikrofon: TAB
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="list2" type="Label" parent="keybinds"]
+margin_left = 1060.0
+margin_top = 241.0
+margin_right = 1361.0
+margin_bottom = 663.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "impostor:
+ uśpij: Q
+ sabotaże: S
+ wentylacja:
+  - wyjdź: ESC
+  - następny: A
+  - poprzedni: S
+  - przejdź: W"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="keybinds"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = 201.0
+margin_right = 150.0
+margin_bottom = 281.0
+rect_min_size = Vector2( 300, 80 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+text = "powrót"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="C" to="." method="_close"]
+[connection signal="pressed" from="main/HBoxContainer/Button" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="main/E" to="." method="_exit"]
+[connection signal="pressed" from="keybinds/Button2" to="." method="_on_keybinds_pressed"]
