@@ -15,13 +15,9 @@ func check_off(type):
 	if type == 3:
 		if is_in_group("interactable"):
 			remove_from_group("interactable")
-		if gui.is_inside_tree():
-			$Timer.start()
-			yield($Timer, "timeout")
-			if gui:
-				gui.queue_free()
-			if bodyxx != null:
-				bodyxx.ui_canceled()
+		if gui:
+			if bodyxx:
+				bodyxx.ui_cancled()
 
 func Interact(body):
 	bodyxx = body
