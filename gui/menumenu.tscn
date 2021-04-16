@@ -249,6 +249,7 @@ margin_bottom = 650.0
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "wszyscy:
+ chodzenie: W/S/A/D
  użyj: SPACJA
  zgłoś: E
  mapa: M
