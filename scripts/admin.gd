@@ -17,7 +17,7 @@ func _ready():
 	for i in Globals.start.network.world.get_node("rooms").get_children():
 		rooms[i.name] = [i.get_node("1").global_position, i.get_node("2").global_position]
 	players = Globals.start.network.player_characters
-
+	Globals.start.network.connect("sabotage", self, "exit_gui")
 func _process(_delta):
 	if opened and !disabled:
 		for i in rooms.keys():
@@ -55,9 +55,14 @@ func Interact(body):
 func EndInteraction(_body):
 	if opened:
 		player.get_node("GUI").clear_canvas()
+		player = null
 		map = null
 		opened = false
 
 func in_room(who, room):
 	return room[0].x < who.global_position.x && room[0].y < who.global_position.y && room[1].x > who.global_position.x && room[1].y > who.global_position.y
 
+func exit_gui(type):
+	if type == 3:
+		if player:
+			player.ui_canceled()

@@ -9,11 +9,13 @@ var texture_active = "res://textures/dekoracje/kamera-active.png"
 
 var disabled = false
 
+var player
+
 func _ready():
 	self.add_to_group("entities")
 	self.add_to_group("interactable")
 	self.add_to_group("cameras")
-
+	Globals.start.network.connect("sabotage", self, "exit_gui")
 func delete_gui(body):
 	if !disabled:
 		for lc in linkedcameras:
@@ -53,7 +55,14 @@ func instance_gui(body):
 
 func Interact(body):
 	disabled = get_tree().get_root().get_node("Start").network.comms_disabled
+	player = body
 	instance_gui(body)
 
 func EndInteraction(body):
+	player = null
 	delete_gui(body)
+
+func exit_gui(type):
+	if type == 3:
+		if player:
+			player.ui_canceled()
