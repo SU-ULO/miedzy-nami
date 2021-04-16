@@ -30,7 +30,7 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 1 )
-text = "Some button to change your color"
+text = "Przyciski do zmiany koloru"
 
 [node name="buttons" type="GridContainer" parent="."]
 margin_left = 47.5684
