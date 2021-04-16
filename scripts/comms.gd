@@ -26,7 +26,7 @@ func _process(delta):
 	x+=move*delta
 	
 func check(noise):
-	if abs(noise) < 0.25: set = true
+	if abs(noise) < 0.5: set = true
 	else: set = false
 	
 	if set and timer.time_left == 0: timer.start()
@@ -36,8 +36,8 @@ func _draw():
 	var noise = knob.prevangle + 2*PI*knob.full_rotations
 	check(noise)
 	# some magic values
-	draw_sin(30.0, 14.0, 50.0, 5.0, wave1_pos, 0.5, Color("#00FF00"))
-	draw_sin(30.0, 14.0, 50.0, 5.0, wave2_pos, clamp(noise, min_noise, max_noise))
+	draw_sin(25.0, 16.88, 25.0, 5.0, wave1_pos, 0.5, Color("#00FF00"))
+	draw_sin(25.0, 16.88, 25.0, 5.0, wave2_pos, clamp(noise, min_noise, max_noise))
 
 func draw_sin(scale = 1, length = 500, resolution = 4, speed = 1, offset = Vector2(0, 0), noise_amount = 0, color = Color(1, 1, 1, 1)):
 	if abs(noise_amount) < 0.5: noise_amount = 0.5
