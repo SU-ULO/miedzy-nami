@@ -5,7 +5,7 @@ class_name Matchmaking_Connection
 var wsc := WebSocketClient.new()
 var world := preload('res://scenes/school.tscn').instance()
 
-var matchmaking_url: String = 'wss://gaming.rakbook.pl/miedzy-nami/signaling'
+var matchmaking_url: String = ''
 
 signal matchmaking_connected()
 signal matchmaking_disconnected()
@@ -41,7 +41,7 @@ func end():
 		wsc.disconnect_from_host()
 	emit_signal("matchmaking_disconnected")
 
-func _closed_request_ws(code: int, reason: String):
+func _closed_request_ws(_code: int, _reason: String):
 	end()
 
 func _closed_ws(_was_clean = false):

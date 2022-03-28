@@ -8,9 +8,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 310.0
@@ -23,7 +20,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 1228.0
-margin_bottom = 1647.0
+margin_bottom = 1543.0
 custom_constants/separation = 25
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,28 +42,10 @@ text = "liczba impostorów"
 margin_left = 700.0
 margin_right = 1228.0
 
-[node name="voice-chat" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_left = 0.0
+[node name="comfirm-ejects" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 104.0
 margin_right = 1228.0
-margin_bottom = 183.0
-min_val = 1
-non_numeric_values = true
-values = [ "wyłączony", "zebrania", "zawsze", "dystans" ]
-
-[node name="Label2" parent="ScrollContainer/VBoxContainer/voice-chat" index="0"]
-margin_left = 0.0
-margin_right = 650.0
-text = "czat głosowy"
-
-[node name="C" parent="ScrollContainer/VBoxContainer/voice-chat" index="1"]
-margin_left = 700.0
-margin_right = 1228.0
-
-[node name="comfirm-ejects" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 208.0
-margin_right = 1228.0
-margin_bottom = 291.0
+margin_bottom = 187.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/comfirm-ejects" index="0"]
@@ -75,9 +54,9 @@ text = "potwierdź wyrzucenie"
 
 [node name="meeting-count" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 316.0
+margin_top = 212.0
 margin_right = 1228.0
-margin_bottom = 395.0
+margin_bottom = 291.0
 default_value = 1
 min_val = 1
 max_val = 9
@@ -92,9 +71,9 @@ margin_left = 700.0
 margin_right = 1228.0
 
 [node name="anonnymous-votes" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 420.0
+margin_top = 316.0
 margin_right = 1228.0
-margin_bottom = 503.0
+margin_bottom = 399.0
 default_value = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/anonnymous-votes" index="0"]
@@ -103,9 +82,9 @@ text = "anonimowe głosy"
 
 [node name="emergency-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 528.0
+margin_top = 424.0
 margin_right = 1228.0
-margin_bottom = 607.0
+margin_bottom = 503.0
 prefix = "s"
 default_value = 15
 step = 15
@@ -122,9 +101,9 @@ margin_right = 1228.0
 
 [node name="discussion-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 632.0
+margin_top = 528.0
 margin_right = 1228.0
-margin_bottom = 711.0
+margin_bottom = 607.0
 prefix = "s"
 default_value = 15
 step = 15
@@ -141,9 +120,9 @@ margin_right = 1228.0
 
 [node name="voting-time" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 736.0
+margin_top = 632.0
 margin_right = 1228.0
-margin_bottom = 815.0
+margin_bottom = 711.0
 prefix = "s"
 default_value = 120
 step = 15
@@ -160,9 +139,9 @@ margin_right = 1228.0
 
 [node name="player-speed" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 840.0
+margin_top = 736.0
 margin_right = 1228.0
-margin_bottom = 919.0
+margin_bottom = 815.0
 prefix = "x"
 default_value = 4
 min_val = 2
@@ -180,9 +159,9 @@ margin_right = 1228.0
 
 [node name="crewmate-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 944.0
+margin_top = 840.0
 margin_right = 1228.0
-margin_bottom = 1023.0
+margin_bottom = 919.0
 prefix = "x"
 default_value = 4
 min_val = 1
@@ -200,9 +179,9 @@ margin_right = 1228.0
 
 [node name="impostor-vision" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1048.0
+margin_top = 944.0
 margin_right = 1228.0
-margin_bottom = 1127.0
+margin_bottom = 1023.0
 prefix = "x"
 default_value = 6
 min_val = 1
@@ -220,9 +199,9 @@ margin_right = 1228.0
 
 [node name="kill-cooldown" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1152.0
+margin_top = 1048.0
 margin_right = 1228.0
-margin_bottom = 1231.0
+margin_bottom = 1127.0
 prefix = "s"
 default_value = 90
 step = 5
@@ -241,9 +220,9 @@ margin_right = 1228.0
 
 [node name="kill-distance" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1256.0
+margin_top = 1152.0
 margin_right = 1228.0
-margin_bottom = 1335.0
+margin_bottom = 1231.0
 default_value = 1
 non_numeric_values = true
 values = [ "mały", "średni", "duży" ]
@@ -259,9 +238,9 @@ margin_right = 1228.0
 
 [node name="taskbar-updates" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1360.0
+margin_top = 1256.0
 margin_right = 1228.0
-margin_bottom = 1439.0
+margin_bottom = 1335.0
 default_value = 1
 non_numeric_values = true
 values = [ "nigdy", "zebrania", "zawsze" ]
@@ -277,9 +256,9 @@ margin_right = 1228.0
 
 [node name="long-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1464.0
+margin_top = 1360.0
 margin_right = 1228.0
-margin_bottom = 1543.0
+margin_bottom = 1439.0
 default_value = 1
 max_val = 3
 
@@ -294,9 +273,9 @@ margin_right = 1228.0
 
 [node name="short-tasks" parent="ScrollContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 1568.0
+margin_top = 1464.0
 margin_right = 1228.0
-margin_bottom = 1647.0
+margin_bottom = 1543.0
 default_value = 3
 max_val = 5
 
@@ -310,33 +289,17 @@ margin_left = 700.0
 margin_right = 1228.0
 
 [editable path="ScrollContainer/VBoxContainer/impostor-count"]
-
-[editable path="ScrollContainer/VBoxContainer/voice-chat"]
-
 [editable path="ScrollContainer/VBoxContainer/comfirm-ejects"]
-
 [editable path="ScrollContainer/VBoxContainer/meeting-count"]
-
 [editable path="ScrollContainer/VBoxContainer/anonnymous-votes"]
-
 [editable path="ScrollContainer/VBoxContainer/emergency-cooldown"]
-
 [editable path="ScrollContainer/VBoxContainer/discussion-time"]
-
 [editable path="ScrollContainer/VBoxContainer/voting-time"]
-
 [editable path="ScrollContainer/VBoxContainer/player-speed"]
-
 [editable path="ScrollContainer/VBoxContainer/crewmate-vision"]
-
 [editable path="ScrollContainer/VBoxContainer/impostor-vision"]
-
 [editable path="ScrollContainer/VBoxContainer/kill-cooldown"]
-
 [editable path="ScrollContainer/VBoxContainer/kill-distance"]
-
 [editable path="ScrollContainer/VBoxContainer/taskbar-updates"]
-
 [editable path="ScrollContainer/VBoxContainer/long-tasks"]
-
 [editable path="ScrollContainer/VBoxContainer/short-tasks"]

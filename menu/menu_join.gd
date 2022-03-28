@@ -35,6 +35,11 @@ func game_in_progress():
 	set_label("Gra trwa w tym pokoju, proszę czekać...")
 	set_button_visibility(true)
 
+func wrong_version():
+	set_label("Wersja gry na serwerze jest inna niż twoja")
+	joining_key=""
+	set_button_visibility(true)
+
 func join_error(reason: String):
 	if reason=="NO_SERVER":
 		no_server()
@@ -42,6 +47,8 @@ func join_error(reason: String):
 		room_full()
 	elif reason=="GAME_IN_PROGRESS":
 		game_in_progress()
+	elif reason=="WRONG_VERSION":
+		wrong_version()
 
 func _on_Button_pressed():
 	get_parent().open_roomlist()

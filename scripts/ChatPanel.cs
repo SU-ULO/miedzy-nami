@@ -87,3 +87,4 @@ public class ChatPanel : Control
 		}
 	}
 }
+

@@ -44,8 +44,6 @@ func leave_room():
 	else:
 		menu.open_main()
 		network_side = NONE
-	VoiceChat.own_id=-1
-	VoiceChat.clearpeers()
 
 func start_server(options):
 	if network_side != NONE:
@@ -67,8 +65,6 @@ func start_server(options):
 	add_child(network)
 	matchmaking.start()
 	network_side = SERVER
-	VoiceChat.own_id=0
-	VoiceChat.setwantstospeak(false)
 
 func start_client():
 	if network_side != NONE:
@@ -97,4 +93,3 @@ func join_server(key):
 		network.connect("joined_room", menu, "close_everything")
 		add_child(network)
 	matchmaking.join_server(key)
-	VoiceChat.setwantstospeak(false)

@@ -22,7 +22,6 @@ var currLook := LookConfiguration.new()
 var player_velocity = Vector2()
 var in_sight_range = []; var in_interaction_range = []
 
-var voice_range := []
 var in_sight := []
 var interactable := []
 var players_interactable := []
@@ -41,8 +40,6 @@ var assignedtasks := 0
 
 var dead_body := preload("res://entities/deadbody.tscn")
 var interacted := false # temporary fix
-
-var vc_volume := 0.0
 
 func generate_init_data() -> Dictionary:
 	return {"username": username,
@@ -247,17 +244,3 @@ func _on_KillArea_body_exited(body):
 		if players_interactable.has(body):
 				players_interactable.erase(body)
 				if debug_mode: print(body.get_name(), " removed from: players_interaction")
-
-func _on_VoiceArea_body_entered(body):
-	if body.is_in_group("players"):
-		if !voice_range.has(body):
-			voice_range.append(body)
-			if self == Globals.start.network.own_player:
-				Globals.start.network.apply_vc_settings()
-
-func _on_VoiceArea_body_exited(body):
-	if body.is_in_group("players"):
-		if voice_range.has(body):
-			voice_range.erase(body)
-			if Globals.start.network and self == Globals.start.network.own_player:
-				Globals.start.network.apply_vc_settings()

@@ -19,7 +19,6 @@ signal success
 
 func _init(conf: Dictionary):
 	config=conf
-	VoiceChat.webrtc=JSON.print(config["webrtc"])
 
 func _ready():
 	if peer.initialize(config["webrtc"])!=OK:

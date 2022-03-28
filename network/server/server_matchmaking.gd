@@ -65,7 +65,11 @@ func kick(id):
 	send_message("LEAVE:" + str(id))
 
 func server_hello():
-	send_message("SERVER:"+JSON.print({"hidden": serversettings.hidden, "name": serversettings.name}))
+	send_message("SERVER:"+JSON.print({
+		"hidden": serversettings.hidden,
+		"name": serversettings.name,
+		"game_version": Globals.version
+		}))
 
 func refresh_servers():
 	send_message("LIST")

@@ -223,9 +223,6 @@ func _process(delta):
 	check_line_of_sight()
 	check_interaction()
 	update_arrows()
-	if network.gamesettings["voice-chat"] == 3 and \
-		network.gamestate == network.STARTED or network.gamestate == network.LOBBY:
-		calculate_volume()
 
 func scale_sight_range(delta):
 	var area = $SightArea/AreaShape.shape
@@ -392,17 +389,6 @@ func _on_DeathTimer_timeout():
 	if not is_in_group("impostors"):
 		self.Interact(self)
 
-func players_in_voice_range():
-	var to_return = []
-	for i in voice_range:
-		if i.is_in_group("players"):
-			to_return.append(i)
-	return to_return
-
-func calculate_volume():
-	for i in voice_range:
-		i.vc_volume = clamp(($VoiceArea/AreaShape.shape.radius - i.position.distance_to(position)) / $VoiceArea/AreaShape.shape.radius, 0, 1)
-		
 func show_start():
 	var popup = get_node("GUI/DeathMessage/Control")
 	if is_in_group("impostors"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -14,13 +14,9 @@
 [ext_resource path="res://textures/tick.png" type="Texture" id=13]
 [ext_resource path="res://menu/bees.gd" type="Script" id=14]
 [ext_resource path="res://menu/menu_join.gd" type="Script" id=16]
-[ext_resource path="res://scripts/setting.gd" type="Script" id=17]
-[ext_resource path="res://gui/podsceny/mic-mute-button.tscn" type="PackedScene" id=18]
 [ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://textures/arrow.png" type="Texture" id=20]
 [ext_resource path="res://gui/menubutton.tres" type="StyleBox" id=21]
 [ext_resource path="res://gui/invisiblebutton.tres" type="StyleBox" id=22]
-[ext_resource path="res://scripts/js/text_input.gd" type="Script" id=23]
 
 [sub_resource type="Animation" id=1]
 resource_name = "highlight"
@@ -144,34 +140,6 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="DynamicFont" id=12]
-size = 46
-font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
@@ -629,6 +597,11 @@ WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
 
+[sub_resource type="DynamicFont" id=21]
+size = 40
+use_filter = true
+font_data = ExtResource( 19 )
+
 [sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.843137, 0.831373, 0.760784, 1 )
 border_width_left = 16
@@ -652,11 +625,6 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-
-[sub_resource type="DynamicFont" id=21]
-size = 40
-use_filter = true
-font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
@@ -912,19 +880,14 @@ margin_top = 44.0
 margin_right = 540.861
 margin_bottom = 119.0
 theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 align = 1
 max_length = 16
 placeholder_text = "tu wpisz swój nick"
 placeholder_alpha = 0.5
 caret_blink = true
 caret_blink_speed = 0.5
-script = ExtResource( 23 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-text_id = "username"
 
 [node name="TextureRect" type="TextureRect" parent="Main/Username"]
 show_behind_parent = true
@@ -957,8 +920,8 @@ margin_top = 13.8341
 margin_right = 545.643
 margin_bottom = 88.8341
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.47451, 0.556863, 0.556863, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "DOŁĄCZ"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -980,8 +943,8 @@ margin_top = 13.8341
 margin_right = 659.827
 margin_bottom = 88.8341
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.47451, 0.556863, 0.556863, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "UTWÓRZ POKÓJ"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1003,8 +966,8 @@ margin_top = 16.9486
 margin_right = 539.025
 margin_bottom = 91.9486
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "OPCJE"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1026,8 +989,8 @@ margin_top = 16.9486
 margin_right = 564.061
 margin_bottom = 95.9486
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "CREDITS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1058,9 +1021,9 @@ margin_top = -142.5
 margin_right = 691.0
 margin_bottom = -63.5
 rect_scale = Vector2( 0.532555, 0.532555 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "URL serwera matchmakingowego:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1069,9 +1032,6 @@ __meta__ = {
 [node name="OptionsContainer" type="Control" parent="Options"]
 margin_right = 500.0
 margin_bottom = 24.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
 margin_left = -224.0
@@ -1080,8 +1040,8 @@ margin_right = 1015.0
 margin_bottom = 175.0
 rect_scale = Vector2( 0.720081, 0.720081 )
 theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.105882, 0.105882, 0.105882, 1 )
+custom_fonts/font = ExtResource( 8 )
 align = 1
 placeholder_text = "url"
 caret_blink = true
@@ -1135,178 +1095,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="setting" type="HBoxContainer" parent="Options"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -419.0
-margin_top = -36.5
-margin_right = 795.0
-margin_bottom = 42.5
-rect_scale = Vector2( 0.691037, 0.691037 )
-custom_constants/separation = 50
-alignment = 1
-script = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-non_numeric_values = true
-values = [ "push-to-talk", "otwarty" ]
-
-[node name="Label2" type="Label" parent="Options/setting"]
-margin_right = 636.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 630, 0 )
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.0745098, 0.0745098, 0.0745098, 1 )
-text = "aktywacja mikrofonu:"
-
-[node name="TextureRect" type="TextureRect" parent="Options/setting/Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 199.159
-margin_top = -128.224
-margin_right = 335.159
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="Options/setting/Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -244.407
-margin_top = -128.224
-margin_right = -44.4068
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="Options/setting/Label2"]
-show_behind_parent = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 646.159
-margin_top = -128.224
-margin_right = 782.159
-margin_bottom = 21.776
-rect_scale = Vector2( 1, 1.2 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="C" type="HBoxContainer" parent="Options/setting"]
-margin_left = 686.0
-margin_right = 1214.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 528, 79 )
-custom_constants/separation = 30
-alignment = 1
-
-[node name="minus" type="Control" parent="Options/setting/C"]
-margin_left = 34.0
-margin_right = 34.0
-margin_bottom = 79.0
-
-[node name="minus" type="TextureButton" parent="Options/setting/C/minus"]
-light_mask = -2147483647
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = 31.0
-margin_right = 32.0
-margin_bottom = 95.0
-rect_min_size = Vector2( 64, 64 )
-rect_rotation = -90.0
-texture_normal = ExtResource( 20 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="value" type="Label" parent="Options/setting/C"]
-margin_left = 64.0
-margin_right = 464.0
-margin_bottom = 79.0
-rect_min_size = Vector2( 400, 0 )
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="plus" type="Control" parent="Options/setting/C"]
-margin_left = 494.0
-margin_right = 494.0
-margin_bottom = 79.0
-
-[node name="plus" type="TextureButton" parent="Options/setting/C/plus"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 32.0
-margin_top = -33.0
-margin_right = 96.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 64, 64 )
-rect_rotation = 90.0
-texture_normal = ExtResource( 20 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="mic-mute-button" parent="Options" instance=ExtResource( 18 )]
-margin_left = -158.067
-margin_top = 211.861
-margin_right = 353.933
-margin_bottom = 723.861
-rect_scale = Vector2( 0.219162, 0.219162 )
-
-[node name="AudioTest" type="Button" parent="Options"]
-margin_left = -37.0
-margin_top = 231.0
-margin_right = 827.0
-margin_bottom = 339.0
-rect_scale = Vector2( 0.773, 0.773 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/normal = ExtResource( 21 )
-
-[node name="Label" type="Label" parent="Options/AudioTest"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -333.0
-margin_top = -36.9127
-margin_right = 333.0
-margin_bottom = 42.0873
-mouse_filter = 1
-custom_fonts/font = SubResource( 12 )
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-text = "test mikrofonu (odsłuch)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="OptionsAcceptButton" type="Button" parent="Options"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1324,8 +1112,8 @@ custom_styles/normal = ExtResource( 21 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = SubResource( 16 )
 text = "ZATWIERDŹ"
 align = 1
 valign = 1
@@ -1354,8 +1142,8 @@ __meta__ = {
 margin_top = 39.0
 margin_right = 864.0
 margin_bottom = 118.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "UTWÓRZ POKÓJ"
 align = 1
 __meta__ = {
@@ -1379,8 +1167,8 @@ margin_left = 105.0
 margin_top = 2.0
 margin_right = 656.0
 margin_bottom = 81.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.223529, 0.223529, 0.223529, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "pokój niepubliczny:"
 
 [node name="ServerHiddenCheckBox" type="CheckBox" parent="Create/ServerSettingsContainer/ServerHidden"]
@@ -1401,8 +1189,8 @@ margin_left = 16.0
 margin_top = 10.0
 margin_right = 243.0
 margin_bottom = 89.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "nazwa: "
 
 [node name="ServerNameField" type="LineEdit" parent="Create/ServerSettingsContainer/ServerName"]
@@ -1411,17 +1199,15 @@ margin_right = 847.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 600, 99 )
 theme = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
-custom_styles/normal = SubResource( 20 )
-custom_fonts/font = SubResource( 21 )
 custom_colors/selection_color = Color( 0.388235, 0.368627, 0.368627, 1 )
 custom_colors/font_color = Color( 0.211765, 0.211765, 0.211765, 1 )
+custom_fonts/font = SubResource( 21 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
 align = 1
 max_length = 20
 placeholder_text = "wpisz nazwę"
 placeholder_alpha = 0.8
-script = ExtResource( 23 )
-text_id = "roomname"
 
 [node name="create" type="Button" parent="Create/ServerSettingsContainer"]
 margin_top = 190.0
@@ -1435,8 +1221,8 @@ custom_styles/normal = ExtResource( 21 )
 [node name="Label" type="Label" parent="Create/ServerSettingsContainer/create"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 24 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = SubResource( 24 )
 text = "Stwórz Pokój"
 align = 1
 valign = 1
@@ -1456,8 +1242,8 @@ custom_styles/normal = ExtResource( 21 )
 [node name="Label" type="Label" parent="Create/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = SubResource( 25 )
 text = "WYJDŹ"
 align = 1
 valign = 1
@@ -1496,18 +1282,16 @@ margin_right = 600.0
 margin_bottom = 111.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 4
-custom_styles/focus = SubResource( 27 )
-custom_styles/normal = SubResource( 28 )
-custom_fonts/font = ExtResource( 8 )
 custom_colors/cursor_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/normal = SubResource( 28 )
 align = 1
 max_length = 9
 expand_to_text_length = true
 placeholder_text = "wpisz kod"
 placeholder_alpha = 0.8
-script = ExtResource( 23 )
-text_id = "joinkey"
 
 [node name="Button" type="Button" parent="RoomList/JoinedKey/JoinedKeyField"]
 anchor_right = 1.0
@@ -1534,8 +1318,8 @@ custom_styles/normal = ExtResource( 21 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -1.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Wejdź"
 align = 1
 valign = 1
@@ -1547,8 +1331,8 @@ __meta__ = {
 margin_top = 143.0
 margin_right = 1732.0
 margin_bottom = 231.0
-custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 9 )
 text = "lub wybierz pokój z listy"
 align = 1
 valign = 1
@@ -1574,8 +1358,8 @@ margin_top = -39.5
 margin_right = 121.5
 margin_bottom = 39.5
 mouse_filter = 1
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Odśwież"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1594,8 +1378,8 @@ margin_bottom = 800.0
 [node name="Label" type="Label" parent="RoomList/lists/ver"]
 margin_right = 864.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "oficjalne:"
 align = 1
 
@@ -1616,8 +1400,8 @@ margin_bottom = 800.0
 [node name="Label" type="Label" parent="RoomList/lists/rest"]
 margin_right = 864.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "nieoficjalne:"
 align = 1
 
@@ -1658,8 +1442,8 @@ margin_left = -88.5
 margin_top = -39.5
 margin_right = 88.5
 margin_bottom = 39.5
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "WYJDŹ"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1687,9 +1471,9 @@ margin_right = 864.0
 margin_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Łączenie..."
 align = 1
 valign = 1
@@ -1708,8 +1492,8 @@ custom_styles/normal = ExtResource( 21 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_fonts/font = SubResource( 37 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = SubResource( 37 )
 text = "ANULUJ"
 align = 1
 valign = 1
@@ -1736,9 +1520,9 @@ margin_right = 1239.0
 margin_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Łączenie z serwerem matchmakingowym..."
 align = 1
 valign = 1
@@ -1771,9 +1555,9 @@ margin_left = -45.0474
 margin_top = -124.616
 margin_right = 754.952
 margin_bottom = -45.6161
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Gra stworzona przez:"
 align = 1
 __meta__ = {
@@ -1804,9 +1588,9 @@ rect_min_size = Vector2( 800, 450 )
 [node name="programistów" type="Label" parent="Credits/scale/content/left/fancy-label"]
 margin_right = 800.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "programistów"
 align = 1
 __meta__ = {
@@ -1832,9 +1616,9 @@ __meta__ = {
 margin_top = 83.0
 margin_right = 800.0
 margin_bottom = 408.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Mateusza Sobkowiaka
 Marcina Jabłońskiego
 Mikołaja Judę
@@ -1853,9 +1637,9 @@ rect_min_size = Vector2( 800, 450 )
 [node name="rysowników" type="Label" parent="Credits/scale/content/left/fancy-label2"]
 margin_right = 800.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "rysowników"
 align = 1
 __meta__ = {
@@ -1881,9 +1665,9 @@ __meta__ = {
 margin_top = 83.0
 margin_right = 800.0
 margin_bottom = 408.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Agatę Empel
 Annę Przedmojską
 Elizę Reinhold
@@ -1914,9 +1698,9 @@ __meta__ = {
 [node name="projektanta" type="Label" parent="Credits/scale/content/right/fancy-label3"]
 margin_right = 800.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "projektanta"
 align = 1
 __meta__ = {
@@ -1942,9 +1726,9 @@ __meta__ = {
 margin_top = 83.0
 margin_right = 800.0
 margin_bottom = 162.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Jakuba Niździńskiego"
 align = 1
 __meta__ = {
@@ -1963,9 +1747,9 @@ __meta__ = {
 [node name="pod-opieką" type="Label" parent="Credits/scale/content/right/fancy-label4"]
 margin_right = 800.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "pod opieką"
 align = 1
 __meta__ = {
@@ -1991,9 +1775,9 @@ __meta__ = {
 margin_top = 83.0
 margin_right = 800.0
 margin_bottom = 162.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "dr Anny Kwiatkowskiej"
 align = 1
 __meta__ = {
@@ -2012,9 +1796,9 @@ __meta__ = {
 [node name="z-inicjatywy" type="Label" parent="Credits/scale/content/right/fancy-label5"]
 margin_right = 800.0
 margin_bottom = 79.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "z inicjatywy"
 align = 1
 __meta__ = {
@@ -2040,9 +1824,9 @@ __meta__ = {
 margin_top = 83.0
 margin_right = 800.0
 margin_bottom = 162.0
-custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 0.219608, 0.219608, 0.219608, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "Samorządu Uczniowskiego
 Uniwersyteckiego Liceum
 Ogólnokształcącego"
@@ -2071,21 +1855,19 @@ __meta__ = {
 [node name="Label" type="Label" parent="Credits/exit"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = SubResource( 25 )
 text = "WYJDŹ"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
-[connection signal="pressed" from="Options/setting/C/minus/minus" to="Options/setting" method="_on_minus_pressed"]
-[connection signal="pressed" from="Options/setting/C/plus/plus" to="Options/setting" method="_on_plus_pressed"]
-[connection signal="pressed" from="Options/AudioTest" to="Options" method="_on_AudioTest_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Create/ServerSettingsContainer/create" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/exit" to="RoomList" method="_on_Exit_pressed"]

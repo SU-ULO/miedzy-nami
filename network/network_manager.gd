@@ -20,7 +20,6 @@ var server_key := ""
 
 var gamesettings := {
 	"impostor-count": 1,
-	"voice-chat": 0,
 	"comfirm-ejects": true,
 	"meeting-count": 1,
 	"anonnymous-votes": true,
@@ -130,11 +129,6 @@ func request_meeting(_dead: int):
 func start_meeting(_caller: int, _dead: int):
 	var rips = []
 	
-	#set volume to 1
-	if gamesettings["voice-chat"] == 3:
-		for i in player_characters.values():
-			i.vc_volume = 1.0
-	
 	#end sabotage
 	if own_player.currentSabotage == 4:
 		own_player.handle_end_sabotage(4)
@@ -218,7 +212,6 @@ func start_meeting(_caller: int, _dead: int):
 	own_player.get_node("GUI").add_to_canvas(gui, false)
 	
 	emit_signal("meeting_start")
-	apply_vc_settings()
 
 var votingwinnerid := -1
 
@@ -302,7 +295,6 @@ func end_meeting():
 	if own_player.is_in_group("impostors"): # set cooldown for impostor
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 		own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
-	apply_vc_settings()
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	if meeting_gui == null: return false
@@ -434,7 +426,6 @@ func game_start(params, taskstuff):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 	own_player.get_node("KillArea").scale = \
 		Vector2((gamesettings["kill-distance"] + 1)/2,(gamesettings["kill-distance"]+1)/2)
-	apply_vc_settings()
 	own_player.show_start()
 
 func request_cameras_enable(_on_off: bool):
@@ -460,37 +451,9 @@ func handle_game_settings(settings):
 	gamesettings = settings
 	apply_settings_to_player()
 
-func apply_vc_settings():
-	var vcs = gamesettings["voice-chat"]
-	
-	if vcs==0:
-		VoiceChat.setwantstospeak(false)
-		VoiceChat.forcemute(true)
-		VoiceChat.setallvolumes(0)
-	else:
-		VoiceChat.askforstream()
-	
-	if vcs==1:
-		if gamestate==LOBBY or gamestate==MEETING:
-			VoiceChat.forcemute(false)
-			VoiceChat.setallvolumes(1)
-		else:
-			VoiceChat.forcemute(true)
-			VoiceChat.setallvolumes(0)
-	elif vcs!=0:
-		VoiceChat.forcemute(false)
-	VoiceChat.setunmutepeers(calculate_muted_remotes())
-	
-	if own_player and vcs != 2:
-		if gamestate == MEETING or gamestate==LOBBY:
-			own_player.get_node("GUI").set_visibility("PC", "CommunicationButtons/chat", 1)
-		else:
-			own_player.get_node("GUI").set_visibility("PC", "CommunicationButtons/chat", 0)
-
 func apply_settings_to_player():
 	if own_player:
 		own_player.player_speed = own_player.default_speed * gamesettings["player-speed"]
-	apply_vc_settings()
 
 func request_color_change(_color: int):
 	pass
@@ -537,7 +500,6 @@ func end_game(crew_win: bool):
 	endscreen=end_screen
 	if own_player.currentSabotage != 0:
 		own_player.handle_end_sabotage(own_player.currentSabotage)
-	apply_vc_settings()
 
 func send_tasks_finished(_finished: int):
 	pass
@@ -545,11 +507,6 @@ func send_tasks_finished(_finished: int):
 var lasttasknum := 0
 func _process(_delta):
 	if own_player:
-		if gamesettings["voice-chat"]==3 and (gamestate==STARTED or gamestate==LOBBY):
-			for p in own_player.players_in_voice_range():
-				VoiceChat.setvolume(p.owner_id, p.vc_volume)
-		else:
-			VoiceChat.setallvolumes(1)
 		if Task.CheckAndClearAnyDirty():
 			var state_changes : Dictionary = {}
 			var started_changes: Dictionary = {}
@@ -579,47 +536,6 @@ func tasks_update(state, started, _id):
 	for i in started:
 		tasks[i].started = started[i]
 		tasks[i].local = true
-
-func send_vc_offer(_offer, _id: int):
-	pass
-
-func send_vc_answer(_answer, _id: int):
-	pass
-
-func send_vc_candidate(_candidate, _id: int):
-	pass
-
-func send_vc_speaking(_speaking: bool):
-	pass
-
-func _ready():
-# warning-ignore:return_value_discarded
-	VoiceChat.connect("offer", self, "send_vc_offer")
-# warning-ignore:return_value_discarded
-	VoiceChat.connect("answer", self, "send_vc_answer")
-# warning-ignore:return_value_discarded
-	VoiceChat.connect("candidate", self, "send_vc_candidate")
-# warning-ignore:return_value_discarded
-	VoiceChat.connect("speaking", self, "send_vc_speaking")
-	VoiceChat.update_vc_mode()
-
-func calculate_muted_remotes()->int:
-	if !own_player: return 0
-	var vcs = gamesettings["voice-chat"]
-	if (((gamestate==LOBBY and vcs!=3) or gamestate==MEETING) and (vcs!=0)) or \
-	(gamestate==STARTED and vcs==2):
-		var out:=0
-		for i in player_characters:
-			if own_player.dead or !player_characters[i].dead:
-				out|=1<<i
-		return out
-	elif gamestate==STARTED or gamestate==LOBBY and vcs == 3:
-		var out := 0
-		for p in own_player.players_in_voice_range():
-			if own_player.dead or !p.dead:
-				out|=1<<p.owner_id
-		return out
-	return 0
 
 func tasksync(done: int, all: int):
 	emit_signal("taskschange", done, all)

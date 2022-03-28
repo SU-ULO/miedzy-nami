@@ -104,8 +104,6 @@ config/icon="res://textures/dzdzownica.png"
 Globals="*res://globals.gd"
 Task="*res://scripts/tasks/Task.cs"
 TaskWithGUI="*res://scripts/tasks/TaskWithGUI.cs"
-VoiceChat="*res://network/vc/VoiceChat.gd"
-TouchscreenKeyboard="*res://scripts/js/touchscreenkeyboard.gd"
 
 [display]
 
@@ -116,7 +114,7 @@ window/stretch/aspect="keep"
 
 [gdnative]
 
-singletons=[  ]
+singletons=[ "res://webrtc/webrtc.tres" ]
 singletons_disabled=[  ]
 
 [importer_defaults]

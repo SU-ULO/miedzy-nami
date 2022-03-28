@@ -2,8 +2,7 @@ extends CanvasLayer
 
 var usersettings: Dictionary = {
 	"signaling_url": 'wss://miedzy-nami.rakbook.pl/signaling',
-	"username": "",
-	"vc-mode": 0
+	"username": ""
 }
 
 var serversettings: Dictionary = {
@@ -39,7 +38,6 @@ func open_logging_in():
 
 func open_options():
 	close_everything()
-	VoiceChat.askforstream()
 	var optionsnode=$"Options"
 	optionsnode.get_settings()
 	optionsnode.visible=true

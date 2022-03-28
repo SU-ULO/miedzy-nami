@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://textures/menubackground.png" type="Texture" id=1]
 [ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=2]
 [ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fonts/PottaOne-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://gui/menumenu.gd" type="Script" id=5]
-[ext_resource path="res://gui/podsceny/setting.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -45,10 +48,6 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-
-[sub_resource type="DynamicFont" id=5]
-size = 32
-font_data = ExtResource( 4 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.733333, 0.733333, 0.733333, 1 )
@@ -91,9 +90,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BG" type="TextureRect" parent="."]
 margin_left = 518.0
@@ -116,19 +112,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="voice-chat" parent="main" instance=ExtResource( 6 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 558.0
-margin_top = 221.5
-margin_right = 1836.0
-margin_bottom = 300.5
-rect_scale = Vector2( 0.6, 0.6 )
-non_numeric_values = true
-values = [ "push-to-talk", "otwarty" ]
-
 [node name="HBoxContainer" type="HBoxContainer" parent="main"]
 margin_left = 599.363
 margin_top = 307.066
@@ -142,8 +125,8 @@ __meta__ = {
 margin_top = 16.0
 margin_right = 412.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "skróty klawiszowe:      "
 
 [node name="Button" type="Button" parent="main/HBoxContainer"]
@@ -151,10 +134,10 @@ margin_left = 416.0
 margin_right = 716.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 300, 80 )
+custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
 text = "sprawdź"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -215,8 +198,8 @@ margin_left = 599.675
 margin_top = 387.119
 margin_right = 729.675
 margin_bottom = 435.119
-custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "wyrzuć:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -237,8 +220,8 @@ margin_left = -167.0
 margin_top = 187.0
 margin_right = 167.0
 margin_bottom = 235.0
-custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
 text = "skróty klawiszowe:"
 
 [node name="list" type="Label" parent="keybinds"]
@@ -246,8 +229,8 @@ margin_left = 601.0
 margin_top = 239.0
 margin_right = 1028.0
 margin_bottom = 650.0
-custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
 text = "wszyscy:
  chodzenie: W/S/A/D
  użyj: SPACJA
@@ -266,8 +249,8 @@ margin_left = 1060.0
 margin_top = 241.0
 margin_right = 1361.0
 margin_bottom = 663.0
-custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
 text = "impostor:
  uśpij: Q
  sabotaże: Z
@@ -290,14 +273,15 @@ margin_top = 201.0
 margin_right = 150.0
 margin_bottom = 281.0
 rect_min_size = Vector2( 300, 80 )
+custom_fonts/font = SubResource( 5 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
 text = "powrót"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="C" to="." method="_close"]
 [connection signal="pressed" from="main/HBoxContainer/Button" to="." method="_on_keybinds_pressed"]
 [connection signal="pressed" from="main/E" to="." method="_exit"]

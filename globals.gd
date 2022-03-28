@@ -2,6 +2,8 @@ extends Node
 
 var start
 
+var version: String = 'native 0.0.1'
+
 func read_file(file: String):
 	var f := File.new()
 	if f.open(file, File.READ) != OK:

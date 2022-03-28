@@ -66,7 +66,9 @@ func parse_matchmaking(msg:  String):
 		return
 
 func client_hello():
-	send_message("CLIENT:"+JSON.print({"username": clientsettings.username}))
+	send_message("CLIENT:"+JSON.print({
+		"username": clientsettings.username, "game_version": Globals.version
+		}))
 
 func refresh_servers():
 	send_message("LIST")
