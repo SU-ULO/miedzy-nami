@@ -34,12 +34,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -53,12 +53,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -72,12 +72,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -91,12 +91,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -110,12 +110,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -129,12 +129,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -146,14 +146,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -167,12 +167,12 @@ resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "front",
+"name": "back",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "back",
+"name": "front",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -292,6 +292,9 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
+
+[node name="AnimatedSprite" parent="." index="7"]
+frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
@@ -498,9 +501,6 @@ rect_scale = Vector2( 0.15403, 0.15403 )
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = ExtResource( 15 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="kill" type="TextureButton" parent="GUI/PlayerCanvas/playerGUI/ImpostorButtons" index="1"]
 margin_left = 1214.44
@@ -561,9 +561,6 @@ rect_scale = Vector2( 0.103651, 0.103651 )
 focus_mode = 0
 enabled_focus_mode = 0
 texture_normal = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ActionButtons" type="Control" parent="GUI/PlayerCanvas/playerGUI" index="5"]
 margin_left = 0.794006

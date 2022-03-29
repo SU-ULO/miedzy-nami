@@ -16,7 +16,7 @@ func enter(body):
 	get_tree().get_root().get_node("Start").network.request_set_invisible(body.owner_id, 0)
 	# also hitbox to prevent player being detected
 
-	# also here probably should be animation of entering in some if
+	# also here probably should be animation of entering
 	
 	var instance; var iter = 0; var angle
 	# for every connected vent instance an arrow pointing to it
