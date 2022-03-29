@@ -1,6 +1,6 @@
 extends Control
 
-var passwords = ["ulo2021", "ULOulo", "uloULO", "ULO21", "ulo21", "21ULO"]
+var passwords = ["ulo2023", "ULOulo", "uloULO", "ULO23", "ulo23", "23ULO"]
 var correct
 
 var buffer = ""

@@ -12,9 +12,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 3.8147e-06
@@ -57,7 +54,7 @@ margin_right = 810.0
 margin_bottom = 262.0
 texture_normal = ExtResource( 5 )
 
-[node name="1" type="TextureButton" parent="przyciski"]
+[node name="3" type="TextureButton" parent="przyciski"]
 margin_top = 274.0
 margin_right = 262.0
 margin_bottom = 536.0
@@ -114,8 +111,8 @@ __meta__ = {
 [node name="u" type="Label" parent="GridContainer2"]
 margin_right = 39.0
 margin_bottom = 88.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "u"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,8 +122,8 @@ __meta__ = {
 margin_left = 147.0
 margin_right = 198.0
 margin_bottom = 88.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "O"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -136,20 +133,20 @@ __meta__ = {
 margin_left = 306.0
 margin_right = 345.0
 margin_bottom = 88.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="1" type="Label" parent="GridContainer2"]
+[node name="3" type="Label" parent="GridContainer2"]
 margin_top = 144.0
 margin_right = 39.0
 margin_bottom = 232.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "1"
+custom_fonts/font = ExtResource( 3 )
+text = "3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -159,8 +156,8 @@ margin_left = 147.0
 margin_top = 144.0
 margin_right = 198.0
 margin_bottom = 232.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "L"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -171,8 +168,8 @@ margin_left = 306.0
 margin_top = 144.0
 margin_right = 345.0
 margin_bottom = 232.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -182,8 +179,8 @@ __meta__ = {
 margin_top = 288.0
 margin_right = 39.0
 margin_bottom = 376.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "o"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -194,8 +191,8 @@ margin_left = 147.0
 margin_top = 288.0
 margin_right = 198.0
 margin_bottom = 376.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "U"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -206,8 +203,8 @@ margin_left = 306.0
 margin_top = 288.0
 margin_right = 345.0
 margin_bottom = 376.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "l"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -235,8 +232,8 @@ margin_left = 21.3816
 margin_top = 18.7089
 margin_right = 61.3816
 margin_bottom = 93.7089
-custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.556863, 0.333333, 0.694118, 1 )
+custom_fonts/font = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -253,12 +250,13 @@ margin_top = -6.29959
 margin_right = 76.7094
 margin_bottom = 168.7
 rect_scale = Vector2( 0.690387, 0.690387 )
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.146
+
 [connection signal="pressed" from="nie" to="." method="_on_nie_pressed"]
