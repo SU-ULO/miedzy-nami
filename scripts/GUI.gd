@@ -15,14 +15,18 @@ var isInstance:bool = true
 # these functions modify interactionCanvas only
 # because player GUI should be persistent
 
-func clear_canvas(): # removes all canvas children
+
+# removes all canvas children
+# essentially resets GUI to default state
+
+func clear_canvas():
 	for child in IC.get_children():
 		print("removing: ", child.name)
 		child.queue_free()
 	currentGUI = null
 	set_visibility("PC", "playerGUI", 1)
-	set_visibility("PC", "playerGUI", 1)
 	set_visibility("CB", "B", 0)
+	toggle_playerGUI_partial(1)
 
 func canvas_empty():
 	if IC.get_child_count() > 0:
@@ -81,13 +85,7 @@ func replace_on_canvas(gui:Node, instance = true):
 				currentGUI = null
 				isInstance = true
 			
-			set_visibility("PC", "playerGUI/ActionButtons", 1)
-			set_visibility("PC", "playerGUI/TaskPanel", 1)
-			set_visibility("PC", "playerGUI/gamecode", 1)
-			
-			if player.is_in_group("impostors"):
-				set_visibility("PC", "playerGUI/ImpostorButtons", 1)
-				set_visibility("PC", "playerGUI/ActionButtons/report", 1)
+			toggle_playerGUI_partial(1)
 			return false
 			
 		elif !isInstance:
@@ -104,13 +102,7 @@ func replace_on_canvas(gui:Node, instance = true):
 	elif !add(gui):
 		return false
 	
-	set_visibility("PC", "playerGUI/ActionButtons", 0)
-	set_visibility("PC", "playerGUI/TaskPanel", 0)
-	set_visibility("PC", "playerGUI/gamecode", 0)
-		
-	if player.is_in_group("impostors"):
-		set_visibility("PC", "playerGUI/ImpostorButtons", 0)
-		set_visibility("PC", "playerGUI/ActionButtons/report", 0)
+	toggle_playerGUI_partial(0)
 	return true
 
 # this function work with all GUI canvases
@@ -144,3 +136,12 @@ func is_on_canvas(gui :Node = null):
 		if currentGUI.name == gui.name:
 			return true
 	return false
+
+func toggle_playerGUI_partial(state: bool):
+	set_visibility("PC", "playerGUI/ActionButtons", state)
+	set_visibility("PC", "playerGUI/TaskPanel", state)
+	set_visibility("PC", "playerGUI/gamecode", state)
+		
+	if player.is_in_group("impostors"):
+		set_visibility("PC", "playerGUI/ImpostorButtons", state)
+		set_visibility("PC", "playerGUI/ActionButtons/report", state)

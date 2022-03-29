@@ -233,6 +233,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "wszyscy:
  chodzenie: W/S/A/D
+ lub strzałki
  użyj: SPACJA
  zgłoś: E
  mapa: M
@@ -257,8 +258,9 @@ text = "impostor:
  wentylacja:
   - wyjdź: ESC
   - następny: A
-  - poprzedni: S
-  - przejdź: W"
+  - poprzedni: D 
+  - przejdź: W
+    lub strzałki"
 __meta__ = {
 "_edit_use_anchors_": false
 }

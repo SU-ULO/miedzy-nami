@@ -198,6 +198,7 @@ func handle_sabotage(type, enabled):
 		$TaskPanel/VBoxContainer/sabotage.visible = false
 		comms = false
 	updateTaskList()
+
 func progress_update(done_n, all_n):
 	done = done_n
 	all = all_n

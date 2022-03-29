@@ -387,9 +387,6 @@ margin_right = 9672.0
 margin_bottom = 23015.0
 mouse_filter = 2
 color = Color( 0.388235, 0.360784, 0.482353, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Mapa" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1.63184, 1.00171 )
@@ -513,7 +510,7 @@ link = [ NodePath("../vent2"), NodePath("../vent3") ]
 [node name="vent2" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( -1216, 3234.23 )
 scale = Vector2( 0.76035, 0.76035 )
-link = [ NodePath("../vent1"), NodePath("../vent3") ]
+link = [ NodePath("../vent3"), NodePath("../vent1") ]
 
 [node name="vent3" parent="Mapa" instance=ExtResource( 10 )]
 position = Vector2( 3238.42, -297.501 )
@@ -1224,5 +1221,4 @@ polygon = PoolVector2Array( -5650.45, 4435.63, 5346.48, 4639.28, 5640.63, 317.43
 script = ExtResource( 69 )
 
 [editable path="Mapa/camera2"]
-
 [editable path="Mapa/camera4"]

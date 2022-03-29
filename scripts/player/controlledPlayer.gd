@@ -347,7 +347,9 @@ func ui_canceled():
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	showMyTasks()
 	if currentInteraction == null and network.gamestate != network.MEETING:
-		if get_node("GUI/PlayerCanvas/playerGUI/TopButtons/settings").visible:
+		if !get_node("GUI").canvas_empty():
+			get_node("GUI").clear_canvas()
+		elif get_node("GUI/PlayerCanvas/playerGUI/TopButtons/settings").visible:
 			get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("settings")
 	elif currentInteraction != null:
 		currentInteraction.EndInteraction(self)
