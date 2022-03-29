@@ -19,6 +19,7 @@ func cameras_off(body):
 	if !disabled:
 		for lc in linkedcameras:
 			get_node(lc).get_node("Camera2D").current = 0
+			get_node(lc).get_node("Camera2D").set_custom_viewport(get_viewport())
 			get_node(lc).get_node("Light2D").visible = 0
 			# warning-ignore:return_value_discarded
 			get_node(lc).disconnect("camera_detection", body, "camera_visibility")
