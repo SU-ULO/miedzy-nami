@@ -53,10 +53,11 @@ public class ChatPanel : Control
 			}else if(data.ContainsKey("set")){
 				chat.Text = data["set"].ToString();
 			}
-		}
-		if(!this.Visible){
-			Node GUI = GetParent().GetParent();
-			GUI.Call("set_visibility", "PC", "CommunicationButtons/chat/new", 1);
+			
+			if(!this.Visible){
+				Node GUI = GetParent().GetParent();
+				GUI.Call("set_visibility", "PC", "CommunicationButtons/chat/new", 1);
+			}
 		}
 	}
 	
