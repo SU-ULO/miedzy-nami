@@ -346,8 +346,11 @@ func ui_report():
 func ui_canceled():
 	$GUI/PlayerCanvas/playerGUI.updateTaskList()
 	showMyTasks()
+	var chat = get_node("GUI/CloseButton/ChatPanel")
 	if currentInteraction == null and network.gamestate != network.MEETING:
-		if !get_node("GUI").canvas_empty():
+		if chat.visible:
+			get_node("GUI").replace_on_canvas(chat, false)
+		elif !get_node("GUI").canvas_empty():
 			get_node("GUI").clear_canvas()
 		elif get_node("GUI/PlayerCanvas/playerGUI/TopButtons/settings").visible:
 			get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("settings")

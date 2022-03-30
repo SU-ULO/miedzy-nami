@@ -25,8 +25,9 @@ func clear_canvas():
 		child.queue_free()
 	currentGUI = null
 	set_visibility("PC", "playerGUI", 1)
-	set_visibility("CB", "B", 0)
 	toggle_playerGUI_partial(1)
+	set_visibility("PC", "CommunicationButtons", 1)
+	set_visibility("CB", "B", 0)
 
 func canvas_empty():
 	if IC.get_child_count() > 0:
@@ -62,6 +63,9 @@ func add_to_canvas(gui:Node = null, show_button:bool = true):
 	clear_canvas()
 	if add(gui):
 		set_visibility("PC", "playerGUI", 0)
+		var network = get_parent().network
+		if network.gamestate != network.MEETING:
+			set_visibility("PC", "CommunicationButtons", 0)
 		if show_button:
 			set_visibility("CB", "B", 1)
 		return true
@@ -75,7 +79,6 @@ func add_to_canvas(gui:Node = null, show_button:bool = true):
 # named show() and take one argument true/false
 
 func replace_on_canvas(gui:Node, instance = true):
-	
 	if currentGUI != null:
 		if currentGUI.name == gui.name:
 			if isInstance:
