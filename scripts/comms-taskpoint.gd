@@ -17,7 +17,7 @@ func check_off(type):
 			remove_from_group("interactable")
 		if gui:
 			if bodyxx:
-				bodyxx.ui_cancled()
+				bodyxx.ui_canceled()
 
 func Interact(body):
 	bodyxx = body

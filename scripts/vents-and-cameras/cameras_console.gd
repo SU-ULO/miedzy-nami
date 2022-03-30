@@ -16,15 +16,16 @@ func _ready():
 	self.add_to_group("cameras")
 
 func cameras_off(body):
-	if !disabled:
 		for lc in linkedcameras:
 			get_node(lc).get_node("Camera2D").current = 0
 			get_node(lc).get_node("Camera2D").set_custom_viewport(get_viewport())
 			get_node(lc).get_node("Light2D").visible = 0
 			# warning-ignore:return_value_discarded
-			get_node(lc).disconnect("camera_detection", body, "camera_visibility")
+			if get_node(lc).is_connected("camera_detection", body, "camera_visibility"):
+				get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 			get_node(lc).get_node("Area2D").monitoring = 0
-		Globals.start.network.request_cameras_enable(false)
+		if !disabled:
+			Globals.start.network.request_cameras_enable(false)
 
 func cameras_on(body):
 	if camera_gui != null:
@@ -66,6 +67,6 @@ func EndInteraction(body):
 func refresh(sabotage):
 	if sabotage == 3 or sabotage == 0:
 		var body = Globals.start.network.own_player
-		disabled = Globals.start.network.comms_disabled
 		cameras_off(body)
+		disabled = Globals.start.network.comms_disabled
 		cameras_on(body)
