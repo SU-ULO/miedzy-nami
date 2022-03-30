@@ -6,7 +6,7 @@ var all_animated_sprites = []
 
 func _ready():
 	currLook = get_parent().currLook
-	all_animated_sprites = [$body, $"clothes-top", $face/eyes, $face/eyes, $"face/eyes/eye-bonus", $face/nose, $face/mouth, $spodnie, $wlosy/hair]
+	all_animated_sprites = [$body, $"clothes-top", $face/eyes, $face/eyes, $"face/eyes/eye-bonus", $face/nose, $face/mouth, $spodnie, $wlosy/hair, $face/acc]
 func stopWalk():
 	for i in all_animated_sprites:
 		i.playing = false
@@ -40,7 +40,10 @@ func loadLook():
 		$face/nose.frames.clear(i)
 		
 	for i in $face/mouth.frames.get_animation_names():
-		$face/mouth.frames.clear(i)	
+		$face/mouth.frames.clear(i)
+	
+	for i in $face/acc.frames.get_animation_names():
+		$face/acc.frames.clear(i)		
 		
 	for i in $wlosy/hair.frames.get_animation_names():
 		$wlosy/hair.frames.clear(i)	
@@ -82,6 +85,8 @@ func loadLook():
 	$face/nose.frames.add_frame("side", load(currLook.getNosePath(2)))
 	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
 	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
+	$face/acc.frames.add_frame("front", load(currLook.getAccPath()))
+	$face/acc.frames.add_frame("side", load(currLook.getAccPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
 	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
 	$wlosy/hair.frames.add_frame("back", load(currLook.getHairPath(3)))

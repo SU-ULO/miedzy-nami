@@ -20,6 +20,7 @@ func stopWalk():
 	$"face/eyes/eye-bonus".frame = 1
 	$face/nose.frame = 1
 	$face/mouth.frame = 1
+	$face/acc.frame = 1
 
 func startWalk():
 	$body.playing = true
@@ -29,10 +30,10 @@ func startWalk():
 	$"face/eyes/eye-bonus".playing = true
 	$face/nose.playing = true
 	$face/mouth.playing = true
+	$face/acc.playing = true
 
 func loadLook():
 	$spodnie.visible = currLook.hasBottom
-	print(currLook)
 	for i in $"clothes-top".frames.get_animation_names():
 		$"clothes-top".frames.clear(i)
 
@@ -49,7 +50,10 @@ func loadLook():
 		$face/nose.frames.clear(i)
 		
 	for i in $face/mouth.frames.get_animation_names():
-		$face/mouth.frames.clear(i)	
+		$face/mouth.frames.clear(i)
+	
+	for i in $face/acc.frames.get_animation_names():
+		$face/acc.frames.clear(i)		
 		
 	for i in $wlosy/hair.frames.get_animation_names():
 		$wlosy/hair.frames.clear(i)	
@@ -91,6 +95,8 @@ func loadLook():
 	$face/nose.frames.add_frame("side", load(currLook.getNosePath(2)))
 	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
 	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
+	$face/acc.frames.add_frame("front", load(currLook.getAccPath()))
+	$face/acc.frames.add_frame("side", load(currLook.getAccPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
 	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
 	$wlosy/hair.frames.add_frame("back", load(currLook.getHairPath(3)))
@@ -129,6 +135,8 @@ func lookRight():
 	$face/mouth.flip_h = false
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "side"
+	$wlosy/acc.flip_h = false
+	$wlosy/acc.animation  = "side"
 func lookLeft():
 	$"clothes-top".z_index = 0
 	$body.z_index = 0
@@ -151,6 +159,8 @@ func lookLeft():
 	$face/mouth.flip_h = true
 	$wlosy/hair.flip_h = true
 	$wlosy/hair.animation  = "side"
+	$wlosy/acc.flip_h = true
+	$wlosy/acc.animation  = "side"
 func lookFront():
 	$"clothes-top".z_index = 1
 	$body.z_index = 1
@@ -170,6 +180,8 @@ func lookFront():
 	$face/mouth.animation = "front"
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "front"
+	$wlosy/acc.flip_h = false
+	$wlosy/acc.animation  = "front"
 func lookBack():
 	$"clothes-top".z_index = 0
 	$body.z_index = 0
@@ -189,3 +201,5 @@ func lookBack():
 	$face/mouth.animation = "back"
 	$wlosy/hair.flip_h = false
 	$wlosy/hair.animation  = "back"
+	$wlosy/acc.flip_h = false
+	$wlosy/acc.animation  = "back"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/player/deadbody.gd" type="Script" id=2]
 [ext_resource path="res://scripts/player/animation-control-deadbody.gd" type="Script" id=3]
@@ -16,17 +16,17 @@ height = 0.0
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk side",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 } ]
 
@@ -34,27 +34,22 @@ animations = [ {
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "walk side",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "walk front",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
@@ -63,6 +58,11 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "walk front",
 "speed": 5.0
 } ]
 
@@ -138,6 +138,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [  ],
@@ -183,7 +201,6 @@ animation = "walk front"
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]
 visible = false
 material = ExtResource( 4 )
-scale = Vector2( 1, 1 )
 frames = SubResource( 4 )
 animation = "walk front"
 frame = 3
@@ -211,6 +228,11 @@ animation = "front"
 [node name="mouth" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 4 )
 frames = SubResource( 8 )
+animation = "front"
+
+[node name="acc" type="AnimatedSprite" parent="sprites/face"]
+material = ExtResource( 4 )
+frames = SubResource( 10 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="sprites"]

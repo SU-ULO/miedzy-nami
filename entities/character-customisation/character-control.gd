@@ -16,6 +16,8 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$"body-parts-control/mouth-control".connect("changeMouth", self, "_mouth_Change")
 	# warning-ignore:return_value_discarded
+	$"body-parts-control/acc-control".connect("changeAcc", self, "_acc_Change")
+	# warning-ignore:return_value_discarded
 	$"body-parts-control/eye-control".connect("changeEye", self, "_eye_Change")
 	# warning-ignore:return_value_discarded
 	$"body-parts-control/hair-control".connect("changeHair", self, "_hair_Change")
@@ -38,6 +40,12 @@ func _hair_Change(name):
 	$"body-parts/hair".texture = load(currLook.getHairPath())
 	$"body-parts/hair".position.y = currLook.getHairPos()
 	
+func _acc_Change(name):
+	print(name)
+	currLook.acc = name
+	print(currLook.getAccPath())
+	$"body-parts/accessories".texture = load(currLook.getAccPath())
+
 func hideAll():
 	for i in $"body-parts-control".get_children():
 		i.visible = false
@@ -105,3 +113,4 @@ func refresh():
 	$"body-parts/nose".texture = load(currLook.getNosePath())
 	$"body-parts/skin".texture = load(currLook.getSkinPath())
 	$"body-parts/body".texture = load(currLook.getBodyPath(4))
+	$"body-parts/accessories".texture = load(currLook.getAccPath())

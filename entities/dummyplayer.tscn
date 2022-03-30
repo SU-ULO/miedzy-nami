@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
@@ -136,6 +136,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=11]
 resource_local_to_scene = true
 animations = [ {
@@ -248,6 +266,11 @@ animation = "front"
 [node name="mouth" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
 frames = SubResource( 10 )
+animation = "front"
+
+[node name="acc" type="AnimatedSprite" parent="sprites/face"]
+material = ExtResource( 9 )
+frames = SubResource( 14 )
 animation = "front"
 
 [node name="spodnie" type="AnimatedSprite" parent="sprites"]

@@ -11,6 +11,7 @@ var hair := "afro"
 var hairColor := 1
 var hasBottom := 0
 var topClothes := "dress"
+var acc := "acc0" # nothing
 
 const hairPos := {"Velma long hair": 384,
 	"Velma short hair":266,
@@ -96,6 +97,10 @@ func getTopClotes(frame, color):
 	#frame 4 means front
 	return "res://textures/character/clothes/"+ topClothes + "/frame" + str(frame) + "/" + topClothes + str(color) + ".png"
 
+func getAccPath(frame=1):
+	return "res://textures/character/accessories/frame" + str(frame) + "/" + acc + ".png"
+
+
 func get_look():
 	var clothes_dict = {}
 	clothes_dict["skin"] = skin
@@ -107,6 +112,7 @@ func get_look():
 	clothes_dict["hairColor"] = hairColor
 	clothes_dict["hasBottom"] = hasBottom
 	clothes_dict["topClothes"] = topClothes
+	clothes_dict["acc"] = acc
 	return clothes_dict
 	
 func set_look(clothes_dict):
@@ -119,3 +125,4 @@ func set_look(clothes_dict):
 	hairColor = clothes_dict["hairColor"]
 	hasBottom = clothes_dict["hasBottom"]
 	topClothes = clothes_dict["topClothes"]
+	acc = clothes_dict["acc"]
