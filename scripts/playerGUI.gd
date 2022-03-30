@@ -82,7 +82,7 @@ func checkKillability():
 	return player.players_interactable.size() > 0
 
 func _on_gui_button_pressed(button_name):
-	if button_name == "sabotage":
+	if button_name == "sabotage" and ((player.currentInteraction != null and !player.currentInteraction.is_in_group("vents")) or player.currentInteraction == null):
 		var instance = sabotagemap["gui_res"].instance()
 		instance.name = sabotagemap["gui_name"]
 		if GUI.replace_on_canvas(instance):
