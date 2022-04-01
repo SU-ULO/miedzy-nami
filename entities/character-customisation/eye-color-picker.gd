@@ -10,3 +10,7 @@ func _ready():
 func _on_eye_color_button_pressed(name):
 	emit_signal("changeEyeColor", name)
 	
+func get_random():
+	var x = $GridContainer.get_children()
+	x.shuffle()
+	emit_signal("changeEyeColor", x[0].name)

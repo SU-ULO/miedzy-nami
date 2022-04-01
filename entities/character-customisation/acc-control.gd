@@ -9,4 +9,8 @@ func _ready():
 
 func _on_acc_button_pressed(name):
 	emit_signal("changeAcc", name)
-	
+
+func get_random():
+	var x = $GridContainer.get_children()
+	x.shuffle()
+	emit_signal("changeAcc", x[0].name)

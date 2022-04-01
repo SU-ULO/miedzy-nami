@@ -10,3 +10,8 @@ func _ready():
 
 func _on_nose_button_pressed(name):
 	emit_signal("changeMouth", name)
+
+func get_random():
+	var x = $GridContainer.get_children()
+	x.shuffle()
+	emit_signal("changeMouth", x[0].name)

@@ -30,3 +30,9 @@ func _ready():
 	
 func _on_skin_button_pressed(number):
 	emit_signal("changeSkin", number)
+	
+func get_random():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	emit_signal("changeSkin", String(rng.randi() % 12 + 1))
+

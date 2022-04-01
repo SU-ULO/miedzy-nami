@@ -114,3 +114,9 @@ func refresh():
 	$"body-parts/skin".texture = load(currLook.getSkinPath())
 	$"body-parts/body".texture = load(currLook.getBodyPath(4))
 	$"body-parts/accessories".texture = load(currLook.getAccPath())
+
+func set_random():
+	for i in $"body-parts-control".get_children():
+		i.get_random()
+	get_node("hair-color").get_random()
+	get_node("eye-color").get_random()

@@ -143,13 +143,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="accessories" type="Sprite" parent="body-parts"]
-position = Vector2( 284.245, 270.09 )
-scale = Vector2( 1.03509, 1.03509 )
-
 [node name="hair" type="Sprite" parent="body-parts"]
 position = Vector2( 289.152, 241.063 )
 texture = ExtResource( 12 )
+
+[node name="accessories" type="Sprite" parent="body-parts"]
+position = Vector2( 284.245, 270.09 )
+scale = Vector2( 1.03509, 1.03509 )
 
 [node name="body" type="Sprite" parent="body-parts"]
 position = Vector2( 289.455, 698.653 )
@@ -237,6 +237,14 @@ margin_bottom = 722.0
 custom_fonts/font = ExtResource( 18 )
 text = "akcesoria"
 
+[node name="random" type="Button" parent="."]
+margin_left = 790.0
+margin_top = 934.0
+margin_right = 926.0
+margin_bottom = 1000.0
+custom_fonts/font = ExtResource( 18 )
+text = "stwórz losowe"
+
 [connection signal="pressed" from="skin_button" to="." method="_show_Menu" binds= [ "skin" ]]
 [connection signal="pressed" from="nose_button" to="." method="_show_Menu" binds= [ "nose" ]]
 [connection signal="pressed" from="mouth_button" to="." method="_show_Menu" binds= [ "mouth" ]]
@@ -244,3 +252,4 @@ text = "akcesoria"
 [connection signal="pressed" from="hair_button" to="." method="_show_Menu" binds= [ "hair" ]]
 [connection signal="pressed" from="clothes_button" to="." method="_show_Menu" binds= [ "clothes" ]]
 [connection signal="pressed" from="acc_button" to="." method="_show_Menu" binds= [ "acc" ]]
+[connection signal="pressed" from="random" to="." method="set_random"]

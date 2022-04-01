@@ -10,3 +10,8 @@ func _ready():
 
 func _on_clothes_button_pressed(name):
 	emit_signal("changeClothes", name)
+
+func get_random():
+	var x = $GridContainer.get_children()
+	x.shuffle()
+	emit_signal("changeClothes", x[0].name)

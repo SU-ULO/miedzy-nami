@@ -10,3 +10,7 @@ func _ready():
 func _on_hair_color_button_pressed(name):
 	emit_signal("changeHairColor", name)
 	
+func get_random():
+	var x = $GridContainer.get_children()
+	x.shuffle()
+	emit_signal("changeHairColor", x[0].name)
