@@ -297,7 +297,8 @@ func check_interaction():
 							interactable.push_back(item);
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					elif item.is_in_group("vents"):
-						if self.is_in_group("impostors"):
+						if self.is_in_group("impostors") and \
+						not self.is_in_group("rip"):
 							interactable.push_back(item);
 							if debug_mode: print(item.get_name(), " added to: interactable")
 					elif item.is_in_group("sabotage"):
