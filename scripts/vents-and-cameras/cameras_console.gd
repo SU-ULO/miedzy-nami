@@ -24,7 +24,7 @@ func cameras_off(body):
 			if get_node(lc).is_connected("camera_detection", body, "camera_visibility"):
 				get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 			get_node(lc).get_node("Area2D").monitoring = 0
-		if !disabled:
+		if !disabled && !body.is_in_group("rip"):
 			Globals.start.network.request_cameras_enable(false)
 
 func cameras_on(body):
@@ -42,7 +42,8 @@ func cameras_on(body):
 			camera.get_node("Area2D").monitoring = 1
 			camera.detect()
 			iter += 1
-		Globals.start.network.request_cameras_enable(true)
+		if !body.is_in_group("rip"):
+			Globals.start.network.request_cameras_enable(true)
 	
 	for vp in camera_gui.viewports:
 		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
