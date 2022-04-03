@@ -15,7 +15,7 @@ dest_files=[ "res://.import/kamien_4.png-e80d32ef014cb69f129c69c4009353af.stex" 
 [params]
 
 compress/mode=1
-compress/lossy_quality=0.1
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=2
