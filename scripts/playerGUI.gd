@@ -12,6 +12,8 @@ var minimap = { "gui_res": load("res://gui/minimap.tscn"), "gui_name": "MiniMap"
 var sabotagemap = { "gui_res": load("res://gui/sabotagemap.tscn"), "gui_name": "SabotageMap" }
 var settings = { "gui_res": load("res://gui/menumenu.tscn"), "gui_name": "Settings" }
 
+var last_task_list = []
+
 var chat_open = false
 
 func _ready():
@@ -30,6 +32,7 @@ func updateTaskList():
 		for i in player.localTaskList:
 			content += i.ToString() 
 			content += "\n"
+	print("updateing!")
 	$TaskPanel/VBoxContainer/tasklist.text = content
 
 func interactionGUIupdate():
@@ -56,6 +59,10 @@ func _process(_delta):
 	if player.currentSabotage == 4:
 		$TaskPanel/VBoxContainer/sabotage.text = "Idź spytać się czy są lekcje! (" + str(int(player.get_node("DeathTimer").get_time_left())) + "s)"
 	processGui()
+	if last_task_list != player.localTaskList:
+		last_task_list = player.localTaskList.duplicate()
+		print("oops")
+		updateTaskList()
 
 func checkUsage():
 	if player.interactable.size() == 0:
