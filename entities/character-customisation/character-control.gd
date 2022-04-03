@@ -53,6 +53,7 @@ func hideAll():
 func _show_Menu(menu):
 	hideAll()
 	get_node("body-parts-control/" + menu + "-control").visible = true
+	$"eye-color".visible = false
 	if menu == "eye":
 		$"eye-color".visible = currLook.hasColoredEyes()
 		$"hair-color".visible = false
@@ -106,7 +107,6 @@ func refresh():
 		$"body-parts/bonus".texture = load(currLook.getEyeBonusPath())
 	else:
 		$"body-parts/bonus".visible = false
-	$"eye-color".visible = currLook.hasColoredEyes()
 	$"body-parts/mouth".texture = load(currLook.getMouthPath())
 	$"body-parts/hair".texture = load(currLook.getHairPath())
 	$"body-parts/hair".position.y = currLook.getHairPos()

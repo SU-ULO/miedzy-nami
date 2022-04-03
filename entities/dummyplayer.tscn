@@ -137,6 +137,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=14]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
