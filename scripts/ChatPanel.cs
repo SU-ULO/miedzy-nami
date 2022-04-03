@@ -75,17 +75,20 @@ public class ChatPanel : Control
 		GetNode("ChatContainer/Input").Set("text", "");
 		GetNode("ChatContainer/Input").Call("grab_focus");
 	}
-
-	private void OnTextChanged(String newText)
+	
+	private void OnGuiInput(InputEvent e)
 	{
 		LineEdit input = (LineEdit)GetNode("ChatContainer/Input");
-	   	if(input.Text.Length > 0){
-			if(input.Text[input.Text.Length - 1] == '\n'){
-				input.Text = input.Text.Trim(new char[]{'\n'});
+		
+		if (e is InputEventKey)
+		{
+			InputEventKey key = (InputEventKey) e;
+			if (key.Pressed && key.Scancode == (int)KeyList.Enter)
+			{
 				OnSendPressed();
 				input.Text = "";
 			}
 		}
 	}
-}
 
+}
