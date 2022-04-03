@@ -1,6 +1,5 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://scripts/player/deadbody.gd" type="Script" id=2]
 [ext_resource path="res://scripts/player/animation-control-deadbody.gd" type="Script" id=3]
 [ext_resource path="res://shaders/dummyplayer.tres" type="Material" id=4]
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=5]
@@ -8,17 +7,32 @@
 [ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=7]
 [ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=8]
 
+[sub_resource type="GDScript" id=11]
+script/source = "extends Node2D
+
+var color
+var lateOwner
+var killer
+
+func _ready():
+	add_to_group(\"deadbody\")
+	add_to_group(\"interactable\")
+	add_to_group(\"entities\")
+
+func Interact(_body):
+	Globals.start.network.request_meeting(lateOwner) #dead person id should be here
+
+func EndInteraction(_body):
+	pass
+"
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.0
 height = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
+resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
@@ -27,16 +41,17 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
+resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "walk side",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
@@ -46,15 +61,16 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
+}, {
 "frames": [  ],
 "loop": true,
 "name": "walk side",
 "speed": 5.0
-}, {
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+resource_local_to_scene = true
+animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk back",
@@ -64,9 +80,15 @@ animations = [ {
 "loop": true,
 "name": "walk front",
 "speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk side",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -85,6 +107,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -103,6 +126,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=7]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -121,6 +145,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=8]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -139,6 +164,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=10]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -157,6 +183,7 @@ animations = [ {
 } ]
 
 [sub_resource type="SpriteFrames" id=9]
+resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -176,7 +203,7 @@ animations = [ {
 
 [node name="Node2D" type="StaticBody2D"]
 collision_layer = 0
-script = ExtResource( 2 )
+script = SubResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
