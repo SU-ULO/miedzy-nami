@@ -128,5 +128,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="text_changed" from="ChatContainer/Input" to="." method="OnTextChanged"]
+[connection signal="gui_input" from="ChatContainer/Input" to="." method="OnGuiInput"]
 [connection signal="pressed" from="ChatContainer/Send" to="." method="OnSendPressed"]
