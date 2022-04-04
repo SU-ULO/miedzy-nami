@@ -7,15 +7,15 @@
 [ext_resource path="res://textures/szafkatask.png" type="Texture" id=5]
 [ext_resource path="res://textures/kamien_3.png" type="Texture" id=6]
 [ext_resource path="res://textures/kamien_4.png" type="Texture" id=7]
-[ext_resource path="res://scripts/tasks/drag-and-drop-item.gd" type="Script" id=8]
-[ext_resource path="res://scripts/tasks/drag-and-drop-main.gd" type="Script" id=9]
+[ext_resource path="res://scripts/tasks/shelf-tasks/shelfControl.gd" type="Script" id=8]
+[ext_resource path="res://scripts/tasks/shelf-tasks/shelfItem.gd" type="Script" id=9]
 [ext_resource path="res://textures/kartka_nieb.png" type="Texture" id=10]
 [ext_resource path="res://textures/kartka_pom.png" type="Texture" id=11]
 [ext_resource path="res://textures/kartka_ziel.png" type="Texture" id=12]
 
 [node name="GEO-kamienie" type="Node2D"]
-script = ExtResource( 9 )
-colors = [ "blue", "yellow", "green" ]
+script = ExtResource( 8 )
+connected = [ NodePath("items/rock-blue1"), NodePath("items/rock-blue2"), NodePath("items/rock-green1"), NodePath("items/rock-green2"), NodePath("items/rock-yellow1"), NodePath("items/rock-yellow2") ]
 
 [node name="shelf" type="Sprite" parent="."]
 position = Vector2( 1326.5, 547 )
@@ -66,7 +66,7 @@ texture = ExtResource( 12 )
 [node name="rock-blue1" type="Sprite" parent="items"]
 position = Vector2( 366.5, 817 )
 texture = ExtResource( 7 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="blue" type="Area2D" parent="items/rock-blue1"]
 collision_layer = 8
@@ -79,7 +79,7 @@ polygon = PoolVector2Array( 40, -67.2, 40, -63.5, 45, -54.5, 45, -49, 47.8, -28,
 [node name="rock-blue2" type="Sprite" parent="items"]
 position = Vector2( 568.5, 733 )
 texture = ExtResource( 2 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="blue" type="Area2D" parent="items/rock-blue2"]
 collision_layer = 8
@@ -92,7 +92,7 @@ polygon = PoolVector2Array( 43.5, -55.2, 43.5, -46.9, 54.5, -16.9, 54.5, 54.5, 5
 [node name="rock-green1" type="Sprite" parent="items"]
 position = Vector2( 556.5, 889 )
 texture = ExtResource( 6 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="green" type="Area2D" parent="items/rock-green1"]
 collision_layer = 8
@@ -105,7 +105,7 @@ polygon = PoolVector2Array( 38, -67.4, 38, -63.5, 43, -54.5, 43, -49, 45.8, -28,
 [node name="rock-green2" type="Sprite" parent="items"]
 position = Vector2( 448.5, 661 )
 texture = ExtResource( 4 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="green" type="Area2D" parent="items/rock-green2"]
 collision_layer = 8
@@ -118,7 +118,7 @@ polygon = PoolVector2Array( 47.5, -45.6, 47.5, -42.9, 53.9, -25.5, 54.6, -25.5, 
 [node name="rock-yellow1" type="Sprite" parent="items"]
 position = Vector2( 210.5, 739 )
 texture = ExtResource( 3 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="yellow" type="Area2D" parent="items/rock-yellow1"]
 collision_layer = 8
@@ -131,7 +131,7 @@ polygon = PoolVector2Array( 43.5, -55.2, 43.5, -46.9, 54.5, -16.9, 54.5, 54.5, 5
 [node name="rock-yellow2" type="Sprite" parent="items"]
 position = Vector2( 391.174, 957 )
 texture = ExtResource( 1 )
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="yellow" type="Area2D" parent="items/rock-yellow2"]
 collision_layer = 8

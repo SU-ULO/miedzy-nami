@@ -6,13 +6,14 @@
 [ext_resource path="res://textures/ksiazka_2.png" type="Texture" id=4]
 [ext_resource path="res://textures/szafkatask.png" type="Texture" id=5]
 [ext_resource path="res://textures/ksiazka_1.png" type="Texture" id=6]
-[ext_resource path="res://scripts/tasks/drag-and-drop-item.gd" type="Script" id=7]
-[ext_resource path="res://scripts/tasks/drag-and-drop-main.gd" type="Script" id=8]
+[ext_resource path="res://scripts/tasks/shelf-tasks/shelfControl.gd" type="Script" id=7]
+[ext_resource path="res://scripts/tasks/shelf-tasks/shelfItem.gd" type="Script" id=8]
 [ext_resource path="res://textures/kartka_nieb.png" type="Texture" id=10]
 
+
 [node name="LIB-Books" type="Node2D"]
-script = ExtResource( 8 )
-colors = [ "red", "green", "blue" ]
+script = ExtResource( 7 )
+connected = [ NodePath("items/book-green1"), NodePath("items/book-green2"), NodePath("items/book-green3"), NodePath("items/book-blue1"), NodePath("items/book-blue2"), NodePath("items/book-blue3"), NodePath("items/book-red1"), NodePath("items/book-red2"), NodePath("items/book-red3") ]
 
 [node name="shelf" type="Sprite" parent="."]
 position = Vector2( 1326.5, 547 )
@@ -63,7 +64,7 @@ texture = ExtResource( 2 )
 [node name="book-green1" type="Sprite" parent="items"]
 position = Vector2( 630.621, 574.586 )
 texture = ExtResource( 4 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="green" type="Area2D" parent="items/book-green1"]
 collision_layer = 8
@@ -76,7 +77,7 @@ polygon = PoolVector2Array( 45, -66.1, 45, -21, 47, 57, 43.7, 57, -26.4, 87, -39
 [node name="book-green2" type="Sprite" parent="items"]
 position = Vector2( 565.466, 371.36 )
 texture = ExtResource( 4 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="green" type="Area2D" parent="items/book-green2"]
 collision_layer = 8
@@ -89,7 +90,7 @@ polygon = PoolVector2Array( 45, -66.1, 45, -21, 47, 57, 43.7, 57, -26.4, 87, -39
 [node name="book-green3" type="Sprite" parent="items"]
 position = Vector2( 310.72, 748.023 )
 texture = ExtResource( 4 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="green" type="Area2D" parent="items/book-green3"]
 collision_layer = 8
@@ -102,7 +103,7 @@ polygon = PoolVector2Array( 45, -66.1, 45, -21, 47, 57, 43.7, 57, -26.4, 87, -39
 [node name="book-blue1" type="Sprite" parent="items"]
 position = Vector2( 464.384, 552.119 )
 texture = ExtResource( 1 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="blue" type="Area2D" parent="items/book-blue1"]
 collision_layer = 8
@@ -115,7 +116,7 @@ polygon = PoolVector2Array( 50, -67.1, 50, -22, 52, 56, 48.7, 56, -21.4, 86, -34
 [node name="book-blue2" type="Sprite" parent="items"]
 position = Vector2( 359.226, 950.025 )
 texture = ExtResource( 1 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="blue" type="Area2D" parent="items/book-blue2"]
 collision_layer = 8
@@ -128,7 +129,7 @@ polygon = PoolVector2Array( 50, -67.1, 50, -22, 52, 56, 48.7, 56, -21.4, 86, -34
 [node name="book-blue3" type="Sprite" parent="items"]
 position = Vector2( 323.177, 312.786 )
 texture = ExtResource( 1 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="blue" type="Area2D" parent="items/book-blue3"]
 collision_layer = 8
@@ -141,7 +142,7 @@ polygon = PoolVector2Array( 50, -67.1, 50, -22, 52, 56, 48.7, 56, -21.4, 86, -34
 [node name="book-red1" type="Sprite" parent="items"]
 position = Vector2( 453.401, 750.571 )
 texture = ExtResource( 6 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="red" type="Area2D" parent="items/book-red1"]
 collision_layer = 8
@@ -154,7 +155,7 @@ polygon = PoolVector2Array( 24.6, -67.5, 28.3, -67.5, 48, -62, 48, -17.5, 50, 59
 [node name="book-red2" type="Sprite" parent="items"]
 position = Vector2( 296.682, 527.015 )
 texture = ExtResource( 6 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="red" type="Area2D" parent="items/book-red2"]
 collision_layer = 8
@@ -167,7 +168,7 @@ polygon = PoolVector2Array( 24.6, -67.5, 28.3, -67.5, 48, -62, 48, -17.5, 50, 59
 [node name="book-red3" type="Sprite" parent="items"]
 position = Vector2( 487.013, 162.871 )
 texture = ExtResource( 6 )
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 
 [node name="red" type="Area2D" parent="items/book-red3"]
 collision_layer = 8
