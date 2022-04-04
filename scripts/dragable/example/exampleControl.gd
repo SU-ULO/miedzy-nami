@@ -12,8 +12,14 @@ func is_valid(item):
 	if inside.has(item): return true
 	else: return false
 
-func after_validation():
+func set_valid(item, state):
+	.set_valid(item, state)
+	check_correct()
+
+func check_correct():
 	get_node("valid-label").text = "poprawne: " + str(totalValid)
+	if (totalValid == connected.size()): 
+		print("ok")
 
 func state_changed(area, state):
 	var item = area.get_parent()
