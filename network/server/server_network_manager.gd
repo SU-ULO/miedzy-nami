@@ -54,10 +54,6 @@ func create_client(config):
 		client.connect("look_update", self, "handle_set_look", [config.id])
 		client.connect("set_invisible", self, "handle_set_invisible")
 		client.connect("vote", self, "handle_vote_request", [config.id])
-		client.connect("vc_offer", self, "handle_vc_offer", [config.id])
-		client.connect("vc_answer", self, "handle_vc_answer", [config.id])
-		client.connect("vc_candidate", self, "handle_vc_candidate", [config.id])
-		client.connect("vc_speaking", self, "handle_vc_speaking", [config.id])
 		add_child(client)
 	else:
 		kick(config.id)

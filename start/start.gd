@@ -23,6 +23,8 @@ func _ready():
 	menu.connect("request_start_server", self, "start_server")
 # warning-ignore:return_value_discarded
 	menu.connect("request_end", self, "leave_matchmaking")
+# warning-ignore:return_value_discarded
+	menu.connect("request_freeroam", self, "start_freeroam")
 
 func leave_matchmaking():
 	if matchmaking:
@@ -93,3 +95,7 @@ func join_server(key):
 		network.connect("joined_room", menu, "close_everything")
 		add_child(network)
 	matchmaking.join_server(key)
+
+func start_freeroam():
+	leave_room()
+	# TODO

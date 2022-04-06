@@ -15,6 +15,7 @@ signal request_start_server(options)
 signal request_end()
 signal request_refresh_servers()
 signal request_join_server(key)
+signal request_freeroam()
 
 func _init():
 	var us = Globals.read_file("user://us.settings")
@@ -122,3 +123,12 @@ func highlight():
 
 func _on_CreditsButton_pressed():
 	open_credits()
+
+
+func _on_StartFreeroamButton_pressed():
+	usersettings.username = $'Main/Username'.text
+	if usersettings.username.length()>0:
+		Globals.save_file("user://us.settings", usersettings)
+		emit_signal("request_freeroam")
+	else:
+		highlight()

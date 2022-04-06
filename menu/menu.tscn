@@ -901,7 +901,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartClientButton" type="Button" parent="Main"]
+[node name="StartFreeroamButton" type="Button" parent="Main"]
 margin_left = -90.924
 margin_top = 137.143
 margin_right = 779.076
@@ -910,9 +910,26 @@ rect_scale = Vector2( 0.772785, 0.772785 )
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = ExtResource( 21 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Label" type="Label" parent="Main/StartFreeroamButton"]
+margin_left = 195.299
+margin_top = 12.059
+margin_right = 730.299
+margin_bottom = 91.059
+mouse_filter = 1
+custom_colors/font_color = Color( 0.47451, 0.556863, 0.556863, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "TRYB SWOBODNY"
+
+[node name="StartClientButton" type="Button" parent="Main"]
+margin_left = -91.0
+margin_top = 230.462
+margin_right = 779.0
+margin_bottom = 338.462
+rect_scale = Vector2( 0.772785, 0.772785 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="Main/StartClientButton"]
 margin_left = 315.643
@@ -928,10 +945,10 @@ __meta__ = {
 }
 
 [node name="StartServerButton" type="Button" parent="Main"]
-margin_left = -89.924
-margin_top = 229.143
-margin_right = 780.076
-margin_bottom = 337.143
+margin_left = -90.0
+margin_top = 316.605
+margin_right = 780.0
+margin_bottom = 424.605
 rect_scale = Vector2( 0.772785, 0.772785 )
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 5 )
@@ -951,10 +968,10 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="Main"]
-margin_left = -89.924
-margin_top = 322.95
-margin_right = 774.076
-margin_bottom = 430.95
+margin_left = -90.0
+margin_top = 410.412
+margin_right = 774.0
+margin_bottom = 518.412
 rect_scale = Vector2( 0.773, 0.773 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
@@ -974,10 +991,10 @@ __meta__ = {
 }
 
 [node name="CreditsButton" type="Button" parent="Main"]
-margin_left = -89.924
-margin_top = 415.019
-margin_right = 774.076
-margin_bottom = 523.019
+margin_left = -90.0
+margin_top = 502.481
+margin_right = 774.0
+margin_bottom = 610.481
 rect_scale = Vector2( 0.773, 0.773 )
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
@@ -1864,6 +1881,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="pressed" from="Main/StartFreeroamButton" to="." method="_on_StartFreeroamButton_pressed"]
 [connection signal="pressed" from="Main/StartClientButton" to="." method="_on_StartClientButton_pressed"]
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]

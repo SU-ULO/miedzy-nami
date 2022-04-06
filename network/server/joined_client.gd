@@ -16,10 +16,6 @@ signal color_update(color)
 signal look_update(look)
 signal set_invisible(id, val)
 signal vote(id)
-signal vc_offer(offer, id)
-signal vc_answer(answer, id)
-signal vc_candidate(candidate, id)
-signal vc_speaking(speaking)
 
 func _init(conf: Dictionary).(conf):
 	pass
@@ -54,14 +50,6 @@ func handle_events(input):
 		emit_signal("set_invisible", input[1], input[2])
 	elif input[0]==10:
 		emit_signal("vote", input[1])
-	elif input[0]==11:
-		emit_signal("vc_offer", input[1], input[2])
-	elif input[0]==12:
-		emit_signal("vc_answer", input[1], input[2])
-	elif input[0]==13:
-		emit_signal("vc_candidate", input[1], input[2])
-	elif input[0]==14:
-		emit_signal("vc_speaking", input[1])
 
 func send_player_character_sync_data(data):
 	send_updates([0, data])
@@ -108,17 +96,5 @@ func send_set_invisible(id, val: bool):
 func send_vote(voter, voted):
 	send_events([13, voter, voted])
 
-func send_vc_offer(offer, id: int):
-	send_events([14, offer, id])
-
-func send_vc_answer(answer, id: int):
-	send_events([15, answer, id])
-
-func send_vc_candidate(candidate, id: int):
-	send_events([16, candidate, id])
-
-func send_vc_speaking(speaking: bool, id: int):
-	send_events([17, speaking, id])
-
 func send_tasks_done(done: int, all: int):
-	send_events([18, done, all])
+	send_events([14, done, all])
