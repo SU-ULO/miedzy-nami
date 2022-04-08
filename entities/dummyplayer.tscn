@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
@@ -136,6 +136,28 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="CanvasItemMaterial" id=15]
+light_mode = 2
+
+[sub_resource type="SpriteFrames" id=16]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=14]
 resource_local_to_scene = true
 animations = [ {
@@ -225,7 +247,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -0.30785 )
 rotation = -1.57079
 shape = SubResource( 4 )
 
@@ -269,8 +290,15 @@ material = ExtResource( 9 )
 frames = SubResource( 10 )
 animation = "front"
 
+[node name="beard" type="AnimatedSprite" parent="sprites/face"]
+material = SubResource( 15 )
+position = Vector2( 0, 24 )
+frames = SubResource( 16 )
+animation = "front"
+
 [node name="acc" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
+z_as_relative = false
 frames = SubResource( 14 )
 animation = "front"
 
@@ -294,6 +322,7 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 13 )
+frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

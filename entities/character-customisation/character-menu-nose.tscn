@@ -7,7 +7,7 @@
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/wide nose.png" type="Texture" id=5]
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/wide plump nose.png" type="Texture" id=6]
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/long nose.png" type="Texture" id=7]
-[ext_resource path="res://entities/character-customisation/nose-control.gd" type="Script" id=8]
+[ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=8]
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular plump nose.png" type="Texture" id=9]
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/wide round plump nose.png" type="Texture" id=10]
 [ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular long nose.png" type="Texture" id=11]
@@ -24,6 +24,7 @@ script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+part_name = "nose"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 656.0

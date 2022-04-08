@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://entities/character-customisation/acc-control.gd" type="Script" id=1]
+[ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=1]
 [ext_resource path="res://textures/character/accessories/frame1/acc4.png" type="Texture" id=2]
 [ext_resource path="res://textures/character/accessories/frame1/acc3.png" type="Texture" id=3]
 [ext_resource path="res://textures/character/accessories/frame1/acc2.png" type="Texture" id=4]
@@ -11,6 +11,7 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+part_name = "acc"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 570.0

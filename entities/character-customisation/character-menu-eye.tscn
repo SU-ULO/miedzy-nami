@@ -28,12 +28,13 @@
 [ext_resource path="res://textures/character/face parts/oczy/frame1/serious_open/darkblue_serious_open.png" type="Texture" id=26]
 [ext_resource path="res://textures/character/face parts/oczy/frame1/worried_open/darkblue_worried_open.png" type="Texture" id=27]
 [ext_resource path="res://textures/character/face parts/oczy/frame1/sad_closed/sad_closed.png" type="Texture" id=28]
-[ext_resource path="res://entities/character-customisation/eye-control.gd" type="Script" id=29]
+[ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=29]
 
 [node name="eye-control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 29 )
+part_name = "eye"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 570.0

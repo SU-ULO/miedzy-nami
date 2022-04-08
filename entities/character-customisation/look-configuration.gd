@@ -2,7 +2,7 @@ extends Node
 
 class_name LookConfiguration
 
-var skin := "1"
+var skin := "skin1"
 var mouth := "neutral closed"
 var nose := "long nose"
 var eye := "neutral_open"
@@ -12,6 +12,8 @@ var hairColor := 1
 var hasBottom := 0
 var topClothes := "dress"
 var acc := "acc0" # nothing
+var beard := "bald"
+var beard_color := "black"
 
 const hairPos := {"Velma long hair": 384,
 	"Velma short hair":266,
@@ -45,19 +47,19 @@ const hasSkinColorEyes = ["bored_closed", "scared_closed"]
 func getMouthPath(frame=1):
 	if frame == 1:
 		if mouth in hasSkinColorMouth:
-			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/" + skin + " " + mouth + ".png"
 		else:
 			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
 	else:
 		if mouth in hasSkinColorMouthSide:
-			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/skin" + skin + " " + mouth + ".png"
+			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + "/" + skin + " " + mouth + ".png"
 		else:
 			return "res://textures/character/face parts/mouths/frame" + str(frame) + "/" + mouth + ".png"
 	
 func getEyePath(frame=1):
 	if eye in noColorEyes:
 		if eye in hasSkinColorEyes:
-			return "res://textures/character/face parts/oczy/frame" + str(frame) + "/" + eye + "/skin" + skin + "_" + eye + ".png"
+			return "res://textures/character/face parts/oczy/frame" + str(frame) + "/" + eye + "/" + skin + "_" + eye + ".png"
 		else:
 			return "res://textures/character/face parts/oczy/frame" + str(frame) + "/" + eye + "/" + eye + ".png"
 	else:
@@ -65,7 +67,7 @@ func getEyePath(frame=1):
 
 func getEyeBonusPath(frame=1):
 	if eye in hasBonusEyes:
-		return "res://textures/character/face parts/oczy/frame" + str(frame)+ "/" + eye + "/bonus/skin" + skin + "_" + eye + ".png"
+		return "res://textures/character/face parts/oczy/frame" + str(frame)+ "/" + eye + "/bonus/" + skin + "_" + eye + ".png"
 	else:
 		return "przykromi"
 		
@@ -75,6 +77,11 @@ func hasColoredEyes():
 func getHairPath(frame=1):
 	return ("res://textures/character/hair/frame"+ str(frame) + "/" + hair + "/hair" + str(hairColor) + ".png")
 
+func getBeardPath(frame=1):
+	if beard == "bald":
+		return ("res://textures/character/hair/frame"+ str(frame) + "/bald/hair1.png")
+	return ("res://textures/character/beards/frame"+ str(frame) + "/" + beard + "/" + beard + "_" + beard_color + ".png")
+
 func getHairPos():
 	return hairPos[hair]
 
@@ -83,15 +90,15 @@ func getNosePath(frame=1):
 		return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose + ".png"
 	else:
 		if nose != "nostril nose":
-			return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose +"/skin" + skin + ".png"
+			return "res://textures/character/face parts/noses/frame" + str(frame) + "/" + nose +"/" + skin + ".png"
 		else:
 			return "res://textures/character/face parts/noses/frame2/nostril nose.png"
 func getSkinPath():
-	return "res://textures/character/face_front/skin" + skin + ".png"
+	return "res://textures/character/face_front/" + skin + ".png"
 
 func getBodyPath(frame):
 	#frame 4 means front
-	return "res://textures/character/body/frame" + str(frame) + "/skin" + skin + ".png"
+	return "res://textures/character/body/frame" + str(frame) + "/" + skin + ".png"
 
 func getTopClotes(frame, color):
 	#frame 4 means front
@@ -113,6 +120,8 @@ func get_look():
 	clothes_dict["hasBottom"] = hasBottom
 	clothes_dict["topClothes"] = topClothes
 	clothes_dict["acc"] = acc
+	clothes_dict["beard"] = beard
+	clothes_dict["beard_color"] = beard_color	
 	return clothes_dict
 	
 func set_look(clothes_dict):
@@ -126,3 +135,5 @@ func set_look(clothes_dict):
 	hasBottom = clothes_dict["hasBottom"]
 	topClothes = clothes_dict["topClothes"]
 	acc = clothes_dict["acc"]
+	beard = clothes_dict["beard"]
+	beard_color = clothes_dict["beard_color"]
