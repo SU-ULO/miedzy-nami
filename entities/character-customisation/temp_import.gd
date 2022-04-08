@@ -3,11 +3,11 @@ extends EditorScript
 
 func _run():
 	var parent = get_scene().get_node("GridContainer")
-	for i in dir_contents("res://textures/character/beards/frame1/"):
+	for i in dir_contents("res://textures/character/accessories/frame1/"):
 		if i != ".." and i != ".":
 			var node = TextureButton.new()
 			node.name = i
-			node.texture_normal = load("res://textures/character/beards/frame1/" + i + "/" + i + "_black.png")
+			node.texture_normal = load("res://textures/character/accessories/frame1/" + i)
 			parent.add_child(node)
 			node.set_owner(get_scene())
 

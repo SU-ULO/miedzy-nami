@@ -12,7 +12,7 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$"eye-color".connect("changeEyeColor", self, "_eye_color_Change")	
 	# warning-ignore:return_value_discarded
-	$"hair-color".connect("changeHairColor", self, "_hair_color_Change")
+	$"hair-color".connect("changePart", self, "_part_Change")
 	# warning-ignore:return_value_discarded	
 	$"beard-color".connect("changePart", self, "_part_Change")
 	
@@ -64,6 +64,9 @@ func _part_Change(part, name):
 			else:
 				$"body-parts/bonus".visible = false
 			$"eye-color".visible = currLook.hasColoredEyes()
+		"hairColor":
+			currLook.hairColor = name
+			_part_Change("hair", currLook.hair)
 
 func hideAll():
 	for i in $"body-parts-control".get_children():
@@ -85,10 +88,6 @@ func _show_Menu(menu):
 func _eye_color_Change(color):
 	currLook.eye_color = color
 	_part_Change("eye", currLook.eye)
-
-func _hair_color_Change(color):
-	currLook.hairColor = color
-	#_hair_Change(currLook.hair)
 	
 
 func refresh():

@@ -1,11 +1,41 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=1]
 [ext_resource path="res://textures/character/accessories/frame1/acc4.png" type="Texture" id=2]
 [ext_resource path="res://textures/character/accessories/frame1/acc3.png" type="Texture" id=3]
 [ext_resource path="res://textures/character/accessories/frame1/acc2.png" type="Texture" id=4]
 [ext_resource path="res://textures/character/accessories/frame1/acc1.png" type="Texture" id=5]
-[ext_resource path="res://textures/bald.png" type="Texture" id=6]
+[ext_resource path="res://textures/character/accessories/frame1/acc20.png" type="Texture" id=6]
+[ext_resource path="res://textures/bald.png" type="Texture" id=7]
+[ext_resource path="res://textures/character/accessories/frame1/acc27.png" type="Texture" id=8]
+[ext_resource path="res://textures/character/accessories/frame1/acc18.png" type="Texture" id=9]
+[ext_resource path="res://textures/character/accessories/frame1/acc16.png" type="Texture" id=10]
+[ext_resource path="res://textures/character/accessories/frame1/acc6.png" type="Texture" id=11]
+[ext_resource path="res://textures/character/accessories/frame1/acc17.png" type="Texture" id=12]
+[ext_resource path="res://textures/character/accessories/frame1/acc25.png" type="Texture" id=13]
+[ext_resource path="res://textures/character/accessories/frame1/acc7.png" type="Texture" id=14]
+[ext_resource path="res://textures/character/accessories/frame1/acc10.png" type="Texture" id=15]
+[ext_resource path="res://textures/character/accessories/frame1/acc22.png" type="Texture" id=16]
+[ext_resource path="res://textures/character/accessories/frame1/acc9.png" type="Texture" id=17]
+[ext_resource path="res://textures/character/accessories/frame1/acc14.png" type="Texture" id=18]
+[ext_resource path="res://textures/character/accessories/frame1/acc15.png" type="Texture" id=19]
+[ext_resource path="res://textures/character/accessories/frame1/acc26.png" type="Texture" id=20]
+[ext_resource path="res://textures/character/accessories/frame1/acc5.png" type="Texture" id=21]
+[ext_resource path="res://textures/character/accessories/frame1/acc8.png" type="Texture" id=22]
+[ext_resource path="res://textures/character/accessories/frame1/acc23.png" type="Texture" id=23]
+[ext_resource path="res://textures/character/accessories/frame1/acc28.png" type="Texture" id=24]
+[ext_resource path="res://textures/character/accessories/frame1/acc12.png" type="Texture" id=25]
+[ext_resource path="res://textures/character/accessories/frame1/acc11.png" type="Texture" id=26]
+[ext_resource path="res://textures/character/accessories/frame1/acc21.png" type="Texture" id=27]
+[ext_resource path="res://textures/character/accessories/frame1/acc19.png" type="Texture" id=28]
+[ext_resource path="res://textures/character/accessories/frame1/acc13.png" type="Texture" id=29]
+[ext_resource path="res://textures/character/accessories/frame1/acc24.png" type="Texture" id=30]
+[ext_resource path="res://textures/character/accessories/frame1/acc30.png" type="Texture" id=31]
+[ext_resource path="res://textures/character/accessories/frame1/acc31.png" type="Texture" id=32]
+[ext_resource path="res://textures/character/accessories/frame1/acc29.png" type="Texture" id=33]
+[ext_resource path="res://textures/character/accessories/frame1/acc32.png" type="Texture" id=34]
+[ext_resource path="res://textures/character/accessories/frame1/acc33.png" type="Texture" id=35]
+[ext_resource path="res://textures/character/accessories/frame1/acc34.png" type="Texture" id=36]
 
 [node name="acc-control" type="Control"]
 anchor_right = 1.0
@@ -16,35 +46,238 @@ part_name = "acc"
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 570.0
 margin_bottom = 569.0
-rect_scale = Vector2( 0.4, 0.4 )
-columns = 4
+rect_scale = Vector2( 0.25, 0.25 )
+columns = 6
 
-[node name="acc1" type="TextureButton" parent="GridContainer"]
+[node name="acc14" type="TextureButton" parent="GridContainer"]
 margin_right = 570.0
-margin_bottom = 573.0
-texture_normal = ExtResource( 5 )
+margin_bottom = 703.0
+texture_normal = ExtResource( 18 )
 
-[node name="acc2" type="TextureButton" parent="GridContainer"]
+[node name="acc15" type="TextureButton" parent="GridContainer"]
 margin_left = 574.0
-margin_right = 1144.0
-margin_bottom = 573.0
-texture_normal = ExtResource( 4 )
+margin_right = 1286.0
+margin_bottom = 703.0
+texture_normal = ExtResource( 19 )
+
+[node name="acc34" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_right = 2002.0
+margin_bottom = 703.0
+texture_normal = ExtResource( 36 )
+
+[node name="acc26" type="TextureButton" parent="GridContainer"]
+margin_left = 2006.0
+margin_right = 2718.0
+margin_bottom = 703.0
+texture_normal = ExtResource( 20 )
+
+[node name="acc5" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_right = 3292.0
+margin_bottom = 703.0
+texture_normal = ExtResource( 21 )
+
+[node name="acc32" type="TextureButton" parent="GridContainer"]
+margin_left = 3296.0
+margin_right = 4008.0
+margin_bottom = 703.0
+texture_normal = ExtResource( 34 )
+
+[node name="acc10" type="TextureButton" parent="GridContainer"]
+margin_top = 707.0
+margin_right = 570.0
+margin_bottom = 1292.0
+texture_normal = ExtResource( 15 )
+
+[node name="acc22" type="TextureButton" parent="GridContainer"]
+margin_left = 574.0
+margin_top = 707.0
+margin_right = 1286.0
+margin_bottom = 1292.0
+texture_normal = ExtResource( 16 )
+
+[node name="acc12" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_top = 707.0
+margin_right = 2002.0
+margin_bottom = 1292.0
+texture_normal = ExtResource( 25 )
 
 [node name="acc3" type="TextureButton" parent="GridContainer"]
-margin_left = 1148.0
-margin_right = 1718.0
-margin_bottom = 573.0
+margin_left = 2006.0
+margin_top = 707.0
+margin_right = 2718.0
+margin_bottom = 1292.0
 texture_normal = ExtResource( 3 )
 
+[node name="acc9" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_top = 707.0
+margin_right = 3292.0
+margin_bottom = 1292.0
+texture_normal = ExtResource( 17 )
+
+[node name="acc25" type="TextureButton" parent="GridContainer"]
+margin_left = 3296.0
+margin_top = 707.0
+margin_right = 4008.0
+margin_bottom = 1292.0
+texture_normal = ExtResource( 13 )
+
+[node name="acc21" type="TextureButton" parent="GridContainer"]
+margin_top = 1296.0
+margin_right = 570.0
+margin_bottom = 1999.0
+texture_normal = ExtResource( 27 )
+
+[node name="acc31" type="TextureButton" parent="GridContainer"]
+margin_left = 574.0
+margin_top = 1296.0
+margin_right = 1286.0
+margin_bottom = 1999.0
+texture_normal = ExtResource( 32 )
+
+[node name="acc23" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_top = 1296.0
+margin_right = 2002.0
+margin_bottom = 1999.0
+texture_normal = ExtResource( 23 )
+
+[node name="acc8" type="TextureButton" parent="GridContainer"]
+margin_left = 2006.0
+margin_top = 1296.0
+margin_right = 2718.0
+margin_bottom = 1999.0
+texture_normal = ExtResource( 22 )
+
+[node name="acc13" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_top = 1296.0
+margin_right = 3292.0
+margin_bottom = 1999.0
+texture_normal = ExtResource( 29 )
+
 [node name="acc4" type="TextureButton" parent="GridContainer"]
-margin_left = 1722.0
-margin_right = 2292.0
-margin_bottom = 573.0
+margin_left = 3296.0
+margin_top = 1296.0
+margin_right = 4008.0
+margin_bottom = 1999.0
 texture_normal = ExtResource( 2 )
 
-[node name="acc0" type="TextureButton" parent="GridContainer"]
-margin_top = 577.0
+[node name="acc16" type="TextureButton" parent="GridContainer"]
+margin_top = 2003.0
 margin_right = 570.0
-margin_bottom = 1109.0
-rect_min_size = Vector2( 200, 200 )
+margin_bottom = 2576.0
+texture_normal = ExtResource( 10 )
+
+[node name="acc28" type="TextureButton" parent="GridContainer"]
+margin_left = 574.0
+margin_top = 2003.0
+margin_right = 1286.0
+margin_bottom = 2576.0
+texture_normal = ExtResource( 24 )
+
+[node name="acc24" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_top = 2003.0
+margin_right = 2002.0
+margin_bottom = 2576.0
+texture_normal = ExtResource( 30 )
+
+[node name="acc27" type="TextureButton" parent="GridContainer"]
+margin_left = 2006.0
+margin_top = 2003.0
+margin_right = 2718.0
+margin_bottom = 2576.0
+texture_normal = ExtResource( 8 )
+
+[node name="acc6" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_top = 2003.0
+margin_right = 3292.0
+margin_bottom = 2576.0
+texture_normal = ExtResource( 11 )
+
+[node name="acc2" type="TextureButton" parent="GridContainer"]
+margin_left = 3296.0
+margin_top = 2003.0
+margin_right = 4008.0
+margin_bottom = 2576.0
+texture_normal = ExtResource( 4 )
+
+[node name="acc1" type="TextureButton" parent="GridContainer"]
+margin_top = 2580.0
+margin_right = 570.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 5 )
+
+[node name="acc11" type="TextureButton" parent="GridContainer"]
+margin_left = 574.0
+margin_top = 2580.0
+margin_right = 1286.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 26 )
+
+[node name="acc30" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_top = 2580.0
+margin_right = 2002.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 31 )
+
+[node name="acc29" type="TextureButton" parent="GridContainer"]
+margin_left = 2006.0
+margin_top = 2580.0
+margin_right = 2718.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 33 )
+
+[node name="acc7" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_top = 2580.0
+margin_right = 3292.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 14 )
+
+[node name="acc18" type="TextureButton" parent="GridContainer"]
+margin_left = 3296.0
+margin_top = 2580.0
+margin_right = 4008.0
+margin_bottom = 3283.0
+texture_normal = ExtResource( 9 )
+
+[node name="acc20" type="TextureButton" parent="GridContainer"]
+margin_top = 3287.0
+margin_right = 570.0
+margin_bottom = 3990.0
 texture_normal = ExtResource( 6 )
+
+[node name="acc33" type="TextureButton" parent="GridContainer"]
+margin_left = 574.0
+margin_top = 3287.0
+margin_right = 1286.0
+margin_bottom = 3990.0
+texture_normal = ExtResource( 35 )
+
+[node name="acc17" type="TextureButton" parent="GridContainer"]
+margin_left = 1290.0
+margin_top = 3287.0
+margin_right = 2002.0
+margin_bottom = 3990.0
+texture_normal = ExtResource( 12 )
+
+[node name="acc19" type="TextureButton" parent="GridContainer"]
+margin_left = 2006.0
+margin_top = 3287.0
+margin_right = 2718.0
+margin_bottom = 3990.0
+texture_normal = ExtResource( 28 )
+
+[node name="acc0" type="TextureButton" parent="GridContainer"]
+margin_left = 2722.0
+margin_top = 3287.0
+margin_right = 3292.0
+margin_bottom = 3990.0
+texture_normal = ExtResource( 7 )

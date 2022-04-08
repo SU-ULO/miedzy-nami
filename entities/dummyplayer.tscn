@@ -292,13 +292,14 @@ animation = "front"
 
 [node name="beard" type="AnimatedSprite" parent="sprites/face"]
 material = SubResource( 15 )
-position = Vector2( 0, 24 )
+position = Vector2( 0, 22 )
 frames = SubResource( 16 )
 animation = "front"
 
 [node name="acc" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
-z_as_relative = false
+position = Vector2( 0, 24 )
+z_index = 1
 frames = SubResource( 14 )
 animation = "front"
 

@@ -11,7 +11,7 @@
 [ext_resource path="res://textures/hair color buttons/7.png" type="Texture" id=9]
 [ext_resource path="res://textures/hair color buttons/10.png" type="Texture" id=10]
 [ext_resource path="res://textures/hair color buttons/11.png" type="Texture" id=11]
-[ext_resource path="res://entities/character-customisation/hair-color-picker.gd" type="Script" id=12]
+[ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=12]
 
 [node name="hair-color" type="Control"]
 anchor_right = 1.0
@@ -20,6 +20,7 @@ script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+part_name = "hairColor"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 40.0
