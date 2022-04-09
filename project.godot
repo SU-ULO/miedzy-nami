@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/server/server_matchmaking.gd"
 }, {
-"base": "Node",
+"base": "NetworkManager",
 "class": "SingleplayerManager",
 "language": "GDScript",
 "path": "res://network/singleplayer/singleplayer_manager.gd"
@@ -239,7 +239,6 @@ chat_send={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

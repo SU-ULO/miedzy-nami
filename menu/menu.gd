@@ -132,3 +132,7 @@ func _on_StartFreeroamButton_pressed():
 		emit_signal("request_freeroam")
 	else:
 		highlight()
+
+
+func _on_ExitButton_pressed():
+	get_tree().quit()

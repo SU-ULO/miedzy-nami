@@ -1013,6 +1013,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExitButton" type="Button" parent="Main"]
+margin_left = -90.0
+margin_top = 596.462
+margin_right = 774.0
+margin_bottom = 704.462
+rect_scale = Vector2( 0.773, 0.773 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Main/ExitButton"]
+margin_left = 320.828
+margin_top = 16.8176
+margin_right = 534.828
+margin_bottom = 95.8176
+mouse_filter = 1
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "WYJDŹ"
+
 [node name="Options" type="Control" parent="."]
 visible = false
 anchor_left = 0.5
@@ -1886,6 +1906,7 @@ __meta__ = {
 [connection signal="pressed" from="Main/StartServerButton" to="." method="_on_StartServerButton_pressed"]
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="Main/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Create/ServerSettingsContainer/create" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/exit" to="RoomList" method="_on_Exit_pressed"]

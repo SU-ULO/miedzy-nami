@@ -98,4 +98,7 @@ func join_server(key):
 
 func start_freeroam():
 	leave_room()
-	# TODO
+	network = SingleplayerManager.new()
+	add_child(network)
+	network.connect("joined_room", menu, "close_everything")
+	network.start()

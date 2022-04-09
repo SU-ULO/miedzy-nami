@@ -10,7 +10,7 @@ var gamestate_params = null
 
 var currentconfig
 
-const preloadedmap := preload('res://scenes/school.tscn')
+var preloadedmap := preload('res://scenes/school.tscn')
 
 var world = null
 var player_characters := Dictionary()
