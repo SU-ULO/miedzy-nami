@@ -64,3 +64,9 @@ func request_game_start():
 	var own_tasks = Task.GetTaskIDsForPlayerID(own_id)
 	own_player.assignedtasks=get_tasks_number(own_tasks)
 	game_start(gamestate_params, own_tasks)
+
+func request_set_look(look: Dictionary):
+	handle_set_look(look, own_id)
+
+func handle_set_look(look: Dictionary, id: int):
+	set_look(id, look)

@@ -19,7 +19,7 @@ signal request_freeroam()
 
 func _init():
 	var us = Globals.read_file("user://us.settings")
-	if us and us is Dictionary and us.has("signaling_url") and us.has("username") and us.has("vc-mode"):
+	if us and us is Dictionary and us.has("signaling_url") and us.has("username"):
 		usersettings = us
 	var ss = Globals.read_file("user://ss.settings")
 	if ss and ss is Dictionary and ss.has("hidden") and ss.has("name"):
