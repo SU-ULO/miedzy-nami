@@ -27,6 +27,8 @@ func create_world(config):
 	own_player.global_position = get_spawn_position(own_id)
 	own_player.color = get_free_color_and_set()
 	world.get_node('Mapa/YSort').add_child(own_player)
+	for npc in world.npcs:
+		player_characters[npc.owner_id]=npc
 	emit_signal("joined_room")
 	set_game_settings(gamesettings)
 	world.get_node("Mapa/lobby/start").add_to_group("interactable")
@@ -64,9 +66,17 @@ func request_game_start():
 	var own_tasks = Task.GetTaskIDsForPlayerID(own_id)
 	own_player.assignedtasks=get_tasks_number(own_tasks)
 	game_start(gamestate_params, own_tasks)
+	for npc in world.npcs:
+		npc.npc_init()
 
 func request_set_look(look: Dictionary):
 	handle_set_look(look, own_id)
 
 func handle_set_look(look: Dictionary, id: int):
 	set_look(id, look)
+
+func kick(_id: int):
+	pass
+
+func kick_him():
+	pass

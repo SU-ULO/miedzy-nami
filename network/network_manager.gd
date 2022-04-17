@@ -420,7 +420,8 @@ func game_start(params, taskstuff):
 		task.local=true
 		own_player.localTaskList.append(task)
 	for c in player_characters:
-		player_characters[c].global_position = get_spawn_position(c)
+		if not player_characters[c].is_in_group("npc"):
+			player_characters[c].global_position = get_spawn_position(c)
 	own_player.get_node("GUI/PlayerCanvas/playerGUI").updateTaskList()
 	if own_player.is_in_group("impostors"):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
