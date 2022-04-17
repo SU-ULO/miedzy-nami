@@ -35,21 +35,22 @@ margin_right = 843.413
 margin_bottom = 1894.45
 rect_scale = Vector2( 0.35, 0.35 )
 
-[node name="hair-color" parent="." instance=ExtResource( 13 )]
-visible = false
-margin_left = 1820.74
-margin_top = 8.62935
-margin_right = 1820.74
-margin_bottom = 8.62939
-rect_scale = Vector2( 0.9, 0.9 )
-
 [node name="beard-color" parent="." instance=ExtResource( 21 )]
 visible = false
-margin_left = 1817.0
-margin_top = 7.0
-margin_right = 1817.0
-margin_bottom = 7.0
+margin_left = 1822.0
+margin_top = 10.0
+margin_right = 1822.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.9, 0.9 )
 part_name = "beardColor"
+
+[node name="hair-color" parent="." instance=ExtResource( 13 )]
+visible = false
+margin_left = 1820.0
+margin_top = 10.0
+margin_right = 1820.0
+margin_bottom = 10.0
+rect_scale = Vector2( 0.9, 0.9 )
 
 [node name="body-parts-control" type="Control" parent="."]
 margin_left = 166.446
