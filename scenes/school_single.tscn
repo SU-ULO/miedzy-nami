@@ -144,24 +144,24 @@ position = Vector2( 779.368, 287.998 )
 default_color = 4
 default_name = "LOL XD"
 
-[node name="npc_test2" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
-position = Vector2( -4527.63, 1909 )
+[node name="stanczyk" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
+position = Vector2( -4503.63, 1825 )
 default_clothes = {
-"acc": "acc33",
-"beard": "puberty_stache",
+"acc": "acc23",
+"beard": "scruffy_beard",
 "beard_color": "black",
-"eye": "neutral_open",
-"eye_color": "darkblue",
-"hair": "very short",
-"hairColor": 1,
-"hasBottom": 0,
-"mouth": "miserable closed",
-"nose": "long nose",
-"skin": "skin12",
-"topClothes": "hoodie"
+"eye": "happy_open",
+"eye_color": "lightblue",
+"hair": "bald",
+"hairColor": 6,
+"hasBottom": 1,
+"mouth": "neutral closed",
+"nose": "long plump nose",
+"skin": "skin2",
+"topClothes": "shirt"
 }
 default_color = 2
-default_name = "HAHA"
+default_name = "Arkadiusz Stańczyk"
 
 [node name="biorko-taskpoint" parent="Mapa/YSort" index="92"]
 material = SubResource( 7 )
