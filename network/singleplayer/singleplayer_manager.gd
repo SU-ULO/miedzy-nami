@@ -17,6 +17,9 @@ func handle_game_settings(settings):
 	.handle_game_settings(settings)
 
 func set_game_settings(settings):
+	for c in player_characters:
+		var p = player_characters[c]
+		p.player_speed = p.default_speed * gamesettings["player-speed"]
 	handle_game_settings(settings)
 
 func create_world(config):
@@ -55,6 +58,7 @@ func get_tasks_number(tasksarray: Array) -> int:
 	return task_count
 
 func request_game_start():
+	set_game_settings(gamesettings)
 	gamestate = STARTED
 	gamestate_params = {"imp": []}
 	Task.SetTaskCategoriesPerPlayer(3, gamesettings["short-tasks"])
