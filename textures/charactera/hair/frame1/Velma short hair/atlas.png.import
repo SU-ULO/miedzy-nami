@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/atlas.png-a54bb03b8109d8c2e32adb778b681e78.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/charactera/hair/frame1/Velma short hair/atlas.png"
+dest_files=[ "res://.import/atlas.png-a54bb03b8109d8c2e32adb778b681e78.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.1
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

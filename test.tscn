@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/AtlasTest.cs" type="Script" id=1]
+[ext_resource path="res://scripts/TextureAtlasHandler.cs" type="Script" id=2]
+
+[node name="Node" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 54.0
+margin_top = 693.0
+margin_right = 895.0
+margin_bottom = 1044.0
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="Button" to="Button" method="OnButtonPressed"]
