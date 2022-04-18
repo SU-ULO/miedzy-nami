@@ -25,7 +25,7 @@ func create_world(config):
 	own_player.username = get_parent().menu.usersettings["username"]
 	player_characters[own_id]=own_player
 	own_player.global_position = get_spawn_position(own_id)
-	own_player.color = get_free_color_and_set()
+	own_player.color = randi()%14+1
 	world.get_node('Mapa/YSort').add_child(own_player)
 	for npc in world.npcs:
 		player_characters[npc.owner_id]=npc
@@ -43,7 +43,6 @@ func recreate_world():
 	.recreate_world()
 	taken_colors=0
 	player_characters[0].set_init_data(init_data)
-	set_color_taken(own_player.color)
 	own_player.get_node("sprites").loadLook()
 
 func start():
@@ -80,3 +79,7 @@ func kick(_id: int):
 
 func kick_him():
 	pass
+
+func request_color_change(c: int):
+	player_characters[own_id].color = c
+	player_characters[own_id].get_node("sprites").loadLook()
