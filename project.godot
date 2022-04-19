@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/matchmaking_connection.gd"
 }, {
+"base": "Node2D",
+"class": "NavPoint",
+"language": "GDScript",
+"path": "res://scripts/navpoint.gd"
+}, {
 "base": "Node",
 "class": "NetworkManager",
 "language": "GDScript",
@@ -88,6 +93,7 @@ _global_script_class_icons={
 "JoinedServer": "",
 "LookConfiguration": "",
 "Matchmaking_Connection": "",
+"NavPoint": "",
 "NetworkManager": "",
 "Player": "",
 "ServerNetworkManager": "",

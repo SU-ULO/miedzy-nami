@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/school.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/npc.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/school_single.gd" type="Script" id=3]
+[ext_resource path="res://entities/NavPoint.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -203,7 +204,8 @@ default_clothes = {
 }
 default_color = 2
 default_name = "Arkadiusz Stańczyk"
-default_wandering_path = [ NodePath("../../../NavNPC/NavPoints/sekretariat_nav"), NodePath("../../../NavNPC/NavPoints/geografia_nav") ]
+speed_multiplier = 0.5
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/sekretariat_nav"), NodePath("../../../NavNPC/NavPoints/geografia_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
 
 [node name="biorko-taskpoint" parent="Mapa/YSort" index="93"]
 material = SubResource( 7 )
@@ -221,11 +223,14 @@ navpoly = SubResource( 10 )
 
 [node name="NavPoints" type="Node" parent="NavNPC" index="1"]
 
-[node name="sekretariat_nav" type="Position2D" parent="NavNPC/NavPoints" index="0"]
-position = Vector2( -676, 2230 )
+[node name="sekretariat_nav" parent="NavNPC/NavPoints" index="0" instance=ExtResource( 4 )]
+position = Vector2( -799, 2242 )
 
-[node name="geografia_nav" type="Position2D" parent="NavNPC/NavPoints" index="1"]
-position = Vector2( -918, 243 )
+[node name="geografia_nav" parent="NavNPC/NavPoints" index="1" instance=ExtResource( 4 )]
+position = Vector2( -879, 264 )
+
+[node name="coffee_nav" parent="NavNPC/NavPoints" index="2" instance=ExtResource( 4 )]
+position = Vector2( -5062, 1995 )
 
 [editable path="Mapa/camera2"]
 [editable path="Mapa/camera4"]
