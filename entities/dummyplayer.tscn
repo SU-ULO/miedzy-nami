@@ -41,10 +41,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=11]
 resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -60,10 +60,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=6]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"frames": [  ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -259,15 +259,15 @@ material = ExtResource( 9 )
 frames = SubResource( 5 )
 animation = "front"
 
+[node name="spodnie" type="AnimatedSprite" parent="sprites"]
+material = ExtResource( 9 )
+frames = SubResource( 11 )
+animation = "front"
+
 [node name="clothes-top" type="AnimatedSprite" parent="sprites"]
 material = ExtResource( 9 )
 scale = Vector2( 0.999999, 0.999999 )
 frames = SubResource( 6 )
-animation = "front"
-
-[node name="spodnie" type="AnimatedSprite" parent="sprites"]
-material = ExtResource( 9 )
-frames = SubResource( 11 )
 animation = "front"
 
 [node name="face" type="Sprite" parent="sprites"]
@@ -322,7 +322,6 @@ visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 13 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
