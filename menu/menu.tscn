@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://menu/options.gd" type="Script" id=2]
@@ -141,37 +141,20 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[sub_resource type="StyleBoxFlat" id=13]
-bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id=14]
-bg_color = Color( 0.890196, 0.858824, 0.713726, 1 )
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color( 0.443137, 0.34902, 0.301961, 1 )
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="DynamicFontData" id=15]
-font_path = "res://fonts/PottaOne-Regular.ttf"
-
-[sub_resource type="DynamicFont" id=16]
-size = 32
+[sub_resource type="DynamicFont" id=40]
+size = 36
 use_filter = true
-font_data = SubResource( 15 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=39]
+size = 34
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=41]
+size = 34
+use_filter = true
+font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.545098, 0.545098, 0.545098, 0.611765 )
@@ -835,9 +818,6 @@ margin_top = -541.414
 margin_right = 961.858
 margin_bottom = 538.586
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="bees" type="Control" parent="background"]
 margin_right = 40.0
@@ -854,9 +834,6 @@ margin_right = 2218.35
 margin_bottom = 1073.64
 rect_scale = Vector2( 0.721868, 0.721868 )
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Main" type="Control" parent="."]
 anchor_left = 0.5
@@ -1035,57 +1012,41 @@ text = "WYJDŹ"
 
 [node name="Options" type="Control" parent="."]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -117.766
-margin_right = 200.0
-margin_bottom = 282.234
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="MatchmakingURLLabel" type="Label" parent="Options"]
-anchor_left = 0.5
+[node name="OptionsContainer" type="VBoxContainer" parent="Options"]
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -265.0
-margin_top = -142.5
-margin_right = 691.0
-margin_bottom = -63.5
-rect_scale = Vector2( 0.532555, 0.532555 )
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 8 )
-text = "URL serwera matchmakingowego:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OptionsContainer" type="Control" parent="Options"]
-margin_right = 500.0
-margin_bottom = 24.0
+margin_top = -43.0
+margin_bottom = 463.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
 [node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
-margin_left = -224.0
-margin_top = 96.0
-margin_right = 1015.0
-margin_bottom = 175.0
-rect_scale = Vector2( 0.720081, 0.720081 )
+margin_top = 22.0
+margin_right = 1920.0
+margin_bottom = 75.0
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.105882, 0.105882, 0.105882, 1 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 40 )
 align = 1
 placeholder_text = "url"
 caret_blink = true
 caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="MatchmakingURLLabel" type="Label" parent="Options/OptionsContainer/MatchmakingURL"]
+margin_top = -54.0
+margin_right = 1920.0
+margin_bottom = -4.0
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 39 )
+text = "URL serwera matchmakingowego:"
+align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Options/OptionsContainer/MatchmakingURL"]
 show_behind_parent = true
@@ -1093,10 +1054,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -13.3058
-margin_top = -108.126
-margin_right = 822.694
-margin_bottom = 41.8739
+margin_left = 9.0
+margin_top = -77.0
+margin_right = 845.0
+margin_bottom = 73.0
+rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1108,10 +1070,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -462.037
-margin_top = -108.126
-margin_right = 373.963
-margin_bottom = 41.8739
+margin_left = -291.0
+margin_top = -77.0
+margin_right = 545.0
+margin_bottom = 73.0
+rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1123,40 +1086,77 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -845.676
-margin_top = -108.126
-margin_right = -9.6759
-margin_bottom = 41.8739
+margin_left = -591.0
+margin_top = -77.0
+margin_right = 245.0
+margin_bottom = 73.0
+rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="OptionsAcceptButton" type="Button" parent="Options"]
+[node name="Container" type="Control" parent="Options/OptionsContainer"]
+margin_top = 79.0
+margin_right = 1920.0
+margin_bottom = 179.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="borderless_btn" type="Button" parent="Options/OptionsContainer/Container"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -39.0
+margin_right = 262.0
+margin_bottom = 39.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = ExtResource( 21 )
+
+[node name="Label" type="Label" parent="Options/OptionsContainer/Container/borderless_btn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -25.0
+margin_right = 160.0
+margin_bottom = 25.0
+mouse_filter = 1
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = SubResource( 41 )
+text = "toggle borderless"
+
+[node name="Container2" type="Control" parent="Options/OptionsContainer"]
+margin_top = 183.0
+margin_right = 1920.0
+margin_bottom = 483.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="ExitButton" type="Button" parent="Options/OptionsContainer/Container2"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -299.0
-margin_top = 5.0
-margin_right = 301.0
-margin_bottom = 115.0
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
+margin_left = -376.5
+margin_top = -101.0
+margin_right = 376.5
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="Options/OptionsAcceptButton"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Label" type="Label" parent="Options/OptionsContainer/Container2/ExitButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -173.0
+margin_top = -39.5
+margin_right = 173.0
+margin_bottom = 39.5
 mouse_filter = 1
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
+custom_fonts/font = ExtResource( 8 )
 text = "ZATWIERDŹ"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Create" type="VBoxContainer" parent="."]
 visible = false
@@ -1907,7 +1907,8 @@ __meta__ = {
 [connection signal="pressed" from="Main/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Main/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Main/ExitButton" to="." method="_on_ExitButton_pressed"]
-[connection signal="pressed" from="Options/OptionsAcceptButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
+[connection signal="button_up" from="Options/OptionsContainer/Container/borderless_btn" to="Options" method="toggle_borderless"]
+[connection signal="pressed" from="Options/OptionsContainer/Container2/ExitButton" to="Options" method="_on_OptionsAcceptButton_pressed"]
 [connection signal="pressed" from="Create/ServerSettingsContainer/create" to="Create" method="_on_ServerAcceptButton_pressed"]
 [connection signal="pressed" from="Create/exit" to="RoomList" method="_on_Exit_pressed"]
 [connection signal="pressed" from="RoomList/JoinedKey/JoinedKeyField/Button" to="RoomList" method="_on_Button_pressed"]

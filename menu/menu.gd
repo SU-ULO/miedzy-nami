@@ -27,6 +27,7 @@ func _init():
 
 func _ready():
 	$Main/Username.text = usersettings["username"]
+	$Options.toggle_borderless()
 
 func close_everything():
 	for n in get_children():
@@ -120,10 +121,8 @@ func _on_StartClientButton_pressed():
 func highlight():
 	get_node("Main/AnimationPlayer").play("highlight")
 
-
 func _on_CreditsButton_pressed():
 	open_credits()
-
 
 func _on_StartFreeroamButton_pressed():
 	usersettings.username = $'Main/Username'.text
@@ -132,7 +131,6 @@ func _on_StartFreeroamButton_pressed():
 		emit_signal("request_freeroam")
 	else:
 		highlight()
-
 
 func _on_ExitButton_pressed():
 	get_tree().quit()

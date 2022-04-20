@@ -60,6 +60,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=11]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
@@ -177,25 +196,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=11]
-resource_local_to_scene = true
-animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
 [sub_resource type="SpriteFrames" id=12]
 resource_local_to_scene = true
 animations = [ {
@@ -265,6 +265,11 @@ scale = Vector2( 0.999999, 0.999999 )
 frames = SubResource( 6 )
 animation = "front"
 
+[node name="spodnie" type="AnimatedSprite" parent="sprites"]
+material = ExtResource( 9 )
+frames = SubResource( 11 )
+animation = "front"
+
 [node name="face" type="Sprite" parent="sprites"]
 material = ExtResource( 9 )
 position = Vector2( 7.89365, -423.508 )
@@ -299,13 +304,7 @@ animation = "front"
 [node name="acc" type="AnimatedSprite" parent="sprites/face"]
 material = ExtResource( 9 )
 position = Vector2( 0, 24 )
-z_index = 1
 frames = SubResource( 14 )
-animation = "front"
-
-[node name="spodnie" type="AnimatedSprite" parent="sprites"]
-material = ExtResource( 9 )
-frames = SubResource( 11 )
 animation = "front"
 
 [node name="wlosy" type="Node2D" parent="sprites"]
