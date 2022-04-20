@@ -39,10 +39,23 @@ func clear_navpath():
 	if !tmp_navpath.empty():
 		tmp_navpath = PoolVector2Array()
 
+#talk stuff
+var talk_direction = NavPoint.LookDirection.RIGHT
+
 #state stuff
 enum NpcState {WELTSCHMERZ, TRAVELING, IDLING, IDLING_WALK, TALKING}
 var current_state = NpcState.WELTSCHMERZ
 var state_time_remaining: float = 5
+
+func set_look_dir(d):
+	if d==NavPoint.LookDirection.DOWN:
+		$sprites.lookFront()
+	elif d==NavPoint.LookDirection.UP:
+		$sprites.lookBack()
+	elif d==NavPoint.LookDirection.LEFT:
+		$sprites.lookLeft()
+	elif d==NavPoint.LookDirection.RIGHT:
+		$sprites.lookRight()
 
 func go_direct(target: Vector2):
 	var direction = position.direction_to(target)
@@ -50,6 +63,10 @@ func go_direct(target: Vector2):
 	moveY = direction.y
 
 func set_next_target():
+	if potential_wandering_targets.empty():
+		current_state=NpcState.WELTSCHMERZ
+		state_time_remaining=3600
+		return
 	var id = last_target_num
 	while id == last_target_num:
 		id = randi()%potential_wandering_targets.size()
@@ -82,14 +99,7 @@ func do_idle():
 	moveX=0
 	moveY=0
 	if wandering_target is NavPoint:
-		if wandering_target.look_dir==NavPoint.LookDirection.DOWN:
-			$sprites.lookFront()
-		elif wandering_target.look_dir==NavPoint.LookDirection.UP:
-			$sprites.lookBack()
-		elif wandering_target.look_dir==NavPoint.LookDirection.LEFT:
-			$sprites.lookLeft()
-		elif wandering_target.look_dir==NavPoint.LookDirection.RIGHT:
-			$sprites.lookRight()
+		set_look_dir(wandering_target.look_dir)
 
 func end_idle():
 	if wandering_target is NavPoint:
@@ -137,8 +147,31 @@ func end_travel():
 				start_idle()
 			elif wandering_target.type==NavPoint.NavpointType.PATH_NAVPOINT:
 				set_next_target()
-		elif wandering_target.is_class("NPC"):
-			set_next_target()
+		elif wandering_target.is_in_group("npc"):
+			var center = position + (wandering_target.position-position)*0.5
+			var half_dist: float = 150
+			var p1 = center+Vector2(-half_dist, 0)
+			var p2 = center+Vector2(half_dist, 0)
+			wandering_target.start_talk(p2, NavPoint.LookDirection.LEFT)
+			start_talk(p1, NavPoint.LookDirection.RIGHT)
+
+func start_talk(location, direction):
+	clear_navpath()
+	tmp_target=location
+	talk_direction=direction
+	current_state=NpcState.TALKING
+	state_time_remaining=5
+
+func do_talk():
+	if position.distance_to(tmp_target)>25:
+		go_direct(tmp_target)
+	else:
+		moveX=0
+		moveY=0
+		set_look_dir(talk_direction)
+
+func end_talk():
+	set_next_target()
 
 func _ready():
 	username = default_name
@@ -185,6 +218,8 @@ func _process(delta):
 				do_idle()
 			elif current_state == NpcState.IDLING_WALK:
 				do_idle_walk()
+			elif current_state == NpcState.TALKING:
+				do_talk()
 		else:
 			if current_state==NpcState.WELTSCHMERZ:
 				set_next_target()
@@ -194,6 +229,8 @@ func _process(delta):
 				end_idle()
 			elif current_state==NpcState.IDLING_WALK:
 				end_idle_walk()
+			elif current_state==NpcState.TALKING:
+				end_talk()
 		state_time_remaining-=delta
 	else:
 		moveX=0

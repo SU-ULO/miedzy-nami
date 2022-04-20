@@ -166,6 +166,8 @@ default_clothes = {
 }
 default_color = 12
 default_name = "Adam Makowski"
+speed_multiplier = 0.8
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../stanczyk") ]
 
 [node name="ilonka" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
 position = Vector2( 4125.37, 3997 )
@@ -231,10 +233,14 @@ idling_chance = 0.8
 position = Vector2( -879, 264 )
 idling_chance = 0.8
 
-[node name="coffee_nav" parent="NavNPC/NavPoints" index="2" instance=ExtResource( 4 )]
+[node name="mat_nav" parent="NavNPC/NavPoints" index="2" instance=ExtResource( 4 )]
+position = Vector2( -1489, -438 )
+idling_chance = 0.8
+
+[node name="coffee_nav" parent="NavNPC/NavPoints" index="3" instance=ExtResource( 4 )]
 position = Vector2( -5062, 1995 )
 look_dir = 0
-wait_time = 5.0
+wait_time = 10.0
 
 [editable path="Mapa/camera2"]
 [editable path="Mapa/camera4"]
