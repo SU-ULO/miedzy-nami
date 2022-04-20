@@ -21,6 +21,10 @@ var meetings_left
 var network
 var bar_last = 0;
 
+export var default_camera_zoom = 2
+export var zoomed_camera_zoom = 0.4
+var zoomed = false
+
 var electrical_switches = [0,0,0,0,0]
 var electrical_good = [0,0,0,0,0]
 
@@ -177,6 +181,18 @@ func get_input():
 		if Input.is_action_just_pressed("ui_chat"):
 			if get_node("GUI/PlayerCanvas/CommunicationButtons/chat").visible:
 				get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("chat")
+		
+		if Input.is_action_just_pressed("zoom"):
+			if zoomed:
+				zoomed = false
+				$Camera.position = Vector2(0, 0)
+				$Camera.zoom = Vector2(default_camera_zoom, default_camera_zoom)
+			else:
+				zoomed = true
+				$Camera.position = $sprites/face.position * $sprites.scale
+				print($Camera.position)
+				$Camera.zoom = Vector2(zoomed_camera_zoom, zoomed_camera_zoom)
+	
 	if Input.is_action_just_pressed("chat_send"): 
 		if chat_focused:
 			get_node("GUI/CloseButton/ChatPanel").OnSendPressed()
