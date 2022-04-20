@@ -166,7 +166,7 @@ default_clothes = {
 }
 default_color = 12
 default_name = "Adam Makowski"
-speed_multiplier = 0.8
+speed_multiplier = 0.6
 wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../stanczyk") ]
 
 [node name="ilonka" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
