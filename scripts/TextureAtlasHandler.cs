@@ -10,14 +10,12 @@ public partial class TextureAtlasHandler : Node
 	{
 		public int occurences;
 		public Texture[] textures = null;
-		public Texture AtlasBase;
 		public AtlasInfo Info;
 		
-		public TextureDictionaryEntry(int occurences, Texture[] textures, Texture AtlasBase, AtlasInfo Info)
+		public TextureDictionaryEntry(int occurences, Texture[] textures, AtlasInfo Info)
 		{
 			this.textures = textures;
 			this.occurences = occurences;
-			this.AtlasBase = AtlasBase;
 			this.Info = Info;
 		}
 	}
@@ -40,9 +38,15 @@ public partial class TextureAtlasHandler : Node
 			this.ElementWidth = ElementWidth;
 			this.ElementHeight = ElementHeight;	
 		}
+		
+		public string ResourcePath
+		{
+			get { return "res://textures/" + this.RelResourcePath + "/atlas.png"; }
+			
+		}
 	}
 	
-	public void _Ready()
+	public new void _Ready()
 	{
 		if (TextureAtlases == null)
 		{
@@ -51,51 +55,62 @@ public partial class TextureAtlasHandler : Node
 		}	
 	}
 	
-	public static Texture GetTextureFromAtlas(string atlasName, int textureIndex)
-	{
-		/* if this texture atlas is not loaded */
-		if (!TextureAtlases.ContainsKey(atlasName))
-		{
-			string baseAtlasName = atlasName;
-			
-			AtlasInfo info = AtlasFrameSets[baseAtlasName];
-			string resourcePath = "res://textures/" + info.RelResourcePath + "/";
-			
-			resourcePath += "atlas.png";
+	private static void CreateTextureAtlasEntry(AtlasInfo info)
+	{		
+			string resourcePath = info.ResourcePath;
 			
 			Texture atlasBase = (Texture)GD.Load(resourcePath);
 			if (atlasBase == null)
 				throw new System.IO.FileNotFoundException("Atlas file not found", resourcePath);
 
-			AtlasTexture[] atlasTextures = new AtlasTexture[(atlasBase.GetWidth() / info.ElementWidth) * (atlasBase.GetHeight() / info.ElementHeight)];
+			Texture[] atlasTextures = new Texture[(atlasBase.GetWidth() / info.ElementWidth) * (atlasBase.GetHeight() / info.ElementHeight)];
 			for (int i = 0; i < atlasTextures.Length; i++)
 				atlasTextures[i] = null;
 			
-			TextureDictionaryEntry entry = new TextureDictionaryEntry(0, atlasTextures, atlasBase, info);
-			TextureAtlases.Add(atlasName, entry);
+			TextureDictionaryEntry entry = new TextureDictionaryEntry(0, atlasTextures, info);
+			TextureAtlases.Add(info.RelResourcePath, entry);	
+	}
+	
+	public static Texture GetTextureFromAtlas(string atlasName, int textureIndex)
+	{
+		/* if this texture atlas is not loaded */
+		if (!TextureAtlases.ContainsKey(atlasName))
+		{
+			CreateTextureAtlasEntry(AtlasFrameSets[atlasName]);
 		}
 		
 		/* if this texture is not loaded */
 		if (TextureAtlases[atlasName].textures[textureIndex] == null)
 		{	
-			AtlasTexture atlasTexture = new AtlasTexture();
-			Texture atlasBase = TextureAtlases[atlasName].AtlasBase;
+			ImageTexture outTexture = new ImageTexture();
 			AtlasInfo info = TextureAtlases[atlasName].Info;
+			Texture atlasBase = (Texture)GD.Load(info.ResourcePath);
 			
 			int xIndex, yIndex;
 			
 			xIndex = textureIndex % (atlasBase.GetWidth() / info.ElementWidth);
 			yIndex = textureIndex / (atlasBase.GetWidth() / info.ElementWidth);
 			
-			atlasTexture.Atlas = atlasBase;
-			atlasTexture.Region = new Rect2(
-				xIndex * info.ElementWidth,
-				yIndex * info.ElementHeight,
-				info.ElementWidth,
-				info.ElementHeight
-			);	
+			Image image = new Image();
+			image.Create(info.ElementWidth, info.ElementHeight, false, Image.Format.Rgba8);
 			
-			TextureAtlases[atlasName].textures[textureIndex] = atlasTexture;
+			Image src = atlasBase.GetData();
+			
+			image.Lock();
+			src.Lock();
+			
+			image.BlitRect(
+				src, 
+				new Rect2(xIndex * info.ElementWidth, yIndex * info.ElementHeight, info.ElementWidth, info.ElementHeight),
+				new Vector2(0, 0)
+			);
+			
+			src.Unlock();
+			image.Unlock();
+			
+			outTexture.CreateFromImage(image);
+			
+			TextureAtlases[atlasName].textures[textureIndex] = (Texture)outTexture;
 		}
 		
 		Texture texture = TextureAtlases[atlasName].textures[textureIndex];
