@@ -1,5 +1,7 @@
 extends Dummyplayer
 
+class_name NPC
+
 #custom properties
 export var default_clothes = {
 	"skin": "skin1",
@@ -27,13 +29,18 @@ var ai_active = false
 var potential_wandering_targets = Array()
 var wandering_target: Node2D
 var last_target_pos = Vector2()
+var last_target_num: int = 0
 
 #path stuff
 var tmp_navpath = PoolVector2Array()
 var tmp_target = Vector2()
 
+func clear_navpath():
+	if !tmp_navpath.empty():
+		tmp_navpath = PoolVector2Array()
+
 #state stuff
-enum NpcState {WELTSCHMERZ, TRAVELING, IDLING, TALKING}
+enum NpcState {WELTSCHMERZ, TRAVELING, IDLING, IDLING_WALK, TALKING}
 var current_state = NpcState.WELTSCHMERZ
 var state_time_remaining: float = 5
 
@@ -43,7 +50,11 @@ func go_direct(target: Vector2):
 	moveY = direction.y
 
 func set_next_target():
-	wandering_target = potential_wandering_targets[randi()%potential_wandering_targets.size()]
+	var id = last_target_num
+	while id == last_target_num:
+		id = randi()%potential_wandering_targets.size()
+	wandering_target = potential_wandering_targets[id]
+	last_target_num=id
 	current_state = NpcState.TRAVELING
 	last_target_pos = wandering_target.position
 	set_navpath(wandering_target.position)
@@ -61,15 +72,52 @@ func set_next_navpoint():
 	tmp_navpath.remove(0)
 	return true
 
-func end_travel():
-	set_next_target()
+func start_idle():
+	current_state=NpcState.IDLING
+	state_time_remaining=2
+	if wandering_target is NavPoint:
+		state_time_remaining=wandering_target.wait_time
+
+func do_idle():
+	moveX=0
+	moveY=0
+	if wandering_target is NavPoint:
+		if wandering_target.look_dir==NavPoint.LookDirection.DOWN:
+			$sprites.lookFront()
+		elif wandering_target.look_dir==NavPoint.LookDirection.UP:
+			$sprites.lookBack()
+		elif wandering_target.look_dir==NavPoint.LookDirection.LEFT:
+			$sprites.lookLeft()
+		elif wandering_target.look_dir==NavPoint.LookDirection.RIGHT:
+			$sprites.lookRight()
+
+func end_idle():
+	if wandering_target is NavPoint:
+		var continue_idle = randf() < wandering_target.idling_chance
+		if continue_idle:
+			start_idle_walk()
+		else:
+			set_next_target()
+
+func start_idle_walk():
+	current_state=NpcState.IDLING_WALK
+	state_time_remaining=1
+	var p = wandering_target.position
+	var d = Vector2(randf()*2-1, randf()*2-1).normalized() * 500
+	clear_navpath()
+	tmp_target=p+d
+
+func do_idle_walk():
+	go_direct(tmp_target)
+
+func end_idle_walk():
+	start_idle()
 
 func do_travel():
 	if wandering_target in in_sight\
 	and position.distance_to(wandering_target.position)<200:
 		tmp_target = wandering_target.position
-		if !tmp_navpath.empty():
-			tmp_navpath = PoolVector2Array()
+		clear_navpath()
 		if position.distance_to(tmp_target)<25:
 			end_travel()
 	else:
@@ -81,6 +129,16 @@ func do_travel():
 			set_navpath(wandering_target.position)
 			last_target_pos = wandering_target.position
 	go_direct(tmp_target)
+
+func end_travel():
+	if position.distance_to(wandering_target.position)<50:
+		if wandering_target is NavPoint:
+			if wandering_target.type==NavPoint.NavpointType.ROOM_NAVPOINT:
+				start_idle()
+			elif wandering_target.type==NavPoint.NavpointType.PATH_NAVPOINT:
+				set_next_target()
+		elif wandering_target.is_class("NPC"):
+			set_next_target()
 
 func _ready():
 	username = default_name
@@ -119,14 +177,23 @@ func _process(delta):
 		check_line_of_sight()
 		if state_time_remaining>0:
 			if current_state == NpcState.WELTSCHMERZ:
-				pass
+				moveX=0
+				moveY=0
 			elif current_state == NpcState.TRAVELING:
 				do_travel()
+			elif current_state == NpcState.IDLING:
+				do_idle()
+			elif current_state == NpcState.IDLING_WALK:
+				do_idle_walk()
 		else:
 			if current_state==NpcState.WELTSCHMERZ:
 				set_next_target()
 			elif current_state==NpcState.TRAVELING:
 				end_travel()
+			elif current_state==NpcState.IDLING:
+				end_idle()
+			elif current_state==NpcState.IDLING_WALK:
+				end_idle_walk()
 		state_time_remaining-=delta
 	else:
 		moveX=0

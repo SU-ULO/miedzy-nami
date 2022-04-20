@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/matchmaking_connection.gd"
 }, {
+"base": "Dummyplayer",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://scripts/player/npc.gd"
+}, {
 "base": "Node2D",
 "class": "NavPoint",
 "language": "GDScript",
@@ -93,6 +98,7 @@ _global_script_class_icons={
 "JoinedServer": "",
 "LookConfiguration": "",
 "Matchmaking_Connection": "",
+"NPC": "",
 "NavPoint": "",
 "NetworkManager": "",
 "Player": "",
