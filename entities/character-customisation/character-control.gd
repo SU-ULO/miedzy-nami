@@ -72,9 +72,15 @@ func hideAll():
 	for i in $"body-parts-control".get_children():
 		i.visible = false
 		
+const ButtonBasedCustomizer = preload("res://scripts/character-customization-gui/ButtonBasedCustomizer.cs")
+
 func _show_Menu(menu):
 	hideAll()
-	get_node("body-parts-control/" + menu + "-control").visible = true
+	var selectedMenu = get_node("body-parts-control/" + menu + "-control")
+	selectedMenu.visible = true
+	
+	ButtonBasedCustomizer.Wrapper(selectedMenu, $GridContainer, 0)
+	
 	$"eye-color".visible = false
 	$"beard-color".visible = false
 	$"hair-color".visible = false

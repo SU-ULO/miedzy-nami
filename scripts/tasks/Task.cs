@@ -250,7 +250,7 @@ public abstract class Task : Godot.Node2D
 	public virtual void TaskOnProgress(int progress){}
 	public virtual void TaskOnCompleted(){}
 	
-	public virtual string ToString(){
+	public new virtual string ToString(){
 		return this.GetType().Name + " ["+state+"/"+maxState+"]";
 	}
 	

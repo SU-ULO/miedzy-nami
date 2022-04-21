@@ -1,11 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://textures/character/clothes/tshirt/frame1/tshirt5.png" type="Texture" id=1]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=2]
-[ext_resource path="res://textures/character/clothes/shirt/frame1/shirt5.png" type="Texture" id=3]
 [ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=4]
-[ext_resource path="res://textures/character/clothes/dress/frame1/dress5.png" type="Texture" id=5]
-[ext_resource path="res://textures/character/clothes/hoodie/frame1/hoodie5.png" type="Texture" id=6]
 
 [node name="clothes-control" type="Control"]
 anchor_right = 1.0
@@ -23,32 +18,21 @@ __meta__ = {
 }
 
 [node name="shirt" type="TextureButton" parent="GridContainer"]
-margin_right = 385.0
-margin_bottom = 412.0
-texture_normal = ExtResource( 3 )
 
 [node name="jeans3" type="Sprite" parent="GridContainer/shirt"]
 position = Vector2( 194.88, 203.923 )
-texture = ExtResource( 2 )
 
 [node name="tshirt" type="TextureButton" parent="GridContainer"]
-margin_left = 419.0
-margin_right = 818.0
-margin_bottom = 412.0
-texture_normal = ExtResource( 1 )
+margin_left = 34.0
+margin_right = 34.0
 
 [node name="jeans3" type="Sprite" parent="GridContainer/tshirt"]
 position = Vector2( 199.88, 202.923 )
-texture = ExtResource( 2 )
 
 [node name="dress" type="TextureButton" parent="GridContainer"]
-margin_left = 852.0
-margin_right = 1236.0
-margin_bottom = 412.0
-texture_normal = ExtResource( 5 )
+margin_left = 68.0
+margin_right = 68.0
 
 [node name="hoodie" type="TextureButton" parent="GridContainer"]
-margin_left = 1270.0
-margin_right = 1647.0
-margin_bottom = 412.0
-texture_normal = ExtResource( 6 )
+margin_left = 102.0
+margin_right = 102.0

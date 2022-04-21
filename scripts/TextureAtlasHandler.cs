@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public partial class TextureAtlasHandler : Node
 {
+	public static string AtlasRoot = "res://textures/";
+	
 	class TextureDictionaryEntry
 	{
 		public int occurences;
@@ -41,12 +43,12 @@ public partial class TextureAtlasHandler : Node
 		
 		public string ResourcePath
 		{
-			get { return "res://textures/" + this.RelResourcePath + "/atlas.png"; }
+			get { return AtlasRoot + this.RelResourcePath + "/atlas.png"; }
 			
 		}
 	}
 	
-	public new void _Ready()
+	public static void CheckAndInit()
 	{
 		if (TextureAtlases == null)
 		{
@@ -55,28 +57,39 @@ public partial class TextureAtlasHandler : Node
 		}	
 	}
 	
-	private static void CreateTextureAtlasEntry(AtlasInfo info)
+	public new void _Ready()
+	{
+		CheckAndInit();		
+	}
+	
+	private static void CreateTextureAtlasEntry(string atlasName)
 	{		
-			string resourcePath = info.ResourcePath;
+		CheckAndInit();				
+		AtlasInfo info = AtlasFrameSets[atlasName];
+		
+		string resourcePath = info.ResourcePath;
+		
 			
-			Texture atlasBase = (Texture)GD.Load(resourcePath);
-			if (atlasBase == null)
-				throw new System.IO.FileNotFoundException("Atlas file not found", resourcePath);
+		Texture atlasBase = (Texture)GD.Load(resourcePath);
+		if (atlasBase == null)
+			throw new System.IO.FileNotFoundException("Atlas file not found", resourcePath);
 
-			Texture[] atlasTextures = new Texture[(atlasBase.GetWidth() / info.ElementWidth) * (atlasBase.GetHeight() / info.ElementHeight)];
-			for (int i = 0; i < atlasTextures.Length; i++)
-				atlasTextures[i] = null;
+		Texture[] atlasTextures = new Texture[(atlasBase.GetWidth() / info.ElementWidth) * (atlasBase.GetHeight() / info.ElementHeight)];
+		for (int i = 0; i < atlasTextures.Length; i++)
+			atlasTextures[i] = null;
 			
-			TextureDictionaryEntry entry = new TextureDictionaryEntry(0, atlasTextures, info);
-			TextureAtlases.Add(info.RelResourcePath, entry);	
+		TextureDictionaryEntry entry = new TextureDictionaryEntry(0, atlasTextures, info);
+		TextureAtlases.Add(atlasName, entry);	
 	}
 	
 	public static Texture GetTextureFromAtlas(string atlasName, int textureIndex)
 	{
+		CheckAndInit();				
+		
 		/* if this texture atlas is not loaded */
 		if (!TextureAtlases.ContainsKey(atlasName))
 		{
-			CreateTextureAtlasEntry(AtlasFrameSets[atlasName]);
+			CreateTextureAtlasEntry(atlasName);
 		}
 		
 		/* if this texture is not loaded */
@@ -131,6 +144,8 @@ public partial class TextureAtlasHandler : Node
 	/* dereferences the texture atlas this texture is in and performs cleanup if necessary */
 	public static void CloseTexture(Texture texture)
 	{
+		CheckAndInit();		
+		
 		/* if we have this texture loaded */
 		if (ReverseTextureAtlasMap.ContainsKey(texture))
 		{
@@ -169,5 +184,64 @@ public partial class TextureAtlasHandler : Node
 				GC.Collect();
 			}
 		}
+	}
+	
+	public static Resource LoadOverride(string path)
+	{
+		int lastSlash = path.LastIndexOf('/');
+		string pathParsed, lastWord;
+		
+		try
+		{
+			if (lastSlash > 0)
+			{
+				pathParsed = path.Substring(0, lastSlash);
+				lastWord = path.Substring(lastSlash + 1);
+			}
+			else
+			{
+				pathParsed = "";
+				lastWord = path;	
+			}
+			
+			if (pathParsed.BeginsWith(AtlasRoot))
+			{
+				pathParsed = pathParsed.Substring(AtlasRoot.Length);
+				
+				int startOfIndexString = lastWord.IndexOfAny("0123456789".ToCharArray());
+				int endOfIndexString = lastWord.LastIndexOfAny("0123456789".ToCharArray());
+					
+				string indexString = "";
+					
+				try 
+				{
+					indexString = lastWord.Substring(startOfIndexString, endOfIndexString - startOfIndexString + 1);
+				}
+				catch(Exception e)
+				{
+					/* handle edge cases here */
+					indexString = "0";
+				}
+				
+				int index = 0;
+				
+				try 
+				{
+					index = Int32.Parse(indexString);
+				}
+				catch (Exception e)
+				{
+					throw new Exception(indexString + " is not a valid number");
+				}
+				
+				return GetTextureFromAtlas(pathParsed, index);
+			}
+		}
+		catch (Exception e)
+		{
+			GD.Print(e.ToString());
+		}
+		
+		return (Resource) GD.Load(path.Replace("/character/", "/charactera/"));	
 	}
 }

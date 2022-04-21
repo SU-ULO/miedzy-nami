@@ -1,21 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/small plump nose.png" type="Texture" id=1]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/neutral nose.png" type="Texture" id=2]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/long thin nose.png" type="Texture" id=3]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular short nose.png" type="Texture" id=4]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/wide nose.png" type="Texture" id=5]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/wide plump nose.png" type="Texture" id=6]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/long nose.png" type="Texture" id=7]
 [ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=8]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular plump nose.png" type="Texture" id=9]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/wide round plump nose.png" type="Texture" id=10]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular long nose.png" type="Texture" id=11]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/square nose.png" type="Texture" id=12]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/nostril nose.png" type="Texture" id=13]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/triangular long plump nose.png" type="Texture" id=14]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/long plump nose.png" type="Texture" id=15]
-[ext_resource path="res://textures/character/face parts/noses/noses cropped/wide nostril nose.png" type="Texture" id=16]
 
 [node name="nose-control" type="Control"]
 anchor_right = 1.0
@@ -35,98 +20,75 @@ __meta__ = {
 }
 
 [node name="long nose" type="TextureButton" parent="GridContainer"]
-margin_right = 128.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 7 )
 
 [node name="long plump nose" type="TextureButton" parent="GridContainer"]
-margin_left = 132.0
-margin_right = 260.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 15 )
+margin_left = 4.0
+margin_right = 4.0
 
 [node name="long thin nose" type="TextureButton" parent="GridContainer"]
-margin_left = 264.0
-margin_right = 392.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 3 )
+margin_left = 8.0
+margin_right = 8.0
 
 [node name="neutral nose" type="TextureButton" parent="GridContainer"]
-margin_left = 396.0
-margin_right = 524.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 2 )
+margin_left = 12.0
+margin_right = 12.0
 
 [node name="nostril nose" type="TextureButton" parent="GridContainer"]
-margin_left = 528.0
-margin_right = 656.0
-margin_bottom = 128.0
-texture_normal = ExtResource( 13 )
+margin_left = 16.0
+margin_right = 16.0
 
 [node name="small plump nose" type="TextureButton" parent="GridContainer"]
-margin_top = 132.0
-margin_right = 128.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 1 )
+margin_top = 4.0
+margin_bottom = 4.0
 
 [node name="square nose" type="TextureButton" parent="GridContainer"]
-margin_left = 132.0
-margin_top = 132.0
-margin_right = 260.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 12 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 4.0
 
 [node name="triangular long nose" type="TextureButton" parent="GridContainer"]
-margin_left = 264.0
-margin_top = 132.0
-margin_right = 392.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 11 )
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 4.0
 
 [node name="triangular long plump nose" type="TextureButton" parent="GridContainer"]
-margin_left = 396.0
-margin_top = 132.0
-margin_right = 524.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 14 )
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 12.0
+margin_bottom = 4.0
 
 [node name="triangular plump nose" type="TextureButton" parent="GridContainer"]
-margin_left = 528.0
-margin_top = 132.0
-margin_right = 656.0
-margin_bottom = 260.0
-texture_normal = ExtResource( 9 )
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 16.0
+margin_bottom = 4.0
 
 [node name="triangular short nose" type="TextureButton" parent="GridContainer"]
-margin_top = 264.0
-margin_right = 128.0
-margin_bottom = 392.0
-texture_normal = ExtResource( 4 )
+margin_top = 8.0
+margin_bottom = 8.0
 
 [node name="wide nose" type="TextureButton" parent="GridContainer"]
-margin_left = 132.0
-margin_top = 264.0
-margin_right = 260.0
-margin_bottom = 392.0
-texture_normal = ExtResource( 5 )
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 4.0
+margin_bottom = 8.0
 
 [node name="wide nostril nose" type="TextureButton" parent="GridContainer"]
-margin_left = 264.0
-margin_top = 264.0
-margin_right = 392.0
-margin_bottom = 392.0
-texture_normal = ExtResource( 16 )
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
 
 [node name="wide plump nose" type="TextureButton" parent="GridContainer"]
-margin_left = 396.0
-margin_top = 264.0
-margin_right = 524.0
-margin_bottom = 392.0
-texture_normal = ExtResource( 6 )
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 8.0
 
 [node name="wide round plump nose" type="TextureButton" parent="GridContainer"]
-margin_left = 528.0
-margin_top = 264.0
-margin_right = 656.0
-margin_bottom = 392.0
-texture_normal = ExtResource( 10 )
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 16.0
+margin_bottom = 8.0

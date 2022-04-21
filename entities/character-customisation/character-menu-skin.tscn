@@ -1,18 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=1]
 [ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=2]
-[ext_resource path="res://textures/character/face_front/skin5.png" type="Texture" id=3]
-[ext_resource path="res://textures/character/face_front/skin9.png" type="Texture" id=4]
-[ext_resource path="res://textures/character/face_front/skin8.png" type="Texture" id=5]
-[ext_resource path="res://textures/character/face_front/skin10.png" type="Texture" id=6]
-[ext_resource path="res://textures/character/face_front/skin2.png" type="Texture" id=7]
-[ext_resource path="res://textures/character/face_front/skin12.png" type="Texture" id=8]
-[ext_resource path="res://textures/character/face_front/skin7.png" type="Texture" id=9]
-[ext_resource path="res://textures/character/face_front/skin3.png" type="Texture" id=10]
-[ext_resource path="res://textures/character/face_front/skin6.png" type="Texture" id=11]
-[ext_resource path="res://textures/character/face_front/skin11.png" type="Texture" id=12]
-[ext_resource path="res://textures/character/face_front/skin4.png" type="Texture" id=13]
 
 [node name="skin-control" type="Control"]
 anchor_right = 1.0
@@ -27,78 +15,59 @@ rect_scale = Vector2( 0.4, 0.4 )
 columns = 4
 
 [node name="skin1" type="TextureButton" parent="GridContainer"]
-margin_right = 570.0
-margin_bottom = 569.0
-texture_normal = ExtResource( 1 )
 
 [node name="skin2" type="TextureButton" parent="GridContainer"]
-margin_left = 574.0
-margin_right = 1144.0
-margin_bottom = 569.0
-texture_normal = ExtResource( 7 )
+margin_left = 4.0
+margin_right = 4.0
 
 [node name="skin3" type="TextureButton" parent="GridContainer"]
-margin_left = 1148.0
-margin_right = 1718.0
-margin_bottom = 569.0
-texture_normal = ExtResource( 10 )
+margin_left = 8.0
+margin_right = 8.0
 
 [node name="skin4" type="TextureButton" parent="GridContainer"]
-margin_left = 1722.0
-margin_right = 2292.0
-margin_bottom = 569.0
-texture_normal = ExtResource( 13 )
+margin_left = 12.0
+margin_right = 12.0
 
 [node name="skin5" type="TextureButton" parent="GridContainer"]
-margin_top = 573.0
-margin_right = 570.0
-margin_bottom = 1142.0
-texture_normal = ExtResource( 3 )
+margin_top = 4.0
+margin_bottom = 4.0
 
 [node name="skin6" type="TextureButton" parent="GridContainer"]
-margin_left = 574.0
-margin_top = 573.0
-margin_right = 1144.0
-margin_bottom = 1142.0
-texture_normal = ExtResource( 11 )
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 4.0
 
 [node name="skin7" type="TextureButton" parent="GridContainer"]
-margin_left = 1148.0
-margin_top = 573.0
-margin_right = 1718.0
-margin_bottom = 1142.0
-texture_normal = ExtResource( 9 )
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 4.0
 
 [node name="skin8" type="TextureButton" parent="GridContainer"]
-margin_left = 1722.0
-margin_top = 573.0
-margin_right = 2292.0
-margin_bottom = 1142.0
-texture_normal = ExtResource( 5 )
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 12.0
+margin_bottom = 4.0
 
 [node name="skin9" type="TextureButton" parent="GridContainer"]
-margin_top = 1146.0
-margin_right = 570.0
-margin_bottom = 1715.0
-texture_normal = ExtResource( 4 )
+margin_top = 8.0
+margin_bottom = 8.0
 
 [node name="skin10" type="TextureButton" parent="GridContainer"]
-margin_left = 574.0
-margin_top = 1146.0
-margin_right = 1144.0
-margin_bottom = 1715.0
-texture_normal = ExtResource( 6 )
+margin_left = 4.0
+margin_top = 8.0
+margin_right = 4.0
+margin_bottom = 8.0
 
 [node name="skin11" type="TextureButton" parent="GridContainer"]
-margin_left = 1148.0
-margin_top = 1146.0
-margin_right = 1718.0
-margin_bottom = 1715.0
-texture_normal = ExtResource( 12 )
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 8.0
+margin_bottom = 8.0
 
 [node name="skin12" type="TextureButton" parent="GridContainer"]
-margin_left = 1722.0
-margin_top = 1146.0
-margin_right = 2292.0
-margin_bottom = 1715.0
-texture_normal = ExtResource( 8 )
+margin_left = 12.0
+margin_top = 8.0
+margin_right = 12.0
+margin_bottom = 8.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -18,9 +18,6 @@
 [ext_resource path="res://gui/butonstyle_white.tres" type="StyleBox" id=16]
 [ext_resource path="res://textures/wiadomosc.png" type="Texture" id=17]
 [ext_resource path="res://gui/podsceny/joystick.tscn" type="PackedScene" id=18]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=19]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=20]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=21]
 [ext_resource path="res://scripts/GUI.gd" type="Script" id=22]
 [ext_resource path="res://gui/podsceny/CloseButton.tscn" type="PackedScene" id=23]
 [ext_resource path="res://scripts/CloseButton.gd" type="Script" id=24]
@@ -145,6 +142,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=24]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=23]
 resource_local_to_scene = true
 animations = [ {
@@ -167,7 +183,7 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=7]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [  ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -297,7 +313,10 @@ frames = SubResource( 5 )
 [node name="mouth" parent="sprites/face" index="2"]
 frames = SubResource( 6 )
 
-[node name="acc" parent="sprites/face" index="3"]
+[node name="beard" parent="sprites/face" index="3"]
+frames = SubResource( 24 )
+
+[node name="acc" parent="sprites/face" index="4"]
 frames = SubResource( 23 )
 
 [node name="spodnie" parent="sprites" index="3"]
@@ -316,9 +335,6 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
-
-[node name="AnimatedSprite" parent="." index="7"]
-frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
