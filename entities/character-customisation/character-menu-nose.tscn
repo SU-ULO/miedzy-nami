@@ -6,9 +6,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 part_name = "nose"
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -17,75 +14,75 @@ margin_bottom = 392.0
 rect_scale = Vector2( 0.3, 0.3 )
 columns = 5
 
-[node name="long nose" type="TextureButton" parent="GridContainer"]
+[node name="long nose1" type="TextureButton" parent="GridContainer"]
 
-[node name="long plump nose" type="TextureButton" parent="GridContainer"]
+[node name="long plump nose2" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_right = 4.0
 
-[node name="long thin nose" type="TextureButton" parent="GridContainer"]
+[node name="long thin nose3" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_right = 8.0
 
-[node name="neutral nose" type="TextureButton" parent="GridContainer"]
+[node name="neutral nose4" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_right = 12.0
 
-[node name="nostril nose" type="TextureButton" parent="GridContainer"]
+[node name="nostril nose5" type="TextureButton" parent="GridContainer"]
 margin_left = 16.0
 margin_right = 16.0
 
-[node name="small plump nose" type="TextureButton" parent="GridContainer"]
+[node name="small plump nose6" type="TextureButton" parent="GridContainer"]
 margin_top = 4.0
 margin_bottom = 4.0
 
-[node name="square nose" type="TextureButton" parent="GridContainer"]
+[node name="square nose7" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 4.0
 margin_bottom = 4.0
 
-[node name="triangular long nose" type="TextureButton" parent="GridContainer"]
+[node name="triangular long nose8" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 4.0
 margin_right = 8.0
 margin_bottom = 4.0
 
-[node name="triangular long plump nose" type="TextureButton" parent="GridContainer"]
+[node name="triangular long plump nose9" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 4.0
 margin_right = 12.0
 margin_bottom = 4.0
 
-[node name="triangular plump nose" type="TextureButton" parent="GridContainer"]
+[node name="triangular plump nose10" type="TextureButton" parent="GridContainer"]
 margin_left = 16.0
 margin_top = 4.0
 margin_right = 16.0
 margin_bottom = 4.0
 
-[node name="triangular short nose" type="TextureButton" parent="GridContainer"]
+[node name="triangular short nose11" type="TextureButton" parent="GridContainer"]
 margin_top = 8.0
 margin_bottom = 8.0
 
-[node name="wide nose" type="TextureButton" parent="GridContainer"]
+[node name="wide nose12" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 8.0
 margin_right = 4.0
 margin_bottom = 8.0
 
-[node name="wide nostril nose" type="TextureButton" parent="GridContainer"]
+[node name="wide nostril nose13" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="wide plump nose" type="TextureButton" parent="GridContainer"]
+[node name="wide plump nose14" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 8.0
 margin_right = 12.0
 margin_bottom = 8.0
 
-[node name="wide round plump nose" type="TextureButton" parent="GridContainer"]
+[node name="wide round plump nose15" type="TextureButton" parent="GridContainer"]
 margin_left = 16.0
 margin_top = 8.0
 margin_right = 16.0

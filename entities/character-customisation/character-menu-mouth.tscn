@@ -14,37 +14,37 @@ margin_bottom = 40.0
 rect_scale = Vector2( 0.4, 0.4 )
 columns = 4
 
-[node name="cheeks mouth closed" type="TextureButton" parent="GridContainer"]
+[node name="cheeks mouth closed1" type="TextureButton" parent="GridContainer"]
 
-[node name="cheeky smile semi-closed" type="TextureButton" parent="GridContainer"]
+[node name="cheeky smile semi-closed2" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_right = 4.0
 
-[node name="chewing smile closed" type="TextureButton" parent="GridContainer"]
+[node name="chewing smile closed3" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_right = 8.0
 
-[node name="miserable closed" type="TextureButton" parent="GridContainer"]
+[node name="miserable closed4" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_right = 12.0
 
-[node name="old smile" type="TextureButton" parent="GridContainer"]
+[node name="old smile5" type="TextureButton" parent="GridContainer"]
 margin_top = 4.0
 margin_bottom = 4.0
 
-[node name="sad closed" type="TextureButton" parent="GridContainer"]
+[node name="sad closed6" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 4.0
 margin_bottom = 4.0
 
-[node name="smile closed" type="TextureButton" parent="GridContainer"]
+[node name="smile closed7" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 4.0
 margin_right = 8.0
 margin_bottom = 4.0
 
-[node name="smile teeth" type="TextureButton" parent="GridContainer"]
+[node name="smile teeth8" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 4.0
 margin_right = 12.0
@@ -53,11 +53,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="smug smile closed" type="TextureButton" parent="GridContainer"]
+[node name="smug smile closed9" type="TextureButton" parent="GridContainer"]
 margin_top = 8.0
 margin_bottom = 8.0
 
-[node name="smug smile teeth" type="TextureButton" parent="GridContainer"]
+[node name="smug smile teeth10" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 8.0
 margin_right = 4.0
@@ -66,73 +66,73 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wide smile closed" type="TextureButton" parent="GridContainer"]
+[node name="wide smile closed11" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 8.0
 margin_bottom = 8.0
 
-[node name="curious open" type="TextureButton" parent="GridContainer"]
+[node name="curious open12" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 8.0
 margin_right = 12.0
 margin_bottom = 8.0
 
-[node name="disgusted teeth" type="TextureButton" parent="GridContainer"]
+[node name="disgusted teeth13" type="TextureButton" parent="GridContainer"]
 margin_top = 12.0
 margin_bottom = 12.0
 
-[node name="Doraemon lips closed" type="TextureButton" parent="GridContainer"]
+[node name="Doraemon lips closed14" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 12.0
 margin_right = 4.0
 margin_bottom = 12.0
 
-[node name="duck lips closed" type="TextureButton" parent="GridContainer"]
+[node name="duck lips closed15" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 12.0
 margin_right = 8.0
 margin_bottom = 12.0
 
-[node name="neutral closed" type="TextureButton" parent="GridContainer"]
+[node name="neutral closed16" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 12.0
 margin_right = 12.0
 margin_bottom = 12.0
 
-[node name="sad teeth" type="TextureButton" parent="GridContainer"]
+[node name="sad teeth17" type="TextureButton" parent="GridContainer"]
 margin_top = 16.0
 margin_bottom = 16.0
 
-[node name="scared teeth" type="TextureButton" parent="GridContainer"]
+[node name="scared teeth18" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 16.0
 margin_right = 4.0
 margin_bottom = 16.0
 
-[node name="smile open" type="TextureButton" parent="GridContainer"]
+[node name="smile open19" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 16.0
 margin_right = 8.0
 margin_bottom = 16.0
 
-[node name="sticking tongue closed" type="TextureButton" parent="GridContainer"]
+[node name="sticking tongue closed20" type="TextureButton" parent="GridContainer"]
 margin_left = 12.0
 margin_top = 16.0
 margin_right = 12.0
 margin_bottom = 16.0
 
-[node name="UwU smile closed" type="TextureButton" parent="GridContainer"]
+[node name="UwU smile closed21" type="TextureButton" parent="GridContainer"]
 margin_top = 20.0
 margin_bottom = 20.0
 
-[node name="whistling lips semi-closed" type="TextureButton" parent="GridContainer"]
+[node name="whistling lips semi-closed22" type="TextureButton" parent="GridContainer"]
 margin_left = 4.0
 margin_top = 20.0
 margin_right = 4.0
 margin_bottom = 20.0
 
-[node name="wide smile teeth" type="TextureButton" parent="GridContainer"]
+[node name="wide smile teeth23" type="TextureButton" parent="GridContainer"]
 margin_left = 8.0
 margin_top = 20.0
 margin_right = 8.0

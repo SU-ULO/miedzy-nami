@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://entities/character-customisation/load_jens.gd" type="Script" id=1]
 [ext_resource path="res://entities/character-customisation/part-control.gd" type="Script" id=4]
 
 [node name="clothes-control" type="Control"]
@@ -21,6 +22,7 @@ __meta__ = {
 
 [node name="jeans3" type="Sprite" parent="GridContainer/shirt"]
 position = Vector2( 194.88, 203.923 )
+script = ExtResource( 1 )
 
 [node name="tshirt" type="TextureButton" parent="GridContainer"]
 margin_left = 34.0
@@ -28,6 +30,7 @@ margin_right = 34.0
 
 [node name="jeans3" type="Sprite" parent="GridContainer/tshirt"]
 position = Vector2( 199.88, 202.923 )
+script = ExtResource( 1 )
 
 [node name="dress" type="TextureButton" parent="GridContainer"]
 margin_left = 68.0
