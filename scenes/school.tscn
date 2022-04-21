@@ -1177,9 +1177,9 @@ scale = Vector2( 0.591368, 0.591368 )
 position = Vector2( 4958.79, 1408.01 )
 scale = Vector2( 0.374722, 0.374722 )
 
-[node name="PHY-suwmiarka" parent="Mapa/YSort" instance=ExtResource( 40 )]
-position = Vector2( 2002.51, -1772.78 )
-scale = Vector2( 0.214763, 0.214763 )
+[node name="PHY-Suw" parent="Mapa/YSort" instance=ExtResource( 40 )]
+position = Vector2( 2000, -1760 )
+scale = Vector2( 0.25, 0.25 )
 
 [node name="LIB-print" parent="Mapa/YSort" instance=ExtResource( 53 )]
 material = SubResource( 9 )
