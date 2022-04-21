@@ -143,7 +143,7 @@ public abstract class Task : Godot.Node2D
 						int taskIDforK = 0, k = 0;
 						int initialK = 0;
 						try {
-							k = r.Next(0, sortedIntoCategories[tc].Count - 1);
+							k = r.Next(0, sortedIntoCategories[tc].Count);
 							initialK = k;
 							taskIDforK = sortedIntoCategories[tc][k];
 							while(tasksForPlayers[playerIDs[i]].Contains(taskIDforK)) {
