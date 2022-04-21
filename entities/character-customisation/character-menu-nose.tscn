@@ -14,10 +14,8 @@ part_name = "nose"
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 656.0
 margin_bottom = 392.0
+rect_scale = Vector2( 0.3, 0.3 )
 columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="long nose" type="TextureButton" parent="GridContainer"]
 

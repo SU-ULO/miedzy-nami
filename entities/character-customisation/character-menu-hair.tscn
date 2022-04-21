@@ -16,9 +16,6 @@ rect_scale = Vector2( 0.25, 0.25 )
 custom_constants/vseparation = -15
 custom_constants/hseparation = 47
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Velma long hair" type="TextureButton" parent="GridContainer"]
 

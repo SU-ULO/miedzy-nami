@@ -100,7 +100,7 @@ func getBodyPath(frame):
 	#frame 4 means front
 	return "res://textures/character/body/frame" + str(frame) + "/" + skin + ".png"
 
-func getTopClotes(frame, color):
+func getTopClothesPath(frame=1, color=0):
 	#frame 4 means front
 	return "res://textures/character/clothes/"+ topClothes + "/frame" + str(frame) + "/" + topClothes + str(color) + ".png"
 
@@ -137,3 +137,10 @@ func set_look(clothes_dict):
 	acc = clothes_dict["acc"]
 	beard = clothes_dict["beard"]
 	beard_color = clothes_dict["beard_color"]
+
+func get_look_path(type, name):
+	var l = get_look()
+	l[type] = name
+	set_look(l)
+	type[0] = type[0].to_upper()
+	return call("get" + type + "Path")

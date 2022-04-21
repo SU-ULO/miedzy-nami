@@ -257,15 +257,6 @@ margin_bottom = 1000.0
 custom_fonts/font = ExtResource( 18 )
 text = "stwórz losowe"
 
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_left = 935.0
-margin_top = 58.0
-margin_right = 1829.0
-margin_bottom = 1018.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-columns = 16
-
 [connection signal="pressed" from="skin_button" to="." method="_show_Menu" binds= [ "skin" ]]
 [connection signal="pressed" from="nose_button" to="." method="_show_Menu" binds= [ "nose" ]]
 [connection signal="pressed" from="mouth_button" to="." method="_show_Menu" binds= [ "mouth" ]]
