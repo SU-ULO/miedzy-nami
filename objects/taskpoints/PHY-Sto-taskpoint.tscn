@@ -63,7 +63,6 @@ scale = Vector2( 1.52539, 1.52539 )
 polygon = PoolVector2Array( -360.36, 948.429, 463.834, 941.913, 486.637, 65.5969, -171.414, -631.547, -865.3, -628.289, -881.589, 267.573 )
 
 [node name="stolik2" type="Sprite" parent="CollisionPolygon2D"]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="stolik" type="Node2D" parent="."]
