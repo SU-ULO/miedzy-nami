@@ -68,8 +68,16 @@ func set_next_target():
 		state_time_remaining=3600
 		return
 	var id = last_target_num
-	while id == last_target_num:
-		id = randi()%potential_wandering_targets.size()
+	while true:
+		while id == last_target_num:
+			id = randi()%potential_wandering_targets.size()
+		if potential_wandering_targets[id] is NavPoint:
+			if randf()>potential_wandering_targets[id].skip_chance:
+				break
+			else:
+				id = last_target_num
+		else:
+			break
 	wandering_target = potential_wandering_targets[id]
 	last_target_num=id
 	current_state = NpcState.TRAVELING
@@ -161,6 +169,7 @@ func start_talk(location, direction):
 	talk_direction=direction
 	current_state=NpcState.TALKING
 	state_time_remaining=5
+	ai_active = true
 
 func do_talk():
 	if position.distance_to(tmp_target)>25:
@@ -180,10 +189,10 @@ func _ready():
 
 func npc_init():
 	Globals.start.network.handle_set_look(default_clothes, owner_id)
+	potential_wandering_targets.clear()
 	for p in wandering_nodepaths:
 		potential_wandering_targets.append(get_node(p))
-	if !potential_wandering_targets.empty():
-		ai_active = true
+	ai_active = true
 
 func set_player_velocity():
 	.set_player_velocity()
