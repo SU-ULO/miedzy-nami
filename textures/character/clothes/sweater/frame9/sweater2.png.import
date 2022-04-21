@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/sweater2.png-2b74fc95447e4bbe6440b658081b108d.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://textures/character/clothes/sweater/frame9/sweater2.png"
+dest_files=[ "res://.import/sweater2.png-2b74fc95447e4bbe6440b658081b108d.stex" ]
+
+[params]
+
+compress/mode=1
+compress/lossy_quality=0.1
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=2
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

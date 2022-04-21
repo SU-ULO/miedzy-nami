@@ -39,7 +39,7 @@ func _part_Change(part, name):
 			currLook.mouth = name
 			$"body-parts/mouth".texture = load(currLook.getMouthPath())
 		"clothes":
-			if name == "dress" || name == "hoodie":
+			if name == "dress" || name == "hoodie" || name == "sweater":
 				currLook.hasBottom = false
 				$"body-parts/jeans".visible = false
 			else:
