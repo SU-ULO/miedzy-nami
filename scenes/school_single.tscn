@@ -169,7 +169,28 @@ default_name = "Adam Makowski"
 speed_multiplier = 0.6
 wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../stanczyk") ]
 
-[node name="kierys" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
+[node name="nodzu" parent="Mapa/YSort" index="1" instance=ExtResource( 2 )]
+position = Vector2( -2570, 325 )
+default_clothes = {
+"acc": "acc0",
+"beard": "puberty_stache",
+"beard_color": "white",
+"eye": "sad_open",
+"eye_color": "darkblue",
+"hair": "short hair",
+"hairColor": 10,
+"hasBottom": 1,
+"mouth": "old smile",
+"nose": "long thin nose",
+"skin": "skin4",
+"topClothes": "shirt"
+}
+default_color = 2
+default_name = "Piotr Nodzyński"
+speed_multiplier = 0.4
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../makos") ]
+
+[node name="kierys" parent="Mapa/YSort" index="2" instance=ExtResource( 2 )]
 position = Vector2( 790, 643 )
 default_clothes = {
 "acc": "acc13",
@@ -190,7 +211,7 @@ default_name = "Arkadiusz Kierys"
 speed_multiplier = 0.6
 wandering_nodepaths = [ NodePath("../ilonka"), NodePath("../../../NavNPC/NavPoints/inf_nav_skip"), NodePath("../../../NavNPC/NavPoints/lang_nav_skip") ]
 
-[node name="ilonka" parent="Mapa/YSort" index="2" instance=ExtResource( 2 )]
+[node name="ilonka" parent="Mapa/YSort" index="3" instance=ExtResource( 2 )]
 position = Vector2( 4125.37, 3997 )
 default_clothes = {
 "acc": "acc0",
@@ -211,7 +232,28 @@ default_name = "Ilona Glatzel"
 speed_multiplier = 0.5
 wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/biblioteka_nav"), NodePath("../../../NavNPC/NavPoints/lang_nav") ]
 
-[node name="stanczyk" parent="Mapa/YSort" index="3" instance=ExtResource( 2 )]
+[node name="grzelak" parent="Mapa/YSort" index="4" instance=ExtResource( 2 )]
+position = Vector2( -1976, 2362 )
+default_clothes = {
+"acc": "acc3",
+"beard": "bald",
+"beard_color": "black",
+"eye": "worried_open",
+"eye_color": "darkblue",
+"hair": "puffy hair",
+"hairColor": 2,
+"hasBottom": 0,
+"mouth": "wide smile closed",
+"nose": "wide nose",
+"skin": "skin2",
+"topClothes": "dress"
+}
+default_color = 14
+default_name = "Agnieszka Grzelak"
+speed_multiplier = 0.5
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/lang_nav"), NodePath("../ilonka"), NodePath("../kierys") ]
+
+[node name="stanczyk" parent="Mapa/YSort" index="5" instance=ExtResource( 2 )]
 position = Vector2( -938.632, 2125 )
 default_clothes = {
 "acc": "acc23",
@@ -232,13 +274,76 @@ default_name = "Arkadiusz Stańczyk"
 speed_multiplier = 0.5
 wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/sekretariat_nav"), NodePath("../../../NavNPC/NavPoints/geografia_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
 
-[node name="biorko-taskpoint" parent="Mapa/YSort" index="94"]
+[node name="wojtek" parent="Mapa/YSort" index="6" instance=ExtResource( 2 )]
+position = Vector2( -1428, -1642 )
+default_clothes = {
+"acc": "acc5",
+"beard": "bald",
+"beard_color": "white",
+"eye": "happy_open",
+"eye_color": "darkblue",
+"hair": "short hair",
+"hairColor": 4,
+"hasBottom": 1,
+"mouth": "wide smile teeth",
+"nose": "triangular long nose",
+"skin": "skin2",
+"topClothes": "shirt"
+}
+default_color = 12
+default_name = "Wojciech Malecha"
+speed_multiplier = 0.9
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../miki"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
+
+[node name="nnx" parent="Mapa/YSort" index="7" instance=ExtResource( 2 )]
+position = Vector2( -1841, -1848 )
+default_clothes = {
+"acc": "acc3",
+"beard": "puberty_stache",
+"beard_color": "dark_brown",
+"eye": "suspicious_open",
+"eye_color": "darkgreen",
+"hair": "bob cut",
+"hairColor": 2,
+"hasBottom": 0,
+"mouth": "smug smile closed",
+"nose": "long plump nose",
+"skin": "skin2",
+"topClothes": "hoodie"
+}
+default_color = 2
+default_name = "Marcin Jabłoński"
+speed_multiplier = 0.9
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../miki"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
+
+[node name="miki" parent="Mapa/YSort" index="8" instance=ExtResource( 2 )]
+position = Vector2( -2104, -2284 )
+default_clothes = {
+"acc": "acc2",
+"beard": "scruffy_chin",
+"beard_color": "black",
+"eye": "bored_open",
+"eye_color": "lightbrown",
+"hair": "curly afroish",
+"hairColor": 1,
+"hasBottom": 1,
+"mouth": "neutral closed",
+"nose": "long thin nose",
+"skin": "skin1",
+"topClothes": "shirt"
+}
+default_color = 13
+default_name = "Mikołaj Juda"
+speed_multiplier = 0.9
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
+
+[node name="biorko-taskpoint" parent="Mapa/YSort" index="99"]
 material = SubResource( 7 )
 
-[node name="biorko-taskpoint2" parent="Mapa/YSort" index="95"]
+[node name="biorko-taskpoint2" parent="Mapa/YSort" index="100"]
 material = SubResource( 8 )
 
-[node name="biorko-taskpoint3" parent="Mapa/YSort" index="96"]
+[node name="biorko-taskpoint3" parent="Mapa/YSort" index="101"]
 material = SubResource( 9 )
 
 [node name="NavNPC" type="Navigation2D" parent="." index="7"]
@@ -274,28 +379,41 @@ position = Vector2( -2026, -1887 )
 idling_chance = 0.8
 skip_chance = 0.8
 
-[node name="fiz_nav" parent="NavNPC/NavPoints" index="6" instance=ExtResource( 4 )]
+[node name="inf_nav" parent="NavNPC/NavPoints" index="6" instance=ExtResource( 4 )]
+position = Vector2( -2107, -2217 )
+idling_chance = 0.8
+
+[node name="radio_nav" parent="NavNPC/NavPoints" index="7" instance=ExtResource( 4 )]
+position = Vector2( -390, -1966 )
+idling_chance = 0.8
+
+[node name="fiz_nav" parent="NavNPC/NavPoints" index="8" instance=ExtResource( 4 )]
 position = Vector2( 1930, -2237 )
 idling_chance = 0.8
 
-[node name="bio_nav" parent="NavNPC/NavPoints" index="7" instance=ExtResource( 4 )]
+[node name="fiz_nav_skip" parent="NavNPC/NavPoints" index="9" instance=ExtResource( 4 )]
+position = Vector2( 2436, -1820 )
+idling_chance = 0.8
+skip_chance = 0.8
+
+[node name="bio_nav" parent="NavNPC/NavPoints" index="10" instance=ExtResource( 4 )]
 position = Vector2( 2024, -369 )
 idling_chance = 0.8
 
-[node name="chem_nav" parent="NavNPC/NavPoints" index="8" instance=ExtResource( 4 )]
+[node name="chem_nav" parent="NavNPC/NavPoints" index="11" instance=ExtResource( 4 )]
 position = Vector2( 1388, 1864 )
 idling_chance = 0.8
 
-[node name="lang_nav_skip" parent="NavNPC/NavPoints" index="9" instance=ExtResource( 4 )]
+[node name="lang_nav_skip" parent="NavNPC/NavPoints" index="12" instance=ExtResource( 4 )]
 position = Vector2( -2115, 1513 )
 idling_chance = 0.8
 skip_chance = 0.8
 
-[node name="lang_nav" parent="NavNPC/NavPoints" index="10" instance=ExtResource( 4 )]
+[node name="lang_nav" parent="NavNPC/NavPoints" index="13" instance=ExtResource( 4 )]
 position = Vector2( -1848, 1473 )
 idling_chance = 0.8
 
-[node name="coffee_nav" parent="NavNPC/NavPoints" index="11" instance=ExtResource( 4 )]
+[node name="coffee_nav" parent="NavNPC/NavPoints" index="14" instance=ExtResource( 4 )]
 position = Vector2( -5062, 1995 )
 look_dir = 0
 wait_time = 10.0
