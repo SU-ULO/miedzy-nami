@@ -22,7 +22,7 @@ var network
 var bar_last = 0;
 
 export var default_camera_zoom = 2
-export var zoomed_camera_zoom = 0.4
+export var zoomed_camera_zoom = 0.5
 var zoomed = false
 
 var electrical_switches = [0,0,0,0,0]

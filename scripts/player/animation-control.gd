@@ -54,9 +54,9 @@ func loadLook():
 	for i in $wlosy/hair.frames.get_animation_names():
 		$wlosy/hair.frames.clear(i)	
 				
-	$body.frames.add_frame("side", load(currLook.getBodyPath(2)))
-	$body.frames.add_frame("side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("side", load(currLook.getBodyPath(3)))
+	$body.frames.add_frame("side", load(currLook.getBodyPath(1)))
+	$body.frames.add_frame("side", load(currLook.getBodyPath(2)))
 	$body.frames.add_frame("side", load(currLook.getBodyPath(1)))
 	$body.frames.add_frame("front", load(currLook.getBodyPath(4)))
 	$body.frames.add_frame("back", load(currLook.getBodyPath(4)))
