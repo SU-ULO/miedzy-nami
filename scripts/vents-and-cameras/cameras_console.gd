@@ -9,6 +9,7 @@ var texture_active = "res://textures/dekoracje/kamera-active.png"
 
 var camera_gui = null
 var disabled = false
+var alive
 
 func _ready():
 	self.add_to_group("entities")
@@ -24,7 +25,7 @@ func cameras_off(body):
 			if get_node(lc).is_connected("camera_detection", body, "camera_visibility"):
 				get_node(lc).disconnect("camera_detection", body, "camera_visibility")
 			get_node(lc).get_node("Area2D").monitoring = 0
-		if !disabled && !body.is_in_group("rip"):
+		if !disabled && (!body.is_in_group("rip") || alive):
 			Globals.start.network.request_cameras_enable(false)
 
 func cameras_on(body):
@@ -49,6 +50,7 @@ func cameras_on(body):
 		camera_gui.get_node(vp).get_parent().get_node("color").visible = disabled
 
 func Interact(body):
+	alive = !body.is_in_group("rip")
 	disabled = Globals.start.network.comms_disabled
 	body.connect("sabotage_event", self, "refresh")
 	camera_gui = load(gui_res).instance()
