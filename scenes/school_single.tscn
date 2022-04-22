@@ -293,9 +293,30 @@ default_clothes = {
 default_color = 12
 default_name = "Wojciech Malecha"
 speed_multiplier = 0.9
-wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../miki"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../miki"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav"), NodePath("../sobgo") ]
 
-[node name="nnx" parent="Mapa/YSort" index="7" instance=ExtResource( 2 )]
+[node name="sobgo" parent="Mapa/YSort" index="7" instance=ExtResource( 2 )]
+position = Vector2( -2128, -1793 )
+default_clothes = {
+"acc": "acc0",
+"beard": "scruffy_beard_long",
+"beard-color": "dark_brown",
+"clothes": "hoodie",
+"eye": "smug_open",
+"eye-color": "darkblue",
+"hair": "fade",
+"hair-color": "2",
+"hasBottom": false,
+"mouth": "smile closed",
+"nose": "long plump nose",
+"skin": "skin2"
+}
+default_color = 4
+default_name = "Mateusz Sobkowiak"
+speed_multiplier = 0.9
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../miki"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav"), NodePath("../wojtek") ]
+
+[node name="nnx" parent="Mapa/YSort" index="8" instance=ExtResource( 2 )]
 position = Vector2( -1841, -1848 )
 default_clothes = {
 "acc": "acc3",
@@ -314,9 +335,9 @@ default_clothes = {
 default_color = 2
 default_name = "Marcin Jabłoński"
 speed_multiplier = 0.9
-wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../miki"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav") ]
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../miki"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav"), NodePath("../sobgo") ]
 
-[node name="miki" parent="Mapa/YSort" index="8" instance=ExtResource( 2 )]
+[node name="miki" parent="Mapa/YSort" index="9" instance=ExtResource( 2 )]
 position = Vector2( -2104, -2284 )
 default_clothes = {
 "acc": "acc2",
@@ -335,9 +356,9 @@ default_clothes = {
 default_color = 13
 default_name = "Mikołaj Juda"
 speed_multiplier = 0.9
-wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav"), NodePath("../../../NavNPC/NavPoints/center_corridor_nav") ]
+wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/inf_nav"), NodePath("../nnx"), NodePath("../wojtek"), NodePath("../../../NavNPC/NavPoints/radio_nav"), NodePath("../../../NavNPC/NavPoints/mat_nav"), NodePath("../../../NavNPC/NavPoints/coffee_nav"), NodePath("../../../NavNPC/NavPoints/center_corridor_nav"), NodePath("../sobgo") ]
 
-[node name="toilet_tester" parent="Mapa/YSort" index="9" instance=ExtResource( 2 )]
+[node name="toilet_tester" parent="Mapa/YSort" index="10" instance=ExtResource( 2 )]
 position = Vector2( 3210, 214 )
 default_clothes = {
 "acc": "acc0",
@@ -358,13 +379,13 @@ default_name = "tester toalet"
 speed_multiplier = 0.2
 wandering_nodepaths = [ NodePath("../../../NavNPC/NavPoints/toilet_right_nav"), NodePath("../../../NavNPC/NavPoints/toilet_down_nav"), NodePath("../../../NavNPC/NavPoints/toilet_left_nav") ]
 
-[node name="biorko-taskpoint" parent="Mapa/YSort" index="100"]
+[node name="biorko-taskpoint" parent="Mapa/YSort" index="101"]
 material = SubResource( 7 )
 
-[node name="biorko-taskpoint2" parent="Mapa/YSort" index="101"]
+[node name="biorko-taskpoint2" parent="Mapa/YSort" index="102"]
 material = SubResource( 8 )
 
-[node name="biorko-taskpoint3" parent="Mapa/YSort" index="102"]
+[node name="biorko-taskpoint3" parent="Mapa/YSort" index="103"]
 material = SubResource( 9 )
 
 [node name="NavNPC" type="Navigation2D" parent="." index="7"]

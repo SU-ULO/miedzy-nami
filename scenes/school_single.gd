@@ -19,7 +19,7 @@ func _ready():
 		for i in range(random_npcs_num):
 			var rand_npc = preloaded_npc.instance()
 			rand_npc.default_clothes=l.get_random()
-			rand_npc.default_name="losowy uczeń nr "+String(i+1)
+			rand_npc.default_name="Nikola Tesla nr "+String(i+1)
 			rand_npc.default_color=randi()%14+1
 			rand_npc.speed_multiplier=0.4+randf()*0.5
 			ysort.add_child(rand_npc)

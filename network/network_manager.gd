@@ -427,7 +427,8 @@ func game_start(params, taskstuff):
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 	own_player.get_node("KillArea").scale = \
 		Vector2((gamesettings["kill-distance"] + 1)/2,(gamesettings["kill-distance"]+1)/2)
-	own_player.show_start()
+	if Globals.start.network_side != Globals.start.NONE:
+		own_player.show_start()
 
 func request_cameras_enable(_on_off: bool):
 	pass
