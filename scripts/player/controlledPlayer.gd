@@ -239,7 +239,6 @@ func update_arrows():
 	sabotagearrow.set_position(Vector2(arrow_radius * cos(angle), arrow_radius * sin(angle)))
 	sabotagearrow.set_rotation(angle)
 
-
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()

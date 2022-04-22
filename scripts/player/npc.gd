@@ -137,7 +137,7 @@ func start_idle_walk():
 	tmp_target=p+d
 
 func do_idle_walk():
-	if time_stuck<0.1:
+	if time_stuck<0.05:
 		go_direct(tmp_target)
 	else:
 		end_idle_walk()
@@ -150,11 +150,11 @@ func do_travel():
 	and position.distance_to(wandering_target.position)<200:
 		tmp_target = wandering_target.position
 		clear_navpath()
-		if position.distance_to(tmp_target)<25:
+		if position.distance_to(tmp_target)<50:
 			end_travel()
 	else:
 		var do_path_recalc = false
-		if position.distance_to(tmp_target)<25:
+		if position.distance_to(tmp_target)<50:
 			do_path_recalc = do_path_recalc or !set_next_navpoint()
 			do_path_recalc = do_path_recalc or last_target_pos.distance_to(wandering_target.position)>25
 		if do_path_recalc:
@@ -186,7 +186,7 @@ func start_talk(location, direction):
 	state_time_remaining=5
 
 func do_talk():
-	if position.distance_to(tmp_target)>25 and time_stuck<0.1:
+	if position.distance_to(tmp_target)>25 and time_stuck<0.05:
 		go_direct(tmp_target)
 	else:
 		moveX=0
@@ -232,7 +232,8 @@ func _process(delta):
 	if ai_active:
 		check_line_of_sight()
 		if moveX!=0 or moveY!=0:
-			if position.distance_to(last_own_pos)<1:
+			if (position.distance_to(last_own_pos)/delta)/\
+			(speed_multiplier*Globals.start.network.gamesettings["player-speed"])<350:
 				time_stuck+=delta
 			else:
 				time_stuck=0
