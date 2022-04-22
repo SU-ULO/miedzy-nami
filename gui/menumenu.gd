@@ -3,7 +3,7 @@ extends Control
 var kickbutton = preload("res://gui/podsceny/wide-button.tscn")
 
 func onopen():
-	if Globals.start.network.own_id == 0:
+	if Globals.start.network_side == Start.SERVER and Globals.start.network.own_id == 0:
 		$main/Label.visible = true
 		var x = 0
 		for i in Globals.start.network.player_characters.keys():

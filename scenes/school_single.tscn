@@ -422,39 +422,44 @@ position = Vector2( 2024, -369 )
 idling_chance = 0.8
 
 [node name="chem_nav" parent="NavNPC/NavPoints" index="11" instance=ExtResource( 4 )]
-position = Vector2( 1388, 1864 )
+position = Vector2( 2040, 1522 )
 idling_chance = 0.8
 
-[node name="lang_nav_skip" parent="NavNPC/NavPoints" index="12" instance=ExtResource( 4 )]
+[node name="chem_nav_skip" parent="NavNPC/NavPoints" index="12" instance=ExtResource( 4 )]
+position = Vector2( 1405, 1859 )
+idling_chance = 0.8
+skip_chance = 0.8
+
+[node name="lang_nav_skip" parent="NavNPC/NavPoints" index="13" instance=ExtResource( 4 )]
 position = Vector2( -2115, 1513 )
 idling_chance = 0.8
 skip_chance = 0.8
 
-[node name="lang_nav" parent="NavNPC/NavPoints" index="13" instance=ExtResource( 4 )]
+[node name="lang_nav" parent="NavNPC/NavPoints" index="14" instance=ExtResource( 4 )]
 position = Vector2( -1848, 1473 )
 idling_chance = 0.8
 
-[node name="coffee_nav" parent="NavNPC/NavPoints" index="14" instance=ExtResource( 4 )]
+[node name="coffee_nav" parent="NavNPC/NavPoints" index="15" instance=ExtResource( 4 )]
 position = Vector2( -5062, 1995 )
 look_dir = 0
 wait_time = 10.0
 
-[node name="toilet_left_nav" parent="NavNPC/NavPoints" index="15" instance=ExtResource( 4 )]
+[node name="toilet_left_nav" parent="NavNPC/NavPoints" index="16" instance=ExtResource( 4 )]
 position = Vector2( -3310, 46 )
 look_dir = 0
 wait_time = 10.0
 
-[node name="toilet_right_nav" parent="NavNPC/NavPoints" index="16" instance=ExtResource( 4 )]
+[node name="toilet_right_nav" parent="NavNPC/NavPoints" index="17" instance=ExtResource( 4 )]
 position = Vector2( 3216, -111 )
 look_dir = 0
 wait_time = 10.0
 
-[node name="toilet_down_nav" parent="NavNPC/NavPoints" index="17" instance=ExtResource( 4 )]
+[node name="toilet_down_nav" parent="NavNPC/NavPoints" index="18" instance=ExtResource( 4 )]
 position = Vector2( -729, 3398 )
 look_dir = 0
 wait_time = 10.0
 
-[node name="center_corridor_nav" parent="NavNPC/NavPoints" index="18" instance=ExtResource( 4 )]
+[node name="center_corridor_nav" parent="NavNPC/NavPoints" index="19" instance=ExtResource( 4 )]
 position = Vector2( 778, 979 )
 type = 1
 skip_chance = 0.5

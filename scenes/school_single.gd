@@ -2,7 +2,7 @@ extends Node2D
 
 var npcs = Array()
 
-var random_npcs_num = 5
+var random_npcs_num = 10
 
 func _ready():
 	var ysort = $Mapa/YSort
@@ -21,7 +21,7 @@ func _ready():
 			rand_npc.default_clothes=l.get_random()
 			rand_npc.default_name="losowy uczeń nr "+String(i+1)
 			rand_npc.default_color=randi()%14+1
-			rand_npc.speed_multiplier=0.5
+			rand_npc.speed_multiplier=0.4+randf()*0.5
 			ysort.add_child(rand_npc)
 			for n in navpoints:
 				rand_npc.wandering_nodepaths.append(rand_npc.get_path_to(n))
