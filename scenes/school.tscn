@@ -1234,7 +1234,7 @@ position = Vector2( 4958.79, 1408.01 )
 scale = Vector2( 0.374722, 0.374722 )
 
 [node name="PHY-Suw" parent="Mapa/YSort" instance=ExtResource( 40 )]
-position = Vector2( 2000, -1760 )
+position = Vector2( 1994, -1730 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="LIB-print" parent="Mapa/YSort" instance=ExtResource( 53 )]
