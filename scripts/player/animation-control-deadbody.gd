@@ -1,4 +1,4 @@
-xtends Node2D
+extends Node2D
 
 var currLook = LookConfiguration.new()
 

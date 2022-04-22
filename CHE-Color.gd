@@ -4,7 +4,6 @@ var colors = [Color(0, 0, 0), Color(0, 1, 0), Color(0.5, 0, 1), Color(1, 0.5, 0)
 var cel
 
 func _ready():
-	randomize()
 	colors.shuffle()
 	cel = colors.front()
 	$cel/shape.color = cel

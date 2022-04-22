@@ -8,11 +8,11 @@ export var default_clothes = {
 	"mouth": "neutral closed",
 	"nose": "long nose",
 	"eye": "neutral_open",
-	"eye_color": "darkblue",
+	"eye-color": "darkblue",
 	"hair": "afro",
-	"hairColor": 1,
-	"hasBottom": 0,
-	"topClothes": "dress",
+	"hair-color": "1",
+	"hasBottom": false,
+	"clothes": "dress",
 	"acc": "acc0", # nothing
 	"beard": "bald",
 	"beard_color": "black"
@@ -68,16 +68,17 @@ func set_next_target():
 		state_time_remaining=3600
 		return
 	var id = last_target_num
-	while true:
-		while id == last_target_num:
-			id = randi()%potential_wandering_targets.size()
-		if potential_wandering_targets[id] is NavPoint:
-			if randf()>potential_wandering_targets[id].skip_chance:
-				break
+	if potential_wandering_targets.size()>1:
+		while true:
+			while id == last_target_num:
+				id = randi()%potential_wandering_targets.size()
+			if potential_wandering_targets[id] is NavPoint:
+				if randf()>potential_wandering_targets[id].skip_chance:
+					break
+				else:
+					id = last_target_num
 			else:
-				id = last_target_num
-		else:
-			break
+				break
 	wandering_target = potential_wandering_targets[id]
 	last_target_num=id
 	current_state = NpcState.TRAVELING

@@ -17,8 +17,6 @@ func space_evenly(bee_number):
 	return pos
 
 func _ready():
-	randomize()
-	
 	for iter in range(bees_count):
 		var bee = resource.instance()
 		bee.get_node("Sprite").set_texture(load(sprites[randi() % sprites.size()]))

@@ -126,7 +126,7 @@ func get_look():
 	clothes_dict["clothes"] = topClothes
 	clothes_dict["acc"] = acc
 	clothes_dict["beard"] = beard
-	clothes_dict["beard-color"] = beard_color	
+	clothes_dict["beard-color"] = beard_color
 	return clothes_dict
 	
 func set_look(clothes_dict):
@@ -150,7 +150,6 @@ func get_random():
 		allloks[i].shuffle()
 		r[i] = allloks[i][0]
 	r["hasBottom"] = !hasNoJeans.has(r["clothes"])
-	randomize()
 	if randi() % 2 == 1:
 		r["beard"] = "bald"
 	return r
