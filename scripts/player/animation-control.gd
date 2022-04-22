@@ -1,12 +1,15 @@
 extends Node2D
 
 var stopped = true
-var currLook
 var all_animated_sprites = []
+
+const LookConfiguration = preload("res://entities/character-customisation/look-configuration.gd")		
+
+var currLook = LookConfiguration.new()
 
 func _ready():
 	currLook = get_parent().currLook
-	all_animated_sprites = [$body, $"clothes-top", $face/eyes, $face/eyes, $"face/eyes/eye-bonus", $face/nose, $face/mouth, $spodnie, $wlosy/hair, $face/acc, $face/beard]
+	all_animated_sprites = [$body, $"clothes-top", $eyes, $"eyes/eye-bonus", $nose, $mouth, $spodnie, $wlosy/hair, $acc, $beard]
 func stopWalk():
 	for i in all_animated_sprites:
 		i.playing = false
@@ -30,23 +33,23 @@ func loadLook():
 	for i in $body.frames.get_animation_names():
 		$body.frames.clear(i)
 		
-	for i in $face/eyes.frames.get_animation_names():
-		$face/eyes.frames.clear(i)
+	for i in $eyes.frames.get_animation_names():
+		$eyes.frames.clear(i)
 	
-	for i in $"face/eyes/eye-bonus".frames.get_animation_names():
-		$"face/eyes/eye-bonus".frames.clear(i)
+	for i in $"eyes/eye-bonus".frames.get_animation_names():
+		$"eyes/eye-bonus".frames.clear(i)
 		
-	for i in $face/nose.frames.get_animation_names():
-		$face/nose.frames.clear(i)
+	for i in $nose.frames.get_animation_names():
+		$nose.frames.clear(i)
 		
-	for i in $face/mouth.frames.get_animation_names():
-		$face/mouth.frames.clear(i)
+	for i in $mouth.frames.get_animation_names():
+		$mouth.frames.clear(i)
 	
-	for i in $face/acc.frames.get_animation_names():
-		$face/acc.frames.clear(i)		
+	for i in $acc.frames.get_animation_names():
+		$acc.frames.clear(i)		
 		
-	for i in $face/beard.frames.get_animation_names():
-		$face/beard.frames.clear(i)		
+	for i in $beard.frames.get_animation_names():
+		$beard.frames.clear(i)		
 		
 	for i in $wlosy/hair.frames.get_animation_names():
 		$wlosy/hair.frames.clear(i)	
@@ -70,28 +73,28 @@ func loadLook():
 	$"clothes-top".frames.add_frame("back", load(currLook.getTopClotes(9, get_parent().color)))
 	$"clothes-top".frames.add_frame("back", load(currLook.getTopClotes(7, get_parent().color)))
 	$face.texture = load(currLook.getSkinPath())
-	$face/eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
-	$face/eyes.frames.add_frame("side", load(currLook.getEyePath(2)))
+	$eyes.frames.add_frame("front", load(currLook.getEyePath(1)))
+	$eyes.frames.add_frame("side", load(currLook.getEyePath(2)))
 	if currLook.getEyeBonusPath() != "przykromi":
-		$"face/eyes/eye-bonus".visible = true
-		$"face/eyes/eye-bonus".frames.add_frame("front", load(currLook.getEyeBonusPath(1)))
-		$"face/eyes/eye-bonus".frames.add_frame("side", load(currLook.getEyeBonusPath(2)))
+		$"eyes/eye-bonus".visible = true
+		$"eyes/eye-bonus".frames.add_frame("front", load(currLook.getEyeBonusPath(1)))
+		$"eyes/eye-bonus".frames.add_frame("side", load(currLook.getEyeBonusPath(2)))
 	else:
-		$"face/eyes/eye-bonus".visible = false
+		$"eyes/eye-bonus".visible = false
 	$spodnie.frame = 0
 	$body.frame = 0
 	$"clothes-top".frame = 0
 	$body.playing = 1
 	$spodnie.playing = 1
 	$"clothes-top".playing = 1
-	$face/nose.frames.add_frame("front", load(currLook.getNosePath()))
-	$face/nose.frames.add_frame("side", load(currLook.getNosePath(2)))
-	$face/mouth.frames.add_frame("front", load(currLook.getMouthPath()))
-	$face/mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
-	$face/acc.frames.add_frame("front", load(currLook.getAccPath()))
-	$face/acc.frames.add_frame("side", load(currLook.getAccPath(2)))
-	$face/beard.frames.add_frame("front", load(currLook.getBeardPath()))
-	$face/beard.frames.add_frame("side", load(currLook.getBeardPath(2)))
+	$nose.frames.add_frame("front", load(currLook.getNosePath()))
+	$nose.frames.add_frame("side", load(currLook.getNosePath(2)))
+	$mouth.frames.add_frame("front", load(currLook.getMouthPath()))
+	$mouth.frames.add_frame("side", load(currLook.getMouthPath(2)))
+	$acc.frames.add_frame("front", load(currLook.getAccPath()))
+	$acc.frames.add_frame("side", load(currLook.getAccPath(2)))
+	$beard.frames.add_frame("front", load(currLook.getBeardPath()))
+	$beard.frames.add_frame("side", load(currLook.getBeardPath(2)))
 	$wlosy/hair.frames.add_frame("front", load(currLook.getHairPath()))
 	$wlosy/hair.frames.add_frame("side", load(currLook.getHairPath(2)))
 	$wlosy/hair.frames.add_frame("back", load(currLook.getHairPath(3)))

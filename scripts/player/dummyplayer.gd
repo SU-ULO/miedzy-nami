@@ -182,8 +182,8 @@ func turn_into_corpse(pos: Vector2, killer: int = -1):
 	instance.get_node("sprites").currLook.mouth = "sad closed"
 	instance.color = color
 	instance.get_node("sprites").loadLook()
-	instance.get_node("sprites").stopWalk()
 	get_parent().add_child(instance)
+	instance.get_node("sprites").stopWalk()
 	self.visible = 0
 	
 	var network = Globals.start.network

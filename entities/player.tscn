@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://scripts/player/controlledPlayer.gd" type="Script" id=1]
 [ext_resource path="res://entities/dummyplayer.tscn" type="PackedScene" id=2]
@@ -50,83 +50,26 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=7]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=2]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=5]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -164,10 +107,86 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=24]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=25]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=26]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=27]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=28]
+resource_local_to_scene = true
+animations = [ {
+"frames": [  ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -282,26 +301,29 @@ visible = false
 [node name="body" parent="sprites" index="0"]
 frames = SubResource( 1 )
 
-[node name="clothes-top" parent="sprites" index="1"]
+[node name="spodnie" parent="sprites" index="1"]
+frames = SubResource( 7 )
+
+[node name="clothes-top" parent="sprites" index="2"]
 frames = SubResource( 2 )
 
-[node name="eyes" parent="sprites/face" index="0"]
-frames = SubResource( 3 )
-
-[node name="eye-bonus" parent="sprites/face/eyes" index="0"]
-frames = SubResource( 4 )
-
-[node name="nose" parent="sprites/face" index="1"]
-frames = SubResource( 5 )
-
-[node name="mouth" parent="sprites/face" index="2"]
-frames = SubResource( 6 )
-
-[node name="acc" parent="sprites/face" index="3"]
+[node name="eyes" parent="sprites" index="4"]
 frames = SubResource( 23 )
 
-[node name="spodnie" parent="sprites" index="3"]
-frames = SubResource( 7 )
+[node name="eye-bonus" parent="sprites/eyes" index="0"]
+frames = SubResource( 24 )
+
+[node name="nose" parent="sprites" index="5"]
+frames = SubResource( 25 )
+
+[node name="mouth" parent="sprites" index="6"]
+frames = SubResource( 26 )
+
+[node name="beard" parent="sprites" index="7"]
+frames = SubResource( 27 )
+
+[node name="acc" parent="sprites" index="8"]
+frames = SubResource( 28 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 8 )
@@ -316,9 +338,6 @@ shadow_enabled = true
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
-
-[node name="AnimatedSprite" parent="." index="7"]
-frame = 1
 
 [node name="KillCooldown" type="Timer" parent="." index="8"]
 one_shot = true
