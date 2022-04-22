@@ -3,7 +3,7 @@ extends Dummyplayer
 class_name NPC
 
 #custom properties
-export var default_clothes = {
+export var default_clothes := {
 	"skin": "skin1",
 	"mouth": "neutral closed",
 	"nose": "long nose",
@@ -17,8 +17,8 @@ export var default_clothes = {
 	"beard": "bald",
 	"beard_color": "black"
 }
-export var default_color = 0
-export var default_name = ""
+export var default_color := 0
+export var default_name := ""
 export var speed_multiplier: float = 1
 export(Array, NodePath) var wandering_nodepaths
 
@@ -26,14 +26,14 @@ export(Array, NodePath) var wandering_nodepaths
 var ai_active = false
 
 #target stuff
-var potential_wandering_targets = Array()
+var potential_wandering_targets := Array()
 var wandering_target: Node2D
-var last_target_pos = Vector2()
+var last_target_pos := Vector2()
 var last_target_num: int = 0
 
 #path stuff
-var tmp_navpath = PoolVector2Array()
-var tmp_target = Vector2()
+var tmp_navpath := PoolVector2Array()
+var tmp_target := Vector2()
 
 func clear_navpath():
 	if !tmp_navpath.empty():
@@ -46,6 +46,11 @@ var talk_direction = NavPoint.LookDirection.RIGHT
 enum NpcState {WELTSCHMERZ, TRAVELING, IDLING, IDLING_WALK, TALKING}
 var current_state = NpcState.WELTSCHMERZ
 var state_time_remaining: float = 5
+
+#stuck detect
+var last_own_pos := Vector2(0, 0)
+var stuck := false
+var time_stuck: float = 0
 
 func set_look_dir(d):
 	if d==NavPoint.LookDirection.DOWN:
@@ -63,6 +68,7 @@ func go_direct(target: Vector2):
 	moveY = direction.y
 
 func set_next_target():
+	time_stuck=0
 	if potential_wandering_targets.empty():
 		current_state=NpcState.WELTSCHMERZ
 		state_time_remaining=3600
@@ -87,11 +93,13 @@ func set_next_target():
 	state_time_remaining=60
 
 func set_navpath(target: Vector2):
+	stuck = false
 	var nav = Globals.start.network.world.get_node("NavNPC")
 	tmp_navpath = nav.get_simple_path(position, target)
 	return set_next_navpoint()
 
 func set_next_navpoint():
+	stuck = false
 	if tmp_navpath.empty():
 		return false
 	tmp_target = tmp_navpath[0]
@@ -99,6 +107,7 @@ func set_next_navpoint():
 	return true
 
 func start_idle():
+	time_stuck=0
 	current_state=NpcState.IDLING
 	state_time_remaining=2
 	if wandering_target is NavPoint:
@@ -119,15 +128,19 @@ func end_idle():
 			set_next_target()
 
 func start_idle_walk():
+	time_stuck=0
 	current_state=NpcState.IDLING_WALK
 	state_time_remaining=1
 	var p = wandering_target.position
-	var d = Vector2(randf()*2-1, randf()*2-1).normalized() * 500
+	var d = Vector2(randf()*2-1, randf()*2-1).normalized() * 1000
 	clear_navpath()
 	tmp_target=p+d
 
 func do_idle_walk():
-	go_direct(tmp_target)
+	if time_stuck<0.05:
+		go_direct(tmp_target)
+	else:
+		end_idle_walk()
 
 func end_idle_walk():
 	start_idle()
@@ -137,11 +150,11 @@ func do_travel():
 	and position.distance_to(wandering_target.position)<200:
 		tmp_target = wandering_target.position
 		clear_navpath()
-		if position.distance_to(tmp_target)<25:
+		if position.distance_to(tmp_target)<50:
 			end_travel()
 	else:
 		var do_path_recalc = false
-		if position.distance_to(tmp_target)<25:
+		if position.distance_to(tmp_target)<50:
 			do_path_recalc = do_path_recalc or !set_next_navpoint()
 			do_path_recalc = do_path_recalc or last_target_pos.distance_to(wandering_target.position)>25
 		if do_path_recalc:
@@ -165,15 +178,15 @@ func end_travel():
 			start_talk(p1, NavPoint.LookDirection.RIGHT)
 
 func start_talk(location, direction):
+	time_stuck=0
 	clear_navpath()
 	tmp_target=location
 	talk_direction=direction
 	current_state=NpcState.TALKING
 	state_time_remaining=5
-	ai_active = true
 
 func do_talk():
-	if position.distance_to(tmp_target)>25:
+	if position.distance_to(tmp_target)>25 and time_stuck<0.05:
 		go_direct(tmp_target)
 	else:
 		moveX=0
@@ -218,6 +231,14 @@ func check_line_of_sight():
 func _process(delta):
 	if ai_active:
 		check_line_of_sight()
+		if moveX!=0 or moveY!=0:
+			if (position.distance_to(last_own_pos)/delta)/\
+			(speed_multiplier*Globals.start.network.gamesettings["player-speed"])<350:
+				time_stuck+=delta
+			else:
+				time_stuck=0
+		else:
+			time_stuck=0
 		if state_time_remaining>0:
 			if current_state == NpcState.WELTSCHMERZ:
 				moveX=0
@@ -242,6 +263,7 @@ func _process(delta):
 			elif current_state==NpcState.TALKING:
 				end_talk()
 		state_time_remaining-=delta
+		last_own_pos = position
 	else:
 		moveX=0
 		moveY=0

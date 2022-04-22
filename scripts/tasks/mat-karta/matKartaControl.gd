@@ -9,7 +9,7 @@ func _ready():
 		child.get_child(0).connect("area_exited", self, "state_changed", [child, false])
 
 func is_valid(item):
-	if item.inBox:
+	if item.inBox > 0:
 		return true
 	return false
 
@@ -35,6 +35,10 @@ func check_correct():
 	
 func state_changed(area, item, state):
 	if area.name == "lawka":
-		item.inBox = state
-		if state: item.currentDesk = area.get_parent()
-		else: item.currentDesk = null
+		if state:
+			item.inBox += 1
+			item.currentDesk = area.get_parent()
+		else:
+			item.inBox -= 1
+			if item.inBox < 1:
+				item.currentDesk = null

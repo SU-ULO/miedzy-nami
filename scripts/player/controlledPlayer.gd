@@ -239,7 +239,6 @@ func update_arrows():
 	sabotagearrow.set_position(Vector2(arrow_radius * cos(angle), arrow_radius * sin(angle)))
 	sabotagearrow.set_rotation(angle)
 
-
 func _process(delta):
 	scale_sight_range(delta)
 	get_input()
@@ -425,7 +424,7 @@ func show_start():
 		popup.get_node("imps").text = "Uśpij wszystkich uczniów, sabotuj lekcje, nie daj się wykryć"
 	else:
 		popup.get_node("message").text = "Jesteś Uczniem"
-		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Imposotrów"
+		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Impostorów"
 	popup.visible = true
 	var timer  = popup.get_node("Timer")
 	timer.start()

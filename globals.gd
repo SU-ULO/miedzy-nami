@@ -2,7 +2,7 @@ extends Node
 
 var start
 
-var version: String = 'native 0.0.1'
+var version: String = 'native 22.04'
 
 func read_file(file: String):
 	var f := File.new()
