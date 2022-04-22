@@ -424,7 +424,7 @@ func show_start():
 		popup.get_node("imps").text = "Uśpij wszystkich uczniów, sabotuj lekcje, nie daj się wykryć"
 	else:
 		popup.get_node("message").text = "Jesteś Uczniem"
-		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Imposotrów"
+		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Impostorów"
 	popup.visible = true
 	var timer  = popup.get_node("Timer")
 	timer.start()
