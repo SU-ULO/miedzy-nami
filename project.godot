@@ -112,9 +112,9 @@ _global_script_class_icons={
 
 config/name="miedzy-nami"
 run/main_scene="res://start/start.tscn"
-boot_splash/image="res://textures/dzdzownica.png"
+boot_splash/image="res://textures/splashicon/splash.png"
 boot_splash/fullsize=false
-boot_splash/bg_color=Color( 0.784314, 0.784314, 0, 1 )
+boot_splash/bg_color=Color( 0.933333, 0.686275, 0.321569, 1 )
 config/icon="res://textures/dzdzownica.png"
 
 [autoload]
