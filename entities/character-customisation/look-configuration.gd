@@ -8,8 +8,8 @@ var nose := "long nose"
 var eye := "neutral_open"
 var eye_color := "darkblue"
 var hair := "afro"
-var hairColor := 1
-var hasBottom := 0
+var hairColor := "1"
+var hasBottom := false
 var topClothes := "dress"
 var acc := "acc0" # nothing
 var beard := "bald"
@@ -43,6 +43,11 @@ const hasSkinColorMouthSide = ["cheeks mouth closed", "cheeky smile semi-closed"
 const hasBonusEyes = ["bored_open", "clumsy_open", "old_open", "sad_open", "smug_open", "suspicious_open", "suspicious_semi-open", "winking"]
 const noColorEyes = ["bored_closed", "scared_closed", "happy_closed", "sad_closed"]
 const hasSkinColorEyes = ["bored_closed", "scared_closed"]
+const hasNoJeans = ["dress", "hoodie", "sweater"]
+
+# you can get that
+# by running script/tools/look_randomizer.gd
+var allloks = {"acc":["acc14", "acc15", "acc34", "acc26", "acc5", "acc32", "acc10", "acc22", "acc12", "acc3", "acc9", "acc25", "acc21", "acc31", "acc23", "acc8", "acc13", "acc4", "acc16", "acc28", "acc24", "acc27", "acc6", "acc2", "acc1", "acc11", "acc30", "acc29", "acc7", "acc18", "acc20", "acc33", "acc17", "acc19", "acc0"], "beard":["beard_medium", "fancy_stache", "scruffy_beard", "beard_short", "chin_curtain", "sideburns", "puberty_stache", "beard_long", "goatee", "scruffy_stache", "scruffy_goatee", "pencil_stache", "thin_stache", "scruffy_beard_long", "scruffy_chin", "bald"], "beard-color":["black", "dark_brown", "light_brown", "light_blonde", "dark_blonde", "red-orange", "green", "blue", "pink", "white", "red"], "clothes":["shirt", "tshirt", "dress", "hoodie", "sweater"], "eye":["angry_open", "beady_open", "beta_open", "bored_closed", "bored_open", "clumsy_open", "curious_open", "evil_open", "furious_open", "happy_closed", "happy_open", "narrowed_open", "neutral_open", "old_open", "pleading_open", "sad_closed", "sad_open", "scared_closed", "scared_open", "serious_open", "shocked_open", "smug_open", "staring_open", "suspicious_open", "suspicious_semi-open", "tired_open", "winking", "worried_open"], "eye-color":["lightblue", "darkblue", "lightgreen", "darkgreen", "lightbrown", "darkbrown"], "hair":["Velma long hair", "Velma short hair", "afro", "bob cut", "curly afroish", "fade", "fade2", "jheri curl", "kok", "koki", "long hair", "ponytail", "ponytails", "puffy hair", "short hair", "short hair 2", "very short", "wavy long hair", "wavy short hair", "bald"], "hair-color":["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], "mouth":["cheeks mouth closed", "cheeky smile semi-closed", "chewing smile closed", "miserable closed", "old smile", "sad closed", "smile closed", "smile teeth", "smug smile closed", "smug smile teeth", "wide smile closed", "curious open", "disgusted teeth", "Doraemon lips closed", "duck lips closed", "neutral closed", "sad teeth", "scared teeth", "smile open", "sticking tongue closed", "UwU smile closed", "whistling lips semi-closed", "wide smile teeth"], "nose":["long nose", "long plump nose", "long thin nose", "neutral nose", "nostril nose", "small plump nose", "square nose", "triangular long nose", "triangular long plump nose", "triangular plump nose", "triangular short nose", "wide nose", "wide nostril nose", "wide plump nose", "wide round plump nose"], "skin":["skin1", "skin2", "skin3", "skin4", "skin5", "skin6", "skin7", "skin8", "skin9", "skin10", "skin11", "skin12"]}
 
 func getMouthPath(frame=1):
 	if frame == 1:
@@ -114,14 +119,14 @@ func get_look():
 	clothes_dict["mouth"] = mouth
 	clothes_dict["nose"] = nose
 	clothes_dict["eye"] = eye
-	clothes_dict["eye_color"] = eye_color
+	clothes_dict["eye-color"] = eye_color
 	clothes_dict["hair"] = hair
-	clothes_dict["hairColor"] = hairColor
+	clothes_dict["hair-color"] = hairColor
 	clothes_dict["hasBottom"] = hasBottom
-	clothes_dict["topClothes"] = topClothes
+	clothes_dict["clothes"] = topClothes
 	clothes_dict["acc"] = acc
 	clothes_dict["beard"] = beard
-	clothes_dict["beard_color"] = beard_color	
+	clothes_dict["beard-color"] = beard_color	
 	return clothes_dict
 	
 func set_look(clothes_dict):
@@ -129,11 +134,23 @@ func set_look(clothes_dict):
 	mouth = clothes_dict["mouth"]
 	nose = clothes_dict["nose"]
 	eye = clothes_dict["eye"]
-	eye_color = clothes_dict["eye_color"]
+	eye_color = clothes_dict["eye-color"]
 	hair = clothes_dict["hair"]
-	hairColor = clothes_dict["hairColor"]
+	hairColor = clothes_dict["hair-color"]
 	hasBottom = clothes_dict["hasBottom"]
-	topClothes = clothes_dict["topClothes"]
+	topClothes = clothes_dict["clothes"]
 	acc = clothes_dict["acc"]
 	beard = clothes_dict["beard"]
-	beard_color = clothes_dict["beard_color"]
+	beard_color = clothes_dict["beard-color"]
+	
+	
+func get_random():
+	var r = get_look()
+	for i in allloks.keys():
+		allloks[i].shuffle()
+		r[i] = allloks[i][0]
+	r["hasBottom"] = !hasNoJeans.has(r["clothes"])
+	randomize()
+	if randi() % 2 == 1:
+		r["beard"] = "bald"
+	return r

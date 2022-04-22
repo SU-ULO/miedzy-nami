@@ -110,12 +110,5 @@ func refresh():
 	$"body-parts/beard".texture = load(currLook.getBeardPath())
 
 func set_random():
-	for i in $"body-parts-control".get_children():
-		i.get_random()
-	get_node("hair-color").get_random()
-	get_node("eye-color").get_random()
-	randomize()
-	if randi() % 2 == 1:
-		get_node("beard-color").get_random()
-	else:
-		_part_Change("beard", "bald")
+	currLook.set_look(currLook.get_random())
+	refresh()
