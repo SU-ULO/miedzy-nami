@@ -82,7 +82,10 @@ func handle_sabotage(type):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 			sabotagepoint = network.world.get_node("Mapa/YSort/biorko-nauczyciela6")
 			sabotagearrow.visible = true
+		
 		emit_signal("sabotage_event", currentSabotage)
+		if sabotagepoint != null and sabotagepoint.material is ShaderMaterial:
+				sabotagepoint.material.set_shader_param("aura_width", 9)
 
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
@@ -114,9 +117,13 @@ func handle_end_sabotage(type):
 			$DeathTimer.stop()
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
+		
 		emit_signal("sabotage_event", 0)
+		if sabotagepoint != null and sabotagepoint.material is ShaderMaterial:
+			sabotagepoint.material.set_shader_param("aura_width", 0)
 		sabotagepoint = null
 		sabotagearrow.visible = false
+		
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)

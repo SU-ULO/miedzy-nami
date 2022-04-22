@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="telewizorek" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( -35.4426, 218.545 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
