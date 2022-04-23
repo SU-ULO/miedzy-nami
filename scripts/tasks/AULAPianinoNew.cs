@@ -258,7 +258,7 @@ public class AULAPianinoNew : Control
 			RecursivelyQueueFree(b);
 		}
 		
-		List<Note[]> testData = new List<Note[]>()
+		List<Note[]> megalovania = new List<Note[]>()
 		{
 			new Note[]{new Note("d", 2, 1.0f)},
 			new Note[]{new Note("d", 2, 1.0f)},
@@ -272,9 +272,27 @@ public class AULAPianinoNew : Control
 			new Note[]{new Note("g", 2, 1.0f)}
 		};
 		
+		List<Note[]> rickroll = new List<Note[]>()
+		{
+			new Note[]{new Note("f", 3, 1.0f)},
+			new Note[]{new Note("g", 3, 1.0f)},
+			new Note[]{new Note("c", 3, 1.0f)},
+			new Note[]{new Note("g", 3, 1.0f)},
+			new Note[]{new Note("a", 3, 1.0f)},
+			new Note[]{new Note("a", 3, 1.0f)},
+			new Note[]{new Note("c", 4, 1.0f)},
+			new Note[]{new Note("ais", 3, 1.0f)}
+		};
 		
+		List<Note[]>[] songs = new List<Note[]>[]
+		{
+			megalovania,
+			rickroll
+		};
 		
-		this.GenerateNotes(testData);
+		Random r = new Random();
+		
+		this.GenerateNotes(songs[r.Next(0, songs.Length)]);
 	}
 
 	private static void PlayKeyAnimation(Control c, string animationName, float speed)
