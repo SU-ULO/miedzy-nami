@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/klawisz_6.png-1f23c2ed7d7462bba9499608dba19e80.stex"
+path="res://.import/klawiszczarny.png-2fa482dea10f51966ac2b3eabe67c50e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/klawisz_6.png"
-dest_files=[ "res://.import/klawisz_6.png-1f23c2ed7d7462bba9499608dba19e80.stex" ]
+source_file="res://textures/pianino/klawiszczarny.png"
+dest_files=[ "res://.import/klawiszczarny.png-2fa482dea10f51966ac2b3eabe67c50e.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.1
 compress/hdr_mode=0
 compress/bptc_ldr=0

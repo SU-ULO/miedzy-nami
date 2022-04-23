@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/klawisz_2.png-5cf0e7e310b150c1ef86a44caafeed6c.stex"
+path="res://.import/klawisznormalny.png-ebdbb4b09e3527859c28e7556ab28ddf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/klawisz_2.png"
-dest_files=[ "res://.import/klawisz_2.png-5cf0e7e310b150c1ef86a44caafeed6c.stex" ]
+source_file="res://textures/pianino/klawisznormalny.png"
+dest_files=[ "res://.import/klawisznormalny.png-ebdbb4b09e3527859c28e7556ab28ddf.stex" ]
 
 [params]
 

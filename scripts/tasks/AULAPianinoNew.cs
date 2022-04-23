@@ -1,0 +1,280 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+
+public class AULAPianinoNew : Control
+{
+	public List<Control> PianoParts = new List<Control>();
+	public Dictionary<string, Control> KeyControlMapping = new Dictionary<string, Control>();
+
+	internal StyleBoxFlat noteSbf = new StyleBoxFlat();
+	internal StyleBoxFlat backgroundSbf = new StyleBoxFlat();
+	
+	public AULAPianinoNew()
+	{
+		noteSbf.SetBgColor(new Color(0.5f, 0.5f, 0.0f));
+		backgroundSbf.SetBgColor(new Color(0.0f, 0.0f, 0.0f, 0.0f));		
+	}
+
+	public Vector2 DisplaySize 
+	{
+		get { return this.RectSize; }
+	}
+	
+	private float NoteLength
+	{
+		get { return DisplaySize.y / 2.0f; }
+	}
+	
+	private float NotesPerSecondsLength
+	{
+		get { return NoteLength * 0.5f; }
+	}
+	
+	private Control NotesPanel = null;	
+	
+	public override void _Ready()
+	{
+		foreach (Control c in this.GetChildren())
+		{
+			if (c.HasNode("Keys") == false)
+				continue;
+			
+			PianoParts.Add(c);
+			
+			foreach (Control key in c.GetNode("Keys").GetChildren())
+			{
+				KeyControlMapping.Add(c.Name + "" + key.Name, key);
+				key.Connect("pressed", this, "ButtonPressed", new Godot.Collections.Array(){c.Name + "" + key.Name});
+			}
+		}
+		
+		this.Retry();
+	}
+	
+	public override void _PhysicsProcess(float timeDelta)
+	{
+		if (NotesPanel == null)
+			return;
+		
+		NotesPanel.RectPosition = new Vector2(
+			NotesPanel.RectPosition.x, 
+			NotesPanel.RectPosition.y + NotesPerSecondsLength * timeDelta
+		);
+		
+		if (NotesPanel.GetChildren().Count == 0)
+		{
+			Win();
+		}
+	}
+	
+	private void Win()
+	{
+		GD.Print("piano win");
+		TaskWithGUI.TaskWithGUICompleteTask(this);
+		foreach (Node child in this.GetChildren())
+			RecursivelyQueueFree(child);
+		NotesPanel = null;
+	}
+	
+	private void KillTile(PianoNote n)
+	{
+		n.GetParent().RemoveChild(n);
+		n.QueueFree();
+	}
+	
+	public void ButtonPressed(string buttonName)
+	{
+		Control c = KeyControlMapping[buttonName];
+		
+		int partNum = Int32.Parse(c.GetParent().GetParent().Name);
+		
+		foreach (Node n in NotesPanel.GetChildren())
+		{
+			if (n is PianoNote)
+			{
+				PianoNote pianoNote = (PianoNote) n;
+				
+				/* check if this note is even the right one for this piano key */
+				if (pianoNote.note.KeyName.Equals(c.Name) && partNum == pianoNote.note.PianoPart)
+				{
+					Rect2 globalRect = pianoNote.GetGlobalRect();
+					
+					/* a matching tile is found  */
+					if (globalRect.Position.y + globalRect.Size.y > this.GetNode<Panel>("Panel").GetGlobalRect().Position.y)
+					{
+						PlayKeyAnimation(c, "good", 5);
+						KillTile(pianoNote);
+						return;
+					}
+				}
+			}
+		}	
+		
+		PlayKeyAnimation(c, "bad", 1);
+		Retry();
+	}
+
+	internal class Note
+	{
+		internal string KeyName;
+		internal int PianoPart;
+		internal float Length;
+		
+		internal Note(string name, int part, float len)
+		{
+			KeyName = name;
+			PianoPart = part;
+			Length = len;
+		}
+	}
+
+	private Vector2[] GetKeyRectGuidlineFromNote(Note note)
+	{
+		Control part = (Control)GetNode(note.PianoPart.ToString());
+		Control keys = (Control)part.GetNode("Keys");	
+		Control key = (Control)keys.GetNode(note.KeyName);
+		Control guideline = (Control)key.GetNode("guideline");
+		
+		Rect2 globalRect = guideline.GetGlobalRect();
+		
+		Vector2[] result = new Vector2[]
+		{
+			globalRect.Size,
+			globalRect.Position
+		};
+		
+		return result;
+	}
+
+	class PianoNote : Panel
+	{
+		public delegate void OnFailure(int part, string keyName);
+		public OnFailure onFailureHandler;
+		
+		AULAPianinoNew piano;
+	
+		public Note note;
+	
+		public PianoNote(Note note, AULAPianinoNew piano)
+		{
+			this.note = note;
+			this.piano = piano;
+		}
+		
+		internal PianoNote(){}
+	
+		public override void _PhysicsProcess(float delta)
+		{
+			Rect2 globalRect = this.GetGlobalRect();
+			
+			if (globalRect.Position.y > piano.DisplaySize.y - piano.GetNode<Panel>("Panel").GetGlobalRect().Size.y)
+			{
+				onFailureHandler(note.PianoPart, note.KeyName);
+				this.QueueFree();
+			}
+		}
+	}
+	
+	/* this could be done differently but it is 00:31 AM */
+	private static void RecursivelyQueueFree(Node d)
+	{
+		foreach (Node n in d.GetChildren())
+			RecursivelyQueueFree(n);
+			
+		d.QueueFree();
+	}
+
+	public void Retry()
+	{
+		/* cleanup */
+		if (this.HasNode("background"))
+		{
+			NotesPanel = null;
+			Node b = this.GetNode("background");
+			this.RemoveChild(b);
+			RecursivelyQueueFree(b);
+		}
+		
+		List<Note[]> testData = new List<Note[]>()
+		{
+			new Note[]{new Note("cis", 1, 1.0f), new Note("c", 2, 2.0f)},
+			new Note[]{new Note("d", 1, 1.0f), new Note("c", 3, 2.0f)},
+			new Note[]{new Note("e", 1, 1.0f), new Note("c", 4, 2.0f)},
+			new Note[]{new Note("f", 1, 1.0f), new Note("c", 2, 2.0f)},
+			new Note[]{new Note("g", 1, 1.0f), new Note("c", 3, 2.0f)},
+			new Note[]{new Note("h", 1, 1.0f), new Note("cis", 4, 2.0f)}
+		};
+		
+		this.GenerateNotes(testData);
+	}
+
+	private static void PlayKeyAnimation(Control c, string animationName, float speed)
+	{
+		AnimationPlayer animation = (AnimationPlayer) c.GetNode("animation");
+			
+		/* focefully stop all playing animations */
+		if (animation.IsPlaying())
+		{
+			animation.Stop();
+		}
+		animation.ClearQueue();
+		
+		/* play the selected animation */
+		animation.PlaybackSpeed = speed;
+		animation.Play(animationName);
+		
+	}
+
+	private void OnKeyFailure(int pianoPart, string keyName)
+	{
+		string fullKeyName = pianoPart.ToString() + keyName;
+		PlayKeyAnimation(KeyControlMapping[fullKeyName], "bad", 1);
+		Retry();
+	}
+
+	private void GenerateNotes(List<Note[]> layers)
+	{
+		Node2D background = new Node2D();
+		background.Name = "background";
+		
+		float notesSize = NoteLength * layers.Count;
+		
+		NotesPanel = new Panel();
+		NotesPanel.RectSize = new Vector2(DisplaySize.x, notesSize);
+		NotesPanel.RectPosition = new Vector2(0, -notesSize);
+		NotesPanel.AddStyleboxOverride("panel", backgroundSbf);
+		NotesPanel.MouseFilter = Control.MouseFilterEnum.Ignore;
+		
+		int currentLayer = 0;
+		
+		foreach (Note[] layer in layers)
+		{
+			float currentYPosition = (layers.Count - currentLayer - 1) * NoteLength;
+			
+			foreach (Note note in layer)
+			{
+				Vector2[] rectData = GetKeyRectGuidlineFromNote(note);
+				
+				PianoNote notePanel = new PianoNote(note, this);
+				notePanel.RectSize = new Vector2(rectData[0].x, NoteLength * note.Length);
+				notePanel.RectPosition = new Vector2(rectData[1].x, currentYPosition);
+				notePanel.onFailureHandler = this.OnKeyFailure;
+				notePanel.MouseFilter = Control.MouseFilterEnum.Ignore;
+				notePanel.Name = note.PianoPart + note.KeyName;
+				
+				notePanel.AddStyleboxOverride("panel", noteSbf);
+				
+				NotesPanel.AddChild(notePanel);
+			}
+		
+			currentLayer++;
+		}
+		
+		background.AddChild(NotesPanel);
+		background.ZIndex = -1;
+		
+		this.AddChild(background);
+	}
+
+}
