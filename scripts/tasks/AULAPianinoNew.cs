@@ -35,8 +35,13 @@ public class AULAPianinoNew : Control
 	
 	public override void _Ready()
 	{
-		foreach (Control c in this.GetChildren())
+		foreach (Node n in this.GetChildren())
 		{
+			if ((n is Control) == false)
+				continue;
+			
+			Control c = (Control) n;
+				
 			if (c.HasNode("Keys") == false)
 				continue;
 			
@@ -104,6 +109,7 @@ public class AULAPianinoNew : Control
 					if (globalRect.Position.y + globalRect.Size.y > this.GetNode<Panel>("Panel").GetGlobalRect().Position.y)
 					{
 						PlayKeyAnimation(c, "good", 5);
+						pianoNote.note.Play(GetNode<AudioStreamPlayer>("AudioStreamPlayer").Stream, this);
 						KillTile(pianoNote);
 						return;
 					}
@@ -127,6 +133,44 @@ public class AULAPianinoNew : Control
 			PianoPart = part;
 			Length = len;
 		}
+		
+		private static readonly Dictionary<string, int> KeyNameToNoteIndexMap = new Dictionary<string, int>()
+		{
+			{"c", 0},
+			{"cis", 1},
+			{"d", 2},
+			{"dis", 3},
+			{"e", 4},
+			{"f", 5},
+			{"fis", 6},
+			{"g", 7},
+			{"gis", 8},
+			{"a", 9},
+			{"ais", 10},
+			{"h", 11}
+		};
+		
+		private readonly int OctaveBase = 3;
+		
+		public void Play(AudioStream stream, Node parent)
+		{
+			int octave = PianoPart - OctaveBase;
+			int noteIndex = KeyNameToNoteIndexMap[this.KeyName];
+			
+			AudioStreamPlayer player = new AudioStreamPlayer();
+			parent.AddChild(player);
+			player.Connect("finished", parent, "KillAudioStreamPlayer", new Godot.Collections.Array(){player});
+			
+			player.Stream = stream;
+			player.PitchScale = (float)Math.Pow(2.0f, (octave * 12.0f + (float)noteIndex) / 12.0f);
+			player.Play();
+		}
+	}
+
+	public void KillAudioStreamPlayer(AudioStreamPlayer p)
+	{
+		this.RemoveChild(p);
+		p.QueueFree();
 	}
 
 	private Vector2[] GetKeyRectGuidlineFromNote(Note note)
