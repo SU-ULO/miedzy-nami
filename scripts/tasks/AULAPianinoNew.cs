@@ -30,7 +30,7 @@ public class AULAPianinoNew : Control
 	
 	private float NotesPerSecondsLength
 	{
-		get { return NoteLength * 0.5f; }
+		get { return NoteLength * 0.75f; }
 	}
 	
 	private Control NotesPanel = null;	
@@ -97,6 +97,8 @@ public class AULAPianinoNew : Control
 			{
 				PianoNote pianoNote = (PianoNote) n;
 				
+				if (pianoNote is EndPianoNote)
+					continue;
 				/* check if this note is even the right one for this piano key */
 				if (pianoNote.note.KeyName.Equals(c.Name) && partNum == pianoNote.note.PianoPart)
 				{
@@ -228,7 +230,7 @@ public class AULAPianinoNew : Control
 		{
 			Rect2 globalRect = this.GetGlobalRect();
 			
-			if (globalRect.Position.y > piano.DisplaySize.y - piano.GetNode<Panel>("Panel").GetGlobalRect().Size.y)
+			if (globalRect.Position.y > piano.DisplaySize.y * 0.5f - piano.GetNode<Panel>("Panel").GetGlobalRect().Size.y)
 			{
 				onFailureHandler(0, "end");
 				this.QueueFree();
