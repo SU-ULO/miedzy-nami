@@ -242,13 +242,19 @@ public class AULAPianinoNew : Control
 		
 		List<Note[]> testData = new List<Note[]>()
 		{
-			new Note[]{new Note("cis", 1, 1.0f), new Note("c", 2, 2.0f)},
-			new Note[]{new Note("d", 1, 1.0f), new Note("c", 3, 2.0f)},
-			new Note[]{new Note("e", 1, 1.0f), new Note("c", 4, 2.0f)},
-			new Note[]{new Note("f", 1, 1.0f), new Note("c", 2, 2.0f)},
-			new Note[]{new Note("g", 1, 1.0f), new Note("c", 3, 2.0f)},
-			new Note[]{new Note("h", 1, 1.0f), new Note("cis", 4, 2.0f)}
+			new Note[]{new Note("d", 2, 1.0f)},
+			new Note[]{new Note("d", 2, 1.0f)},
+			new Note[]{new Note("d", 3, 1.0f)},
+			new Note[]{new Note("a", 2, 1.0f)},
+			new Note[]{new Note("gis", 2, 1.0f)},
+			new Note[]{new Note("g", 2, 1.0f)},
+			new Note[]{new Note("f", 2, 1.0f)},
+			new Note[]{new Note("d", 2, 1.0f)},
+			new Note[]{new Note("f", 2, 1.0f)},
+			new Note[]{new Note("g", 2, 1.0f)}
 		};
+		
+		
 		
 		this.GenerateNotes(testData);
 	}
