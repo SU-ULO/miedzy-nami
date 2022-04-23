@@ -9,11 +9,13 @@ public class AULAPianinoNew : Control
 
 	internal StyleBoxFlat noteSbf = new StyleBoxFlat();
 	internal StyleBoxFlat backgroundSbf = new StyleBoxFlat();
+	internal StyleBoxFlat endNoteSbf = new StyleBoxFlat();
 	
 	public AULAPianinoNew()
 	{
 		noteSbf.SetBgColor(new Color(0.5f, 0.5f, 0.0f));
 		backgroundSbf.SetBgColor(new Color(0.0f, 0.0f, 0.0f, 0.0f));		
+		endNoteSbf.SetBgColor(new Color(0.0f, 0.0f, 0.0f, 0.0f));		
 	}
 
 	public Vector2 DisplaySize 
@@ -66,11 +68,6 @@ public class AULAPianinoNew : Control
 			NotesPanel.RectPosition.x, 
 			NotesPanel.RectPosition.y + NotesPerSecondsLength * timeDelta
 		);
-		
-		if (NotesPanel.GetChildren().Count == 0)
-		{
-			Win();
-		}
 	}
 	
 	private void Win()
@@ -196,7 +193,7 @@ public class AULAPianinoNew : Control
 		public delegate void OnFailure(int part, string keyName);
 		public OnFailure onFailureHandler;
 		
-		AULAPianinoNew piano;
+		protected AULAPianinoNew piano;
 	
 		public Note note;
 	
@@ -215,6 +212,25 @@ public class AULAPianinoNew : Control
 			if (globalRect.Position.y > piano.DisplaySize.y - piano.GetNode<Panel>("Panel").GetGlobalRect().Size.y)
 			{
 				onFailureHandler(note.PianoPart, note.KeyName);
+				this.QueueFree();
+			}
+		}
+	}
+	
+	class EndPianoNote : PianoNote
+	{		
+		public EndPianoNote(AULAPianinoNew piano)
+		{
+			this.piano = piano;
+		}
+		
+		public override void _PhysicsProcess(float delta)
+		{
+			Rect2 globalRect = this.GetGlobalRect();
+			
+			if (globalRect.Position.y > piano.DisplaySize.y - piano.GetNode<Panel>("Panel").GetGlobalRect().Size.y)
+			{
+				onFailureHandler(0, "end");
 				this.QueueFree();
 			}
 		}
@@ -282,6 +298,11 @@ public class AULAPianinoNew : Control
 		PlayKeyAnimation(KeyControlMapping[fullKeyName], "bad", 1);
 		Retry();
 	}
+	
+	private void WinHandler(int pianoPart, string keyName)
+	{
+		Win();
+	}
 
 	private void GenerateNotes(List<Note[]> layers)
 	{
@@ -320,6 +341,15 @@ public class AULAPianinoNew : Control
 		
 			currentLayer++;
 		}
+
+		EndPianoNote endNote = new EndPianoNote(this);
+		endNote.RectSize = new Vector2(0, NoteLength);
+		endNote.RectPosition = new Vector2(0, -NoteLength);
+		endNote.onFailureHandler = this.WinHandler;
+		endNote.MouseFilter = Control.MouseFilterEnum.Ignore;
+		endNote.Name = "end";
+		endNote.AddStyleboxOverride("panel", endNoteSbf);
+		NotesPanel.AddChild(endNote);
 		
 		background.AddChild(NotesPanel);
 		background.ZIndex = -1;
