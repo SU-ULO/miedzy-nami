@@ -24,6 +24,7 @@ export(Array, NodePath) var wandering_nodepaths
 
 #ai active
 var ai_active = false
+var player_speed_mult: float = 1
 
 #target stuff
 var potential_wandering_targets := Array()
@@ -202,6 +203,7 @@ func _ready():
 	$Label.text = username
 
 func npc_init():
+	player_speed_mult = Globals.start.network.gamesettings["player-speed"]
 	Globals.start.network.handle_set_look(default_clothes, owner_id)
 	potential_wandering_targets.clear()
 	for p in wandering_nodepaths:
@@ -232,8 +234,7 @@ func _process(delta):
 	if ai_active:
 		check_line_of_sight()
 		if moveX!=0 or moveY!=0:
-			if (position.distance_to(last_own_pos)/delta)/\
-			(speed_multiplier*Globals.start.network.gamesettings["player-speed"])<350:
+			if (position.distance_to(last_own_pos)/delta)/(speed_multiplier*player_speed_mult)<350:
 				time_stuck+=delta
 			else:
 				time_stuck=0
