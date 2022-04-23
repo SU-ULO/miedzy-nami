@@ -1,16 +1,11 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/player/dummyplayer.gd" type="Script" id=1]
 [ext_resource path="res://textures/player.png" type="Texture" id=2]
 [ext_resource path="res://textures/player-move1.png" type="Texture" id=3]
 [ext_resource path="res://textures/player-move2.png" type="Texture" id=4]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans2.png" type="Texture" id=5]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans3.png" type="Texture" id=6]
-[ext_resource path="res://textures/character/clothes/jeans/front/jeans1.png" type="Texture" id=7]
-[ext_resource path="res://textures/character/face_front/skin1.png" type="Texture" id=8]
+[ext_resource path="res://entities/sprites.tscn" type="PackedScene" id=5]
 [ext_resource path="res://shaders/dummyplayer.tres" type="Material" id=9]
-[ext_resource path="res://scripts/player/animation-control.gd" type="Script" id=10]
-[ext_resource path="res://fonts/PottaOne-Regular3.tres" type="DynamicFont" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 500.0
@@ -22,199 +17,6 @@ radius = 1750.0
 radius = 75.0135
 height = 75.4685
 
-[sub_resource type="SpriteFrames" id=5]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=6]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=7]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=8]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=9]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=10]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="CanvasItemMaterial" id=15]
-light_mode = 2
-
-[sub_resource type="SpriteFrames" id=16]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=14]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=11]
-resource_local_to_scene = true
-animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=12]
-resource_local_to_scene = true
-animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
@@ -222,6 +24,15 @@ animations = [ {
 "name": "default",
 "speed": 10.0
 } ]
+
+[sub_resource type="DynamicFontData" id=14]
+font_path = "res://fonts/PottaOne-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=15]
+size = 60
+use_filter = true
+extra_spacing_bottom = -30
+font_data = SubResource( 14 )
 
 [node name="player" type="KinematicBody2D"]
 scale = Vector2( 0.7, 0.7 )
@@ -250,80 +61,13 @@ shape = SubResource( 2 )
 rotation = -1.57079
 shape = SubResource( 4 )
 
-[node name="sprites" type="Node2D" parent="."]
-scale = Vector2( 0.4, 0.4 )
-script = ExtResource( 10 )
-
-[node name="body" type="AnimatedSprite" parent="sprites"]
-material = ExtResource( 9 )
-frames = SubResource( 5 )
-animation = "front"
-
-[node name="clothes-top" type="AnimatedSprite" parent="sprites"]
-material = ExtResource( 9 )
-scale = Vector2( 0.999999, 0.999999 )
-frames = SubResource( 6 )
-animation = "front"
-
-[node name="face" type="Sprite" parent="sprites"]
-material = ExtResource( 9 )
-position = Vector2( 7.89365, -423.508 )
-texture = ExtResource( 8 )
-
-[node name="eyes" type="AnimatedSprite" parent="sprites/face"]
-material = ExtResource( 9 )
-frames = SubResource( 7 )
-animation = "front"
-
-[node name="eye-bonus" type="AnimatedSprite" parent="sprites/face/eyes"]
-material = ExtResource( 9 )
-frames = SubResource( 8 )
-animation = "front"
-
-[node name="nose" type="AnimatedSprite" parent="sprites/face"]
-material = ExtResource( 9 )
-frames = SubResource( 9 )
-animation = "front"
-
-[node name="mouth" type="AnimatedSprite" parent="sprites/face"]
-material = ExtResource( 9 )
-frames = SubResource( 10 )
-animation = "front"
-
-[node name="beard" type="AnimatedSprite" parent="sprites/face"]
-material = SubResource( 15 )
-position = Vector2( 0, 22 )
-frames = SubResource( 16 )
-animation = "front"
-
-[node name="acc" type="AnimatedSprite" parent="sprites/face"]
-material = ExtResource( 9 )
-position = Vector2( 0, 24 )
-z_index = 1
-frames = SubResource( 14 )
-animation = "front"
-
-[node name="spodnie" type="AnimatedSprite" parent="sprites"]
-material = ExtResource( 9 )
-frames = SubResource( 11 )
-animation = "front"
-
-[node name="wlosy" type="Node2D" parent="sprites"]
-position = Vector2( 7.894, -714.33 )
-scale = Vector2( 0.999999, 0.999999 )
-
-[node name="hair" type="AnimatedSprite" parent="sprites/wlosy"]
-material = ExtResource( 9 )
-position = Vector2( 0, 240 )
-frames = SubResource( 12 )
-animation = "front"
+[node name="sprites" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
 material = ExtResource( 9 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 13 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -334,21 +78,19 @@ texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 material = ExtResource( 9 )
-margin_left = -473.854
-margin_top = -404.386
-margin_right = 526.146
-margin_bottom = -316.386
+margin_left = -250.0
+margin_top = -480.0
+margin_right = 250.0
+margin_bottom = -301.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_constants/shadow_offset_y = 3
 custom_constants/shadow_as_outline = 3
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = SubResource( 15 )
 text = "ddddddddddddd"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_enter"]
 [connection signal="body_exited" from="InteractionArea" to="." method="on_interaction_area_exit"]

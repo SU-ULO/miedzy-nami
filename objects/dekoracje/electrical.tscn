@@ -8,6 +8,7 @@ collision_layer = 5
 script = ExtResource( 2 )
 
 [node name="electrical" type="Sprite" parent="."]
+use_parent_material = true
 position = Vector2( 65, 32 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )

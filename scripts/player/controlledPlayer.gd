@@ -21,6 +21,10 @@ var meetings_left
 var network
 var bar_last = 0;
 
+export var default_camera_zoom = 2
+export var zoomed_camera_zoom = 0.5
+var zoomed = false
+
 var electrical_switches = [0,0,0,0,0]
 var electrical_good = [0,0,0,0,0]
 
@@ -78,7 +82,10 @@ func handle_sabotage(type):
 				_on_interaction_area_enter(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
 			sabotagepoint = network.world.get_node("Mapa/YSort/biorko-nauczyciela6")
 			sabotagearrow.visible = true
+		
 		emit_signal("sabotage_event", currentSabotage)
+		if sabotagepoint != null and sabotagepoint.material is ShaderMaterial:
+				sabotagepoint.material.set_shader_param("aura_width", 9)
 
 func handle_end_sabotage(type):
 	if not currentSabotage == 0:
@@ -110,9 +117,13 @@ func handle_end_sabotage(type):
 			$DeathTimer.stop()
 			if $InteractionArea.overlaps_body(network.world.get_node("Mapa/YSort/biorko-nauczyciela6")):
 				on_interaction_area_exit(network.world.get_node("Mapa/YSort/biorko-nauczyciela6"))
+		
 		emit_signal("sabotage_event", 0)
+		if sabotagepoint != null and sabotagepoint.material is ShaderMaterial:
+			sabotagepoint.material.set_shader_param("aura_width", 0)
 		sabotagepoint = null
 		sabotagearrow.visible = false
+		
 
 func _ready():
 	$SightArea/AreaShape.shape.set_radius(default_sight_range)
@@ -177,6 +188,18 @@ func get_input():
 		if Input.is_action_just_pressed("ui_chat"):
 			if get_node("GUI/PlayerCanvas/CommunicationButtons/chat").visible:
 				get_node("GUI/PlayerCanvas/playerGUI")._on_gui_button_pressed("chat")
+		
+		if Input.is_action_just_pressed("zoom"):
+			if zoomed:
+				zoomed = false
+				$Camera.position = Vector2(0, 0)
+				$Camera.zoom = Vector2(default_camera_zoom, default_camera_zoom)
+			else:
+				zoomed = true
+				$Camera.position = $sprites/face.position * $sprites.scale
+				print($Camera.position)
+				$Camera.zoom = Vector2(zoomed_camera_zoom, zoomed_camera_zoom)
+	
 	if Input.is_action_just_pressed("chat_send"): 
 		if chat_focused:
 			get_node("GUI/CloseButton/ChatPanel").OnSendPressed()
@@ -215,7 +238,6 @@ func update_arrows():
 	var angle = pos.angle_to_point(self.position)
 	sabotagearrow.set_position(Vector2(arrow_radius * cos(angle), arrow_radius * sin(angle)))
 	sabotagearrow.set_rotation(angle)
-
 
 func _process(delta):
 	scale_sight_range(delta)
@@ -402,7 +424,7 @@ func show_start():
 		popup.get_node("imps").text = "Uśpij wszystkich uczniów, sabotuj lekcje, nie daj się wykryć"
 	else:
 		popup.get_node("message").text = "Jesteś Uczniem"
-		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Imposotrów"
+		popup.get_node("imps").text = "Wykonaj swoje zadania, uważaj na Impostorów"
 	popup.visible = true
 	var timer  = popup.get_node("Timer")
 	timer.start()

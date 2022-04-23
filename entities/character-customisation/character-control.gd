@@ -39,7 +39,7 @@ func _part_Change(part, name):
 			currLook.mouth = name
 			$"body-parts/mouth".texture = load(currLook.getMouthPath())
 		"clothes":
-			if name == "dress" || name == "hoodie":
+			if name == "dress" || name == "hoodie" || name == "sweater":
 				currLook.hasBottom = false
 				$"body-parts/jeans".visible = false
 			else:
@@ -110,12 +110,5 @@ func refresh():
 	$"body-parts/beard".texture = load(currLook.getBeardPath())
 
 func set_random():
-	for i in $"body-parts-control".get_children():
-		i.get_random()
-	get_node("hair-color").get_random()
-	get_node("eye-color").get_random()
-	randomize()
-	if randi() % 2 == 1:
-		get_node("beard-color").get_random()
-	else:
-		_part_Change("beard", "bald")
+	currLook.set_look(currLook.get_random())
+	refresh()

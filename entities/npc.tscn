@@ -25,6 +25,25 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=9]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "back",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "side",
+"speed": 5.0
+} ]
+
 [sub_resource type="SpriteFrames" id=2]
 resource_local_to_scene = true
 animations = [ {
@@ -44,7 +63,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=11]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -63,7 +82,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=12]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -82,7 +101,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=13]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -101,7 +120,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="SpriteFrames" id=14]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -120,7 +139,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=15]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
@@ -139,29 +158,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=16]
 resource_local_to_scene = true
 animations = [ {
 "frames": [  ],
-"loop": true,
-"name": "front",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "back",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "side",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=9]
-resource_local_to_scene = true
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "front",
 "speed": 5.0
@@ -202,32 +202,29 @@ script = ExtResource( 2 )
 [node name="body" parent="sprites" index="0"]
 frames = SubResource( 1 )
 
-[node name="clothes-top" parent="sprites" index="1"]
+[node name="spodnie" parent="sprites" index="1"]
+frames = SubResource( 9 )
+
+[node name="clothes-top" parent="sprites" index="2"]
 frames = SubResource( 2 )
 
-[node name="eyes" parent="sprites/face" index="0"]
-frames = SubResource( 3 )
+[node name="eyes" parent="sprites" index="4"]
+frames = SubResource( 11 )
 
-[node name="eye-bonus" parent="sprites/face/eyes" index="0"]
-frames = SubResource( 4 )
+[node name="eye-bonus" parent="sprites/eyes" index="0"]
+frames = SubResource( 12 )
 
-[node name="nose" parent="sprites/face" index="1"]
-frames = SubResource( 5 )
+[node name="nose" parent="sprites" index="5"]
+frames = SubResource( 13 )
 
-[node name="mouth" parent="sprites/face" index="2"]
-frames = SubResource( 6 )
+[node name="mouth" parent="sprites" index="6"]
+frames = SubResource( 14 )
 
-[node name="beard" parent="sprites/face" index="3"]
-frames = SubResource( 7 )
+[node name="beard" parent="sprites" index="7"]
+frames = SubResource( 15 )
 
-[node name="acc" parent="sprites/face" index="4"]
-frames = SubResource( 8 )
-
-[node name="spodnie" parent="sprites" index="3"]
-frames = SubResource( 9 )
+[node name="acc" parent="sprites" index="8"]
+frames = SubResource( 16 )
 
 [node name="hair" parent="sprites/wlosy" index="0"]
 frames = SubResource( 10 )
-
-[node name="AnimatedSprite" parent="." index="5"]
-frame = 0

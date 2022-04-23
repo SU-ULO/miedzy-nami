@@ -239,7 +239,7 @@ text = "wszyscy:
  mapa: M
  ukryj/pokaż zadania: T
  czat: C
- mikrofon: TAB
+ zoom: X
 "
 __meta__ = {
 "_edit_use_anchors_": false

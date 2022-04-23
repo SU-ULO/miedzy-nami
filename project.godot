@@ -49,6 +49,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://network/matchmaking_connection.gd"
 }, {
+"base": "Dummyplayer",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://scripts/player/npc.gd"
+}, {
+"base": "Node2D",
+"class": "NavPoint",
+"language": "GDScript",
+"path": "res://scripts/navpoint.gd"
+}, {
 "base": "Node",
 "class": "NetworkManager",
 "language": "GDScript",
@@ -88,6 +98,8 @@ _global_script_class_icons={
 "JoinedServer": "",
 "LookConfiguration": "",
 "Matchmaking_Connection": "",
+"NPC": "",
+"NavPoint": "",
 "NetworkManager": "",
 "Player": "",
 "ServerNetworkManager": "",
@@ -100,10 +112,10 @@ _global_script_class_icons={
 
 config/name="miedzy-nami"
 run/main_scene="res://start/start.tscn"
-boot_splash/image="res://textures/dzdzownica.png"
+boot_splash/image="res://textures/splashicon/splash.png"
 boot_splash/fullsize=false
-boot_splash/bg_color=Color( 0.784314, 0.784314, 0, 1 )
-config/icon="res://textures/dzdzownica.png"
+boot_splash/bg_color=Color( 0.933333, 0.686275, 0.321569, 1 )
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -115,7 +127,6 @@ TaskWithGUI="*res://scripts/tasks/TaskWithGUI.cs"
 
 window/size/width=1920
 window/size/height=1080
-window/size/borderless=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -229,6 +240,11 @@ ui_chat={
 chat_send={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+zoom={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

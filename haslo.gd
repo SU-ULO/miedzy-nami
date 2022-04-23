@@ -7,7 +7,6 @@ var buffer = ""
 
 func _ready():
 	$input/Label.text = ""
-	randomize()
 	passwords.shuffle()
 	correct = passwords.front()
 	$pass/Label.text = correct

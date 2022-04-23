@@ -11,7 +11,7 @@ var matchmaking = null
 var network = null
 
 func _init():
-	Globals.start=self
+	Globals.start = self
 
 func _ready():
 	randomize()

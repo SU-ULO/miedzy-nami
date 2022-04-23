@@ -90,6 +90,7 @@ func checkKillability():
 
 func _on_gui_button_pressed(button_name):
 	if button_name == "sabotage" and ((player.currentInteraction != null and !player.currentInteraction.is_in_group("vents")) or player.currentInteraction == null):
+		if network.gamestate == NetworkManager.MEETING: return
 		var instance = sabotagemap["gui_res"].instance()
 		instance.name = sabotagemap["gui_name"]
 		if GUI.replace_on_canvas(instance):
@@ -113,6 +114,7 @@ func _on_gui_button_pressed(button_name):
 		GUI.replace_on_canvas(instance)
 		instance.onopen()
 	elif button_name == "map":
+		if network.gamestate == NetworkManager.MEETING: return
 		var instance = minimap["gui_res"].instance()
 		instance.name = minimap["gui_name"]
 		if GUI.replace_on_canvas(instance):

@@ -31,7 +31,6 @@ func _ready():
 		get_node(node_path).get_child(0).connect("area_exited", self, "state_changed", [get_node(node_path), false])
 	
 	# randomize a kit for task
-	randomize()
 	taskKit = kits[randi() % kits.size()]
 	taskKit.sort()
 	print(taskKit)

@@ -1,6 +1,6 @@
 extends "res://scripts/dragable/dragable.gd"
 
-var inBox = false
+var inBox = 0
 var currentDesk = null
 
 func _ready():
