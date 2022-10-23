@@ -129,30 +129,30 @@ func request_meeting(_dead: int):
 func start_meeting(_caller: int, _dead: int):
 	var rips = []
 	
-	#end sabotage
+	# end sabotage
 	if own_player.currentSabotage == 4:
 		own_player.handle_end_sabotage(4)
 	
-	#end all interactions
+	# end all interactions
 	if own_player.currentInteraction != null:
 		own_player.currentInteraction.EndInteraction(own_player)
 		own_player.currentInteraction = null
 	
-	#close all gui
+	# close all gui
 	var current = own_player.get_node("GUI").currentGUI
 	if current != null:
 		print(current.name)
 		own_player.get_node("GUI").replace_on_canvas(current)
 	
-	#get rid of all the bodies
+	# get rid of all the bodies
 	for i in world.get_tree().get_nodes_in_group("deadbody"):
 		i.queue_free()
 	
-	#disable movement and calculate teleport positions
+	# disable movement and calculate teleport positions
 	own_player.disabled_movement = true
 	recalculate_pos()
 	
-	#update task bar
+	# update task bar
 	if gamesettings["taskbar-updates"] == 1:
 		own_player.get_node("GUI/PlayerCanvas/playerGUI").refresh_task_bar()
 	own_player.position = get_spawn_position(own_id)
@@ -167,9 +167,9 @@ func start_meeting(_caller: int, _dead: int):
 		if player_characters[player].is_in_group("rip"):
 			rips.push_back(player) # if dead then handle later
 		else:
-			var box = playerbox.instance() #make box in meeting gui
+			var box = playerbox.instance() # create instance of a box with the player name in the meeting gui
 			
-			#set box atributes
+			# set box atributes
 			box.connect("chosen", self, "set_chosen")
 			box.id = player
 			box.color = Color(colors[player_characters[player].color])
@@ -178,12 +178,12 @@ func start_meeting(_caller: int, _dead: int):
 			if player_characters[player].is_in_group("impostors") and own_player.is_in_group("impostors"):
 				box.get_node("Button/L").set("custom_colors/font_color", Color("#DE2323"))
 			
-			# put it in right place
+			# put it in the right place
 			gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
 			
 			iter += 1
 	
-	for rip in rips: # now same for rips because we want them last on list
+	for rip in rips: # now same for rips because we want them last on the list
 		var box = playerbox.instance()
 
 		box.connect("chosen", self, "set_chosen")
@@ -195,16 +195,16 @@ func start_meeting(_caller: int, _dead: int):
 			box.get_node("Button/L").set("custom_colors/font_color", Color("#DE2323"))
 		
 		gui.get_node("BG/H/V" + String(iter%2 + 1)).add_child(box)
-		# aslo different color cause they dead
+		# also different color cause they are dead
 		box.get_node("Button").get_stylebox("disabled", "").bg_color = Color("#5C93CD")
 		iter += 1
 	
-	#now we disable all butons because no one can vote in discussion time
+	# now we disable all buttons because no one can vote in discussion time
 	gui.time = gamesettings["discussion-time"]
 	gui.set_all_buttons(0)
 	var skip = gui.get_node("BG/S")
 	
-	#connect "click" signal to skip button and signal to change meeting state to voting time
+	# connect "click" signal to skip button and signal to change meeting state to voting time
 	skip.connect("chosen", self, "set_chosen")
 	gui.connect("meeting_state_changed", self, "set_meeting_state")
 	
@@ -216,23 +216,23 @@ func start_meeting(_caller: int, _dead: int):
 var votingwinnerid := -1
 
 func set_meeting_state(state): # func to toggle from discussion time to voting time and to reveal results
-	var gui = meeting_gui #get gui
+	var gui = meeting_gui # get gui
 	if meeting_gui == null: return null
 	
 	gui.meeting_state += 1
 	
 	if state == 1: # voting starts
-		if own_player.is_in_group("rip") == false: # if player is dead then wi dont need to do anything
-			for player in player_characters.keys(): # otherwise for every alive player we anable their button
+		if own_player.is_in_group("rip") == false: # if player is dead then we don't need to do anything
+			for player in player_characters.keys(): # otherwise for every alive player we enable their button
 				if player_characters[player].is_in_group("rip") == false:
 					gui.get_player_box(player).get_node("Button").disabled = false
 			gui.get_node("BG/S").disabled = false # also skip button
 		
-		#set time and label
+		# set time and label
 		gui.time = gamesettings["voting-time"]
 		gui.label_text = "Koniec głosowania za: "
 	elif state == 2: # voting ended
-		#show votes
+		# show votes
 		for box in gui.get_node("BG/H/V1").get_children():
 			box.set_vote_visibility(1)
 			
@@ -241,7 +241,7 @@ func set_meeting_state(state): # func to toggle from discussion time to voting t
 		
 		gui.get_node("BG/S/SH").visible = true
 		
-		#determin meeting "winner"
+		# determine meeting "winner"
 		
 		var votes = {}
 		# count votes
@@ -285,20 +285,20 @@ func end_meeting():
 	own_player.get_node("GUI").clear_canvas()
 	meeting_gui = null 
 	
-	#hide chat if open
+	# hide chat if open
 	own_player.get_node("GUI/CloseButton/ChatPanel").show(false)
 	own_player.get_node("GUI/CloseButton/ChatPanel/bg").visible = false
 	
 	world.get_node("Mapa/YSort/meeting-table/Timer").start(gamesettings["emergency-cooldown"])
 	own_player.disabled_movement = false # enable player movement
 	current_votes.clear() # clear votes
-	if own_player.is_in_group("impostors"): # set cooldown for impostor
+	if own_player.is_in_group("impostors"): # set cooldown for impostors
 		own_player.get_node("KillCooldown").start(gamesettings["kill-cooldown"] / 3)
 		own_player.get_node("SabotageCooldown").start(own_player.sabotageCooldown/3)
 
 func set_chosen(id): # called form signal chosen comming from player meeting box (button)
 	if meeting_gui == null: return false
-	meeting_gui.chosen = id # set chosen (var in gui script) to chosen palyer id
+	meeting_gui.chosen = id # set chosen (var in gui script) to chosen player id
 	request_vote(id)
 
 func request_vote(_id: int):
@@ -325,7 +325,7 @@ func add_vote(voter_id, voted_id):
 	var voter_box = gui.get_player_box(voter_id)
 	voter_box.set_voted()
 	
-	# if all players voted stop voting
+	# if all players voted stop voting time
 	if current_votes.size() == player_characters.size() - get_tree().get_nodes_in_group("rip").size():
 		gui.progress_meeting()
 
@@ -433,7 +433,7 @@ func game_start(params, taskstuff):
 func request_cameras_enable(_on_off: bool):
 	pass
 
-func cameras_enable(on_off: bool): #0 for leave, 1 for join
+func cameras_enable(on_off: bool): # 0 for leave, 1 for join
 	if on_off == false:
 		camera_users_count-=1
 	else:

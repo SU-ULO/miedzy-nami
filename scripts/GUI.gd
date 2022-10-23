@@ -56,7 +56,7 @@ func remove_form_canvas(gui_name:String = "no name was spacified"):
 	else: # else print
 		print("WARNING: no GUI with name ", gui_name)
 
-# clears canvas and adds gui to canvas, 
+# clears canvas and adds GUI to canvas, 
 # returns true if GUI was added and false if not
 
 func add_to_canvas(gui:Node = null, show_button:bool = true):
@@ -75,7 +75,7 @@ func add_to_canvas(gui:Node = null, show_button:bool = true):
 # (basically add to gui but for maps and other popups)
 # returns true if GUI was added and false if not
 
-# edit: if instance == false, gui should exist and have function to hide itself
+# if instance == false, GUI should exist and have function to hide itself
 # named show() and take one argument true/false
 
 func replace_on_canvas(gui:Node, instance = true):
@@ -108,7 +108,7 @@ func replace_on_canvas(gui:Node, instance = true):
 	toggle_playerGUI_partial(0)
 	return true
 
-# this function work with all GUI canvases
+# this function works with all GUI canvases
 
 # needs canvas_name to be specified: IntercationCanvas, PlayerCanvas, CloseButton
 # short names work as well: IC, PC, CB

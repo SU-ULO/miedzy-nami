@@ -17,7 +17,7 @@ func _ready():
 func colorMafs(x):
 	match x:
 		[0, 0, 0]:
-			#czarny
+			#biały
 			return Color(1, 1, 1)
 		[0, 0, 1]:
 			#niebieski
