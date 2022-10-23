@@ -1,5 +1,9 @@
 # Między Nami
+<img src="https://user-images.githubusercontent.com/60814050/197418912-8a0b4f98-e6bb-4989-bba2-d45036310c17.png" width="150" align="left"/>
+
 _Między Nami_ is an _Among Us_ inspired game, powered by the Godot Engine, developed for the 2021 _Drzwi Otwarte_ of the _Uniwersyteckie Liceum Ogólnokształcące_.
+
+<br clear="left"/>
 
 ## History
 Due to the Covid-19 pandemic, it was not possible for the school to organize its annual _Drzwi Otwarte_ in the traditional stationary fashion.
@@ -21,3 +25,11 @@ The game was later slighlty revamped for its use at the 2022 _Drzwi Otwarte_.
 
 ## Artwork
 All textures are licensed under CC-BY License, unless stated otherwise.
+
+## Gallery
+<img src="https://user-images.githubusercontent.com/60814050/197419013-c112328a-5731-42a7-9308-1695ac1ba8f3.png" width="540" />
+<img src="https://user-images.githubusercontent.com/60814050/197419014-71f71dfd-5259-4930-bd09-75a8629c4f9c.png" width="540" />
+<img src="https://user-images.githubusercontent.com/60814050/197419021-ec593f70-f659-4c71-b592-ac02975737aa.png" width="540" />
+<img src="https://user-images.githubusercontent.com/60814050/197419029-6c0d36e0-d3a6-4884-be53-d024fff239e9.png" width="540" />
+<img src="https://user-images.githubusercontent.com/60814050/197419036-e9600ec1-4799-45f3-a3a1-d04c6cd19946.png" width="540" />
+<img src="https://user-images.githubusercontent.com/60814050/197419043-4f9dc4dc-c0a1-4972-91e7-3763dcaf3199.png" width="540" />
