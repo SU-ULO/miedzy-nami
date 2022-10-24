@@ -254,6 +254,10 @@ zoom={
 2d_physics/layer_2="entities"
 2d_physics/layer_3="walls, objects"
 
+[mono]
+
+project/assembly_name="miedzy-nami"
+
 [rendering]
 
 quality/intended_usage/framebuffer_allocation=0
