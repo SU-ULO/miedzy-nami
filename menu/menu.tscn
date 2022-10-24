@@ -1014,7 +1014,6 @@ text = "WYJDŹ"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
 script = ExtResource( 2 )
 
 [node name="OptionsContainer" type="VBoxContainer" parent="Options"]
@@ -1028,8 +1027,9 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="MatchmakingURL" type="LineEdit" parent="Options/OptionsContainer"]
+margin_top = 22.0
 margin_right = 1920.0
-margin_bottom = 53.0
+margin_bottom = 75.0
 theme = ExtResource( 10 )
 custom_colors/font_color = Color( 0.105882, 0.105882, 0.105882, 1 )
 custom_fonts/font = SubResource( 40 )
@@ -1060,6 +1060,9 @@ margin_right = 845.0
 margin_bottom = 73.0
 rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect2" type="TextureRect" parent="Options/OptionsContainer/MatchmakingURL"]
 show_behind_parent = true
@@ -1091,9 +1094,9 @@ rect_scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 7 )
 
 [node name="Container" type="Control" parent="Options/OptionsContainer"]
-margin_top = 57.0
+margin_top = 79.0
 margin_right = 1920.0
-margin_bottom = 157.0
+margin_bottom = 179.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="borderless_btn" type="Button" parent="Options/OptionsContainer/Container"]
@@ -1123,58 +1126,10 @@ custom_colors/font_color = Color( 0.475677, 0.555232, 0.558594, 1 )
 custom_fonts/font = SubResource( 41 )
 text = "toggle borderless"
 
-[node name="Container3" type="Control" parent="Options/OptionsContainer"]
-anchor_top = 0.0371681
-anchor_bottom = 0.0371681
-margin_top = 161.0
-margin_right = 1920.0
-margin_bottom = 261.0
-rect_min_size = Vector2( 0, 100 )
-
-[node name="fps" type="SpinBox" parent="Options/OptionsContainer/Container3"]
-margin_left = 1163.0
-margin_right = 1323.0
-margin_bottom = 50.0
-mouse_default_cursor_shape = 2
-theme = ExtResource( 10 )
-min_value = 1.0
-max_value = 360.0
-value = 60.0
-rounded = true
-suffix = "Hz"
-
-[node name="Label" type="Label" parent="Options/OptionsContainer/Container3/fps"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -696.0
-margin_top = -29.0
-margin_right = -170.0
-margin_bottom = 21.0
-mouse_filter = 1
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 41 )
-text = "odświerzanie monitora (Hz):"
-
-[node name="TextureRect" type="TextureRect" parent="Options/OptionsContainer/Container3/fps"]
-show_behind_parent = true
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -956.735
-margin_top = -54.8325
-margin_right = 242.265
-margin_bottom = 61.1675
-texture = ExtResource( 7 )
-expand = true
-
 [node name="Container2" type="Control" parent="Options/OptionsContainer"]
-margin_top = 265.0
+margin_top = 183.0
 margin_right = 1920.0
-margin_bottom = 565.0
+margin_bottom = 483.0
 rect_min_size = Vector2( 0, 300 )
 
 [node name="ExitButton" type="Button" parent="Options/OptionsContainer/Container2"]
