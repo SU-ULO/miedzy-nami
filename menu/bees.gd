@@ -6,7 +6,7 @@ var bees_momentum = []
 var bees_angle = []
 
 onready var resource = preload("res://menu/bee.tscn")
-var sprites = ["res://textures/pszczola_1.png", "res://textures/pszczola_2.png", "res://textures/pszczola_1.png"]
+var sprites = ["res://textures/pszczola_1.png", "res://textures/pszczola_2.png", "res://textures/pszczola_3.png"]
 
 func space_evenly(bee_number):
 	var x = (1920-200)/3
@@ -30,16 +30,17 @@ func _ready():
 		bees.append(bee); self.add_child(bee)
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var iter = 0
 	for bee in bees:
-		bee.position += bees_momentum[iter]
+		bee.position += (bees_momentum[iter] * delta * 50)
+		
 		if bee.position.x < -100.0: bee.position.x = 1970.0
 		elif bee.position.x > 2020.0: bee.position.x = -50.0
 		
 		if bee.position.y < -100.0: bee.position.y = 1130.0
 		elif bee.position.y > 1180.0: bee.position.y = -50.0
 		
-		bee.rotation += bees_angle[iter]
+		bee.rotation += (bees_angle[iter] * delta * 100)
 		iter += 1
 
