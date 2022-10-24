@@ -256,7 +256,10 @@ zoom={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 threads/thread_model=2
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"

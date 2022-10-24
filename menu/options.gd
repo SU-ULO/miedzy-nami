@@ -15,6 +15,7 @@ func set_settings():
 
 func _on_OptionsAcceptButton_pressed():
 	set_settings()
+	Engine.iterations_per_second = $OptionsContainer/Container3/fps.value
 	get_parent().open_main()
 
 func toggle_borderless():
