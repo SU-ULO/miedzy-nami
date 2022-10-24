@@ -28,6 +28,8 @@ func _init():
 func _ready():
 	$Main/Username.text = usersettings["username"]
 	$Options.toggle_borderless()
+	# match physics process with refresh rate to avoid jitter while walking
+	Engine.iterations_per_second = int(OS.get_screen_refresh_rate())
 
 func close_everything():
 	for n in get_children():
