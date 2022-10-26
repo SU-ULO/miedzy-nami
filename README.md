@@ -23,8 +23,9 @@ The game was later slighlty revamped for its use at the 2022 _Drzwi Otwarte_.
 - A game settings system enabling further personalization of the ingame experience
 - A freeplay mode with bots for exploring the game without connecting to a lobby
 
-## Artwork
+## License
 All textures are licensed under CC-BY License, unless stated otherwise.
+Rest of this project in under MIT license, check LICENSE for more information.
 
 ## Gallery
 <img src="https://user-images.githubusercontent.com/60814050/197419013-c112328a-5731-42a7-9308-1695ac1ba8f3.png" width="540" />
