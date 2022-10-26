@@ -23,6 +23,22 @@ The game was later slighlty revamped for its use at the 2022 _Drzwi Otwarte_.
 - A game settings system enabling further personalization of the ingame experience
 - A freeplay mode with bots for exploring the game without connecting to a lobby
 
+## Credits
+Dev Team:
+- Mateusz Sobkowiak  
+- Marcin Jabłoński  
+- Mikołaj Juda  
+- Wojciech Malecha
+
+Art Team:  
+- Agata Empel  
+- Anna Przedmojska  
+- Eliza Reinhold  
+- Karol Zwierz
+
+Task Design:  
+- Jakub Niździński
+
 ## License
 All textures are licensed under CC-BY License, unless stated otherwise.  
 Rest of this project in under MIT license, check LICENSE for more information.
