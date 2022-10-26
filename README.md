@@ -24,7 +24,7 @@ The game was later slighlty revamped for its use at the 2022 _Drzwi Otwarte_.
 - A freeplay mode with bots for exploring the game without connecting to a lobby
 
 ## License
-All textures are licensed under CC-BY License, unless stated otherwise.
+All textures are licensed under CC-BY License, unless stated otherwise.  
 Rest of this project in under MIT license, check LICENSE for more information.
 
 ## Gallery
